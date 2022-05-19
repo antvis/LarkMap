@@ -1,11 +1,11 @@
 {
-  "name": "@antv/larkmap",
+  "name": "@antv/lark-map",
   "version": "0.0.1-alpha.1",
   "description": "A React toolkit for geospatial visualization based on L7",
   "license": "MIT",
   "main": "dist/lib/index.js",
   "module": "dist/esm/index.js",
-  "browser": "dist/umd/larkmap.min.js",
+  "browser": "dist/umd/lark-map.min.js",
   "types": "dist/lib/index.d.ts",
   "files": [
     "src",
@@ -68,12 +68,12 @@
   },
   "limit-size": [
     {
-      "path": "dist/umd/larkmap.min.js",
+      "path": "dist/umd/lark-map.min.js",
       "limit": "500b",
       "gzip": true
     },
     {
-      "path": "dist/umd/larkmap.min.js",
+      "path": "dist/umd/lark-map.min.js",
       "limit": "1 Kb"
     }
   ],
