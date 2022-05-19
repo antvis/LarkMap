@@ -1,6 +1,9 @@
 module.exports = {
   preset: 'ts-jest',
-  collectCoverage: true,
+  collectCoverage: false,
   testRegex: '(/__tests__/.*\\.(test|spec))\\.ts$',
   collectCoverageFrom: ['src/**/*.ts'],
+  transform: {
+    '\\.(less|css)$': 'jest-less-loader',
+  },
 };
