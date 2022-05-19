@@ -15,8 +15,17 @@ node_modules/
 
 # Build
 dist
-lib
-esm
+docs-dist
 
 # Test
 coverage
+
+# Packages lock
+package-lock.json
+yarn.lock
+
+# umi
+.umi
+.umi-production
+.umi-test
+.env.local

@@ -1,21 +1,22 @@
 {
   "compilerOptions": {
-    "outDir": "lib",
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es5",
-    "jsx": "preserve",
+    "jsx": "react",
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "declaration": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "pretty": true,
     "lib": ["dom", "esnext"],
     "skipLibCheck": true,
     "sourceRoot": "src",
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "outDir": "dist"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*", "__tests__/*"],
+  "exclude": ["node_modules", "dist", "src/.umi/*"]
 }

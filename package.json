@@ -1,97 +1,97 @@
 {
-  "name": "@antv/template",
-  "version": "0.1.0",
-  "description": "Template repo for AntV",
+  "name": "@antv/larkmap",
+  "version": "0.0.1-alpha.1",
+  "description": "A React toolkit for geospatial visualization based on L7",
   "license": "MIT",
-  "main": "lib/index.js",
-  "module": "esm/index.js",
-  "browser": "dist/template.min.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/lib/index.js",
+  "module": "dist/esm/index.js",
+  "browser": "dist/umd/larkmap.min.js",
+  "types": "dist/lib/index.d.ts",
   "files": [
     "src",
-    "lib",
-    "esm",
     "dist"
   ],
   "scripts": {
-    "clean": "rimraf lib esm dist",
-    "lint-staged": "lint-staged",
-    "size": "limit-size",
-    "lint": "eslint ./src ./__tests__ && prettier ./src ./__tests__ --check ",
-    "fix": "eslint ./src ./__tests__ --fix && prettier ./src ./__tests__ --write ",
+    "prepare": "husky install",
+    "start": "dumi dev",
+    "lint": "run-p lint:*",
+    "lint:ts": "eslint src __tests__ --ext .ts,.tsx",
+    "lint:style": "stylelint --fix src/**/*.less",
+    "prettier": "prettier --write 'src/*.{tsx,ts,md,json}'",
+    "lint-fix": "eslint src __tests__ --fix --ext .ts,.tsx --format=pretty && npm run lint:style",
     "test": "jest",
-    "build:umd": "rimraf ./dist && rollup -c && npm run size",
-    "build:cjs": "rimraf ./lib && tsc --module commonjs --outDir lib",
-    "build:esm": "rimraf ./esm && tsc --module ESNext --outDir esm",
-    "build": "run-p build:*",
-    "ci": "run-s lint test build",
+    "test-cover": "jest --coverage",
+    "clean": "rimraf dist",
+    "size": "limit-size",
+    "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/lib",
+    "build:esm": "tsc -p tsconfig.build.json --module ESNext --outDir dist/esm",
+    "build:umd": "father-build --clean=false && npm run size",
+    "build": "npm run clean && npm run build:umd && run-p build:cjs build:esm",
+    "docs:build": "dumi build",
+    "docs:deploy": "gh-pages -d docs-dist",
+    "deploy": "npm run docs:build && npm run docs:deploy",
+    "ci": "run-s lint test-cover build",
     "prepublishOnly": "npm run ci"
   },
-  "keywords": [
-    "template"
-  ],
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
-    "@types/jest": "^26.0.20",
-    "@typescript-eslint/eslint-plugin": "^4.18.0",
-    "@typescript-eslint/parser": "^4.18.0",
-    "eslint": "^7.22.0",
-    "eslint-plugin-import": "^2.22.1",
-    "husky": "^5.0.9",
+    "@commitlint/cli": "^17.0.0",
+    "@commitlint/config-conventional": "^17.0.0",
+    "@types/jest": "^26.0.24",
+    "@umijs/fabric": "^2.10.2",
+    "dumi": "^1.1.40",
+    "eslint-plugin-import": "^2.26.0",
+    "father-build": "^1.22.1",
+    "gh-pages": "^4.0.0",
+    "husky": "^8.0.1",
     "jest": "^26.6.3",
     "limit-size": "^0.1.4",
-    "lint-staged": "^10.5.4",
+    "lint-staged": "^12.4.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.2.1",
+    "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
-    "rollup": "^2.39.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-typescript": "^1.0.1",
-    "rollup-plugin-uglify": "^6.0.4",
-    "ts-jest": "^26.5.1",
-    "typescript": "^4.1.5"
+    "ts-jest": "^26.5.6",
+    "typescript": "^4.6.4"
   },
-  "jest": {
-    "preset": "ts-jest",
-    "collectCoverage": true,
-    "testRegex": "(/__tests__/.*\\.(test|spec))\\.ts$",
-    "collectCoverageFrom": [
-      "src/**/*.ts"
-    ]
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
+    "*.less": "stylelint --fix",
+    "*.{ts,tsx}": "eslint --fix",
+    "*.{ts,tsx,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
     ]
   },
   "limit-size": [
     {
-      "path": "dist/template.min.js",
+      "path": "dist/umd/larkmap.min.js",
       "limit": "500b",
       "gzip": true
     },
     {
-      "path": "dist/template.min.js",
+      "path": "dist/umd/larkmap.min.js",
       "limit": "1 Kb"
     }
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
+  "keywords": [
+    "antv",
+    "l7",
+    "lark map"
+  ],
   "author": {
     "name": "AntV",
     "url": "https://antv.vision/"
   },
+  "homepage": "https://larkmap.antv.vision",
   "repository": {
     "type": "git",
-    "url": "https://github.com/antvis/template"
+    "url": "https://github.com/antvis/LarkMap"
   },
   "bugs": {
-    "url": "https://github.com/antvis/template/issues"
+    "url": "https://github.com/antvis/LarkMap/issues"
   }
 }
