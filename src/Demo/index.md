@@ -4,15 +4,15 @@ nav:
   path: /components
 ---
 
-## Foo
+## Demo
 
 Demo:
 
 ```tsx
 import React from 'react';
-import { Foo } from '@antv/larkmap';
+import { Demo } from '@antv/lark-map';
 
-export default () => <Foo title="First Demo" />;
+export default () => <Demo title="First Demo" />;
 ```
 
 More skills for writing demo: https://d.umijs.org/guide/basic#write-component-demo
