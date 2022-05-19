@@ -17,6 +17,6 @@
     "baseUrl": "src",
     "outDir": "dist"
   },
-  "include": ["src/**/*", "__tests__/*"],
+  "include": ["src/**/*", "__tests__/*", "typings.d.ts"],
   "exclude": ["node_modules", "dist", "src/.umi/*"]
 }
