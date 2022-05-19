@@ -10,7 +10,7 @@ Demo:
 
 ```tsx
 import React from 'react';
-import { Demo } from '@antv/larkmap';
+import { Demo } from '@antv/lark-map';
 
 export default () => <Demo title="First Demo" />;
 ```
