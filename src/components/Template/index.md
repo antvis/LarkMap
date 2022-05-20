@@ -1,10 +1,11 @@
 ---
+toc: content
+group:
+  title: 分析组件
+  order: 3
 nav:
   title: 组件
   path: /components
-group:
-  title: 分析组件
-  order: 1
 ---
 
 # 样例组件 - Template
