@@ -6,8 +6,23 @@ group:
   title: 容器组件
 ---
 
-## useLayer
+### 代码演示
 
 ```tsx | pure
-const layer = useLayer(id: string);
+import React, { useEffect } from 'react';
+import { useLayer } from '@antv/lark-map';
+
+const MyComponent = () => {
+  const myBubbleLayer = useLayer('myBubbleLayer');
+
+  useEffect(() => {
+    myBubbleLayer?.fitBounds();
+  }, []);
+
+  return null;
+};
 ```
+
+### 默认示例
+
+<code src="./demo/default.tsx"></code>

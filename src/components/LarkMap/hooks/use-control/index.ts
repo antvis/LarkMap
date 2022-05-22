@@ -26,6 +26,4 @@ export const useControl = (
       scene.removeControl(custom);
     };
   }, []);
-
-  return scene;
 };

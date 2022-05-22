@@ -1,5 +1,6 @@
 ---
 toc: content
+order: 2
 group:
   title: 图层组件
   order: 1
@@ -8,7 +9,7 @@ nav:
   path: /components
 ---
 
-# 区域图层 - AreaLayer
+# 区域图层 - ChoroplethLayer
 
 ## 介绍
 

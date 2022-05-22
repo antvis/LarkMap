@@ -30,11 +30,12 @@
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "deploy": "npm run docs:build && npm run docs:deploy",
-    "ci": "run-s lint test-cover build",
+    "ci": "run-s lint build",
     "prepublishOnly": "npm run ci"
   },
   "dependencies": {
-    "@antv/l7-composite-layers": "^0.0.1-alpha.2",
+    "@antv/l7-composite-layers": "^0.0.1-alpha.4",
+    "ahooks": "^3.3.13",
     "classnames": "^2.3.1"
   },
   "devDependencies": {

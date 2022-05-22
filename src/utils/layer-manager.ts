@@ -107,8 +107,8 @@ export class LayerManager {
    * 根据图层获取图层 ID
    */
   public getLayerId(layer: Layer) {
-    if ('name' in layer) {
-      return layer.name;
+    if ('id' in layer) {
+      return layer.id;
     }
 
     return `${layerCounter++}`;
