@@ -24,8 +24,13 @@ export default defineConfig({
       path: 'https://github.com/antvis/LarkMap',
     },
   ],
+  extraBabelIncludes: ['@antv/dumi-theme-antv'],
+  theme: {
+    '@s-site-menu-width': '280px',
+    '@primary-color': '#873bf4',
+  },
   themeConfig: {
-    carrier: 'Dipper',
+    carrier: 'LarkMap',
   },
   hash: true,
   // 同步 gh-page CNAME 文件
