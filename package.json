@@ -26,7 +26,7 @@
     "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/lib",
     "build:esm": "tsc -p tsconfig.build.json --module ESNext --outDir dist/esm",
     "build:umd": "father-build --clean=false && npm run size",
-    "build": "npm run clean && npm run build:umd && run-p build:cjs build:esm",
+    "build": "npm run clean && run-p build:cjs build:esm",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "deploy": "npm run docs:build && npm run docs:deploy",
@@ -34,7 +34,7 @@
     "prepublishOnly": "npm run ci"
   },
   "dependencies": {
-    "@antv/l7-composite-layers": "^0.0.1-alpha.4",
+    "@antv/l7-composite-layers": "^0.0.1-alpha.5",
     "ahooks": "^3.3.13",
     "classnames": "^2.3.1"
   },

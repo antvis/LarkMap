@@ -3,15 +3,15 @@ import classNames from 'classnames';
 import React, { forwardRef, useImperativeHandle, useRef, useState, useMemo, useEffect } from 'react';
 import { Scene } from '@antv/l7';
 import { LayerManager } from '../../utils';
-import type { LarkMapContextValue, LarkMapProps } from './types';
+import type { LarkMapContextValue, LarkMapProps, LarkMapRefAttributes } from './types';
 import { createMap } from './helper';
 
 export type { LarkMapProps };
 
 export const LarkMapContext = React.createContext<LarkMapContextValue>(null);
 
-export const LarkMap = forwardRef<Scene, LarkMapProps>((props, ref) => {
-  const { id, style, className, map, mapType, mapConfig, onSceneLoaded, children, ...sceneConfig } = props;
+export const LarkMap = forwardRef<LarkMapRefAttributes, LarkMapProps>((props, ref) => {
+  const { id, style, className, map, mapType, mapOptions, onSceneLoaded, children, ...sceneConfig } = props;
 
   const containerRef = useRef();
   const [sceneInstance, setSceneInstance] = useState<Scene>(null);
@@ -21,7 +21,7 @@ export const LarkMap = forwardRef<Scene, LarkMapProps>((props, ref) => {
     let scene: Scene;
     let isMounted = true;
 
-    Promise.resolve(map || createMap(mapType, mapConfig))
+    Promise.resolve(map || createMap(mapType, mapOptions))
       .then((mapInstance) => {
         if (!isMounted) {
           return;
@@ -57,7 +57,7 @@ export const LarkMap = forwardRef<Scene, LarkMapProps>((props, ref) => {
     };
   }, []);
 
-  useImperativeHandle(ref, () => sceneInstance, [sceneInstance]);
+  useImperativeHandle(ref, () => ({ getScene: () => sceneInstance, getMap: () => sceneInstance.map }), [sceneInstance]);
 
   const styles: CSSProperties = useMemo(
     () => ({
@@ -75,5 +75,9 @@ export const LarkMap = forwardRef<Scene, LarkMapProps>((props, ref) => {
     </div>
   );
 });
+
+LarkMap.defaultProps = {
+  mapType: 'Mapbox',
+};
 
 export default LarkMap;

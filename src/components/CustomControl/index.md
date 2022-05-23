@@ -12,10 +12,12 @@ nav:
 
 ## 介绍
 
-## 使用场景
+自定义地图控件组件
 
 ## 代码演示
 
 ### 默认示例
 
-<code src="./demo/default.tsx"></code>
+<code src="./demo/default.tsx" defaultShowCode></code>
+
+<API></API>

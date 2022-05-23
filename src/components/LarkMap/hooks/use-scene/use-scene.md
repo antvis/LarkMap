@@ -8,23 +8,22 @@ group:
 
 ## useScene
 
-### 代码演示
+### 介绍
 
-```tsx | pure
-import React, { useEffect } from 'react';
-import { LarkMap, useScene } from '@antv/lark-map';
-
-const MyComponent = () => {
-  const scene = useScene();
-
-  useEffect(() => {
-    scene.setMapStyle('dark');
-  }, []);
-
-  return null;
-};
-```
+获取 scene 实例 Hook，一般用于子组件拿到 scene 实例，该 Hook 需放到容器组件内部才能使用。
 
 ### 默认示例
 
-<code src="./demo/default.tsx"></code>
+<code src="./demo/default.tsx" defaultShowCode></code>
+
+### API
+
+```ts
+const scene = useScene();
+```
+
+#### Result
+
+| 参数  | 说明                                                                          | 类型    |
+| ----- | ----------------------------------------------------------------------------- | ------- |
+| scene | scene 实例，实例方法详见 [L7 scene](https://l7.antv.vision/zh/docs/api/scene) | `Scene` |
