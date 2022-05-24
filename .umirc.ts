@@ -39,6 +39,12 @@ export default defineConfig({
     react: 'window.React',
     'react-dom': 'window.ReactDOM',
   },
+  styles: [
+    `
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    a { text-decoration: none; }
+    `,
+  ],
   links: [],
   scripts: [
     'https://gw.alipayobjects.com/os/lib/react/17.0.1/umd/react.development.js',

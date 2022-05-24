@@ -91,6 +91,7 @@
   "homepage": "https://larkmap.antv.vision",
   "repository": {
     "type": "git",
+    "branch": "main",
     "url": "https://github.com/antvis/LarkMap"
   },
   "bugs": {

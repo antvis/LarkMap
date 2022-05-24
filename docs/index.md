@@ -1,20 +1,23 @@
 ---
 title: LarkMap | 位置可视分析组件库
-sidebar: false
 order: 0
 banner:
   title: LarkMap 位置可视分析组件库
   desc: 基于 L7 封装的 React 组件库，专注在位置可视分析领域，简单高效，开箱即用。
-  image: https://gw.alipayobjects.com/mdn/rms_00edcb/afts/img/A*Gix7Rry3-5wAAAAAAAAAAABkARQnAQ
+  image: https://gw.alipayobjects.com/mdn/antv_site/afts/img/A*cCI7RaJs46AAAAAAAAAAAABkARQnAQ
   actions:
     - text: 快速开始 →
       link: /guide
       type: primary
   notifications:
-    - type:
-      title:
-      date:
-      link: https://www.yuque.com/antv/l7/xx
+    - type: DipperMap
+      title: 地理可视化工具
+      date: 2021.11.22
+      link: https://dippermap.alipay.com/#/
+    - type: Dipper
+      title: L7 一站式地理分析应用解决方案
+      date: 2021.11.22
+      link: https://www.yuque.com/antv/blog/2021l7
 ideas:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
     title: 开箱即用
