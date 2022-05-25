@@ -1,15 +1,10 @@
 import type {
   BubbleLayerOptions,
-  SourceOptions,
   ColorAttr,
   SizeAttr,
+  SourceOptions,
   TextLayerOptions,
 } from '@antv/l7-composite-layers';
-
-/**
- * 填充色
- */
-export type SizeAttr1 = SizeAttr;
 
 export { SourceOptions, ColorAttr, SizeAttr, TextLayerOptions };
 

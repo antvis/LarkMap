@@ -1,4 +1,10 @@
-import type { ChoroplethLayerOptions } from '@antv/l7-composite-layers';
+import type {
+  ChoroplethLayerActiveOptions,
+  ChoroplethLayerOptions,
+  ChoroplethLayerSourceOptions,
+} from '@antv/l7-composite-layers';
+
+export { ChoroplethLayerActiveOptions, ChoroplethLayerSourceOptions };
 
 /**
  * 组件类型定义
