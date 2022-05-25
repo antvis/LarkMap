@@ -1,5 +1,5 @@
 import type React from 'react';
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useControl } from '../LarkMap/hooks';
 import type { CustomControlProps } from './types';
@@ -10,7 +10,7 @@ export const CustomControl: React.FC<CustomControlProps> = (props): React.ReactP
   const { className, style, children, position, name } = props;
   const domRef = useRef(document.createElement('div'));
 
-  const onCreate = useCallback(() => {
+  useEffect(() => {
     if (className) {
       domRef.current.className = className;
     }
@@ -20,7 +20,9 @@ export const CustomControl: React.FC<CustomControlProps> = (props): React.ReactP
         .join(';');
       domRef.current.style.cssText = cssText;
     }
+  }, [className, style]);
 
+  const onCreate = useCallback(() => {
     return domRef.current;
   }, []);
 

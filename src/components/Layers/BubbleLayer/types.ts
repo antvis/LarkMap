@@ -6,7 +6,7 @@ import type {
   TextLayerOptions,
 } from '@antv/l7-composite-layers';
 
-export { SourceOptions, ColorAttr, SizeAttr, TextLayerOptions };
+export type { SourceOptions, ColorAttr, SizeAttr, TextLayerOptions };
 
 /**
  * 组件类型定义
