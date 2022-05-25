@@ -1,31 +1,31 @@
 import type React from 'react';
+import { useCallback, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { useCallback, useState } from 'react';
 import { useControl } from '../LarkMap/hooks';
 import type { CustomControlProps } from './types';
 
 export const CustomControl: React.FC<CustomControlProps> = (props): React.ReactPortal => {
   const { className, style, children, position, name } = props;
-  const [el] = useState<HTMLDivElement>(() => document.createElement('div'));
+  const domRef = useRef(document.createElement('div'));
 
   const onCreate = useCallback(() => {
     if (className) {
-      el.className = className;
+      domRef.current.className = className;
     }
     if (style) {
       const cssText = Object.keys(style)
         .map((key) => `${key}:${style[key]}`)
         .join(';');
-      el.style.cssText = cssText;
+      domRef.current.style.cssText = cssText;
     }
 
-    return el;
+    return domRef.current;
   }, []);
 
   useControl(onCreate, undefined, { position, name });
 
   // @ts-ignore
-  return createPortal(children, el);
+  return createPortal(children, domRef.current);
 };
 
 CustomControl.defaultProps = { position: 'topleft' };

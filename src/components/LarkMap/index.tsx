@@ -1,10 +1,10 @@
-import type { CSSProperties } from 'react';
-import classNames from 'classnames';
-import React, { forwardRef, useImperativeHandle, useRef, useState, useMemo, useEffect } from 'react';
 import { Scene } from '@antv/l7';
+import classNames from 'classnames';
+import type { CSSProperties } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { LayerManager } from '../../utils';
-import type { LarkMapContextValue, LarkMapProps, LarkMapRefAttributes } from './types';
 import { createMap } from './helper';
+import type { LarkMapContextValue, LarkMapProps, LarkMapRefAttributes } from './types';
 
 export type { LarkMapProps };
 
@@ -52,6 +52,8 @@ export const LarkMap = forwardRef<LarkMapRefAttributes, LarkMapProps>((props, re
     return () => {
       isMounted = false;
       if (scene) {
+        contextValue.scene = null;
+        contextValue.layerManager = null;
         scene.destroy();
       }
     };
