@@ -39,6 +39,7 @@ export default defineConfig({
     react: 'window.React',
     'react-dom': 'window.ReactDOM',
   },
+  // 重置浏览器默认样式，后续可加到 @antv/dumi-theme-antv 里
   styles: [
     `
     * { margin: 0; padding: 0; box-sizing: border-box; }

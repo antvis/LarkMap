@@ -4,6 +4,8 @@ import { createPortal } from 'react-dom';
 import { useControl } from '../LarkMap/hooks';
 import type { CustomControlProps } from './types';
 
+export type { CustomControlProps };
+
 export const CustomControl: React.FC<CustomControlProps> = (props): React.ReactPortal => {
   const { className, style, children, position, name } = props;
   const domRef = useRef(document.createElement('div'));
@@ -29,5 +31,3 @@ export const CustomControl: React.FC<CustomControlProps> = (props): React.ReactP
 };
 
 CustomControl.defaultProps = { position: 'topleft' };
-
-export default CustomControl;

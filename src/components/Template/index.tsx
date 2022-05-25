@@ -1,8 +1,8 @@
-import React from 'react';
 import classNames from 'classnames';
+import React from 'react';
 import { CLS_PREFIX } from './constant';
-import type { TemplateProps } from './types';
 import './index.less';
+import type { TemplateProps } from './types';
 
 export type { TemplateProps };
 
@@ -13,5 +13,3 @@ export const Template: React.FC<TemplateProps> = ({ title, className, style }) =
     </h1>
   );
 };
-
-export default Template;

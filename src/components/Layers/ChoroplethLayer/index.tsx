@@ -1,6 +1,6 @@
-import { useRef } from 'react';
-import { useUpdateEffect } from 'ahooks';
 import { ChoroplethLayer as L7ChoroplethLayer } from '@antv/l7-composite-layers';
+import { useUpdateEffect } from 'ahooks';
+import { useRef } from 'react';
 import { useLayerManager } from '../../LarkMap/hooks';
 import type { ChoroplethLayerProps } from './types';
 
@@ -32,5 +32,3 @@ export const ChoroplethLayer: React.FC<ChoroplethLayerProps> = (props) => {
 
   return null;
 };
-
-export default ChoroplethLayer;

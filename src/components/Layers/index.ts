@@ -1,5 +1,2 @@
-export { ChoroplethLayer } from './ChoroplethLayer';
-export type { ChoroplethLayerProps } from './ChoroplethLayer';
-
-export { BubbleLayer } from './BubbleLayer';
-export type { BubbleLayerProps } from './BubbleLayer';
+export { BubbleLayer, BubbleLayerProps } from './BubbleLayer';
+export { ChoroplethLayer, ChoroplethLayerProps } from './ChoroplethLayer';

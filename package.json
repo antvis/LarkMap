@@ -27,6 +27,7 @@
     "build:umd": "father-build --clean=false && npm run size",
     "build": "npm run clean && run-p build:cjs build:esm",
     "docs:build": "dumi build",
+    "docs:build-analyze": "ANALYZE=1 dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "ci": "run-s lint build",

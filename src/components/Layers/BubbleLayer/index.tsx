@@ -1,6 +1,6 @@
-import { useRef } from 'react';
-import { useUpdateEffect } from 'ahooks';
 import { BubbleLayer as L7BubbleLayer } from '@antv/l7-composite-layers';
+import { useUpdateEffect } from 'ahooks';
+import { useRef } from 'react';
 import { useLayerManager } from '../../LarkMap/hooks';
 import type { BubbleLayerProps } from './types';
 
@@ -33,5 +33,3 @@ export const BubbleLayer: React.FC<BubbleLayerProps> = (props) => {
 
   return null;
 };
-
-export default BubbleLayer;
