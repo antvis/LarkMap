@@ -24,8 +24,13 @@ export default defineConfig({
       path: 'https://github.com/antvis/LarkMap',
     },
   ],
+  extraBabelIncludes: ['@antv/dumi-theme-antv'],
+  theme: {
+    '@s-site-menu-width': '280px',
+    '@primary-color': '#873bf4',
+  },
   themeConfig: {
-    carrier: 'Dipper',
+    carrier: 'LarkMap',
   },
   hash: true,
   // 同步 gh-page CNAME 文件
@@ -34,6 +39,13 @@ export default defineConfig({
     react: 'window.React',
     'react-dom': 'window.ReactDOM',
   },
+  // 重置浏览器默认样式，后续可加到 @antv/dumi-theme-antv 里
+  styles: [
+    `
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    a { text-decoration: none; }
+    `,
+  ],
   links: [],
   scripts: [
     'https://gw.alipayobjects.com/os/lib/react/17.0.1/umd/react.development.js',
