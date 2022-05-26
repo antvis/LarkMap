@@ -69,9 +69,9 @@ $ npm run build
 
 ## 🤝 如何贡献
 
-Your contributions are always welcome! Please Do have a look at the [issues](https://github.com/antvis/LarkMap/issues) first.
+如果您在使用的过程中碰到问题，可以先通过 [issues](https://github.com/antvis/LarkMap/issues) 看看有没有类似的 bug 或者建议。
 
-To become a contributor, please follow our [contributing guide](https://www.yuque.com/docs/share/fc554034-9331-4cc3-be03-10a2d32b6459).
+如需提交代码，请遵从我们的[贡献指南](https://www.yuque.com/docs/share/fc554034-9331-4cc3-be03-10a2d32b6459)。
 
 ## 许可证
 
