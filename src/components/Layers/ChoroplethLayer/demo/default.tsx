@@ -1,5 +1,5 @@
+import { ChoroplethLayer, LarkMap } from '@antv/larkmap';
 import React from 'react';
-import { LarkMap, ChoroplethLayer } from '@antv/lark-map';
 import hangezhouGeoJSON from './xihu-district.json';
 
 const source = {

@@ -1,5 +1,5 @@
+import { LarkMap, useScene } from '@antv/larkmap';
 import React, { useEffect } from 'react';
-import { LarkMap, useScene } from '@antv/lark-map';
 
 const MyComponent = () => {
   const scene = useScene();

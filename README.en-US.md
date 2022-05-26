@@ -1,10 +1,10 @@
-<img src="https://gw.alipayobjects.com/zos/antfincdn/R8sN%24GNdh6/language.svg" width="18"> [English](./README.en-US.md) | 简体中文
+<img src="https://gw.alipayobjects.com/zos/antfincdn/R8sN%24GNdh6/language.svg" width="18"> English | [简体中文](./README.md)
 
 <h1 align="center">LarkMap</h1>
 
 <div align="center">
 
-🌍 基于 <a href="https://github.com/antvis/L7">L7</a> 封装的位置可视分析 React 组件库.
+🌍 A React toolkit for geospatial visualization based on <a href="https://github.com/antvis/L7">L7</a>.
 
 <!-- [![NPM downloads](https://img.shields.io/npm/dm/@antv/larkmap.svg)](https://npmjs.com/@antv/larkmap) -->
 <!-- ![Latest commit](https://badgen.net/github/last-commit/antvis/LarkMap) -->
@@ -16,20 +16,20 @@
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/antvis/LarkMap.svg)](http://isitmaintained.com/project/antvis/LarkMap 'Percentage of issues still open') [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/antvis/LarkMap.svg)](http://isitmaintained.com/project/antvis/LarkMap 'Average time to resolve an issue')
 
 <p align="center">
-  <a href="https://larkmap.antv.vision/en">网站</a> •
-  <a href="https://larkmap.antv.vision/guide">快速开始</a> •
-  <a href="https://larkmap.antv.vision/components/larkmap">组件</a>
+  <a href="https://larkmap.antv.vision/en">Website</a> •
+  <a href="https://larkmap.antv.vision/guide">Quick Start</a> •
+  <a href="https://larkmap.antv.vision/components/larkmap">Components</a>
 </p>
 
 </div>
 
-## 📦 安装
+## 📦 Installation
 
 ```bash
 $ npm install @antv/l7 @antv/larkmap
 ```
 
-## 🔨 使用
+## 🔨 Usage
 
 ```tsx
 import { LarkMap } from '@antv/larkmap';
@@ -51,7 +51,7 @@ export default () => {
 };
 ```
 
-## 本地开发
+## Local Development
 
 ```bash
 # Install project dependencies
@@ -67,12 +67,12 @@ $ npm run ci
 $ npm run build
 ```
 
-## 🤝 如何贡献
+## 🤝 How to Contribute
 
 Your contributions are always welcome! Please Do have a look at the [issues](https://github.com/antvis/LarkMap/issues) first.
 
 To become a contributor, please follow our [contributing guide](https://www.yuque.com/docs/share/fc554034-9331-4cc3-be03-10a2d32b6459).
 
-## 许可证
+## License
 
 MIT@[AntV](https://github.com/antvis).

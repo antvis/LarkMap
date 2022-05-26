@@ -1,5 +1,3 @@
-export const version = '0.0.1-alpha.1';
-
 /**
  * 控件组件
  * */
@@ -13,10 +11,14 @@ export * from './components/LarkMap/hooks';
 export { LarkMapProps } from './components/LarkMap/types';
 /**
  * 图层组件
- * */
+ */
 export * from './components/Layers';
 /**
  * 分析组件
  * */
 export { Template } from './components/Template';
 export { TemplateProps } from './components/Template/types';
+/**
+ * 版本号
+ * */
+export { default as version } from './version';

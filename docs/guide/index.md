@@ -19,15 +19,15 @@ LarkMap 是基于 L7 封装的 React 组件库，专注在位置可视分析领�
 ## 安装
 
 ```bash
-$ npm install --save @antv/l7 @antv/lark-map
+$ npm install --save @antv/l7 @antv/larkmap
 # or
-$ yarn add @antv/l7 @antv/lark-map
+$ yarn add @antv/l7 @antv/larkmap
 ```
 
 ## 使用
 
 ```tsx | pure
-import { LarkMap } from '@antv/lark-map';
+import { LarkMap } from '@antv/larkmap';
 import React from 'react';
 
 const config = {
@@ -50,7 +50,7 @@ export default () => {
 ## 体验 💻
 
 ```tsx
-import { LarkMap } from '@antv/lark-map';
+import { LarkMap } from '@antv/larkmap';
 import React from 'react';
 
 const config = {

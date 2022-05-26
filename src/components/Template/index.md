@@ -19,8 +19,8 @@ nav:
 ### 默认示例
 
 ```tsx
+import { Template } from '@antv/larkmap';
 import React from 'react';
-import { Template } from '@antv/lark-map';
 
 export default () => <Template title="First Demo" />;
 ```

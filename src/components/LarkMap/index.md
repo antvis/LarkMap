@@ -25,8 +25,8 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 1. 通过配置项
 
 ```tsx | pure
+import { LarkMap } from '@antv/larkmap';
 import React from 'react';
-import { LarkMap } from '@antv/lark-map';
 
 const config = {
   mapType: 'Mapbox',
@@ -48,9 +48,9 @@ export default () => {
 2. 通过地图实例
 
 ```tsx | pure
-import React from 'react';
 import { Mapbox } from '@antv/l7-map';
-import { LarkMap } from '@antv/lark-map';
+import { LarkMap } from '@antv/larkmap';
+import React from 'react';
 
 const mapInstance = new Mapbox({
   style: 'dark',
@@ -71,8 +71,8 @@ export default () => {
 1. 通过 onSceneLoaded 回调
 
 ```tsx | pure
+import { LarkMap } from '@antv/larkmap';
 import React from 'react';
-import { LarkMap } from '@antv/lark-map';
 
 export default () => {
   const onSceneLoaded = (scene: Scene) => {
@@ -90,8 +90,8 @@ export default () => {
 2. 挂载到 ref 上
 
 ```tsx | pure
-import React, { useRef, useEffect } from 'react';
-import { LarkMap } from '@antv/lark-map';
+import { LarkMap } from '@antv/larkmap';
+import React, { useEffect, useRef } from 'react';
 
 export default () => {
   const ref = useRef();

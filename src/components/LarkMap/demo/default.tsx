@@ -1,5 +1,5 @@
+import { LarkMap } from '@antv/larkmap';
 import React from 'react';
-import { LarkMap } from '@antv/lark-map';
 
 export default () => (
   <LarkMap

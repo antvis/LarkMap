@@ -1,5 +1,5 @@
+import { BubbleLayer, LarkMap, useLayer } from '@antv/larkmap';
 import React, { useEffect } from 'react';
-import { LarkMap, BubbleLayer, useLayer } from '@antv/lark-map';
 
 const source = {
   data: [
