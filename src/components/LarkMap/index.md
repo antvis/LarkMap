@@ -16,98 +16,13 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 
 ## 代码演示
 
-### 默认示例
+### 通过配置项生成
 
 <code src="./demo/default.tsx" defaultShowCode></code>
 
-### 配置地图
+### 通过实例生成
 
-1. 通过配置项
-
-```tsx | pure
-import { LarkMap } from '@antv/larkmap';
-import React from 'react';
-
-const config = {
-  mapType: 'Mapbox',
-  mapOptions: {
-    style: 'light',
-    center: [120.210792, 30.246026],
-    pitch: 0,
-    zoom: 10,
-    rotation: 0,
-    token: 'xxxx - token',
-  },
-};
-
-export default () => {
-  return <LarkMap {...config} style={{ height: '300px' }}></LarkMap>;
-};
-```
-
-2. 通过地图实例
-
-```tsx | pure
-import { Mapbox } from '@antv/l7-map';
-import { LarkMap } from '@antv/larkmap';
-import React from 'react';
-
-const mapInstance = new Mapbox({
-  style: 'dark',
-  center: [120.210792, 30.246026],
-  pitch: 4,
-  zoom: 10,
-  rotation: 19,
-  token: 'xxxx - token',
-});
-
-export default () => {
-  return <LarkMap map={mapInstance} style={{ height: '300px' }}></LarkMap>;
-};
-```
-
-### 获取 Scene 实例
-
-1. 通过 onSceneLoaded 回调
-
-```tsx | pure
-import { LarkMap } from '@antv/larkmap';
-import React from 'react';
-
-export default () => {
-  const onSceneLoaded = (scene: Scene) => {
-    console.log(scene);
-  };
-
-  return (
-    <LarkMap mapType="GaodeV1" style={{ height: '300px' }} onSceneLoaded={onSceneLoaded}>
-      <h2 style={{ position: 'absolute', left: '10px' }}>LarkMap</h2>
-    </LarkMap>
-  );
-};
-```
-
-2. 挂载到 ref 上
-
-```tsx | pure
-import { LarkMap } from '@antv/larkmap';
-import React, { useEffect, useRef } from 'react';
-
-export default () => {
-  const ref = useRef();
-  useEffect(() => {
-    console.log(ref.current.getScene());
-  }, []);
-
-  return (
-    <LarkMap ref={ref} mapType="GaodeV1" style={{ height: '300px' }}>
-      <h2 style={{ position: 'absolute', left: '10px' }}>LarkMap</h2>
-    </LarkMap>
-  );
-};
-```
-
-3. 通过 Hooks ，详见 [useScene](/components/lark-map/hooks/use-scene/use-scene)
+<code src="./demo/mapbox-instance.tsx" defaultShowCode></code>
 
 ## API
 
@@ -149,7 +64,9 @@ export default () => {
 
 ## FAQ
 
-1. 如何禁止地图的交互状态？使用不同的底图，配置地图的交互状态不一样，API 文档有说明，各配置项可详见[高德](https://lbs.amap.com/api/javascript-api/reference/map)、[Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/)。比如要禁止地图的缩放与拖拽操作：
+### 1. 如何禁止地图的交互状态？
+
+使用不同的底图，配置地图的交互状态不一样，API 文档有说明，各配置项可详见[高德](https://lbs.amap.com/api/javascript-api/reference/map)、[Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/)。比如要禁止地图的缩放与拖拽操作：
 
 - 高德地图
 
@@ -162,3 +79,46 @@ export default () => {
 ```json
 { "dragPan": false, "scrollZoom": false }
 ```
+
+### 2. 如果获取 Scene 实例？
+
+1. 通过 onSceneLoaded 回调
+
+```tsx | pure
+import { LarkMap } from '@antv/larkmap';
+import React from 'react';
+
+export default () => {
+  const onSceneLoaded = (scene: Scene) => {
+    console.log(scene);
+  };
+
+  return (
+    <LarkMap mapType="GaodeV1" style={{ height: '300px' }} onSceneLoaded={onSceneLoaded}>
+      <h2 style={{ position: 'absolute', left: '10px' }}>LarkMap</h2>
+    </LarkMap>
+  );
+};
+```
+
+2. 挂载到 ref 上
+
+```tsx | pure
+import { LarkMap } from '@antv/larkmap';
+import React, { useEffect, useRef } from 'react';
+
+export default () => {
+  const ref = useRef();
+  useEffect(() => {
+    console.log(ref.current.getScene());
+  }, []);
+
+  return (
+    <LarkMap ref={ref} mapType="GaodeV1" style={{ height: '300px' }}>
+      <h2 style={{ position: 'absolute', left: '10px' }}>LarkMap</h2>
+    </LarkMap>
+  );
+};
+```
+
+3. 通过 Hooks ，详见 [useScene](/components/lark-map/hooks/use-scene/use-scene)
