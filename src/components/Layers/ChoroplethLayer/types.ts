@@ -4,7 +4,7 @@ import type {
   ChoroplethLayerOptions,
   ChoroplethLayerSourceOptions,
 } from '@antv/l7-composite-layers';
-import type { LayerCommonProps } from 'types/common';
+import type { LayerCommonProps } from '../../../types/common';
 
 export type { ChoroplethLayerActiveOptions, ChoroplethLayerSourceOptions };
 

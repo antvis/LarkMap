@@ -1,7 +1,7 @@
 import { useUpdateEffect } from 'ahooks';
 import { useRef } from 'react';
-import type { LayerCommonProps } from 'types/common';
 import type { Layer } from 'utils/layer-manager';
+import type { LayerCommonProps } from '../../../types/common';
 import { useLayerManager } from '../../LarkMap/hooks';
 
 /**

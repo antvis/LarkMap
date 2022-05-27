@@ -1,5 +1,5 @@
 import type { IMapConfig, IMapWrapper, ISceneConfig, Scene } from '@antv/l7';
-import type { CommonProps } from 'types/common';
+import type { CommonProps } from '../../types/common';
 import type { LayerManager } from '../../utils';
 
 export type LarkMapContextValue = {

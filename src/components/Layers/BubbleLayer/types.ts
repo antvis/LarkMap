@@ -6,7 +6,7 @@ import type {
   SourceOptions,
   TextLayerOptions,
 } from '@antv/l7-composite-layers';
-import type { LayerCommonProps } from 'types/common';
+import type { LayerCommonProps } from '../../../types/common';
 
 export type { SourceOptions, ColorAttr, SizeAttr, TextLayerOptions };
 
