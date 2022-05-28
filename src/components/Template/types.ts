@@ -1,4 +1,4 @@
-import type { CommonProps } from 'types/common';
+import type { CommonProps } from '../../types/common';
 
 /**
  * 组件类型定义

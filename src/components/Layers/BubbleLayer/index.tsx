@@ -1,35 +1,14 @@
 import { BubbleLayer as L7BubbleLayer } from '@antv/l7-composite-layers';
-import { useUpdateEffect } from 'ahooks';
-import { useRef } from 'react';
-import { useLayerManager } from '../../LarkMap/hooks';
+import { forwardRef, useImperativeHandle } from 'react';
+import { useCreateLayer } from '../hooks/use-create-layer';
 import type { BubbleLayerProps } from './types';
 
 export type { BubbleLayerProps };
 
-export const BubbleLayer: React.FC<BubbleLayerProps> = (props) => {
-  const layerManager = useLayerManager();
-  const layerRef = useRef<L7BubbleLayer>();
+export const BubbleLayer = forwardRef<L7BubbleLayer, BubbleLayerProps>((props, ref) => {
+  const layerRef = useCreateLayer<L7BubbleLayer, BubbleLayerProps>(L7BubbleLayer, props);
 
-  if (!layerRef.current) {
-    layerRef.current = new L7BubbleLayer(props);
-    layerManager.addLayer(layerRef.current);
-  }
-
-  useUpdateEffect(() => {
-    if (layerRef.current) {
-      layerRef.current.update(props);
-    }
-
-    return () => {
-      layerManager.removeLayer(layerRef.current);
-    };
-  }, [props]);
-
-  useUpdateEffect(() => {
-    if (layerRef.current) {
-      layerRef.current.changeData(props.source);
-    }
-  }, [props.source]);
+  useImperativeHandle(ref, () => layerRef.current);
 
   return null;
-};
+});
