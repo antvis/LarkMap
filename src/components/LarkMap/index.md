@@ -18,11 +18,11 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 
 ### 通过配置项生成
 
-<code src="./demo/default.tsx" defaultShowCode></code>
+<code src="./demos/default.tsx" defaultShowCode></code>
 
 ### 通过实例生成
 
-<code src="./demo/mapbox-instance.tsx" defaultShowCode></code>
+<code src="./demos/mapbox-instance.tsx" defaultShowCode></code>
 
 ## API
 

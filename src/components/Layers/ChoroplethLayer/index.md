@@ -19,7 +19,7 @@ ChoroplethLayer 用于面数据展示，支持文本标注。
 
 ### 默认示例
 
-<code src="./demo/default.tsx"></code>
+<code src="./demos/default.tsx"></code>
 
 ## API
 

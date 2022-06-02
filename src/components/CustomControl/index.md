@@ -18,6 +18,6 @@ nav:
 
 ### 默认示例
 
-<code src="./demo/default.tsx" defaultShowCode></code>
+<code src="./demos/default.tsx" defaultShowCode></code>
 
 <API></API>
