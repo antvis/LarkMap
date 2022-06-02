@@ -1,13 +1,14 @@
 {
   "name": "@antv/larkmap",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "A React toolkit for geospatial visualization based on L7",
   "license": "MIT",
-  "main": "dist/lib/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/lib/index.d.ts",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "es/index.d.ts",
   "files": [
-    "dist"
+    "lib",
+    "es"
   ],
   "scripts": {
     "prepare": "husky install",
@@ -21,10 +22,7 @@
     "test-cover": "jest --coverage",
     "clean": "rimraf dist",
     "size": "limit-size",
-    "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/lib",
-    "build:esm": "tsc -p tsconfig.build.json --module ESNext --outDir dist/esm",
-    "build:umd": "father-build --clean=false && npm run size",
-    "build": "npm run clean && run-p build:cjs build:esm",
+    "build": "father-build",
     "docs:build": "dumi build",
     "docs:build-analyze": "ANALYZE=1 dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
@@ -76,7 +74,7 @@
   },
   "limit-size": [
     {
-      "path": "dist/umd/larkmap.min.js",
+      "path": "dist/larkmap.min.js",
       "limit": "100 Kb"
     }
   ],

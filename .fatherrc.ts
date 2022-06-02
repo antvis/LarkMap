@@ -1,9 +1,12 @@
 export default {
   entry: 'src/index.ts',
-  umd: {
-    file: 'umd/larkmap',
-    name: 'LarkMap',
-    minFile: true,
-    sourcemap: true,
-  },
+  esm: 'babel',
+  cjs: 'babel',
+  // https://github.com/umijs/father#umd
+  // umd: {
+  //   file: 'larkmap',
+  //   name: 'LarkMap',
+  //   minFile: true,
+  //   sourcemap: true,
+  // },
 };
