@@ -61,6 +61,41 @@ export const LarkMap = forwardRef<LarkMapRefAttributes, LarkMapProps>((props, re
 
   useImperativeHandle(ref, () => ({ getScene: () => sceneInstance, getMap: () => sceneInstance.map }), [sceneInstance]);
 
+  // 更新地图样式
+  useEffect(() => {
+    if (sceneInstance && mapOptions.style) {
+      sceneInstance.setMapStyle(mapOptions.style);
+    }
+  }, [mapOptions.style]);
+
+  // 更新地图层级
+  useEffect(() => {
+    if (sceneInstance && mapOptions.zoom) {
+      sceneInstance.setZoom(mapOptions.zoom);
+    }
+  }, [mapOptions.zoom]);
+
+  // 更新地图视野中心点
+  useEffect(() => {
+    if (sceneInstance && mapOptions.center) {
+      sceneInstance.setCenter(mapOptions.center);
+    }
+  }, [JSON.stringify(mapOptions.center)]);
+
+  // 更新地图视野倾角
+  useEffect(() => {
+    if (sceneInstance && mapOptions.pitch) {
+      sceneInstance.setPitch(mapOptions.pitch);
+    }
+  }, [mapOptions.pitch]);
+
+  // 更新地图旋转角度
+  useEffect(() => {
+    if (sceneInstance && mapOptions.rotation) {
+      sceneInstance.setRotation(mapOptions.rotation);
+    }
+  }, [mapOptions.rotation]);
+
   const styles: CSSProperties = useMemo(
     () => ({
       position: 'relative',
