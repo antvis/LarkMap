@@ -35,6 +35,7 @@ export default defineConfig({
   hash: true,
   // 同步 gh-page CNAME 文件
   copy: isProduction ? ['docs/CNAME'] : [],
+  devtool: isProduction ? false : 'eval',
   externals: {
     react: 'window.React',
     'react-dom': 'window.ReactDOM',

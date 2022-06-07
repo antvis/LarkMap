@@ -1,5 +1,5 @@
 import { useUpdateEffect } from 'ahooks';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import type { Layer } from 'utils/layer-manager';
 import type { LayerCommonProps } from '../../../types/common';
 import { useLayerManager } from '../../LarkMap/hooks';
@@ -49,14 +49,6 @@ export const useCreateLayer = <L extends Layer, C extends LayerCommonProps<L> & 
     if (layerRef.current) {
       layerRef.current.update(config);
     }
-
-    // 组件销毁时
-    return () => {
-      if (layerRef.current) {
-        layerManager.removeLayer(layerRef.current);
-        layerRef.current = null;
-      }
-    };
   }, [config]);
 
   // source 更新时
@@ -65,6 +57,16 @@ export const useCreateLayer = <L extends Layer, C extends LayerCommonProps<L> & 
       layerRef.current.changeData(config.source);
     }
   }, [config.source]);
+
+  // 组件销毁时
+  useEffect(() => {
+    return () => {
+      if (layerRef.current) {
+        layerManager.removeLayer(layerRef.current);
+        layerRef.current = null;
+      }
+    };
+  }, []);
 
   return layerRef;
 };

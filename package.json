@@ -32,7 +32,7 @@
     "version": "node scripts/sync-version"
   },
   "dependencies": {
-    "@antv/l7-composite-layers": "^0.0.1-alpha.5",
+    "@antv/l7-composite-layers": "^0.0.1-alpha.6",
     "ahooks": "^3.3.13",
     "classnames": "^2.3.1"
   },
