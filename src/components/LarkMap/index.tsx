@@ -121,4 +121,5 @@ export const LarkMap = forwardRef<LarkMapRefAttributes, LarkMapProps>((props, re
 
 LarkMap.defaultProps = {
   mapType: 'Mapbox',
+  mapOptions: {},
 };
