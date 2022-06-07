@@ -22,8 +22,7 @@ export const useCreateLayer = <L extends Layer, C extends LayerCommonProps<L> & 
 ) => {
   const layerManager = useLayerManager();
   const layerRef = useRef<L>();
-
-  const { onCreated } = config;
+  const { onCreated, source, ...options } = config;
 
   // 生成图层
   // 添加到 layerManager 自动加载到 scene
@@ -44,19 +43,20 @@ export const useCreateLayer = <L extends Layer, C extends LayerCommonProps<L> & 
     }
   }
 
-  // config 更新时
+  // options 更新时
   useUpdateEffect(() => {
     if (layerRef.current) {
-      layerRef.current.update(config);
+      layerRef.current.update(options);
     }
-  }, [config]);
+  }, [options]);
 
   // source 更新时
   useUpdateEffect(() => {
     if (layerRef.current) {
-      layerRef.current.changeData(config.source);
+      layerRef.current.changeData(source);
+      console.log('changeData: ');
     }
-  }, [config.source]);
+  }, [source]);
 
   // 组件销毁时
   useEffect(() => {

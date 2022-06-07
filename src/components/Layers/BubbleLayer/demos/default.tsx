@@ -8,32 +8,27 @@ const source = {
   ],
   parser: { type: 'json', x: 'lng', y: 'lat' },
 };
-const state = {
-  active: {
-    strokeColor: 'red',
-    lineWidth: 2,
-    lineOpacity: 1,
+const layerOptions = {
+  autoFit: true,
+  radius: 40,
+  fillColor: '#0f9960',
+  opacity: 0.4,
+  strokeColor: 'blue',
+  lineWidth: 2,
+  state: {
+    active: { strokeColor: 'red', lineWidth: 2, lineOpacity: 1 },
+  },
+  label: {
+    field: 't',
+    visible: true,
+    style: { fill: '#454d64', fontSize: 18, stroke: '#fff', strokeWidth: 2, textOffset: [0, -20] as [number, number] },
   },
 };
 
 export default () => {
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
-      <BubbleLayer
-        source={source}
-        autoFit={true}
-        radius={40}
-        fillColor="#0f9960"
-        opacity={0.4}
-        strokeColor="blue"
-        lineWidth={2}
-        state={state}
-        label={{
-          field: 't',
-          visible: true,
-          style: { fill: '#454d64', fontSize: 18, stroke: '#fff', strokeWidth: 2, textOffset: [0, -20] },
-        }}
-      />
+      <BubbleLayer {...layerOptions} source={source} />
     </LarkMap>
   );
 };
