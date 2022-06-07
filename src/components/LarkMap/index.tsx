@@ -1,4 +1,5 @@
 import { Scene } from '@antv/l7';
+import { useDeepCompareEffect } from 'ahooks';
 import classNames from 'classnames';
 import type { CSSProperties } from 'react';
 import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
@@ -57,6 +58,7 @@ export const LarkMap = forwardRef<LarkMapRefAttributes, LarkMapProps>((props, re
         scene.destroy();
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useImperativeHandle(ref, () => ({ getScene: () => sceneInstance, getMap: () => sceneInstance.map }), [sceneInstance]);
@@ -66,6 +68,7 @@ export const LarkMap = forwardRef<LarkMapRefAttributes, LarkMapProps>((props, re
     if (sceneInstance && mapOptions.style) {
       sceneInstance.setMapStyle(mapOptions.style);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mapOptions.style]);
 
   // 更新地图层级
@@ -73,20 +76,22 @@ export const LarkMap = forwardRef<LarkMapRefAttributes, LarkMapProps>((props, re
     if (sceneInstance && mapOptions.zoom) {
       sceneInstance.setZoom(mapOptions.zoom);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mapOptions.zoom]);
 
   // 更新地图视野中心点
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     if (sceneInstance && mapOptions.center) {
       sceneInstance.setCenter(mapOptions.center);
     }
-  }, [JSON.stringify(mapOptions.center)]);
+  }, [mapOptions.center]);
 
   // 更新地图视野倾角
   useEffect(() => {
     if (sceneInstance && mapOptions.pitch) {
       sceneInstance.setPitch(mapOptions.pitch);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mapOptions.pitch]);
 
   // 更新地图旋转角度
@@ -94,6 +99,7 @@ export const LarkMap = forwardRef<LarkMapRefAttributes, LarkMapProps>((props, re
     if (sceneInstance && mapOptions.rotation) {
       sceneInstance.setRotation(mapOptions.rotation);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mapOptions.rotation]);
 
   const styles: CSSProperties = useMemo(
