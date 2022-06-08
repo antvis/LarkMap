@@ -1,5 +1,5 @@
 import { useUpdateEffect } from 'ahooks';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import type { Layer } from 'utils/layer-manager';
 import type { LayerCommonProps } from '../../../types/common';
 import { useLayerManager } from '../../LarkMap/hooks';
@@ -22,8 +22,7 @@ export const useCreateLayer = <L extends Layer, C extends LayerCommonProps<L> & 
 ) => {
   const layerManager = useLayerManager();
   const layerRef = useRef<L>();
-
-  const { onCreated } = config;
+  const { onCreated, source, ...options } = config;
 
   // 生成图层
   // 添加到 layerManager 自动加载到 scene
@@ -44,27 +43,30 @@ export const useCreateLayer = <L extends Layer, C extends LayerCommonProps<L> & 
     }
   }
 
-  // config 更新时
+  // options 更新时
   useUpdateEffect(() => {
     if (layerRef.current) {
-      layerRef.current.update(config);
+      layerRef.current.update(options);
     }
+  }, [options]);
 
-    // 组件销毁时
+  // source 更新时
+  useUpdateEffect(() => {
+    if (layerRef.current) {
+      layerRef.current.changeData(source);
+      console.log('changeData: ');
+    }
+  }, [source]);
+
+  // 组件销毁时
+  useEffect(() => {
     return () => {
       if (layerRef.current) {
         layerManager.removeLayer(layerRef.current);
         layerRef.current = null;
       }
     };
-  }, [config]);
-
-  // source 更新时
-  useUpdateEffect(() => {
-    if (layerRef.current) {
-      layerRef.current.changeData(config.source);
-    }
-  }, [config.source]);
+  }, []);
 
   return layerRef;
 };
