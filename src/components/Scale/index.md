@@ -1,16 +1,18 @@
 ---
 toc: content
 group:
-  title: 分析组件
-  order: 3
+  title: 控件组件
+  order: 2
 nav:
   title: 组件
   path: /components
 ---
 
-# 样例组件 - Template
+# 比例尺 - Scale
 
 ## 介绍
+
+地图比例尺组件
 
 ## 使用场景
 
@@ -21,5 +23,3 @@ nav:
 <code src="./demos/default.tsx" defaultShowCode></code>
 
 <API></API>
-
-More skills for writing demo: https://d.umijs.org/guide/basic#write-component-demo
