@@ -43,6 +43,7 @@
     "@types/jest": "^26.0.24",
     "@umijs/fabric": "^2.10.2",
     "dumi": "^1.1.40",
+    "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.26.0",
     "father-build": "^1.22.1",
     "gh-pages": "^4.0.0",

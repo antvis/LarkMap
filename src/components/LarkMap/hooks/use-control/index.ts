@@ -28,6 +28,7 @@ export const useControl = (
       customRef.current = null;
       scene.removeControl(custom);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useUpdateEffect(() => {

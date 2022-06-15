@@ -13,7 +13,7 @@ nav:
 
 ## 介绍
 
-BubbleLayer 用于点数据展示，支持文本标注。
+BubbleLayer 用于点数据展示，支持描边、文本标注、多选等功能。
 
 ## 代码演示
 
@@ -27,13 +27,19 @@ BubbleLayer 用于点数据展示，支持文本标注。
 
 ### SourceOptions
 
-<!-- <API hideTitle src="./types.ts" exports='["SizeAttr1"]'></API> -->
+详见 source [文档](https://l7plot.antv.vision/zh/docs/api/composite-layers/bubble-layer#code-classlanguage-textoptionscodesource)
 
 ### ColorAttr
 
+详见 fillColor [文档](https://l7plot.antv.vision/zh/docs/api/composite-layers/bubble-layer#code-classlanguage-textoptionscodefillcolor)
+
 ### SizeAttr
 
+详见 radius [文档](https://l7plot.antv.vision/zh/docs/api/composite-layers/bubble-layer#code-classlanguage-textoptionscoderadius)
+
 ### TextLayerOptions
+
+详见 label [文档](https://l7plot.antv.vision/zh/docs/api/composite-layers/bubble-layer#code-classlanguage-textoptionscodelabel)
 
 ## FAQ
 
@@ -43,7 +49,6 @@ BubbleLayer 用于点数据展示，支持文本标注。
 
 ```tsx | pure
 import { BubbleLayer, LarkMap } from '@antv/larkmap';
-import React from 'react';
 
 const source = {
   data: [
@@ -80,7 +85,7 @@ export default () => {
 
 ```tsx | pure
 import { BubbleLayer, LarkMap } from '@antv/larkmap';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 
 const source = {
   data: [

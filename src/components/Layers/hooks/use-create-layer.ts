@@ -66,6 +66,7 @@ export const useCreateLayer = <L extends Layer, C extends LayerCommonProps<L> & 
         layerRef.current = null;
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return layerRef;
