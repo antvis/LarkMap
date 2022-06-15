@@ -13,11 +13,15 @@ export { LarkMapProps } from './components/LarkMap/types';
  * 图层组件
  */
 export * from './components/Layers';
+export { Scale } from './components/Scale';
+export { ScaleProps } from './components/Scale/types';
 /**
  * 分析组件
  * */
 export { Template } from './components/Template';
 export { TemplateProps } from './components/Template/types';
+export { Zoom } from './components/Zoom';
+export { ZoomProps } from './components/Zoom/types';
 /**
  * 版本号
  * */
