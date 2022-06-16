@@ -3,8 +3,6 @@ import { forwardRef, memo, useImperativeHandle } from 'react';
 import { useCreateLayer } from '../hooks/use-create-layer';
 import type { LineLayerProps } from './types';
 
-export type { LineLayerProps };
-
 export const LineLayer = memo(
   forwardRef<L7LineLayer, LineLayerProps>((props, ref) => {
     const layerRef = useCreateLayer<L7LineLayer, LineLayerProps>(L7LineLayer, props);
