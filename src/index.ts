@@ -16,9 +16,9 @@ export * from './components/Layers';
  * */
 export { CustomControl } from './components/CustomControl';
 export { CustomControlProps } from './components/CustomControl/types';
-export { default as Scale } from './components/Scale';
+export { Scale } from './components/Scale';
 export { ScaleProps } from './components/Scale/types';
-export { default as Zoom } from './components/Zoom';
+export { Zoom } from './components/Zoom';
 export { ZoomProps } from './components/Zoom/types';
 
 /**
@@ -26,7 +26,7 @@ export { ZoomProps } from './components/Zoom/types';
  * */
 export { Template } from './components/Template';
 export { TemplateProps } from './components/Template/types';
-export { default as Marker } from './components/Marker';
+export { Marker } from './components/Marker';
 export { MarkerProps } from './components/Marker/types';
 
 /**

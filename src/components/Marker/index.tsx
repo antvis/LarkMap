@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import { useScene } from '../LarkMap/hooks';
 import type { MarkerProps } from './types';
 
-const Marker: React.FC<MarkerProps> = (props): React.ReactPortal => {
+export const Marker = memo<MarkerProps>((props): React.ReactPortal => {
   const scene = useScene();
   const thisRef = useRef({ props });
   thisRef.current.props = props;
@@ -45,6 +45,4 @@ const Marker: React.FC<MarkerProps> = (props): React.ReactPortal => {
 
   // @ts-ignore
   return createPortal(props.children, marker.getElement());
-};
-
-export default memo(Marker);
+});
