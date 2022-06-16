@@ -5,7 +5,7 @@ import type { anchorType, ILngLat } from '@antv/l7';
  */
 export interface MarkerProps {
   /** 锚点位置的经纬度 */
-  lnglat: ILngLat;
+  lngLat: ILngLat;
   /** 锚点相对位置，支持 'center', 'top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right'
    * @default "center"
    */
