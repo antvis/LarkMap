@@ -3,8 +3,6 @@ import { forwardRef, memo, useImperativeHandle } from 'react';
 import { useCreateLayer } from '../hooks/use-create-layer';
 import type { PointLayerProps } from './types';
 
-export type { PointLayerProps };
-
 export const PointLayer = memo(
   forwardRef<L7PointLayer, PointLayerProps>((props, ref) => {
     const layerRef = useCreateLayer<L7PointLayer, PointLayerProps>(L7PointLayer, props);

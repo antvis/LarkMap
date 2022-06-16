@@ -7,8 +7,6 @@ import { LayerManager } from '../../utils';
 import { createMap } from './helper';
 import type { LarkMapContextValue, LarkMapProps, LarkMapRefAttributes } from './types';
 
-export type { LarkMapProps };
-
 export const LarkMapContext = React.createContext<LarkMapContextValue>(null);
 
 export const LarkMap = forwardRef<LarkMapRefAttributes, LarkMapProps>((props, ref) => {

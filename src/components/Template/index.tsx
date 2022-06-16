@@ -4,8 +4,6 @@ import { CLS_PREFIX } from './constant';
 import './index.less';
 import type { TemplateProps } from './types';
 
-export type { TemplateProps };
-
 export const Template: React.FC<TemplateProps> = ({ title, className, style }) => {
   return (
     <h1 className={classNames(`${CLS_PREFIX}_decoration`, className)} style={style}>
