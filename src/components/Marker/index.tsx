@@ -32,8 +32,8 @@ export const Marker = memo<MarkerProps>((props): React.ReactPortal => {
   }, []);
 
   useDeepCompareEffect(() => {
-    marker.setLnglat(props.lnglat);
-  }, [props.lnglat]);
+    marker.setLnglat(props.lngLat);
+  }, [props.lngLat]);
 
   useEffect(() => {
     scene.addMarker(marker);
