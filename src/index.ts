@@ -26,6 +26,8 @@ export { ZoomProps } from './components/Zoom/types';
  * */
 export { Template } from './components/Template';
 export { TemplateProps } from './components/Template/types';
+export { default as Marker } from './components/Marker';
+export { MarkerProps } from './components/Marker/types';
 
 /**
  * 版本号
