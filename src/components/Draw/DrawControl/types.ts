@@ -12,7 +12,7 @@ import type { CustomControlProps } from '../../CustomControl';
 
 export type DrawType = 'point' | 'line' | 'polygon' | 'rect' | 'circle';
 
-export type DrawItemConfig<O extends Partial<IBaseModeOptions>> = {
+export type DrawItemConfig<O extends Partial<IBaseModeOptions> = Partial<IBaseModeOptions>> = {
   icon?: React.FC<{ isActive: boolean }>;
   options?: O;
 };
@@ -27,12 +27,12 @@ export type DrawClearConfig = {
 };
 
 export type DrawConfig = {
-  point: DrawPointConfig | boolean;
-  line: DrawLineConfig | boolean;
-  polygon: DrawPolygonConfig | boolean;
-  rect: DrawRectConfig | boolean;
-  circle: DrawCircleConfig | boolean;
-  clear: DrawClearConfig | boolean;
+  point: DrawPointConfig | false;
+  line: DrawLineConfig | false;
+  polygon: DrawPolygonConfig | false;
+  rect: DrawRectConfig | false;
+  circle: DrawCircleConfig | false;
+  clear: DrawClearConfig | false;
 };
 
 /**
@@ -46,6 +46,7 @@ export interface DrawControlProps extends Pick<CustomControlProps, 'position'> {
 export type DrawData = Record<DrawType, any[]>;
 
 export type DrawItem = {
-  draw: BaseMode<any>;
+  draw?: BaseMode<any>;
   icon: React.FC<{ isActive: boolean }>;
+  type: string | DrawType;
 };
