@@ -23,6 +23,11 @@ export { TemplateProps } from './components/Template/types';
 export { Zoom } from './components/Zoom';
 export { ZoomProps } from './components/Zoom/types';
 /**
+ * 绘制组件
+ */
+export { DrawControl } from './components/Draw/DrawControl';
+export { DrawControlProps } from './components/Draw/DrawControl/types';
+/**
  * 版本号
  * */
 export { default as version } from './version';
