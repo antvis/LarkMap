@@ -25,31 +25,37 @@ export const Icon = ({ type }: { type: string }) => {
 
 export const DEFAULT_POINT_CONFIG: DrawPointConfig = {
   icon: () => <Icon type="l7draw-point" />,
+  title: '绘制点',
   options: {},
 };
 
 export const DEFAULT_LINE_CONFIG: DrawLineConfig = {
   icon: () => <Icon type="l7draw-line" />,
+  title: '绘制线',
   options: {},
 };
 
 export const DEFAULT_POLYGON_CONFIG: DrawPolygonConfig = {
   icon: () => <Icon type="l7draw-polygon" />,
+  title: '绘制面',
   options: {},
 };
 
 export const DEFAULT_RECT_CONFIG: DrawRectConfig = {
   icon: () => <Icon type="l7draw-rect" />,
+  title: '绘制矩形',
   options: {},
 };
 
 export const DEFAULT_CIRCLE_CONFIG: DrawCircleConfig = {
   icon: () => <Icon type="l7draw-circle" />,
+  title: '绘制圆',
   options: {},
 };
 
 export const DEFAULT_CLEAR_CONFIG: DrawClearConfig = {
-  icon: () => <Icon type="l7draw-clear" />,
+  icon: () => <Icon type="l7draw-qingkong" />,
+  title: '清空',
 };
 
 export const DEFAULT_DRAW_CONFIG: DrawConfig = {

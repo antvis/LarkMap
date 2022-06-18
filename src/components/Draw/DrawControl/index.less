@@ -6,15 +6,15 @@
   &_container {
     display: flex;
     flex-direction: row;
-    height: @btn-size;
     overflow: hidden;
     border-radius: @border-radius;
     &__vertical {
       flex-direction: column;
     }
-    &__vertical &btn {
-      border-left: 0;
-    }
+  }
+  &_container__vertical &_btn {
+    border-bottom: 1px solid #eee;
+    border-left: 0;
   }
   &_btn {
     width: @btn-size;
@@ -23,7 +23,7 @@
     text-align: center;
     background: #fff;
     border-width: 0;
-    border-left: 1px solid #eeeeee;
+    border-left: 1px solid #eee;
     cursor: pointer;
     &:hover {
       background: #fbfbfb;
