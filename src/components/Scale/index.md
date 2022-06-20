@@ -1,5 +1,6 @@
 ---
 toc: content
+order: 1
 group:
   title: 控件组件
   order: 2

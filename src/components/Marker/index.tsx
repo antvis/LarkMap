@@ -21,6 +21,7 @@ export const Marker = memo<MarkerProps>((props): React.ReactPortal => {
       ...props,
       element: hasChildren ? document.createElement('div') : null,
     };
+    // @ts-ignore
     const l7marker = new L7Marker(options);
 
     l7marker.on('click', (e: MouseEvent) => {

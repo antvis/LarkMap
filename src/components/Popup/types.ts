@@ -1,4 +1,5 @@
-import type { anchorType, ILngLat } from '@antv/l7';
+import type { ILngLat } from '@antv/l7';
+import type { AnchorType } from '../Marker/types';
 
 /**
  * 组件类型定义
@@ -9,7 +10,7 @@ export interface PopupProps {
   /** 锚点相对位置，支持 'center', 'top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right'
    * @default "bottom"
    */
-  anchor?: anchorType;
+  anchor?: AnchorType;
   /** 偏移量 [0, 0] 分别表示 X, Y 的偏移量，单位为像素。
    * @default [0, 0]
    */

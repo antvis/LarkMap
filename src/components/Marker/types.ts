@@ -1,4 +1,23 @@
-import type { anchorType, ILngLat } from '@antv/l7';
+import type { ILngLat } from '@antv/l7';
+
+/**
+ * 锚点相对位置
+ */
+export type AnchorType =
+  | 'right'
+  | 'top-right'
+  | 'left'
+  | 'bottom-right'
+  | 'left'
+  | 'top-left'
+  | 'bottom-left'
+  | 'bottom'
+  | 'bottom-right'
+  | 'bottom-left'
+  | 'top'
+  | 'top-right'
+  | 'top-left'
+  | 'center';
 
 /**
  * 组件类型定义
@@ -9,7 +28,7 @@ export interface MarkerProps {
   /** 锚点相对位置，支持 'center', 'top', 'bottom', 'left', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right'
    * @default "center"
    */
-  anchor?: anchorType;
+  anchor?: AnchorType;
   /** 设置默认 marker 的颜色
    * @default "#5B8FF9"
    */
