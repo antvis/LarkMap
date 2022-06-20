@@ -12,7 +12,7 @@ export default () => {
 
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '300px' }} onSceneLoaded={onSceneLoaded}>
-      <Popup lngLat={lngLat} closeButton={false} closeOnClick={false}>
+      <Popup lngLat={lngLat} closeButton={false} closeOnClick={false} anchor="bottom-left">
         <p>lat: {lngLat.lat}</p>
         <p>lng: {lngLat.lng}</p>
       </Popup>

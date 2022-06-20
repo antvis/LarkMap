@@ -1,5 +1,6 @@
 ---
 toc: content
+order: 2
 group:
   title: 分析组件
   order: 3
