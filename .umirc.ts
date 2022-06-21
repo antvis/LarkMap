@@ -51,7 +51,6 @@ export default defineConfig({
   scripts: [
     'https://gw.alipayobjects.com/os/lib/react/17.0.1/umd/react.development.js',
     'https://gw.alipayobjects.com/os/lib/react-dom/17.0.1/umd/react-dom.development.js',
-    '//at.alicdn.com/t/font_3469581_8fr4t9cs0h4.js',
   ],
   // more config: https://d.umijs.org/config
 });
