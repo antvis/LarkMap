@@ -13,7 +13,12 @@ nav:
 
 ## 介绍
 
-使用该组件能快速在弹框内绘制出 GeoJson 数据的需求。
+使用该组件能快速在弹框内绘制出 GeoJson 数据的需求。使用该组件时，**必须引入 `Ant Design` 的样式文件**。
+
+```ts
+// import 'antd/dist/antd.css';
+import 'antd/dist/antd.less';
+```
 
 ## 代码演示
 
