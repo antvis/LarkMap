@@ -2,31 +2,20 @@ import { DrawControl, LarkMap } from '@antv/larkmap';
 import React, { useState } from 'react';
 
 export default () => {
-  const [value, setValue] = useState<any>({
-    rect: [
-      {
-        type: 'Feature',
-        properties: {},
-        geometry: {
-          type: 'Polygon',
-          coordinates: [
-            [
-              [120.12451171875, 30.235933812981585],
-              [120.15918731689453, 30.235933812981585],
-              [120.15918731689453, 30.256249966213307],
-              [120.12451171875, 30.256249966213307],
-              [120.12451171875, 30.235933812981585],
-            ],
-          ],
-        },
-      },
-    ],
-  });
+  const [value, setValue] = useState<any>({});
 
   return (
-    <LarkMap mapType="GaodeV1" mapOptions={{ style: 'dark' }} style={{ height: '300px' }}>
+    <LarkMap mapType="GaodeV1" mapOptions={{ style: 'dark', zoom: 10 }} style={{ height: '400px' }}>
       <DrawControl
         data={value}
+        config={{
+          point: true,
+          line: true,
+          polygon: true,
+          clear: true,
+          // rect: false,
+          // circle: false,
+        }}
         onChange={(newValue) => {
           setValue(newValue);
         }}

@@ -1,4 +1,4 @@
-import { CircleDrawer, LineDrawer, PointDrawer, PolygonDrawer, RectDrawer } from '@antv/l7-draw';
+import { DrawCircle, DrawLine, DrawPoint, DrawPolygon, DrawRect } from '@antv/l7-draw';
 import React from 'react';
 import type {
   DrawCircleConfig,
@@ -68,9 +68,9 @@ export const DEFAULT_DRAW_CONFIG: DrawConfig = {
 };
 
 export const DRAW_MAP: Record<DrawType, any> = {
-  point: PointDrawer,
-  line: LineDrawer,
-  polygon: PolygonDrawer,
-  rect: RectDrawer,
-  circle: CircleDrawer,
+  point: DrawPoint,
+  line: DrawLine,
+  polygon: DrawPolygon,
+  rect: DrawRect,
+  circle: DrawCircle,
 };
