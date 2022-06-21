@@ -24,6 +24,8 @@ export const DrawControl: React.FC<DrawControlProps> = ({
   editable,
   autoFocus,
   addMultiple,
+  disableEditable,
+  onDrawChange,
 }) => {
   const scene = useScene();
 
@@ -54,6 +56,7 @@ export const DrawControl: React.FC<DrawControlProps> = ({
           autoFocus,
           editable,
           addMultiple,
+          disableEditable,
           ...mergeDrawConfig.options,
         };
         let draw: BaseMode<any> = undefined;
@@ -77,8 +80,16 @@ export const DrawControl: React.FC<DrawControlProps> = ({
         }
       });
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scene, JSON.stringify(config), JSON.stringify(drawStyle), multiple, autoFocus, multiple, addMultiple]);
+  }, [
+    scene,
+    JSON.stringify(config),
+    JSON.stringify(drawStyle),
+    multiple,
+    autoFocus,
+    multiple,
+    addMultiple,
+    disableEditable,
+  ]);
 
   /**
    * 外部data更新时，实时更新realData
@@ -95,7 +106,7 @@ export const DrawControl: React.FC<DrawControlProps> = ({
       if (controlList.length) {
         controlList.forEach((controlItem) => {
           const { draw, type } = controlItem;
-          const newData = data[type];
+          const newData = data?.[type];
           if (Array.isArray(newData) && draw && draw.getData() !== newData) {
             draw.setData(newData);
           }
@@ -127,7 +138,7 @@ export const DrawControl: React.FC<DrawControlProps> = ({
       if (!draw) {
         continue;
       }
-      const onDrawChange = (newDrawData: any[]) => {
+      const onDrawDataChange = (newDrawData: any[]) => {
         setRealData((oldData) => {
           return {
             ...oldData,
@@ -136,15 +147,15 @@ export const DrawControl: React.FC<DrawControlProps> = ({
         });
         emitChange();
       };
-      draw.on(DrawEvent.change, onDrawChange);
-      onChangeMap[type] = onDrawChange;
+      draw.on(DrawEvent.change, onDrawDataChange);
+      onChangeMap[type] = onDrawDataChange;
     }
     return () => {
       for (const controlItem of controlList) {
         const { draw, type } = controlItem;
-        const onDrawChange = onChangeMap[type];
-        if (draw && onDrawChange) {
-          controlItem.draw.off(DrawEvent.change, onDrawChange);
+        const onDrawDataChange = onChangeMap[type];
+        if (draw && onDrawDataChange) {
+          controlItem.draw.off(DrawEvent.change, onDrawDataChange);
         }
       }
     };
@@ -170,16 +181,18 @@ export const DrawControl: React.FC<DrawControlProps> = ({
       if (activeIndex > -1 && activeIndex !== index) {
         controlList[activeIndex].draw?.disable();
       }
-      const currentControl = controlList[index].draw;
-      if (currentControl?.getIsEnable()) {
-        currentControl?.disable();
+      const currentDraw = controlList[index].draw;
+      if (currentDraw?.getIsEnable()) {
+        currentDraw?.disable();
         setActiveIndex(-1);
+        onDrawChange?.(null);
       } else {
-        currentControl?.enable();
+        currentDraw?.enable();
         setActiveIndex(index);
+        onDrawChange(currentDraw);
       }
     },
-    [activeIndex, controlList],
+    [activeIndex, controlList, onDrawChange],
   );
 
   return (
@@ -233,4 +246,5 @@ DrawControl.defaultProps = {
     clear: true,
   },
   vertical: false,
+  className: '',
 };

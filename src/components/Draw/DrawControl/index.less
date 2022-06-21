@@ -1,13 +1,13 @@
-@cls-prefix: larkmap-draw-control;
-@btn-size: 30px;
-@border-radius: 3px;
+@draw-control-cls-prefix: larkmap-draw-control;
+@draw-control-btn-size: 30px;
+@draw-control-border-radius: 3px;
 
-.@{cls-prefix} {
+.@{draw-control-cls-prefix} {
   &_container {
     display: flex;
     flex-direction: row;
     overflow: hidden;
-    border-radius: @border-radius;
+    border-radius: @draw-control-border-radius;
     &__vertical {
       flex-direction: column;
     }
@@ -17,9 +17,9 @@
     border-left: 0;
   }
   &_btn {
-    width: @btn-size;
-    height: @btn-size;
-    line-height: @btn-size;
+    width: @draw-control-btn-size;
+    height: @draw-control-btn-size;
+    line-height: @draw-control-btn-size;
     text-align: center;
     background: #fff;
     border-width: 0;
@@ -35,8 +35,8 @@
       border-left-width: 0;
     }
     .l7draw-icon {
-      width: @btn-size;
-      height: @btn-size;
+      width: @draw-control-btn-size;
+      height: @draw-control-btn-size;
       font-family: 'l7drawicon' !important;
       font-style: normal;
       -webkit-font-smoothing: antialiased;

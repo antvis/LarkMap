@@ -40,6 +40,7 @@ nav:
 | autoFocus | 绘制后是否自动激活，会自动赋给每个类型的 Draw 实例 | `boolean` | `true` |
 | addMultiple | 在单次 enable 激活绘制中，是否支持绘制多个绘制物，会自动赋给每个类型的 Draw 实例 | `boolean` | `true` |
 | multiple | 是否始终支持绘制多个绘制物，会自动赋给每个类型的 Draw 实例 | `boolean` | `true` |
+| disableEditable | Draw 在禁用状态下是否支持编辑绘制物，建议在只有单个 Draw 项开启该配置，会自动赋给每个类型的 Draw 实例 | `boolean` | `false` |
 
 ## DrawConfig
 

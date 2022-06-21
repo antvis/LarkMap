@@ -9,7 +9,6 @@ import type {
   IStyle,
 } from '@antv/l7-draw';
 import type React from 'react';
-import type { CSSProperties } from 'react';
 import type { CustomControlProps } from '../../CustomControl';
 
 export type DrawType = 'point' | 'line' | 'polygon' | 'rect' | 'circle';
@@ -45,21 +44,18 @@ export type DrawConfig = {
 /**
  * 组件类型定义
  */
-export interface DrawControlProps extends Pick<CustomControlProps, 'position'> {
+export interface DrawControlProps extends Pick<CustomControlProps, 'position' | 'className' | 'style'> {
   data?: Partial<DrawData>;
-  onChange?: (value: Partial<DrawData>) => void;
   config?: DrawConfig;
   vertical?: boolean;
   drawStyle?: IStyle;
   editable?: boolean;
   autoFocus?: boolean;
   addMultiple?: boolean;
-  /** 是否支持多选 */
   multiple?: boolean;
-  /** Control 条自定义class名称 */
-  className?: string;
-  /** Control 条内敛样式 */
-  style?: CSSProperties;
+  disableEditable?: boolean;
+  onChange?: (value: Partial<DrawData>) => void;
+  onDrawChange?: (draw: BaseMode | null) => void;
 }
 
 export type DrawData = Record<DrawType, any[]>;

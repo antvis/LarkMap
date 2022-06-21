@@ -7,7 +7,6 @@ export default () => {
   return (
     <LarkMap mapType="GaodeV1" mapOptions={{ style: 'dark', zoom: 10 }} style={{ height: '400px' }}>
       <DrawControl
-        data={value}
         config={{
           point: true,
           line: true,
@@ -16,8 +15,8 @@ export default () => {
           // rect: false,
           // circle: false,
         }}
-        onChange={(newValue) => {
-          setValue(newValue);
+        onDrawChange={(e) => {
+          console.log(e);
         }}
       />
     </LarkMap>
