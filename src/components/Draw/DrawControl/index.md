@@ -11,21 +11,21 @@ nav:
 
 # 绘制控制条 - DrawControl
 
-# 介绍
+## 介绍
 
 基于[L7 Draw](https://antv.vision/l7-draw-2.0-site/)的绘制控制条，当前支持点、线、面、矩形、圆形绘制的开关，以及清除操作。 当前每种类型的绘制物，只能在当前绘制激活的时候才能进行编辑。
 
-# 代码演示
+## 代码演示
 
-## 默认示例
+### 默认示例
 
 <code src="./demos/default.tsx" compact></code>
 
-## 初始化绘制数据
+### 初始化绘制数据
 
 <code src="./demos/initData.tsx" compact></code>
 
-# API
+## API
 
 | 属性名 | 描述 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ nav:
 | multiple | 是否始终支持绘制多个绘制物，会自动赋给每个类型的 Draw 实例 | `boolean` | `true` |
 | disableEditable | Draw 在禁用状态下是否支持编辑绘制物，建议在只有单个 Draw 项开启该配置，会自动赋给每个类型的 Draw 实例 | `boolean` | `false` |
 
-## DrawConfig
+### DrawConfig
 
 | 属性名 | 描述 | 类型 |
 | --- | --- | --- |
@@ -53,7 +53,7 @@ nav:
 | circle | 是否展示**绘制圆形**的 Control 项，传 false 表示不展示该 Control 项，options 配置 [详情可见](https://antv.vision/l7-draw-2.0-site/docs/draw/circle) | [DrawItemConfig](#DrawItemConfig) or boolean |
 | clear | 是否展示**清除**的 Control 项，传 false 表示不展示该 Control 项，无 options 配置 | [DrawItemConfig](#DrawItemConfig) or boolean |
 
-## DrawItemConfig
+### DrawItemConfig
 
 | 属性名 | 描述 | 类型 |
 | --- | --- | --- |
@@ -61,7 +61,7 @@ nav:
 | icon | 在 Control 项中展示 React 组件，可以根据参数 isActive 切换展示效果 | React.FC<{isActive: boolean}> |
 | options | 对应各个 Draw 绘制类的配置参数，详情可见[L7 Draw](https://antv.vision/l7-draw-2.0-site/docs/draw/point)，非绘制类 Control 无需配置（如 clear） | {} |
 
-## DrawData
+### DrawData
 
 以下各个类型的数据均为 GeoJSON 规范中，不同类型的[Geometry Object](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1)数组，当前各个类型均不支持 Multiple 类型的数据。
 

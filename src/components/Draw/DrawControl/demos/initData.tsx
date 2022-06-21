@@ -65,7 +65,9 @@ export default () => {
     circle: [
       {
         type: 'Feature',
-        properties: {},
+        properties: {
+          isActive: true,
+        },
         geometry: {
           type: 'Polygon',
           coordinates: [
@@ -146,6 +148,7 @@ export default () => {
     <LarkMap mapType="GaodeV1" mapOptions={{ style: 'dark', zoom: 10 }} style={{ height: '400px' }}>
       <DrawControl
         data={value}
+        defaultActiveType="circle"
         onChange={(newValue) => {
           setValue(newValue);
         }}

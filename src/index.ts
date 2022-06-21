@@ -10,6 +10,8 @@ export { DrawControl } from './components/Draw/DrawControl';
 export { DrawControlProps } from './components/Draw/DrawControl/types';
 export { DrawKeyboardHelper } from './components/Draw/DrawKeyboardHelper';
 export { DrawKeyboardHelperProps } from './components/Draw/DrawKeyboardHelper/types';
+export { DrawModal } from './components/Draw/DrawModal';
+export { DrawModalProps } from './components/Draw/DrawModal/types';
 /**
  * 容器组件
  * */

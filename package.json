@@ -64,7 +64,8 @@
   "peerDependencies": {
     "@antv/l7": "^2.8.35",
     "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
+    "react-dom": ">=16.9.0",
+    "antd": "^4.21.3"
   },
   "lint-staged": {
     "*.less": "stylelint --fix",

@@ -33,20 +33,21 @@ export type DrawCircleConfig = DrawItemConfig<DeepPartial<ICircleDrawerOptions>>
 export type DrawClearConfig = DrawItemConfig<undefined>;
 
 export type DrawConfig = {
-  point: DrawPointConfig | boolean;
-  line: DrawLineConfig | boolean;
-  polygon: DrawPolygonConfig | boolean;
-  rect: DrawRectConfig | boolean;
-  circle: DrawCircleConfig | boolean;
-  clear: DrawClearConfig | boolean;
+  point?: DrawPointConfig | boolean;
+  line?: DrawLineConfig | boolean;
+  polygon?: DrawPolygonConfig | boolean;
+  rect?: DrawRectConfig | boolean;
+  circle?: DrawCircleConfig | boolean;
+  clear?: DrawClearConfig | boolean;
 };
 
 /**
  * 组件类型定义
  */
 export interface DrawControlProps extends Pick<CustomControlProps, 'position' | 'className' | 'style'> {
-  data?: Partial<DrawData>;
+  data?: DrawData;
   config?: DrawConfig;
+  defaultActiveType?: DrawType;
   vertical?: boolean;
   drawStyle?: IStyle;
   editable?: boolean;
@@ -54,11 +55,11 @@ export interface DrawControlProps extends Pick<CustomControlProps, 'position' | 
   addMultiple?: boolean;
   multiple?: boolean;
   disableEditable?: boolean;
-  onChange?: (value: Partial<DrawData>) => void;
+  onChange?: (value: DrawData) => void;
   onDrawChange?: (draw: BaseMode | null) => void;
 }
 
-export type DrawData = Record<DrawType, any[]>;
+export type DrawData = Partial<Record<DrawType, any[]>>;
 
 export type ControlItem = {
   draw?: BaseMode<any>;

@@ -26,6 +26,7 @@ export const DrawControl: React.FC<DrawControlProps> = ({
   addMultiple,
   disableEditable,
   onDrawChange,
+  defaultActiveType,
 }) => {
   const scene = useScene();
 
@@ -41,7 +42,7 @@ export const DrawControl: React.FC<DrawControlProps> = ({
   useEffect(() => {
     const newControlList: ControlItem[] = [];
     if (scene) {
-      Object.entries(config).forEach(([controlType, controlConfig], index) => {
+      Object.entries(config).forEach(([controlType, controlConfig]) => {
         if (!controlConfig) {
           return;
         }
@@ -189,11 +190,19 @@ export const DrawControl: React.FC<DrawControlProps> = ({
       } else {
         currentDraw?.enable();
         setActiveIndex(index);
-        onDrawChange(currentDraw);
+        onDrawChange?.(currentDraw);
       }
     },
     [activeIndex, controlList, onDrawChange],
   );
+
+  useEffect(() => {
+    controlList.forEach((controlItem, index) => {
+      if (controlItem.type === defaultActiveType && controlItem.draw) {
+        onControlClick(controlItem, index);
+      }
+    });
+  }, [controlList, defaultActiveType]);
 
   return (
     <CustomControl name="drawControl" position={position}>
