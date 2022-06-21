@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import React, { useCallback, useEffect, useState } from 'react';
 import { CustomControl } from '../../CustomControl';
 import { CLS_PREFIX, CTRL_REGEXP, KEYBOARD_TITLE_MAP } from './constant';
-import './iconfont.js';
 import './index.less';
 import type { DrawKeyboardHelperProps, KeyboardItem } from './types';
 

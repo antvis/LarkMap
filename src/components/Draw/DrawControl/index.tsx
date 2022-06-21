@@ -6,6 +6,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { CustomControl } from '../../CustomControl';
 import { useScene } from '../../LarkMap/hooks';
 import { CLS_PREFIX, DEFAULT_DRAW_CONFIG, DRAW_MAP, DRAW_TYPES } from './constant';
+import './iconfont.js';
 import './index.less';
 import type { ControlItem, DrawControlProps, DrawType } from './types';
 
