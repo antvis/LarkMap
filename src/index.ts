@@ -4,6 +4,13 @@
 export { CustomControl } from './components/CustomControl';
 export { CustomControlProps } from './components/CustomControl/types';
 /**
+ * 绘制组件
+ */
+export { DrawControl } from './components/Draw/DrawControl';
+export { DrawControlProps } from './components/Draw/DrawControl/types';
+export { DrawKeyboardHelper } from './components/Draw/DrawKeyboardHelper';
+export { DrawKeyboardHelperProps } from './components/Draw/DrawKeyboardHelper/types';
+/**
  * 容器组件
  * */
 export { LarkMap } from './components/LarkMap';
@@ -22,11 +29,6 @@ export { Template } from './components/Template';
 export { TemplateProps } from './components/Template/types';
 export { Zoom } from './components/Zoom';
 export { ZoomProps } from './components/Zoom/types';
-/**
- * 绘制组件
- */
-export { DrawControl } from './components/Draw/DrawControl';
-export { DrawControlProps } from './components/Draw/DrawControl/types';
 /**
  * 版本号
  * */
