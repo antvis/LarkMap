@@ -1,6 +1,6 @@
 ---
 toc: content
-order: 3
+order: 1
 group:
   title: 分析组件
   order: 3
@@ -9,11 +9,11 @@ nav:
   path: /components
 ---
 
-# 样例组件 - Template
+# 标注 - Marker
 
 ## 介绍
 
-## 使用场景
+地图标注组件
 
 ## 代码演示
 
@@ -22,5 +22,3 @@ nav:
 <code src="./demos/default.tsx" defaultShowCode></code>
 
 <API></API>
-
-More skills for writing demo: https://d.umijs.org/guide/basic#write-component-demo

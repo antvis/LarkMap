@@ -1,6 +1,6 @@
 {
   "name": "@antv/larkmap",
-  "version": "0.0.1-alpha.4",
+  "version": "0.0.1-alpha.7",
   "description": "A React toolkit for geospatial visualization based on L7",
   "license": "MIT",
   "main": "lib/index.js",
@@ -32,9 +32,8 @@
     "version": "node scripts/sync-version"
   },
   "dependencies": {
-    "@antv/l7": "^2.8.45",
-    "@antv/l7-composite-layers": "^0.0.1-alpha.6",
     "@antv/l7-draw": "^3.0.0-alpha.15",
+    "@antv/l7-composite-layers": "^0.1.0-alpha.0",
     "ahooks": "^3.3.13",
     "classnames": "^2.3.1"
   },

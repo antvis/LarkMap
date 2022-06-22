@@ -5,8 +5,6 @@ import { useEffect, useRef } from 'react';
 import { useScene } from '../LarkMap/hooks/use-scene';
 import type { ZoomProps } from './types';
 
-export type { ZoomProps };
-
 export const Zoom: React.FC<ZoomProps> = (props) => {
   const scene = useScene();
   const zoomRef = useRef<L7Zoom>();
@@ -34,5 +32,3 @@ export const Zoom: React.FC<ZoomProps> = (props) => {
 
   return null;
 };
-
-Zoom.defaultProps = { position: 'bottomright' };

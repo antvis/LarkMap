@@ -1,6 +1,6 @@
 ---
 toc: content
-order: 3
+order: 2
 group:
   title: 分析组件
   order: 3
@@ -9,11 +9,11 @@ nav:
   path: /components
 ---
 
-# 样例组件 - Template
+# 信息框 - Popup
 
 ## 介绍
 
-## 使用场景
+信息框组件，一般用于展示地图要素的属性信息。
 
 ## 代码演示
 
@@ -22,5 +22,3 @@ nav:
 <code src="./demos/default.tsx" defaultShowCode></code>
 
 <API></API>
-
-More skills for writing demo: https://d.umijs.org/guide/basic#write-component-demo

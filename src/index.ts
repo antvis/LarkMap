@@ -1,8 +1,36 @@
+// organize-imports-ignore
+/**
+ * 容器组件
+ * */
+export { LarkMap } from './components/LarkMap';
+export { LarkMapProps } from './components/LarkMap/types';
+export * from './components/LarkMap/hooks';
+
+/**
+ * 图层组件
+ */
+export * from './components/Layers';
+
 /**
  * 控件组件
  * */
 export { CustomControl } from './components/CustomControl';
 export { CustomControlProps } from './components/CustomControl/types';
+export { Scale } from './components/Scale';
+export { ScaleProps } from './components/Scale/types';
+export { Zoom } from './components/Zoom';
+export { ZoomProps } from './components/Zoom/types';
+
+/**
+ * 分析组件
+ * */
+export { Template } from './components/Template';
+export { TemplateProps } from './components/Template/types';
+export { Marker } from './components/Marker';
+export { MarkerProps } from './components/Marker/types';
+export { Popup } from './components/Popup';
+export { PopupProps } from './components/Popup/types';
+
 /**
  * 绘制组件
  */
@@ -12,25 +40,7 @@ export { DrawKeyboardHelper } from './components/Draw/DrawKeyboardHelper';
 export { DrawKeyboardHelperProps } from './components/Draw/DrawKeyboardHelper/types';
 export { DrawModal } from './components/Draw/DrawModal';
 export { DrawModalProps } from './components/Draw/DrawModal/types';
-/**
- * 容器组件
- * */
-export { LarkMap } from './components/LarkMap';
-export * from './components/LarkMap/hooks';
-export { LarkMapProps } from './components/LarkMap/types';
-/**
- * 图层组件
- */
-export * from './components/Layers';
-export { Scale } from './components/Scale';
-export { ScaleProps } from './components/Scale/types';
-/**
- * 分析组件
- * */
-export { Template } from './components/Template';
-export { TemplateProps } from './components/Template/types';
-export { Zoom } from './components/Zoom';
-export { ZoomProps } from './components/Zoom/types';
+
 /**
  * 版本号
  * */

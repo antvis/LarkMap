@@ -7,8 +7,6 @@ import { LayerManager } from '../../utils';
 import { createMap } from './helper';
 import type { LarkMapContextValue, LarkMapProps, LarkMapRefAttributes } from './types';
 
-export type { LarkMapProps };
-
 export const LarkMapContext = React.createContext<LarkMapContextValue>(null);
 
 export const LarkMap = forwardRef<LarkMapRefAttributes, LarkMapProps>((props, ref) => {
@@ -40,10 +38,10 @@ export const LarkMap = forwardRef<LarkMapRefAttributes, LarkMapProps>((props, re
         contextValue.layerManager = layerManager;
 
         scene.once('loaded', () => {
-          setSceneInstance(scene);
           if (onSceneLoaded) {
             onSceneLoaded(scene);
           }
+          setSceneInstance(scene);
         });
       })
       .catch((error) => {
