@@ -9,7 +9,7 @@ import type {
   IStyle,
 } from '@antv/l7-draw';
 import type React from 'react';
-import type { CustomControlProps } from '../../CustomControl';
+import type { CustomControlProps } from '../../CustomControl/types';
 
 export type DrawType = 'point' | 'line' | 'polygon' | 'rect' | 'circle';
 /**

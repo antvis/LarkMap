@@ -1,5 +1,5 @@
 import type { BaseMode } from '@antv/l7-draw';
-import type { CustomControlProps } from '../../CustomControl';
+import type { CustomControlProps } from '../../CustomControl/types';
 
 export interface DrawKeyboardHelperProps extends Pick<CustomControlProps, 'position' | 'className' | 'style'> {
   /**
