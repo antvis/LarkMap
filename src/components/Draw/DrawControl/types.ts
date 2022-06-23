@@ -49,7 +49,7 @@ export interface DrawControlProps extends Pick<CustomControlProps, 'position' | 
   config?: DrawConfig;
   defaultActiveType?: DrawType;
   vertical?: boolean;
-  drawStyle?: IStyle;
+  drawStyle?: DeepPartial<IStyle>;
   editable?: boolean;
   autoFocus?: boolean;
   addMultiple?: boolean;

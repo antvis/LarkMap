@@ -10,8 +10,6 @@ import './iconfont.js';
 import './index.less';
 import type { ControlItem, DrawControlProps, DrawType } from './types';
 
-export type { DrawControlProps };
-
 export const DrawControl: React.FC<DrawControlProps> = ({
   className,
   style,
@@ -82,26 +80,29 @@ export const DrawControl: React.FC<DrawControlProps> = ({
         }
       });
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     scene,
-    JSON.stringify(config),
-    JSON.stringify(drawStyle),
     multiple,
     autoFocus,
-    multiple,
     addMultiple,
     disableEditable,
+    editable,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    JSON.stringify(config),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    JSON.stringify(drawStyle),
   ]);
 
   /**
-   * 外部data更新时，实时更新realData
+   * 外部 data 更新时，实时更新 realData
    */
   useEffect(() => {
     setRealData(data);
   }, [data]);
 
   /**
-   * 监听data发生变化，并实时更新数据
+   * 监听 data 发生变化，并实时更新数据
    */
   useDebounceEffect(
     () => {
@@ -131,7 +132,7 @@ export const DrawControl: React.FC<DrawControlProps> = ({
   );
 
   /**
-   * 监听各个Draw的change事件，并将变更数据收集后异步调用onChange方法
+   * 监听各个 Draw 的 change 事件，并将变更数据收集后异步调用 onChange 方法
    */
   useEffect(() => {
     const onChangeMap: Record<string, (newDrawData: any[]) => void> = {};
@@ -212,7 +213,7 @@ export const DrawControl: React.FC<DrawControlProps> = ({
           'l7-bar': true,
           [`${CLS_PREFIX}_container`]: true,
           [`${CLS_PREFIX}_container__vertical`]: vertical,
-          [className]: true,
+          [className ?? '']: true,
         })}
         style={style}
       >
@@ -256,5 +257,4 @@ DrawControl.defaultProps = {
     clear: true,
   },
   vertical: false,
-  className: '',
 };
