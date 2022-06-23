@@ -1,5 +1,5 @@
 import type { PositionName } from '@antv/l7';
-import type { IZoomControlOption } from '@antv/l7-component/es/control/zoom';
+import type { IZoomControlOption } from '@antv/l7-component';
 
 /**
  * 组件类型定义

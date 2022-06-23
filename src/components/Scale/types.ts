@@ -1,5 +1,5 @@
 import type { PositionName } from '@antv/l7';
-import type { IScaleControlOption } from '@antv/l7-component/es/control/scale';
+import type { IScaleControlOption } from '@antv/l7-component';
 
 /**
  * 组件类型定义
