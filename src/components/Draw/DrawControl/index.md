@@ -58,7 +58,7 @@ nav:
 | 属性名 | 描述 | 类型 |
 | --- | --- | --- |
 | title | 在 Control 项悬停时展示的文本 | `string` |
-| icon | 在 Control 项中展示 React 组件，可以根据参数 isActive 切换展示效果 | `({ isActive: boolean }) => ReactNode` |
+| icon | 在 Control 项中展示 React 组件，可以根据参数 isActive 切换展示效果 | `({ isActive: boolean }) => JSX.Element` |
 | options | 对应各个 Draw 绘制类的配置参数，详情可见 [L7 Draw](https://antv.vision/l7-draw-2.0-site/docs/draw/) ，非绘制类 Control 无需配置（如 clear） | {} |
 
 ### DrawData
