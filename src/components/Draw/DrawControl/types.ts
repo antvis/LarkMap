@@ -8,7 +8,7 @@ import type {
   IRectDrawerOptions,
   IStyle,
 } from '@antv/l7-draw';
-import type React from 'react';
+import type { ReactNode } from 'react';
 import type { CustomControlProps } from '../../CustomControl/types';
 
 export type DrawType = 'point' | 'line' | 'polygon' | 'rect' | 'circle';
@@ -20,7 +20,7 @@ export type DeepPartial<T> = {
 };
 
 export type DrawItemConfig<O extends DeepPartial<IBaseModeOptions> = DeepPartial<IBaseModeOptions>> = {
-  icon?: React.FC<{ isActive: boolean }>;
+  icon?: ({ isActive: boolean }) => ReactNode;
   title?: string;
   options?: O;
 };
