@@ -12,6 +12,7 @@ const Draw = () => {
         {
           type: 'Feature',
           properties: {
+            // @ts-ignore
             isActive: true,
           },
           geometry: {
