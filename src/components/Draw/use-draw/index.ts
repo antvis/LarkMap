@@ -21,8 +21,9 @@ const createDrawInstance: (scene: Scene, config: Pick<UseDrawParams, 'type' | 'o
 
 export const useDraw = ({ type, options }: UseDrawParams) => {
   const scene = useScene();
-  const [draw, setDraw] = useState<BaseMode | null>(createDrawInstance(scene, { type, options }));
-  const [drawData, setDrawData] = useState<DrawData>([]);
+  const [draw, setDraw] = useState<BaseMode | null>(() => createDrawInstance(scene, { type, options }));
+  // @ts-ignore
+  const [drawData, setDrawData] = useState<DrawData>(() => draw.getData());
   const [isEnable, setIsEnable] = useState(false);
 
   const onDrawEnable = useCallback(() => setIsEnable(true), []);
@@ -44,6 +45,8 @@ export const useDraw = ({ type, options }: UseDrawParams) => {
       newDraw.on(DrawEvent.enable, onDrawEnable);
       newDraw.on(DrawEvent.disable, onDrawDisable);
       setDraw(newDraw);
+      // @ts-ignore
+      setDrawData(draw.getData());
     }
   }, [type, scene, JSON.stringify(options)]);
 

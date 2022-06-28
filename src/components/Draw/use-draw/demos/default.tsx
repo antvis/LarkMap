@@ -3,12 +3,24 @@ import React, { useEffect } from 'react';
 
 /**
  * useDraw 必须在 LarkMap 的子孙组件中调用
- * @constructor
  */
 const Draw = () => {
   const { enable, drawData } = useDraw({
     type: 'point',
-    options: {},
+    options: {
+      initData: [
+        {
+          type: 'Feature',
+          properties: {
+            isActive: true,
+          },
+          geometry: {
+            type: 'Point',
+            coordinates: [120.14339447021486, 30.25313608393673],
+          },
+        },
+      ],
+    },
   });
 
   useEffect(() => {
