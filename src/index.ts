@@ -32,6 +32,11 @@ export { Popup } from './components/Popup';
 export { PopupProps } from './components/Popup/types';
 
 /**
+ * 绘制组件
+ */
+export { useDraw } from './components/Draw/use-draw';
+
+/**
  * 版本号
  * */
 export { default as version } from './version';
