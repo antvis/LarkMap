@@ -8,7 +8,7 @@ const Draw = () => {
   const { enable, drawData } = useDraw({
     type: 'point',
     options: {
-      initData: [
+      initialData: [
         {
           type: 'Feature',
           properties: {
