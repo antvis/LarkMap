@@ -1,6 +1,6 @@
 import type { Scene } from '@antv/l7';
 import type { BaseMode } from '@antv/l7-draw';
-import { DrawerEvent, DrawEvent } from '@antv/l7-draw';
+import { DrawEvent } from '@antv/l7-draw';
 import { useUpdateEffect } from 'ahooks';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useScene } from '../../LarkMap/hooks';
@@ -8,56 +8,62 @@ import type { DrawData } from '../types';
 import { DRAW_TYPE_MAP } from './constant';
 import type { UseDrawParams } from './types';
 
-const createDrawInstance: (scene: Scene, config: Pick<UseDrawParams, 'type' | 'options'>) => BaseMode | null = (
-  scene,
-  { type, options },
-) => {
-  const Draw = DRAW_TYPE_MAP[type];
-  if (!Draw) {
-    return null;
-  }
-  return new Draw(scene, options);
-};
-
-export const useDraw = ({ type, options }: UseDrawParams) => {
-  const scene = useScene();
-  const [draw, setDraw] = useState<BaseMode | null>(() => createDrawInstance(scene, { type, options }));
-  // @ts-ignore
-  const [drawData, setDrawData] = useState<DrawData>(() => draw.getData());
+export const useDraw = (params: UseDrawParams) => {
   const [isEnable, setIsEnable] = useState(false);
-
   const onDrawEnable = useCallback(() => setIsEnable(true), []);
   const onDrawDisable = useCallback(() => setIsEnable(false), []);
+
+  const createDrawInstance: (scene: Scene, config: Pick<UseDrawParams, 'type' | 'options'>) => BaseMode | null =
+    useCallback(
+      (scene, { type, options }) => {
+        const Draw = DRAW_TYPE_MAP[type];
+        if (!Draw) {
+          return null;
+        }
+        const newDraw = new Draw(scene, options);
+        newDraw.on(DrawEvent.Enable, onDrawEnable);
+        newDraw.on(DrawEvent.Disable, onDrawDisable);
+        return newDraw;
+      },
+      [onDrawDisable, onDrawEnable],
+    );
+
+  const destroyDrawInstance = useCallback(
+    (draw: BaseMode) => {
+      draw.off(DrawEvent.Enable, onDrawEnable);
+      draw.off(DrawEvent.Disable, onDrawDisable);
+      draw.destroy();
+    },
+    [onDrawDisable, onDrawEnable],
+  );
+
+  const scene = useScene();
+  const [draw, setDraw] = useState<BaseMode | null>(() => createDrawInstance(scene, params));
+  // @ts-ignore
+  const [drawData, setDrawData] = useState<DrawData>(() => draw.getData());
 
   useUpdateEffect(() => {
     if (scene) {
       if (draw) {
-        draw.off(DrawEvent.enable, onDrawEnable);
-        draw.off(DrawEvent.disable, onDrawDisable);
-        draw.destroy();
+        destroyDrawInstance(draw);
         setIsEnable(false);
       }
 
-      const newDraw = createDrawInstance(scene, {
-        type,
-        options,
-      });
-      newDraw.on(DrawEvent.enable, onDrawEnable);
-      newDraw.on(DrawEvent.disable, onDrawDisable);
+      const newDraw = createDrawInstance(scene, params);
       setDraw(newDraw);
       // @ts-ignore
       setDrawData(draw.getData());
     }
-  }, [type, scene, JSON.stringify(options)]);
+  }, [scene, JSON.stringify(params)]);
 
   useEffect(() => {
     const onChange = (data: DrawData) => {
       setDrawData(data);
     };
 
-    draw?.on(DrawEvent.change, onChange);
+    draw?.on(DrawEvent.Change, onChange);
     return () => {
-      draw?.off(DrawerEvent.change, onChange);
+      draw?.off(DrawEvent.Change, onChange);
     };
   }, [draw]);
 
