@@ -1,7 +1,5 @@
-import type { Scene } from '@antv/l7';
 import type { BaseMode } from '@antv/l7-draw';
 import { DrawEvent } from '@antv/l7-draw';
-import { useUpdateEffect } from 'ahooks';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useScene } from '../../LarkMap/hooks';
 import type { DrawData } from '../types';
@@ -9,62 +7,46 @@ import { DRAW_TYPE_MAP } from './constant';
 import type { UseDrawParams } from './types';
 
 export const useDraw = (params: UseDrawParams) => {
-  const [isEnable, setIsEnable] = useState(false);
-  const onDrawEnable = useCallback(() => setIsEnable(true), []);
-  const onDrawDisable = useCallback(() => setIsEnable(false), []);
-
-  const createDrawInstance: (scene: Scene, config: Pick<UseDrawParams, 'type' | 'options'>) => BaseMode | null =
-    useCallback(
-      (scene, { type, options }) => {
-        const Draw = DRAW_TYPE_MAP[type];
-        if (!Draw) {
-          return null;
-        }
-        const newDraw = new Draw(scene, options);
-        newDraw.on(DrawEvent.Enable, onDrawEnable);
-        newDraw.on(DrawEvent.Disable, onDrawDisable);
-        return newDraw;
-      },
-      [onDrawDisable, onDrawEnable],
-    );
-
-  const destroyDrawInstance = useCallback(
-    (draw: BaseMode) => {
-      draw.off(DrawEvent.Enable, onDrawEnable);
-      draw.off(DrawEvent.Disable, onDrawDisable);
-      draw.destroy();
-    },
-    [onDrawDisable, onDrawEnable],
-  );
-
   const scene = useScene();
-  const [draw, setDraw] = useState<BaseMode | null>(() => createDrawInstance(scene, params));
   // @ts-ignore
-  const [drawData, setDrawData] = useState<DrawData>(() => draw.getData());
+  const [drawData, setDrawData] = useState<DrawData>(() => params?.options?.initialData ?? []);
 
-  useUpdateEffect(() => {
-    if (scene) {
-      if (draw) {
-        destroyDrawInstance(draw);
-        setIsEnable(false);
-      }
-
-      const newDraw = createDrawInstance(scene, params);
-      setDraw(newDraw);
-      // @ts-ignore
-      setDrawData(draw.getData());
+  const draw: BaseMode | null = useMemo(() => {
+    if (!scene) {
+      console.error('useDraw 只能使用在 LarkMap 容器中');
+      return null;
     }
-  }, [scene, JSON.stringify(params)]);
+    const DrawClass = DRAW_TYPE_MAP[params.type];
+    const newDraw: BaseMode = new DrawClass(scene, {
+      ...params.options,
+      initialData: drawData,
+    });
+    return newDraw;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scene, JSON.stringify(params.options), params.type]);
+
+  // 当前是否在启用中
+  const [isEnable, setIsEnable] = useState(draw.isEnable());
 
   useEffect(() => {
-    const onChange = (data: DrawData) => {
-      setDrawData(data);
+    const onEnable = () => setIsEnable(true);
+    const onDisable = () => setIsEnable(false);
+    const onChange = (newData: DrawData) => {
+      setDrawData(newData);
     };
-
+    draw?.setData(drawData);
+    draw?.on(DrawEvent.Enable, onEnable);
+    draw?.on(DrawEvent.Disable, onDisable);
     draw?.on(DrawEvent.Change, onChange);
     return () => {
+      // @ts-ignore
+      setDrawData(draw.getData());
+      draw?.off(DrawEvent.Enable, onEnable);
+      draw?.off(DrawEvent.Disable, onDisable);
       draw?.off(DrawEvent.Change, onChange);
+      draw?.destroy();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [draw]);
 
   const syncDrawData = useCallback(
@@ -75,11 +57,11 @@ export const useDraw = (params: UseDrawParams) => {
     [draw],
   );
 
-  const drawFuncObj = useMemo(() => {
+  const drawFunctions = useMemo(() => {
     return {
-      enable: draw.enable.bind(draw),
-      disable: draw.disable.bind(draw),
-      getDrawData: draw.getData.bind(draw),
+      enable: draw?.enable.bind(draw),
+      disable: draw?.disable.bind(draw),
+      getDrawData: draw?.getData.bind(draw),
     };
   }, [draw]);
 
@@ -88,6 +70,6 @@ export const useDraw = (params: UseDrawParams) => {
     drawData,
     setDrawData: syncDrawData,
     isEnable,
-    ...drawFuncObj,
+    ...drawFunctions,
   };
 };

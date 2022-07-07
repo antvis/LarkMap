@@ -33,13 +33,15 @@
   },
   "dependencies": {
     "@antv/l7-composite-layers": "^0.1.0-alpha.0",
-    "@antv/l7-draw": "^3.0.0-alpha.15",
+    "@antv/l7-draw": "^3.0.3",
     "@types/geojson": "^7946.0.8",
     "ahooks": "^3.3.13",
-    "classnames": "^2.3.1"
+    "classnames": "^2.3.1",
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "@antv/dumi-theme-antv": "^0.2.2",
+    "@antv/l7": "^2.9.10",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
     "@types/jest": "^26.0.24",
