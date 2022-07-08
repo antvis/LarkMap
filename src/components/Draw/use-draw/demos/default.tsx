@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
  * useDraw 必须在 LarkMap 的子孙组件中调用
  */
 const Draw = () => {
-  const { enable } = useDraw({
+  const { enable, drawData } = useDraw({
     type: 'polygon',
     options: {
       initialData: [
@@ -33,6 +33,10 @@ const Draw = () => {
   useEffect(() => {
     enable();
   }, [enable]);
+
+  useEffect(() => {
+    console.log(drawData);
+  }, [drawData]);
 
   return <></>;
 };

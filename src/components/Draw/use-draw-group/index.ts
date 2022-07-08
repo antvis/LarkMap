@@ -101,9 +101,14 @@ export const useDrawGroup = (
   }, [drawInfoMap]);
 
   const setActiveDraw = useCallback(
-    (targetDraw: BaseMode) => {
+    (target: BaseMode | DrawType | null) => {
       Object.values(drawInfoMap).forEach((hook) => {
         if (!hook) {
+          return;
+        }
+        const targetDraw = typeof target === 'string' ? drawInfoMap[target]?.draw ?? null : target;
+        if (!targetDraw) {
+          hook.disable();
           return;
         }
         const enabled = hook.isEnable;

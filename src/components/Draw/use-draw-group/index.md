@@ -35,14 +35,13 @@ hide: true
 
 ## Result
 
-| 返回值           | 说明                          | 类型                                             |
-| ---------------- |-----------------------------| ------------------------------------------------ |
-| drawMap          | 绘制类型与 Draw 实例的映射            | `Record<DrawType, Draw>`                         |
-| drawGroupData    | 绘制类型与 Draw 中绘制数据的映射         | `Record<DrawType, Feature[]>`                    |
-| setDrawGroupData | 设置 Draw 组的绘制数据              | `(newData: Record<DrawType, Feature[]>) => void` |
-| activeDraw       | 当前激活的 Draw 实例，不存在则返回 `null` | `Draw &#124; null`                               |
-| setActiveDraw    | 设置当前激活的 Draw 实例             | `(activeDraw: Draw &#124; null) => void`         |
-
+| 返回值 | 说明 | 类型 |
+| --- | --- | --- |
+| drawMap | 绘制类型与 Draw 实例的映射 | `Record<DrawType, Draw>` |
+| drawGroupData | 绘制类型与 Draw 中绘制数据的映射 | `Record<DrawType, Feature[]>` |
+| setDrawGroupData | 设置 Draw 组的绘制数据 | `(newData: Record<DrawType, Feature[]>) => void` |
+| activeDraw | 当前激活的 Draw 实例，不存在则返回 `null` | `Draw &#124; null` |
+| setActiveDraw | 设置当前激活的 Draw 实例，支持传入 Draw 实例本身或是其类型字符串 | `(activeDraw: Draw &#124; DrawType &#124; null) => void` |
 
 ### DrawType
 
