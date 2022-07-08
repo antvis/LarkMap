@@ -1,5 +1,5 @@
 import { BubbleLayer, LarkMap } from '@antv/larkmap';
-import React from 'react';
+import React, { useState } from 'react';
 
 const source = {
   data: [
@@ -8,7 +8,7 @@ const source = {
   ],
   parser: { type: 'json', x: 'lng', y: 'lat' },
 };
-const layerOptions = {
+const bubbleLayeroptions = {
   autoFit: true,
   radius: 40,
   fillColor: '#0f9960',
@@ -26,9 +26,11 @@ const layerOptions = {
 };
 
 export default () => {
+  const [layeroptions, setLayerOptions] = useState(bubbleLayeroptions);
+
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
-      <BubbleLayer {...layerOptions} source={source} />
+      <BubbleLayer {...layeroptions} source={source} />
     </LarkMap>
   );
 };

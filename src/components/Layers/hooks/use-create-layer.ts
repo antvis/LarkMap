@@ -54,7 +54,6 @@ export const useCreateLayer = <L extends Layer, C extends LayerCommonProps<L> & 
   useUpdateEffect(() => {
     if (layerRef.current) {
       layerRef.current.changeData(source);
-      console.log('changeData: ');
     }
   }, [source]);
 
