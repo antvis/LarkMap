@@ -1,6 +1,7 @@
 import { CustomControl, LarkMap, useDrawGroup } from '@antv/larkmap';
 import { useMount } from 'ahooks';
 import React, { useEffect } from 'react';
+import type { BaseMode } from '@antv/l7-draw';
 import styles from './default.less';
 
 /**
@@ -32,23 +33,28 @@ const Draw = () => {
     console.log(drawGroupData);
   }, [drawGroupData]);
 
+  const onButtonClick = (currentDraw: BaseMode) => {
+    if (activeDraw === currentDraw) {
+      setActiveDraw(null);
+    } else {
+      setActiveDraw(currentDraw);
+    }
+  };
+
   return (
     <CustomControl className={styles.control}>
       <button
         className={drawMap.point === activeDraw ? styles.active : ''}
-        onClick={() => setActiveDraw(activeDraw === drawMap.point ? null : drawMap.point)}
+        onClick={() => onButtonClick(drawMap.point)}
       >
         绘制点
       </button>
-      <button
-        className={drawMap.line === activeDraw ? styles.active : ''}
-        onClick={() => setActiveDraw(activeDraw === drawMap.line ? null : drawMap.line)}
-      >
+      <button className={drawMap.line === activeDraw ? styles.active : ''} onClick={() => onButtonClick(drawMap.line)}>
         绘制线
       </button>
       <button
         className={drawMap.polygon === activeDraw ? styles.active : ''}
-        onClick={() => setActiveDraw(activeDraw === drawMap.polygon ? null : drawMap.polygon)}
+        onClick={() => onButtonClick(drawMap.polygon)}
       >
         绘制面
       </button>
