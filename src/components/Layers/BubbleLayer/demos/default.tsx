@@ -8,7 +8,7 @@ const source = {
   ],
   parser: { type: 'json', x: 'lng', y: 'lat' },
 };
-const bubbleLayeroptions = {
+const bubbleLayerOptions = {
   autoFit: true,
   radius: 40,
   fillColor: '#0f9960',
@@ -26,11 +26,11 @@ const bubbleLayeroptions = {
 };
 
 export default () => {
-  const [layeroptions, setLayerOptions] = useState(bubbleLayeroptions);
+  const [layerOptions, setLayerOptions] = useState(bubbleLayerOptions);
 
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
-      <BubbleLayer {...layeroptions} source={source} />
+      <BubbleLayer {...layerOptions} source={source} />
     </LarkMap>
   );
 };
