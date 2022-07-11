@@ -1,8 +1,8 @@
 import { ChoroplethLayer, LarkMap } from '@antv/larkmap';
-import React from 'react';
+import React, { useState } from 'react';
 import hangezhouGeoJSON from './xihu-district.json';
 
-const source = {
+const layerSource = {
   data: hangezhouGeoJSON,
   parser: { type: 'geojson' },
 };
@@ -19,6 +19,8 @@ const layerOptions = {
 };
 
 export default () => {
+  const [source, setSource] = useState(layerSource);
+
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
       <ChoroplethLayer {...layerOptions} source={source} />
