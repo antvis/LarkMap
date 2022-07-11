@@ -9,11 +9,12 @@ group:
 
 ## 介绍
 
-用 Hook 的方式操作和管理 [L7Draw](https://antv.vision/l7-draw-2.0-site/docs/draw/point) 中的绘制实例，以及实例上的数据和方法，该 Hook 需放到容器组件内部才能使用。
+用 Hook 的方式操作和管理 [L7Draw](https://antv.vision/L7Draw/docs/draw/point) 中的绘制实例，以及实例上的数据和方法，该 Hook 需放到容器组件内部才能使用。
 
 ## 默认示例
 
-<code src="./demos/default.tsx" compact defaultShowCode></code>
+<code src="./demos/default.tsx" compact></code>
+<!-- <code src="./demos/options.tsx" compact></code> -->
 
 ## API
 
@@ -29,7 +30,7 @@ const { draw } = useDraw({
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
 | type | L7 Draw 中的绘制类型字符串 | `'point' &#124; 'line' &#124; 'polygon' &#124; 'rect' &#124; 'circle'` |
-| options | type 对应绘制类的 `options` 参数 | [Options](https://antv.vision/l7-draw-2.0-site/docs/draw/point#%E9%85%8D%E7%BD%AE) |
+| options | type 对应绘制类的 `options` 参数 | [Options](https://antv.vision/L7Draw/docs/draw/point#%E9%85%8D%E7%BD%AE) |
 
 ## Result
 

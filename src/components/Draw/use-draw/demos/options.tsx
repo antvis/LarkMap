@@ -1,11 +1,20 @@
 import { LarkMap, useDraw } from '@antv/larkmap';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+
+function randomRgbColor() {
+  //随机生成RGB颜色
+  const r = Math.floor(Math.random() * 256); //随机生成256以内r值
+  const g = Math.floor(Math.random() * 256); //随机生成256以内g值
+  const b = Math.floor(Math.random() * 256); //随机生成256以内b值
+  return `rgb(${r},${g},${b})`; //返回rgb(r,g,b)格式颜色
+}
 
 /**
  * useDraw 必须在 LarkMap 的子孙组件中调用
  */
 const Draw = () => {
-  const { enable, drawData } = useDraw({
+  const [color, setColor] = useState(randomRgbColor());
+  const { enable } = useDraw({
     type: 'polygon',
     options: {
       initialData: [
@@ -27,6 +36,19 @@ const Draw = () => {
           },
         },
       ],
+      style: {
+        point: {
+          normal: {
+            color,
+          },
+          hover: {
+            color,
+          },
+          active: {
+            color,
+          },
+        },
+      },
     },
   });
 
@@ -34,11 +56,23 @@ const Draw = () => {
     enable();
   }, [enable]);
 
-  useEffect(() => {
-    console.log(drawData);
-  }, [drawData]);
-
-  return <></>;
+  return (
+    <>
+      <button
+        style={{
+          position: 'absolute',
+          top: 16,
+          left: 16,
+          zIndex: 1
+        }}
+        onClick={() => {
+          setColor(randomRgbColor());
+        }}
+      >
+        变换颜色
+      </button>
+    </>
+  );
 };
 
 const Default = () => {
