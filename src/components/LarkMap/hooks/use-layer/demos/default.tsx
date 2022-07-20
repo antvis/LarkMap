@@ -30,7 +30,7 @@ const MyComponent = () => {
 
   useEffect(() => {
     myBubbleLayer?.fitBounds();
-  }, []);
+  }, [myBubbleLayer]);
 
   return null;
 };

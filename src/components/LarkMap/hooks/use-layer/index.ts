@@ -4,7 +4,7 @@ import { useLayerManager } from '../use-layer-manager';
 
 export const useLayer = <T extends Layer = Layer>(id: string): T | undefined => {
   const layerManager = useLayerManager();
-  const [layer, setLayer] = useState<T | undefined>();
+  const [layer, setLayer] = useState<T | undefined>(layerManager.getLayer(id) as T);
 
   useEffect(() => {
     const onLayerAdd = (_layer: T) => {
