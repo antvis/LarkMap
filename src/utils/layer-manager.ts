@@ -1,3 +1,4 @@
+import EventEmitter from '@antv/event-emitter';
 import type { ICompositeLayer, ICoreLayer, Scene } from '@antv/l7-composite-layers';
 
 export type LayerManagerOptions = {
@@ -10,7 +11,7 @@ let layerCounter = 0;
 /**
  * 图层管理器
  */
-export class LayerManager {
+export class LayerManager extends EventEmitter {
   /**
    * 地图容器
    */
@@ -25,6 +26,7 @@ export class LayerManager {
   private layerMap = new Map<string, Layer>();
 
   constructor(options: LayerManagerOptions) {
+    super();
     this.scene = options.scene;
     this.options = options;
   }
@@ -45,6 +47,7 @@ export class LayerManager {
     this.layerMap.set(layerId, layer);
 
     layer.addTo(this.scene);
+    this.emit('add', layer);
   }
 
   /**
@@ -68,6 +71,7 @@ export class LayerManager {
     this.layerMap.delete(layerId);
 
     findLayer.remove();
+    this.emit('remove', layerId);
 
     return true;
   }
