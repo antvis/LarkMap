@@ -1,6 +1,8 @@
+import type { SliderSingleProps } from 'antd/lib/slider';
 import { InputNumber, Slider } from 'antd';
 import React from 'react';
-import styles from './AntdSlider.less';
+import { usePrefixCls } from '@formily/antd/esm/__builtins__/hooks/usePrefixCls';
+import './AntdSlider.less';
 
 const defaultConfig = {
   min: 0,
@@ -8,14 +10,18 @@ const defaultConfig = {
   step: 1,
 };
 
-const AntdSlider: React.FC<any> = (props) => {
+const AntdSlider: React.FC<SliderSingleProps> = (props) => {
+  const prefixCls = usePrefixCls('formily-slider', props);
   const config = { ...defaultConfig, ...props };
 
   return (
-    <div className={styles['box-antd-slider']}>
+    <div className={prefixCls}>
       <Slider range={false} {...config} />
       <InputNumber
-        {...config}
+        size="small"
+        min={config.min}
+        max={config.max}
+        step={config.step}
         onBlur={() => {
           if (!props.value) {
             props.onChange(0);

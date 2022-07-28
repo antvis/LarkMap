@@ -17,8 +17,8 @@ export const bubbleStyleFlatToConfig = (style: Record<string, any>) => {
         }
       : style.radius,
     label: {
-      field: style.groupLabel,
-      visible: Boolean(style.groupLabel),
+      field: style.labelField,
+      visible: Boolean(style.labelField),
       style: {
         fill: style.labelColor,
         fontSize: style.labelFontSize,
@@ -43,6 +43,7 @@ export const bubbleStyleConfigToFlat = (styleConfig: Record<string, any>) => {
     radius: typeof radius !== 'object' ? radius : undefined,
     radiusField: radius?.field,
     radiusRange: radius?.value,
+    labelField: label?.style?.labelField,
     labelColor: label?.style?.fill,
     labelFontSize: label?.style?.fontSize,
     labelTextAnchor: label?.style?.textAnchor,

@@ -1,4 +1,4 @@
-export default () => {
+export default (fieldList: Record<string, any>[] = []) => {
   return {
     type: 'void',
     'x-component': 'Collapse',
@@ -16,6 +16,21 @@ export default () => {
         },
 
         properties: {
+          labelField: {
+            type: 'string',
+            title: '标签字段',
+            enum: [...fieldList],
+            'x-decorator': 'FormItem',
+            'x-component': 'FieldSelect',
+            'x-component-props': {
+              placeholder: '请选择标签',
+              allowClear: true,
+            },
+            'x-decorator-props': {
+              tooltip: '选中一个字段（文本或数值）作为标签',
+            },
+          },
+
           labelColor: {
             type: 'string',
             title: '字体颜色',

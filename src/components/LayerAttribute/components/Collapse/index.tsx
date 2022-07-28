@@ -7,8 +7,8 @@ import { markRaw, model } from '@formily/reactive';
 import { toArr } from '@formily/shared';
 import cls from 'classnames';
 import React, { Fragment, useMemo } from 'react';
-import styles from './index.less';
-import { usePrefixCls } from './usePredixCls';
+import './index.less';
+import { usePrefixCls } from '@formily/antd/esm/__builtins__/hooks/usePrefixCls';
 
 type ActiveKeys = string | number | (string | number)[];
 
@@ -94,7 +94,7 @@ const createFormCollapse = (defaultActiveKeys?: ActiveKeys) => {
 export const FormCollapse: ComposedFormCollapse = observer(({ formCollapse, ...props }) => {
   const field = useField();
   const panels = usePanels();
-  const prefixCls = usePrefixCls('formily-collapse', props);
+  const prefixCls = usePrefixCls('custom-formily-collapse', props);
   const _formCollapse = useMemo(() => {
     return formCollapse ? formCollapse : createFormCollapse(props.defaultActiveKey);
   }, []);
@@ -124,7 +124,7 @@ export const FormCollapse: ComposedFormCollapse = observer(({ formCollapse, ...p
   return (
     <Collapse
       {...props}
-      className={cls(prefixCls, props.className, styles['custom-ant-formily-collapse'])}
+      className={cls(prefixCls, props.className)}
       activeKey={takeActiveKeys()}
       onChange={(key) => {
         props?.onChange?.(key);

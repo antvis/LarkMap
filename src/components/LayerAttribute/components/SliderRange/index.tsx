@@ -1,21 +1,6 @@
-import type { ReactFC } from '@formily/react';
-import { connect, mapProps, mapReadPretty } from '@formily/react';
-import AntdSlider from './AntdSlider';
+import { connect } from '@formily/react';
+import AntdSliderRange from './AntdSliderRange';
 
-const SliderRange: ReactFC<any> = connect(
-  AntdSlider,
-  mapProps(
-    {
-      value: true,
-      loading: true,
-    },
-    (props) => {
-      return {
-        ...props,
-      };
-    },
-  ),
-  mapReadPretty(AntdSlider),
-);
+const SliderRange = connect(AntdSliderRange);
 
 export default SliderRange;

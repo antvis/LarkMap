@@ -1,6 +1,6 @@
 import type { SelectProps } from 'antd';
 import { Select, Tag } from 'antd';
-import { isEmpty } from '@antv/util';
+import { isUndefined } from '@antv/util';
 import React from 'react';
 
 export type FieldTypeItem = {
@@ -9,7 +9,7 @@ export type FieldTypeItem = {
   color: string;
 };
 
-const FieldType: FieldTypeItem[] = [
+const FieldTypes: FieldTypeItem[] = [
   { type: 'string', value: '文本', color: 'blue' },
   { type: 'number', value: '数值', color: 'orange' },
   { type: 'coordinatePoint', value: '坐标点', color: 'cyan' },
@@ -18,17 +18,16 @@ const FieldType: FieldTypeItem[] = [
 
 const AntdSelect: React.FC<SelectProps<any, any>> = (props) => {
   // @ts-ignore
-  const { options, fieldType = FieldType, ...prop } = props;
+  const { options, fieldTypes = FieldTypes, ...prop } = props;
 
   return (
     <Select {...prop}>
-      {options?.map((item: Record<string, any>) => {
-        const tagObj = fieldType.filter((items: FieldTypeItem) => items.type === item?.type);
+      {options?.map((item: Record<string, any>, index) => {
+        const tagType = fieldTypes.find((fieldType: FieldTypeItem) => fieldType.type === item?.type);
 
         return (
-          <Select.Option value={item.value} key={item.value}>
-            {!isEmpty(tagObj) && <Tag color={tagObj[0].color}>{tagObj[0].value}</Tag>}
-            {isEmpty(tagObj) && <Tag>文本</Tag>}
+          <Select.Option value={item.value} key={index}>
+            {isUndefined(tagType) ? <Tag>文本</Tag> : <Tag color={tagType.color}>{tagType.value}</Tag>}
 
             {item.lable}
           </Select.Option>

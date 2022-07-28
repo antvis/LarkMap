@@ -11,5 +11,5 @@ export type FieldItem = {
  */
 export interface BubbleLayerStyleAttributeProps extends CommonProps {
   fieldList: FieldItem[];
-  initialValues: Record<string, any>;
+  initialValues?: Record<string, any>;
 }

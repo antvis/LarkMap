@@ -1,11 +1,14 @@
 @root-entry-name: 'default';
 @import (reference) '~antd/es/style/themes/index.less';
 
-@slider-prefix-cls: ~'@{ant-prefix}-formily-slider';
+@slider-range-prefix-cls: ~'@{ant-prefix}-formily-slider-range';
 
-.@{slider-prefix-cls} {
-  display: flex;
-  justify-items: center;
+.@{slider-range-prefix-cls} {
+  &__input-number {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
 
   .@{ant-prefix}-slider {
     flex: 1;
@@ -13,7 +16,7 @@
 
   .@{ant-prefix}-input-number {
     width: 60px;
-    margin-left: 5px;
+    margin: 0;
   }
 
   .@{ant-prefix}-slider-rail {

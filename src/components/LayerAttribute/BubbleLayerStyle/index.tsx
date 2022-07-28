@@ -13,7 +13,7 @@ import SliderRange from '../components/SliderRange';
 import type { BubbleLayerStyleAttributeProps } from './types';
 import schema from './schema';
 import { bubbleStyleFlatToConfig } from './helper';
-import { CLS_PREFIX } from './constant';
+import { CLS_PREFIX, DefaultBubbleLayerStyleConfig } from './constant';
 
 export const BubbleLayerStyleAttributeSchemaField: React.FC<Pick<BubbleLayerStyleAttributeProps, 'fieldList'>> = (
   props,
@@ -42,7 +42,7 @@ export const BubbleLayerStyleAttributeSchemaField: React.FC<Pick<BubbleLayerStyl
 
 export const BubbleLayerStyleAttribute: React.FC<BubbleLayerStyleAttributeProps> = (props) => {
   const form = useMemo(() => {
-    const initialValues = bubbleStyleFlatToConfig(props.initialValues);
+    const initialValues = bubbleStyleFlatToConfig(props.initialValues || DefaultBubbleLayerStyleConfig);
     const _form = createForm({
       initialValues,
       effects() {
