@@ -9,7 +9,7 @@ nav:
   path: /components
 ---
 
-# 气泡图层样式属性组件 - BubbleLayerStyle
+# 气泡图层样式属性组件 - BubbleLayerStyleAttribute
 
 ## 介绍
 
