@@ -1,5 +1,7 @@
-export const bubbleStyleFlatToConfig = (style: Record<string, any>) => {
-  const styleConfig = {
+import type { BubbleLayerStyle } from './types';
+
+export const bubbleLayerStyleFlatToConfig = (style: Record<string, any>) => {
+  const styleConfig: BubbleLayerStyle = {
     fillColor: style.fillColorField
       ? {
           field: style.fillColorField,
@@ -30,20 +32,22 @@ export const bubbleStyleFlatToConfig = (style: Record<string, any>) => {
   return styleConfig;
 };
 
-export const bubbleStyleConfigToFlat = (styleConfig: Record<string, any>) => {
+export const bubbleLayerStyleConfigToFlat = (styleConfig: BubbleLayerStyle) => {
   const { fillColor, opacity, strokeColor, lineWidth, lineOpacity, radius, label } = styleConfig;
   const config = {
-    fillColorField: fillColor?.field,
-    fillColorRibbon: fillColor?.value,
+    fillColorField: typeof fillColor === 'object' ? fillColor?.field : undefined,
+    fillColorRibbon: typeof fillColor === 'object' ? fillColor?.value : undefined,
     fillColor: typeof fillColor !== 'object' ? fillColor : undefined,
     fillColorOpacity: opacity,
     strokeColor: strokeColor,
     lineWidth,
     lineOpacity,
     radius: typeof radius !== 'object' ? radius : undefined,
-    radiusField: radius?.field,
-    radiusRange: radius?.value,
-    labelField: label?.style?.labelField,
+    // @ts-ignore
+    radiusField: typeof radius === 'object' ? radius?.field : undefined,
+    // @ts-ignore
+    radiusRange: typeof radius === 'object' ? radius?.value : undefined,
+    labelField: label?.field,
     labelColor: label?.style?.fill,
     labelFontSize: label?.style?.fontSize,
     labelTextAnchor: label?.style?.textAnchor,

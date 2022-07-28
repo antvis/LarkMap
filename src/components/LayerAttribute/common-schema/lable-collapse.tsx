@@ -36,15 +36,7 @@ export default (fieldList: Record<string, any>[] = []) => {
             title: '字体颜色',
             'x-decorator': 'FormItem',
             'x-component': 'ColorPicker',
-            'x-decorator-props': {
-              colon: false,
-              labelAlign: 'left',
-              labelWidth: 82,
-              style: {
-                display: 'flex',
-                alignItems: 'center',
-              },
-            },
+            'x-decorator-props': {},
           },
 
           labelFontSize: {
@@ -55,15 +47,7 @@ export default (fieldList: Record<string, any>[] = []) => {
             'x-component-props': {
               placeholder: '字号',
             },
-            'x-decorator-props': {
-              colon: false,
-              labelAlign: 'left',
-              labelWidth: 82,
-              style: {
-                display: 'flex',
-                alignItems: 'center',
-              },
-            },
+            'x-decorator-props': {},
           },
           labelTextAnchor: {
             type: 'string',
@@ -87,15 +71,7 @@ export default (fieldList: Record<string, any>[] = []) => {
             'x-component-props': {
               placeholder: '请选择位置',
             },
-            'x-decorator-props': {
-              colon: false,
-              labelAlign: 'left',
-              labelWidth: 82,
-              style: {
-                display: 'flex',
-                alignItems: 'center',
-              },
-            },
+            'x-decorator-props': {},
           },
         },
       },

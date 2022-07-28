@@ -17,17 +17,11 @@ export default (fieldList: Record<string, any>[] = []) => {
         properties: {
           fillColorField: {
             type: 'string',
-            title: '基于字段填充',
+            title: '填充字段',
             'x-decorator': 'FormItem',
             'x-component': 'FieldSelect',
             'x-decorator-props': {
-              colon: false,
-              labelAlign: 'left',
-              labelWidth: 82,
-              style: {
-                display: 'flex',
-                alignItems: 'center',
-              },
+              tooltip: '选中一个数值字段作为颜色填充字段',
             },
             'x-component-props': {
               allowClear: true,
@@ -55,15 +49,7 @@ export default (fieldList: Record<string, any>[] = []) => {
             'x-component-props': {
               placeholder: '请选择',
             },
-            'x-decorator-props': {
-              colon: false,
-              labelAlign: 'left',
-              labelWidth: 82,
-              style: {
-                display: 'flex',
-                alignItems: 'center',
-              },
-            },
+            'x-decorator-props': {},
             'x-reactions': [
               {
                 dependencies: ['fillColorField'],
@@ -91,15 +77,7 @@ export default (fieldList: Record<string, any>[] = []) => {
             'x-component-props': {
               placeholder: '颜色',
             },
-            'x-decorator-props': {
-              colon: false,
-              labelAlign: 'left',
-              labelWidth: 82,
-              style: {
-                display: 'flex',
-                alignItems: 'center',
-              },
-            },
+            'x-decorator-props': {},
             'x-reactions': [
               {
                 dependencies: ['fillColorField'],
@@ -134,15 +112,7 @@ export default (fieldList: Record<string, any>[] = []) => {
             ],
             'x-decorator': 'FormItem',
             'x-component': 'RibbonSelect',
-            'x-decorator-props': {
-              colon: false,
-              labelAlign: 'left',
-              labelWidth: 82,
-              style: {
-                display: 'flex',
-                alignItems: 'center',
-              },
-            },
+            'x-decorator-props': {},
             'x-reactions': [
               {
                 dependencies: ['fillColorField'],
@@ -167,15 +137,7 @@ export default (fieldList: Record<string, any>[] = []) => {
             'x-decorator': 'FormItem',
             'x-component': 'Switch',
             'x-component-props': {},
-            'x-decorator-props': {
-              colon: false,
-              labelAlign: 'left',
-              labelWidth: 82,
-              style: {
-                display: 'flex',
-                alignItems: 'center',
-              },
-            },
+            'x-decorator-props': {},
             'x-reactions': [
               {
                 dependencies: ['fillColorField'],
@@ -204,15 +166,7 @@ export default (fieldList: Record<string, any>[] = []) => {
           fillColorOpacity: {
             type: 'number',
             title: '透明度',
-            'x-decorator-props': {
-              colon: false,
-              labelAlign: 'left',
-              labelWidth: 82,
-              style: {
-                display: 'flex',
-                alignItems: 'center',
-              },
-            },
+            'x-decorator-props': {},
             'x-decorator': 'FormItem',
             'x-component': 'Slider',
             'x-component-props': {

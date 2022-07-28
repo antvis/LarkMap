@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React, { useMemo } from 'react';
 import { Form, FormCollapse, FormItem, Input, NumberPicker, Select, Switch } from '@formily/antd';
 import { createSchemaField } from '@formily/react';
-import type { Form as FormIns } from '@formily/core';
+import type { Form as FormInstance } from '@formily/core';
 import { createForm, onFormValuesChange } from '@formily/core';
 import Collapse from '../components/Collapse';
 import FieldSelect from '../components/FieldSelect';
@@ -12,8 +12,8 @@ import Slider from '../components/Slider';
 import SliderRange from '../components/SliderRange';
 import type { BubbleLayerStyleAttributeProps } from './types';
 import schema from './schema';
-import { bubbleStyleFlatToConfig } from './helper';
-import { CLS_PREFIX, DefaultBubbleLayerStyleConfig } from './constant';
+import { bubbleLayerStyleConfigToFlat, bubbleLayerStyleFlatToConfig } from './helper';
+import { CLS_PREFIX } from './constant';
 
 export const BubbleLayerStyleAttributeSchemaField: React.FC<Pick<BubbleLayerStyleAttributeProps, 'fieldList'>> = (
   props,
@@ -42,12 +42,12 @@ export const BubbleLayerStyleAttributeSchemaField: React.FC<Pick<BubbleLayerStyl
 
 export const BubbleLayerStyleAttribute: React.FC<BubbleLayerStyleAttributeProps> = (props) => {
   const form = useMemo(() => {
-    const initialValues = bubbleStyleFlatToConfig(props.initialValues || DefaultBubbleLayerStyleConfig);
+    const initialValues = bubbleLayerStyleConfigToFlat(props.initialValues);
     const _form = createForm({
       initialValues,
       effects() {
-        onFormValuesChange((formIns: FormIns<any>) => {
-          console.log('表单值变化: ' + formIns.values.input);
+        onFormValuesChange((formIns: FormInstance<any>) => {
+          props.onChange(bubbleLayerStyleFlatToConfig(formIns.values));
         });
       },
     });
@@ -63,8 +63,10 @@ export const BubbleLayerStyleAttribute: React.FC<BubbleLayerStyleAttributeProps>
       labelCol={8}
       wrapperCol={16}
       colon={false}
-      layout="vertical"
+      layout="horizontal"
       labelAlign="left"
+      wrapperAlign="right"
+      feedbackLayout="terse"
     >
       <BubbleLayerStyleAttributeSchemaField fieldList={props.fieldList} />
     </Form>
