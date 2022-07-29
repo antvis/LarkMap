@@ -1,6 +1,6 @@
 ---
 toc: content
-order: 3
+order: 1
 group:
   title: 属性组件
   order: 4

@@ -1,4 +1,6 @@
-export default (fieldList: Record<string, any>[] = []) => {
+import type { FieldItem } from '../types';
+
+export default (fieldList: FieldItem[] = []) => {
   return {
     type: 'void',
     'x-component': 'Collapse',
