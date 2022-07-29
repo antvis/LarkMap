@@ -1,3 +1,4 @@
+import type { BubbleLayerStyleAttributeValue } from '@antv/larkmap';
 import { BubbleLayerStyleAttribute } from '@antv/larkmap';
 import React from 'react';
 import 'antd/dist/antd.css';
@@ -16,7 +17,7 @@ const FieldList = [
   { type: 'string', lable: '区县' },
   { type: 'number', lable: '指数' },
   { type: 'coordinatePoint', lable: '坐标点' },
-  { type: 'polygon', lable: '坐标面' },
+  { type: 'coordinatePolygon', lable: '坐标面' },
 ];
 
 export default () => {
@@ -26,7 +27,7 @@ export default () => {
       <BubbleLayerStyleAttribute
         initialValues={DefaultBubbleLayerStyle}
         fieldList={FieldList}
-        onChange={(values) => {
+        onChange={(values: BubbleLayerStyleAttributeValue) => {
           console.log('values: ', values);
         }}
       />

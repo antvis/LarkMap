@@ -1,7 +1,11 @@
-import type { BubbleLayerStyle } from './types';
+import type { BubbleLayerStyleAttributeValue } from './types';
 
+/**
+ * 平铺数据转图层样式数据
+ * 将表单的平铺数据转为图层样式的数据结构
+ * */
 export const bubbleLayerStyleFlatToConfig = (style: Record<string, any>) => {
-  const styleConfig: BubbleLayerStyle = {
+  const styleConfig: BubbleLayerStyleAttributeValue = {
     fillColor: style.fillColorField
       ? {
           field: style.fillColorField,
@@ -32,7 +36,11 @@ export const bubbleLayerStyleFlatToConfig = (style: Record<string, any>) => {
   return styleConfig;
 };
 
-export const bubbleLayerStyleConfigToFlat = (styleConfig: BubbleLayerStyle) => {
+/**
+ * 图层样式数据转平铺数据
+ * 将图层样式的数据结构转为表单的平铺数据
+ * */
+export const bubbleLayerStyleConfigToFlat = (styleConfig: BubbleLayerStyleAttributeValue) => {
   const { fillColor, opacity, strokeColor, lineWidth, lineOpacity, radius, label } = styleConfig;
   const config = {
     fillColorField: typeof fillColor === 'object' ? fillColor?.field : undefined,

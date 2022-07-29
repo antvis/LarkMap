@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import { ColorPicker } from '@alipay/tech-ui';
+// import { ColorPicker } from '';
 
 export type AntdColorPickerProps = {
   value: string | string[];

@@ -1,6 +1,9 @@
 import type { BubbleLayerOptions } from '@antv/l7-composite-layers';
 import type { CommonProps } from '../../../types/common';
 
+/**
+ * 数据列表字段项
+ */
 export type FieldItem = {
   value: string;
   lable: string;
@@ -10,7 +13,7 @@ export type FieldItem = {
 /**
  * 气泡图层样式
  */
-export type BubbleLayerStyle = Omit<BubbleLayerOptions, 'source'>;
+export type BubbleLayerStyleAttributeValue = Omit<BubbleLayerOptions, 'source'>;
 
 /**
  * 组件类型定义
@@ -23,9 +26,9 @@ export interface BubbleLayerStyleAttributeProps extends CommonProps {
   /**
    * 初始值
    */
-  initialValues: BubbleLayerStyle;
+  initialValues: BubbleLayerStyleAttributeValue;
   /**
-   * 属性表单发生改变件
+   * 属性表单发生改变时
    */
-  onChange?: (values: BubbleLayerStyle) => void;
+  onChange?: (values: BubbleLayerStyleAttributeValue) => void;
 }

@@ -1,2 +1,2 @@
 export { BubbleLayerStyleAttribute, BubbleLayerStyleAttributeSchemaField } from './BubbleLayerStyle';
-export { BubbleLayerStyleAttributeProps } from './BubbleLayerStyle/types';
+export type { BubbleLayerStyleAttributeValue, BubbleLayerStyleAttributeProps } from './BubbleLayerStyle/types';
