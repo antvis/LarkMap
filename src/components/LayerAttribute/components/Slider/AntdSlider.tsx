@@ -16,12 +16,13 @@ const AntdSlider: React.FC<SliderSingleProps> = (props) => {
 
   return (
     <div className={prefixCls}>
-      <Slider range={false} {...config} />
+      <Slider range={false} {...config} value={config.value ?? 0} />
       <InputNumber
-        size="small"
         min={config.min}
         max={config.max}
         step={config.step}
+        value={config.value ?? 0}
+        onChange={config.onChange}
         onBlur={() => {
           if (!props.value) {
             props.onChange(0);

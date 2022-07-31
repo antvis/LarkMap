@@ -1,8 +1,8 @@
 import type { ReactFC } from '@formily/react';
 import { connect } from '@formily/react';
-import type { AntdColorPickerProps } from './AntdColorPicker';
-import AntdColorPicker from './AntdColorPicker';
+import type { AntdColorPickerProps } from './AntColorPicker';
+import { AntColorPicker } from './AntColorPicker';
 
-export const Color: ReactFC<AntdColorPickerProps> = connect(AntdColorPicker);
+export const Color: ReactFC<AntdColorPickerProps> = connect(AntColorPicker);
 
 export default Color;

@@ -1,11 +1,13 @@
 import type { SelectProps } from 'antd';
 import { Select } from 'antd';
 import React, { useEffect, useState } from 'react';
-import styles from './ColorRibbon.less';
 import { FIELD_COLOR_MAP } from './constants';
+import { usePrefixCls } from '@formily/antd/esm/__builtins__/hooks/usePrefixCls';
+import './index.less';
 
 // 选择色带的自定义组件
 const ColorRibbon = (props: SelectProps<any, any>) => {
+  const prefixCls = usePrefixCls('formily-ribbon-select', props);
   const [valueIndex, setValueIndex] = useState(0);
   const [colorReverse, setColorReverse] = useState(false);
 
@@ -38,7 +40,7 @@ const ColorRibbon = (props: SelectProps<any, any>) => {
     <Select
       bordered={false}
       showArrow={false}
-      className={styles['fill-ribbon']}
+      className={prefixCls}
       onChange={(e) => {
         const res = colorReverse ? [...FIELD_COLOR_MAP[e]].reverse() : FIELD_COLOR_MAP[e];
         // @ts-ignore
@@ -49,22 +51,19 @@ const ColorRibbon = (props: SelectProps<any, any>) => {
       {FIELD_COLOR_MAP.map((item, index) => {
         const colorList = colorReverse ? [...item].reverse() : item;
         return (
-          <Select.Option key={index} value={index} className={styles['color-list']}>
-            <div className={styles['color-list']}>
-              {colorList.map((color) => (
-                <span
-                  key={color}
-                  className={styles['color-item']}
-                  style={{
-                    backgroundColor: color,
-                    display: 'inline-block',
-                    height: 20,
-                    width: '11.11%',
-                    overflow: 'hidden',
-                  }}
-                />
-              ))}
-            </div>
+          <Select.Option key={index} value={index}>
+            {colorList.map((color) => (
+              <span
+                key={color}
+                style={{
+                  backgroundColor: color,
+                  display: 'inline-block',
+                  height: '100%',
+                  width: '11.11%',
+                  overflow: 'hidden',
+                }}
+              />
+            ))}
           </Select.Option>
         );
       })}
