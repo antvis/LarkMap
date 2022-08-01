@@ -134,6 +134,7 @@ export const FormCollapse: ComposedFormCollapse = observer(({ formCollapse, ...p
     >
       {/* eslint-disable-next-line @typescript-eslint/no-shadow */}
       {panels.map(({ props, schema, name }, index) => (
+        // eslint-disable-next-line react/no-array-index-key
         <Collapse.Panel key={index} {...props} header={badgedHeader(name, props)} forceRender>
           <RecursionField schema={schema} name={name} />
         </Collapse.Panel>
