@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { Button, Popover } from 'antd';
 import { SketchPicker } from 'react-color';
-import './index.less';
 import { usePrefixCls } from '@formily/antd/esm/__builtins__/hooks/usePrefixCls';
+import './index.less';
 
 export interface AntdColorPickerProps {
   value?: string;
@@ -24,7 +24,7 @@ const presetColors = [
   '#A9ABB1',
 ];
 
-export const AntdColorPicker = React.memo((props: AntdColorPickerProps) => {
+const AntdColorPicker = React.memo((props: AntdColorPickerProps) => {
   const { onChange, value, disable = false } = props;
   const prefixCls = usePrefixCls('formily-color-picker');
 
@@ -39,7 +39,7 @@ export const AntdColorPicker = React.memo((props: AntdColorPickerProps) => {
     <Button className={prefixCls} type="text" disabled={disable}>
       <Popover
         trigger="click"
-        placement="left"
+        placement="bottom"
         content={
           <SketchPicker
             color={value ? value : presetColors[0]}
@@ -49,10 +49,12 @@ export const AntdColorPicker = React.memo((props: AntdColorPickerProps) => {
           />
         }
       >
-        <div>
-          <div style={{ background: value ? value : presetColors[0] }} />
+        <div className={`${prefixCls}_outline`}>
+          <div className={`${prefixCls}_color-block`} style={{ background: value ? value : presetColors[0] }} />
         </div>
       </Popover>
     </Button>
   );
 });
+
+export default AntdColorPicker;
