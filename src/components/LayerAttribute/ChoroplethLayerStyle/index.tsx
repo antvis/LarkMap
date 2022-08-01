@@ -10,14 +10,14 @@ import ColorPicker from '../components/ColorPicker';
 import RibbonSelect from '../components/RibbonSelect';
 import Slider from '../components/Slider';
 import SliderRange from '../components/SliderRange';
-import type { BubbleLayerStyleAttributeProps } from './types';
+import type { ChoroplethLayerStyleAttributeProps } from './types';
 import schema from './schema';
-import { bubbleLayerStyleConfigToFlat, bubbleLayerStyleFlatToConfig } from './helper';
+import { choroplethLayerStyleConfigToFlat, choroplethLayerStyleFlatToConfig } from './helper';
 import { CLS_PREFIX } from './constant';
 
-export const BubbleLayerStyleAttributeSchemaField: React.FC<Pick<BubbleLayerStyleAttributeProps, 'fieldList'>> = (
-  props,
-) => {
+export const ChoroplethLayerStyleAttributeSchemaField: React.FC<
+  Pick<ChoroplethLayerStyleAttributeProps, 'fieldList'>
+> = (props) => {
   const SchemaField = createSchemaField({
     components: {
       FormItem,
@@ -40,14 +40,14 @@ export const BubbleLayerStyleAttributeSchemaField: React.FC<Pick<BubbleLayerStyl
   return <SchemaField schema={_schema} />;
 };
 
-export const BubbleLayerStyleAttribute: React.FC<BubbleLayerStyleAttributeProps> = (props) => {
+export const ChoroplethLayerStyleAttribute: React.FC<ChoroplethLayerStyleAttributeProps> = (props) => {
   const form = useMemo(() => {
-    const initialValues = bubbleLayerStyleConfigToFlat(props.initialValues);
+    const initialValues = choroplethLayerStyleConfigToFlat(props.initialValues);
     const _form = createForm({
       initialValues,
       effects() {
         onFormValuesChange((formIns: FormInstance<any>) => {
-          props.onChange(bubbleLayerStyleFlatToConfig(formIns.values));
+          props.onChange(choroplethLayerStyleFlatToConfig(formIns.values));
         });
       },
     });
@@ -68,7 +68,7 @@ export const BubbleLayerStyleAttribute: React.FC<BubbleLayerStyleAttributeProps>
       wrapperAlign="right"
       feedbackLayout="terse"
     >
-      <BubbleLayerStyleAttributeSchemaField fieldList={props.fieldList} />
+      <ChoroplethLayerStyleAttributeSchemaField fieldList={props.fieldList} />
     </Form>
   );
 };

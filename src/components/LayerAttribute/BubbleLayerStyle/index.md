@@ -1,6 +1,6 @@
 ---
 toc: content
-order: 3
+order: 1
 group:
   title: 属性组件
   order: 4
@@ -9,11 +9,11 @@ nav:
   path: /components
 ---
 
-# 气泡图层样式属性组件 - BubbleLayerStyleAttribute
+# 气泡图层样式属性 - BubbleLayerStyleAttribute
 
 ## 介绍
 
-## 使用场景
+`BubbleLayerStyleAttribute` 是 [气泡图层 - BubbleLayer](/components/layers/bubble-layer) 的样式属性配置组件，用于图层配置可视化场景。
 
 ## 代码演示
 

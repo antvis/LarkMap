@@ -4,14 +4,16 @@
 @collapse-prefix-cls: ~'@{ant-prefix}-custom-formily-collapse';
 
 .@{collapse-prefix-cls} {
-  border-bottom: 1px solid #d8d8d8;
-  border-radius: 0 !important;
+  // border-bottom: 1px solid #d8d8d8 !important;
+  // border-radius: 0 !important;
 
-  .@{ant-prefix}-collapse-header {
-    padding: 12px 0 !important;
-  }
+  .@{ant-prefix}-collapse-item {
+    .@{ant-prefix}-collapse-header {
+      padding: 12px 0 !important;
+    }
 
-  .@{ant-prefix}-collapse-content-box {
-    padding: 5px 0 0 25px !important;
+    .@{ant-prefix}-collapse-content .@{ant-prefix}-collapse-content-box {
+      padding: 5px 0 0 25px !important;
+    }
   }
 }

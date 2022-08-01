@@ -13,7 +13,7 @@ const FieldTypes: FieldTypeItem[] = [
   { type: 'string', value: '文本', color: 'blue' },
   { type: 'number', value: '数值', color: 'orange' },
   { type: 'coordinatePoint', value: '坐标点', color: 'cyan' },
-  { type: 'polygon', value: '坐标面', color: 'green' },
+  { type: 'coordinatePolygon', value: '坐标面', color: 'green' },
 ];
 
 const AntdSelect: React.FC<SelectProps<any, any>> = (props) => {

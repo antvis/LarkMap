@@ -1,4 +1,6 @@
-export default (fieldList: Record<string, any>[] = []) => {
+import type { FieldItem } from '../types';
+
+export default (fieldList: FieldItem[] = []) => {
   return {
     type: 'void',
     'x-component': 'Collapse',
@@ -18,22 +20,11 @@ export default (fieldList: Record<string, any>[] = []) => {
         properties: {
           radiusField: {
             type: 'string',
-            title: '基于字段填充',
+            title: '基于字段',
             'x-decorator': 'FormItem',
             'x-component': 'FieldSelect',
             'x-decorator-props': {
-              colon: false,
-              labelStyle: {
-                width: 80,
-                textOverflower: 'ellipsis',
-                whiteSpace: 'nowrap',
-                overflower: 'hidden',
-                align: 'left',
-              },
-              style: {
-                display: 'flex',
-                alignItems: 'center',
-              },
+              tooltip: '选中一个数值字段作为填充半径',
             },
             'x-component-props': {
               allowClear: true,
@@ -51,18 +42,7 @@ export default (fieldList: Record<string, any>[] = []) => {
               dots: false,
               range: false,
             },
-            'x-decorator-props': {
-              colon: false,
-              labelStyle: {
-                width: 80,
-                overflower: 'hidden',
-                align: 'left',
-              },
-              style: {
-                display: 'flex',
-                alignItems: 'center',
-              },
-            },
+            'x-decorator-props': {},
             'x-reactions': [
               {
                 dependencies: ['radiusField'],
@@ -90,18 +70,7 @@ export default (fieldList: Record<string, any>[] = []) => {
               range: true,
             },
             default: [0, 20],
-            'x-decorator-props': {
-              colon: false,
-              style: {
-                display: 'flex',
-              },
-              labelStyle: {
-                marginTop: 3,
-                width: 80,
-                overflower: 'hidden',
-                align: 'left',
-              },
-            },
+            'x-decorator-props': {},
             'x-reactions': [
               {
                 dependencies: ['radiusField'],

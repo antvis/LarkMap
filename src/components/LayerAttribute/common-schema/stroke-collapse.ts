@@ -20,15 +20,7 @@ export default () => {
             title: '颜色',
             'x-decorator': 'FormItem',
             'x-component': 'ColorPicker',
-            'x-decorator-props': {
-              colon: false,
-              labelAlign: 'left',
-              labelWidth: 82,
-              style: {
-                display: 'flex',
-                alignItems: 'center',
-              },
-            },
+            'x-decorator-props': {},
           },
 
           lineWidth: {
@@ -39,30 +31,14 @@ export default () => {
             'x-component-props': {
               placeholder: '描边宽度',
             },
-            'x-decorator-props': {
-              colon: false,
-              labelAlign: 'left',
-              labelWidth: 82,
-              style: {
-                display: 'flex',
-                alignItems: 'center',
-              },
-            },
+            'x-decorator-props': {},
           },
           lineOpacity: {
             type: 'string',
             title: '透明度',
             'x-decorator': 'FormItem',
             'x-component': 'Slider',
-            'x-decorator-props': {
-              colon: false,
-              labelAlign: 'left',
-              labelWidth: 82,
-              style: {
-                display: 'flex',
-                alignItems: 'center',
-              },
-            },
+            'x-decorator-props': {},
             'x-component-props': {
               max: 1,
               step: 0.1,
