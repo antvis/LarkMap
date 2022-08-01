@@ -26,6 +26,7 @@ const AntdSelect: React.FC<SelectProps<any, any>> = (props) => {
         const tagType = fieldTypes.find((fieldType: FieldTypeItem) => fieldType.type === item?.type);
 
         return (
+          // eslint-disable-next-line react/no-array-index-key
           <Select.Option value={item.value} key={index}>
             {isUndefined(tagType) ? <Tag>文本</Tag> : <Tag color={tagType.color}>{tagType.value}</Tag>}
 

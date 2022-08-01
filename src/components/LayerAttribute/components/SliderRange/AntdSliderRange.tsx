@@ -2,7 +2,7 @@ import type { SliderRangeProps } from 'antd/lib/slider';
 import { InputNumber, Slider } from 'antd';
 import React from 'react';
 import { usePrefixCls } from '@formily/antd/esm/__builtins__/hooks/usePrefixCls';
-import './AntdSlider.less';
+import './AntdSliderRange.less';
 
 const defaultConfig = {
   min: 0,
@@ -10,14 +10,14 @@ const defaultConfig = {
   step: 1,
 };
 
-const SliderRange: React.FC<SliderRangeProps> = (props) => {
+const AntdSliderRange: React.FC<SliderRangeProps> = (props) => {
   const prefixCls = usePrefixCls('formily-slider-range', props);
   const config = { ...defaultConfig, ...props };
 
   return (
     <div className={prefixCls}>
       <Slider range={true} {...config} />
-      <div className={prefixCls + '__input-number'}>
+      <div className={`${prefixCls}__input-number`}>
         <InputNumber
           size="small"
           value={props.value[0]}
@@ -59,4 +59,4 @@ const SliderRange: React.FC<SliderRangeProps> = (props) => {
   );
 };
 
-export default SliderRange;
+export default AntdSliderRange;
