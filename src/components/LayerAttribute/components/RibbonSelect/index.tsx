@@ -1,8 +1,8 @@
 import type { SelectProps } from 'antd';
 import type { ReactFC } from '@formily/react';
 import { connect } from '@formily/react';
-import AntRibbonSelect from './AntRibbonSelect';
+import AntdRibbonSelect from './AntdRibbonSelect';
 
-const RibbonSelect: ReactFC<SelectProps<any, any>> = connect(AntRibbonSelect);
+const RibbonSelect: ReactFC<SelectProps<any, any>> = connect(AntdRibbonSelect);
 
 export default RibbonSelect;

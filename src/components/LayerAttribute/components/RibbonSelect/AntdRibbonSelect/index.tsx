@@ -6,7 +6,7 @@ import { FIELD_COLOR_MAP } from './constants';
 import './index.less';
 
 // 选择色带的自定义组件
-const AntRibbonSelect = (props: SelectProps<any, any>) => {
+const AntdRibbonSelect = (props: SelectProps<any, any>) => {
   const prefixCls = usePrefixCls('formily-ribbon-select', props);
   const [valueIndex, setValueIndex] = useState(0);
   const [colorReverse, setColorReverse] = useState(false);
@@ -71,4 +71,4 @@ const AntRibbonSelect = (props: SelectProps<any, any>) => {
   );
 };
 
-export default AntRibbonSelect;
+export default AntdRibbonSelect;

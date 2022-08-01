@@ -24,7 +24,7 @@ const presetColors = [
   '#A9ABB1',
 ];
 
-export const AntColorPicker = React.memo((props: AntdColorPickerProps) => {
+export const AntdColorPicker = React.memo((props: AntdColorPickerProps) => {
   const { onChange, value, disable = false } = props;
   const prefixCls = usePrefixCls('formily-color-picker');
 
