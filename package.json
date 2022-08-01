@@ -33,10 +33,8 @@
   },
   "dependencies": {
     "@antv/event-emitter": "^0.1.3",
-    "@antv/l7": "^2.9.18",
     "@antv/l7-composite-layers": "^0.1.0-alpha.0",
     "@antv/l7-draw": "^3.0.6",
-    "@antv/larkmap": "^0.0.3",
     "@antv/util": "^3.2.2",
     "@formily/antd": "^2.1.11",
     "@formily/core": "^2.1.11",

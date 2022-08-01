@@ -1,12 +1,12 @@
 import type { SelectProps } from 'antd';
 import { Select } from 'antd';
 import React, { useEffect, useState } from 'react';
-import { FIELD_COLOR_MAP } from './constants';
 import { usePrefixCls } from '@formily/antd/esm/__builtins__/hooks/usePrefixCls';
+import { FIELD_COLOR_MAP } from './constants';
 import './index.less';
 
 // 选择色带的自定义组件
-const ColorRibbon = (props: SelectProps<any, any>) => {
+const AntRibbonSelect = (props: SelectProps<any, any>) => {
   const prefixCls = usePrefixCls('formily-ribbon-select', props);
   const [valueIndex, setValueIndex] = useState(0);
   const [colorReverse, setColorReverse] = useState(false);
@@ -71,4 +71,4 @@ const ColorRibbon = (props: SelectProps<any, any>) => {
   );
 };
 
-export default ColorRibbon;
+export default AntRibbonSelect;

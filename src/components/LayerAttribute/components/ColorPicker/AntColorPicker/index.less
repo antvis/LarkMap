@@ -1,15 +1,16 @@
 @root-entry-name: 'default';
 @import (reference) '~antd/es/style/themes/index.less';
 
-@color-picker-prefix-cls: ~'@{ant-prefix}-formily-color-picker-btn';
+@color-picker-prefix-cls: ~'@{ant-prefix}-formily-color-picker';
 
-.@{ant-prefix}-btn {
+.@{color-picker-prefix-cls} {
   width: 32px;
   padding: 0 4px 3px !important;
   overflow: hidden;
   text-align: center !important;
   vertical-align: center !important;
   background: #fff !important;
+  border: 1px solid #f00 !important;
   border: 1px solid #d9d9d9 !important;
 
   div {

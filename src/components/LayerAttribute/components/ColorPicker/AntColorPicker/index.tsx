@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useCallback } from 'react';
 import { Button, Popover } from 'antd';
 import { SketchPicker } from 'react-color';
 import './index.less';
@@ -26,9 +26,9 @@ const presetColors = [
 
 export const AntColorPicker = React.memo((props: AntdColorPickerProps) => {
   const { onChange, value, disable = false } = props;
-  const prefixCls = usePrefixCls('formily-color-picker-btn');
+  const prefixCls = usePrefixCls('formily-color-picker');
 
-  const onChangeComplete = React.useCallback(
+  const onChangeComplete = useCallback(
     (color) => {
       onChange?.(color.hex);
     },
