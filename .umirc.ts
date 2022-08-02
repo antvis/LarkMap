@@ -39,6 +39,10 @@ export default defineConfig({
   externals: {
     react: 'window.React',
     'react-dom': 'window.ReactDOM',
+    antd: 'window.antd',
+    lodash: '_',
+    'mapbox-gl': 'window.mapboxgl',
+    '@turf/turf': 'window.turf',
   },
   // 重置浏览器默认样式，后续可加到 @antv/dumi-theme-antv 里
   styles: [
@@ -47,10 +51,42 @@ export default defineConfig({
     a { text-decoration: none; }
     `,
   ],
-  links: [],
+  links: [
+    'https://gw.alipayobjects.com/os/lib/antd/4.22.2/dist/antd.css',
+    'https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.2/mapbox-gl.css',
+  ],
   scripts: [
     'https://gw.alipayobjects.com/os/lib/react/17.0.1/umd/react.development.js',
     'https://gw.alipayobjects.com/os/lib/react-dom/17.0.1/umd/react-dom.development.js',
+    'https://gw.alipayobjects.com/os/lib/antd/4.22.2/dist/antd.js',
+    /** lodash */
+    'https://gw.alipayobjects.com/os/lib/lodash/4.17.20/lodash.min.js',
+    /** turf */
+    'https://gw.alipayobjects.com/os/lib/turf/turf/6.5.0/turf.min.js',
+    /** mapbox */
+    'https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.2/mapbox-gl.js',
   ],
+  // chunks: ['vendors', 'umi'],
+  // chainWebpack: function (config) {
+  //   config.merge({
+  //     optimization: {
+  //       splitChunks: {
+  //         chunks: 'all',
+  //         // minSize: 30000,
+  //         // minChunks: 2,
+  //         automaticNameDelimiter: '.',
+  //         cacheGroups: {
+  //           vendor: {
+  //             name: 'vendors',
+  //             test({ resource }) {
+  //               return /[\\/]node_modules[\\/]/.test(resource);
+  //             },
+  //             priority: 10,
+  //           },
+  //         },
+  //       },
+  //     },
+  //   });
+  // },
   // more config: https://d.umijs.org/config
 });
