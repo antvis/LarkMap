@@ -1,6 +1,6 @@
 {
   "name": "@antv/larkmap",
-  "version": "0.0.3",
+  "version": "0.0.4-beta.1",
   "description": "A React toolkit for geospatial visualization based on L7",
   "license": "MIT",
   "main": "lib/index.js",
@@ -46,12 +46,15 @@
     "react-color": "^2.19.3"
   },
   "devDependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@antv/dumi-theme-antv": "^0.2.2",
+    "@antv/l7": "^2.8.35",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
     "@types/jest": "^26.0.24",
     "@types/lodash-es": "^4.17.6",
     "@umijs/fabric": "^2.10.2",
+    "antd": "^4.22.3",
     "dumi": "^1.1.40",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.26.0",
@@ -64,12 +67,16 @@
     "lint-staged": "^12.4.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.6.2",
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.5.6",
     "typescript": "^4.6.4"
   },
   "peerDependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@antv/l7": "^2.8.35",
+    "antd": "^4.22.3",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   },
@@ -106,5 +113,8 @@
   },
   "bugs": {
     "url": "https://github.com/antvis/LarkMap/issues"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
