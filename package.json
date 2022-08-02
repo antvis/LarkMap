@@ -113,5 +113,8 @@
   },
   "bugs": {
     "url": "https://github.com/antvis/LarkMap/issues"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
