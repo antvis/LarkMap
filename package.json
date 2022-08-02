@@ -46,6 +46,7 @@
     "react-color": "^2.19.3"
   },
   "devDependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@antv/dumi-theme-antv": "^0.2.2",
     "@antv/l7": "^2.8.35",
     "@commitlint/cli": "^17.0.0",
@@ -53,6 +54,7 @@
     "@types/jest": "^26.0.24",
     "@types/lodash-es": "^4.17.6",
     "@umijs/fabric": "^2.10.2",
+    "antd": "^4.22.3",
     "dumi": "^1.1.40",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.26.0",
@@ -72,7 +74,9 @@
     "typescript": "^4.6.4"
   },
   "peerDependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@antv/l7": "^2.8.35",
+    "antd": "^4.22.3",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   },
