@@ -16,10 +16,11 @@ export * from './components/Layers';
  * */
 export { CustomControl } from './components/CustomControl';
 export { CustomControlProps } from './components/CustomControl/types';
-export { Scale } from './components/Scale';
-export { ScaleProps } from './components/Scale/types';
-export { Zoom } from './components/Zoom';
-export { ZoomProps } from './components/Zoom/types';
+// 兼容修改组件名称，带布局属性的组件加 Control 后缀
+export { ScaleControl, ScaleControl as Scale } from './components/ScaleControl';
+export { ScaleControlProps, ScaleControlProps as ScaleProps } from './components/ScaleControl/types';
+export { ZoomControl, ZoomControl as Zoom } from './components/ZoomControl';
+export { ZoomControlProps, ZoomControlProps as ZoomProps } from './components/ZoomControl/types';
 
 /**
  * 分析组件
