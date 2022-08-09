@@ -24,7 +24,7 @@ export default (fieldList: FieldItem[] = []) => {
             'x-decorator': 'FormItem',
             'x-component': 'FieldSelect',
             'x-decorator-props': {
-              tooltip: '选中一个数值字段作为填充半径',
+              tooltip: '选中一个数值字段作为填充大小',
             },
             'x-component-props': {
               allowClear: true,
