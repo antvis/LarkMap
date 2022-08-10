@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import { Form, FormCollapse, FormItem, Input, NumberPicker, Select, Switch } from '@formily/antd';
 import { createSchemaField } from '@formily/react';
 import type { Form as FormInstance } from '@formily/core';
-import { onFieldChange, createForm, onFormValuesChange } from '@formily/core';
+import { createForm, onFormValuesChange } from '@formily/core';
 import Collapse from '../components/Collapse';
 import FieldSelect from '../components/FieldSelect';
 import ColorPicker from '../components/ColorPicker';
@@ -12,10 +12,12 @@ import Slider from '../components/Slider';
 import SliderRange from '../components/SliderRange';
 import type { HeatmapLayerStyleAttributeProps } from './types';
 import schema from './schema';
-import { heatmapLayerStyleConfigToFlat, heatmapLayerStyleFlatToConfig, HEATMAP_SHAPE_TYPE } from './helper';
+import { heatmapLayerStyleConfigToFlat, heatmapLayerStyleFlatToConfig } from './helper';
 import { CLS_PREFIX } from './constant';
 
-export const HeatmapLayerStyleAttributeSchemaField: React.FC<HeatmapLayerStyleAttributeProps> = (props) => {
+export const HeatmapLayerStyleAttributeSchemaField: React.FC<Pick<HeatmapLayerStyleAttributeProps, 'fieldList'>> = (
+  props,
+) => {
   const SchemaField = createSchemaField({
     components: {
       FormItem,
@@ -33,7 +35,7 @@ export const HeatmapLayerStyleAttributeSchemaField: React.FC<HeatmapLayerStyleAt
     },
   });
 
-  const _schema = useMemo(() => schema(props.fieldList, props.shapeList), [props.fieldList, props.shapeList]);
+  const _schema = useMemo(() => schema(props.fieldList), [props.fieldList]);
 
   return <SchemaField schema={_schema} />;
 };
@@ -46,13 +48,6 @@ export const HeatmapLayerStyleAttribute: React.FC<HeatmapLayerStyleAttributeProp
       effects() {
         onFormValuesChange((formIns: FormInstance<any>) => {
           props.onChange(heatmapLayerStyleFlatToConfig(formIns.values));
-        });
-        onFieldChange('heatmap', (heatmapState) => {
-          _form.setFieldState('shape', (state) => {
-            // @ts-ignore
-            state.dataSource = HEATMAP_SHAPE_TYPE[heatmapState?.value] ?? [];
-            state.value = state.dataSource.filter((item) => item.value === state.value) ?? undefined;
-          });
         });
       },
     });
@@ -73,7 +68,7 @@ export const HeatmapLayerStyleAttribute: React.FC<HeatmapLayerStyleAttributeProp
       wrapperAlign="right"
       feedbackLayout="terse"
     >
-      <HeatmapLayerStyleAttributeSchemaField fieldList={props.fieldList} shapeList={[]} />
+      <HeatmapLayerStyleAttributeSchemaField fieldList={props.fieldList} />
     </Form>
   );
 };

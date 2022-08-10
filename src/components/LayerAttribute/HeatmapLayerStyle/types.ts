@@ -1,6 +1,6 @@
 import type { HeatmapLayerOptions } from '@antv/l7-composite-layers';
 import type { CommonProps } from '../../../types/common';
-import type { FieldItem, ShapeItem } from '../types';
+import type { FieldItem } from '../types';
 
 /**
  * 区域图层样式属性值
@@ -15,10 +15,6 @@ export interface HeatmapLayerStyleAttributeProps extends CommonProps {
    * 数据字段
    */
   fieldList: FieldItem[];
-  /**
-   * 视图字段
-   */
-  shapeList: ShapeItem[];
   /**
    * 初始值
    */

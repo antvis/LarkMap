@@ -1,13 +1,10 @@
-import heatmapColorCollapse from '../common-schema/heatmap-color-collapse';
 import heatmapSize from '../common-schema/heatmap-size-collapse';
-import type { FieldItem, ShapeItem } from '../types';
-import { HEATMAP_SHAPE_LIST } from './helper';
-
-export default (fieldList: FieldItem[] = [], shapeList: ShapeItem[] = []) => {
+import type { FieldItem } from '../types';
+export default (fieldList: FieldItem[] = []) => {
   return {
     type: 'object',
     properties: {
-      basic_style: {
+      color: {
         type: 'void',
         'x-component': 'Collapse',
         'x-component-props': {
@@ -16,52 +13,13 @@ export default (fieldList: FieldItem[] = [], shapeList: ShapeItem[] = []) => {
           defaultActiveKey: [],
         },
         properties: {
-          radius: {
+          color: {
             type: 'void',
             'x-component': 'Collapse.CollapsePanel',
             'x-component-props': {
-              header: '基础样式',
+              header: '填充颜色',
             },
             properties: {
-              heatmap: {
-                type: 'string',
-                title: '视角',
-                default: 'heatmap',
-                'x-decorator': 'FormItem',
-                'x-component': 'Select',
-                'x-decorator-props': {},
-                'x-component-props': {},
-                enum: HEATMAP_SHAPE_LIST,
-              },
-              shape: {
-                type: 'string',
-                title: '形状',
-                'x-decorator-props': {},
-                'x-decorator': 'FormItem',
-                'x-component': 'Select',
-                'x-component-props': {
-                  allowClear: true,
-                  placeholder: '请选择形状',
-                },
-                enum: [...shapeList],
-                'x-reactions': [
-                  {
-                    dependencies: ['heatmap'],
-                    when: '{{$deps[0]==="hexagon" || $deps[0]==="hexagonColumn"}}',
-                    fulfill: {
-                      state: {
-                        visible: false,
-                      },
-                    },
-                    otherwise: {
-                      state: {
-                        visible: true,
-                      },
-                    },
-                  },
-                ],
-              },
-
               // 色带
               colors: {
                 type: 'string',
@@ -80,24 +38,7 @@ export default (fieldList: FieldItem[] = [], shapeList: ShapeItem[] = []) => {
                 'x-decorator': 'FormItem',
                 'x-component': 'RibbonSelect',
                 'x-decorator-props': {},
-                'x-reactions': [
-                  {
-                    dependencies: ['heatmap'],
-                    when: '{{$deps[0]==="hexagon" || $deps[0]==="hexagonColumn"}}',
-                    fulfill: {
-                      state: {
-                        visible: false,
-                      },
-                    },
-                    otherwise: {
-                      state: {
-                        visible: true,
-                      },
-                    },
-                  },
-                ],
               },
-
               colorsReverseOrder: {
                 type: 'boolean',
                 title: '倒序',
@@ -107,20 +48,6 @@ export default (fieldList: FieldItem[] = [], shapeList: ShapeItem[] = []) => {
                 'x-decorator-props': {},
                 'x-reactions': [
                   {
-                    dependencies: ['heatmap'],
-                    when: '{{$deps[0]==="hexagon" || $deps[0]==="hexagonColumn"}}',
-                    fulfill: {
-                      state: {
-                        visible: false,
-                      },
-                    },
-                    otherwise: {
-                      state: {
-                        visible: true,
-                      },
-                    },
-                  },
-                  {
                     target: 'colorsReverseOrder',
                     effects: ['onFieldInputValueChange'],
                     fulfill: {
@@ -128,90 +55,6 @@ export default (fieldList: FieldItem[] = [], shapeList: ShapeItem[] = []) => {
                     },
                   },
                 ],
-              },
-
-              // 覆盖范围
-              coverage: {
-                type: 'number',
-                title: '覆盖度',
-                default: 1,
-                'x-decorator-props': {},
-                'x-decorator': 'FormItem',
-                'x-component': 'Slider',
-                'x-component-props': {
-                  max: 1,
-                  step: 0.1,
-                },
-                'x-reactions': [
-                  {
-                    dependencies: ['heatmap'],
-                    when: '{{$deps[0]==="hexagon" || $deps[0]==="hexagonColumn"}}',
-                    fulfill: {
-                      state: {
-                        visible: true,
-                      },
-                    },
-                    otherwise: {
-                      state: {
-                        visible: false,
-                      },
-                    },
-                  },
-                ],
-              },
-
-              angle: {
-                type: 'number',
-                title: '旋转角度',
-                default: 0,
-                'x-decorator-props': {},
-                'x-decorator': 'FormItem',
-                'x-component': 'Slider',
-                'x-component-props': {
-                  max: 360,
-                  step: 1,
-                },
-                'x-reactions': [
-                  {
-                    dependencies: ['heatmap'],
-                    when: '{{$deps[0]==="hexagon" || $deps[0]==="hexagonColumn"}}',
-                    fulfill: {
-                      state: {
-                        visible: true,
-                      },
-                    },
-                    otherwise: {
-                      state: {
-                        visible: false,
-                      },
-                    },
-                  },
-                ],
-              },
-
-              radius: {
-                type: 'number',
-                title: '半径',
-                default: 20,
-                'x-decorator-props': {},
-                'x-decorator': 'FormItem',
-                'x-component': 'Slider',
-                'x-component-props': {
-                  max: 100,
-                  step: 1,
-                },
-              },
-              intensity: {
-                type: 'number',
-                title: '强度',
-                default: 3,
-                'x-decorator-props': {},
-                'x-decorator': 'FormItem',
-                'x-component': 'Slider',
-                'x-component-props': {
-                  max: 100,
-                  step: 1,
-                },
               },
 
               opacity: {
@@ -231,8 +74,43 @@ export default (fieldList: FieldItem[] = [], shapeList: ShapeItem[] = []) => {
         },
       },
 
-      collapseItem_fillColor: heatmapColorCollapse(fieldList),
-      collapseItem_fillradius: heatmapSize(fieldList),
+      // 半径
+      radius: {
+        type: 'void',
+        'x-component': 'Collapse',
+        'x-component-props': {
+          ghost: true,
+          destroyInactivePanel: true,
+          defaultActiveKey: [],
+        },
+        properties: {
+          radius: {
+            type: 'void',
+            'x-component': 'Collapse.CollapsePanel',
+            'x-component-props': {
+              header: '填充半径',
+            },
+            properties: {
+              radius: {
+                type: 'number',
+                title: '半径',
+                default: 20,
+                'x-decorator-props': {},
+                'x-decorator': 'FormItem',
+                'x-component': 'Slider',
+                'x-component-props': {
+                  max: 30,
+                  min: 0,
+                  step: 1,
+                },
+              },
+            },
+          },
+        },
+      },
+
+      // 权重
+      collapseItem_fillSize: heatmapSize(fieldList),
     },
   };
 };

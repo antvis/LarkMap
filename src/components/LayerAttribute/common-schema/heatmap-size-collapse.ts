@@ -14,17 +14,17 @@ export default (fieldList: FieldItem[] = []) => {
         type: 'void',
         'x-component': 'Collapse.CollapsePanel',
         'x-component-props': {
-          header: '填充大小',
+          header: '权重',
         },
 
         properties: {
           sizeField: {
             type: 'string',
-            title: '基于字段',
+            title: '权重字段',
             'x-decorator': 'FormItem',
             'x-component': 'FieldSelect',
             'x-decorator-props': {
-              tooltip: '选中一个数值字段作为填充大小',
+              tooltip: '选中一个数值字段作为热力计算',
             },
             'x-component-props': {
               allowClear: true,
@@ -32,114 +32,19 @@ export default (fieldList: FieldItem[] = []) => {
             },
             enum: [...fieldList],
           },
-          size: {
+          intensity: {
             type: 'number',
-            title: '大小',
+            title: '热力强度',
+            default: 1,
             'x-decorator': 'FormItem',
             'x-component': 'Slider',
             'x-component-props': {
               dots: false,
               range: false,
+              min: 1,
+              max: 5,
             },
             'x-decorator-props': {},
-            'x-reactions': [
-              {
-                dependencies: ['sizeField'],
-                when: '{{$deps[0]}}',
-                fulfill: {
-                  state: {
-                    visible: false,
-                  },
-                },
-                otherwise: {
-                  state: {
-                    visible: true,
-                  },
-                },
-              },
-            ],
-          },
-          sizeRange: {
-            type: 'number',
-            title: '大小',
-            'x-decorator': 'FormItem',
-            'x-component': 'SliderRange',
-            'x-component-props': {
-              dots: false,
-              range: true,
-            },
-            default: [0, 20],
-            'x-decorator-props': {},
-            'x-reactions': [
-              {
-                dependencies: ['sizeField'],
-                when: '{{$deps[0]}}',
-                fulfill: {
-                  state: {
-                    visible: true,
-                  },
-                },
-                otherwise: {
-                  state: {
-                    visible: false,
-                  },
-                },
-              },
-            ],
-          },
-          sizeType: {
-            type: 'string',
-            title: '大小划分',
-            default: 'linear',
-            enum: [
-              {
-                label: '线性',
-                value: 'linear',
-              },
-              {
-                label: '指数',
-                value: 'power',
-              },
-              {
-                label: '对数',
-                value: 'log',
-              },
-              {
-                label: '等分位',
-                value: 'quantile',
-              },
-              {
-                label: '等间距',
-                value: 'quantize',
-              },
-              {
-                label: '枚举',
-                value: 'cat',
-              },
-            ],
-            'x-decorator': 'FormItem',
-            'x-component': 'Select',
-            'x-component-props': {
-              allowClear: true,
-              placeholder: '请选择划分类型',
-            },
-            'x-decorator-props': {},
-            'x-reactions': [
-              {
-                dependencies: ['sizeField'],
-                when: '{{$deps[0]}}',
-                fulfill: {
-                  state: {
-                    visible: true,
-                  },
-                },
-                otherwise: {
-                  state: {
-                    visible: false,
-                  },
-                },
-              },
-            ],
           },
         },
       },
