@@ -9,8 +9,8 @@ const DefaultHeatmapLayerStyle = {
     value: [0, 1],
   },
   style: {
-    intensity: 3,
-    radius: 10,
+    intensity: 1,
+    radius: 20,
     opacity: 0.8,
     rampColors: {
       colors: [

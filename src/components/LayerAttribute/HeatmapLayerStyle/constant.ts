@@ -7,12 +7,12 @@ export const CLS_PREFIX = 'larkmap-heatmap-layer-style-attribute';
 export const DefaultHeatmapLayerStyle: HeatmapLayerStyleAttributeValue = {
   size: {
     field: '',
-    value: [12, 15],
+    value: [0, 1],
   },
   style: {
-    intensity: 3,
+    intensity: 1,
     radius: 20,
-    opacity: 1,
+    opacity: 0.8,
     rampColors: {
       colors: ['#FF4818', '#F7B74A', '#FFF598', '#F27DEB', '#8C1EB2', '#421EB2'], //色带
       positions: [0, 0.2, 0.4, 0.6, 0.8, 1.0],
