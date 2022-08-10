@@ -39,6 +39,12 @@ export { useDraw } from './components/Draw/use-draw';
 export { useDrawGroup } from './components/Draw/use-draw-group';
 // export { DrawControl } from './components/Draw/DrawControl';
 // export { DrawControlProps } from './components/Draw/DrawControl/types';
+
+/**
+ * 属性组件
+ */
+export * from './components/LayerAttribute';
+
 /**
  * 版本号
  * */

@@ -1,6 +1,6 @@
 import { LarkMap, PolygonLayer } from '@antv/larkmap';
 import React from 'react';
-import hangezhouGeoJSON from './xihu-district.json';
+import hangezhouGeoJSON from './hangzhou-district.json';
 
 const source = {
   data: hangezhouGeoJSON,
@@ -9,7 +9,10 @@ const source = {
 const layerOptions = {
   autoFit: true,
   shape: 'fill',
-  color: 'blue',
+  color: {
+    field: 'adcode',
+    value: ['#0f9960', '#33a02c', '#477eb8'],
+  },
   state: {
     active: true,
   },

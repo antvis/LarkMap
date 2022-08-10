@@ -1,0 +1,22 @@
+@root-entry-name: 'default';
+@import (reference) '~antd/es/style/themes/index.less';
+
+@slider-prefix-cls: ~'@{ant-prefix}-formily-slider';
+
+.@{slider-prefix-cls} {
+  display: flex;
+  justify-items: center;
+
+  .@{ant-prefix}-slider {
+    flex: 1;
+  }
+
+  .@{ant-prefix}-input-number {
+    width: 60px;
+    margin-left: 5px;
+  }
+
+  .@{ant-prefix}-slider-rail {
+    background: #dad8d8 !important;
+  }
+}

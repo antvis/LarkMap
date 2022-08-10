@@ -1,25 +1,29 @@
 import { BubbleLayer, LarkMap } from '@antv/larkmap';
 import React, { useState } from 'react';
+import CityWeather from '../../../BaseLayers/PointLayer/demos/city-weather.json';
 
 const source = {
-  data: [
-    { lng: 120.210792, lat: 30.246026, c: 'red', t: 20, n: '杭州' },
-    { lng: 121.473667, lat: 31.230525, c: 'blue', t: 24, n: '上海' },
-  ],
+  data: CityWeather,
   parser: { type: 'json', x: 'lng', y: 'lat' },
 };
 const bubbleLayerOptions = {
   autoFit: true,
-  radius: 40,
-  fillColor: '#0f9960',
+  radius: {
+    field: 'temperature',
+    value: ({ temperature }) => temperature,
+  },
+  fillColor: {
+    field: 'temperature',
+    value: ['#0f9960', '#33a02c', '#377eb8'],
+  },
   opacity: 0.4,
   strokeColor: 'blue',
-  lineWidth: 2,
+  lineWidth: 1,
   state: {
     active: { strokeColor: 'red', lineWidth: 2, lineOpacity: 1 },
   },
   label: {
-    field: 't',
+    field: 'temperature',
     visible: true,
     style: { fill: '#454d64', fontSize: 18, stroke: '#fff', strokeWidth: 2, textOffset: [0, -20] as [number, number] },
   },

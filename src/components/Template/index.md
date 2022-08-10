@@ -7,6 +7,7 @@ group:
 nav:
   title: 组件
   path: /components
+hide: true
 ---
 
 # 样例组件 - Template
