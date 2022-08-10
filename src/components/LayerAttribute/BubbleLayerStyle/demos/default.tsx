@@ -2,7 +2,7 @@ import type { BubbleLayerStyleAttributeValue } from '@antv/larkmap';
 import { LarkMap, BubbleLayer, CustomControl, BubbleLayerStyleAttribute } from '@antv/larkmap';
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
-import CityWeather from '../../../Layers/BubbleLayer/demos/city-weather.json';
+import CityWeather from '../../../Layers/BaseLayers/PointLayer/demos/city-weather.json';
 
 const FieldList = [
   { type: 'string', lable: '城市', value: 'name' },

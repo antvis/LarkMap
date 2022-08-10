@@ -2,7 +2,7 @@ import type { ChoroplethLayerStyleAttributeValue } from '@antv/larkmap';
 import { LarkMap, ChoroplethLayer, CustomControl, ChoroplethLayerStyleAttribute } from '@antv/larkmap';
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
-import hangezhouGeoJSON from '../../../Layers/ChoroplethLayer/demos/hangzhou-district.json';
+import hangezhouGeoJSON from '../../../Layers/BaseLayers/PolygonLayer/demos/hangzhou-district.json';
 
 const FieldList = [
   { type: 'string', lable: '区域名称', value: 'name' },
