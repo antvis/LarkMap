@@ -18,23 +18,26 @@ import { CLS_PREFIX } from './constant';
 export const ChoroplethLayerStyleAttributeSchemaField: React.FC<
   Pick<ChoroplethLayerStyleAttributeProps, 'fieldList'>
 > = (props) => {
-  const SchemaField = createSchemaField({
-    components: {
-      FormItem,
-      Input,
-      Select,
-      FormCollapse,
-      NumberPicker,
-      Switch,
-      Slider,
-      RibbonSelect,
-      ColorPicker,
-      Collapse,
-      FieldSelect,
-      SliderRange,
-    },
-  });
-
+  const SchemaField = useMemo(
+    () =>
+      createSchemaField({
+        components: {
+          FormItem,
+          Input,
+          Select,
+          FormCollapse,
+          NumberPicker,
+          Switch,
+          Slider,
+          RibbonSelect,
+          ColorPicker,
+          Collapse,
+          FieldSelect,
+          SliderRange,
+        },
+      }),
+    [],
+  );
   const _schema = useMemo(() => schema(props.fieldList), [props.fieldList]);
 
   return <SchemaField schema={_schema} />;
