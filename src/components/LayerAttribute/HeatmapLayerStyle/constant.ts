@@ -5,16 +5,13 @@ export const CLS_PREFIX = 'larkmap-heatmap-layer-style-attribute';
 
 /** 默认值样式属性 */
 export const DefaultHeatmapLayerStyle: HeatmapLayerStyleAttributeValue = {
-  size: {
-    field: '',
-    value: [0, 1],
-  },
+  size: undefined,
   style: {
     intensity: 1,
     radius: 20,
     opacity: 0.8,
     rampColors: {
-      colors: ['#0198BD', '#49E3CE', '#FAFEB3', '#FEAD54', 'D50255'],
+      colors: ['#FF4818', '#F7B74A', '#FFF598', '#F27DEB', '#8C1EB2', '#421EB2'],
       positions: [0, 0.2, 0.4, 0.6, 0.8, 1.0],
     },
   },
