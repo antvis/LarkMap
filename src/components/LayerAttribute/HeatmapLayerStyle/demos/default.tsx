@@ -9,18 +9,6 @@ const FieldList = [
   { type: 'number', lable: 't', value: 't' },
 ];
 
-const colorList = [
-  'rgb(255, 247, 236)',
-  'rgb(254, 232, 200)',
-  'rgb(253, 212, 158)',
-  'rgb(253, 187, 132)',
-  'rgb(252, 141, 89)',
-  'rgb(239, 101, 72)',
-  'rgb(215, 48, 31)',
-  'rgb(179, 0, 0)',
-  'rgb(127, 0, 0)',
-].reverse();
-
 const layerSource = {
   data: SourceData,
   parser: { type: 'json', x: 'lng', y: 'lat' },
@@ -36,8 +24,8 @@ const DefaultHeatmapLayerStyle = {
     radius: 30,
     opacity: 1,
     rampColors: {
-      colors: colorList,
-      positions: colorList.map((_, index) => index / (colorList.length - 1)),
+      colors: ['#FF4818', '#F7B74A', '#FFF598', '#F27DEB', '#8C1EB2', '#421EB2'],
+      positions: [0, 0.2, 0.4, 0.6, 0.8, 1.0],
     },
   },
 };
