@@ -5,10 +5,7 @@ import type { HeatmapLayerStyleAttributeValue } from './types';
  * */
 export const heatmapLayerStyleFlatToConfig = (style: Record<string, any>) => {
   const styleConfig: HeatmapLayerStyleAttributeValue = {
-    size: {
-      field: style.sizeField,
-      value: [0, 1],
-    },
+    size: style?.sizeField ? { field: style.sizeField, value: [0, 1] } : undefined,
     style: {
       intensity: style.intensity,
       radius: style.radius,

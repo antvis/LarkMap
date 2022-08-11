@@ -2,11 +2,11 @@ import type { HeatmapLayerStyleAttributeValue } from '@antv/larkmap';
 import { LarkMap, HeatmapLayer, CustomControl, HeatmapLayerStyleAttribute } from '@antv/larkmap';
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
-import CityWeather from '../../../Layers/BaseLayers/PointLayer/demos/city-weather.json';
+import SourceData from '../../../Layers/BaseLayers/HeatmapLayer/demos/mock.json';
 
 const FieldList = [
-  { type: 'string', lable: '城市', value: 'name' },
-  { type: 'number', lable: '温度', value: 'temperature' },
+  { type: 'string', lable: 'c', value: 'c' },
+  { type: 'number', lable: 't', value: 't' },
 ];
 
 const colorList = [
@@ -21,25 +21,25 @@ const colorList = [
   'rgb(127, 0, 0)',
 ].reverse();
 
+const layerSource = {
+  data: SourceData,
+  parser: { type: 'json', x: 'lng', y: 'lat' },
+};
+
 const DefaultHeatmapLayerStyle = {
   size: {
-    field: 'temperature',
+    field: 't',
     value: [0, 1],
   },
   style: {
-    intensity: 1,
-    radius: 20,
+    intensity: 2,
+    radius: 30,
     opacity: 1,
     rampColors: {
       colors: colorList,
       positions: colorList.map((_, index) => index / (colorList.length - 1)),
     },
   },
-};
-
-const layerSource = {
-  data: CityWeather,
-  parser: { type: 'json', x: 'lng', y: 'lat' },
 };
 
 const heatmapLayerOptions = {
