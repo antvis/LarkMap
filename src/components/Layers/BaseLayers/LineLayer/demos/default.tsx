@@ -18,14 +18,14 @@ const source = {
 };
 const layerOptions = {
   autoFit: true,
-  shape: 'line',
+  shape: 'line' as const,
   size: 2,
   color: '#0f9960',
   state: {
     active: true,
   },
   style: {
-    lineType: 'solid',
+    lineType: 'solid' as const,
   },
 };
 

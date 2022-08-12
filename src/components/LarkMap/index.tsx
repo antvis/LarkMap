@@ -9,7 +9,7 @@ import type { LarkMapContextValue, LarkMapProps, LarkMapRefAttributes } from './
 
 export const LarkMapContext = React.createContext<LarkMapContextValue>(null);
 
-export const LarkMap = forwardRef<LarkMapRefAttributes, LarkMapProps>((props, ref) => {
+export const LarkMap = forwardRef<LarkMapRefAttributes, LarkMapProps>(function LarkMap(props, ref) {
   const { id, style, className, map, mapType, mapOptions, onSceneLoaded, children, ...sceneConfig } = props;
 
   const containerRef = useRef();

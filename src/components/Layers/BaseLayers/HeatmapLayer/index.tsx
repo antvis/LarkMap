@@ -4,7 +4,7 @@ import { useCreateLayer } from '../../hooks/use-create-layer';
 import type { HeatmapLayerProps } from './types';
 
 export const HeatmapLayer = memo(
-  forwardRef<L7HeatmapLayer, HeatmapLayerProps>((props, ref) => {
+  forwardRef<L7HeatmapLayer, HeatmapLayerProps>(function HeatmapLayer(props, ref) {
     const layerRef = useCreateLayer<L7HeatmapLayer, HeatmapLayerProps>(L7HeatmapLayer, props);
 
     useImperativeHandle(ref, () => layerRef.current);

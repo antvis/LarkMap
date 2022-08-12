@@ -4,7 +4,7 @@ import { useCreateLayer } from '../../hooks/use-create-layer';
 import type { TextLayerProps } from './types';
 
 export const TextLayer = memo(
-  forwardRef<L7TextLayer, TextLayerProps>((props, ref) => {
+  forwardRef<L7TextLayer, TextLayerProps>(function TextLayer(props, ref) {
     const layerRef = useCreateLayer<L7TextLayer, TextLayerProps>(L7TextLayer, props);
 
     useImperativeHandle(ref, () => layerRef.current);
