@@ -42,6 +42,7 @@ export default () => {
       <CustomControl position="topleft" style={{ width: '300px', background: '#fff', padding: '10px' }}>
         <h3>属性配置</h3>
         <BubbleLayerStyleAttribute
+          style={{ overflowX: 'hidden', overflowY: 'auto', maxHeight: '300px' }}
           initialValues={DefaultBubbleLayerStyle}
           fieldList={FieldList}
           onChange={(values: BubbleLayerStyleAttributeValue) => {

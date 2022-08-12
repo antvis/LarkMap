@@ -13,7 +13,7 @@ nav:
 
 ## 介绍
 
-`HeatmapLayerStyleAttribute` 是 [热力图层 - HeatmapLayer](/components/layers/heatmap-layer) 的样式属性配置组件，用于图层配置可视化场景。
+`HeatmapLayerStyleAttribute` 是 [热力图层 - HeatmapLayer](/components/layers/base-layers/heatmap-layer) 的样式属性配置组件，用于图层配置可视化场景。
 
 ## 代码演示
 
