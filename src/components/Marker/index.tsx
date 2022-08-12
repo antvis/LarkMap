@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import { useScene } from '../LarkMap/hooks';
 import type { MarkerProps } from './types';
 
-export const Marker = memo<MarkerProps>((props): React.ReactPortal => {
+export const Marker = memo<MarkerProps>(function Marker(props): React.ReactPortal {
   const scene = useScene();
   const thisRef = useRef({ props });
   thisRef.current.props = props;

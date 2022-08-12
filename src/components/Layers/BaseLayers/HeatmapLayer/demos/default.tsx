@@ -8,7 +8,7 @@ const source = {
 };
 const layerOptions = {
   autoFit: true,
-  shape: 'heatmap',
+  shape: 'heatmap' as const,
   size: {
     field: 't',
     value: [0, 1],

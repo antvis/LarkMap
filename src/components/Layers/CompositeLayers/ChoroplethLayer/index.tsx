@@ -4,7 +4,7 @@ import { useCreateLayer } from '../../hooks/use-create-layer';
 import type { ChoroplethLayerProps } from './types';
 
 export const ChoroplethLayer = memo(
-  forwardRef<L7ChoroplethLayer, ChoroplethLayerProps>((props, ref) => {
+  forwardRef<L7ChoroplethLayer, ChoroplethLayerProps>(function ChoroplethLayer(props, ref) {
     const layerRef = useCreateLayer<L7ChoroplethLayer, ChoroplethLayerProps>(L7ChoroplethLayer, props);
 
     useImperativeHandle(ref, () => layerRef.current);

@@ -4,7 +4,7 @@ import { useCreateLayer } from '../../hooks/use-create-layer';
 import type { PolygonLayerProps } from './types';
 
 export const PolygonLayer = memo(
-  forwardRef<L7PolygonLayer, PolygonLayerProps>((props, ref) => {
+  forwardRef<L7PolygonLayer, PolygonLayerProps>(function PolygonLayer(props, ref) {
     const layerRef = useCreateLayer<L7PolygonLayer, PolygonLayerProps>(L7PolygonLayer, props);
 
     useImperativeHandle(ref, () => layerRef.current);

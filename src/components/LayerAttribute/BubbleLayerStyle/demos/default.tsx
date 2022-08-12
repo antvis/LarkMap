@@ -1,4 +1,4 @@
-import type { BubbleLayerStyleAttributeValue } from '@antv/larkmap';
+import type { BubbleLayerStyleAttributeValue, BubbleLayerProps } from '@antv/larkmap';
 import { LarkMap, BubbleLayer, CustomControl, BubbleLayerStyleAttribute } from '@antv/larkmap';
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
@@ -18,7 +18,7 @@ const DefaultBubbleLayerStyle = {
   label: {
     field: 'temperature',
     visible: true,
-    style: { fill: '#454d64', fontSize: 18, textAnchor: 'center' },
+    style: { fill: '#454d64', fontSize: 18, textAnchor: 'center' as const },
   },
 };
 
@@ -26,7 +26,7 @@ const layerSource = {
   data: CityWeather,
   parser: { type: 'json', x: 'lng', y: 'lat' },
 };
-const bubbleLayerOptions = {
+const bubbleLayerOptions: Omit<BubbleLayerProps, 'source'> = {
   autoFit: true,
   state: {
     active: { strokeColor: 'red', lineWidth: 2, lineOpacity: 1 },
