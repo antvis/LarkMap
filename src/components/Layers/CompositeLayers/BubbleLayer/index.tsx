@@ -4,7 +4,7 @@ import { useCreateLayer } from '../../hooks/use-create-layer';
 import type { BubbleLayerProps } from './types';
 
 export const BubbleLayer = memo(
-  forwardRef<L7BubbleLayer, BubbleLayerProps>((props, ref) => {
+  forwardRef<L7BubbleLayer, BubbleLayerProps>(function BubbleLayer(props, ref) {
     const layerRef = useCreateLayer<L7BubbleLayer, BubbleLayerProps>(L7BubbleLayer, props);
 
     useImperativeHandle(ref, () => layerRef.current);

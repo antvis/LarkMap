@@ -18,7 +18,7 @@ const layerOptions = {
     stroke: '#fff',
     strokeWidth: 2,
     textAllowOverlap: false,
-    padding: [5, 5],
+    padding: [5, 5] as [number, number],
   },
 };
 

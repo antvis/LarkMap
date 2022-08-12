@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import { Form, FormCollapse, FormItem, Input, NumberPicker, Select, Switch } from '@formily/antd';
 import { createSchemaField } from '@formily/react';
 import type { Form as FormInstance } from '@formily/core';
@@ -43,35 +43,37 @@ export const ChoroplethLayerStyleAttributeSchemaField: React.FC<
   return <SchemaField schema={_schema} />;
 };
 
-export const ChoroplethLayerStyleAttribute: React.FC<ChoroplethLayerStyleAttributeProps> = (props) => {
-  const form = useMemo(() => {
-    const initialValues = choroplethLayerStyleConfigToFlat(props.initialValues);
-    const _form = createForm({
-      initialValues,
-      effects() {
-        onFormValuesChange((formIns: FormInstance<any>) => {
-          props.onChange(choroplethLayerStyleFlatToConfig(formIns.values));
-        });
-      },
-    });
+export const ChoroplethLayerStyleAttribute: React.FC<ChoroplethLayerStyleAttributeProps> = memo(
+  function ChoroplethLayerStyleAttribute(props) {
+    const form = useMemo(() => {
+      const initialValues = choroplethLayerStyleConfigToFlat(props.initialValues);
+      const _form = createForm({
+        initialValues,
+        effects() {
+          onFormValuesChange((formIns: FormInstance<any>) => {
+            props.onChange(choroplethLayerStyleFlatToConfig(formIns.values));
+          });
+        },
+      });
 
-    return _form;
-  }, []);
+      return _form;
+    }, []);
 
-  return (
-    <Form
-      className={classNames(`${CLS_PREFIX}`, props.className)}
-      style={props.style}
-      form={form}
-      labelCol={8}
-      wrapperCol={16}
-      colon={false}
-      layout="horizontal"
-      labelAlign="left"
-      wrapperAlign="right"
-      feedbackLayout="terse"
-    >
-      <ChoroplethLayerStyleAttributeSchemaField fieldList={props.fieldList} />
-    </Form>
-  );
-};
+    return (
+      <Form
+        className={classNames(`${CLS_PREFIX}`, props.className)}
+        style={props.style}
+        form={form}
+        labelCol={8}
+        wrapperCol={16}
+        colon={false}
+        layout="horizontal"
+        labelAlign="left"
+        wrapperAlign="right"
+        feedbackLayout="terse"
+      >
+        <ChoroplethLayerStyleAttributeSchemaField fieldList={props.fieldList} />
+      </Form>
+    );
+  },
+);

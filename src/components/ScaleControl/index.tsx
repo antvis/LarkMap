@@ -4,7 +4,7 @@ import { memo, useEffect, useRef } from 'react';
 import { useScene } from '../LarkMap/hooks/use-scene';
 import type { ScaleControlProps } from './types';
 
-export const ScaleControl = memo<ScaleControlProps>((props) => {
+export const ScaleControl = memo<ScaleControlProps>(function ScaleControl(props) {
   const scene = useScene();
   const scaleRef = useRef<L7Scale>();
   const { position } = props;

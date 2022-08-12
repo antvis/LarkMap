@@ -1,5 +1,11 @@
-import type { ChoroplethLayerStyleAttributeValue } from '@antv/larkmap';
-import { LarkMap, ChoroplethLayer, CustomControl, ChoroplethLayerStyleAttribute } from '@antv/larkmap';
+import type { ChoroplethLayerStyleAttributeValue ,
+  ChoroplethLayerProps} from '@antv/larkmap';
+import {
+  LarkMap,
+  ChoroplethLayer,
+  CustomControl,
+  ChoroplethLayerStyleAttribute,
+} from '@antv/larkmap';
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import hangezhouGeoJSON from '../../../Layers/BaseLayers/PolygonLayer/demos/hangzhou-district.json';
@@ -20,7 +26,7 @@ const DefaultChoroplethLayerStyle = {
   label: {
     field: 'name',
     visible: true,
-    style: { fill: 'blue', fontSize: 18, textAnchor: 'center' },
+    style: { fill: 'blue', fontSize: 18, textAnchor: 'center' as const },
   },
 };
 
@@ -28,7 +34,7 @@ const layerSource = {
   data: hangezhouGeoJSON,
   parser: { type: 'geojson' },
 };
-const choroplethLayerOptions = {
+const choroplethLayerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   autoFit: true,
   state: {
     active: { strokeColor: 'green', lineWidth: 2, lineOpacity: 1 },

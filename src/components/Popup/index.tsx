@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom';
 import { useScene } from '../LarkMap/hooks';
 import type { PopupProps } from './types';
 
-export const Popup = memo<PopupProps>((props): React.ReactPortal => {
+export const Popup = memo<PopupProps>(function Popup(props): React.ReactPortal {
   const scene = useScene();
   const domRef = useRef(document.createElement('div'));
 
