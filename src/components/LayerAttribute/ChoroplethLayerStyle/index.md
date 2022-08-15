@@ -13,7 +13,7 @@ nav:
 
 ## 介绍
 
-`ChoroplethLayerStyleAttribute` 是 [区域图层 - ChoroplethLayer](/components/layers/base-layers/choropleth-layer) 的样式属性配置组件，用于图层配置可视化场景。
+`ChoroplethLayerStyleAttribute` 是 [区域图层 - ChoroplethLayer](/components/layers/composite-layers/choropleth-layer) 的样式属性配置组件，用于图层配置可视化场景。
 
 ## 代码演示
 

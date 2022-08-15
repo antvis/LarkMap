@@ -13,7 +13,7 @@ nav:
 
 ## 介绍
 
-`BubbleLayerStyleAttribute` 是 [气泡图层 - BubbleLayer](/components/layers/base-layers/bubble-layer) 的样式属性配置组件，用于图层配置可视化场景。
+`BubbleLayerStyleAttribute` 是 [气泡图层 - BubbleLayer](/components/layers/composite-layers/bubble-layer) 的样式属性配置组件，用于图层配置可视化场景。
 
 ## 代码演示
 
