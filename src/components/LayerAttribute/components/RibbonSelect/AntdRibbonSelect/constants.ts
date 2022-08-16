@@ -142,4 +142,5 @@ export const FIELD_COLOR_MAP: string[][] = [
     'rgb(189, 0, 38)',
     'rgb(128, 0, 38)',
   ],
+  ['#FF4818', '#F7B74A', '#FFF598', '#F27DEB', '#8C1EB2', '#421EB2'],
 ];

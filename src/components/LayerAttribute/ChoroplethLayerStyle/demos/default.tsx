@@ -1,11 +1,5 @@
-import type { ChoroplethLayerStyleAttributeValue ,
-  ChoroplethLayerProps} from '@antv/larkmap';
-import {
-  LarkMap,
-  ChoroplethLayer,
-  CustomControl,
-  ChoroplethLayerStyleAttribute,
-} from '@antv/larkmap';
+import type { ChoroplethLayerStyleAttributeValue, ChoroplethLayerProps } from '@antv/larkmap';
+import { LarkMap, ChoroplethLayer, CustomControl, ChoroplethLayerStyleAttribute } from '@antv/larkmap';
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import hangezhouGeoJSON from '../../../Layers/BaseLayers/PolygonLayer/demos/hangzhou-district.json';
@@ -50,6 +44,7 @@ export default () => {
       <CustomControl position="topleft" style={{ width: '300px', background: '#fff', padding: '10px' }}>
         <h3>属性配置</h3>
         <ChoroplethLayerStyleAttribute
+          style={{ overflowX: 'hidden', overflowY: 'auto', maxHeight: '300px' }}
           initialValues={DefaultChoroplethLayerStyle}
           fieldList={FieldList}
           onChange={(values: ChoroplethLayerStyleAttributeValue) => {

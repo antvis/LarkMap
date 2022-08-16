@@ -6,3 +6,6 @@ export type {
   ChoroplethLayerStyleAttributeValue,
   ChoroplethLayerStyleAttributeProps,
 } from './ChoroplethLayerStyle/types';
+
+export { HeatmapLayerStyleAttribute, HeatmapLayerStyleAttributeSchemaField } from './HeatmapLayerStyle';
+export type { HeatmapLayerStyleAttributeValue, HeatmapLayerStyleAttributeProps } from './HeatmapLayerStyle/types';

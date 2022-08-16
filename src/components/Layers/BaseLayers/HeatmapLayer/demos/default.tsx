@@ -1,13 +1,9 @@
 import { HeatmapLayer, LarkMap } from '@antv/larkmap';
 import React from 'react';
+import SourceData from './mock.json';
 
 const source = {
-  data: [
-    { lng: 121.473117, lat: 31.230125, t: 20 },
-    { lng: 121.473337, lat: 31.230325, t: 18 },
-    { lng: 121.473557, lat: 31.230525, t: 22 },
-    { lng: 121.473777, lat: 31.230725, t: 24 },
-  ],
+  data: SourceData,
   parser: { type: 'json', x: 'lng', y: 'lat' },
 };
 const layerOptions = {
