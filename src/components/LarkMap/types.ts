@@ -36,5 +36,7 @@ export interface LarkMapProps extends CommonProps, Omit<ISceneConfig, 'id' | 'ca
   mapOptions?: Partial<IMapConfig>;
   /** 场景加载成功回调 */
   onSceneLoaded?: (scene: Scene) => void;
+  /** 图层管理器创建成功 */
+  onLayerManagerCreated?: (layerManager: LayerManager) => void;
   children?: React.ReactNode;
 }

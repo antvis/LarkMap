@@ -2,10 +2,10 @@ import { LarkMap } from '@antv/larkmap';
 import React from 'react';
 
 const config = {
-  mapType: 'GaodeV1',
+  mapType: 'GaodeV1' as const,
   mapOptions: {
     style: 'light',
-    center: [120.210792, 30.246026],
+    center: [120.210792, 30.246026] as [number, number],
     zoom: 9,
     // token: 'xxxx - token',
   },
