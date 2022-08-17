@@ -18,6 +18,7 @@ export const LarkMap = memo(
       map,
       mapType = 'Mapbox',
       mapOptions = {},
+      onLayerManagerCreated,
       onSceneLoaded,
       children,
       ...sceneConfig
@@ -51,6 +52,9 @@ export const LarkMap = memo(
           scene.once('loaded', () => {
             if (onSceneLoaded) {
               onSceneLoaded(scene);
+            }
+            if (onLayerManagerCreated) {
+              onLayerManagerCreated(layerManager);
             }
             setSceneInstance(scene);
           });
