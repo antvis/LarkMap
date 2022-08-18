@@ -25,17 +25,17 @@ export const heatmapLayerStyleFlatToConfig = (style: Record<string, any>) => {
  * 将图层样式的数据结构转为表单的平铺数据
  * */
 export const heatmapLayerStyleConfigToFlat = (styleConfig: HeatmapLayerStyleAttributeValue) => {
-  const { size, style } = styleConfig;
+  const { size, style } = styleConfig || {};
   const config = {
     // @ts-ignore
-    colors: style?.rampColors.colors,
-    opacity: style.opacity,
+    colors: style?.rampColors?.colors,
+    opacity: style?.opacity,
     // @ts-ignore
-    radius: style.radius,
+    radius: style?.radius,
     // @ts-ignore
-    sizeField: size.field,
+    sizeField: size?.field,
     // @ts-ignore
-    intensity: style.intensity,
+    intensity: style?.intensity,
   };
 
   return config;
