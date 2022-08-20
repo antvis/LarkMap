@@ -10,6 +10,10 @@ export default defineConfig({
   base: '/',
   publicPath: '/',
   outputPath: 'docs-dist',
+  resolve: {
+    // 排除公共 API 文档目录
+    excludes: ['docs/common'],
+  },
   metas: [
     { name: 'keywords', content: 'L7, AntV, AntV LarkMap' },
     { name: 'description', content: '🌍 A React toolkit for geospatial visualization based on L7' },
