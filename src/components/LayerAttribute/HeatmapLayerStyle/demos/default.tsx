@@ -1,18 +1,12 @@
 import type { HeatmapLayerStyleAttributeValue, HeatmapLayerProps } from '@antv/larkmap';
 import { LarkMap, HeatmapLayer, CustomControl, HeatmapLayerStyleAttribute } from '@antv/larkmap';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
-import SourceData from '../../../Layers/BaseLayers/HeatmapLayer/demos/mock.json';
 
 const FieldList = [
   { type: 'string', lable: 'c', value: 'c' },
   { type: 'number', lable: 't', value: 't' },
 ];
-
-const layerSource = {
-  data: SourceData,
-  parser: { type: 'json', x: 'lng', y: 'lat' },
-};
 
 const DefaultHeatmapLayerStyle = {
   size: {
@@ -38,6 +32,18 @@ const heatmapLayerOptions: Omit<HeatmapLayerProps, 'source'> = {
 
 export default () => {
   const [layerOptions, setLayerOptions] = useState(heatmapLayerOptions);
+  const [source, setSource] = useState({
+    data: [],
+    parser: { type: 'json', x: 'lng', y: 'lat' },
+  });
+
+  useEffect(() => {
+    fetch('https://gw.alipayobjects.com/os/antfincdn/o1GNZoJ2rK/points-center.json')
+      .then((response) => response.json())
+      .then((data: any) => {
+        setSource((prevState) => ({ ...prevState, data }));
+      });
+  }, []);
 
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '400px', overflow: 'hidden' }}>
@@ -60,7 +66,7 @@ export default () => {
           }}
         />
       </CustomControl>
-      <HeatmapLayer {...layerOptions} source={layerSource} />
+      <HeatmapLayer {...layerOptions} source={source} />
     </LarkMap>
   );
 };

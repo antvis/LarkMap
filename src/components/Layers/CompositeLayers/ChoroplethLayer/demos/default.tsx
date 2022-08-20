@@ -1,12 +1,8 @@
+import type { ChoroplethLayerProps } from '@antv/larkmap';
 import { ChoroplethLayer, LarkMap } from '@antv/larkmap';
-import React, { useState } from 'react';
-import hangezhouGeoJSON from '../../../BaseLayers/PolygonLayer/demos/hangzhou-district.json';
+import React, { useEffect, useState } from 'react';
 
-const layerSource = {
-  data: hangezhouGeoJSON,
-  parser: { type: 'geojson' },
-};
-const layerOptions = {
+const layerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   autoFit: true,
   fillColor: {
     field: 'adcode',
@@ -27,11 +23,23 @@ const layerOptions = {
 };
 
 export default () => {
-  const [source, setSource] = useState(layerSource);
+  const [options, setOptions] = useState(layerOptions);
+  const [source, setSource] = useState({
+    data: { type: 'FeatureCollection', features: [] },
+    parser: { type: 'geojson' },
+  });
+
+  useEffect(() => {
+    fetch('https://gw.alipayobjects.com/os/antfincdn/Y8eGLb9j9v/hangzhou-district.json')
+      .then((response) => response.json())
+      .then((data: any) => {
+        setSource((prevState) => ({ ...prevState, data }));
+      });
+  }, []);
 
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
-      <ChoroplethLayer {...layerOptions} source={source} />
+      <ChoroplethLayer {...options} source={source} />
     </LarkMap>
   );
 };

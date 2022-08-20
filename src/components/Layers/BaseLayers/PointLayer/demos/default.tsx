@@ -1,12 +1,8 @@
+import type { PointLayerProps } from '@antv/larkmap';
 import { LarkMap, PointLayer } from '@antv/larkmap';
-import React from 'react';
-import CityWeather from './city-weather.json';
+import React, { useEffect, useState } from 'react';
 
-const source = {
-  data: CityWeather,
-  parser: { type: 'json', x: 'lng', y: 'lat' },
-};
-const layerOptions = {
+const layerOptions: Omit<PointLayerProps, 'source'> = {
   autoFit: true,
   shape: 'circle',
   size: {
@@ -26,9 +22,23 @@ const layerOptions = {
 };
 
 export default () => {
+  const [options, setOptions] = useState(layerOptions);
+  const [source, setSource] = useState({
+    data: [],
+    parser: { type: 'json', x: 'lng', y: 'lat' },
+  });
+
+  useEffect(() => {
+    fetch('https://gw.alipayobjects.com/os/antfincdn/Lx96%24Pnwhw/city-weather.json')
+      .then((response) => response.json())
+      .then((data: any) => {
+        setSource((prevState) => ({ ...prevState, data }));
+      });
+  }, []);
+
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
-      <PointLayer {...layerOptions} source={source} />
+      <PointLayer {...options} source={source} />
     </LarkMap>
   );
 };

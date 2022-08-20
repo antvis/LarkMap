@@ -1,6 +1,6 @@
 import type { SelectProps } from 'antd';
 import { Select, Tag } from 'antd';
-import { isUndefined } from '@antv/util';
+import { isUndefined } from 'lodash-es';
 import React from 'react';
 
 export type FieldTypeItem = {
