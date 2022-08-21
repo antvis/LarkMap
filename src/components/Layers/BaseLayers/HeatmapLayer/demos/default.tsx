@@ -1,12 +1,8 @@
+import type { HeatmapLayerProps } from '@antv/larkmap';
 import { HeatmapLayer, LarkMap } from '@antv/larkmap';
-import React from 'react';
-import SourceData from './mock.json';
+import React, { useEffect, useState } from 'react';
 
-const source = {
-  data: SourceData,
-  parser: { type: 'json', x: 'lng', y: 'lat' },
-};
-const layerOptions = {
+const layerOptions: Omit<HeatmapLayerProps, 'source'> = {
   autoFit: true,
   shape: 'heatmap' as const,
   size: {
@@ -25,9 +21,23 @@ const layerOptions = {
 };
 
 export default () => {
+  const [options, setOptions] = useState(layerOptions);
+  const [source, setSource] = useState({
+    data: [],
+    parser: { type: 'json', x: 'lng', y: 'lat' },
+  });
+
+  useEffect(() => {
+    fetch('https://gw.alipayobjects.com/os/antfincdn/o1GNZoJ2rK/points-center.json')
+      .then((response) => response.json())
+      .then((data: any) => {
+        setSource((prevState) => ({ ...prevState, data }));
+      });
+  }, []);
+
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
-      <HeatmapLayer {...layerOptions} source={source} />
+      <HeatmapLayer {...options} source={source} />
     </LarkMap>
   );
 };

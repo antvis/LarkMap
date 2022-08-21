@@ -1,8 +1,7 @@
 import type { BubbleLayerStyleAttributeValue, BubbleLayerProps } from '@antv/larkmap';
 import { LarkMap, BubbleLayer, CustomControl, BubbleLayerStyleAttribute } from '@antv/larkmap';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
-import CityWeather from '../../../Layers/BaseLayers/PointLayer/demos/city-weather.json';
 
 const FieldList = [
   { type: 'string', lable: '城市', value: 'name' },
@@ -22,10 +21,6 @@ const DefaultBubbleLayerStyle = {
   },
 };
 
-const layerSource = {
-  data: CityWeather,
-  parser: { type: 'json', x: 'lng', y: 'lat' },
-};
 const bubbleLayerOptions: Omit<BubbleLayerProps, 'source'> = {
   autoFit: true,
   state: {
@@ -36,6 +31,18 @@ const bubbleLayerOptions: Omit<BubbleLayerProps, 'source'> = {
 
 export default () => {
   const [layerOptions, setLayerOptions] = useState(bubbleLayerOptions);
+  const [source, setSource] = useState({
+    data: [],
+    parser: { type: 'json', x: 'lng', y: 'lat' },
+  });
+
+  useEffect(() => {
+    fetch('https://gw.alipayobjects.com/os/antfincdn/Lx96%24Pnwhw/city-weather.json')
+      .then((response) => response.json())
+      .then((data: any) => {
+        setSource((prevState) => ({ ...prevState, data }));
+      });
+  }, []);
 
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '400px', overflow: 'hidden' }}>
@@ -51,7 +58,7 @@ export default () => {
           }}
         />
       </CustomControl>
-      <BubbleLayer {...layerOptions} source={layerSource} />
+      <BubbleLayer {...layerOptions} source={source} />
     </LarkMap>
   );
 };

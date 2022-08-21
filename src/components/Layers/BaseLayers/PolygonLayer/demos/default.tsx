@@ -1,12 +1,8 @@
+import type { PolygonLayerProps } from '@antv/larkmap';
 import { LarkMap, PolygonLayer } from '@antv/larkmap';
-import React from 'react';
-import hangezhouGeoJSON from './hangzhou-district.json';
+import React, { useEffect, useState } from 'react';
 
-const source = {
-  data: hangezhouGeoJSON,
-  parser: { type: 'geojson' },
-};
-const layerOptions = {
+const layerOptions: Omit<PolygonLayerProps, 'source'> = {
   autoFit: true,
   shape: 'fill',
   color: {
@@ -22,9 +18,23 @@ const layerOptions = {
 };
 
 export default () => {
+  const [options, setOptions] = useState(layerOptions);
+  const [source, setSource] = useState({
+    data: { type: 'FeatureCollection', features: [] },
+    parser: { type: 'geojson' },
+  });
+
+  useEffect(() => {
+    fetch('https://gw.alipayobjects.com/os/antfincdn/Y8eGLb9j9v/hangzhou-district.json')
+      .then((response) => response.json())
+      .then((data: any) => {
+        setSource((prevState) => ({ ...prevState, data }));
+      });
+  }, []);
+
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
-      <PolygonLayer {...layerOptions} source={source} />
+      <PolygonLayer {...options} source={source} />
     </LarkMap>
   );
 };

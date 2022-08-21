@@ -1,12 +1,8 @@
+import type { BubbleLayerProps } from '@antv/larkmap';
 import { BubbleLayer, LarkMap } from '@antv/larkmap';
-import React, { useState } from 'react';
-import CityWeather from '../../../BaseLayers/PointLayer/demos/city-weather.json';
+import React, { useEffect, useState } from 'react';
 
-const source = {
-  data: CityWeather,
-  parser: { type: 'json', x: 'lng', y: 'lat' },
-};
-const bubbleLayerOptions = {
+const bubbleLayerOptions: Omit<BubbleLayerProps, 'source'> = {
   autoFit: true,
   radius: {
     field: 'temperature',
@@ -31,6 +27,18 @@ const bubbleLayerOptions = {
 
 export default () => {
   const [layerOptions, setLayerOptions] = useState(bubbleLayerOptions);
+  const [source, setSource] = useState({
+    data: [],
+    parser: { type: 'json', x: 'lng', y: 'lat' },
+  });
+
+  useEffect(() => {
+    fetch('https://gw.alipayobjects.com/os/antfincdn/Lx96%24Pnwhw/city-weather.json')
+      .then((response) => response.json())
+      .then((data: any) => {
+        setSource((prevState) => ({ ...prevState, data }));
+      });
+  }, []);
 
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
