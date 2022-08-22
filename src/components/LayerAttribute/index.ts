@@ -9,3 +9,6 @@ export type {
 
 export { HeatmapLayerStyleAttribute, HeatmapLayerStyleAttributeSchemaField } from './HeatmapLayerStyle';
 export type { HeatmapLayerStyleAttributeValue, HeatmapLayerStyleAttributeProps } from './HeatmapLayerStyle/types';
+
+export { LineLayerStyleAttribute, LineLayerStyleAttributeSchemaField } from './LineLayerStyle';
+export type { LineLayerStyleAttributeValue, LineLayerStyleAttributeProps } from './LineLayerStyle/types';
