@@ -1,6 +1,6 @@
 {
   "name": "@antv/larkmap",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A React toolkit for geospatial visualization based on L7",
   "license": "MIT",
   "main": "lib/index.js",
