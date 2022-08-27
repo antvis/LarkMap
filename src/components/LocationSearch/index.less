@@ -2,6 +2,16 @@
 
 .@{cls-prefix} {
   &_select {
-    min-width: 200px;
+    min-width: 250px;
+  }
+  &_option-name,
+  &_option-address {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  &_option-address {
+    color: #818181;
+    font-size: 12px;
   }
 }

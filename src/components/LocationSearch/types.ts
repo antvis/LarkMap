@@ -1,7 +1,22 @@
+import type { SelectProps } from 'antd';
 import type { CustomControlProps } from '../CustomControl/types';
 
-export interface LocationSearchProps extends Pick<CustomControlProps, 'position' | 'className' | 'style'> {
-  gaodeKey: string;
+export interface LocationSearchProps
+  extends Pick<CustomControlProps, 'position' | 'className' | 'style'>,
+    SelectProps {
+  /**
+   * 高德搜索服务的API key 值
+   */
+  gaodeParams: GaodeLocationSearchParams;
+}
+
+export type GaodeLocationSearchParams =  {
+  key: string;
+  sig: string;
+  keywords: string;
+  types: string;
+  city: string;
+  citylimit: boolean;
 }
 
 export type LocationSearchOption = {
