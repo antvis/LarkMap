@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import qs from 'query-string';
 import { SearchOutlined } from '@ant-design/icons';
 import { useDebounceFn } from 'ahooks';
+import classNames from 'classnames';
 import { CustomControl } from '../CustomControl';
 import type { LocationSearchProps, LocationSearchOption } from './types';
 import { CLS_PREFIX } from './constant';
@@ -15,6 +16,7 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
   className,
   style,
   gaodeParams,
+  showAddress,
   ...selectProps
 }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,7 +33,7 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
         url: 'https://restapi.amap.com/v3/place/text',
         query: {
           ...gaodeParams,
-          keywords: `${searchText}${gaodeParams.keywords ? `|${gaodeParams.keywords}` : ''}`,
+          keywords: [...(gaodeParams.keywords ?? '').split('|'), searchText].filter((item) => !!item).join('|'),
         },
       });
       const res = await (await fetch(url)).json().finally(() => {
@@ -45,7 +47,12 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
   );
 
   return (
-    <CustomControl name="LocationSearch" position={position} className={className} style={style}>
+    <CustomControl
+      name="LocationSearch"
+      position={position}
+      className={classNames([className, CLS_PREFIX])}
+      style={style}
+    >
       <Select
         className={`${CLS_PREFIX}_select`}
         onSearch={onSearch}
@@ -58,9 +65,11 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
               <div title={option.name} className={`${CLS_PREFIX}_option-name`}>
                 {option.name}
               </div>
-              <div title={option.address} className={`${CLS_PREFIX}_option-address`}>
-                {option.address}
-              </div>
+              {showAddress && (
+                <div title={option.address} className={`${CLS_PREFIX}_option-address`}>
+                  {option.address}
+                </div>
+              )}
             </Option>
           );
         })}
@@ -76,4 +85,5 @@ LocationSearch.defaultProps = {
   suffixIcon: <SearchOutlined />,
   filterOption: false,
   defaultActiveFirstOption: false,
+  showAddress: true,
 };

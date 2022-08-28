@@ -8,15 +8,17 @@ export interface LocationSearchProps
    * 高德搜索服务的API key 值
    */
   gaodeParams: GaodeLocationSearchParams;
+  showAddress: boolean;
 }
 
 export type GaodeLocationSearchParams =  {
   key: string;
-  sig: string;
-  keywords: string;
-  types: string;
-  city: string;
-  citylimit: boolean;
+  sig?: string;
+  keywords?: string;
+  types?: string;
+  city?: string;
+  citylimit?: boolean;
+  [key: string]: any;
 }
 
 export type LocationSearchOption = {

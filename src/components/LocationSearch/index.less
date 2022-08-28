@@ -1,14 +1,15 @@
 @cls-prefix: larkmap-location-search;
 
 .@{cls-prefix} {
+  width: 250px;
   &_select {
-    min-width: 250px;
+    width: 100%;
   }
   &_option-name,
   &_option-address {
-    text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    text-overflow: ellipsis;
   }
   &_option-address {
     color: #818181;
