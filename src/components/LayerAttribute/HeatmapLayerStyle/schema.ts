@@ -73,45 +73,10 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
         },
       },
 
-      // 半径
-      radius: {
-        type: 'void',
-        'x-component': 'FormCollapse',
-        'x-component-props': {
-          ghost: true,
-          destroyInactivePanel: true,
-          defaultActiveKey: [],
-        },
-        properties: {
-          radius: {
-            type: 'void',
-            'x-component': 'FormCollapse.CollapsePanel',
-            'x-component-props': {
-              header: '热力半径',
-            },
-            properties: {
-              radius: {
-                type: 'number',
-                title: '半径',
-                default: 20,
-                'x-decorator-props': {},
-                'x-decorator': 'FormItem',
-                'x-component': 'Slider',
-                'x-component-props': {
-                  max: 30,
-                  min: 0,
-                  step: 1,
-                },
-              },
-            },
-          },
-        },
-      },
-
-      // 权重
+      // 热力半径
       collapseItem_fillSize: {
         type: 'void',
-        'x-component': 'Collapse',
+        'x-component': 'FormCollapse',
         'x-component-props': {
           ghost: true,
           destroyInactivePanel: true,
@@ -122,10 +87,23 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
             type: 'void',
             'x-component': 'FormCollapse.CollapsePanel',
             'x-component-props': {
-              header: '权重',
+              header: '热力半径',
             },
 
             properties: {
+              radius: {
+                type: 'number',
+                title: '热力半径',
+                default: 20,
+                'x-decorator-props': {},
+                'x-decorator': 'FormItem',
+                'x-component': 'Slider',
+                'x-component-props': {
+                  max: 30,
+                  min: 0,
+                  step: 1,
+                },
+              },
               sizeField: {
                 type: 'string',
                 title: '权重字段',
