@@ -26,6 +26,7 @@ export default () => {
           lineWidth: {
             type: 'number',
             title: '描边宽度',
+            default: 0,
             'x-decorator': 'FormItem',
             'x-component': 'NumberPicker',
             'x-component-props': {
@@ -36,10 +37,12 @@ export default () => {
           lineOpacity: {
             type: 'string',
             title: '透明度',
+            default: 1,
             'x-decorator': 'FormItem',
             'x-component': 'Slider',
             'x-decorator-props': {},
             'x-component-props': {
+              min: 0,
               max: 1,
               step: 0.1,
             },

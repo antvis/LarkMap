@@ -1,6 +1,6 @@
 import type { BubbleLayerOptions } from '@antv/l7-composite-layers';
 import type { CommonProps } from '../../../types/common';
-import type { FieldItem } from '../types';
+import type { FieldSelectOptionType } from '../types';
 
 /**
  * 气泡图层样式属性值
@@ -14,7 +14,7 @@ export interface BubbleLayerStyleAttributeProps extends CommonProps {
   /**
    * 数据字段
    */
-  fieldList: FieldItem[];
+  fieldList: FieldSelectOptionType[];
   /**
    * 初始值
    */

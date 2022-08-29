@@ -1,6 +1,6 @@
-import type { FieldItem } from '../types';
+import type { FieldSelectOptionType } from '../types';
 
-export default (fieldList: FieldItem[] = []) => {
+export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] = []) => {
   return {
     type: 'void',
     'x-component': 'Collapse',
@@ -55,15 +55,9 @@ export default (fieldList: FieldItem[] = []) => {
             'x-reactions': [
               {
                 dependencies: ['fillColorField'],
-                when: '{{$deps[0]}}',
                 fulfill: {
                   state: {
-                    visible: true,
-                  },
-                },
-                otherwise: {
-                  state: {
-                    visible: false,
+                    visible: '{{ $deps[0] !== undefined }}',
                   },
                 },
               },
@@ -83,15 +77,9 @@ export default (fieldList: FieldItem[] = []) => {
             'x-reactions': [
               {
                 dependencies: ['fillColorField'],
-                when: '{{$deps[0]}}',
                 fulfill: {
                   state: {
-                    visible: false,
-                  },
-                },
-                otherwise: {
-                  state: {
-                    visible: true,
+                    visible: '{{ $deps[0] === undefined }}',
                   },
                 },
               },
@@ -114,19 +102,15 @@ export default (fieldList: FieldItem[] = []) => {
             ],
             'x-decorator': 'FormItem',
             'x-component': 'RibbonSelect',
+            'x-component-props': {},
             'x-decorator-props': {},
+            enum: [...ribbonList],
             'x-reactions': [
               {
                 dependencies: ['fillColorField'],
-                when: '{{$deps[0]}}',
                 fulfill: {
                   state: {
-                    visible: true,
-                  },
-                },
-                otherwise: {
-                  state: {
-                    visible: false,
+                    visible: '{{ $deps[0] !== undefined }}',
                   },
                 },
               },
@@ -143,15 +127,9 @@ export default (fieldList: FieldItem[] = []) => {
             'x-reactions': [
               {
                 dependencies: ['fillColorField'],
-                when: '{{$deps[0]}}',
                 fulfill: {
                   state: {
-                    visible: true,
-                  },
-                },
-                otherwise: {
-                  state: {
-                    visible: false,
+                    visible: '{{ $deps[0] !== undefined }}',
                   },
                 },
               },
@@ -168,10 +146,12 @@ export default (fieldList: FieldItem[] = []) => {
           fillColorOpacity: {
             type: 'number',
             title: '透明度',
+            default: 1,
             'x-decorator-props': {},
             'x-decorator': 'FormItem',
             'x-component': 'Slider',
             'x-component-props': {
+              min: 0,
               max: 1,
               step: 0.1,
             },

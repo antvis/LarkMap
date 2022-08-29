@@ -24,7 +24,7 @@ nav:
 ## API
 
 | 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | ref | 组件 Ref | `Ref<PolygonLayer>` | -- |
 | id | 图层 ID | `string` | -- |
 | name | 图层名称 | `string` | -- |
@@ -34,7 +34,14 @@ nav:
 | maxZoom | 图层最大可见层级 | `number` | -- |
 | pickingBuffer | 图层拾取缓存配置，如 1px 宽度的线鼠标很难拾取到, 通过设置该参数可扩大拾取的范围 | `number` | `0` |
 | autoFit | 图层加载成功后是否自动定位到图层数据可见范围，`注意`开启后图层数据发生更新时，地图也会自动缩放到图层的数据边界范围 | `boolean` | `false` |
-| blend | 图层元素混合效果 | `"normal"｜"additive"｜"subtractive"｜"min"｜"max"｜"none"` | `"normal"` |  | source | 数据配置 | `SourceOptions` | `(必选)` |  | shape | 元素形状 | `string` | `'fill'` |  | color | 元素颜色 | `ColorAttr` | `'#5FD3A6'` |  | size | 元素大小 | `SizeAttr` | -- |  | style | 元素样式 | `PolygonLayerStyleOptions` | -- |  | state | 元素交互反馈效果 | `StateAttribute` | -- |  | onCreated | 图层初始化完成后回调，用于获取 layer 对象 | `(layer: PolygonLayer) => void` | -- |
+| blend | 图层元素混合效果 | `"normal"｜"additive"｜"subtractive"｜"min"｜"max"｜"none"` | `"normal"` |
+| source | 数据配置 | `SourceOptions` | `(必选)` |
+| shape | 元素形状 | `string` | `'fill'` |
+| color | 元素颜色 | `ColorAttr` | `'#5FD3A6'` |
+| size | 元素大小 | `SizeAttr` | -- |
+| style | 元素样式 | `PolygonLayerStyleOptions` | -- |
+| state | 元素交互反馈效果 | `StateAttribute` | -- |
+| onCreated | 图层初始化完成后回调，用于获取 layer 对象 | `(layer: PolygonLayer) => void` | -- |
 
 ### source
 
