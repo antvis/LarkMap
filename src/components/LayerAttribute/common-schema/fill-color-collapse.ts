@@ -1,6 +1,6 @@
-import type { FieldItem } from '../types';
+import type { FieldSelectOptionType } from '../types';
 
-export default (fieldList: FieldItem[] = []) => {
+export default (fieldList: FieldSelectOptionType[] = []) => {
   return {
     type: 'void',
     'x-component': 'Collapse',

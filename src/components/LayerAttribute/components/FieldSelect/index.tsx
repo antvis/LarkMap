@@ -3,9 +3,10 @@ import { LoadingOutlined } from '@ant-design/icons';
 import type { ReactFC } from '@formily/react';
 import { connect, mapProps } from '@formily/react';
 import React from 'react';
+import type { FieldSelectOptionType } from '../../types';
 import AntdSelect from './AntdSelect';
 
-const FieldSelect: ReactFC<SelectProps<any, any>> = connect(
+const FieldSelect: ReactFC<SelectProps<string, FieldSelectOptionType>> = connect(
   AntdSelect,
   mapProps(
     {
