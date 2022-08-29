@@ -52,6 +52,7 @@ export const LineLayerStyleAttribute: React.FC<LineLayerStyleAttributeProps> = m
         effects() {
           onFormValuesChange((formIns: FormInstance<any>) => {
             props.onChange(LineLayerStyleFlatToConfig(formIns.values));
+            console.log(LineLayerStyleFlatToConfig(formIns.values));
           });
         },
       });

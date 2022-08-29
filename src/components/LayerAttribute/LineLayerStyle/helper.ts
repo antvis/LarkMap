@@ -18,10 +18,12 @@ export const LineLayerStyleFlatToConfig = (style: Record<string, any>) => {
           field: style.fillColorField,
           value: style.fillColorRibbon,
         }
-      : style.fillColor,
+      : '',
     style: {
       opacity: style.fillColorOpacity,
       lineType: 'solid' as const,
+      sourceColor: style.sourceColor,
+      targetColor: style.targetColor,
     },
   };
 
@@ -43,12 +45,11 @@ export const LineLayerStyleConfigToFlat = (styleConfig: LineLayerStyleAttributeV
 
     fillColorField: typeof color === 'object' ? color?.field : undefined,
     fillColorRibbon: typeof color === 'object' ? color?.value : undefined,
-    fillColor: typeof color !== 'object' ? color : undefined,
     fillColorOpacity: style?.opacity,
 
-    lineType: style.lineType,
-    sourceColor: style.sourceColor,
-    targetColor: style.targetColor,
+    lineType: style?.lineType,
+    sourceColor: style?.sourceColor,
+    targetColor: style?.targetColor,
   };
   return config;
 };

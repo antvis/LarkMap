@@ -9,19 +9,17 @@ const FieldList = [
 ];
 const DefaultLineLayerStyle = {
   size: 1.5,
-  color: {
-    field: 'line_name',
-    value: ['#5B8FF9', '#5CCEA1', '#5D7092'],
-  },
   style: {
     opacity: 0.8,
     lineType: 'solid' as const,
+    sourceColor: '#F7664E',
+    targetColor: '#5D7092',
   },
 };
 
 const lineLayerOptions: Omit<LineLayerProps, 'source'> = {
   autoFit: true,
-  shape: 'line' as const,
+  shape: 'line',
   state: { active: { color: '#FFF684' } },
   ...DefaultLineLayerStyle,
 };
