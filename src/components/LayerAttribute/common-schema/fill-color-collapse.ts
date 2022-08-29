@@ -3,7 +3,7 @@ import type { FieldSelectOptionType } from '../types';
 export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] = []) => {
   return {
     type: 'void',
-    'x-component': 'Collapse',
+    'x-component': 'FormCollapse',
     'x-component-props': {
       ghost: true,
       destroyInactivePanel: true,
@@ -12,7 +12,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
     properties: {
       fillColor: {
         type: 'void',
-        'x-component': 'Collapse.CollapsePanel',
+        'x-component': 'FormCollapse.CollapsePanel',
         'x-component-props': {
           header: '填充颜色',
         },

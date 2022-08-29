@@ -1,7 +1,7 @@
 export default () => {
   return {
     type: 'void',
-    'x-component': 'Collapse',
+    'x-component': 'FormCollapse',
     'x-component-props': {
       ghost: true,
       destroyInactivePanel: true,
@@ -10,7 +10,7 @@ export default () => {
     properties: {
       stroke: {
         type: 'void',
-        'x-component': 'Collapse.CollapsePanel',
+        'x-component': 'FormCollapse.CollapsePanel',
         'x-component-props': {
           header: '描边',
         },
