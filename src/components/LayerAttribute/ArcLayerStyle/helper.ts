@@ -1,11 +1,11 @@
-import type { LineLayerStyleAttributeValue } from './types';
+import type { ArcLayerStyleAttributeValue } from './types';
 
 /**
  * 平铺数据转图层样式数据
  * 将表单的平铺数据转为图层样式的数据结构
  * */
-export const LineLayerStyleFlatToConfig = (style: Record<string, any>) => {
-  const styleConfig: LineLayerStyleAttributeValue = {
+export const ArcLayerStyleFlatToConfig = (style: Record<string, any>) => {
+  const styleConfig: ArcLayerStyleAttributeValue = {
     size: style.sizeField
       ? {
           field: style.sizeField,
@@ -18,7 +18,7 @@ export const LineLayerStyleFlatToConfig = (style: Record<string, any>) => {
           field: style.fillColorField,
           value: style.fillColorRibbon,
         }
-      : '',
+      : undefined,
     style: {
       opacity: style.fillColorOpacity,
       lineType: 'solid' as const,
@@ -27,6 +27,14 @@ export const LineLayerStyleFlatToConfig = (style: Record<string, any>) => {
     },
   };
 
+  if (!styleConfig.color) {
+    delete styleConfig.color;
+  }
+  if (!styleConfig.style.sourceColor) {
+    delete styleConfig.style.sourceColor;
+    delete styleConfig.style.targetColor;
+  }
+
   return styleConfig;
 };
 
@@ -34,7 +42,7 @@ export const LineLayerStyleFlatToConfig = (style: Record<string, any>) => {
  * 图层样式数据转平铺数据
  * 将图层样式的数据结构转为表单的平铺数据
  * */
-export const LineLayerStyleConfigToFlat = (styleConfig: LineLayerStyleAttributeValue) => {
+export const ArcLayerStyleConfigToFlat = (styleConfig: ArcLayerStyleAttributeValue) => {
   const { size, color, style } = styleConfig;
   const config = {
     size: typeof size === 'object' ? undefined : size,

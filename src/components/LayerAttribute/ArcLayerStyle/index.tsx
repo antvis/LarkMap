@@ -10,14 +10,12 @@ import ColorPicker from '../components/ColorPicker';
 import RibbonSelect from '../components/RibbonSelect';
 import Slider from '../components/Slider';
 import SliderRange from '../components/SliderRange';
-import type { LineLayerStyleAttributeProps } from './types';
+import type { ArcLayerStyleAttributeProps } from './types';
 import schema from './schema';
-import { LineLayerStyleConfigToFlat, LineLayerStyleFlatToConfig } from './helper';
+import { ArcLayerStyleConfigToFlat, ArcLayerStyleFlatToConfig } from './helper';
 import { CLS_PREFIX } from './constant';
 
-export const LineLayerStyleAttributeSchemaField: React.FC<Pick<LineLayerStyleAttributeProps, 'fieldList'>> = (
-  props,
-) => {
+export const ArcLayerStyleAttributeSchemaField: React.FC<Pick<ArcLayerStyleAttributeProps, 'fieldList'>> = (props) => {
   const SchemaField = useMemo(
     () =>
       createSchemaField({
@@ -43,16 +41,16 @@ export const LineLayerStyleAttributeSchemaField: React.FC<Pick<LineLayerStyleAtt
   return <SchemaField schema={_schema} />;
 };
 
-export const LineLayerStyleAttribute: React.FC<LineLayerStyleAttributeProps> = memo(
+export const ArcLayerStyleAttribute: React.FC<ArcLayerStyleAttributeProps> = memo(
   function ChoroplethLayerStyleAttribute(props) {
     const form = useMemo(() => {
-      const initialValues = LineLayerStyleConfigToFlat(props.initialValues);
+      const initialValues = ArcLayerStyleConfigToFlat(props.initialValues);
       const _form = createForm({
         initialValues,
         effects() {
           onFormValuesChange((formIns: FormInstance<any>) => {
-            props.onChange(LineLayerStyleFlatToConfig(formIns.values));
-            console.log(LineLayerStyleFlatToConfig(formIns.values));
+            props.onChange(ArcLayerStyleFlatToConfig(formIns.values));
+            console.log(ArcLayerStyleFlatToConfig(formIns.values));
           });
         },
       });
@@ -73,7 +71,7 @@ export const LineLayerStyleAttribute: React.FC<LineLayerStyleAttributeProps> = m
         wrapperAlign="right"
         feedbackLayout="terse"
       >
-        <LineLayerStyleAttributeSchemaField fieldList={props.fieldList} />
+        <ArcLayerStyleAttributeSchemaField fieldList={props.fieldList} />
       </Form>
     );
   },

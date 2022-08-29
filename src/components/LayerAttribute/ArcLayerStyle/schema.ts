@@ -194,7 +194,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
             type: 'void',
             'x-component': 'Collapse.CollapsePanel',
             'x-component-props': {
-              header: '填充大小',
+              header: '线宽',
             },
 
             properties: {
@@ -215,7 +215,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
 
               size: {
                 type: 'number',
-                title: '大小',
+                title: '半径',
                 'x-decorator': 'FormItem',
                 'x-component': 'Slider',
                 'x-component-props': {
@@ -242,7 +242,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
               },
               sizeRange: {
                 type: 'number',
-                title: '大小',
+                title: '半径',
                 'x-decorator': 'FormItem',
                 'x-component': 'SliderRange',
                 'x-component-props': {
