@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
 
 const FieldList = [
-  { type: 'string', lable: 'c', value: 'c' },
-  { type: 'number', lable: 't', value: 't' },
+  { type: 'string', lable: 'c', value: 'c', typeColor: 'green' },
+  { type: 'number', lable: 't', value: 't', typeColor: 'gold' },
 ];
 
 const DefaultHeatmapLayerStyle = {

@@ -1,6 +1,6 @@
-import type { FieldItem } from '../types';
+import type { FieldSelectOptionType } from '../types';
 
-export default (fieldList: FieldItem[] = []) => {
+export default (fieldList: FieldSelectOptionType[] = []) => {
   return {
     type: 'void',
     'x-component': 'Collapse',
@@ -46,15 +46,9 @@ export default (fieldList: FieldItem[] = []) => {
             'x-reactions': [
               {
                 dependencies: ['radiusField'],
-                when: '{{$deps[0]}}',
                 fulfill: {
                   state: {
-                    visible: false,
-                  },
-                },
-                otherwise: {
-                  state: {
-                    visible: true,
+                    visible: '{{ $deps[0] === undefined }}',
                   },
                 },
               },
@@ -74,15 +68,9 @@ export default (fieldList: FieldItem[] = []) => {
             'x-reactions': [
               {
                 dependencies: ['radiusField'],
-                when: '{{$deps[0]}}',
                 fulfill: {
                   state: {
-                    visible: true,
-                  },
-                },
-                otherwise: {
-                  state: {
-                    visible: false,
+                    visible: '{{ $deps[0] !== undefined }}',
                   },
                 },
               },

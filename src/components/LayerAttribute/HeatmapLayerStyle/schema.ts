@@ -1,5 +1,5 @@
-import type { FieldItem } from '../types';
-export default (fieldList: FieldItem[] = []) => {
+import type { FieldSelectOptionType } from '../types';
+export default (fieldList: FieldSelectOptionType[] = []) => {
   return {
     type: 'object',
     properties: {

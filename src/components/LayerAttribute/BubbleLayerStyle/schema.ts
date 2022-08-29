@@ -2,9 +2,9 @@ import fillColorCollapse from '../common-schema/fill-color-collapse';
 import lableCollapse from '../common-schema/lable-collapse';
 import pointRadius from '../common-schema/point-radius-collapse';
 import strokeCollapse from '../common-schema/stroke-collapse';
-import type { FieldItem } from '../types';
+import type { FieldSelectOptionType } from '../types';
 
-export default (fieldList: FieldItem[] = []) => {
+export default (fieldList: FieldSelectOptionType[] = []) => {
   return {
     type: 'object',
     properties: {

@@ -91,7 +91,7 @@ const createFormCollapse = (defaultActiveKeys?: ActiveKeys) => {
   return markRaw(formCollapse);
 };
 
-export const FormCollapse: ComposedFormCollapse = observer(({ formCollapse, ...props }) => {
+const FormCollapse: ComposedFormCollapse = observer(({ formCollapse, ...props }) => {
   const field = useField();
   const panels = usePanels();
   const prefixCls = usePrefixCls('custom-formily-collapse', props);
@@ -148,7 +148,6 @@ const CollapsePanel: React.FC<React.PropsWithChildren<CollapsePanelProps>> = ({ 
 };
 
 FormCollapse.CollapsePanel = CollapsePanel;
-// @ts-ignore
 FormCollapse.createFormCollapse = createFormCollapse;
 
 export default FormCollapse;

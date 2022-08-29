@@ -4,9 +4,10 @@ import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
 
 const FieldList = [
-  { type: 'string', lable: '城市', value: 'name' },
-  { type: 'number', lable: '温度', value: 'temperature' },
+  { type: 'string', lable: '城市', value: 'name', typeColor: 'green', typeName: '文本' },
+  { type: 'number', lable: '温度', value: 'temperature', typeColor: 'gold', typeName: '数值' },
 ];
+
 const DefaultBubbleLayerStyle = {
   radius: 40,
   fillColor: '#0f9960',

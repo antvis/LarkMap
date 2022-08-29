@@ -4,10 +4,9 @@
 @slider-prefix-cls: ~'@{ant-prefix}-formily-ribbon-select';
 
 .@{slider-prefix-cls} {
-  .@{ant-prefix}-select-selector {
-    padding: 2px 0 !important;
-  }
-  .@{ant-prefix}-formily-item-control-content-component {
-    line-height: normal !important;
+  &__selection-item {
+    display: flex;
+    align-items: center;
+    height: 100%;
   }
 }
