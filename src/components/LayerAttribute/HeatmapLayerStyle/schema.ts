@@ -5,7 +5,7 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
     properties: {
       color: {
         type: 'void',
-        'x-component': 'Collapse',
+        'x-component': 'FormCollapse',
         'x-component-props': {
           ghost: true,
           destroyInactivePanel: true,
@@ -14,7 +14,7 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
         properties: {
           color: {
             type: 'void',
-            'x-component': 'Collapse.CollapsePanel',
+            'x-component': 'FormCollapse.CollapsePanel',
             'x-component-props': {
               header: '热力颜色',
             },
@@ -76,7 +76,7 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
       // 半径
       radius: {
         type: 'void',
-        'x-component': 'Collapse',
+        'x-component': 'FormCollapse',
         'x-component-props': {
           ghost: true,
           destroyInactivePanel: true,
@@ -85,7 +85,7 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
         properties: {
           radius: {
             type: 'void',
-            'x-component': 'Collapse.CollapsePanel',
+            'x-component': 'FormCollapse.CollapsePanel',
             'x-component-props': {
               header: '热力半径',
             },
@@ -120,7 +120,7 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
         properties: {
           fillsize: {
             type: 'void',
-            'x-component': 'Collapse.CollapsePanel',
+            'x-component': 'FormCollapse.CollapsePanel',
             'x-component-props': {
               header: '权重',
             },
