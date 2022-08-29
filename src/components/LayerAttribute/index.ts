@@ -12,3 +12,7 @@ export type {
 export { HeatmapLayerStyleAttribute, HeatmapLayerStyleAttributeSchemaField } from './HeatmapLayerStyle';
 export { heatmapLayerStyleFlatToConfig, heatmapLayerStyleConfigToFlat } from './HeatmapLayerStyle/helper';
 export type { HeatmapLayerStyleAttributeValue, HeatmapLayerStyleAttributeProps } from './HeatmapLayerStyle/types';
+
+export { LineLayerStyleAttribute, LineLayerStyleAttributeSchemaField } from './LineLayerStyle';
+export { LineLayerStyleConfigToFlat, LineLayerStyleFlatToConfig } from './LineLayerStyle/helper';
+export type { LineLayerStyleAttributeValue, LineLayerStyleAttributeProps } from './LineLayerStyle/types';
