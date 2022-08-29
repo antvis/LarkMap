@@ -1,4 +1,4 @@
-export const FIELD_COLOR_MAP: string[][] = [
+export const DEFAULT_RIBBON_LIST: string[][] = [
   [
     'rgb(247, 251, 255)',
     'rgb(222, 235, 247)',

@@ -46,15 +46,9 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
             'x-reactions': [
               {
                 dependencies: ['radiusField'],
-                when: '{{$deps[0]}}',
                 fulfill: {
                   state: {
-                    visible: false,
-                  },
-                },
-                otherwise: {
-                  state: {
-                    visible: true,
+                    visible: '{{ $deps[0] === undefined }}',
                   },
                 },
               },
@@ -74,15 +68,9 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
             'x-reactions': [
               {
                 dependencies: ['radiusField'],
-                when: '{{$deps[0]}}',
                 fulfill: {
                   state: {
-                    visible: true,
-                  },
-                },
-                otherwise: {
-                  state: {
-                    visible: false,
+                    visible: '{{ $deps[0] !== undefined }}',
                   },
                 },
               },

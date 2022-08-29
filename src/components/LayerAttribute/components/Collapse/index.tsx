@@ -148,7 +148,6 @@ const CollapsePanel: React.FC<React.PropsWithChildren<CollapsePanelProps>> = ({ 
 };
 
 FormCollapse.CollapsePanel = CollapsePanel;
-// @ts-ignore
 FormCollapse.createFormCollapse = createFormCollapse;
 
 export default FormCollapse;
