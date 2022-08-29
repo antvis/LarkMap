@@ -4,6 +4,7 @@ import { Form, FormItem, Input, NumberPicker, Select, Switch } from '@formily/an
 import { createSchemaField } from '@formily/react';
 import type { Form as FormInstance } from '@formily/core';
 import { createForm, onFormValuesChange } from '@formily/core';
+import { debounce } from 'lodash-es';
 import { FormCollapse, FieldSelect, ColorPicker, RibbonSelect, Slider, SliderRange } from '../components';
 import type { HeatmapLayerStyleAttributeProps } from './types';
 import schema from './schema';
@@ -45,9 +46,11 @@ export const HeatmapLayerStyleAttribute: React.FC<HeatmapLayerStyleAttributeProp
       const _form = createForm({
         initialValues,
         effects() {
-          onFormValuesChange((formIns: FormInstance<any>) => {
-            props.onChange(heatmapLayerStyleFlatToConfig(formIns.values));
-          });
+          onFormValuesChange(
+            debounce((formIns: FormInstance<any>) => {
+              props.onChange(heatmapLayerStyleFlatToConfig(formIns.values));
+            }, 150),
+          );
         },
       });
 

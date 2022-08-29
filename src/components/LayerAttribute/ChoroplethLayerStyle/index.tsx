@@ -4,6 +4,7 @@ import { Form, FormItem, Input, NumberPicker, Select, Switch } from '@formily/an
 import { createSchemaField } from '@formily/react';
 import type { Form as FormInstance } from '@formily/core';
 import { createForm, onFormValuesChange } from '@formily/core';
+import { debounce } from 'lodash-es';
 import { FormCollapse, FieldSelect, ColorPicker, RibbonSelect, Slider, SliderRange } from '../components';
 import type { ChoroplethLayerStyleAttributeProps } from './types';
 import schema from './schema';
@@ -44,9 +45,11 @@ export const ChoroplethLayerStyleAttribute: React.FC<ChoroplethLayerStyleAttribu
       const _form = createForm({
         initialValues,
         effects() {
-          onFormValuesChange((formIns: FormInstance<any>) => {
-            props.onChange(choroplethLayerStyleFlatToConfig(formIns.values));
-          });
+          onFormValuesChange(
+            debounce((formIns: FormInstance<any>) => {
+              props.onChange(choroplethLayerStyleFlatToConfig(formIns.values));
+            }, 150),
+          );
         },
       });
 
