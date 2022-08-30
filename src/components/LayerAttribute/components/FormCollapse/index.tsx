@@ -94,7 +94,7 @@ const createFormCollapse = (defaultActiveKeys?: ActiveKeys) => {
 const FormCollapse: ComposedFormCollapse = observer(({ formCollapse, ...props }) => {
   const field = useField();
   const panels = usePanels();
-  const prefixCls = usePrefixCls('custom-formily-collapse', props);
+  const prefixCls = usePrefixCls('custom-formily-form-collapse', props);
   const _formCollapse = useMemo(() => {
     return formCollapse ? formCollapse : createFormCollapse(props.defaultActiveKey);
   }, []);

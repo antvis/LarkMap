@@ -1,4 +1,4 @@
-export { default as FormCollapse } from './Collapse';
+export { default as FormCollapse } from './FormCollapse';
 export { default as ColorPicker } from './ColorPicker';
 export { default as FieldSelect } from './FieldSelect';
 export { default as Slider } from './Slider';
