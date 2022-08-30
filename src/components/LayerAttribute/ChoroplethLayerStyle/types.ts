@@ -16,6 +16,10 @@ export interface ChoroplethLayerStyleAttributeProps extends CommonProps {
    */
   fieldList: FieldSelectOptionType[];
   /**
+   * 色带配置
+   */
+  ribbonList?: string[][];
+  /**
    * 初始值
    */
   initialValues: ChoroplethLayerStyleAttributeValue;

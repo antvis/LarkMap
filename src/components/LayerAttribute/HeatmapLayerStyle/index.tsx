@@ -11,9 +11,9 @@ import schema from './schema';
 import { heatmapLayerStyleConfigToFlat, heatmapLayerStyleFlatToConfig } from './helper';
 import { CLS_PREFIX } from './constant';
 
-export const HeatmapLayerStyleAttributeSchemaField: React.FC<Pick<HeatmapLayerStyleAttributeProps, 'fieldList'>> = (
-  props,
-) => {
+export const HeatmapLayerStyleAttributeSchemaField: React.FC<
+  Pick<HeatmapLayerStyleAttributeProps, 'fieldList' | 'ribbonList'>
+> = (props) => {
   const SchemaField = useMemo(
     () =>
       createSchemaField({
@@ -34,7 +34,7 @@ export const HeatmapLayerStyleAttributeSchemaField: React.FC<Pick<HeatmapLayerSt
     [],
   );
 
-  const _schema = useMemo(() => schema(props.fieldList), [props.fieldList]);
+  const _schema = useMemo(() => schema(props.fieldList, props.ribbonList), [props.fieldList, props.ribbonList]);
 
   return <SchemaField schema={_schema} />;
 };
