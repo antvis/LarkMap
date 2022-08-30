@@ -14,5 +14,8 @@ export { heatmapLayerStyleFlatToConfig, heatmapLayerStyleConfigToFlat } from './
 export type { HeatmapLayerStyleAttributeValue, HeatmapLayerStyleAttributeProps } from './HeatmapLayerStyle/types';
 
 export { LineLayerStyleAttribute, LineLayerStyleAttributeSchemaField } from './LineLayerStyle';
-export { LineLayerStyleConfigToFlat, LineLayerStyleFlatToConfig } from './LineLayerStyle/helper';
+export {
+  lineLayerStyleConfigToFlat as LineLayerStyleConfigToFlat,
+  lineLayerStyleFlatToConfig as LineLayerStyleFlatToConfig,
+} from './LineLayerStyle/helper';
 export type { LineLayerStyleAttributeValue, LineLayerStyleAttributeProps } from './LineLayerStyle/types';

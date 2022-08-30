@@ -8,7 +8,7 @@ import { debounce } from 'lodash-es';
 import { FormCollapse, FieldSelect, ColorPicker, RibbonSelect, Slider, SliderRange } from '../components';
 import type { LineLayerStyleAttributeProps } from './types';
 import schema from './schema';
-import { LineLayerStyleConfigToFlat, LineLayerStyleFlatToConfig } from './helper';
+import { lineLayerStyleConfigToFlat, lineLayerStyleFlatToConfig } from './helper';
 import { CLS_PREFIX } from './constant';
 
 export const LineLayerStyleAttributeSchemaField: React.FC<
@@ -42,13 +42,13 @@ export const LineLayerStyleAttribute: React.FC<LineLayerStyleAttributeProps> = m
   props,
 ) {
   const form = useMemo(() => {
-    const initialValues = LineLayerStyleConfigToFlat(props.initialValues);
+    const initialValues = lineLayerStyleConfigToFlat(props.initialValues);
     const _form = createForm({
       initialValues,
       effects() {
         onFormValuesChange(
           debounce((formIns: FormInstance<any>) => {
-            props.onChange(LineLayerStyleFlatToConfig(formIns.values));
+            props.onChange(lineLayerStyleFlatToConfig(formIns.values));
           }, 150),
         );
       },
