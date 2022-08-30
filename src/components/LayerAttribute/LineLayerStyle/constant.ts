@@ -12,8 +12,8 @@ export const DefaultLineLayerStyle: LineLayerStyleAttributeValue = {
   },
   style: {
     opacity: 0.8,
-    lineType: 'solid' as const,
-    sourceColor: '#F7664E',
-    targetColor: '#5D7092',
+    // lineType: 'solid' as const,
+    // sourceColor: '#F7664E',
+    // targetColor: '#5D7092',
   },
 };
