@@ -27,14 +27,6 @@ export const ArcLayerStyleFlatToConfig = (style: Record<string, any>) => {
     },
   };
 
-  if (!styleConfig.color) {
-    delete styleConfig.color;
-  }
-  if (!styleConfig.style.sourceColor) {
-    delete styleConfig.style.sourceColor;
-    delete styleConfig.style.targetColor;
-  }
-
   return styleConfig;
 };
 
