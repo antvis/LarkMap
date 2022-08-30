@@ -3,14 +3,14 @@ import type { CommonProps } from '../../../types/common';
 import type { FieldSelectOptionType } from '../types';
 
 /**
- * 区域图层样式属性值
+ * 线图层样式属性值
  */
-export type ArcLayerStyleAttributeValue = Omit<LineLayerOptions, 'source'>;
+export type LineLayerStyleAttributeValue = Omit<LineLayerOptions, 'source'>;
 
 /**
  * 组件类型定义
  */
-export interface ArcLayerStyleAttributeProps extends CommonProps {
+export interface LineLayerStyleAttributeProps extends CommonProps {
   /**
    * 数据字段
    */
@@ -18,9 +18,9 @@ export interface ArcLayerStyleAttributeProps extends CommonProps {
   /**
    * 初始值
    */
-  initialValues: ArcLayerStyleAttributeValue;
+  initialValues: LineLayerStyleAttributeValue;
   /**
    * 属性表单发生改变时
    */
-  onChange?: (values: ArcLayerStyleAttributeValue) => void;
+  onChange?: (values: LineLayerStyleAttributeValue) => void;
 }

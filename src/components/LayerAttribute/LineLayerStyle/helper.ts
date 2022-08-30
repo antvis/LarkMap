@@ -1,11 +1,11 @@
-import type { ArcLayerStyleAttributeValue } from './types';
+import type { LineLayerStyleAttributeValue } from './types';
 
 /**
  * 平铺数据转图层样式数据
  * 将表单的平铺数据转为图层样式的数据结构
  * */
-export const ArcLayerStyleFlatToConfig = (style: Record<string, any>) => {
-  const styleConfig: ArcLayerStyleAttributeValue = {
+export const LineLayerStyleFlatToConfig = (style: Record<string, any>) => {
+  const styleConfig: LineLayerStyleAttributeValue = {
     size: style.sizeField
       ? {
           field: style.sizeField,
@@ -42,7 +42,7 @@ export const ArcLayerStyleFlatToConfig = (style: Record<string, any>) => {
  * 图层样式数据转平铺数据
  * 将图层样式的数据结构转为表单的平铺数据
  * */
-export const ArcLayerStyleConfigToFlat = (styleConfig: ArcLayerStyleAttributeValue) => {
+export const LineLayerStyleConfigToFlat = (styleConfig: LineLayerStyleAttributeValue) => {
   const { size, color, style } = styleConfig;
   const config = {
     size: typeof size === 'object' ? undefined : size,

@@ -1,5 +1,5 @@
-import type { ArcLayerStyleAttributeValue, LineLayerProps } from '@antv/larkmap';
-import { LarkMap, LineLayer, CustomControl, ArcLayerStyleAttribute } from '@antv/larkmap';
+import type { LineLayerStyleAttributeValue, LineLayerProps } from '@antv/larkmap';
+import { LarkMap, LineLayer, CustomControl, LineLayerStyleAttribute } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
 
@@ -43,12 +43,12 @@ export default () => {
     <LarkMap mapType="GaodeV1" style={{ height: '400px', overflow: 'hidden' }}>
       <CustomControl position="topleft" style={{ width: '300px', background: '#fff', padding: '10px' }}>
         <h3>属性配置</h3>
-        <ArcLayerStyleAttribute
+        <LineLayerStyleAttribute
           style={{ overflowX: 'hidden', overflowY: 'auto', maxHeight: '300px' }}
           initialValues={DefaultLineLayerStyle}
           fieldList={FieldList}
-          onChange={(values: ArcLayerStyleAttributeValue) => {
-            console.log('values: ', values);
+          onChange={(values: LineLayerStyleAttributeValue) => {
+            // console.log('values: ', values);
             setLayerOptions(values);
           }}
         />

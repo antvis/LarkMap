@@ -1,10 +1,10 @@
-import type { ArcLayerStyleAttributeValue } from './types';
+import type { LineLayerStyleAttributeValue } from './types';
 
 /** 组件名称, 前缀 */
-export const CLS_PREFIX = 'larkmap-Line-layer-style-attribute';
+export const CLS_PREFIX = 'larkmap-line-layer-style-attribute';
 
 /** 默认值样式属性 */
-export const DefaultLineLayerStyle: ArcLayerStyleAttributeValue = {
+export const DefaultLineLayerStyle: LineLayerStyleAttributeValue = {
   size: 1.5,
   color: {
     field: 'line_name',

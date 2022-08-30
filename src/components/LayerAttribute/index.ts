@@ -13,6 +13,6 @@ export { HeatmapLayerStyleAttribute, HeatmapLayerStyleAttributeSchemaField } fro
 export { heatmapLayerStyleFlatToConfig, heatmapLayerStyleConfigToFlat } from './HeatmapLayerStyle/helper';
 export type { HeatmapLayerStyleAttributeValue, HeatmapLayerStyleAttributeProps } from './HeatmapLayerStyle/types';
 
-export { ArcLayerStyleAttribute, ArcLayerStyleAttributeSchemaField } from './ArcLayerStyle';
-export { ArcLayerStyleConfigToFlat, ArcLayerStyleFlatToConfig } from './ArcLayerStyle/helper';
-export type { ArcLayerStyleAttributeValue, ArcLayerStyleAttributeProps } from './ArcLayerStyle/types';
+export { LineLayerStyleAttribute, LineLayerStyleAttributeSchemaField } from './LineLayerStyle';
+export { LineLayerStyleConfigToFlat, LineLayerStyleFlatToConfig } from './LineLayerStyle/helper';
+export type { LineLayerStyleAttributeValue, LineLayerStyleAttributeProps } from './LineLayerStyle/types';
