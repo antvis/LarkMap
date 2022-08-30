@@ -16,6 +16,10 @@ export interface HeatmapLayerStyleAttributeProps extends CommonProps {
    */
   fieldList: FieldSelectOptionType[];
   /**
+   * 色带配置
+   */
+  ribbonList?: string[][];
+  /**
    * 初始值
    */
   initialValues?: HeatmapLayerStyleAttributeValue;

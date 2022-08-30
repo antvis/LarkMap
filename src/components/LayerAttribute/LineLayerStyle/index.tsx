@@ -11,9 +11,9 @@ import schema from './schema';
 import { LineLayerStyleConfigToFlat, LineLayerStyleFlatToConfig } from './helper';
 import { CLS_PREFIX } from './constant';
 
-export const LineLayerStyleAttributeSchemaField: React.FC<Pick<LineLayerStyleAttributeProps, 'fieldList'>> = (
-  props,
-) => {
+export const LineLayerStyleAttributeSchemaField: React.FC<
+  Pick<LineLayerStyleAttributeProps, 'fieldList' | 'ribbonList'>
+> = (props) => {
   const SchemaField = useMemo(
     () =>
       createSchemaField({
@@ -33,7 +33,7 @@ export const LineLayerStyleAttributeSchemaField: React.FC<Pick<LineLayerStyleAtt
       }),
     [],
   );
-  const _schema = useMemo(() => schema(props.fieldList), [props.fieldList]);
+  const _schema = useMemo(() => schema(props.fieldList, props.ribbonList), [props.fieldList, props.ribbonList]);
 
   return <SchemaField schema={_schema} />;
 };

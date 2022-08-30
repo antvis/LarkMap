@@ -12,7 +12,7 @@ import { choroplethLayerStyleConfigToFlat, choroplethLayerStyleFlatToConfig } fr
 import { CLS_PREFIX } from './constant';
 
 export const ChoroplethLayerStyleAttributeSchemaField: React.FC<
-  Pick<ChoroplethLayerStyleAttributeProps, 'fieldList'>
+  Pick<ChoroplethLayerStyleAttributeProps, 'fieldList' | 'ribbonList'>
 > = (props) => {
   const SchemaField = useMemo(
     () =>
@@ -33,7 +33,7 @@ export const ChoroplethLayerStyleAttributeSchemaField: React.FC<
       }),
     [],
   );
-  const _schema = useMemo(() => schema(props.fieldList), [props.fieldList]);
+  const _schema = useMemo(() => schema(props.fieldList, props.ribbonList), [props.fieldList, props.ribbonList]);
 
   return <SchemaField schema={_schema} />;
 };

@@ -11,9 +11,9 @@ import schema from './schema';
 import { bubbleLayerStyleConfigToFlat, bubbleLayerStyleFlatToConfig } from './helper';
 import { CLS_PREFIX } from './constant';
 
-export const BubbleLayerStyleAttributeSchemaField: React.FC<Pick<BubbleLayerStyleAttributeProps, 'fieldList'>> = (
-  props,
-) => {
+export const BubbleLayerStyleAttributeSchemaField: React.FC<
+  Pick<BubbleLayerStyleAttributeProps, 'fieldList' | 'ribbonList'>
+> = (props) => {
   const SchemaField = useMemo(
     () =>
       createSchemaField({
@@ -34,7 +34,7 @@ export const BubbleLayerStyleAttributeSchemaField: React.FC<Pick<BubbleLayerStyl
     [],
   );
 
-  const _schema = useMemo(() => schema(props.fieldList), [props.fieldList]);
+  const _schema = useMemo(() => schema(props.fieldList, props.ribbonList), [props.fieldList, props.ribbonList]);
 
   return <SchemaField schema={_schema} />;
 };

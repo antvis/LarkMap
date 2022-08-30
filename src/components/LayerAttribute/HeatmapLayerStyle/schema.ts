@@ -1,5 +1,5 @@
 import type { FieldSelectOptionType } from '../types';
-export default (fieldList: FieldSelectOptionType[] = []) => {
+export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] = []) => {
   return {
     type: 'object',
     properties: {
@@ -37,6 +37,7 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
                 'x-decorator': 'FormItem',
                 'x-component': 'RibbonSelect',
                 'x-decorator-props': {},
+                enum: [...ribbonList],
               },
               colorsReverseOrder: {
                 type: 'boolean',
