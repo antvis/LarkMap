@@ -9,11 +9,11 @@ nav:
   path: /components
 ---
 
-# 弧线图层样式属性 - ArcLayerStyleAttribute
+# 线图层样式属性 - LineLayerStyleAttribute
 
 ## 介绍
 
-`ArcLayerStyleAttribute` 是 [线图层 - LineLayer](/components/layers/base-layers/line-layer) 的样式属性配置组件，用于图层配置可视化场景。
+`LineLayerStyleAttribute` 是 [线图层 - LineLayer](/components/layers/base-layers/line-layer) 的样式属性配置组件，用于图层配置可视化场景。
 
 ## 代码演示
 

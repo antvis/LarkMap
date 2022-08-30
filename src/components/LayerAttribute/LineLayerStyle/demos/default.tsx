@@ -5,15 +5,16 @@ import 'antd/dist/antd.css';
 
 const FieldList = [
   { type: 'string', lable: '名称', value: 'line_name', typeColor: 'green', typeName: '文本' },
-  { type: 'number', lable: 'id', value: 'line_id', typeColor: 'gold', typeName: '数值' },
+  { type: 'number', lable: 'id', value: 'line_id', typeColor: 'green', typeName: '文本' },
 ];
 const DefaultLineLayerStyle = {
+  color: {
+    field: 'line_name',
+    value: ['#5B8FF9', '#5CCEA1', '#5D7092'],
+  },
   size: 1.5,
   style: {
     opacity: 0.8,
-    lineType: 'solid' as const,
-    sourceColor: '#F7664E',
-    targetColor: '#5D7092',
   },
 };
 

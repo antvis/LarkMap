@@ -6,7 +6,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
     properties: {
       collapseItem_fillColor: {
         type: 'void',
-        'x-component': 'Collapse',
+        'x-component': 'FormCollapse',
         'x-component-props': {
           ghost: true,
           destroyInactivePanel: true,
@@ -15,9 +15,9 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
         properties: {
           fillColor: {
             type: 'void',
-            'x-component': 'Collapse.CollapsePanel',
+            'x-component': 'FormCollapse.CollapsePanel',
             'x-component-props': {
-              header: '填充颜色',
+              header: '颜色',
             },
             properties: {
               fillColorField: {
@@ -66,11 +66,12 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
                   },
                 ],
               },
+
               // 颜色选择器
-              sourceColor: {
-                title: '起点颜色',
+              fillColor: {
+                title: '颜色',
                 type: 'string',
-                default: '#F7664E',
+                default: '#5B8FF9',
                 'x-decorator': 'FormItem',
                 'x-component': 'ColorPicker',
                 'x-component-props': {
@@ -88,23 +89,49 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
                   },
                 ],
               },
-              targetColor: {
-                type: 'string',
-                title: '终点颜色',
-                default: '#5B8FF9',
-                'x-decorator': 'FormItem',
-                'x-component': 'ColorPicker',
-                'x-reactions': [
-                  {
-                    dependencies: ['fillColorField'],
-                    fulfill: {
-                      state: {
-                        visible: '{{ $deps[0] === undefined }}',
-                      },
-                    },
-                  },
-                ],
-              },
+
+              // 起点颜色选择器
+              // sourceColor: {
+              //   title: '起点颜色',
+              //   type: 'string',
+              //   default: '#F7664E',
+              //   'x-decorator': 'FormItem',
+              //   'x-component': 'ColorPicker',
+              //   'x-component-props': {
+              //     placeholder: '颜色',
+              //   },
+              //   'x-decorator-props': {},
+              //   'x-reactions': [
+              //     {
+              //       dependencies: ['fillColorField'],
+              //       fulfill: {
+              //         state: {
+              //           visible: '{{ $deps[0] === undefined }}',
+              //         },
+              //       },
+              //     },
+              //   ],
+              // },
+
+              // 终点颜色选择器
+              // targetColor: {
+              //   type: 'string',
+              //   title: '终点颜色',
+              //   default: '#5B8FF9',
+              //   'x-decorator': 'FormItem',
+              //   'x-component': 'ColorPicker',
+              //   'x-reactions': [
+              //     {
+              //       dependencies: ['fillColorField'],
+              //       fulfill: {
+              //         state: {
+              //           visible: '{{ $deps[0] === undefined }}',
+              //         },
+              //       },
+              //     },
+              //   ],
+              // },
+
               // 色带
               fillColorRibbon: {
                 type: 'string',
@@ -183,7 +210,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
 
       collapseItem_fillSize: {
         type: 'void',
-        'x-component': 'Collapse',
+        'x-component': 'FormCollapse',
         'x-component-props': {
           ghost: true,
           destroyInactivePanel: true,
@@ -192,7 +219,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
         properties: {
           fillSize: {
             type: 'void',
-            'x-component': 'Collapse.CollapsePanel',
+            'x-component': 'FormCollapse.CollapsePanel',
             'x-component-props': {
               header: '线宽',
             },
@@ -215,7 +242,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
 
               size: {
                 type: 'number',
-                title: '半径',
+                title: '宽度',
                 'x-decorator': 'FormItem',
                 'x-component': 'Slider',
                 'x-component-props': {
@@ -226,15 +253,9 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
                 'x-reactions': [
                   {
                     dependencies: ['sizeField'],
-                    when: '{{$deps[0]}}',
                     fulfill: {
                       state: {
-                        visible: false,
-                      },
-                    },
-                    otherwise: {
-                      state: {
-                        visible: true,
+                        visible: '{{ $deps[0] === undefined }}',
                       },
                     },
                   },
@@ -242,7 +263,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
               },
               sizeRange: {
                 type: 'number',
-                title: '半径',
+                title: '宽度',
                 'x-decorator': 'FormItem',
                 'x-component': 'SliderRange',
                 'x-component-props': {
@@ -254,20 +275,36 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
                 'x-reactions': [
                   {
                     dependencies: ['sizeField'],
-                    when: '{{$deps[0]}}',
                     fulfill: {
                       state: {
-                        visible: true,
-                      },
-                    },
-                    otherwise: {
-                      state: {
-                        visible: false,
+                        visible: '{{ $deps[0] !== undefined }}',
                       },
                     },
                   },
                 ],
               },
+
+              // lineType: {
+              //   type: 'string',
+              //   title: '线类型',
+              //   default: 'solid',
+              //   enum: [
+              //     {
+              //       label: '实线',
+              //       value: 'solid',
+              //     },
+              //     {
+              //       label: '虚线',
+              //       value: 'dash',
+              //     },
+              //   ],
+              //   'x-decorator': 'FormItem',
+              //   'x-component': 'Select',
+              //   'x-component-props': {
+              //     placeholder: '请选择',
+              //   },
+              //   'x-decorator-props': {},
+              // },
             },
           },
         },

@@ -1,15 +1,11 @@
 import classNames from 'classnames';
 import React, { memo, useMemo } from 'react';
-import { Form, FormCollapse, FormItem, Input, NumberPicker, Select, Switch } from '@formily/antd';
+import { Form, FormItem, Input, NumberPicker, Select, Switch } from '@formily/antd';
 import { createSchemaField } from '@formily/react';
 import type { Form as FormInstance } from '@formily/core';
 import { createForm, onFormValuesChange } from '@formily/core';
-import Collapse from '../components/Collapse';
-import FieldSelect from '../components/FieldSelect';
-import ColorPicker from '../components/ColorPicker';
-import RibbonSelect from '../components/RibbonSelect';
-import Slider from '../components/Slider';
-import SliderRange from '../components/SliderRange';
+import { debounce } from 'lodash-es';
+import { FormCollapse, FieldSelect, ColorPicker, RibbonSelect, Slider, SliderRange } from '../components';
 import type { LineLayerStyleAttributeProps } from './types';
 import schema from './schema';
 import { LineLayerStyleConfigToFlat, LineLayerStyleFlatToConfig } from './helper';
@@ -31,7 +27,6 @@ export const LineLayerStyleAttributeSchemaField: React.FC<Pick<LineLayerStyleAtt
           Slider,
           RibbonSelect,
           ColorPicker,
-          Collapse,
           FieldSelect,
           SliderRange,
         },
@@ -51,10 +46,11 @@ export const LineLayerStyleAttribute: React.FC<LineLayerStyleAttributeProps> = m
     const _form = createForm({
       initialValues,
       effects() {
-        onFormValuesChange((formIns: FormInstance<any>) => {
-          props.onChange(LineLayerStyleFlatToConfig(formIns.values));
-          console.log(LineLayerStyleFlatToConfig(formIns.values));
-        });
+        onFormValuesChange(
+          debounce((formIns: FormInstance<any>) => {
+            props.onChange(LineLayerStyleFlatToConfig(formIns.values));
+          }, 150),
+        );
       },
     });
 
