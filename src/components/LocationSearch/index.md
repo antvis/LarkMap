@@ -19,20 +19,20 @@ nav:
 
 ### 默认示例
 
-<code src="./demos/default.tsx" defaultShowCode></code>
+<code src="./demos/default.tsx" defaultShowCode compact></code>
 
 ### 使用场景
 
-<code src="./demos/control.tsx" defaultShowCode></code>
+<code src="./demos/control.tsx" defaultShowCode compact></code>
 
 ## API
 
 | 属性值 | 描述 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| gaodeParams | 调用高德查询接口时传递的参数 | [GaodeLocationSearchParams](#GaodeLocationSearchParams) | - |
-| value | 当前选中地点的 id | `string &#124; undefined` | - |
-| onChange | 选中选项发生改变时（包含清空）的回调， | `(id?: string, option?: LocationSearchOption) => void` | - |
-| onOptionsChange | 根据关键字搜索得出的选项发生改变时的回调 | `(options: LocationSearchOption[]) => void` | - |
+| searchParams | 调用高德查询接口时传递的参数 | [GaodeLocationSearchParams](#GaodeLocationSearchParams) | - |
+| value | 当前选中地点的名称 | `string &#124; undefined` | - |
+| onChange | 选中选项发生改变时（包含清空）的回调， | `(name?: string, option?: LocationSearchOption) => void` | - |
+| onSearchFinish | 根据关键字搜索得出的选项发生改变时的回调 | `(options: LocationSearchOption[]) => void` | - |
 | showAddress | 是否在列表中展示地点选项的地址 | `boolean` | `true` |
 | position | 控件所在地图悬停的位置 | `PositionType` | `'topleft'` |
 | className | 控件容器自定义样式 | `string` | - |
@@ -46,7 +46,7 @@ nav:
 | ------ | --------------------------------- | -------- | ------ |
 | key    | 高德 Web API 服务的 key 值 (必传) | `string` | -      |
 
-该其他配置可以查看高德的 [路径规划](https://lbs.amap.com/api/webservice/guide/api/direction)
+该其他配置可以查看高德的 [搜索 POI 2.0](https://lbs.amap.com/api/webservice/guide/api/newpoisearch)
 
 ### LocationSearchOption
 
@@ -54,32 +54,19 @@ nav:
 
 ```ts
 type LocationSearchOption = {
-  id: string;
-  parent: string | any[];
-  childtype: string | any[];
   name: string;
+  id: string;
+  location: string;
+  longitude: number;
+  latitude: number;
   type: string;
   typecode: string;
-  biz_type: any[];
-  address: string;
-  location: string;
-  tel: string | any[];
   pname: string;
   cityname: string;
   adname: string;
-  importance: any[];
-  shopid: any[];
-  shopinfo: string;
-  poiweight: any[];
-  distance: any[];
-  parking_type?: string;
-  biz_ext: {
-    rating: string | any[];
-    cost: any[];
-  };
-  photos: {
-    title: any[];
-    url: string;
-  }[];
+  address: string;
+  pcode: string;
+  citycode: string;
+  adcode: string;
 };
 ```

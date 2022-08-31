@@ -2,11 +2,13 @@ import { LocationSearch, LarkMap } from '@antv/larkmap';
 import React from 'react';
 
 export default () => (
-  <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
+  <>
     <LocationSearch
-      gaodeParams={{
+      style={{ marginBottom: 8 }}
+      searchParams={{
         key: '4892acc9f825e343bcf1e25a56199826',
       }}
     />
-  </LarkMap>
+    <LarkMap mapType="GaodeV1" style={{ height: '300px' }} />
+  </>
 );
