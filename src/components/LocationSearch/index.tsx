@@ -1,5 +1,5 @@
 import { Select, Spin } from 'antd';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import qs from 'query-string';
 import { SearchOutlined } from '@ant-design/icons';
 import { useDebounceFn } from 'ahooks';
@@ -12,15 +12,21 @@ import './index.less';
 const { Option } = Select;
 
 export const LocationSearch: React.FC<LocationSearchProps> = ({
+  gaodeParams,
+  showAddress,
+  onOptionsChange,
+  onChange,
   position,
   className,
   style,
-  gaodeParams,
-  showAddress,
   ...selectProps
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState<LocationSearchOption[]>([]);
+
+  useEffect(() => {
+    onOptionsChange?.(options);
+  }, [onOptionsChange, options]);
 
   const { run: onSearch } = useDebounceFn(
     async (searchText: string) => {
@@ -39,11 +45,26 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
       const res = await (await fetch(url)).json().finally(() => {
         setIsLoading(false);
       });
-      setOptions(res?.pois ?? []);
+      setOptions(
+        (res?.pois ?? []).map((item) => {
+          const [lon, lat] = item.location.split(',');
+          item.longitude = +lon;
+          item.latitude = +lat;
+          return item;
+        }),
+      );
     },
     {
       wait: 1000,
     },
+  );
+
+  const onLocationChange = useCallback(
+    (id?: string) => {
+      const targetOption = id && options.find((option) => option.id === id);
+      onChange?.(id, targetOption);
+    },
+    [onChange, options],
   );
 
   return (
@@ -55,8 +76,9 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
     >
       <Select
         className={`${CLS_PREFIX}_select`}
-        onSearch={onSearch}
         notFoundContent={isLoading ? <Spin size="small" /> : null}
+        onSearch={onSearch}
+        onChange={onLocationChange}
         {...selectProps}
       >
         {options.map((option) => {
@@ -79,11 +101,12 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
 };
 
 LocationSearch.defaultProps = {
-  placeholder: '请输入要搜索的位置',
+  placeholder: '请输入要搜索地名',
   showSearch: true,
   allowClear: true,
   suffixIcon: <SearchOutlined />,
   filterOption: false,
   defaultActiveFirstOption: false,
   showAddress: true,
+  position: 'topleft',
 };

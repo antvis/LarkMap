@@ -3,15 +3,32 @@ import type { CustomControlProps } from '../CustomControl/types';
 
 export interface LocationSearchProps
   extends Pick<CustomControlProps, 'position' | 'className' | 'style'>,
-    SelectProps {
+    Omit<SelectProps, 'onChange' | 'onSearch'> {
   /**
    * 高德搜索服务的API key 值
    */
   gaodeParams: GaodeLocationSearchParams;
-  showAddress: boolean;
+
+  /**
+   * 选项中是否展示地址
+   */
+  showAddress?: boolean;
+
+  /**
+   * 当下拉选项发生改变的回调
+   * @param options
+   */
+  onOptionsChange?: (options: LocationSearchOption[]) => void;
+
+  /**
+   * 选项发生改变时的回调
+   * @param id
+   * @param option
+   */
+  onChange?: (id?: string | null, option?: LocationSearchOption | null) => void;
 }
 
-export type GaodeLocationSearchParams =  {
+export type GaodeLocationSearchParams = {
   key: string;
   sig?: string;
   keywords?: string;
@@ -19,7 +36,7 @@ export type GaodeLocationSearchParams =  {
   city?: string;
   citylimit?: boolean;
   [key: string]: any;
-}
+};
 
 export type LocationSearchOption = {
   id: string;
@@ -30,6 +47,8 @@ export type LocationSearchOption = {
   typecode: string;
   biz_type: any[];
   address: string;
+  longitude: number;
+  latitude: number;
   location: string;
   tel: string | any[];
   pname: string;
