@@ -86,8 +86,12 @@ export class LayerManager extends EventEmitter {
   /**
    * 根据图层 ID 获取图层
    */
-  public getLayer(id: string): Layer | undefined {
+  public getLayerById(id: string): Layer | undefined {
     return this.layerMap.get(id);
+  }
+
+  public getLayer(id: string): Layer | undefined {
+    return this.getLayerById(id);
   }
 
   /**

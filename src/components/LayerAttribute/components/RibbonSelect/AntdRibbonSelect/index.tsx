@@ -2,19 +2,22 @@ import type { SelectProps } from 'antd';
 import { Select } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { usePrefixCls } from '@formily/antd/esm/__builtins__/hooks/usePrefixCls';
-import { FIELD_COLOR_MAP } from './constants';
+import { DEFAULT_RIBBON_LIST } from './constants';
 import './index.less';
 
+export type AntdRibbonSelectProps = SelectProps<string[], string[]>;
+
 // 选择色带的自定义组件
-const AntdRibbonSelect = (props: SelectProps<any, any>) => {
+const AntdRibbonSelect = (props: AntdRibbonSelectProps) => {
   const prefixCls = usePrefixCls('formily-ribbon-select', props);
   const [valueIndex, setValueIndex] = useState(0);
   const [colorReverse, setColorReverse] = useState(false);
+  const ribbonList = props.options && props.options.length ? props.options : DEFAULT_RIBBON_LIST;
 
   useEffect(() => {
     if (props.value) {
       // 正序
-      const index = FIELD_COLOR_MAP.findIndex((item) => {
+      const index = ribbonList.findIndex((item) => {
         return item.toString() === props.value.toString();
       });
       if (index !== -1) {
@@ -23,7 +26,7 @@ const AntdRibbonSelect = (props: SelectProps<any, any>) => {
         return;
       }
       //倒叙
-      const colorReverseIndex = FIELD_COLOR_MAP.findIndex((item) => {
+      const colorReverseIndex = ribbonList.findIndex((item) => {
         return [...item].reverse().toString() === props.value.toString();
       });
       if (colorReverseIndex !== -1) {
@@ -38,32 +41,30 @@ const AntdRibbonSelect = (props: SelectProps<any, any>) => {
 
   return (
     <Select
-      bordered={false}
       showArrow={false}
       className={prefixCls}
-      onChange={(e) => {
-        const res = colorReverse ? [...FIELD_COLOR_MAP[e]].reverse() : FIELD_COLOR_MAP[e];
-        // @ts-ignore
-        props?.onChange(res);
+      onChange={(index) => {
+        const value = colorReverse ? [...ribbonList[index]].reverse() : ribbonList[index];
+        props?.onChange(value, value);
       }}
       value={valueIndex}
     >
-      {FIELD_COLOR_MAP.map((item, index) => {
+      {ribbonList.map((item, index) => {
         const colorList = colorReverse ? [...item].reverse() : item;
         return (
           <Select.Option key={index} value={index}>
-            {colorList.map((color) => (
-              <span
-                key={color}
-                style={{
-                  backgroundColor: color,
-                  display: 'inline-block',
-                  height: '100%',
-                  width: '11.11%',
-                  overflow: 'hidden',
-                }}
-              />
-            ))}
+            <div className={`${prefixCls}__selection-item`}>
+              {colorList.map((color) => (
+                <span
+                  key={color}
+                  style={{
+                    backgroundColor: color,
+                    height: '22px',
+                    width: `${100 / colorList.length}%`,
+                  }}
+                />
+              ))}
+            </div>
           </Select.Option>
         );
       })}

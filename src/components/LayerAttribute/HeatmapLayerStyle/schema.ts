@@ -1,11 +1,11 @@
-import type { FieldItem } from '../types';
-export default (fieldList: FieldItem[] = []) => {
+import type { FieldSelectOptionType } from '../types';
+export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] = []) => {
   return {
     type: 'object',
     properties: {
       color: {
         type: 'void',
-        'x-component': 'Collapse',
+        'x-component': 'FormCollapse',
         'x-component-props': {
           ghost: true,
           destroyInactivePanel: true,
@@ -14,7 +14,7 @@ export default (fieldList: FieldItem[] = []) => {
         properties: {
           color: {
             type: 'void',
-            'x-component': 'Collapse.CollapsePanel',
+            'x-component': 'FormCollapse.CollapsePanel',
             'x-component-props': {
               header: '热力颜色',
             },
@@ -37,6 +37,7 @@ export default (fieldList: FieldItem[] = []) => {
                 'x-decorator': 'FormItem',
                 'x-component': 'RibbonSelect',
                 'x-decorator-props': {},
+                enum: [...ribbonList],
               },
               colorsReverseOrder: {
                 type: 'boolean',
@@ -73,26 +74,27 @@ export default (fieldList: FieldItem[] = []) => {
         },
       },
 
-      // 半径
-      radius: {
+      // 热力半径
+      collapseItem_fillSize: {
         type: 'void',
-        'x-component': 'Collapse',
+        'x-component': 'FormCollapse',
         'x-component-props': {
           ghost: true,
           destroyInactivePanel: true,
           defaultActiveKey: [],
         },
         properties: {
-          radius: {
+          fillsize: {
             type: 'void',
-            'x-component': 'Collapse.CollapsePanel',
+            'x-component': 'FormCollapse.CollapsePanel',
             'x-component-props': {
               header: '热力半径',
             },
+
             properties: {
               radius: {
                 type: 'number',
-                title: '半径',
+                title: '热力半径',
                 default: 20,
                 'x-decorator-props': {},
                 'x-decorator': 'FormItem',
@@ -103,29 +105,6 @@ export default (fieldList: FieldItem[] = []) => {
                   step: 1,
                 },
               },
-            },
-          },
-        },
-      },
-
-      // 权重
-      collapseItem_fillSize: {
-        type: 'void',
-        'x-component': 'Collapse',
-        'x-component-props': {
-          ghost: true,
-          destroyInactivePanel: true,
-          defaultActiveKey: [],
-        },
-        properties: {
-          fillsize: {
-            type: 'void',
-            'x-component': 'Collapse.CollapsePanel',
-            'x-component-props': {
-              header: '权重',
-            },
-
-            properties: {
               sizeField: {
                 type: 'string',
                 title: '权重字段',

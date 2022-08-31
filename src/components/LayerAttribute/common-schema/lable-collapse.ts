@@ -1,9 +1,9 @@
-import type { FieldItem } from '../types';
+import type { FieldSelectOptionType } from '../types';
 
-export default (fieldList: FieldItem[] = []) => {
+export default (fieldList: FieldSelectOptionType[] = []) => {
   return {
     type: 'void',
-    'x-component': 'Collapse',
+    'x-component': 'FormCollapse',
     'x-component-props': {
       ghost: true,
       destroyInactivePanel: true,
@@ -12,7 +12,7 @@ export default (fieldList: FieldItem[] = []) => {
     properties: {
       labelstyle: {
         type: 'void',
-        'x-component': 'Collapse.CollapsePanel',
+        'x-component': 'FormCollapse.CollapsePanel',
         'x-component-props': {
           header: '标签样式',
         },

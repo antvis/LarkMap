@@ -1,6 +1,6 @@
 import type { ChoroplethLayerOptions } from '@antv/l7-composite-layers';
 import type { CommonProps } from '../../../types/common';
-import type { FieldItem } from '../types';
+import type { FieldSelectOptionType } from '../types';
 
 /**
  * 区域图层样式属性值
@@ -14,7 +14,11 @@ export interface ChoroplethLayerStyleAttributeProps extends CommonProps {
   /**
    * 数据字段
    */
-  fieldList: FieldItem[];
+  fieldList: FieldSelectOptionType[];
+  /**
+   * 色带配置
+   */
+  ribbonList?: string[][];
   /**
    * 初始值
    */

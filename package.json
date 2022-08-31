@@ -1,6 +1,6 @@
 {
   "name": "@antv/larkmap",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "description": "A React toolkit for geospatial visualization based on L7",
   "license": "MIT",
   "main": "lib/index.js",
@@ -42,9 +42,7 @@
     "ahooks": "^3.3.13",
     "classnames": "^2.3.1",
     "lodash-es": "^4.17.21",
-    "query-string": "^7.1.1",
-    "react-color": "^2.19.3",
-    "react-dom": "^16.14.0"
+    "react-color": "^2.19.3"
   },
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",
