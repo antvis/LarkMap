@@ -40,7 +40,7 @@ nav:
 | ------ | --------------------------------- | -------- | ------ |
 | key    | 高德 Web API 服务的 key 值 (必传) | `string` | -      |
 
-该其他配置可以查看高德的 [搜索 POI 2.0](https://lbs.amap.com/api/webservice/guide/api/newpoisearch)
+该其他配置可以查看高德的 [输入提示](https://lbs.amap.com/api/webservice/guide/api/inputtips)
 
 ### LocationSearchOption
 
