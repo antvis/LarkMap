@@ -58,7 +58,7 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
   const onLocationChange = useCallback(
     (name?: string) => {
       const targetOption = name && options.find((option) => option.name === name);
-      onChange?.(name, targetOption);
+      onChange?.(name || undefined, targetOption || undefined);
     },
     [onChange, options],
   );
@@ -75,11 +75,11 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
         const tip = `${showDistrict ? option.district : ''}${showAddress ? option.address : ''}`;
         return (
           <Option key={option.id} value={option.name}>
-            <div title={option.name} className={`${CLS_PREFIX}_option-name`}>
+            <div title={option.name} className={`${CLS_PREFIX}__option-name`}>
               {option.name}
             </div>
             {tip && (
-              <div title={tip} className={`${CLS_PREFIX}_option-address`}>
+              <div title={tip} className={`${CLS_PREFIX}__option-tip`}>
                 {tip}
               </div>
             )}

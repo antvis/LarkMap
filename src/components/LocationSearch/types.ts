@@ -27,7 +27,7 @@ export interface LocationSearchProps extends Omit<SelectProps, 'onChange' | 'onS
    * @param name
    * @param option
    */
-  onChange?: (name?: string | null, option?: LocationSearchOption | null) => void;
+  onChange?: (name?: string, option?: LocationSearchOption) => void;
 }
 
 export type GaodeLocationSearchParams = {

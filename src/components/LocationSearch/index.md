@@ -24,7 +24,7 @@ nav:
 | 属性值 | 描述 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | searchParams | 调用高德查询接口时传递的参数 | [GaodeLocationSearchParams](#GaodeLocationSearchParams) | - |
-| value | 当前选中地点的名称 | `string &#124; undefined` | - |
+| value | 当前选中地点的名称 | `string` | - |
 | onChange | 选中选项发生改变时（包含清空）的回调， | `(name?: string, option?: LocationSearchOption) => void` | - |
 | onSearchFinish | 根据关键字搜索得出的选项发生改变时的回调 | `(options: LocationSearchOption[]) => void` | - |
 | showDistrcit | 是否展示地点选项的省市区 | `boolean` | `true` |
