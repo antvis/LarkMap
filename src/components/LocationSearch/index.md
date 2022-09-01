@@ -2,8 +2,8 @@
 toc: content
 order: 4
 group:
-  title: 控件组件
-  order: 2
+  title: 分析组件
+  order: 3
 nav:
   title: 组件
   path: /components
@@ -21,10 +21,6 @@ nav:
 
 <code src="./demos/default.tsx" defaultShowCode compact></code>
 
-### 使用场景
-
-<code src="./demos/control.tsx" defaultShowCode compact></code>
-
 ## API
 
 | 属性值 | 描述 | 类型 | 默认值 |
@@ -33,7 +29,8 @@ nav:
 | value | 当前选中地点的名称 | `string &#124; undefined` | - |
 | onChange | 选中选项发生改变时（包含清空）的回调， | `(name?: string, option?: LocationSearchOption) => void` | - |
 | onSearchFinish | 根据关键字搜索得出的选项发生改变时的回调 | `(options: LocationSearchOption[]) => void` | - |
-| showAddress | 是否在列表中展示地点选项的地址 | `boolean` | `true` |
+| showDistrcit | 是否在列表中展示地点选项的省市区 | `boolean` | `true` |
+| showAddress | 是否在列表中展示地点选项的详细地址 | `boolean` | `true` |
 | position | 控件所在地图悬停的位置 | `PositionType` | `'topleft'` |
 | className | 控件容器自定义样式 | `string` | - |
 | style | 控件容器自定义 style | `CSSProperties` | - |
@@ -54,19 +51,13 @@ nav:
 
 ```ts
 type LocationSearchOption = {
-  name: string;
   id: string;
+  name: string;
   location: string;
   longitude: number;
   latitude: number;
-  type: string;
-  typecode: string;
-  pname: string;
-  cityname: string;
-  adname: string;
-  address: string;
-  pcode: string;
-  citycode: string;
+  district: string;
   adcode: string;
+  address: string;
 };
 ```

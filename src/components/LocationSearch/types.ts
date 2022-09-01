@@ -7,7 +7,12 @@ export interface LocationSearchProps extends Omit<SelectProps, 'onChange' | 'onS
   searchParams: GaodeLocationSearchParams;
 
   /**
-   * 选项中是否展示地址
+   * 是否展示省市区地址
+   */
+  showDistrict?: boolean;
+
+  /**
+   * 选项中是否展示详细地址
    */
   showAddress?: boolean;
 
@@ -27,27 +32,23 @@ export interface LocationSearchProps extends Omit<SelectProps, 'onChange' | 'onS
 
 export type GaodeLocationSearchParams = {
   key: string;
-  sig?: string;
   keywords?: string;
-  types?: string;
+  location?: string;
+  type?: string;
   city?: string;
   citylimit?: boolean;
+  sig?: string;
+  datatype?: string;
   [key: string]: any;
 };
 
 export type LocationSearchOption = {
-  name: string;
   id: string;
+  name: string;
   location: string;
   longitude: number;
   latitude: number;
-  type: string;
-  typecode: string;
-  pname: string;
-  cityname: string;
-  adname: string;
-  address: string;
-  pcode: string;
-  citycode: string;
+  district: string;
   adcode: string;
+  address: string;
 };

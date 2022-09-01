@@ -11,6 +11,7 @@ const { Option } = Select;
 
 export const LocationSearch: React.FC<LocationSearchProps> = ({
   searchParams,
+  showDistrict,
   showAddress,
   onSearchFinish,
   onChange,
@@ -41,7 +42,7 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
         setIsLoading(false);
       });
       setOptions(
-        (res?.pois ?? []).map((item) => {
+        (res?.tips ?? []).map((item) => {
           const [lon, lat] = item.location.split(',');
           item.longitude = +lon;
           item.latitude = +lat;
@@ -71,14 +72,15 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
       {...selectProps}
     >
       {options.map((option) => {
+        const tip = `${showDistrict ? option.district : ''}${showAddress ? option.address : ''}`;
         return (
           <Option key={option.id} value={option.name}>
             <div title={option.name} className={`${CLS_PREFIX}_option-name`}>
               {option.name}
             </div>
-            {showAddress && (
-              <div title={option.address} className={`${CLS_PREFIX}_option-address`}>
-                {option.address}
+            {tip && (
+              <div title={tip} className={`${CLS_PREFIX}_option-address`}>
+                {tip}
               </div>
             )}
           </Option>
@@ -96,4 +98,5 @@ LocationSearch.defaultProps = {
   filterOption: false,
   defaultActiveFirstOption: false,
   showAddress: true,
+  showDistrict: true,
 };
