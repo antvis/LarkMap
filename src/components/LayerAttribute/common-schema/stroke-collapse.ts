@@ -28,7 +28,7 @@ export default () => {
             title: '描边宽度',
             default: 0,
             'x-decorator': 'FormItem',
-            'x-component': 'NumberPicker',
+            'x-component': 'Slider',
             'x-component-props': {
               placeholder: '描边宽度',
             },

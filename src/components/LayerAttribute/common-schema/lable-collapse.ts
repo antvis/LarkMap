@@ -45,7 +45,7 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
             type: 'number',
             title: '字号',
             'x-decorator': 'FormItem',
-            'x-component': 'NumberPicker',
+            'x-component': 'Slider',
             'x-component-props': {
               placeholder: '字号',
             },

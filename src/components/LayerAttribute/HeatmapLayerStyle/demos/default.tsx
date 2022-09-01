@@ -18,8 +18,18 @@ const DefaultHeatmapLayerStyle = {
     radius: 30,
     opacity: 1,
     rampColors: {
-      colors: ['#FF4818', '#F7B74A', '#FFF598', '#F27DEB', '#8C1EB2', '#421EB2'],
-      positions: [0, 0.2, 0.4, 0.6, 0.8, 1.0],
+      colors: [
+        'rgb(255, 247, 236)',
+        'rgb(254, 232, 200)',
+        'rgb(253, 212, 158)',
+        'rgb(253, 187, 132)',
+        'rgb(252, 141, 89)',
+        'rgb(239, 101, 72)',
+        'rgb(215, 48, 31)',
+        'rgb(179, 0, 0)',
+        'rgb(127, 0, 0)',
+      ].reverse(),
+      positions: [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1],
     },
   },
 };
