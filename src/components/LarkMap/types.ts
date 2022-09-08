@@ -1,6 +1,7 @@
 import type { IMapConfig, IMapWrapper, ISceneConfig, Scene } from '@antv/l7';
 import type { CommonProps } from '../../types/common';
 import type { LayerManager } from '../../utils';
+import type { SceneEventProps } from './use-scene-event/types';
 
 export type LarkMapContextValue = {
   scene: Scene;
@@ -17,7 +18,7 @@ export type LarkMapRefAttributes = {
 /**
  * 组件类型定义
  */
-export interface LarkMapProps extends CommonProps, Omit<ISceneConfig, 'id' | 'canvas' | 'map'> {
+export interface LarkMapProps extends CommonProps, Omit<ISceneConfig, 'id' | 'canvas' | 'map'>, SceneEventProps {
   /** 容器 id */
   id?: string;
   /** 地图实例，可选，也可以通过配置项自动生成实例 */
