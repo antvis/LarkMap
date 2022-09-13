@@ -5,26 +5,28 @@ import type { SceneEventProps } from '../../types';
  */
 export const SceneEventMap: Record<keyof SceneEventProps, string> = {
   onLoaded: 'loaded',
+  onDestroy: 'destroy',
+
   onResize: 'resize',
+
   onMapMove: 'mapmove',
   onMoveStart: 'movestart',
   onMoveEnd: 'moveend',
   onZoomChange: 'zoomchange',
   onZoomStart: 'zoomstart',
   onZoomEnd: 'zoomend',
+
   onClick: 'click',
   onDblclick: 'dblclick',
+  onContextMenu: 'contextmenu',
+
   onMouseMove: 'mousemove',
   onMousewheel: 'mousewheel',
   onMousedown: 'mousedown',
-  onContextmenu: 'contextmenu',
-  onDblClick: 'dblclick',
-  onMouseWheel: 'mousewheel',
   onMouseOver: 'mouseover',
   onMouseOut: 'mouseout',
   onMouseUp: 'mouseup',
-  onMouseDown: 'mousedown',
-  onContextMenu: 'contextmenu',
+
   onDragStart: 'dragstart',
   onDragging: 'dragging',
   onDragEnd: 'dragend',

@@ -54,7 +54,7 @@ import { LarkMap } from '@antv/larkmap';
 import React from 'react';
 
 const config = {
-  mapType: 'Mapbox',
+  mapType: 'GaodeV1',
   mapOptions: {
     style: 'light',
     center: [120.210792, 30.246026],

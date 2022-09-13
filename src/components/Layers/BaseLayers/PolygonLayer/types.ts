@@ -4,4 +4,4 @@ import type { LayerCommonProps } from '../../../../types';
 /**
  * 组件类型定义
  */
-export interface PolygonLayerProps extends Omit<PolygonLayerOptions, 'onClick'>, LayerCommonProps<PolygonLayer> {}
+export interface PolygonLayerProps extends PolygonLayerOptions, LayerCommonProps<PolygonLayer> {}

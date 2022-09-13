@@ -1,20 +1,19 @@
 ### 事件监听
 
-- 绑定事件
+- 通过组件属性
+
+```jsx | pure
+<layerName onEventName={(...args) => {}} />
+```
+
+- 通过实例绑定
 
 ```js
+// 绑定事件
 layer.on(eventName: string, callback: (...args) => void);
-```
-
-- 绑定一次事件
-
-```js
+// 绑定一次事件
 layer.once(eventName: string, callback: (...args) => void);
-```
-
-- 解绑事件
-
-```js
+// 解绑事件
 layer.off(eventName: string, callback: (...args) => void);
 ```
 
@@ -31,12 +30,13 @@ layer.off(eventName: string, callback: (...args) => void);
 
 #### 点击事件
 
-| 事件名        | 类型     | 描述                     |
-| ------------- | -------- | ------------------------ |
-| click         | 左键事件 | 左键点击图层事件         |
-| unclick       | 左键事件 | 图层外左键点击事件       |
-| contextmenu   | 右键事件 | 图层要素点击右键菜单事件 |
-| uncontextmenu | 右键事件 | 图层外点击右键事件       |
+| 事件名        | 类型     | 描述               |
+| ------------- | -------- | ------------------ |
+| click         | 左键事件 | 左键点击图层事件   |
+| unclick       | 左键事件 | 图层外左键点击事件 |
+| dblclick      | 双击事件 | 双击图层事件       |
+| contextmenu   | 右键事件 | 右键点击图层事件   |
+| uncontextmenu | 右键事件 | 图层外点击右键事件 |
 
 #### 鼠标事件
 

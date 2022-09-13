@@ -23,7 +23,10 @@ export type SceneEventCallback = (e?: any) => void;
  * 场景事件
  */
 export type SceneEventProps = Partial<{
+  // 生命周期事件
   onLoaded: SceneEventCallback;
+  onDestroy: SceneEventCallback;
+  // 地图容器事件
   onResize: SceneEventCallback;
   onMapMove: SceneEventCallback;
   onMoveStart: SceneEventCallback;
@@ -31,19 +34,17 @@ export type SceneEventProps = Partial<{
   onZoomChange: SceneEventCallback;
   onZoomStart: SceneEventCallback;
   onZoomEnd: SceneEventCallback;
+  // 点击事件
   onClick: SceneEventCallback;
   onDblclick: SceneEventCallback;
+  onContextMenu: SceneEventCallback;
+  // 鼠标事件
   onMouseMove: SceneEventCallback;
   onMousewheel: SceneEventCallback;
   onMousedown: SceneEventCallback;
-  onContextmenu: SceneEventCallback;
-  onDblClick: SceneEventCallback;
-  onMouseWheel: SceneEventCallback;
   onMouseOver: SceneEventCallback;
   onMouseOut: SceneEventCallback;
   onMouseUp: SceneEventCallback;
-  onMouseDown: SceneEventCallback;
-  onContextMenu: SceneEventCallback;
   onDragStart: SceneEventCallback;
   onDragging: SceneEventCallback;
   onDragEnd: SceneEventCallback;

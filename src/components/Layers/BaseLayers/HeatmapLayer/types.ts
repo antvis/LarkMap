@@ -4,4 +4,4 @@ import type { LayerCommonProps } from '../../../../types';
 /**
  * 组件类型定义
  */
-export interface HeatmapLayerProps extends Omit<HeatmapLayerOptions, 'onClick'>, LayerCommonProps<HeatmapLayer> {}
+export interface HeatmapLayerProps extends HeatmapLayerOptions, LayerCommonProps<HeatmapLayer> {}
