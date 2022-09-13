@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { Layer } from '../../../../utils';
+import type { Layer } from '../../../../types';
 import { useLayerManager } from '../use-layer-manager';
 
 export const useLayer = <T extends Layer = Layer>(id: string): T | undefined => {
