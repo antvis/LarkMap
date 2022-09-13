@@ -1,12 +1,11 @@
 import type { Scene } from '@antv/l7';
 import { useTrackedEffect, useUnmount } from 'ahooks';
-import type { SceneEventProps, SceneEventCallback } from './types';
+import type { SceneEventProps, SceneEventCallback } from '../../types';
 import { SceneEventList, SceneEventMap } from './constant';
 
 export const useSceneEvent = (scene: Scene, props: SceneEventProps) => {
   useTrackedEffect(
     (changeIndexList: number[], previousDeps: SceneEventCallback[] = [], currentDeps: SceneEventCallback[] = []) => {
-      //
       if (!scene) {
         return;
       }

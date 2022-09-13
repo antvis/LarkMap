@@ -1,4 +1,4 @@
-import type { LayerEventProps } from './types';
+import type { LayerEventProps } from '../../../../types';
 
 /**
  * 从 LarkMap 的事件名到 Layer 事件名的映射

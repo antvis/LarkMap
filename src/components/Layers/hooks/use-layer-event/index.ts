@@ -1,9 +1,8 @@
 import { useTrackedEffect, useUnmount } from 'ahooks';
-import type { BaseLayer } from '@antv/l7';
-import type { LayerEventCallback, LayerEventProps } from './types';
+import type { Layer, LayerEventCallback, LayerEventProps } from '../../../../types';
 import { LayerEventList, LayerEventMap } from './constant';
 
-export const useLayerEvent = (layer: BaseLayer, props: LayerEventProps) => {
+export const useLayerEvent = (layer: Layer, props: LayerEventProps) => {
   useTrackedEffect(
     (changeIndexList: number[], previousDeps: LayerEventCallback[] = [], currentDeps: LayerEventCallback[] = []) => {
       changeIndexList.forEach((index) => {

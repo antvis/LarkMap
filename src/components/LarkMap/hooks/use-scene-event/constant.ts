@@ -1,4 +1,4 @@
-import type { SceneEventProps } from './types';
+import type { SceneEventProps } from '../../types';
 
 /**
  * 从 LarkMap 的事件名到 Scene 事件名的映射

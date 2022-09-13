@@ -1,7 +1,6 @@
 import type { IMapConfig, IMapWrapper, ISceneConfig, Scene } from '@antv/l7';
 import type { CommonProps } from '../../types/common';
 import type { LayerManager } from '../../utils';
-import type { SceneEventProps } from './use-scene-event/types';
 
 export type LarkMapContextValue = {
   scene: Scene;
@@ -14,6 +13,41 @@ export type LarkMapRefAttributes = {
   /** 获取 Map 实例 */
   getMap: () => Scene['map'];
 };
+
+/**
+ * 场景事件回调
+ */
+export type SceneEventCallback = (e?: any) => void;
+
+/**
+ * 场景事件
+ */
+export type SceneEventProps = Partial<{
+  onLoaded: SceneEventCallback;
+  onResize: SceneEventCallback;
+  onMapMove: SceneEventCallback;
+  onMoveStart: SceneEventCallback;
+  onMoveEnd: SceneEventCallback;
+  onZoomChange: SceneEventCallback;
+  onZoomStart: SceneEventCallback;
+  onZoomEnd: SceneEventCallback;
+  onClick: SceneEventCallback;
+  onDblclick: SceneEventCallback;
+  onMouseMove: SceneEventCallback;
+  onMousewheel: SceneEventCallback;
+  onMousedown: SceneEventCallback;
+  onContextmenu: SceneEventCallback;
+  onDblClick: SceneEventCallback;
+  onMouseWheel: SceneEventCallback;
+  onMouseOver: SceneEventCallback;
+  onMouseOut: SceneEventCallback;
+  onMouseUp: SceneEventCallback;
+  onMouseDown: SceneEventCallback;
+  onContextMenu: SceneEventCallback;
+  onDragStart: SceneEventCallback;
+  onDragging: SceneEventCallback;
+  onDragEnd: SceneEventCallback;
+}>;
 
 /**
  * 组件类型定义

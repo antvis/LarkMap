@@ -6,7 +6,7 @@ import React, { memo, forwardRef, useEffect, useImperativeHandle, useMemo, useRe
 import { LayerManager } from '../../utils';
 import { createMap } from './helper';
 import type { LarkMapContextValue, LarkMapProps, LarkMapRefAttributes } from './types';
-import { useSceneEvent } from './use-scene-event';
+import { useSceneEvent } from './hooks/use-scene-event';
 
 export const LarkMapContext = React.createContext<LarkMapContextValue>(null);
 
@@ -28,8 +28,6 @@ export const LarkMap = memo(
     const containerRef = useRef();
     const [sceneInstance, setSceneInstance] = useState<Scene>(null);
     const { current: contextValue } = useRef<LarkMapContextValue>({ scene: null, layerManager: null });
-
-    useSceneEvent(sceneInstance, props);
 
     useEffect(() => {
       let scene: Scene;
@@ -76,6 +74,8 @@ export const LarkMap = memo(
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useSceneEvent(sceneInstance, props);
 
     useImperativeHandle(ref, () => ({ getScene: () => sceneInstance, getMap: () => sceneInstance.map }), [
       sceneInstance,
