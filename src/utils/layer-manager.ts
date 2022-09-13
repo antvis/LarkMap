@@ -1,10 +1,10 @@
 import EventEmitter from '@antv/event-emitter';
-import type { ICompositeLayer, ICoreLayer, Scene } from '@antv/l7-composite-layers';
+import type { Scene } from '@antv/l7-composite-layers';
+import type { Layer } from '../types';
 
 export type LayerManagerOptions = {
   scene: Scene;
 };
-export type Layer = ICoreLayer | ICompositeLayer;
 
 let layerCounter = 0;
 

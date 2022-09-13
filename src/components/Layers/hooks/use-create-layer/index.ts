@@ -1,9 +1,8 @@
 import { useUpdateEffect } from 'ahooks';
 import { cloneDeep, isEqual } from 'lodash-es';
 import { useEffect, useRef } from 'react';
-import type { Layer } from 'utils/layer-manager';
-import type { LayerCommonProps } from '../../../types/common';
-import { useLayerManager } from '../../LarkMap/hooks';
+import type { LayerCommonProps, Layer } from '../../../../types';
+import { useLayerManager } from '../../../LarkMap/hooks';
 
 /**
  * LayerCtor 图层类 构造函数
