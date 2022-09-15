@@ -1,0 +1,32 @@
+.legendbar {
+  width: 200px;
+
+}
+
+.continuousBar {
+  height: 10px;
+  border-radius: 6px
+}
+
+.equidistantBar {
+  display: flex;
+
+  .bar {
+    height: 10px;
+  }
+
+  .bar:first-child {
+    border-radius: 6px 0 0 6px;
+  }
+
+  .bar:last-child {
+    border-radius: 0 6px 6px 0;
+  }
+}
+
+.labelbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}

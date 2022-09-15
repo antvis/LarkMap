@@ -51,6 +51,11 @@ export { useDrawGroup } from './components/Draw/use-draw-group';
 export * from './components/LayerAttribute';
 
 /**
+ * 图例组件
+ */
+export * from './components/Legend';
+
+/**
  * 版本号
  * */
 export { default as version } from './version';
