@@ -27,7 +27,6 @@ export default () => {
       style={{ height: '400px' }}
       onSceneLoaded={(scene: Scene) => {
         map.current = scene;
-        // scene.setMapStyle('dark');
       }}
     >
       <ContextMenu>

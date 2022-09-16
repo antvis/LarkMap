@@ -1,11 +1,11 @@
 import { Marker } from '@antv/l7';
-import React, { useMemo, useState, useRef , useEffect } from 'react';
-import classNames from 'classnames';
+import type React from 'react';
+import { useMemo, useEffect } from 'react';
 import { useScene } from '../LarkMap/hooks/use-scene';
 import { CLS_PREFIX } from './constant';
 import './index.less';
 
-export const ContextMenu = React.forwardRef((props = {}, ref) => {
+export const ContextMenu: React.FC = (props = {}) => {
   const scene = useScene();
 
   const initMenu = useMemo(() => {
@@ -15,7 +15,6 @@ export const ContextMenu = React.forwardRef((props = {}, ref) => {
     children?.forEach((item: any, index) => {
       const { props: itemProps } = item;
       const el = document.createElement('li');
-      // el.className = `${CLS_PREFIX}`;
       el.innerHTML = itemProps?.text;
       el.addEventListener('click', itemProps?.onClick);
       ulElement.appendChild(el);
@@ -23,14 +22,14 @@ export const ContextMenu = React.forwardRef((props = {}, ref) => {
 
     return ulElement;
   }, [props]);
+
   // 右键打开面板信息
   const mapRightClick = (e) => {
     const { lng, lat } = e.lnglat;
     const marker = new Marker({
       anchor: 'top-left',
-    })
-      .setLnglat({ lng, lat })
-      .setElement(initMenu);
+      element: initMenu,
+    }).setLnglat({ lng, lat });
 
     scene.addMarker(marker);
   };
@@ -41,10 +40,11 @@ export const ContextMenu = React.forwardRef((props = {}, ref) => {
     }
     return () => {
       if (scene) {
-        scene.removeAllLayer();
+        scene.off('contextmenu', mapRightClick);
+        scene.removeAllMakers();
       }
     };
   }, [scene]);
 
   return null;
-});
+};
