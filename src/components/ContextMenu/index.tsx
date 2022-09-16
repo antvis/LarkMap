@@ -1,12 +1,13 @@
 import { Marker } from '@antv/l7';
 import type React from 'react';
-import { useMemo, useEffect } from 'react';
+import { useMemo, useEffect, useRef } from 'react';
 import { useScene } from '../LarkMap/hooks/use-scene';
 import { CLS_PREFIX } from './constant';
 import './index.less';
 
 export const ContextMenu: React.FC = (props = {}) => {
   const scene = useScene();
+  const instanceObj = useRef(null);
 
   const initMenu = useMemo(() => {
     const { children } = props ?? {};
@@ -31,19 +32,17 @@ export const ContextMenu: React.FC = (props = {}) => {
       element: initMenu,
     }).setLnglat({ lng, lat });
 
+    marker.on('click', () => {
+      marker.remove();
+    });
+
     scene.addMarker(marker);
   };
 
   useEffect(() => {
     if (scene) {
-      scene.on('contextmenu', mapRightClick);
+      scene.on('rightclick', mapRightClick);
     }
-    return () => {
-      if (scene) {
-        scene.off('contextmenu', mapRightClick);
-        scene.removeAllMakers();
-      }
-    };
   }, [scene]);
 
   return null;
