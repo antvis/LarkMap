@@ -21,6 +21,7 @@ export { ScaleControl, ScaleControl as Scale } from './components/ScaleControl';
 export { ScaleControlProps, ScaleControlProps as ScaleProps } from './components/ScaleControl/types';
 export { ZoomControl, ZoomControl as Zoom } from './components/ZoomControl';
 export { ZoomControlProps, ZoomControlProps as ZoomProps } from './components/ZoomControl/types';
+export { ContextMenu } from './components/ContextMenu/index';
 export { LocationSearch } from './components/LocationSearch';
 export {
   LocationSearchProps,
