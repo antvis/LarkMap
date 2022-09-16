@@ -7,7 +7,6 @@ import './index.less';
 
 export const ContextMenu: React.FC = (props = {}) => {
   const scene = useScene();
-  const instanceObj = useRef(null);
 
   const initMenu = useMemo(() => {
     const { children } = props ?? {};

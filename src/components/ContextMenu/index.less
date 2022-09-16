@@ -1,11 +1,14 @@
+@root-entry-name: 'default';
+@import (reference) '~antd/es/style/themes/index.less';
+
 @cls-prefix: larkmap-context-menu;
 
 .@{cls-prefix} {
   margin: 0;
   padding: 0;
-  color: rgba(0, 0, 0, 0.8);
+  color: @text-color;
   list-style: none;
-  background: #fff;
+  background: @component-background;
 
   li {
     height: 35px;
@@ -15,6 +18,6 @@
   }
 
   li:hover {
-    background: #f3f3ee;
+    background: @item-hover-bg;
   }
 }
