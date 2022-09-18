@@ -1,48 +1,80 @@
-import { Marker } from '@antv/l7';
-import type React from 'react';
-import { useMemo, useEffect, useRef } from 'react';
+import { Marker } from '@antv/larkmap';
+import React, { useState , useMemo, useEffect } from 'react';
 import { useScene } from '../LarkMap/hooks/use-scene';
 import { CLS_PREFIX } from './constant';
 import './index.less';
+import type { ContextMenuProps } from './types';
 
-export const ContextMenu: React.FC = (props = {}) => {
+export const ContextMenu: React.FC<ContextMenuProps> = (props) => {
   const scene = useScene();
+  const [initMenu, setInitMenu] = useState({
+    visible: false,
+    position: undefined,
+  });
 
-  const initMenu = useMemo(() => {
-    const { children } = props ?? {};
-    const ulElement = document.createElement('ul');
-    ulElement.className = `${CLS_PREFIX}`;
-    children?.forEach((item: any, index) => {
-      const { props: itemProps } = item;
-      const el = document.createElement('li');
-      el.innerHTML = itemProps?.text;
-      el.addEventListener('click', itemProps?.onClick);
-      ulElement.appendChild(el);
-    });
+  const initMenuRender = useMemo(() => {
+    // @ts-ignore
+    const childs = React.Children.toArray(props?.children);
 
-    return ulElement;
+    return (
+      <ul className={`${CLS_PREFIX}`}>
+        {childs?.map((item) => {
+          // @ts-ignore
+          const { props: itemProps } = item;
+          return (
+            <li
+              onClick={() => {
+                itemProps?.onClick();
+                setInitMenu({
+                  visible: false,
+                  position: undefined,
+                });
+              }}
+            >
+              {itemProps?.text}
+            </li>
+          );
+        })}
+      </ul>
+    );
   }, [props]);
 
   // 右键打开面板信息
-  const mapRightClick = (e) => {
+  const mapRightMenuOpen = (e) => {
     const { lng, lat } = e.lnglat;
-    const marker = new Marker({
-      anchor: 'top-left',
-      element: initMenu,
-    }).setLnglat({ lng, lat });
-
-    marker.on('click', () => {
-      marker.remove();
+    setInitMenu({
+      visible: true,
+      position: { lng, lat },
     });
+  };
 
-    scene.addMarker(marker);
+  // 单击事件关闭菜单
+  const mapRightMenuClose = () => {
+    const timeOut = setTimeout(() => {
+      if (timeOut) {
+        clearTimeout(timeOut);
+        setInitMenu({
+          visible: false,
+          position: undefined,
+        });
+      }
+    }, 0);
   };
 
   useEffect(() => {
     if (scene) {
-      scene.on('rightclick', mapRightClick);
+      scene.on('contextmenu', mapRightMenuOpen);
+      scene.on('click', mapRightMenuClose);
     }
+    return () => {
+      scene.off('contextmenu', mapRightMenuOpen);
+      scene.off('click', mapRightMenuClose);
+    };
   }, [scene]);
 
-  return null;
+  return initMenu.visible ? (
+    <Marker lngLat={initMenu.position} anchor="top-left">
+      {initMenuRender}
+    </Marker>
+  ) : null;
 };
