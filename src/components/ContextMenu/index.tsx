@@ -1,11 +1,13 @@
 import { Marker } from '@antv/larkmap';
-import React, { useState , useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import classNames from 'classnames';
 import { useScene } from '../LarkMap/hooks/use-scene';
 import { CLS_PREFIX } from './constant';
 import './index.less';
 import type { ContextMenuProps } from './types';
+import { Item } from './item';
 
-export const ContextMenu: React.FC<ContextMenuProps> = (props) => {
+const ContextMenu: React.FC<ContextMenuProps> = (props) => {
   const scene = useScene();
   const [initMenu, setInitMenu] = useState({
     visible: false,
@@ -17,23 +19,15 @@ export const ContextMenu: React.FC<ContextMenuProps> = (props) => {
     const childs = React.Children.toArray(props?.children);
 
     return (
-      <ul className={`${CLS_PREFIX}`}>
+      <ul className={classNames(`${CLS_PREFIX}`, props?.className)} style={props?.styles}>
         {childs?.map((item) => {
           // @ts-ignore
-          const { props: itemProps } = item;
-          return (
-            <li
-              onClick={() => {
-                itemProps?.onClick();
-                setInitMenu({
-                  visible: false,
-                  position: undefined,
-                });
-              }}
-            >
-              {itemProps?.text}
-            </li>
-          );
+          const { props: itemProps } = item || {};
+          if (itemProps && itemProps.text) {
+            return <Item text={itemProps.text} onClick={itemProps.onClick} />;
+          } else {
+            return <>{item}</>;
+          }
         })}
       </ul>
     );
@@ -78,3 +72,5 @@ export const ContextMenu: React.FC<ContextMenuProps> = (props) => {
     </Marker>
   ) : null;
 };
+
+export { ContextMenu };

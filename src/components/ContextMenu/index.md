@@ -24,3 +24,12 @@ nav:
 <code src="./demos/default.tsx" defaultShowCode></code>
 
 <API></API>
+
+### ContextMenu.Item
+
+```ts
+type ContextMenuItem = {
+  text: string;
+  onClick?: () => void;
+};
+```
