@@ -19,7 +19,7 @@ const ContextMenu: React.FC<ContextMenuProps> = (props) => {
     const childs = React.Children.toArray(props?.children);
 
     return (
-      <ul className={classNames(`${CLS_PREFIX}`, props?.className)} style={props?.styles}>
+      <ul className={classNames(`${CLS_PREFIX}`, props?.className)} style={props?.style}>
         {childs?.map((item) => {
           // @ts-ignore
           const { props: itemProps } = item || {};
