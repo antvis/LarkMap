@@ -1,9 +1,9 @@
 ---
 toc: content
-order: 4
+order: 5
 group:
   title: 分析组件
-  order: 2
+  order: 3
 nav:
   title: 组件
   path: /components
