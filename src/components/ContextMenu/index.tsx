@@ -19,17 +19,9 @@ const ContextMenu: React.FC<ContextMenuProps> = (props) => {
     const childs = React.Children.toArray(props?.children);
 
     return (
-      <ul className={classNames(`${CLS_PREFIX}`, props?.className)} style={props?.style}>
-        {childs?.map((item) => {
-          // @ts-ignore
-          const { props: itemProps } = item || {};
-          if (itemProps && itemProps.text) {
-            return <Item text={itemProps.text} onClick={itemProps.onClick} />;
-          } else {
-            return <>{item}</>;
-          }
-        })}
-      </ul>
+      <div className={classNames(`${CLS_PREFIX}`, props?.className)} style={props?.style}>
+        {childs?.map((item) => item)}
+      </div>
     );
   }, [props]);
 
@@ -72,5 +64,7 @@ const ContextMenu: React.FC<ContextMenuProps> = (props) => {
     </Marker>
   ) : null;
 };
+
+(ContextMenu as any).Item = Item;
 
 export { ContextMenu };
