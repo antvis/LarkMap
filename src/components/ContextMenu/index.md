@@ -2,7 +2,7 @@
 toc: content
 order: 4
 group:
-  title: 控件组件
+  title: 分析组件
   order: 2
 nav:
   title: 组件

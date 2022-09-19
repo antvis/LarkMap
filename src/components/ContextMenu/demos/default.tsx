@@ -3,19 +3,19 @@ import { LarkMap, ContextMenu } from '@antv/larkmap';
 import React, { useRef } from 'react';
 
 export default () => {
-  const map = useRef<AMap.Map>();
+  const mapScene = useRef<Scene>();
 
   const handleMenu = (type: string) => {
-    if (map.current) {
+    if (mapScene.current) {
       switch (type) {
         case 'zoomIn':
-          map.current.zoomIn();
+          mapScene.current.zoomIn();
           break;
         case 'zoomOut':
-          map.current.zoomOut();
+          mapScene.current.zoomOut();
           break;
         case 'center':
-          map.current.setZoomAndCenter(3, [108.946609, 34.262324]);
+          mapScene.current.setZoomAndCenter(3, [108.946609, 34.262324]);
           break;
       }
     }
@@ -26,7 +26,7 @@ export default () => {
       mapType="GaodeV1"
       style={{ height: '400px' }}
       onSceneLoaded={(scene: Scene) => {
-        map.current = scene;
+        mapScene.current = scene;
       }}
     >
       <ContextMenu>
