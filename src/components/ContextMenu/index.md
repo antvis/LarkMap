@@ -23,6 +23,10 @@ nav:
 
 <code src="./demos/default.tsx" defaultShowCode></code>
 
+### 自定义菜单示例
+
+<code src="./demos/custom.tsx"></code>
+
 <API></API>
 
 ### ContextMenu.Item
@@ -33,22 +37,3 @@ nav:
 | onClick   | 点击菜单事件 | `() => void`    | `(必选)` |
 | className | 类名         | `string`        | --       |
 | style     | 行内样式     | `CSSProperties` | --       |
-
-## FAQ
-
-### 自定义菜单内容
-
-```tsx | pure
-import { LarkMap, ContextMenu } from '@antv/larkmap';
-import React from 'react';
-
-export default () => {
-  return (
-    <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
-      <ContextMenu>
-        <div>面板内容</div>
-      </ContextMenu>
-    </LarkMap>
-  );
-};
-```
