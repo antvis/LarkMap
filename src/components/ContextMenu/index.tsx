@@ -5,7 +5,7 @@ import { useScene } from '../LarkMap/hooks/use-scene';
 import { CLS_PREFIX } from './constant';
 import './index.less';
 import type { ContextMenuProps } from './types';
-import { Item } from './item';
+import { ContextMenuItem } from './ContextMenuItem';
 
 const ContextMenu: React.FC<ContextMenuProps> = (props) => {
   const scene = useScene();
@@ -15,12 +15,9 @@ const ContextMenu: React.FC<ContextMenuProps> = (props) => {
   });
 
   const initMenuRender = useMemo(() => {
-    // @ts-ignore
-    const childs = React.Children.toArray(props?.children);
-
     return (
       <div className={classNames(`${CLS_PREFIX}`, props?.className)} style={props?.style}>
-        {childs?.map((item) => item)}
+        {props?.children}
       </div>
     );
   }, [props]);
@@ -65,6 +62,6 @@ const ContextMenu: React.FC<ContextMenuProps> = (props) => {
   ) : null;
 };
 
-(ContextMenu as any).Item = Item;
+(ContextMenu as any).Item = ContextMenuItem;
 
 export { ContextMenu };
