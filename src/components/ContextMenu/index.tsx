@@ -1,11 +1,11 @@
-import { Marker } from '@antv/larkmap';
 import React, { useState, useMemo, useEffect } from 'react';
 import classNames from 'classnames';
 import { useScene } from '../LarkMap/hooks/use-scene';
+import { Marker } from '../Marker';
 import { CLS_PREFIX } from './constant';
-import './index.less';
 import type { ContextMenuProps } from './types';
 import { ContextMenuItem } from './ContextMenuItem';
+import './index.less';
 
 const ContextMenu: React.FC<ContextMenuProps> = (props) => {
   const scene = useScene();
