@@ -9,10 +9,18 @@ nav:
   path: /components
 ---
 
-## 分类图例-LegendCategories
+# 分类图例 - LegendCategories
+
+## 介绍
+
+分类图例
 
 ## 代码演示
 
-<code src="./demo/default.tsx"></code>
+<code src="./demos/default.tsx"></code>
 
 <API></API>
+
+### 默认示例
+
+### 其它示例

@@ -1,8 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
-import { getGradientColors } from '../utils/color';
 import type { LegendRampProps } from './types';
 import './index.less';
+import { getGradientColors } from './../../utils/color';
 
 export const CLS_PREFIX = 'larkmap-legend-ramp';
 
@@ -11,16 +11,16 @@ export function LegendRamp(props: LegendRampProps) {
 
   function Continuous({ gradient }: Record<string, string>) {
     return (
-      <div className={`${CLS_PREFIX}_continuousBar`} style={{ background: `linear-gradient(to right,${gradient})` }} />
+      <div className={`${CLS_PREFIX}__continuousBar`} style={{ background: `linear-gradient(to right,${gradient})` }} />
     );
   }
 
   function Equidistant({ color }: Record<string, any>) {
     return (
-      <div className={`${CLS_PREFIX}_equidistantBar`}>
+      <div className={`${CLS_PREFIX}__equidistantBar`}>
         {color.map((item: string) => (
           <div
-            className={`${CLS_PREFIX}_equidistantBar_bar`}
+            className={`${CLS_PREFIX}__equidistantBar__bar`}
             style={{ background: item, width: barWidth / color.length }}
             key={item}
           />
@@ -35,7 +35,7 @@ export function LegendRamp(props: LegendRampProps) {
     return (
       <div style={{ width: barWidth, ...style }} className={classnames(`${CLS_PREFIX}`, cls)}>
         {isContinuous ? <Continuous gradient={gradient} /> : <Equidistant color={color} />}
-        <div className={`${CLS_PREFIX}_labelbar`}>
+        <div className={`${CLS_PREFIX}__labelbar`}>
           <div>{`${min}${lableUnit ?? ''} ${isContinuous ? '' : '<'}`}</div>
           <div>{`${isContinuous ? '' : '≥'} ${max}${lableUnit ?? ''}`}</div>
         </div>
@@ -53,3 +53,8 @@ export function LegendRamp(props: LegendRampProps) {
 
   return <Renders />;
 }
+
+LegendRamp.defaultProps = {
+  isContinuous: false,
+  barWidth: 200,
+};

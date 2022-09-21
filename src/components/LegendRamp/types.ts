@@ -1,16 +1,20 @@
-import type { CommonProps } from './../../../types/common';
+import type { CommonProps } from '../../types/common';
 
 export interface LegendRampProps extends CommonProps {
-  /**标题 */
+  /** 图例项名称 */
   labels: string[] | number[];
-  /**单位 */
+  /** 图例项单位 */
   lableUnit: string;
-  /**颜色列表 */
+  /**图例项颜色 */
   colors: { startColor: string; endColor: string } | string[];
-  /**是否连续 */
+  /**
+   * 是否连续
+   * @default false
+   */
   isContinuous?: boolean;
   /**
-   * bar宽度
+   * 图例项宽度
+   * @default 200
    */
   barWidth?: number;
 }

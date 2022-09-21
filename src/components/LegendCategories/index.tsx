@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { getGradientColors } from '../utils/color';
+import { getGradientColors } from './../../utils/color';
 import './index.less';
 import type { LegendCategoriesProps } from './types';
 
@@ -17,10 +17,10 @@ export function LegendCategories(props: LegendCategoriesProps) {
     return (
       <div className={classnames(CLS_PREFIX, cls_name)} style={style}>
         {labels.map((item, index) => (
-          <div className={`${CLS_PREFIX}_cotent`} key={item}>
+          <div className={`${CLS_PREFIX}__content`} key={item}>
             <div
-              className={classnames(`${CLS_PREFIX}_cotent_shape`, {
-                [`${CLS_PREFIX}_cotent_${geometryType}`]: geometryType,
+              className={classnames(`${CLS_PREFIX}__content__shape`, {
+                [`${CLS_PREFIX}__content__${geometryType}`]: geometryType,
               })}
               style={getColor(color[index])}
             />
@@ -39,3 +39,8 @@ export function LegendCategories(props: LegendCategoriesProps) {
   }
   return <Renders />;
 }
+
+LegendCategories.defaultProps = {
+  geometryType: 'circle',
+  isStrokeColor: false,
+};

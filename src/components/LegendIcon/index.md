@@ -9,10 +9,18 @@ nav:
   path: /components
 ---
 
-## 图标图例-LegendIcon
+# 图标图例 - LegendIcon
+
+## 介绍
+
+图标图例
 
 ## 代码演示
 
-<code src="./demo/default.tsx"></code>
+<code src="./demos/default.tsx"></code>
 
 <API></API>
+
+### 默认示例
+
+### 其它示例

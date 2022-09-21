@@ -9,10 +9,18 @@ nav:
   path: /components
 ---
 
-## 面积图例-LegendProportion
+# 面积图例 - LegendProportion
+
+## 介绍
+
+面积图例
 
 ## 代码演示
 
-<code src="./demo/default.tsx"></code>
+<code src="./demos/default.tsx"></code>
 
 <API></API>
+
+### 默认示例
+
+### 其它示例

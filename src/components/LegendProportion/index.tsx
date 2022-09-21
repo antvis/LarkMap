@@ -48,12 +48,12 @@ export const LegendProportion = (props: LegendProportionProp) => {
 
   function CircleBox() {
     return (
-      <div className={`${CLS_PREFIX}_circlebox`} style={{ width: circleSizes[0] }}>
+      <div className={`${CLS_PREFIX}__circlebox`} style={{ width: circleSizes[0] }}>
         {circleSizes.map((item) => (
           <div
             key={item}
             style={{ width: item, height: item, background: fillColor }}
-            className={`${CLS_PREFIX}_circlebox_item`}
+            className={`${CLS_PREFIX}__circlebox__item`}
           />
         ))}
       </div>
@@ -81,4 +81,8 @@ export const LegendProportion = (props: LegendProportionProp) => {
       <LabelBox />
     </div>
   );
+};
+
+LegendProportion.defaultProps = {
+  fillColor: '#f9f9f9',
 };
