@@ -29,6 +29,14 @@ nav:
 
 <API></API>
 
+## API
+
+| 属性名    | 描述     | 类型            | 默认值 |
+| --------- | -------- | --------------- | ------ |
+| childern  | 子组件   | `ReactNode`     | --     |
+| className | 类名     | `string`        | --     |
+| style     | 行内样式 | `CSSProperties` | --     |
+
 ### ContextMenu.Item
 
 | 属性名    | 描述         | 类型            | 默认值   |

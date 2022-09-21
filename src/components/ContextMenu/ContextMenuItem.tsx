@@ -13,3 +13,5 @@ export const ContextMenuItem: React.FC<ContextMenuItemProps> = memo(function Con
     </li>
   ) : null;
 });
+
+export { ContextMenuProps } from './types';
