@@ -7,7 +7,11 @@ import type { ContextMenuProps } from './types';
 import { ContextMenuItem } from './ContextMenuItem';
 import './index.less';
 
-const ContextMenu: React.FC<ContextMenuProps> = (props) => {
+export interface ContextMenuPropsType extends React.FC<ContextMenuProps> {
+  Item?: typeof ContextMenuItem;
+}
+
+const ContextMenu: ContextMenuPropsType = (props) => {
   const scene = useScene();
   const [initMenu, setInitMenu] = useState({
     visible: false,
@@ -62,6 +66,6 @@ const ContextMenu: React.FC<ContextMenuProps> = (props) => {
   ) : null;
 };
 
-(ContextMenu as any).Item = ContextMenuItem;
+ContextMenu.Item = ContextMenuItem;
 
 export { ContextMenu };
