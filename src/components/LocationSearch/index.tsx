@@ -42,7 +42,7 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
         setIsLoading(false);
       });
       setOptions(
-        (res?.tips ?? []).map((item) => {
+        (res?.tips ?? []).filter(item => item.location && item.location.length).map((item) => {
           const [lon, lat] = item.location.split(',');
           item.longitude = +lon;
           item.latitude = +lat;
