@@ -27,8 +27,6 @@ nav:
 
 <code src="./demos/custom.tsx"></code>
 
-<API></API>
-
 ## API
 
 | 属性名    | 描述     | 类型            | 默认值 |
