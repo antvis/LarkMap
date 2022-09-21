@@ -1,19 +1,20 @@
-.circlebox {
-  position: relative;
-  display: flex;
-  justify-content: end;
-  align-items: end;
-  margin-right: 10px;
-  text-transform: uppercase;
-  width: 76px;
+@cls-prefix: larkmap-legend-proportion;
 
-  .circleboxitem {
-    border-radius: 50%;
-    position: absolute;
-    border: 1px solid #fff;
+.@{cls-prefix} {
+  display: flex;
+  align-items: flex-end;
+
+  &_circlebox {
+    position: relative;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin-right: 10px;
+
+    &_item {
+      border-radius: 50%;
+      position: absolute;
+      border: 1px solid #e1e3e4;
+    }
   }
-}
-
-.proporation {
-  display: flex;
 }

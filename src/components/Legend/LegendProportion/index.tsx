@@ -1,17 +1,15 @@
 import React from 'react';
 import { isNumber, isNaN, uniqueId } from 'lodash';
-import styles from './index.less';
+import classnames from 'classnames';
+import type { LegendProportionProp } from './types';
+import './index.less';
 
-export interface LegendProportionProp {
-  labels: number[];
-  fillColor?: string;
-}
+export const CLS_PREFIX = 'larkmap-legend-proportion';
 
 export const LegendProportion = (props: LegendProportionProp) => {
-  const { labels, fillColor = '#999' } = props;
+  const { labels, fillColor = '#f9f9f9', className: cls, style } = props;
   const [min, max] = labels;
-  const circleSize = [77, 52, 38, 24];
-
+  const circleSizes = [86, 62, 38, 24];
   /**
    * 计算跨度
    * @param min 最小值
@@ -50,12 +48,12 @@ export const LegendProportion = (props: LegendProportionProp) => {
 
   function CircleBox() {
     return (
-      <div className={styles.circlebox}>
-        {circleSize.map((item) => (
+      <div className={`${CLS_PREFIX}_circlebox`} style={{ width: circleSizes[0] }}>
+        {circleSizes.map((item) => (
           <div
             key={item}
             style={{ width: item, height: item, background: fillColor }}
-            className={styles.circleboxitem}
+            className={`${CLS_PREFIX}_circlebox_item`}
           />
         ))}
       </div>
@@ -64,7 +62,7 @@ export const LegendProportion = (props: LegendProportionProp) => {
 
   function LabelBox() {
     return (
-      <div>
+      <div style={{ height: circleSizes[0] }}>
         {generateRange()
           .reverse()
           .map((item: any) => (
@@ -78,7 +76,7 @@ export const LegendProportion = (props: LegendProportionProp) => {
   }
 
   return (
-    <div className={styles.proporation}>
+    <div className={classnames(`${CLS_PREFIX}`, cls)} style={style}>
       <CircleBox />
       <LabelBox />
     </div>

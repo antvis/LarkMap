@@ -53,7 +53,14 @@ export * from './components/LayerAttribute';
 /**
  * 图例组件
  */
-export * from './components/Legend';
+export { LegendIcon } from './components/Legend/LegendIcon';
+export { LegendIconProps } from './components/Legend/LegendIcon/types';
+export { LegendProportion } from './components/Legend/LegendProportion';
+export { LegendProportionProp } from './components/Legend/LegendProportion/types';
+export { LegendCategories } from './components/Legend/LegendCategories';
+export { LegendCategoriesProps } from './components/Legend/LegendCategories/types';
+export { LegendRamp } from './components/Legend/LegendRamp';
+export { LegendRampProps } from './components/Legend/LegendRamp/types';
 
 /**
  * 版本号

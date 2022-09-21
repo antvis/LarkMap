@@ -1,18 +1,17 @@
 import React from 'react';
-import styles from './index.less';
+import classnames from 'classnames';
+import type { LegendIconProps } from './types';
+import './index.less';
 
-export interface LegendIconProps {
-  labels: string[];
-  icons: string[];
-}
+export const CLS_PREFIX = 'larkmap-legend-icon';
 
 export const LegendIcon = (props: LegendIconProps) => {
-  const { labels, icons } = props;
+  const { labels, icons, className: cls, style } = props;
   return (
-    <div>
+    <div className={classnames(`${CLS_PREFIX}`, cls)} style={style}>
       {labels.map((item, index) => (
-        <div key={item} className={styles.content}>
-          <img src={icons[index]} className={styles.img} />
+        <div key={item} className={`${CLS_PREFIX}_content`}>
+          <img src={icons[index]} className={`${CLS_PREFIX}_content_icon`} />
           <div>{item}</div>
         </div>
       ))}

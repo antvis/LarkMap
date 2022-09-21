@@ -1,27 +1,29 @@
 import React from 'react';
+import classnames from 'classnames';
 import { getGradientColors } from '../utils/color';
-import styles from './index.less';
+import type { LegendRampProps } from './types';
+import './index.less';
 
-export interface LegendRampProps {
-  labels: any[];
-  lableUnit: string;
-  colors: { startColor: string; endColor: string } | string[];
-  isContinuous?: boolean;
-}
+export const CLS_PREFIX = 'larkmap-legend-ramp';
 
 export function LegendRamp(props: LegendRampProps) {
-  const { isContinuous, labels, colors, lableUnit } = props;
-  const barWidth = 200;
+  const { isContinuous, labels, colors, lableUnit, className: cls, style, barWidth = 200 } = props;
 
   function Continuous({ gradient }: Record<string, string>) {
-    return <div className={styles.continuousBar} style={{ background: `linear-gradient(to right,${gradient})` }} />;
+    return (
+      <div className={`${CLS_PREFIX}_continuousBar`} style={{ background: `linear-gradient(to right,${gradient})` }} />
+    );
   }
 
   function Equidistant({ color }: Record<string, any>) {
     return (
-      <div className={styles.equidistantBar}>
+      <div className={`${CLS_PREFIX}_equidistantBar`}>
         {color.map((item: string) => (
-          <div className={styles.bar} style={{ background: item, width: barWidth / color.length }} key={item} />
+          <div
+            className={`${CLS_PREFIX}_equidistantBar_bar`}
+            style={{ background: item, width: barWidth / color.length }}
+            key={item}
+          />
         ))}
       </div>
     );
@@ -31,11 +33,11 @@ export function LegendRamp(props: LegendRampProps) {
     const gradient = color.join(',');
     const [min, max] = [labels[0], labels[labels.length - 1]];
     return (
-      <div style={{ width: barWidth }}>
-        {isContinuous ? <Continuous gradient={gradient} /> : <Equidistant colors={colors} />}
-        <div className={styles.labelbar}>
-          <div>{`${min}${lableUnit} ${isContinuous ? '' : '<'}`}</div>
-          <div>{`${isContinuous ? '' : '≥'} ${max}${lableUnit}`}</div>
+      <div style={{ width: barWidth, ...style }} className={classnames(`${CLS_PREFIX}`, cls)}>
+        {isContinuous ? <Continuous gradient={gradient} /> : <Equidistant color={color} />}
+        <div className={`${CLS_PREFIX}_labelbar`}>
+          <div>{`${min}${lableUnit ?? ''} ${isContinuous ? '' : '<'}`}</div>
+          <div>{`${isContinuous ? '' : '≥'} ${max}${lableUnit ?? ''}`}</div>
         </div>
       </div>
     );

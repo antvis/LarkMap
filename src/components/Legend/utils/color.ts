@@ -1,5 +1,5 @@
 import Color from 'color';
-import { forEach, round } from 'lodash';
+import { forEach, round } from 'lodash-es';
 
 export const getGradientColors = (colorStart: string, colorEnd: string, count = 5): string[] => {
   const singleColors: string[] = [colorStart]; // 初始颜色

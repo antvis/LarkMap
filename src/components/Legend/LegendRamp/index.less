@@ -1,32 +1,32 @@
-.legendbar {
-  width: 200px;
+@cls-prefix: larkmap-legend-ramp;
 
-}
+.@{cls-prefix} {
+  &_labelbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
 
-.continuousBar {
-  height: 10px;
-  border-radius: 6px
-}
-
-.equidistantBar {
-  display: flex;
-
-  .bar {
+  &_continuousBar {
     height: 10px;
+    border-radius: 6px
   }
 
-  .bar:first-child {
-    border-radius: 6px 0 0 6px;
-  }
 
-  .bar:last-child {
-    border-radius: 0 6px 6px 0;
-  }
-}
+  &_equidistantBar {
+    display: flex;
 
-.labelbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 8px;
+    &_bar {
+      height: 10px;
+    }
+
+    &_bar:first-child {
+      border-radius: 6px 0 0 6px;
+    }
+
+    &_bar:last-child {
+      border-radius: 0 6px 6px 0;
+    }
+  }
 }

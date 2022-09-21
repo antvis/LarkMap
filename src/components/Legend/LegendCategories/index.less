@@ -1,27 +1,30 @@
-.shape {
-  margin-right: 15px;
-}
+@cls-prefix: larkmap-legend-category;
 
-.cotent {
-  display: flex;
-  align-items: center;
+.@{cls-prefix} {
+  &_cotent {
+    display: flex;
+    align-items: center;
 
-  .labels {
-    letter-spacing: 2;
-    text-transform: uppercase;
-    font-family: PingFangSC;
-    line-height: 2;
+    &_labels {
+      letter-spacing: 2;
+      text-transform: uppercase;
+      font-family: PingFangSC;
+      line-height: 2;
+    }
+
+    &_shape {
+      margin-right: 15px;
+    }
+
+    &_square {
+      width: 32px;
+      height: 15px
+    }
+
+    &_circle {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+    }
   }
-}
-
-.circle {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-
-}
-
-.square {
-  width: 32px;
-  height: 15px
 }
