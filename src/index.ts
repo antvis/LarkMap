@@ -38,6 +38,17 @@ export { Marker } from './components/Marker';
 export { MarkerProps } from './components/Marker/types';
 export { Popup } from './components/Popup';
 export { PopupProps } from './components/Popup/types';
+/**
+ * 图例组件
+ */
+export { LegendIcon } from './components/LegendIcon';
+export { LegendIconProps } from './components/LegendIcon/types';
+export { LegendProportion } from './components/LegendProportion';
+export { LegendProportionProp } from './components/LegendProportion/types';
+export { LegendCategories } from './components/LegendCategories';
+export { LegendCategoriesProps } from './components/LegendCategories/types';
+export { LegendRamp } from './components/LegendRamp';
+export { LegendRampProps } from './components/LegendRamp/types';
 
 /**
  * 绘制组件
