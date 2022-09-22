@@ -17,10 +17,12 @@ nav:
 
 ## 代码演示
 
-<code src="./demos/default.tsx"></code>
+### 默认演示
+
+<code src="./demos/default.tsx" defaultShowCode></code>
+
+### 在地图中展示
+
+<code src="./demos/map-default.tsx" defaultShowCode></code>
 
 <API></API>
-
-### 默认示例
-
-### 其它示例

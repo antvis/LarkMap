@@ -66,7 +66,7 @@ export const LegendProportion = (props: LegendProportionProp) => {
         {generateRange()
           .reverse()
           .map((item: any) => (
-            <div key={uniqueId()}>
+            <div key={uniqueId()} className={`${CLS_PREFIX}__labelitem`}>
               {item?.prefix}
               {typeof item === 'number' ? item : item.val}
             </div>
