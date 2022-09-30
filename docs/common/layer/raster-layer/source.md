@@ -2,8 +2,9 @@
 
 数据配置，详见 source [文档](https://l7plot.antv.vision/zh/docs/api/source)
 
+### 配置普通栅格图层
+
 ```js
-// 默认 source
 async function getTiffData() {
   const response = await fetch(
     'https://gw.alipayobjects.com/os/rmsportal/XKgkjjGaAzRyKupCBiYW.dat',
@@ -36,8 +37,11 @@ async function getTiffData() {
     }
   },
 }
+```
 
-// 配置图片栅格瓦片
+### 配置图片栅格瓦片
+
+```js
 {
   source: {
     data: 'http://webst0{1-4}.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}',
@@ -46,8 +50,11 @@ async function getTiffData() {
     },
   },
 }
+```
 
-// 配置数据栅格瓦片
+### 配置数据栅格瓦片
+
+```js
 {
   source: {
     data: 'http://webst0{1-4}.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}',
@@ -78,6 +85,4 @@ async function getTiffData() {
     },
   },
 }
-
-
 ```
