@@ -18,6 +18,8 @@
 | colors    | 颜色       | `string[]` |        | required |
 | positions | 热力映射值 | `number[]` |        | required |
 
+🌟 图片栅格瓦片的 `style` 值支持 `opacity` 属性
+
 ```js
 {
   style: {

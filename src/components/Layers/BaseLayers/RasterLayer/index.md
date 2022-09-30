@@ -21,6 +21,14 @@ nav:
 
 <code src="./demos/default.tsx"></code>
 
+### 图片栅格瓦片示例
+
+<code src="./demos/rasterImage.tsx"></code>
+
+### 数据栅格瓦片示例
+
+<code src="./demos/rasterData.tsx"></code>
+
 ## API
 
 | 参数 | 说明 | 类型 | 默认值 |
