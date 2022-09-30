@@ -35,7 +35,7 @@ nav:
 | autoFit | 图层加载成功后是否自动定位到图层数据可见范围，`注意`开启后图层数据发生更新时，地图也会自动缩放到图层的数据边界范围 | `boolean` | `false` |
 | blend | 图层元素混合效果 | `"normal"｜"additive"｜"subtractive"｜"min"｜"max"｜"none"` | `"normal"` |
 | source | 数据配置 | `SourceOptions` | `(必选)` |
-| style | 元素样式 | `PointLayerStyleOptions` | -- |
+| style | 元素样式 | `ImageLayerStyleOptions` | -- |
 | onCreated | 图层初始化完成后回调，用于获取 layer 对象 | `(layer: ImageLayer) => void` | -- |
 
 ### source
