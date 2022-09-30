@@ -9,6 +9,9 @@ export { PolygonLayerProps } from './BaseLayers/PolygonLayer/types';
 export { TextLayer } from './BaseLayers/TextLayer';
 export { TextLayerProps } from './BaseLayers/TextLayer/types';
 
+export { ImageLayer } from './BaseLayers/ImageLayer';
+export { ImageLayerProps } from './BaseLayers/ImageLayer/types';
+
 export { BubbleLayer } from './CompositeLayers/BubbleLayer';
 export { BubbleLayerProps } from './CompositeLayers/BubbleLayer/types';
 export { ChoroplethLayer } from './CompositeLayers/ChoroplethLayer';
