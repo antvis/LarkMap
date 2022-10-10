@@ -14,41 +14,42 @@ const layerOptions: Omit<RasterLayerProps, 'source'> = {
   },
 };
 
-export default () => {
-  const canvas = document.createElement('canvas');
-  canvas.width = 256;
-  canvas.height = 256;
-  const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+const canvas = document.createElement('canvas');
+canvas.width = 256;
+canvas.height = 256;
+const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
-  const [options, setOptions] = useState(layerOptions);
-  const [source, setSource] = useState({
-    data: 'http://webst0{1-4}.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}',
-    parser: {
-      type: 'rasterTile',
-      dataType: 'arraybuffer',
-      tileSize: 256,
-      extent: [-180, -85.051129, 179, 85.051129],
-      format: async (data: any) => {
-        const blob: Blob = new Blob([new Uint8Array(data)], {
-          type: 'image/png',
-        });
-        const img = await createImageBitmap(blob);
-        ctx.clearRect(0, 0, 256, 256);
-        ctx.drawImage(img, 0, 0, 256, 256);
-        const imgData = ctx.getImageData(0, 0, 256, 256).data;
-        const arr: number[] = [];
-        for (let i = 0; i < imgData.length; i += 4) {
-          const R = imgData[i];
-          arr.push(R);
-        }
-        return {
-          rasterData: arr,
-          width: 256,
-          height: 256,
-        };
-      },
+const layerSource = {
+  data: 'https://webst0{1-4}.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}',
+  parser: {
+    type: 'rasterTile',
+    dataType: 'arraybuffer',
+    tileSize: 256,
+    extent: [-180, -85.051129, 179, 85.051129],
+    format: async (data: any) => {
+      const blob: Blob = new Blob([new Uint8Array(data)], {
+        type: 'image/png',
+      });
+      const img = await createImageBitmap(blob);
+      ctx.clearRect(0, 0, 256, 256);
+      ctx.drawImage(img, 0, 0, 256, 256);
+      const imgData = ctx.getImageData(0, 0, 256, 256).data;
+      const arr: number[] = [];
+      for (let i = 0; i < imgData.length; i += 4) {
+        const R = imgData[i];
+        arr.push(R);
+      }
+      return {
+        rasterData: arr,
+        width: 256,
+        height: 256,
+      };
     },
-  });
+  },
+};
+
+export default () => {
+  const [options, setOptions] = useState(layerOptions);
 
   const config = {
     mapType: 'Map' as const,
@@ -59,7 +60,7 @@ export default () => {
   };
   return (
     <LarkMap {...config} style={{ height: '300px' }}>
-      <RasterLayer {...options} source={source} />
+      <RasterLayer {...options} source={layerSource} />
     </LarkMap>
   );
 };

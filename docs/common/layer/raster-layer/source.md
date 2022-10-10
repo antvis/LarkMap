@@ -2,13 +2,24 @@
 
 数据配置，详见 source [文档](https://l7plot.antv.vision/zh/docs/api/source)
 
-### 配置普通栅格图层
+- 配置图片栅格瓦片
+
+```js
+{
+  source: {
+    data: 'http://webst0{1-4}.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}',
+    parser: {
+      type: 'rasterTile',
+    },
+  },
+}
+```
+
+- 配置普通栅格图层
 
 ```js
 async function getTiffData() {
-  const response = await fetch(
-    'https://gw.alipayobjects.com/os/rmsportal/XKgkjjGaAzRyKupCBiYW.dat',
-  );
+  const response = await fetch('https://gw.alipayobjects.com/os/rmsportal/XKgkjjGaAzRyKupCBiYW.dat');
   const arrayBuffer = await response.arrayBuffer();
   const tiff = await GeoTIFF.fromArrayBuffer(arrayBuffer);
   const image = await tiff.getImage();
@@ -24,35 +35,20 @@ async function getTiffData() {
   };
 }
 
-{
-  source: {
-    data: tiffdata.data,
-    parser: {
-      type: 'raster',
-      width: tiffData.width,
-      height: tiffData.height,
-      min: 0,
-      max: 80,
-      extent: [73.482190241, 3.82501784112, 135.106618732, 57.6300459963],
-    }
+const source = {
+  data: tiffdata.data,
+  parser: {
+    type: 'raster',
+    width: tiffData.width,
+    height: tiffData.height,
+    min: 0,
+    max: 80,
+    extent: [73.482190241, 3.82501784112, 135.106618732, 57.6300459963],
   },
-}
+};
 ```
 
-### 配置图片栅格瓦片
-
-```js
-{
-  source: {
-    data: 'http://webst0{1-4}.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}',
-    parser: {
-      type: 'rasterTile',
-    },
-  },
-}
-```
-
-### 配置数据栅格瓦片
+- 配置数据栅格瓦片
 
 ```js
 {

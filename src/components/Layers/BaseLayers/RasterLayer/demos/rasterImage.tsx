@@ -9,12 +9,6 @@ const layerOptions: Omit<RasterLayerProps, 'source'> = {
 
 export default () => {
   const [options, setOptions] = useState(layerOptions);
-  const [source, setSource] = useState({
-    data: 'http://webst0{1-4}.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}',
-    parser: {
-      type: 'rasterTile',
-    },
-  });
 
   const config = {
     mapType: 'Map' as const,
@@ -25,7 +19,13 @@ export default () => {
   };
   return (
     <LarkMap {...config} style={{ height: '300px' }}>
-      <RasterLayer {...options} source={source} />
+      <RasterLayer
+        {...options}
+        source={{
+          data: 'https://webst0{1-4}.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}',
+          parser: { type: 'rasterTile' },
+        }}
+      />
     </LarkMap>
   );
 };
