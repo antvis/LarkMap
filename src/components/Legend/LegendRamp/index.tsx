@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import type { LegendRampProps } from './types';
 import './index.less';
-import { getGradientColors } from './../../utils/color';
+import { getGradientColors } from './../../../utils/color';
 
 export const CLS_PREFIX = 'larkmap-legend-ramp';
 
