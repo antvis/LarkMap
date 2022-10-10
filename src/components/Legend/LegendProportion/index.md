@@ -1,8 +1,8 @@
 ---
 toc: content
-order: 7
+order: 3
 group:
-  title: 分析组件
+  title: 图例组件
   order: 3
 nav:
   title: 组件
