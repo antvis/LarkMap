@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { getGradientColors } from './../../utils/color';
+import { getGradientColors } from '../../../utils/color';
 import './index.less';
 import type { LegendCategoriesProps } from './types';
 

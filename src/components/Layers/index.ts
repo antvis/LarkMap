@@ -11,6 +11,9 @@ export { TextLayerProps } from './BaseLayers/TextLayer/types';
 export { RasterLayer } from './BaseLayers/RasterLayer';
 export { RasterLayerProps } from './BaseLayers/RasterLayer/types';
 
+export { ImageLayer } from './BaseLayers/ImageLayer';
+export { ImageLayerProps } from './BaseLayers/ImageLayer/types';
+
 export { BubbleLayer } from './CompositeLayers/BubbleLayer';
 export { BubbleLayerProps } from './CompositeLayers/BubbleLayer/types';
 export { ChoroplethLayer } from './CompositeLayers/ChoroplethLayer';

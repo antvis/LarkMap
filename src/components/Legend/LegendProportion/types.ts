@@ -1,4 +1,4 @@
-import type { CommonProps } from '../../types/common';
+import type { CommonProps } from '../../../types/common';
 
 export interface LegendProportionProp extends CommonProps {
   /**图例项名称 */

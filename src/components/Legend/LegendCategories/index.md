@@ -1,19 +1,19 @@
 ---
 toc: content
-order: 6
+order: 1
 group:
-  title: 分析组件
+  title: 图例组件
   order: 3
 nav:
   title: 组件
   path: /components
 ---
 
-# 图标图例 - LegendIcon
+# 分类图例 - LegendCategories
 
 ## 介绍
 
-图标图例
+分类图例
 
 ## 代码演示
 

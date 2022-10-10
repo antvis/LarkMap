@@ -1,4 +1,4 @@
-import type { CommonProps } from '../../types/common';
+import type { CommonProps } from '../../../types/common';
 
 export interface LegendCategoriesProps extends CommonProps {
   /**

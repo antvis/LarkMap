@@ -1,19 +1,19 @@
 ---
 toc: content
-order: 5
+order: 4
 group:
-  title: 分析组件
+  title: 图例组件
   order: 3
 nav:
   title: 组件
   path: /components
 ---
 
-# 分类图例 - LegendCategories
+# 色带图例 - LegendRamp
 
 ## 介绍
 
-分类图例
+色带图例
 
 ## 代码演示
 
