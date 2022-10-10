@@ -8,6 +8,8 @@ export { PolygonLayer } from './BaseLayers/PolygonLayer';
 export { PolygonLayerProps } from './BaseLayers/PolygonLayer/types';
 export { TextLayer } from './BaseLayers/TextLayer';
 export { TextLayerProps } from './BaseLayers/TextLayer/types';
+export { RasterLayer } from './BaseLayers/RasterLayer';
+export { RasterLayerProps } from './BaseLayers/RasterLayer/types';
 
 export { BubbleLayer } from './CompositeLayers/BubbleLayer';
 export { BubbleLayerProps } from './CompositeLayers/BubbleLayer/types';
