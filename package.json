@@ -1,6 +1,6 @@
 {
   "name": "@antv/larkmap",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A React toolkit for geospatial visualization based on L7",
   "license": "MIT",
   "main": "lib/index.js",
@@ -49,7 +49,7 @@
     "geotiff": "1.0.0-beta.10",
     "@ant-design/icons": "^4.7.0",
     "@antv/dumi-theme-antv": "^0.2.2",
-    "@antv/l7": "^2.8.35",
+    "@antv/l7": "^2.9.33",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
     "@types/jest": "^26.0.24",
@@ -76,7 +76,7 @@
   },
   "peerDependencies": {
     "@ant-design/icons": "^4.7.0",
-    "@antv/l7": "^2.8.35",
+    "@antv/l7": "^2.9.33",
     "antd": "^4.22.3",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
