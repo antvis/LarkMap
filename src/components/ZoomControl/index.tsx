@@ -20,6 +20,7 @@ export const ZoomControl: React.FC<ZoomControlProps> = (props) => {
       zoomRef.current = undefined;
       scene.removeControl(zoom);
     };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -29,6 +30,12 @@ export const ZoomControl: React.FC<ZoomControlProps> = (props) => {
       zoomRef.current.setPosition(position);
     }
   }, [position]);
+
+  useUpdateEffect(() => {
+    if (zoomRef.current) {
+      zoomRef.current.setOptions({ ...props });
+    }
+  }, [props]);
 
   return null;
 };
