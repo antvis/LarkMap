@@ -15,19 +15,24 @@ export const ScaleControl = memo<ScaleControlProps>(function ScaleControl(props)
     });
     scaleRef.current = scale;
     scene.addControl(scale);
+
     return () => {
       scaleRef.current = undefined;
       scene.removeControl(scale);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useUpdateEffect(() => {
     if (scaleRef.current) {
-      //@ts-ignore
       scaleRef.current.setPosition(position);
     }
   }, [position]);
+
+  useUpdateEffect(() => {
+    if (scaleRef.current) {
+      scaleRef.current.setOptions({ ...props });
+    }
+  }, [props]);
 
   return null;
 });
