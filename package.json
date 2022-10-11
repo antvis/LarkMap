@@ -44,12 +44,13 @@
     "classnames": "^2.3.1",
     "lodash-es": "^4.17.21",
     "query-string": "^7.1.1",
-    "react-color": "^2.19.3"
+    "react-color": "^2.19.3",
+    "react-dom": "^16.14.0"
   },
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",
     "@antv/dumi-theme-antv": "^0.2.2",
-    "@antv/l7": "^2.9.33",
+    "@antv/l7": "^2.9.32-alpha.4",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
     "@types/jest": "^26.0.24",
@@ -77,10 +78,10 @@
   },
   "peerDependencies": {
     "@ant-design/icons": "^4.7.0",
-    "@antv/l7": "^2.9.33",
+    "@antv/l7": "^2.9.32-alpha.4",
     "antd": "^4.22.3",
-    "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
+    "react": ">=16.14.0",
+    "react-dom": ">=16.14.0"
   },
   "lint-staged": {
     "*.less": "stylelint --fix",
