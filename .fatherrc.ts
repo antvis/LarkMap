@@ -9,6 +9,7 @@ export default defineConfig({
     output: 'dist',
     extractCSS: true,
     externals: {
+      lodash: '_',
       'lodash-es': '_',
       react: 'React',
       'react-dom': 'ReactDOM',
