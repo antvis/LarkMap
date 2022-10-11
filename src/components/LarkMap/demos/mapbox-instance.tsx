@@ -1,4 +1,4 @@
-import { Mapbox } from '@antv/l7-maps';
+import { Mapbox } from '@antv/l7';
 import { LarkMap } from '@antv/larkmap';
 import React from 'react';
 

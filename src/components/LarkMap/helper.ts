@@ -1,5 +1,5 @@
 import type { IMapConfig } from '@antv/l7';
-import { GaodeMap, GaodeMapV2, Map } from '@antv/l7-maps';
+import { GaodeMap, GaodeMapV2, Map } from '@antv/l7';
 import type { LarkMapProps } from './types';
 
 export const createMap = async (mapType: LarkMapProps['mapType'], mapOptions: Partial<IMapConfig>) => {
@@ -13,7 +13,7 @@ export const createMap = async (mapType: LarkMapProps['mapType'], mapOptions: Pa
     return new GaodeMapV2(mapOptions);
   }
 
-  return Promise.resolve(import('@antv/l7-maps')).then(({ Mapbox }) => {
+  return Promise.resolve(import('@antv/l7')).then(({ Mapbox }) => {
     return new Mapbox(mapOptions);
   });
 };
