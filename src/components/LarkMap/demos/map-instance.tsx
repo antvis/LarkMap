@@ -1,8 +1,8 @@
-import { Mapbox } from '@antv/l7';
+import { GaodeMap } from '@antv/l7';
 import { LarkMap } from '@antv/larkmap';
 import React from 'react';
 
-const mapInstance = new Mapbox({
+const mapInstance = new GaodeMap({
   style: 'dark',
   center: [120.210792, 30.246026],
   pitch: 4,
