@@ -44,7 +44,7 @@ export const Popup = memo<PopupProps>(function Popup(props): React.ReactPortal {
   }, [props.lngLat]);
 
   useEffect(() => {
-    popup.setDOMContent(domRef.current);
+    popup.setHTML(domRef.current);
     scene.addPopup(popup);
     return () => {
       popup.remove();
