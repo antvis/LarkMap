@@ -46,7 +46,7 @@ export type { PopupProps } from './components/Popup/types';
 export { LegendIcon } from './components/Legend/LegendIcon';
 export type { LegendIconProps } from './components/Legend/LegendIcon/types';
 export { LegendProportion } from './components/Legend/LegendProportion';
-export { LegendProportionProp } from './components/Legend/LegendProportion/types';
+export type { LegendProportionProp } from './components/Legend/LegendProportion/types';
 export { LegendCategories } from './components/Legend/LegendCategories';
 export type { LegendCategoriesProps } from './components/Legend/LegendCategories/types';
 export { LegendRamp } from './components/Legend/LegendRamp';
