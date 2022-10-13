@@ -44,7 +44,7 @@ export const FullscreenControl: React.FC<FullscreenControlProps> = ({
       className,
       style: styleText,
     };
-  }, [btnText, title, vertical, exitBtnText, exitTitle, position, className, style]);
+  }, [btnText, title, vertical, exitBtnText, exitTitle, position, className, styleText]);
 
   useMount(() => {
     const fullscreen = new L7Fullscreen(omitBy(controlOptions, (value) => value === undefined));
