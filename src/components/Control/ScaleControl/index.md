@@ -1,6 +1,6 @@
 ---
 toc: content
-order: 1
+order: 3
 group:
   title: 控件组件
   order: 2
@@ -9,7 +9,7 @@ nav:
   path: /components
 ---
 
-# 比例尺 - ScaleControl
+# 比例尺 - ZoomControl
 
 ## 介绍
 
