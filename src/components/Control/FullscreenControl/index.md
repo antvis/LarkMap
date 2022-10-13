@@ -1,6 +1,6 @@
 ---
 toc: content
-order: 3
+order: 4
 group:
   title: 控件组件
   order: 2
@@ -9,11 +9,11 @@ nav:
   path: /components
 ---
 
-# 比例尺 - ScaleControl
+# 全屏 - Fullscreen
 
 ## 介绍
 
-地图比例尺组件
+全屏组件
 
 ## 使用场景
 

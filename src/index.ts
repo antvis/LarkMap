@@ -30,6 +30,12 @@ export {
   GaodeLocationSearchParams,
 } from './components/LocationSearch/types';
 
+export { FullscreenControl, FullscreenControl as Fullscreen } from './components/Control/FullscreenControl';
+export {
+  FullscreenControlProps,
+  FullscreenControlProps as FullscreenProps,
+} from './components/Control/FullscreenControl/type';
+
 /**
  * 分析组件
  * */
