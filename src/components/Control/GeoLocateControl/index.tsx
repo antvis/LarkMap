@@ -38,10 +38,7 @@ export const GeoLocateControl: React.FC<GeoLocateControlProps> = ({
       position,
       className,
       style: styleText,
-      transform: (positions) => {
-        // 将获取到基于 WGS84 地理坐标系 的坐标转成 GCJ02 坐标系
-        return gcoord.transform(positions, gcoord.WGS84, gcoord.GCJ02);
-      },
+      transform,
     };
   }, [btnText, title, vertical, position, className, styleText, transform]);
 
