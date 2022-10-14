@@ -36,7 +36,7 @@ export {
   FullscreenControlProps as FullscreenProps,
 } from './components/Control/FullscreenControl/type';
 export { GeoLocateControl, GeoLocateControl as GeoLocate } from './components/Control/GeoLocateControl';
-export { GeoLocateControlProps } from './components/Control/GeoLocateControl/type';
+export { GeoLocateControlProps as GeoLocateProps } from './components/Control/GeoLocateControl/type';
 
 /**
  * 分析组件
