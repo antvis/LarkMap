@@ -47,6 +47,13 @@ export {
   MouseLocationControlProps,
   MouseLocationControlProps as MouseLocationProps,
 } from './components/Control/MouseLocationControl/types';
+export { LayerControl } from './components/Control/LayerControl';
+export { LayerControlProps } from './components/Control/LayerControl/types';
+export { MapThemeControl, MapThemeControl as MapTheme } from './components/Control/MapThemeControl';
+export {
+  MapThemeControlProps,
+  MapThemeControlProps as MapThemeProps,
+} from './components/Control/MapThemeControl/types';
 
 /**
  * 分析组件
