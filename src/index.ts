@@ -37,6 +37,16 @@ export {
 } from './components/Control/FullscreenControl/type';
 export { GeoLocateControl, GeoLocateControl as GeoLocate } from './components/Control/GeoLocateControl';
 export { GeoLocateControlProps as GeoLocateProps } from './components/Control/GeoLocateControl/type';
+export { ExportImageControl, ExportImageControl as ExportImage } from './components/Control/ExportImageControl';
+export {
+  ExportImageControlProps,
+  ExportImageControlProps as ExportImageProps,
+} from './components/Control/ExportImageControl/types';
+export { MouseLocationControl, MouseLocationControl as MouseLocation } from './components/Control/MouseLocationControl';
+export {
+  MouseLocationControlProps,
+  MouseLocationControlProps as MouseLocationProps,
+} from './components/Control/MouseLocationControl/types';
 
 /**
  * 分析组件

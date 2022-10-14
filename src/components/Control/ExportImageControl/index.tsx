@@ -1,56 +1,52 @@
 import type React from 'react';
-import type { IFullscreenControlOption } from '@antv/l7';
+import type { IExportImageControlOption } from '@antv/l7';
 import { useMemo, useState } from 'react';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import { Fullscreen as L7Fullscreen } from '@antv/l7';
+import { ExportImage as L7ExportImage } from '@antv/l7';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
 import { useControlEvent, useControlUpdate } from '../hooks';
-import type { FullscreenControlProps } from './type';
+import type { ExportImageControlProps } from './types';
 
-export const FullscreenControl: React.FC<FullscreenControlProps> = ({
+export const ExportImageControl: React.FC<ExportImageControlProps> = ({
+  onExport,
   onShow,
   onHide,
   onAdd,
   onRemove,
-  onFullscreenChange,
+  imageType,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   btnIcon,
   btnText,
   title,
   vertical,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  exitBtnIcon,
-  exitBtnText,
-  exitTitle,
   position,
   className,
   style,
 }) => {
   const scene = useScene();
-  const [control, setControl] = useState<L7Fullscreen | undefined>();
+  const [control, setControl] = useState<L7ExportImage | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
 
-  // TODO:btnIcon 和 exitBtnIcon 从 ReactNode => Element 还没好
-  const controlOptions: Partial<IFullscreenControlOption> = useMemo(() => {
+  const controlOptions: Partial<IExportImageControlOption> = useMemo(() => {
     return {
       btnText,
       title,
       vertical,
-      exitBtnText,
-      exitTitle,
       position,
       className,
+      imageType,
       style: styleText,
+      onExport,
     };
-  }, [btnText, title, vertical, exitBtnText, exitTitle, position, className, styleText]);
+  }, [btnText, title, vertical, position, className, styleText, imageType, onExport]);
 
   useMount(() => {
-    const fullscreen = new L7Fullscreen(omitBy(controlOptions, (value) => value === undefined));
-    setControl(fullscreen);
+    const exportImage = new L7ExportImage(omitBy(controlOptions, (value) => value === undefined));
+    setControl(exportImage);
     setTimeout(() => {
-      scene.addControl(fullscreen);
+      scene.addControl(exportImage);
     }, 0);
   });
 
@@ -66,7 +62,6 @@ export const FullscreenControl: React.FC<FullscreenControlProps> = ({
     remove: onRemove,
     show: onShow,
     hide: onHide,
-    fullscreenChange: onFullscreenChange,
   });
 
   return null;

@@ -1,13 +1,12 @@
-import type { IGeoLocateOption } from '@antv/l7';
-import { GeoLocate as L7GeoLocate } from '@antv/l7';
 import type React from 'react';
+import type { IGeoLocateOption } from '@antv/l7';
 import { useMemo, useState } from 'react';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import gcoord from 'gcoord';
+import { GeoLocate as L7GeoLocate } from '@antv/l7';
 import { getStyleText } from '../../../utils';
-import { useControlEvent, useControlUpdate } from '../hooks';
 import { useScene } from '../../LarkMap/hooks';
+import { useControlEvent, useControlUpdate } from '../hooks';
 import type { GeoLocateControlProps } from './type';
 
 export const GeoLocateControl: React.FC<GeoLocateControlProps> = ({
