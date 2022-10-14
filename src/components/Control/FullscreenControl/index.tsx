@@ -14,7 +14,7 @@ export const FullscreenControl: React.FC<FullscreenControlProps> = ({
   onHide,
   onAdd,
   onRemove,
-  fullscreenChange,
+  onFullscreenChange,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   btnIcon,
   btnText,
@@ -66,7 +66,7 @@ export const FullscreenControl: React.FC<FullscreenControlProps> = ({
     remove: onRemove,
     show: onShow,
     hide: onHide,
-    fullscreenChange: fullscreenChange,
+    fullscreenChange: onFullscreenChange,
   });
 
   return null;

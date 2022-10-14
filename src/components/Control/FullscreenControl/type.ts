@@ -10,5 +10,5 @@ export interface FullscreenControlProps extends Partial<IFullscreenControlOption
   style?: CSSProperties;
   btnIcon?: ReactNode;
   exitBtnIcon?: ReactNode;
-  fullscreenChange?: (isFullscreen: boolean) => void;
+  onFullscreenChange?: (isFullscreen: boolean) => void;
 }

@@ -1,4 +1,4 @@
-import type { IScaleControlOption, PositionName, Scale } from '@antv/l7';
+import type { IScaleControlOption, Scale } from '@antv/l7';
 import type { CSSProperties } from 'react';
 import type { IControlCallback } from '../../../types';
 
