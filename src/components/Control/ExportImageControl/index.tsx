@@ -1,12 +1,11 @@
-import type React from 'react';
+import React, { useMemo, useState } from 'react';
 import type { IExportImageControlOption } from '@antv/l7';
-import { useMemo, useState } from 'react';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
 import { ExportImage as L7ExportImage } from '@antv/l7';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
-import { useControlEvent, useControlUpdate } from '../hooks';
+import { useControlElement, useControlEvent, useControlUpdate } from '../hooks';
 import type { ExportImageControlProps } from './types';
 
 export const ExportImageControl: React.FC<ExportImageControlProps> = ({
@@ -16,7 +15,6 @@ export const ExportImageControl: React.FC<ExportImageControlProps> = ({
   onAdd,
   onRemove,
   imageType,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   btnIcon,
   btnText,
   title,
@@ -28,6 +26,7 @@ export const ExportImageControl: React.FC<ExportImageControlProps> = ({
   const scene = useScene();
   const [control, setControl] = useState<L7ExportImage | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
+  const { portal: btnIconPortal, dom: btnIconDOM } = useControlElement(btnIcon);
 
   const controlOptions: Partial<IExportImageControlOption> = useMemo(() => {
     return {
@@ -38,9 +37,10 @@ export const ExportImageControl: React.FC<ExportImageControlProps> = ({
       className,
       imageType,
       style: styleText,
+      btnIcon: btnIconDOM,
       onExport,
     };
-  }, [btnText, title, vertical, position, className, styleText, imageType, onExport]);
+  }, [btnText, title, vertical, position, className, styleText, imageType, onExport, btnIconDOM]);
 
   useMount(() => {
     const exportImage = new L7ExportImage(omitBy(controlOptions, (value) => value === undefined));
@@ -64,5 +64,5 @@ export const ExportImageControl: React.FC<ExportImageControlProps> = ({
     hide: onHide,
   });
 
-  return null;
+  return <>{btnIconPortal}</>;
 };

@@ -1,12 +1,11 @@
-import type React from 'react';
+import React, { useMemo, useState } from 'react';
 import type { ISelectControlOption } from '@antv/l7';
-import { useMemo, useState } from 'react';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
 import { MapTheme as L7MapTheme } from '@antv/l7';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
-import { useControlEvent, useControlUpdate } from '../hooks';
+import { useControlElement, useControlEvent, useControlUpdate } from '../hooks';
 import type { MapThemeControlProps } from './types';
 
 export const MapThemeControl: React.FC<MapThemeControlProps> = ({
@@ -19,7 +18,6 @@ export const MapThemeControl: React.FC<MapThemeControlProps> = ({
   options,
   popperTrigger,
   popperClassName,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   btnIcon,
   style,
   onAdd,
@@ -33,8 +31,8 @@ export const MapThemeControl: React.FC<MapThemeControlProps> = ({
   const scene = useScene();
   const [control, setControl] = useState<L7MapTheme | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
+  const { portal: btnIconPortal, dom: btnIconDOM } = useControlElement(btnIcon);
 
-  // TODO:btnIcon 从 ReactNode => Element 还没好
   const controlOptions: Partial<ISelectControlOption> = useMemo(() => {
     return {
       popperPlacement,
@@ -47,6 +45,7 @@ export const MapThemeControl: React.FC<MapThemeControlProps> = ({
       className,
       options,
       style: styleText,
+      btnIcon: btnIconDOM,
     };
   }, [
     options,
@@ -59,6 +58,7 @@ export const MapThemeControl: React.FC<MapThemeControlProps> = ({
     position,
     className,
     styleText,
+    btnIconDOM,
   ]);
 
   useMount(() => {
@@ -86,5 +86,5 @@ export const MapThemeControl: React.FC<MapThemeControlProps> = ({
     selectChange: onSelectChange,
   });
 
-  return null;
+  return <>{btnIconPortal}</>;
 };

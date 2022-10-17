@@ -1,12 +1,11 @@
-import type React from 'react';
+import React, { useMemo, useState } from 'react';
 import type { IGeoLocateOption } from '@antv/l7';
-import { useMemo, useState } from 'react';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
 import { GeoLocate as L7GeoLocate } from '@antv/l7';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
-import { useControlEvent, useControlUpdate } from '../hooks';
+import { useControlElement, useControlEvent, useControlUpdate } from '../hooks';
 import type { GeoLocateControlProps } from './type';
 
 export const GeoLocateControl: React.FC<GeoLocateControlProps> = ({
@@ -15,7 +14,6 @@ export const GeoLocateControl: React.FC<GeoLocateControlProps> = ({
   onHide,
   onAdd,
   onRemove,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   btnIcon,
   btnText,
   title,
@@ -27,8 +25,8 @@ export const GeoLocateControl: React.FC<GeoLocateControlProps> = ({
   const scene = useScene();
   const [control, setControl] = useState<L7GeoLocate | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
+  const { portal: btnIconPortal, dom: btnIconDOM } = useControlElement(btnIcon);
 
-  // TODO:btnIcon 从 ReactNode => Element 还没好
   const controlOptions: Partial<IGeoLocateOption> = useMemo(() => {
     return {
       btnText,
@@ -38,8 +36,9 @@ export const GeoLocateControl: React.FC<GeoLocateControlProps> = ({
       className,
       style: styleText,
       transform,
+      btnIcon: btnIconDOM,
     };
-  }, [btnText, title, vertical, position, className, styleText, transform]);
+  }, [btnText, title, vertical, position, className, styleText, transform, btnIconDOM]);
 
   useMount(() => {
     const geoLocate = new L7GeoLocate(omitBy(controlOptions, (value) => value === undefined));
@@ -63,5 +62,5 @@ export const GeoLocateControl: React.FC<GeoLocateControlProps> = ({
     hide: onHide,
   });
 
-  return null;
+  return <>{btnIconPortal}</>;
 };

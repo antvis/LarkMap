@@ -1,12 +1,11 @@
-import type React from 'react';
+import React, { useMemo, useState } from 'react';
 import type { IGeoLocateOption } from '@antv/l7';
-import { useMemo, useState } from 'react';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
 import { LayerControl as L7LayerControl } from '@antv/l7';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
-import { useControlEvent, useControlUpdate } from '../hooks';
+import { useControlElement, useControlEvent, useControlUpdate } from '../hooks';
 import type { LayerControlProps } from './types';
 
 export const LayerControl: React.FC<LayerControlProps> = ({
@@ -14,7 +13,6 @@ export const LayerControl: React.FC<LayerControlProps> = ({
   popperPlacement,
   popperTrigger,
   popperClassName,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   btnIcon,
   btnText,
   title,
@@ -33,8 +31,8 @@ export const LayerControl: React.FC<LayerControlProps> = ({
   const scene = useScene();
   const [control, setControl] = useState<L7LayerControl | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
+  const { portal: btnIconPortal, dom: btnIconDOM } = useControlElement(btnIcon);
 
-  // TODO:btnIcon 从 ReactNode => Element 还没好
   const controlOptions: Partial<IGeoLocateOption> = useMemo(() => {
     return {
       layers,
@@ -47,6 +45,7 @@ export const LayerControl: React.FC<LayerControlProps> = ({
       position,
       className,
       style: styleText,
+      btnIcon: btnIconDOM,
     };
   }, [
     layers,
@@ -59,6 +58,7 @@ export const LayerControl: React.FC<LayerControlProps> = ({
     position,
     className,
     styleText,
+    btnIconDOM,
   ]);
 
   useMount(() => {
@@ -86,5 +86,5 @@ export const LayerControl: React.FC<LayerControlProps> = ({
     selectChange: onSelectChange,
   });
 
-  return null;
+  return <>{btnIconPortal}</>;
 };

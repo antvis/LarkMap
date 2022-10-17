@@ -1,11 +1,10 @@
-import type React from 'react';
+import React, { useMemo, useState } from 'react';
 import type { IZoomControlOption } from '@antv/l7';
 import { Zoom as L7Zoom } from '@antv/l7';
-import { useMemo, useState } from 'react';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
 import { useScene } from '../../LarkMap/hooks';
-import { useControlEvent, useControlUpdate } from '../hooks';
+import { useControlEvent, useControlUpdate, useControlElement } from '../hooks';
 import { getStyleText } from '../../../utils';
 import type { ZoomControlProps } from './types';
 
@@ -18,9 +17,7 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
   name,
   className,
   style,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   zoomInText,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   zoomOutText,
   zoomInTitle,
   zoomOutTitle,
@@ -28,18 +25,21 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
   const scene = useScene();
   const [control, setControl] = useState<L7Zoom | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
+  const { portal: zoomInTextPortal, dom: zoomInTextDOM } = useControlElement(zoomInText);
+  const { portal: zoomOutTextPortal, dom: zoomOutTextDOM } = useControlElement(zoomOutText);
 
-  // TODO:zoomInText 和 zoomOutText 从 ReactNode => Element 还没好
   const controlOptions: Partial<IZoomControlOption> = useMemo(() => {
     return {
       position,
       name,
       className,
-      style: styleText,
       zoomInTitle,
       zoomOutTitle,
+      style: styleText,
+      zoomInText: zoomInTextDOM,
+      zoomOutText: zoomOutTextDOM,
     };
-  }, [position, name, className, styleText, zoomInTitle, zoomOutTitle]);
+  }, [position, name, className, styleText, zoomInTitle, zoomOutTitle, zoomInTextDOM, zoomOutTextDOM]);
 
   useMount(() => {
     const zoom = new L7Zoom(omitBy(controlOptions, (value) => value === undefined));
@@ -63,5 +63,10 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
     hide: onHide,
   });
 
-  return null;
+  return (
+    <>
+      {zoomInTextPortal}
+      {zoomOutTextPortal}
+    </>
+  );
 };

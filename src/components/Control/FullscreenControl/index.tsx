@@ -1,12 +1,11 @@
-import type React from 'react';
+import React, { useMemo, useState } from 'react';
 import type { IFullscreenControlOption } from '@antv/l7';
-import { useMemo, useState } from 'react';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
 import { Fullscreen as L7Fullscreen } from '@antv/l7';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
-import { useControlEvent, useControlUpdate } from '../hooks';
+import { useControlElement, useControlEvent, useControlUpdate } from '../hooks';
 import type { FullscreenControlProps } from './type';
 
 export const FullscreenControl: React.FC<FullscreenControlProps> = ({
@@ -15,12 +14,10 @@ export const FullscreenControl: React.FC<FullscreenControlProps> = ({
   onAdd,
   onRemove,
   onFullscreenChange,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   btnIcon,
   btnText,
   title,
   vertical,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   exitBtnIcon,
   exitBtnText,
   exitTitle,
@@ -31,8 +28,9 @@ export const FullscreenControl: React.FC<FullscreenControlProps> = ({
   const scene = useScene();
   const [control, setControl] = useState<L7Fullscreen | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
+  const { portal: btnIconPortal, dom: btnIconDOM } = useControlElement(btnIcon);
+  const { portal: exitBtnIconPortal, dom: exitBtnIconDOM } = useControlElement(exitBtnIcon);
 
-  // TODO:btnIcon 和 exitBtnIcon 从 ReactNode => Element 还没好
   const controlOptions: Partial<IFullscreenControlOption> = useMemo(() => {
     return {
       btnText,
@@ -43,8 +41,10 @@ export const FullscreenControl: React.FC<FullscreenControlProps> = ({
       position,
       className,
       style: styleText,
+      btnIcon: btnIconDOM,
+      exitBtnIcon: exitBtnIconDOM,
     };
-  }, [btnText, title, vertical, exitBtnText, exitTitle, position, className, styleText]);
+  }, [btnText, title, vertical, exitBtnText, exitTitle, position, className, styleText, btnIconDOM, exitBtnIconDOM]);
 
   useMount(() => {
     const fullscreen = new L7Fullscreen(omitBy(controlOptions, (value) => value === undefined));
@@ -69,5 +69,10 @@ export const FullscreenControl: React.FC<FullscreenControlProps> = ({
     fullscreenChange: onFullscreenChange,
   });
 
-  return null;
+  return (
+    <>
+      {btnIconPortal}
+      {exitBtnIconPortal}
+    </>
+  );
 };
