@@ -1,4 +1,5 @@
 import type React from 'react';
+import type { ISelectControlOption } from '@antv/l7';
 import { useMemo, useState } from 'react';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
@@ -6,7 +7,7 @@ import { MapTheme as L7MapTheme } from '@antv/l7';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
 import { useControlEvent, useControlUpdate } from '../hooks';
-import type { IMapThemeControlProps, MapThemeControlProps } from './types';
+import type { MapThemeControlProps } from './types';
 
 export const MapThemeControl: React.FC<MapThemeControlProps> = ({
   popperPlacement,
@@ -34,7 +35,7 @@ export const MapThemeControl: React.FC<MapThemeControlProps> = ({
   const styleText = useMemo(() => getStyleText(style), [style]);
 
   // TODO:btnIcon 从 ReactNode => Element 还没好
-  const controlOptions: Partial<IMapThemeControlProps> = useMemo(() => {
+  const controlOptions: Partial<ISelectControlOption> = useMemo(() => {
     return {
       popperPlacement,
       popperTrigger,

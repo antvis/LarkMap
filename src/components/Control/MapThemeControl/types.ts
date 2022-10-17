@@ -1,4 +1,4 @@
-import type { Control, ISelectControlOption, MapTheme, PositionName } from '@antv/l7';
+import type { ISelectControlOption, MapTheme } from '@antv/l7';
 import type { CSSProperties, ReactNode } from 'react';
 import type { IPopperControlCallback } from '../../../types';
 
