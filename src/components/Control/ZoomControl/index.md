@@ -21,6 +21,6 @@ nav:
 
 ### 默认示例
 
-<code src="./demos/default.tsx" defaultShowCode></code>
+<code src="./demos/default.tsx" defaultShowCode compact></code>
 
 <API></API>
