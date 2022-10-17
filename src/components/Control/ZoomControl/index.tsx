@@ -28,7 +28,6 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
   const { portal: zoomInTextPortal, dom: zoomInTextDOM } = useControlElement(zoomInText);
   const { portal: zoomOutTextPortal, dom: zoomOutTextDOM } = useControlElement(zoomOutText);
 
-  // TODO:zoomInText 和 zoomOutText 从 ReactNode => Element 还没好
   const controlOptions: Partial<IZoomControlOption> = useMemo(() => {
     return {
       position,
