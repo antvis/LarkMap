@@ -1,6 +1,6 @@
 ---
 toc: content
-order: 2
+order: 7
 group:
   title: 控件组件
   order: 2
@@ -9,28 +9,27 @@ nav:
   path: /components
 ---
 
-# 缩放器 - ZoomControl
+# 光标经纬度 - MouseLocationControl
 
 ## 介绍
 
-地图缩放器组件
+光标经纬度组件
 
 ## 使用场景
+
+用于实时展示当前光标在地图上所对应的经纬度。
 
 ## 代码演示
 
 ### 默认示例
 
-<code src="./demos/default.tsx" defaultShowCode compact></code>
+<code src="./demos/default.tsx" defaultShowCode compact ></code>
 
 ## 配置
 
-| 参数         | 说明                  | 类型              |
-| ------------ | --------------------- | ----------------- |
-| zoomInText   | 放大按钮的展示内容    | `Element｜string` |
-| zoomInTitle  | 放大按钮的 title 属性 | `string`          |
-| zoomOutText  | 缩小按钮的展示内容    | `Element｜string` |
-| zoomOutTitle | 缩小按钮的 title 属性 | `string`          |
+| 参数      | 说明                         | 类型                                               |
+| --------- | ---------------------------- | -------------------------------------------------- |
+| transform | 转换光标所在经纬度的回调函数 | `(position: [number, number]) => [number, number]` |
 
 | 参数      | 说明                                                      | 类型       |
 | --------- | --------------------------------------------------------- | ---------- |
@@ -58,11 +57,6 @@ export type Position =
 
 ## 方法
 
-| 参数    | 说明     | 类型         |
-| ------- | -------- | ------------ |
-| zoomIn  | 放大地图 | `() => void` |
-| zoomOut | 缩小底图 | `() => void` |
-
 | 参数         | 说明                                   | 类型                                   |
 | ------------ | -------------------------------------- | -------------------------------------- |
 | setOptions   | 更新配置，参数需要参考对应组件的`配置` | `(newOption: Partial<Option>) => void` |
@@ -72,6 +66,10 @@ export type Position =
 | getContainer | 获取当前控件对应的 DOM 容器            | `() => HTMLElement`                    |
 
 ## 事件
+
+| 参数             | 说明                         | 类型                                   |
+| ---------------- | ---------------------------- | -------------------------------------- |
+| onLocationChange | 光标所在经纬度发生变化时触发 | `(position: [number, number]) => void` |
 
 | 参数     | 说明               | 类型             |
 | -------- | ------------------ | ---------------- |

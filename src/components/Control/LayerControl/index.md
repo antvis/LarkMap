@@ -1,6 +1,6 @@
 ---
 toc: content
-order: 2
+order: 8
 group:
   title: 控件组件
   order: 2
@@ -9,13 +9,15 @@ nav:
   path: /components
 ---
 
-# 缩放器 - ZoomControl
+# 图层显隐 - LayerControl
 
 ## 介绍
 
-地图缩放器组件
+图层显隐组件
 
 ## 使用场景
+
+用于控制目标图层组的显示和隐藏操作。
 
 ## 代码演示
 
@@ -25,12 +27,40 @@ nav:
 
 ## 配置
 
-| 参数         | 说明                  | 类型              |
-| ------------ | --------------------- | ----------------- |
-| zoomInText   | 放大按钮的展示内容    | `Element｜string` |
-| zoomInTitle  | 放大按钮的 title 属性 | `string`          |
-| zoomOutText  | 缩小按钮的展示内容    | `Element｜string` |
-| zoomOutTitle | 缩小按钮的 title 属性 | `string`          |
+| 参数   | 说明                                                        | 类型            |
+| ------ | ----------------------------------------------------------- | --------------- |
+| layers | 需要被控制的 layer 数组，不传则默认读取当前 L7 中所有的图层 | `Array<ILayer>` |
+
+| 参数            | 说明                 | 类型              |
+| --------------- | -------------------- | ----------------- |
+| popperPlacement | 气泡相对于按钮的位置 | `PopperPlacement` |
+| popperTrigger   | 气泡弹出的触发方式   | `click｜hover`    |
+| popperClassName | 气泡容器自定义样式名 | `string`          |
+
+### PopperPlacement
+
+```js
+export type PopperPlacement =
+  | 'top-start'
+  | 'top'
+  | 'top-end'
+  | 'left-start'
+  | 'left'
+  | 'left-end'
+  | 'bottom-start'
+  | 'bottom'
+  | 'bottom-end'
+  | 'right-start'
+  | 'right'
+  | 'right-end';
+```
+
+| 参数     | 说明                                                    | 类型                      |
+| -------- | ------------------------------------------------------- | ------------------------- |
+| btnIcon  | 按钮图标                                                | `HTMLElement｜SVGElement` |
+| btnText  | 按钮内容文本                                            | `string`                  |
+| title    | 按钮的 title 属性                                       | `string`                  |
+| vertical | 在 btnIcon 有值的情况下，按钮内的图标和文案是否纵向排列 | `boolean`                 |
 
 | 参数      | 说明                                                      | 类型       |
 | --------- | --------------------------------------------------------- | ---------- |
@@ -58,11 +88,6 @@ export type Position =
 
 ## 方法
 
-| 参数    | 说明     | 类型         |
-| ------- | -------- | ------------ |
-| zoomIn  | 放大地图 | `() => void` |
-| zoomOut | 缩小底图 | `() => void` |
-
 | 参数         | 说明                                   | 类型                                   |
 | ------------ | -------------------------------------- | -------------------------------------- |
 | setOptions   | 更新配置，参数需要参考对应组件的`配置` | `(newOption: Partial<Option>) => void` |
@@ -79,3 +104,12 @@ export type Position =
 | onRemove | 组件被移除时的事件 | `(this) => void` |
 | onShow   | 组件显示时的事件   | `(this) => void` |
 | onHide   | 组件隐藏时的事件   | `(this) => void` |
+
+| 参数         | 说明             | 类型             |
+| ------------ | ---------------- | ---------------- |
+| onPopperShow | 气泡显示时的回调 | `(this) => void` |
+| onPopperHide | 气泡隐藏时的回调 | `(this) => void` |
+
+| 参数           | 说明                   | 类型               |
+| -------------- | ---------------------- | ------------------ |
+| onSelectChange | 当所选值发生改变时触发 | `string｜string[]` |

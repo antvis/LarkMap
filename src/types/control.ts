@@ -6,3 +6,8 @@ export interface IControlCallback<C extends Control = Control> {
   onShow?: (control: C) => void;
   onHide?: (control: C) => void;
 }
+
+export interface IPopperControlCallback<C extends Control = Control> extends IControlCallback<C> {
+  onPopperShow?: (control: C) => void;
+  onPopperHide?: (control: C) => void;
+}
