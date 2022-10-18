@@ -119,6 +119,6 @@ export type Position =
 | onPopperShow | 气泡显示时的回调 | `(this) => void` |
 | onPopperHide | 气泡隐藏时的回调 | `(this) => void` |
 
-| 参数         | 说明                   | 类型               |
-| ------------ | ---------------------- | ------------------ |
-| selectChange | 当所选值发生改变时触发 | `string｜string[]` |
+| 参数           | 说明                   | 类型               |
+| -------------- | ---------------------- | ------------------ |
+| onSelectChange | 当所选值发生改变时触发 | `string｜string[]` |
