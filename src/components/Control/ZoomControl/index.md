@@ -13,13 +13,9 @@ nav:
 
 ## 介绍
 
-地图缩放器组件
-
-## 使用场景
+地图缩放组件，可以操控当前地图的缩放层级。
 
 ## 代码演示
-
-### 默认示例
 
 <code src="./demos/default.tsx" defaultShowCode compact></code>
 

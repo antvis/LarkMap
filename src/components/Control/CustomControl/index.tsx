@@ -2,8 +2,8 @@ import type React from 'react';
 import { useCallback, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import type { IControlOption } from '@antv/l7';
-import { useControl } from '../LarkMap/hooks';
-import { getStyleText } from '../../utils';
+import { useControl } from '../../LarkMap/hooks';
+import { getStyleText } from '../../../utils';
 import type { CustomControlProps } from './types';
 
 export const CustomControl: React.FC<CustomControlProps> = (props): React.ReactPortal => {

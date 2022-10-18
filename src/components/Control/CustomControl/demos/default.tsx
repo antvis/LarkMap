@@ -6,10 +6,10 @@ export default () => {
     <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
       <CustomControl
         position="topleft"
-        className="customControl"
-        style={{ background: '#fff', borderRadius: 4, overflow: 'hidden', padding: 10 }}
+        className="custom-control-class"
+        style={{ background: '#fff', borderRadius: 4, overflow: 'hidden', padding: 16 }}
       >
-        <h1>My CustomControl</h1>
+        <h1 style={{ marginBottom: 0 }}>自定义内容</h1>
       </CustomControl>
     </LarkMap>
   );

@@ -1,6 +1,6 @@
 ---
 toc: content
-order: 3
+order: 1
 group:
   title: 控件组件
   order: 2
@@ -13,12 +13,10 @@ nav:
 
 ## 介绍
 
-自定义地图控件组件
+地图控件容器，用户可以通过 `CustomControl` 包裹自定义内容，并悬浮在地图上。
 
 ## 代码演示
 
-### 默认示例
-
-<code src="./demos/default.tsx" defaultShowCode></code>
+<code src="./demos/default.tsx" defaultShowCode compact></code>
 
 <API></API>
