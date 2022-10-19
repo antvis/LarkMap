@@ -27,18 +27,18 @@ nav:
 
 ## 配置
 
-| 参数        | 说明                                                      | 类型            |
-| ----------- | --------------------------------------------------------- | --------------- |
-| btnIcon     | 按钮图标                                                  | `ReactNode`     |
-| btnText     | 按钮内容文本                                              | `string`        |
-| title       | 按钮的 title 属性                                         | `string`        |
-| vertical    | 在 btnIcon 有值的情况下，按钮内的图标和文案是否纵向排列   | `boolean`       |
-| exitBtnIcon | 退出全屏按钮的图标                                        | `ReactNode`     |
-| exitBtnText | 退出全屏按钮的文本                                        | `string`        |
-| exitTitle   | 退出全屏按钮的文本的 `title` 属性                         | `string`        |
-| position    | 控件被添加到地图中的位置以及排列方式，详情可见 `控件插槽` | `Position`      |
-| className   | 自定义样式名                                              | `string`        |
-| style       | 自定义样式                                                | `CSSProperties` |
+| 参数 | 说明 | 类型 |
+| --- | --- | --- |
+| btnIcon | 按钮图标 | `ReactNode` |
+| btnText | 按钮内容文本 | `string` |
+| title | 按钮的 title 属性 | `string` |
+| vertical | 在 btnIcon 有值的情况下，按钮内的图标和文案是否纵向排列 | `boolean` |
+| exitBtnIcon | 退出全屏按钮的图标 | `ReactNode` |
+| exitBtnText | 退出全屏按钮的文本 | `string` |
+| exitTitle | 退出全屏按钮的文本的 `title` 属性 | `string` |
+| position | 控件被添加到地图中的位置以及排列方式，详情可见 [控件插槽](https://l7.antv.vision/zh/docs/api/component/control/control#插槽) | `Position` |
+| className | 自定义样式名 | `string` |
+| style | 自定义样式 | `CSSProperties` |
 
 ### Position
 

@@ -27,18 +27,18 @@ nav:
 
 ## 配置
 
-| 参数            | 说明                                                      | 类型                        |
-| --------------- | --------------------------------------------------------- | --------------------------- |
-| options         | 用户自定义的地图主题选项                                  | `Array<IControlOptionItem>` |
-| popperPlacement | 气泡相对于按钮的位置                                      | `PopperPlacement`           |
-| popperTrigger   | 气泡弹出的触发方式                                        | `click｜hover`              |
-| popperClassName | 气泡容器自定义样式名                                      | `string`                    |
-| btnIcon         | 按钮图标                                                  | `ReactNode`                 |
-| btnText         | 按钮内容文本                                              | `string`                    |
-| title           | 按钮的 title 属性                                         | `string`                    |
-| position        | 控件被添加到地图中的位置以及排列方式，详情可见 `控件插槽` | `Position`                  |
-| className       | 自定义样式名                                              | `string`                    |
-| style           | 自定义样式                                                | `CSSProperties`             |
+| 参数 | 说明 | 类型 |
+| --- | --- | --- |
+| options | 用户自定义的地图主题选项 | `Array<IControlOptionItem>` |
+| popperPlacement | 气泡相对于按钮的位置 | `PopperPlacement` |
+| popperTrigger | 气泡弹出的触发方式 | `click｜hover` |
+| popperClassName | 气泡容器自定义样式名 | `string` |
+| btnIcon | 按钮图标 | `ReactNode` |
+| btnText | 按钮内容文本 | `string` |
+| title | 按钮的 title 属性 | `string` |
+| position | 控件被添加到地图中的位置以及排列方式，详情可见 [控件插槽](https://l7.antv.vision/zh/docs/api/component/control/control#插槽) | `Position` |
+| className | 自定义样式名 | `string` |
+| style | 自定义样式 | `CSSProperties` |
 
 ## IControlOptionItem
 
