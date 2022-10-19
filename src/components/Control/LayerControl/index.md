@@ -43,7 +43,7 @@ nav:
 
 ### PopperPlacement
 
-```js
+```ts
 export type PopperPlacement =
   | 'top-start'
   | 'top'
