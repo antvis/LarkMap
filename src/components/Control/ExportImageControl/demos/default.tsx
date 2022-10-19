@@ -6,10 +6,8 @@ export default () => {
     console.log(value);
   };
   return (
-    <>
-      <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
-        <ExportImageControl position="topleft" onExport={onExport} />
-      </LarkMap>
-    </>
+    <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
+      <ExportImageControl onExport={onExport} />
+    </LarkMap>
   );
 };
