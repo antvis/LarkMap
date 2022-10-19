@@ -15,5 +15,5 @@ export interface ILayerControlCallback<C extends Control = Control> {
 export interface LayerControlProps extends Partial<ILayerControlOption>, IPopperControlCallback<LayerControl> {
   style?: CSSProperties;
   btnIcon?: ReactNode;
-  onSelectChange?: (value: string | string[]) => void;
+  onSelectChange?: (value: string[]) => void;
 }

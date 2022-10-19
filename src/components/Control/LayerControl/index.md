@@ -95,12 +95,12 @@ export type Position =
 
 ## 事件
 
-| 参数           | 说明                   | 类型               |
-| -------------- | ---------------------- | ------------------ |
-| onAdd          | 组件被添加时的事件     | `(this) => void`   |
-| onRemove       | 组件被移除时的事件     | `(this) => void`   |
-| onShow         | 组件显示时的事件       | `(this) => void`   |
-| onHide         | 组件隐藏时的事件       | `(this) => void`   |
-| onPopperShow   | 气泡显示时的回调       | `(this) => void`   |
-| onPopperHide   | 气泡隐藏时的回调       | `(this) => void`   |
-| onSelectChange | 当所选值发生改变时触发 | `string｜string[]` |
+| 参数           | 说明                   | 类型                                        |
+| -------------- | ---------------------- | ------------------------------------------- |
+| onAdd          | 组件被添加时的事件     | `(this) => void`                            |
+| onRemove       | 组件被移除时的事件     | `(this) => void`                            |
+| onShow         | 组件显示时的事件       | `(this) => void`                            |
+| onHide         | 组件隐藏时的事件       | `(this) => void`                            |
+| onPopperShow   | 气泡显示时的回调       | `(this) => void`                            |
+| onPopperHide   | 气泡隐藏时的回调       | `(this) => void`                            |
+| onSelectChange | 当所选值发生改变时触发 | `onSelectChange: (value: string[]) => void` |

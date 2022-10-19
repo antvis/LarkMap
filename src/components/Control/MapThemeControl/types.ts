@@ -9,5 +9,5 @@ import type { IPopperControlCallback } from '../../../types';
 export interface MapThemeControlProps extends ISelectControlOption, IPopperControlCallback<MapTheme> {
   style?: CSSProperties;
   btnIcon?: ReactNode;
-  onSelectChange?: (value: string | string[]) => void;
+  onSelectChange?: (value: string) => void;
 }
