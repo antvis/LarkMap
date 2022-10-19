@@ -33,12 +33,12 @@ nav:
 | popperPlacement | 气泡相对于按钮的位置                                      | `PopperPlacement`           |
 | popperTrigger   | 气泡弹出的触发方式                                        | `click｜hover`              |
 | popperClassName | 气泡容器自定义样式名                                      | `string`                    |
-| btnIcon         | 按钮图标                                                  | `HTMLElement｜SVGElement`   |
+| btnIcon         | 按钮图标                                                  | `ReactNode`                 |
 | btnText         | 按钮内容文本                                              | `string`                    |
 | title           | 按钮的 title 属性                                         | `string`                    |
 | position        | 控件被添加到地图中的位置以及排列方式，详情可见 `控件插槽` | `Position`                  |
 | className       | 自定义样式名                                              | `string`                    |
-| style           | 自定义样式                                                | `string`                    |
+| style           | 自定义样式                                                | `CSSProperties`             |
 
 ## IControlOptionItem
 
@@ -97,7 +97,7 @@ export type Position =
 | getOptions   | 获取当前`配置`                         | `() => Option`                         |
 | show         | 显示组件                               | `() => void`                           |
 | hide         | 隐藏组件                               | `() => void`                           |
-| getContainer | 获取当前控件对应的 DOM 容器            | `() => HTMLElement`                    |
+| getContainer | 获取当前控件对应的 DOM 容器            | `() => ReactNode`                      |
 
 ## 事件
 

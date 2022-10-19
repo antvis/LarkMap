@@ -32,7 +32,7 @@ nav:
 | transform | 转换光标所在经纬度的回调函数 | `(position: [number, number]) => [number, number]` |
 | position | 控件被添加到地图中的位置以及排列方式，详情可见 `控件插槽` | `Position` |
 | className | 自定义样式名 | `string` |
-| style | 自定义样式 | `string` |
+| style | 自定义样式 | `CSSProperties` |
 
 ### Position
 
@@ -60,7 +60,7 @@ export type Position =
 | getOptions   | 获取当前`配置`                         | `() => Option`                         |
 | show         | 显示组件                               | `() => void`                           |
 | hide         | 隐藏组件                               | `() => void`                           |
-| getContainer | 获取当前控件对应的 DOM 容器            | `() => HTMLElement`                    |
+| getContainer | 获取当前控件对应的 DOM 容器            | `() => ReactNode`                      |
 
 ## 事件
 
