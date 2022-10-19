@@ -14,22 +14,13 @@ export * from './components/Layers';
 /**
  * 控件组件
  * */
-export { CustomControl } from './components/CustomControl';
-export { CustomControlProps } from './components/CustomControl/types';
+export { CustomControl } from './components/Control/CustomControl';
+export { CustomControlProps } from './components/Control/CustomControl/types';
 // 兼容修改组件名称，带布局属性的组件加 Control 后缀
 export { ScaleControl, ScaleControl as Scale } from './components/Control/ScaleControl';
 export { ScaleControlProps, ScaleControlProps as ScaleProps } from './components/Control/ScaleControl/type';
 export { ZoomControl, ZoomControl as Zoom } from './components/Control/ZoomControl';
 export { ZoomControlProps, ZoomControlProps as ZoomProps } from './components/Control/ZoomControl/types';
-export { ContextMenu } from './components/ContextMenu';
-export { ContextMenuItemProps, ContextMenuProps } from './components/ContextMenu/types';
-export { LocationSearch } from './components/LocationSearch';
-export {
-  LocationSearchProps,
-  LocationSearchOption,
-  GaodeLocationSearchParams,
-} from './components/LocationSearch/types';
-
 export { FullscreenControl, FullscreenControl as Fullscreen } from './components/Control/FullscreenControl';
 export {
   FullscreenControlProps,
@@ -54,6 +45,15 @@ export {
   MapThemeControlProps,
   MapThemeControlProps as MapThemeProps,
 } from './components/Control/MapThemeControl/types';
+
+export { ContextMenu } from './components/ContextMenu';
+export { ContextMenuItemProps, ContextMenuProps } from './components/ContextMenu/types';
+export { LocationSearch } from './components/LocationSearch';
+export {
+  LocationSearchProps,
+  LocationSearchOption,
+  GaodeLocationSearchParams,
+} from './components/LocationSearch/types';
 
 /**
  * 分析组件
