@@ -27,19 +27,16 @@ nav:
 
 ## 配置
 
-| 参数      | 说明                         | 类型                                               |
-| --------- | ---------------------------- | -------------------------------------------------- |
+| 参数 | 说明 | 类型 |
+| --- | --- | --- |
 | transform | 转换光标所在经纬度的回调函数 | `(position: [number, number]) => [number, number]` |
-
-| 参数      | 说明                                                      | 类型       |
-| --------- | --------------------------------------------------------- | ---------- |
-| position  | 控件被添加到地图中的位置以及排列方式，详情可见 `控件插槽` | `Position` |
-| className | 自定义样式名                                              | `string`   |
-| style     | 自定义样式                                                | `string`   |
+| position | 控件被添加到地图中的位置以及排列方式，详情可见 `控件插槽` | `Position` |
+| className | 自定义样式名 | `string` |
+| style | 自定义样式 | `string` |
 
 ### Position
 
-```js
+```ts
 export type Position =
   | 'topleft' // ↖ 左上角，纵向排列
   | 'lefttop' // ↖ 左上角，横向排列
@@ -70,10 +67,7 @@ export type Position =
 | 参数             | 说明                         | 类型                                   |
 | ---------------- | ---------------------------- | -------------------------------------- |
 | onLocationChange | 光标所在经纬度发生变化时触发 | `(position: [number, number]) => void` |
-
-| 参数     | 说明               | 类型             |
-| -------- | ------------------ | ---------------- |
-| onAdd    | 组件被添加时的事件 | `(this) => void` |
-| onRemove | 组件被移除时的事件 | `(this) => void` |
-| onShow   | 组件显示时的事件   | `(this) => void` |
-| onHide   | 组件隐藏时的事件   | `(this) => void` |
+| onAdd            | 组件被添加时的事件           | `(this) => void`                       |
+| onRemove         | 组件被移除时的事件           | `(this) => void`                       |
+| onShow           | 组件显示时的事件             | `(this) => void`                       |
+| onHide           | 组件隐藏时的事件             | `(this) => void`                       |

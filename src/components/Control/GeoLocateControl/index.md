@@ -35,23 +35,17 @@ nav:
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
 | transform | 格式化通过 getlocation 获取到的经纬度的函数，可以用于地理坐标系的转换 | `(position: [number, number]) => [number, number]` |
-
-| 参数     | 说明                                                    | 类型                      |
-| -------- | ------------------------------------------------------- | ------------------------- |
-| btnIcon  | 按钮图标                                                | `HTMLElement｜SVGElement` |
-| btnText  | 按钮内容文本                                            | `string`                  |
-| title    | 按钮的 title 属性                                       | `string`                  |
-| vertical | 在 btnIcon 有值的情况下，按钮内的图标和文案是否纵向排列 | `boolean`                 |
-
-| 参数      | 说明                                                      | 类型       |
-| --------- | --------------------------------------------------------- | ---------- |
-| position  | 控件被添加到地图中的位置以及排列方式，详情可见 `控件插槽` | `Position` |
-| className | 自定义样式名                                              | `string`   |
-| style     | 自定义样式                                                | `string`   |
+| btnIcon | 按钮图标 | `HTMLElement｜SVGElement` |
+| btnText | 按钮内容文本 | `string` |
+| title | 按钮的 title 属性 | `string` |
+| vertical | 在 btnIcon 有值的情况下，按钮内的图标和文案是否纵向排列 | `boolean` |
+| position | 控件被添加到地图中的位置以及排列方式，详情可见 `控件插槽` | `Position` |
+| className | 自定义样式名 | `string` |
+| style | 自定义样式 | `string` |
 
 ### Position
 
-```js
+```ts
 export type Position =
   | 'topleft' // ↖ 左上角，纵向排列
   | 'lefttop' // ↖ 左上角，横向排列
@@ -69,17 +63,14 @@ export type Position =
 
 ## 方法
 
-| 参数           | 说明                   | 类型                               |
-| -------------- | ---------------------- | ---------------------------------- |
-| getGeoLocation | 获取当前用户所在经纬度 | ` () => Promise<[number, number]>` |
-
-| 参数         | 说明                                   | 类型                                   |
-| ------------ | -------------------------------------- | -------------------------------------- |
-| setOptions   | 更新配置，参数需要参考对应组件的`配置` | `(newOption: Partial<Option>) => void` |
-| getOptions   | 获取当前`配置`                         | `() => Option`                         |
-| show         | 显示组件                               | `() => void`                           |
-| hide         | 隐藏组件                               | `() => void`                           |
-| getContainer | 获取当前控件对应的 DOM 容器            | `() => HTMLElement`                    |
+| 参数           | 说明                                   | 类型                                   |
+| -------------- | -------------------------------------- | -------------------------------------- |
+| getGeoLocation | 获取当前用户所在经纬度                 | ` () => Promise<[number, number]>`     |
+| setOptions     | 更新配置，参数需要参考对应组件的`配置` | `(newOption: Partial<Option>) => void` |
+| getOptions     | 获取当前`配置`                         | `() => Option`                         |
+| show           | 显示组件                               | `() => void`                           |
+| hide           | 隐藏组件                               | `() => void`                           |
+| getContainer   | 获取当前控件对应的 DOM 容器            | `() => HTMLElement`                    |
 
 ## 事件
 

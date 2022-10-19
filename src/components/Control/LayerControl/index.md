@@ -55,22 +55,19 @@ export type PopperPlacement =
   | 'right-end';
 ```
 
-| 参数     | 说明                                                    | 类型                      |
-| -------- | ------------------------------------------------------- | ------------------------- |
-| btnIcon  | 按钮图标                                                | `HTMLElement｜SVGElement` |
-| btnText  | 按钮内容文本                                            | `string`                  |
-| title    | 按钮的 title 属性                                       | `string`                  |
-| vertical | 在 btnIcon 有值的情况下，按钮内的图标和文案是否纵向排列 | `boolean`                 |
-
-| 参数      | 说明                                                      | 类型       |
-| --------- | --------------------------------------------------------- | ---------- |
-| position  | 控件被添加到地图中的位置以及排列方式，详情可见 `控件插槽` | `Position` |
-| className | 自定义样式名                                              | `string`   |
-| style     | 自定义样式                                                | `string`   |
+| 参数      | 说明                                                      | 类型                      |
+| --------- | --------------------------------------------------------- | ------------------------- |
+| btnIcon   | 按钮图标                                                  | `HTMLElement｜SVGElement` |
+| btnText   | 按钮内容文本                                              | `string`                  |
+| title     | 按钮的 title 属性                                         | `string`                  |
+| vertical  | 在 btnIcon 有值的情况下，按钮内的图标和文案是否纵向排列   | `boolean`                 |
+| position  | 控件被添加到地图中的位置以及排列方式，详情可见 `控件插槽` | `Position`                |
+| className | 自定义样式名                                              | `string`                  |
+| style     | 自定义样式                                                | `string`                  |
 
 ### Position
 
-```js
+```ts
 export type Position =
   | 'topleft' // ↖ 左上角，纵向排列
   | 'lefttop' // ↖ 左上角，横向排列
@@ -98,18 +95,12 @@ export type Position =
 
 ## 事件
 
-| 参数     | 说明               | 类型             |
-| -------- | ------------------ | ---------------- |
-| onAdd    | 组件被添加时的事件 | `(this) => void` |
-| onRemove | 组件被移除时的事件 | `(this) => void` |
-| onShow   | 组件显示时的事件   | `(this) => void` |
-| onHide   | 组件隐藏时的事件   | `(this) => void` |
-
-| 参数         | 说明             | 类型             |
-| ------------ | ---------------- | ---------------- |
-| onPopperShow | 气泡显示时的回调 | `(this) => void` |
-| onPopperHide | 气泡隐藏时的回调 | `(this) => void` |
-
 | 参数           | 说明                   | 类型               |
 | -------------- | ---------------------- | ------------------ |
+| onAdd          | 组件被添加时的事件     | `(this) => void`   |
+| onRemove       | 组件被移除时的事件     | `(this) => void`   |
+| onShow         | 组件显示时的事件       | `(this) => void`   |
+| onHide         | 组件隐藏时的事件       | `(this) => void`   |
+| onPopperShow   | 气泡显示时的回调       | `(this) => void`   |
+| onPopperHide   | 气泡隐藏时的回调       | `(this) => void`   |
 | onSelectChange | 当所选值发生改变时触发 | `string｜string[]` |

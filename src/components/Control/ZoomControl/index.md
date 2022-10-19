@@ -25,22 +25,19 @@ nav:
 
 ## 配置
 
-| 参数         | 说明                  | 类型              |
-| ------------ | --------------------- | ----------------- |
-| zoomInText   | 放大按钮的展示内容    | `Element｜string` |
-| zoomInTitle  | 放大按钮的 title 属性 | `string`          |
-| zoomOutText  | 缩小按钮的展示内容    | `Element｜string` |
-| zoomOutTitle | 缩小按钮的 title 属性 | `string`          |
-
-| 参数      | 说明                                                      | 类型       |
-| --------- | --------------------------------------------------------- | ---------- |
-| position  | 控件被添加到地图中的位置以及排列方式，详情可见 `控件插槽` | `Position` |
-| className | 自定义样式名                                              | `string`   |
-| style     | 自定义样式                                                | `string`   |
+| 参数         | 说明                                                      | 类型              |
+| ------------ | --------------------------------------------------------- | ----------------- |
+| zoomInText   | 放大按钮的展示内容                                        | `Element｜string` |
+| zoomInTitle  | 放大按钮的 title 属性                                     | `string`          |
+| zoomOutText  | 缩小按钮的展示内容                                        | `Element｜string` |
+| zoomOutTitle | 缩小按钮的 title 属性                                     | `string`          |
+| position     | 控件被添加到地图中的位置以及排列方式，详情可见 `控件插槽` | `Position`        |
+| className    | 自定义样式名                                              | `string`          |
+| style        | 自定义样式                                                | `string`          |
 
 ### Position
 
-```js
+```ts
 export type Position =
   | 'topleft' // ↖ 左上角，纵向排列
   | 'lefttop' // ↖ 左上角，横向排列
@@ -58,13 +55,10 @@ export type Position =
 
 ## 方法
 
-| 参数    | 说明     | 类型         |
-| ------- | -------- | ------------ |
-| zoomIn  | 放大地图 | `() => void` |
-| zoomOut | 缩小底图 | `() => void` |
-
 | 参数         | 说明                                   | 类型                                   |
 | ------------ | -------------------------------------- | -------------------------------------- |
+| zoomIn       | 放大地图                               | `() => void`                           |
+| zoomOut      | 缩小底图                               | `() => void`                           |
 | setOptions   | 更新配置，参数需要参考对应组件的`配置` | `(newOption: Partial<Option>) => void` |
 | getOptions   | 获取当前`配置`                         | `() => Option`                         |
 | show         | 显示组件                               | `() => void`                           |

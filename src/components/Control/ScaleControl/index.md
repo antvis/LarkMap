@@ -25,23 +25,20 @@ nav:
 
 ## 配置
 
-| 参数           | 说明                                 | 类型      | 默认值  |
-| -------------- | ------------------------------------ | --------- | ------- |
-| lockWidth      | 是否固定容器宽度                     | `boolean` | `true`  |
-| maxWidth       | 组件的容器最大宽度                   | `number`  | `100`   |
-| metric         | 展示 `千米` 格式的比例尺             | `boolean` | `true`  |
-| imperial       | 展示`英里`格式的比例尺               | `boolean` | `false` |
-| updateWhenIdle | 是否只在拖拽和缩放结束后才更新比例尺 | `boolean` | `false` |
-
-| 参数      | 说明                                                      | 类型       |
-| --------- | --------------------------------------------------------- | ---------- |
-| position  | 控件被添加到地图中的位置以及排列方式，详情可见 `控件插槽` | `Position` |
-| className | 自定义样式名                                              | `string`   |
-| style     | 自定义样式                                                | `string`   |
+| 参数           | 说明                                                      | 类型       | 默认值  |
+| -------------- | --------------------------------------------------------- | ---------- | ------- |
+| lockWidth      | 是否固定容器宽度                                          | `boolean`  | `true`  |
+| maxWidth       | 组件的容器最大宽度                                        | `number`   | `100`   |
+| metric         | 展示 `千米` 格式的比例尺                                  | `boolean`  | `true`  |
+| imperial       | 展示`英里`格式的比例尺                                    | `boolean`  | `false` |
+| updateWhenIdle | 是否只在拖拽和缩放结束后才更新比例尺                      | `boolean`  | `false` |
+| position       | 控件被添加到地图中的位置以及排列方式，详情可见 `控件插槽` | `Position` | --      |
+| className      | 自定义样式名                                              | `string`   | --      |
+| style          | 自定义样式                                                | `string`   | --      |
 
 ### Position
 
-```js
+```ts
 export type Position =
   | 'topleft' // ↖ 左上角，纵向排列
   | 'lefttop' // ↖ 左上角，横向排列
