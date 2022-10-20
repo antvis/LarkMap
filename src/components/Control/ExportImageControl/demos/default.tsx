@@ -8,7 +8,6 @@ export default () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [source, setSource] = useState({
     data: { type: 'FeatureCollection', features: [] },
-    parser: { type: 'geojson' },
   });
 
   const layerOptions: Omit<PolygonLayerProps, 'source'> = {
@@ -35,7 +34,7 @@ export default () => {
   }, []);
 
   const config = {
-    mapType: 'GaodeV2' as const,
+    mapType: 'GaodeV1' as const,
     mapOptions: {
       WebGLParams: {
         preserveDrawingBuffer: true,
