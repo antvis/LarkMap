@@ -1,6 +1,6 @@
 ---
 toc: content
-order: 9
+order: 8
 group:
   title: 控件组件
   order: 2
@@ -9,11 +9,11 @@ nav:
   path: /components
 ---
 
-# 地图主题 - MapThemeControl
+# 图层显隐 - LayerSwitch
 
 ## 介绍
 
-地图主题组件，用于切换地图底图的主题样式。
+图层显隐组件，用于控制目标图层组的**显示**和**隐藏**操作。
 
 ## 代码演示
 
@@ -23,13 +23,14 @@ nav:
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| options | 用户自定义的地图主题选项，每个选项的类型可见 [IControlOptionItem](#icontroloptionitem) | `Array<IControlOptionItem>` | [] |
+| layers | 需要被控制的 `layer` 数组，支持传入图层实例或者图层 id，不传则默认读取当前 L7 中所有的图层 | `Array<ILayer &#124; string>` | [] |
 | popperPlacement | 气泡相对于按钮的位置 | [PopperPlacement](#popperplacement) | `'left-start'` |
 | popperTrigger | 气泡弹出的触发方式 | `click｜hover` | `'click'` |
 | popperClassName | 气泡容器自定义样式名 | `string` | - |
 | btnIcon | 按钮图标 | `ReactNode` | - |
 | btnText | 按钮内容文本 | `string` | - |
-| title | 按钮的 title 属性 | `string` | `'地图样式'` |
+| title | 按钮的 title 属性 | `string` | `'图层控制'` |
+| vertical | 在 btnIcon 有值的情况下，按钮内的图标和文案是否纵向排列 | `boolean` | `false` |
 | position | 控件被添加到地图中的位置以及排列方式，详情可见 [控件插槽](https://l7.antv.vision/zh/docs/api/component/control/control#插槽) | [Position](#position) | `'topright'` |
 | className | 自定义样式名 | `string` | - |
 | style | 自定义样式 | `CSSProperties` | - |
@@ -39,20 +40,7 @@ nav:
 | onHide | 组件隐藏时的回调 | `(this) => void` | - |
 | onPopperShow | 气泡显示时的回调 | `(this) => void` | - |
 | onPopperHide | 气泡隐藏时的回调 | `(this) => void` | - |
-| onSelectChange | 地图主题发生改变时的回调 | `(value: string) => void` | - |
-
-### IControlOptionItem
-
-```ts
-export type IControlOptionItem = {
-  // 主题选项对应的文本
-  text: string;
-  // 主题选项对应地图主题 style 的 key 值
-  value: string;
-  // 主题选项对应展示的图片
-  img?: string;
-};
-```
+| onSelectChange | 图层显隐发生改变时的回调 | `(value: string[]) => void` | - |
 
 ### PopperPlacement
 

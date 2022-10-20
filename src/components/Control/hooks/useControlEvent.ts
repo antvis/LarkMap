@@ -1,6 +1,6 @@
 import type { Control } from '@antv/l7';
-import { useMemo } from 'react';
-import { useTrackedEffect, useUnmount } from 'ahooks';
+import { useEffect, useMemo } from 'react';
+import { useUnmount } from 'ahooks';
 
 type CallbackFunction = (...args: any[]) => any;
 
@@ -12,22 +12,28 @@ type CallbackFunction = (...args: any[]) => any;
 export const useControlEvent = <C extends Control>(control: C, props: Record<string, CallbackFunction>) => {
   const eventNameList = useMemo(() => Object.keys(props), [props]);
 
-  useTrackedEffect((updateIndexes, previousDeps: CallbackFunction[], currentDeps: CallbackFunction[]) => {
-    if (!control) {
-      return;
+  useEffect(() => {
+    if (control) {
+      eventNameList.forEach((eventName) => {
+        const callback = props[eventName];
+        if (callback) {
+          control.on(eventName, callback);
+        }
+      });
     }
-    updateIndexes.forEach((updateIndex) => {
-      const previousCallback = previousDeps[updateIndex];
-      const currentCallback = currentDeps[updateIndex];
-      const eventName = eventNameList[updateIndex];
-      if (previousCallback) {
-        control.off(eventName, previousCallback);
+
+    return () => {
+      if (control) {
+        eventNameList.forEach((eventName) => {
+          const callback = props[eventName];
+          if (callback) {
+            control.off(eventName, callback);
+          }
+        });
       }
-      if (currentCallback) {
-        control.on(eventName, currentCallback);
-      }
-    });
-  }, Object.values(props));
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [control, ...Object.values(props)]);
 
   useUnmount(() => {
     if (!control) {

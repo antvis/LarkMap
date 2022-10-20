@@ -46,7 +46,6 @@
     "react-color": "^2.19.3"
   },
   "devDependencies": {
-    "geotiff": "1.0.0-beta.10",
     "@ant-design/icons": "^4.7.0",
     "@antv/dumi-theme-antv": "^0.2.2",
     "@antv/l7": "^2.9.33",
@@ -60,6 +59,8 @@
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.26.0",
     "father-build": "^1.22.1",
+    "gcoord": "^0.3.2",
+    "geotiff": "1.0.0-beta.10",
     "gh-pages": "^4.0.0",
     "husky": "^8.0.1",
     "jest": "^26.6.3",
