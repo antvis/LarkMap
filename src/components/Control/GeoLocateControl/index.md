@@ -24,7 +24,7 @@ nav:
 
 <code src="./demos/default.tsx" defaultShowCode compact></code>
 
-## 配置
+## API
 
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
