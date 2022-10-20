@@ -5,9 +5,8 @@ import type { IControlCallback } from '../../../types';
 /**
  * 组件类型定义
  */
-// @ts-ignore
 export interface MouseLocationControlProps
-  extends Partial<IMouseLocationControlOption>,
+  extends Omit<Partial<IMouseLocationControlOption>, 'style'>,
     IControlCallback<MouseLocation> {
   style?: CSSProperties;
   onLocationChange?: (position: [number, number]) => void;

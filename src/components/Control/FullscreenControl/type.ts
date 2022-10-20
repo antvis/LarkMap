@@ -5,8 +5,9 @@ import type { IControlCallback } from '../../../types';
 /**
  * 组件类型定义
  */
-// @ts-ignore
-export interface FullscreenControlProps extends Partial<IFullscreenControlOption>, IControlCallback<Fullscreen> {
+export interface FullscreenControlProps
+  extends Omit<Partial<IFullscreenControlOption>, 'style' | 'btnIcon' | 'exitBtnIcon'>,
+    IControlCallback<Fullscreen> {
   style?: CSSProperties;
   btnIcon?: ReactNode;
   exitBtnIcon?: ReactNode;
