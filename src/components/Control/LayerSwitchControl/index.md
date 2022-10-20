@@ -9,7 +9,7 @@ nav:
   path: /components
 ---
 
-# 图层显隐 - LayerSwitch
+# 图层显隐 - LayerSwitchControl
 
 ## 介绍
 
