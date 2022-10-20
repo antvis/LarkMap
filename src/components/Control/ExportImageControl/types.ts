@@ -5,8 +5,9 @@ import type { IControlCallback } from '../../../types';
 /**
  * 组件类型定义
  */
-// @ts-ignore
-export interface ExportImageControlProps extends Partial<IExportImageControlOption>, IControlCallback<ExportImage> {
+export interface ExportImageControlProps
+  extends Omit<Partial<IExportImageControlOption>, 'style' | 'btnIcon'>,
+    IControlCallback<ExportImage> {
   style?: CSSProperties;
   btnIcon?: ReactNode;
 }

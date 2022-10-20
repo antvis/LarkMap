@@ -13,30 +13,31 @@ nav:
 
 ## 介绍
 
-地图缩放组件，可以操控当前地图的缩放层级。
+地图缩放组件，用于控制地图放大和缩小的控件，并且当地图达到最大或最小缩放比时，会禁用对应缩放按钮。
 
 ## 代码演示
 
 <code src="./demos/default.tsx" defaultShowCode compact></code>
 
-## 配置
+## API
 
-| 参数         | 说明                  | 类型              |
-| ------------ | --------------------- | ----------------- |
-| zoomInText   | 放大按钮的展示内容    | `Element｜string` |
-| zoomInTitle  | 放大按钮的 title 属性 | `string`          |
-| zoomOutText  | 缩小按钮的展示内容    | `Element｜string` |
-| zoomOutTitle | 缩小按钮的 title 属性 | `string`          |
-
-| 参数      | 说明                                                      | 类型       |
-| --------- | --------------------------------------------------------- | ---------- |
-| position  | 控件被添加到地图中的位置以及排列方式，详情可见 `控件插槽` | `Position` |
-| className | 自定义样式名                                              | `string`   |
-| style     | 自定义样式                                                | `string`   |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| zoomInText | 放大按钮的展示内容 | `ReactNode` | - |
+| zoomInTitle | 放大按钮的 `title` 属性 | `string` | `'Zoom in'` |
+| zoomOutText | 缩小按钮的展示内容 | `ReactNode` | - |
+| zoomOutTitle | 缩小按钮的 `title` 属性 | `string` | `'Zoom out'` |
+| position | 控件被添加到地图中的位置以及排列方式，详情可见 [控件插槽](https://l7.antv.vision/zh/docs/api/component/control/control#插槽) | [Position](#position) | `'bottomright'` |
+| className | 自定义样式名 | `string` | - |
+| style | 自定义样式 | `CSSProperties` | - |
+| onAdd | 组件被添加时的回调 | `(this) => void` | - |
+| onRemove | 组件被移除时的回调 | `(this) => void` | - |
+| onShow | 组件显示时的回调 | `(this) => void` | - |
+| onHide | 组件隐藏时的回调 | `(this) => void` | - |
 
 ### Position
 
-```js
+```ts
 export type Position =
   | 'topleft' // ↖ 左上角，纵向排列
   | 'lefttop' // ↖ 左上角，横向排列
@@ -51,27 +52,3 @@ export type Position =
   | 'leftcenter' // ← 左边中间，纵向排列
   | 'rightcenter'; // → 右边中间，纵向排列
 ```
-
-## 方法
-
-| 参数    | 说明     | 类型         |
-| ------- | -------- | ------------ |
-| zoomIn  | 放大地图 | `() => void` |
-| zoomOut | 缩小底图 | `() => void` |
-
-| 参数         | 说明                                   | 类型                                   |
-| ------------ | -------------------------------------- | -------------------------------------- |
-| setOptions   | 更新配置，参数需要参考对应组件的`配置` | `(newOption: Partial<Option>) => void` |
-| getOptions   | 获取当前`配置`                         | `() => Option`                         |
-| show         | 显示组件                               | `() => void`                           |
-| hide         | 隐藏组件                               | `() => void`                           |
-| getContainer | 获取当前控件对应的 DOM 容器            | `() => HTMLElement`                    |
-
-## 事件
-
-| 参数     | 说明               | 类型             |
-| -------- | ------------------ | ---------------- |
-| onAdd    | 组件被添加时的事件 | `(this) => void` |
-| onRemove | 组件被移除时的事件 | `(this) => void` |
-| onShow   | 组件显示时的事件   | `(this) => void` |
-| onHide   | 组件隐藏时的事件   | `(this) => void` |

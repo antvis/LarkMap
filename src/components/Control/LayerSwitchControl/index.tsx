@@ -2,13 +2,13 @@ import React, { useMemo, useState } from 'react';
 import type { IGeoLocateOption } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import { LayerControl as L7LayerControl } from '@antv/l7';
+import { LayerSwitch as L7LayerSwitch } from '@antv/l7';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
 import { useControlElement, useControlEvent, useControlUpdate } from '../hooks';
-import type { LayerControlProps } from './types';
+import type { LayerSwitchControlProps } from './types';
 
-export const LayerControl: React.FC<LayerControlProps> = ({
+export const LayerSwitchControl: React.FC<LayerSwitchControlProps> = ({
   layers,
   popperPlacement,
   popperTrigger,
@@ -29,7 +29,7 @@ export const LayerControl: React.FC<LayerControlProps> = ({
   onSelectChange,
 }) => {
   const scene = useScene();
-  const [control, setControl] = useState<L7LayerControl | undefined>();
+  const [control, setControl] = useState<L7LayerSwitch | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
   const { portal: btnIconPortal, dom: btnIconDOM } = useControlElement(btnIcon);
 
@@ -62,10 +62,10 @@ export const LayerControl: React.FC<LayerControlProps> = ({
   ]);
 
   useMount(() => {
-    const layerControl = new L7LayerControl(omitBy(controlOptions, (value) => value === undefined));
-    setControl(layerControl);
+    const layerSwitch = new L7LayerSwitch(omitBy(controlOptions, (value) => value === undefined));
+    setControl(layerSwitch);
     setTimeout(() => {
-      scene.addControl(layerControl);
+      scene.addControl(layerSwitch);
     }, 0);
   });
 

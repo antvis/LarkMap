@@ -13,42 +13,35 @@ nav:
 
 ## 介绍
 
-全屏组件
-
-## 使用场景
-
-用于控制地图区域的全屏和退出全屏的控制按钮控件。
+全屏按钮控件，用于控制地图区域的全屏和退出全屏。
 
 ## 代码演示
-
-### 默认示例
 
 <code src="./demos/default.tsx" defaultShowCode compact></code>
 
 ## 配置
 
-| 参数     | 说明                                                    | 类型                      |
-| -------- | ------------------------------------------------------- | ------------------------- |
-| btnIcon  | 按钮图标                                                | `HTMLElement｜SVGElement` |
-| btnText  | 按钮内容文本                                            | `string`                  |
-| title    | 按钮的 title 属性                                       | `string`                  |
-| vertical | 在 btnIcon 有值的情况下，按钮内的图标和文案是否纵向排列 | `boolean`                 |
-
-| 参数        | 说明                              | 类型                      |
-| ----------- | --------------------------------- | ------------------------- |
-| exitBtnIcon | 退出全屏按钮的图标                | `HTMLElement｜SVGElement` |
-| exitBtnText | 退出全屏按钮的文本                | `string`                  |
-| exitTitle   | 退出全屏按钮的文本的 `title` 属性 | `string`                  |
-
-| 参数      | 说明                                                      | 类型       |
-| --------- | --------------------------------------------------------- | ---------- |
-| position  | 控件被添加到地图中的位置以及排列方式，详情可见 `控件插槽` | `Position` |
-| className | 自定义样式名                                              | `string`   |
-| style     | 自定义样式                                                | `string`   |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| btnIcon | 按钮图标 | `ReactNode` | - |
+| btnText | 按钮内容文本 | `string` | - |
+| title | 按钮的 title 属性 | `string` | `'全屏'` |
+| exitBtnIcon | 退出全屏按钮的图标 | `ReactNode` | - |
+| exitBtnText | 退出全屏按钮的文本 | `string` | - |
+| exitTitle | 退出全屏按钮的文本的 `title` 属性 | `string` | `'退出全屏'` |
+| vertical | 在 btnIcon 有值的情况下，按钮内的图标和文案是否纵向排列 | `boolean` | `false` |
+| position | 控件被添加到地图中的位置以及排列方式，详情可见 [控件插槽](https://l7.antv.vision/zh/docs/api/component/control/control#插槽) | [Position](#position) | `'topright'` |
+| className | 自定义样式名 | `string` | - |
+| style | 自定义样式 | `CSSProperties` | - |
+| onFullscreenChange | 当全屏状态发生变化时触发的回调 | `(isFullscreen: boolean) => void` | - |
+| onAdd | 组件被添加时的回调 | `(this) => void` | - |
+| onRemove | 组件被移除时的回调 | `(this) => void` | - |
+| onShow | 组件显示时的回调 | `(this) => void` | - |
+| onHide | 组件隐藏时的回调 | `(this) => void` | - |
 
 ### Position
 
-```js
+```ts
 export type Position =
   | 'topleft' // ↖ 左上角，纵向排列
   | 'lefttop' // ↖ 左上角，横向排列
@@ -63,30 +56,3 @@ export type Position =
   | 'leftcenter' // ← 左边中间，纵向排列
   | 'rightcenter'; // → 右边中间，纵向排列
 ```
-
-## 方法
-
-| 参数             | 说明                            | 类型         |
-| ---------------- | ------------------------------- | ------------ |
-| toggleFullscreen | 进入/退出全屏地图部分的全屏状态 | `() => void` |
-
-| 参数         | 说明                                   | 类型                                   |
-| ------------ | -------------------------------------- | -------------------------------------- |
-| setOptions   | 更新配置，参数需要参考对应组件的`配置` | `(newOption: Partial<Option>) => void` |
-| getOptions   | 获取当前`配置`                         | `() => Option`                         |
-| show         | 显示组件                               | `() => void`                           |
-| hide         | 隐藏组件                               | `() => void`                           |
-| getContainer | 获取当前控件对应的 DOM 容器            | `() => HTMLElement`                    |
-
-## 事件
-
-| 参数               | 说明                     | 类型                              |
-| ------------------ | ------------------------ | --------------------------------- |
-| onFullscreenChange | 当全屏状态发生变化时触发 | `(isFullscreen: boolean) => void` |
-
-| 参数     | 说明               | 类型             |
-| -------- | ------------------ | ---------------- |
-| onAdd    | 组件被添加时的事件 | `(this) => void` |
-| onRemove | 组件被移除时的事件 | `(this) => void` |
-| onShow   | 组件显示时的事件   | `(this) => void` |
-| onHide   | 组件隐藏时的事件   | `(this) => void` |

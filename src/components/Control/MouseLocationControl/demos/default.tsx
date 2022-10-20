@@ -3,10 +3,8 @@ import React from 'react';
 
 export default () => {
   return (
-    <>
-      <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
-        <MouseLocationControl />
-      </LarkMap>
-    </>
+    <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
+      <MouseLocationControl />
+    </LarkMap>
   );
 };

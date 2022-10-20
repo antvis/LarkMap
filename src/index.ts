@@ -38,8 +38,11 @@ export {
   MouseLocationControlProps,
   MouseLocationControlProps as MouseLocationProps,
 } from './components/Control/MouseLocationControl/types';
-export { LayerControl } from './components/Control/LayerControl';
-export { LayerControlProps } from './components/Control/LayerControl/types';
+export { LayerSwitchControl, LayerSwitchControl as LayerSwitch } from './components/Control/LayerSwitchControl';
+export {
+  LayerSwitchControlProps,
+  LayerSwitchControlProps as LayerSwitchProps,
+} from './components/Control/LayerSwitchControl/types';
 export { MapThemeControl, MapThemeControl as MapTheme } from './components/Control/MapThemeControl';
 export {
   MapThemeControlProps,
