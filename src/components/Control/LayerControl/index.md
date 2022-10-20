@@ -40,7 +40,6 @@ nav:
 | onHide | 组件隐藏时的回调 | `(this) => void` |
 | onPopperShow | 气泡显示时的回调 | `(this) => void` |
 | onPopperHide | 气泡隐藏时的回调 | `(this) => void` |
-| onSelectChange | 当所选值发生改变时触发的回调 | `onSelectChange: (value: string[]) => void` |
 
 ### PopperPlacement
 
