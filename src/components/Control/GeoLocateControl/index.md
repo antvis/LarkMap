@@ -13,7 +13,7 @@ nav:
 
 ## 介绍
 
-定位组件
+定位组件使用浏览器环境的 `nagigator` 的 `getlocation` 方法，使用浏览器打开位置感应能力获取当前用户所在经纬度。
 
 **注意：**
 
@@ -26,20 +26,20 @@ nav:
 
 ## 配置
 
-| 参数 | 说明 | 类型 |
-| --- | --- | --- |
-| transform | 格式化通过 getlocation 获取到的经纬度的函数，可以用于地理坐标系的转换 | `(position: [number, number]) => [number, number]` |
-| btnIcon | 按钮图标 | `ReactNode` |
-| btnText | 按钮内容文本 | `string` |
-| title | 按钮的 title 属性 | `string` |
-| vertical | 在 btnIcon 有值的情况下，按钮内的图标和文案是否纵向排列 | `boolean` |
-| position | 控件被添加到地图中的位置以及排列方式，详情可见[控件插槽](https://l7.antv.vision/zh/docs/api/component/control/control#插槽) | [Position](#position) |
-| className | 自定义样式名 | `string` |
-| style | 自定义样式 | `CSSProperties` |
-| onAdd | 组件被添加时的回调 | `(this) => void` |
-| onRemove | 组件被移除时的回调 | `(this) => void` |
-| onShow | 组件显示时的回调 | `(this) => void` |
-| onHide | 组件隐藏时的回调 | `(this) => void` |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| transform | 格式化通过 getlocation 获取到的经纬度的函数，可以用于地理坐标系的转换 | `(position: [number, number]) => [number, number]` | - |
+| btnIcon | 按钮图标 | `ReactNode` | - |
+| btnText | 按钮内容文本 | `string` | - |
+| title | 按钮的 title 属性 | `string` | `'定位''` |
+| vertical | 在 btnIcon 有值的情况下，按钮内的图标和文案是否纵向排列 | `boolean` | `false` |
+| position | 控件被添加到地图中的位置以及排列方式，详情可见[控件插槽](https://l7.antv.vision/zh/docs/api/component/control/control#插槽) | [Position](#position) | `'topright''` |
+| className | 自定义样式名 | `string` | - |
+| style | 自定义样式 | `CSSProperties` | - |
+| onAdd | 组件被添加时的回调 | `(this) => void` | - |
+| onRemove | 组件被移除时的回调 | `(this) => void` | - |
+| onShow | 组件显示时的回调 | `(this) => void` | - |
+| onHide | 组件隐藏时的回调 | `(this) => void` | - |
 
 ### Position
 

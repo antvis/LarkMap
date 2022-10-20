@@ -13,7 +13,7 @@ nav:
 
 ## 介绍
 
-地图比例尺组件
+地图比例尺组件，用于显示地图上的距离与地面上相应距离的比率。
 
 ## 代码演示
 
@@ -26,15 +26,15 @@ nav:
 | lockWidth | 是否固定容器宽度 | `boolean` | `true` |
 | maxWidth | 组件的容器最大宽度 | `number` | `100` |
 | metric | 展示 `千米` 格式的比例尺 | `boolean` | `true` |
-| imperial | 展示`英里`格式的比例尺 | `boolean` | `false` |
+| imperial | 展示 `英里` 格式的比例尺 | `boolean` | `false` |
 | updateWhenIdle | 是否只在拖拽和缩放结束后才更新比例尺 | `boolean` | `false` |
-| position | 控件被添加到地图中的位置以及排列方式，详情可见 [控件插槽](https://l7.antv.vision/zh/docs/api/component/control/control#插槽) | [Position](#position) | -- |
-| className | 自定义样式名 | `string` | -- |
-| style | 自定义样式 | `CSSProperties` | -- |
-| onAdd | 组件被添加时的回调 | `(this) => void` | -- |
-| onRemove | 组件被移除时的回调 | `(this) => void` | -- |
-| onShow | 组件显示时的回调 | `(this) => void` | -- |
-| onHide | 组件隐藏时的回调 | `(this) => void` | -- |
+| position | 控件被添加到地图中的位置以及排列方式，详情可见 [控件插槽](https://l7.antv.vision/zh/docs/api/component/control/control#插槽) | [Position](#position) | `'bottomleft'` |
+| className | 自定义样式名 | `string` | - |
+| style | 自定义样式 | `CSSProperties` | - |
+| onAdd | 组件被添加时的回调 | `(this) => void` | - |
+| onRemove | 组件被移除时的回调 | `(this) => void` | - |
+| onShow | 组件显示时的回调 | `(this) => void` | - |
+| onHide | 组件隐藏时的回调 | `(this) => void` | - |
 
 ### Position
 

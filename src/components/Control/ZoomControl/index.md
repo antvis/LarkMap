@@ -13,7 +13,7 @@ nav:
 
 ## 介绍
 
-地图缩放组件，可以操控当前地图的缩放层级。
+地图缩放组件，用于控制地图放大和缩小的控件，并且当地图达到最大或最小缩放比时，会禁用对应缩放按钮。
 
 ## 代码演示
 
@@ -21,19 +21,19 @@ nav:
 
 ## 配置
 
-| 参数 | 说明 | 类型 |
-| --- | --- | --- |
-| zoomInText | 放大按钮的展示内容 | `ReactNode` |
-| zoomInTitle | 放大按钮的 title 属性 | `string` |
-| zoomOutText | 缩小按钮的展示内容 | `ReactNode` |
-| zoomOutTitle | 缩小按钮的 title 属性 | `string` |
-| position | 控件被添加到地图中的位置以及排列方式，详情可见 [控件插槽](https://l7.antv.vision/zh/docs/api/component/control/control#插槽) | [Position](#position) |
-| className | 自定义样式名 | `string` |
-| style | 自定义样式 | `CSSProperties` |
-| onAdd | 组件被添加时的回调 | `(this) => void` |
-| onRemove | 组件被移除时的回调 | `(this) => void` |
-| onShow | 组件显示时的回调 | `(this) => void` |
-| onHide | 组件隐藏时的回调 | `(this) => void` |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| zoomInText | 放大按钮的展示内容 | `ReactNode` | - |
+| zoomInTitle | 放大按钮的 `title` 属性 | `string` | `'Zoom in'` |
+| zoomOutText | 缩小按钮的展示内容 | `ReactNode` | - |
+| zoomOutTitle | 缩小按钮的 `title` 属性 | `string` | `'Zoom out'` |
+| position | 控件被添加到地图中的位置以及排列方式，详情可见 [控件插槽](https://l7.antv.vision/zh/docs/api/component/control/control#插槽) | [Position](#position) | `'bottomright'` |
+| className | 自定义样式名 | `string` | - |
+| style | 自定义样式 | `CSSProperties` | - |
+| onAdd | 组件被添加时的回调 | `(this) => void` | - |
+| onRemove | 组件被移除时的回调 | `(this) => void` | - |
+| onShow | 组件显示时的回调 | `(this) => void` | - |
+| onHide | 组件隐藏时的回调 | `(this) => void` | - |
 
 ### Position
 
