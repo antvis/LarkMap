@@ -5,8 +5,9 @@ import type { IControlCallback } from '../../../types';
 /**
  * 组件类型定义
  */
-// @ts-ignore
-export interface GeoLocateControlProps extends Partial<IGeoLocateOption>, IControlCallback<GeoLocate> {
+export interface GeoLocateControlProps
+  extends Omit<Partial<IGeoLocateOption>, 'style' | 'btnIcon'>,
+    IControlCallback<GeoLocate> {
   style?: CSSProperties;
   btnIcon?: ReactNode;
 }

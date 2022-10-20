@@ -5,8 +5,9 @@ import type { IPopperControlCallback } from '../../../types';
 /**
  * 组件类型定义
  */
-// @ts-ignore
-export interface MapThemeControlProps extends ISelectControlOption, IPopperControlCallback<MapTheme> {
+export interface MapThemeControlProps
+  extends Omit<Partial<ISelectControlOption>, 'style' | 'btnIcon'>,
+    IPopperControlCallback<MapTheme> {
   style?: CSSProperties;
   btnIcon?: ReactNode;
   onSelectChange?: (value: string) => void;
