@@ -16,3 +16,7 @@ export { BubbleLayer } from './CompositeLayers/BubbleLayer';
 export type { BubbleLayerProps } from './CompositeLayers/BubbleLayer/types';
 export { ChoroplethLayer } from './CompositeLayers/ChoroplethLayer';
 export type { ChoroplethLayerProps } from './CompositeLayers/ChoroplethLayer/types';
+export { IconFontLayer } from './CompositeLayers/IconFontLayer';
+export type { IconFontLayerProps } from './CompositeLayers/IconFontLayer/types';
+export { IconImageLayer } from './CompositeLayers/IconImageLayer';
+export type { IconImageLayerProps } from './CompositeLayers/IconImageLayer/types';
