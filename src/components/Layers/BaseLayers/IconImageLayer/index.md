@@ -13,7 +13,7 @@ nav:
 
 ## 介绍
 
-基于 [IconImageLayer ](https://l7plot.antv.vision/zh/docs/api/composite-layers/icon-image-layer) 封装，用于图标标注，支持自定义高粱，标注、框选。
+基于 [IconImageLayer ](https://l7plot.antv.vision/zh/docs/api/composite-layers/icon-image-layer) 封装，用于图标标注，支持自定义高亮，标注、框选。
 
 ## 代码演示
 
