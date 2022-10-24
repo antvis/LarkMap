@@ -1,9 +1,5 @@
 export { HeatmapLayer } from './BaseLayers/HeatmapLayer';
 export type { HeatmapLayerProps } from './BaseLayers/HeatmapLayer/types';
-export { IconFontLayer } from './BaseLayers/IconFontLayer';
-export type { IconFontLayerProps } from './BaseLayers/IconFontLayer/types';
-export { IconImageLayer } from './BaseLayers/IconImageLayer';
-export type { IconImageLayerProps } from './BaseLayers/IconImageLayer/types';
 export { ImageLayer } from './BaseLayers/ImageLayer';
 export type { ImageLayerProps } from './BaseLayers/ImageLayer/types';
 export { LineLayer } from './BaseLayers/LineLayer';
@@ -20,3 +16,7 @@ export { BubbleLayer } from './CompositeLayers/BubbleLayer';
 export type { BubbleLayerProps } from './CompositeLayers/BubbleLayer/types';
 export { ChoroplethLayer } from './CompositeLayers/ChoroplethLayer';
 export type { ChoroplethLayerProps } from './CompositeLayers/ChoroplethLayer/types';
+export { IconFontLayer } from './CompositeLayers/IconFontLayer';
+export type { IconFontLayerProps } from './CompositeLayers/IconFontLayer/types';
+export { IconImageLayer } from './CompositeLayers/IconImageLayer';
+export type { IconImageLayerProps } from './CompositeLayers/IconImageLayer/types';

@@ -17,11 +17,11 @@ const layerOptions: Omit<IconFontLayerProps, 'source'> = {
   },
   icon: {
     field: 'iconType',
-    value: 'text',
+    value: ['smallRain', 'middleRain', 'hugeRain', 'sun', 'cloud'],
   },
   iconStyle: {
-    textAnchor: 'center', // 文本相对锚点的位置 center|left|right|top|bottom|top-left
-    textOffset: [10, 10], // 文本相对锚点的偏移量 [水平, 垂直]
+    textAnchor: 'center',
+    textOffset: [0, 0],
     fontFamily: 'iconfont',
     textAllowOverlap: true,
     iconfont: true,
@@ -29,6 +29,20 @@ const layerOptions: Omit<IconFontLayerProps, 'source'> = {
   fillColor: 'blue',
   radius: 20,
   opacity: 0.7,
+  label: {
+    visible: true,
+    field: 'temperature',
+    style: {
+      fill: 'blue',
+      opacity: 0.5,
+      fontSize: 12,
+      textAnchor: 'right',
+      textOffset: [0, 0],
+      spacing: 1,
+      padding: [5, 0],
+      strokeWidth: 0.3,
+    },
+  },
   state: {
     active: {
       color: 'red',
@@ -50,7 +64,7 @@ export default () => {
   useEffect(() => {
     fetch('https://gw.alipayobjects.com/os/bmw-prod/9eb3f1b5-0c3b-49b2-8221-191d4ba8aa5e.json')
       .then((response) => response.json())
-      .then((data: any) => {
+      .then((data: any[]) => {
         setSource((prevState) => ({ ...prevState, data }));
       });
   }, []);
