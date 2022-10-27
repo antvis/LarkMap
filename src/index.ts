@@ -65,8 +65,8 @@ export { Template } from './components/Template';
 export { TemplateProps } from './components/Template/types';
 export { Marker } from './components/Marker';
 export { MarkerProps } from './components/Marker/types';
-export { Popup } from './components/Popup';
-export { PopupProps } from './components/Popup/types';
+export { Popup } from './components/Popups/Popup';
+export { PopupProps } from './components/Popups/Popup/types';
 
 /**
  * 图例组件
