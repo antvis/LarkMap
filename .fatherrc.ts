@@ -23,6 +23,7 @@ export default defineConfig({
       '@formily/shared': 'Formily.Shared',
       '@formily/react': 'Formily.React',
       '@formily/antd': 'Formily.Antd',
+      '@antv/insight-component': 'InsightComponent',
     },
     chainWebpack(memo) {
       memo
