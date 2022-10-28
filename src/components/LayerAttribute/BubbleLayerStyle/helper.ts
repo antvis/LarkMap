@@ -34,8 +34,6 @@ export const bubbleLayerStyleFlatToConfig = (style: Record<string, any>) => {
     },
   };
 
-  console.log(styleConfig, 'styleConfig');
-
   return styleConfig;
 };
 
