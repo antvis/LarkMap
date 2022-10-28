@@ -17,7 +17,7 @@ export const lineLayerStyleFlatToConfig = (style: Record<string, any>) => {
       ? {
           field: style.fillColorField,
           value: style.fillColorRibbon,
-          scale: style.fillColorScale,
+          scale: { type: style.fillColorScale },
         }
       : style.fillColor,
     style: {
@@ -47,7 +47,7 @@ export const lineLayerStyleConfigToFlat = (styleConfig: LineLayerStyleAttributeV
     fillColor: typeof color !== 'object' ? color : undefined,
     fillColorField: typeof color === 'object' ? color?.field : undefined,
     fillColorRibbon: typeof color === 'object' ? color?.value : undefined,
-    fillColorScale: typeof color === 'object' ? color?.scale : undefined,
+    fillColorScale: typeof color === 'object' ? color?.scale.type : undefined,
 
     fillColorOpacity: style?.opacity,
 
