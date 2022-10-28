@@ -9,6 +9,7 @@ export const DefaultLineLayerStyle: LineLayerStyleAttributeValue = {
   color: {
     field: 'line_name',
     value: ['#5B8FF9', '#5CCEA1', '#5D7092'],
+    scale: { type: 'quantile' },
   },
   style: {
     opacity: 0.8,
