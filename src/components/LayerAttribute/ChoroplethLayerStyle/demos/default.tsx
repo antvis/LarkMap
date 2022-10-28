@@ -1,7 +1,7 @@
-import type { ChoroplethLayerStyleAttributeValue, ChoroplethLayerProps } from '@antv/larkmap';
-import { LarkMap, ChoroplethLayer, CustomControl, ChoroplethLayerStyleAttribute } from '@antv/larkmap';
-import React, { useEffect, useState } from 'react';
+import type { ChoroplethLayerProps, ChoroplethLayerStyleAttributeValue } from '@antv/larkmap';
+import { ChoroplethLayer, ChoroplethLayerStyleAttribute, CustomControl, LarkMap } from '@antv/larkmap';
 import 'antd/dist/antd.css';
+import React, { useEffect, useState } from 'react';
 
 const FieldList = [
   { type: 'string', lable: '区域名称', value: 'name', typeColor: 'green', typeName: '文本' },
@@ -11,6 +11,7 @@ const DefaultChoroplethLayerStyle = {
   fillColor: {
     field: 'adcode',
     value: ['#0f9960', '#33a02c', '#377eb8'],
+    scale: { type: 'quantize' },
   },
   opacity: 0.3,
   strokeColor: 'blue',
