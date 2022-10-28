@@ -5,7 +5,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
   return {
     type: 'object',
     properties: {
-      collapseItem_fillColor: fillColorCollapse('颜色', fieldList, ribbonList),
+      collapseItem_fillColor: fillColorCollapse(fieldList, ribbonList, '颜色'),
       collapseItem_fillSize: {
         type: 'void',
         'x-component': 'FormCollapse',

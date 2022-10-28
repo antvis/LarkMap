@@ -1,6 +1,6 @@
 import type { FieldSelectOptionType } from '../types';
 
-export default (collapseTitle?: string, fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] = []) => {
+export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] = [], collapseTitle?: string) => {
   return {
     type: 'void',
     'x-component': 'FormCollapse',
