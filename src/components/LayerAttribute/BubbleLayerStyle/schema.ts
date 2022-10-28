@@ -8,7 +8,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
   return {
     type: 'object',
     properties: {
-      collapseItem_fillColor: fillColorCollapse(fieldList, ribbonList),
+      collapseItem_fillColor: fillColorCollapse('填充颜色', fieldList, ribbonList),
       collapseItem_stroke: strokeCollapse(),
       collapseItem_fillradius: pointRadius(fieldList),
       collapseItem_labelstyle: lableCollapse(fieldList),
