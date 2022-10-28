@@ -38,7 +38,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
               fillColorScale: {
                 type: 'string',
                 title: '颜色划分',
-                default: 'quantize',
+                default: 'quantile',
                 enum: [
                   {
                     label: '等比',
