@@ -40,7 +40,7 @@ export const choroplethLayerStyleConfigToFlat = (styleConfig: ChoroplethLayerSty
   const config = {
     fillColorField: typeof fillColor === 'object' ? fillColor?.field : undefined,
     fillColorRibbon: typeof fillColor === 'object' ? fillColor?.value : undefined,
-    fillColorScale: typeof fillColor === 'object' ? fillColor?.scale.type : undefined,
+    fillColorScale: typeof fillColor === 'object' ? fillColor?.scale?.type : undefined,
     fillColor: typeof fillColor !== 'object' ? fillColor : undefined,
     fillColorOpacity: opacity,
     strokeColor: strokeColor,
