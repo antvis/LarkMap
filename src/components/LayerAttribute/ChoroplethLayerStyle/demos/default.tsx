@@ -20,7 +20,7 @@ const DefaultChoroplethLayerStyle = {
   label: {
     field: 'name',
     visible: true,
-    style: { fill: 'blue', fontSize: 18, textAnchor: 'center' as const },
+    style: { fill: 'blue', fontSize: 18, textAnchor: 'center' as const, textOffset: [0, 0] },
   },
 };
 

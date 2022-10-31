@@ -1,8 +1,8 @@
 ---
 toc: content
-order: 9
+order: 4
 group:
-  title: 基础图层
+  title: 复合图层
   order: 1
 nav:
   title: 组件
