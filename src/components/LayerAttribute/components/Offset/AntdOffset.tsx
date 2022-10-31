@@ -11,11 +11,11 @@ export interface AntdOffsetProps {
   /**
    * 选择发生改变时
    */
-  onChange?: (color: [number, number]) => void;
+  onChange?: (value: [number, number]) => void;
 }
 
 const AntdOffset: React.FC<AntdOffsetProps> = (props) => {
-  const prefixCls = usePrefixCls('formily-offset-range', props);
+  const prefixCls = usePrefixCls('formily-offset-range');
   const [sliderVal, setSliderVal] = useState<[number, number]>(props.value ?? [0, 0]);
 
   useEffect(() => {
