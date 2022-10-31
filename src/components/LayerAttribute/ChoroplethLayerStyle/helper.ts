@@ -24,6 +24,7 @@ export const choroplethLayerStyleFlatToConfig = (style: Record<string, any>) => 
         fill: style.labelColor,
         fontSize: style.labelFontSize,
         textAnchor: style.labelTextAnchor,
+        textOffset: style.labelTextOffset,
       },
     },
   };
@@ -50,6 +51,7 @@ export const choroplethLayerStyleConfigToFlat = (styleConfig: ChoroplethLayerSty
     labelColor: label?.style?.fill,
     labelFontSize: label?.style?.fontSize,
     labelTextAnchor: label?.style?.textAnchor,
+    labelTextOffset: label?.style?.textOffset,
   };
 
   return config;

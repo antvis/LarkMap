@@ -54,24 +54,55 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
           labelTextAnchor: {
             type: 'string',
             title: '位置',
+            default: 'right',
             enum: [
               {
-                label: '居中',
-                value: 'center',
+                label: '居右',
+                value: 'right',
+              },
+
+              {
+                label: '右上',
+                value: 'top-right',
+              },
+              {
+                label: '右下',
+                value: 'bottom-right',
               },
               {
                 label: '居左',
                 value: 'left',
               },
               {
-                label: '居右',
-                value: 'right',
+                label: '左上',
+                value: 'top-left',
+              },
+              {
+                label: '左下',
+                value: 'bottom-left',
+              },
+              {
+                label: '居中',
+                value: 'center',
               },
             ],
             'x-decorator': 'FormItem',
             'x-component': 'Select',
             'x-component-props': {
               placeholder: '请选择位置',
+            },
+            'x-decorator-props': {},
+          },
+
+          labelTextOffset: {
+            type: 'array',
+            title: '偏移量',
+            default: [0, 0],
+            'x-decorator': 'FormItem',
+            'x-component': 'SliderRange',
+            'x-component-props': {
+              dots: false,
+              range: true,
             },
             'x-decorator-props': {},
           },

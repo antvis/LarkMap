@@ -30,6 +30,7 @@ export const bubbleLayerStyleFlatToConfig = (style: Record<string, any>) => {
         fill: style.labelColor,
         fontSize: style.labelFontSize,
         textAnchor: style.labelTextAnchor,
+        textOffset: style.labelTextOffset,
       },
     },
   };
@@ -61,6 +62,7 @@ export const bubbleLayerStyleConfigToFlat = (styleConfig: BubbleLayerStyleAttrib
     labelColor: label?.style?.fill,
     labelFontSize: label?.style?.fontSize,
     labelTextAnchor: label?.style?.textAnchor,
+    labelTextOffset: label?.style?.textOffset,
   };
 
   return config;
