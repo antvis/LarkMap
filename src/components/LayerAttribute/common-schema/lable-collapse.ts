@@ -99,10 +99,11 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
             title: '偏移量',
             default: [0, 0],
             'x-decorator': 'FormItem',
-            'x-component': 'SliderRange',
+            'x-component': 'Offset',
             'x-component-props': {
               dots: false,
               range: true,
+              slider: false,
             },
             'x-decorator-props': {},
           },
