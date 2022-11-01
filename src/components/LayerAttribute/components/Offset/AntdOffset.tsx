@@ -15,7 +15,7 @@ export interface AntdOffsetProps {
 }
 
 const AntdOffset: React.FC<AntdOffsetProps> = (props) => {
-  const prefixCls = usePrefixCls('formily-offset-range');
+  const prefixCls = usePrefixCls('formily-offset');
   const [sliderVal, setSliderVal] = useState<[number, number]>(props.value ?? [0, 0]);
 
   useEffect(() => {
