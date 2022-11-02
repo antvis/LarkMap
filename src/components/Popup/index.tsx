@@ -36,7 +36,6 @@ export const Popup: React.FC<PopupProps> = ({
   const { portal: childrenPartial, dom: childrenDOM } = useL7ComponentPortal(children);
   const { portal: titlePartial, dom: titleDOM } = useL7ComponentPortal(title);
 
-  console.log(scene);
   const popupOptions: Partial<IPopupOption> = useMemo(
     () => ({
       style: styleText,
