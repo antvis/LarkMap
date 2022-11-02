@@ -22,7 +22,7 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 
 ### 通过实例生成
 
-<code src="./demos/map-instance.tsx" defaultShowCode></code>
+<code src="./demos/mapbox-instance.tsx" defaultShowCode></code>
 
 ## API
 
@@ -76,11 +76,11 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 
 ```js
 // 绑定事件
-scene.on(eventName: string, callback: (...args) => void);
+scene.on((eventName: string), (callback: (...args) => void));
 // 绑定一次事件
-scene.once(eventName: string, callback: (...args) => void);
+scene.once((eventName: string), (callback: (...args) => void));
 // 解绑事件
-scene.off(eventName: string, callback: (...args) => void);
+scene.off((eventName: string), (callback: (...args) => void));
 ```
 
 ### 事件类别
@@ -150,6 +150,7 @@ scene.off(eventName: string, callback: (...args) => void);
 
 ```tsx | pure
 import { LarkMap } from '@antv/larkmap';
+import React from 'react';
 
 export default () => {
   const onSceneLoaded = (scene: Scene) => {
@@ -168,7 +169,7 @@ export default () => {
 
 ```tsx | pure
 import { LarkMap } from '@antv/larkmap';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 export default () => {
   const ref = useRef();
