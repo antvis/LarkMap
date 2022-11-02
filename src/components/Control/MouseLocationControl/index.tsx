@@ -6,7 +6,7 @@ import { omitBy } from 'lodash-es';
 import { MouseLocation as L7MouseLocation } from '@antv/l7';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
-import { useControlEvent, useControlUpdate } from '../hooks';
+import { useL7ComponentEvent, useL7ComponentUpdate } from '../hooks';
 import type { MouseLocationControlProps } from './types';
 
 export const MouseLocationControl: React.FC<MouseLocationControlProps> = ({
@@ -43,12 +43,12 @@ export const MouseLocationControl: React.FC<MouseLocationControlProps> = ({
 
   useUnmount(() => {
     scene.removeControl(control);
-    setControl(control);
+    setControl(undefined);
   });
 
-  useControlUpdate(control, controlOptions);
+  useL7ComponentUpdate(control, controlOptions);
 
-  useControlEvent(control, {
+  useL7ComponentEvent(control, {
     add: onAdd,
     remove: onRemove,
     show: onShow,

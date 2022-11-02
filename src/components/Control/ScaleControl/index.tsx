@@ -1,12 +1,12 @@
 import type React from 'react';
 import { useMemo, useState } from 'react';
-import type { IScaleControlOption} from '@antv/l7';
+import type { IScaleControlOption } from '@antv/l7';
 import { Scale as L7Scale } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
-import { useControlEvent, useControlUpdate } from '../hooks';
+import { useL7ComponentEvent, useL7ComponentUpdate } from '../hooks';
 import type { ScaleControlProps } from './type';
 
 export const ScaleControl: React.FC<ScaleControlProps> = ({
@@ -50,12 +50,12 @@ export const ScaleControl: React.FC<ScaleControlProps> = ({
 
   useUnmount(() => {
     scene.removeControl(control);
-    setControl(control);
+    setControl(undefined);
   });
 
-  useControlUpdate(control, controlOptions);
+  useL7ComponentUpdate(control, controlOptions);
 
-  useControlEvent(control, {
+  useL7ComponentEvent(control, {
     add: onAdd,
     remove: onRemove,
     show: onShow,

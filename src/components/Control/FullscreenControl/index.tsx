@@ -5,7 +5,7 @@ import { omitBy } from 'lodash-es';
 import { Fullscreen as L7Fullscreen } from '@antv/l7';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
-import { useControlElement, useControlEvent, useControlUpdate } from '../hooks';
+import { useL7ComponentPortal, useL7ComponentEvent, useL7ComponentUpdate } from '../hooks';
 import type { FullscreenControlProps } from './type';
 
 export const FullscreenControl: React.FC<FullscreenControlProps> = ({
@@ -28,8 +28,8 @@ export const FullscreenControl: React.FC<FullscreenControlProps> = ({
   const scene = useScene();
   const [control, setControl] = useState<L7Fullscreen | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
-  const { portal: btnIconPortal, dom: btnIconDOM } = useControlElement(btnIcon);
-  const { portal: exitBtnIconPortal, dom: exitBtnIconDOM } = useControlElement(exitBtnIcon);
+  const { portal: btnIconPortal, dom: btnIconDOM } = useL7ComponentPortal(btnIcon);
+  const { portal: exitBtnIconPortal, dom: exitBtnIconDOM } = useL7ComponentPortal(exitBtnIcon);
 
   const controlOptions: Partial<IFullscreenControlOption> = useMemo(() => {
     return {
@@ -56,12 +56,12 @@ export const FullscreenControl: React.FC<FullscreenControlProps> = ({
 
   useUnmount(() => {
     scene.removeControl(control);
-    setControl(control);
+    setControl(undefined);
   });
 
-  useControlUpdate(control, controlOptions);
+  useL7ComponentUpdate(control, controlOptions);
 
-  useControlEvent(control, {
+  useL7ComponentEvent(control, {
     add: onAdd,
     remove: onRemove,
     show: onShow,

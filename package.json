@@ -41,6 +41,7 @@
     "@types/geojson": "^7946.0.8",
     "ahooks": "^3.3.13",
     "classnames": "^2.3.1",
+    "eventemitter3": "^4.0.7",
     "lodash-es": "^4.17.21",
     "query-string": "^7.1.1",
     "react-color": "^2.19.3"
