@@ -53,7 +53,7 @@ export default () => {
 
   return (
     <>
-      <LarkMap {...config} style={{ height: '300px' }}>
+      <LarkMap {...config} style={{ height: '400px' }}>
         <PolygonLayer {...layerOptions} source={source} />
         <ExportImageControl onExport={onExport} />
       </LarkMap>
