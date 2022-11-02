@@ -184,7 +184,8 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
                     target: 'fillColorReverseOrder',
                     effects: ['onFieldInputValueChange'],
                     fulfill: {
-                      run: "$form.setFieldState('fillColorRibbon', state => { state.value = state.value ? [...state.value].reverse() : [] })",
+                      run:
+                        "$form.setFieldState('fillColorRibbon', state => { state.value = state.value ? [...state.value].reverse() : [] })",
                     },
                   },
                 ],
