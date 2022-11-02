@@ -1,48 +1,48 @@
-import type { Control, Popup } from '@antv/l7';
-import { useEffect, useMemo } from 'react';
 import { useUnmount } from 'ahooks';
+import type EventEmitter from 'eventemitter3';
+import { useEffect, useMemo } from 'react';
 
 type CallbackFunction = (...args: any[]) => any;
 
 /**
- * 为 Popup 绑定对应事件的回调，并且在回调函数发生更新时重新绑定
- * @param popup
+ * 为 Control 绑定对应事件的回调，并且在回调函数发生更新时重新绑定
+ * @param control
  * @param props
  */
-export const usePopupEvent = <C extends Popup>(popup: C, props: Record<string, CallbackFunction>) => {
+export const useL7ComponentEvent = <C extends EventEmitter>(control: C, props: Record<string, CallbackFunction>) => {
   const eventNameList = useMemo(() => Object.keys(props), [props]);
 
   useEffect(() => {
-    if (popup) {
+    if (control) {
       eventNameList.forEach((eventName) => {
         const callback = props[eventName];
         if (callback) {
-          popup.on(eventName, callback);
+          control.on(eventName, callback);
         }
       });
     }
 
     return () => {
-      if (popup) {
+      if (control) {
         eventNameList.forEach((eventName) => {
           const callback = props[eventName];
           if (callback) {
-            popup.off(eventName, callback);
+            control.off(eventName, callback);
           }
         });
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [popup, ...Object.values(props)]);
+  }, [control, ...Object.values(props)]);
 
   useUnmount(() => {
-    if (!popup) {
+    if (!control) {
       return;
     }
     eventNameList.forEach((eventName) => {
       const callback = props[eventName];
       if (callback) {
-        popup.off(eventName, callback);
+        control.off(eventName, callback);
       }
     });
   });

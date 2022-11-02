@@ -1,57 +1,110 @@
+import type { IPopupOption } from '@antv/l7';
 import { Popup as L7Popup } from '@antv/l7';
-import { useDeepCompareEffect } from 'ahooks';
-import type React from 'react';
-import { memo, useEffect, useMemo, useRef } from 'react';
-import { createPortal } from 'react-dom';
+import { useMount, useUnmount } from 'ahooks';
+import { omitBy } from 'lodash-es';
+import React, { useMemo, useState } from 'react';
+import { getStyleText } from '../../utils';
+import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../Control/hooks';
 import { useScene } from '../LarkMap/hooks';
 import type { PopupProps } from './types';
 
-export const Popup = memo<PopupProps>(function Popup(props): React.ReactPortal {
+export const Popup: React.FC<PopupProps> = ({
+  style,
+  closeButton,
+  closeButtonOffsets,
+  closeOnClick,
+  closeOnEsc,
+  maxWidth,
+  anchor,
+  offsets,
+  stopPropagation,
+  autoPan,
+  autoClose,
+  followCursor,
+  className,
+  lngLat,
+  children,
+  title,
+  onOpen,
+  onClose,
+  onShow,
+  onHide,
+}) => {
   const scene = useScene();
-  const domRef = useRef(document.createElement('div'));
+  const [popup, setPopup] = useState<L7Popup | undefined>();
+  const styleText = useMemo(() => getStyleText(style), [style]);
+  const { portal: childrenPartial, dom: childrenDOM } = useL7ComponentPortal(children);
+  const { portal: titlePartial, dom: titleDOM } = useL7ComponentPortal(title);
 
-  const popup = useMemo(() => {
-    const options = { ...props };
-    const l7Popup = new L7Popup(options);
-    return l7Popup;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const popupOptions: Partial<IPopupOption> = useMemo(
+    () => ({
+      style: styleText,
+      closeButton,
+      closeButtonOffsets,
+      closeOnClick,
+      closeOnEsc,
+      maxWidth,
+      anchor,
+      offsets,
+      stopPropagation,
+      autoPan,
+      autoClose,
+      followCursor,
+      className,
+      lngLat,
+      html: childrenDOM,
+      title: titleDOM,
+    }), // eslint-disable-next-line react-hooks/exhaustive-deps
+    [
+      styleText,
+      closeButton,
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      JSON.stringify(closeButtonOffsets),
+      closeOnClick,
+      closeOnEsc,
+      maxWidth,
+      anchor,
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      JSON.stringify(offsets),
+      stopPropagation,
+      autoPan,
+      autoClose,
+      followCursor,
+      className,
+      childrenDOM,
+      titleDOM,
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      JSON.stringify(lngLat),
+    ],
+  );
 
-  useEffect(() => {
-    const onOpen = () => {
-      props.onOpen?.();
-    };
-    popup.on('open', onOpen);
-    return () => {
-      popup.off('open', onOpen);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.onOpen]);
+  useMount(() => {
+    const newPopup = new L7Popup(omitBy(popupOptions, (value) => value === undefined));
+    console.log(omitBy(popupOptions, (value) => value === undefined));
+    setPopup(newPopup);
+    setTimeout(() => {
+      scene.addPopup(newPopup);
+    }, 0);
+  });
 
-  useEffect(() => {
-    const onClose = () => {
-      props.onClose?.();
-    };
-    popup.on('close', onClose);
-    return () => {
-      popup.off('close', onClose);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.onClose]);
+  useUnmount(() => {
+    scene.removePopup(popup);
+    setPopup(undefined);
+  });
 
-  useDeepCompareEffect(() => {
-    popup.setLnglat(props.lngLat);
-  }, [props.lngLat]);
+  useL7ComponentUpdate(popup, popupOptions);
 
-  useEffect(() => {
-    popup.setHTML(domRef.current);
-    scene.addPopup(popup);
-    return () => {
-      popup.remove();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useL7ComponentEvent(popup, {
+    open: onOpen,
+    close: onClose,
+    show: onShow,
+    hide: onHide,
+  });
 
-  // @ts-ignore
-  return createPortal(props.children, domRef.current);
-});
+  return (
+    <>
+      {childrenPartial}
+      {titlePartial}
+    </>
+  );
+};

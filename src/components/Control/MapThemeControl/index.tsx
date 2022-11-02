@@ -5,7 +5,7 @@ import { omitBy } from 'lodash-es';
 import { MapTheme as L7MapTheme } from '@antv/l7';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
-import { useControlElement, useControlEvent, useControlUpdate } from '../hooks';
+import { useL7ComponentPortal, useL7ComponentEvent, useL7ComponentUpdate } from '../hooks';
 import type { MapThemeControlProps } from './types';
 
 export const MapThemeControl: React.FC<MapThemeControlProps> = ({
@@ -31,7 +31,7 @@ export const MapThemeControl: React.FC<MapThemeControlProps> = ({
   const scene = useScene();
   const [control, setControl] = useState<L7MapTheme | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
-  const { portal: btnIconPortal, dom: btnIconDOM } = useControlElement(btnIcon);
+  const { portal: btnIconPortal, dom: btnIconDOM } = useL7ComponentPortal(btnIcon);
 
   const controlOptions: Partial<ISelectControlOption> = useMemo(() => {
     return {
@@ -71,12 +71,12 @@ export const MapThemeControl: React.FC<MapThemeControlProps> = ({
 
   useUnmount(() => {
     scene.removeControl(control);
-    setControl(control);
+    setControl(undefined);
   });
 
-  useControlUpdate(control, controlOptions);
+  useL7ComponentUpdate(control, controlOptions);
 
-  useControlEvent(control, {
+  useL7ComponentEvent(control, {
     add: onAdd,
     remove: onRemove,
     show: onShow,
