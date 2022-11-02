@@ -1,6 +1,6 @@
 import type { FieldSelectOptionType } from '../types';
 
-export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] = []) => {
+export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] = [], collapseTitle?: string) => {
   return {
     type: 'void',
     'x-component': 'FormCollapse',
@@ -14,7 +14,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
         type: 'void',
         'x-component': 'FormCollapse.CollapsePanel',
         'x-component-props': {
-          header: '填充颜色',
+          header: collapseTitle ? collapseTitle : '填充颜色',
         },
         properties: {
           fillColorField: {
@@ -32,18 +32,18 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
             enum: [...fieldList],
           },
 
-          fillColorType: {
+          fillColorScale: {
             type: 'string',
             title: '颜色划分',
-            default: 'geometric',
+            default: 'quantile',
             enum: [
               {
                 label: '等比',
-                value: 'geometric',
+                value: 'quantize',
               },
               {
                 label: '等分',
-                value: 'uniform',
+                value: 'quantile',
               },
             ],
             'x-decorator': 'FormItem',

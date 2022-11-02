@@ -3,7 +3,7 @@
  * 容器组件
  * */
 export { LarkMap } from './components/LarkMap';
-export { LarkMapProps } from './components/LarkMap/types';
+export type { LarkMapProps } from './components/LarkMap/types';
 export * from './components/LarkMap/hooks';
 
 /**
@@ -48,11 +48,10 @@ export {
   MapThemeControlProps,
   MapThemeControlProps as MapThemeProps,
 } from './components/Control/MapThemeControl/types';
-
 export { ContextMenu } from './components/ContextMenu';
-export { ContextMenuItemProps, ContextMenuProps } from './components/ContextMenu/types';
+export type { ContextMenuItemProps, ContextMenuProps } from './components/ContextMenu/types';
 export { LocationSearch } from './components/LocationSearch';
-export {
+export type {
   LocationSearchProps,
   LocationSearchOption,
   GaodeLocationSearchParams,
@@ -62,23 +61,23 @@ export {
  * 分析组件
  * */
 export { Template } from './components/Template';
-export { TemplateProps } from './components/Template/types';
+export type { TemplateProps } from './components/Template/types';
 export { Marker } from './components/Marker';
-export { MarkerProps } from './components/Marker/types';
+export type { MarkerProps } from './components/Marker/types';
 export { Popup } from './components/Popup';
-export { PopupProps } from './components/Popup/types';
+export type { PopupProps } from './components/Popup/types';
 
 /**
  * 图例组件
  */
 export { LegendIcon } from './components/Legend/LegendIcon';
-export { LegendIconProps } from './components/Legend/LegendIcon/types';
+export type { LegendIconProps } from './components/Legend/LegendIcon/types';
 export { LegendProportion } from './components/Legend/LegendProportion';
-export { LegendProportionProp } from './components/Legend/LegendProportion/types';
+export type { LegendProportionProp } from './components/Legend/LegendProportion/types';
 export { LegendCategories } from './components/Legend/LegendCategories';
-export { LegendCategoriesProps } from './components/Legend/LegendCategories/types';
+export type { LegendCategoriesProps } from './components/Legend/LegendCategories/types';
 export { LegendRamp } from './components/Legend/LegendRamp';
-export { LegendRampProps } from './components/Legend/LegendRamp/types';
+export type { LegendRampProps } from './components/Legend/LegendRamp/types';
 
 /**
  * 绘制组件
@@ -86,7 +85,7 @@ export { LegendRampProps } from './components/Legend/LegendRamp/types';
 export { useDraw } from './components/Draw/use-draw';
 export { useDrawGroup } from './components/Draw/use-draw-group';
 // export { DrawControl } from './components/Draw/DrawControl';
-// export { DrawControlProps } from './components/Draw/DrawControl/types';
+// export type { DrawControlProps } from './components/Draw/DrawControl/types';
 
 /**
  * 属性组件
