@@ -67,6 +67,8 @@ export { Marker } from './components/Marker';
 export { MarkerProps } from './components/Marker/types';
 export { Popup } from './components/Popup';
 export { PopupProps } from './components/Popup/types';
+export { LayerPopup } from './components/LayerPopup';
+export { LayerPopupProps } from './components/LayerPopup/types';
 
 /**
  * 图例组件
