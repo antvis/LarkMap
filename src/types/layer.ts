@@ -18,12 +18,6 @@ export type LayerEventProps = Partial<{
   onRemove: LayerEventCallback;
   /** 数据源更新事件 */
   onDataUpdate: LayerEventCallback;
-  /** 数据映射更新，图例更新事件  */
-  onLegend: LayerEventCallback;
-  /** 数据映射更新，颜色属性图例更新事件  */
-  onLegendColor: LayerEventCallback;
-  /** 数据映射更新，大小属性图例更新事件  */
-  onLegendSize: LayerEventCallback;
 
   // 点击事件
   /** 点击图层事件 */

@@ -1,22 +1,20 @@
 export { HeatmapLayer } from './BaseLayers/HeatmapLayer';
-export type { HeatmapLayerProps } from './BaseLayers/HeatmapLayer/types';
-export { ImageLayer } from './BaseLayers/ImageLayer';
-export type { ImageLayerProps } from './BaseLayers/ImageLayer/types';
+export { HeatmapLayerProps } from './BaseLayers/HeatmapLayer/types';
 export { LineLayer } from './BaseLayers/LineLayer';
-export type { LineLayerProps } from './BaseLayers/LineLayer/types';
+export { LineLayerProps } from './BaseLayers/LineLayer/types';
 export { PointLayer } from './BaseLayers/PointLayer';
-export type { PointLayerProps } from './BaseLayers/PointLayer/types';
+export { PointLayerProps } from './BaseLayers/PointLayer/types';
 export { PolygonLayer } from './BaseLayers/PolygonLayer';
-export type { PolygonLayerProps } from './BaseLayers/PolygonLayer/types';
-export { RasterLayer } from './BaseLayers/RasterLayer';
-export type { RasterLayerProps } from './BaseLayers/RasterLayer/types';
+export { PolygonLayerProps } from './BaseLayers/PolygonLayer/types';
 export { TextLayer } from './BaseLayers/TextLayer';
-export type { TextLayerProps } from './BaseLayers/TextLayer/types';
+export { TextLayerProps } from './BaseLayers/TextLayer/types';
+export { RasterLayer } from './BaseLayers/RasterLayer';
+export { RasterLayerProps } from './BaseLayers/RasterLayer/types';
+
+export { ImageLayer } from './BaseLayers/ImageLayer';
+export { ImageLayerProps } from './BaseLayers/ImageLayer/types';
+
 export { BubbleLayer } from './CompositeLayers/BubbleLayer';
-export type { BubbleLayerProps } from './CompositeLayers/BubbleLayer/types';
+export { BubbleLayerProps } from './CompositeLayers/BubbleLayer/types';
 export { ChoroplethLayer } from './CompositeLayers/ChoroplethLayer';
-export type { ChoroplethLayerProps } from './CompositeLayers/ChoroplethLayer/types';
-export { IconFontLayer } from './CompositeLayers/IconFontLayer';
-export type { IconFontLayerProps } from './CompositeLayers/IconFontLayer/types';
-export { IconImageLayer } from './CompositeLayers/IconImageLayer';
-export type { IconImageLayerProps } from './CompositeLayers/IconImageLayer/types';
+export { ChoroplethLayerProps } from './CompositeLayers/ChoroplethLayer/types';

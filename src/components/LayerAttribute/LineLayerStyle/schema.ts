@@ -35,18 +35,18 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
                 enum: [...fieldList],
               },
 
-              fillColorScale: {
+              fillColorType: {
                 type: 'string',
                 title: '颜色划分',
-                default: 'quantile',
+                default: 'geometric',
                 enum: [
                   {
                     label: '等比',
-                    value: 'quantize',
+                    value: 'geometric',
                   },
                   {
                     label: '等分',
-                    value: 'quantile',
+                    value: 'uniform',
                   },
                 ],
                 'x-decorator': 'FormItem',

@@ -1,7 +1,7 @@
-import type { LineLayerProps, LineLayerStyleAttributeValue } from '@antv/larkmap';
-import { CustomControl, LarkMap, LineLayer, LineLayerStyleAttribute } from '@antv/larkmap';
-import 'antd/dist/antd.css';
+import type { LineLayerStyleAttributeValue, LineLayerProps } from '@antv/larkmap';
+import { LarkMap, LineLayer, CustomControl, LineLayerStyleAttribute } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
+import 'antd/dist/antd.css';
 
 const FieldList = [
   { type: 'string', lable: '名称', value: 'line_name', typeColor: 'green', typeName: '文本' },
@@ -9,9 +9,8 @@ const FieldList = [
 ];
 const DefaultLineLayerStyle = {
   color: {
-    field: 'line_id',
+    field: 'line_name',
     value: ['#5B8FF9', '#5CCEA1', '#5D7092'],
-    scale: { type: 'quantile' },
   },
   size: 1.5,
   style: {

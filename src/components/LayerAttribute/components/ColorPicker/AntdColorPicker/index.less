@@ -1,0 +1,29 @@
+@root-entry-name: 'default';
+@import (reference) '~antd/es/style/themes/index.less';
+
+@color-picker-prefix-cls: ~'@{ant-prefix}-formily-color-picker';
+
+.@{color-picker-prefix-cls} {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 32px;
+  padding: 0 5px;
+  background-color: @input-bg;
+  border: @border-width-base @border-style-base @border-color-base;
+  border-radius: 2px;
+
+  &__color-block {
+    width: 35px;
+    height: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  &__popover {
+    .@{ant-prefix}-popover-inner-content {
+      padding: 0;
+    }
+  }
+}

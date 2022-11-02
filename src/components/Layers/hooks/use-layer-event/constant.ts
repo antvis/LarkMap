@@ -8,10 +8,6 @@ export const LayerEventMap: Record<keyof LayerEventProps, string> = {
   onAdd: 'add',
   onRemove: 'remove',
   onDataUpdate: 'dataUpdate',
-  onLegend: 'legend',
-  onLegendColor: 'legend:color',
-  onLegendSize: 'legend:size',
-
   // 点击事件
   onClick: 'click',
   onDblClick: 'dblclick',
