@@ -76,11 +76,11 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 
 ```js
 // 绑定事件
-scene.on((eventName: string), (callback: (...args) => void));
+scene.on(eventName: string, callback: (...args) => void);
 // 绑定一次事件
-scene.once((eventName: string), (callback: (...args) => void));
+scene.once(eventName: string, callback: (...args) => void);
 // 解绑事件
-scene.off((eventName: string), (callback: (...args) => void));
+scene.off(eventName: string, callback: (...args) => void);
 ```
 
 ### 事件类别

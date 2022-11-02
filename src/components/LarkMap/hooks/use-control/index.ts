@@ -10,30 +10,32 @@ export const useControl = (
   opts?: IControlOption,
 ) => {
   const scene = useScene();
-  const controlRef = useRef<Control>();
+  const customRef = useRef<Control>();
 
   useEffect(() => {
-    // @ts-ignore
     const custom = new Control(opts);
 
     custom.onAdd = () => onCreate(scene);
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     custom.onRemove = () => {};
 
-    controlRef.current = custom;
+    customRef.current = custom;
     scene.addControl(custom);
 
     return () => {
       if (typeof onRemove === 'function') {
         onRemove(scene);
       }
-      controlRef.current = null;
+      customRef.current = null;
       scene.removeControl(custom);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useUpdateEffect(() => {
-    controlRef.current?.setOptions(opts);
-  }, [opts]);
+    if (customRef.current) {
+      const { position = 'topleft' } = opts;
+      //@ts-ignore
+      customRef.current.setPosition(position);
+    }
+  }, [opts?.position]);
 };

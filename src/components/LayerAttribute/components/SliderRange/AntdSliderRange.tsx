@@ -1,7 +1,7 @@
-import type { SliderRangeProps } from 'antd/lib/slider';
-import { InputNumber, Slider } from 'antd';
-import React, { useEffect, useState } from 'react';
 import { usePrefixCls } from '@formily/antd/esm/__builtins__/hooks/usePrefixCls';
+import { InputNumber, Slider } from 'antd';
+import type { SliderRangeProps } from 'antd/lib/slider';
+import React, { useEffect, useState } from 'react';
 import './AntdSliderRange.less';
 
 const defaultConfig = {

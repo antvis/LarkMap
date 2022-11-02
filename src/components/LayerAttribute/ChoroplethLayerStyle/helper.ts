@@ -10,6 +10,7 @@ export const choroplethLayerStyleFlatToConfig = (style: Record<string, any>) => 
       ? {
           field: style.fillColorField,
           value: style.fillColorRibbon,
+          scale: { type: style.fillColorScale },
         }
       : style.fillColor,
     opacity: style.fillColorOpacity,
@@ -23,6 +24,7 @@ export const choroplethLayerStyleFlatToConfig = (style: Record<string, any>) => 
         fill: style.labelColor,
         fontSize: style.labelFontSize,
         textAnchor: style.labelTextAnchor,
+        textOffset: style.labelTextOffset,
       },
     },
   };
@@ -39,6 +41,7 @@ export const choroplethLayerStyleConfigToFlat = (styleConfig: ChoroplethLayerSty
   const config = {
     fillColorField: typeof fillColor === 'object' ? fillColor?.field : undefined,
     fillColorRibbon: typeof fillColor === 'object' ? fillColor?.value : undefined,
+    fillColorScale: typeof fillColor === 'object' ? fillColor?.scale?.type : undefined,
     fillColor: typeof fillColor !== 'object' ? fillColor : undefined,
     fillColorOpacity: opacity,
     strokeColor: strokeColor,
@@ -48,6 +51,7 @@ export const choroplethLayerStyleConfigToFlat = (styleConfig: ChoroplethLayerSty
     labelColor: label?.style?.fill,
     labelFontSize: label?.style?.fontSize,
     labelTextAnchor: label?.style?.textAnchor,
+    labelTextOffset: label?.style?.textOffset,
   };
 
   return config;
