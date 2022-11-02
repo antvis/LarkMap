@@ -35,18 +35,18 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
                 enum: [...fieldList],
               },
 
-              fillColorType: {
+              fillColorScale: {
                 type: 'string',
                 title: '颜色划分',
-                default: 'geometric',
+                default: 'quantile',
                 enum: [
                   {
                     label: '等比',
-                    value: 'geometric',
+                    value: 'quantize',
                   },
                   {
                     label: '等分',
-                    value: 'uniform',
+                    value: 'quantile',
                   },
                 ],
                 'x-decorator': 'FormItem',
@@ -184,7 +184,8 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
                     target: 'fillColorReverseOrder',
                     effects: ['onFieldInputValueChange'],
                     fulfill: {
-                      run: "$form.setFieldState('fillColorRibbon', state => { state.value = state.value ? [...state.value].reverse() : [] })",
+                      run:
+                        "$form.setFieldState('fillColorRibbon', state => { state.value = state.value ? [...state.value].reverse() : [] })",
                     },
                   },
                 ],
