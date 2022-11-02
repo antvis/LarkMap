@@ -24,7 +24,7 @@ nav:
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | imageType | 截图图片的格式 | `'png'｜'jpeg'` | `'png'` |
-| onExport | 截图成功后，用于接收图片 Base64 字符串的回调函数 | `(base64: string) => void` | - |
+| onExpory | 截图成功后，用于接收图片 Base64 字符串的回调函数 | `(base64: string) => void` | - |
 | btnIcon | 按钮图标 | `ReactNode` | - |
 | btnText | 按钮内容文本 | `string` | - |
 | title | 按钮的 title 属性 | `string` | `'导出图片'` |
