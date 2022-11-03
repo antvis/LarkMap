@@ -10,5 +10,5 @@ export const DefaultChoroplethLayerStyle: ChoroplethLayerStyleAttributeValue = {
   strokeColor: 'blue',
   lineWidth: 1,
   lineOpacity: 1,
-  label: { style: { fill: 'red', fontSize: 18, textAnchor: 'center' } },
+  label: { style: { fill: 'red', fontSize: 18, textAnchor: 'center', textOffset: [0, 0] } },
 };

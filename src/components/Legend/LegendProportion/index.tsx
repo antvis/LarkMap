@@ -1,8 +1,8 @@
-import React from 'react';
-import { isNumber, isNaN, uniqueId } from 'lodash';
 import classnames from 'classnames';
-import type { LegendProportionProp } from './types';
+import { isNaN, isNumber, uniqueId } from 'lodash-es';
+import React from 'react';
 import './index.less';
+import type { LegendProportionProp } from './types';
 
 export const CLS_PREFIX = 'larkmap-legend-proportion';
 

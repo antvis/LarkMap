@@ -10,6 +10,7 @@ export const bubbleLayerStyleFlatToConfig = (style: Record<string, any>) => {
       ? {
           field: style.fillColorField,
           value: style.fillColorRibbon,
+          scale: { type: style.fillColorScale },
         }
       : style.fillColor,
     opacity: style.fillColorOpacity,
@@ -29,6 +30,7 @@ export const bubbleLayerStyleFlatToConfig = (style: Record<string, any>) => {
         fill: style.labelColor,
         fontSize: style.labelFontSize,
         textAnchor: style.labelTextAnchor,
+        textOffset: style.labelTextOffset,
       },
     },
   };
@@ -45,6 +47,7 @@ export const bubbleLayerStyleConfigToFlat = (styleConfig: BubbleLayerStyleAttrib
   const config = {
     fillColorField: typeof fillColor === 'object' ? fillColor?.field : undefined,
     fillColorRibbon: typeof fillColor === 'object' ? fillColor?.value : undefined,
+    fillColorScale: typeof fillColor === 'object' ? fillColor?.scale?.type : undefined,
     fillColor: typeof fillColor !== 'object' ? fillColor : undefined,
     fillColorOpacity: opacity,
     strokeColor: strokeColor,
@@ -59,6 +62,7 @@ export const bubbleLayerStyleConfigToFlat = (styleConfig: BubbleLayerStyleAttrib
     labelColor: label?.style?.fill,
     labelFontSize: label?.style?.fontSize,
     labelTextAnchor: label?.style?.textAnchor,
+    labelTextOffset: label?.style?.textOffset,
   };
 
   return config;

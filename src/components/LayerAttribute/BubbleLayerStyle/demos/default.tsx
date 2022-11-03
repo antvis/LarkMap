@@ -1,7 +1,7 @@
-import type { BubbleLayerStyleAttributeValue, BubbleLayerProps } from '@antv/larkmap';
-import { LarkMap, BubbleLayer, CustomControl, BubbleLayerStyleAttribute } from '@antv/larkmap';
-import React, { useEffect, useState } from 'react';
+import type { BubbleLayerProps, BubbleLayerStyleAttributeValue } from '@antv/larkmap';
+import { BubbleLayer, BubbleLayerStyleAttribute, CustomControl, LarkMap } from '@antv/larkmap';
 import 'antd/dist/antd.css';
+import React, { useEffect, useState } from 'react';
 
 const FieldList = [
   { type: 'string', lable: '城市', value: 'name', typeColor: 'green', typeName: '文本' },
@@ -18,7 +18,7 @@ const DefaultBubbleLayerStyle = {
   label: {
     field: 'temperature',
     visible: true,
-    style: { fill: '#454d64', fontSize: 18, textAnchor: 'center' as const },
+    style: { fill: '#454d64', fontSize: 18, textAnchor: 'center' as const, textOffset: [0, 0] },
   },
 };
 
