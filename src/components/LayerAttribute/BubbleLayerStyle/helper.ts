@@ -33,8 +33,8 @@ export const bubbleLayerStyleFlatToConfig = (style: Record<string, any>) => {
         textOffset: style.labelTextOffset,
       },
     },
-    minZoom: style?.zoom[0],
-    maxZoom: style?.zoom[1],
+    minZoom: style.zoom?.[0],
+    maxZoom: style.zoom?.[1],
     blend: style.blend,
   };
 
