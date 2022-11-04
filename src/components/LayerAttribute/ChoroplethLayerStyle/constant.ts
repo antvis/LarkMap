@@ -11,4 +11,7 @@ export const DefaultChoroplethLayerStyle: ChoroplethLayerStyleAttributeValue = {
   lineWidth: 1,
   lineOpacity: 1,
   label: { style: { fill: 'red', fontSize: 18, textAnchor: 'center', textOffset: [0, 0] } },
+  minZoom: 0,
+  maxZoom: 23,
+  blend: 'normal',
 };

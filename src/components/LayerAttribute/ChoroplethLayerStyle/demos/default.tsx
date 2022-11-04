@@ -22,6 +22,9 @@ const DefaultChoroplethLayerStyle = {
     visible: true,
     style: { fill: 'blue', fontSize: 18, textAnchor: 'center' as const, textOffset: [0, 0] },
   },
+  minZoom: 0,
+  maxZoom: 23,
+  blend: 'normal',
 };
 
 const choroplethLayerOptions: Omit<ChoroplethLayerProps, 'source'> = {

@@ -30,6 +30,8 @@ const AntdSliderRange: React.FC<SliderRangeProps> = (props) => {
       />
       <div className={`${prefixCls}__input-number`}>
         <InputNumber
+          min={config.min}
+          max={config.max}
           size="small"
           value={sliderVal[0]}
           onChange={(val) => {
@@ -50,6 +52,8 @@ const AntdSliderRange: React.FC<SliderRangeProps> = (props) => {
           }}
         />
         <InputNumber
+          min={config.min}
+          max={config.max}
           size="small"
           value={sliderVal[1]}
           onChange={(val) => {

@@ -17,6 +17,9 @@ const DefaultLineLayerStyle = {
   style: {
     opacity: 0.8,
   },
+  minZoom: 0,
+  maxZoom: 23,
+  blend: 'normal',
 };
 
 const lineLayerOptions: Omit<LineLayerProps, 'source'> = {
@@ -32,6 +35,8 @@ export default () => {
     data: [],
     parser: { type: 'json', coordinates: 'lnglat' },
   });
+
+  console.log(layerOptions, 'layerOptions');
 
   useEffect(() => {
     fetch('https://gw.alipayobjects.com/os/antfincdn/1atwIMvcMo/beijinggongjiaoluxian.json')

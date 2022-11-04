@@ -33,6 +33,9 @@ export const bubbleLayerStyleFlatToConfig = (style: Record<string, any>) => {
         textOffset: style.labelTextOffset,
       },
     },
+    minZoom: style?.zoom[0],
+    maxZoom: style?.zoom[1],
+    blend: style.blend,
   };
 
   return styleConfig;
@@ -43,7 +46,8 @@ export const bubbleLayerStyleFlatToConfig = (style: Record<string, any>) => {
  * 将图层样式的数据结构转为表单的平铺数据
  * */
 export const bubbleLayerStyleConfigToFlat = (styleConfig: BubbleLayerStyleAttributeValue) => {
-  const { fillColor, opacity, strokeColor, lineWidth, lineOpacity, radius, label } = styleConfig;
+  const { fillColor, opacity, strokeColor, lineWidth, lineOpacity, radius, label, minZoom, maxZoom, blend } =
+    styleConfig;
   const config = {
     fillColorField: typeof fillColor === 'object' ? fillColor?.field : undefined,
     fillColorRibbon: typeof fillColor === 'object' ? fillColor?.value : undefined,
@@ -63,6 +67,8 @@ export const bubbleLayerStyleConfigToFlat = (styleConfig: BubbleLayerStyleAttrib
     labelFontSize: label?.style?.fontSize,
     labelTextAnchor: label?.style?.textAnchor,
     labelTextOffset: label?.style?.textOffset,
+    zoom: minZoom & maxZoom ? [minZoom, maxZoom] : [0, 23],
+    blend,
   };
 
   return config;
