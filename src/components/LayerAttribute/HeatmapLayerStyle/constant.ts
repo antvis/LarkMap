@@ -16,6 +16,6 @@ export const DefaultHeatmapLayerStyle: HeatmapLayerStyleAttributeValue = {
     },
   },
   minZoom: 0,
-  maxZoom: 23,
+  maxZoom: 24,
   blend: 'normal',
 };

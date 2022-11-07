@@ -33,7 +33,7 @@ const DefaultHeatmapLayerStyle = {
     },
   },
   minZoom: 0,
-  maxZoom: 23,
+  maxZoom: 24,
   blend: 'normal',
 };
 

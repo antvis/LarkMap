@@ -21,7 +21,7 @@ const DefaultBubbleLayerStyle = {
     style: { fill: '#454d64', fontSize: 18, textAnchor: 'center' as const, textOffset: [0, 0] },
   },
   minZoom: 0,
-  maxZoom: 23,
+  maxZoom: 24,
   blend: 'normal',
 };
 

@@ -40,7 +40,17 @@ export const choroplethLayerStyleFlatToConfig = (style: Record<string, any>) => 
  * 将图层样式的数据结构转为表单的平铺数据
  * */
 export const choroplethLayerStyleConfigToFlat = (styleConfig: ChoroplethLayerStyleAttributeValue) => {
-  const { fillColor, opacity, strokeColor, lineWidth, lineOpacity, label, minZoom, maxZoom, blend } = styleConfig;
+  const {
+    fillColor,
+    opacity,
+    strokeColor,
+    lineWidth,
+    lineOpacity,
+    label,
+    minZoom = 0,
+    maxZoom = 24,
+    blend,
+  } = styleConfig;
   const config = {
     fillColorField: typeof fillColor === 'object' ? fillColor?.field : undefined,
     fillColorRibbon: typeof fillColor === 'object' ? fillColor?.value : undefined,
@@ -55,7 +65,7 @@ export const choroplethLayerStyleConfigToFlat = (styleConfig: ChoroplethLayerSty
     labelFontSize: label?.style?.fontSize,
     labelTextAnchor: label?.style?.textAnchor,
     labelTextOffset: label?.style?.textOffset,
-    zoom: minZoom & maxZoom ? [minZoom, maxZoom] : [0, 23],
+    zoom: [minZoom, maxZoom],
     blend,
   };
 

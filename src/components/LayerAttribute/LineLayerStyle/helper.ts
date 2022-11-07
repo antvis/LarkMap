@@ -39,7 +39,7 @@ export const lineLayerStyleFlatToConfig = (style: Record<string, any>) => {
  * 将图层样式的数据结构转为表单的平铺数据
  * */
 export const lineLayerStyleConfigToFlat = (styleConfig: LineLayerStyleAttributeValue) => {
-  const { size, color, style, minZoom, maxZoom, blend } = styleConfig;
+  const { size, color, style, minZoom = 0, maxZoom = 24, blend } = styleConfig;
   const config = {
     size: typeof size === 'object' ? undefined : size,
     // @ts-ignore
@@ -57,7 +57,7 @@ export const lineLayerStyleConfigToFlat = (styleConfig: LineLayerStyleAttributeV
     lineType: style?.lineType,
     // sourceColor: style?.sourceColor,
     // targetColor: style?.targetColor,
-    zoom: minZoom & maxZoom ? [minZoom, maxZoom] : [0, 23],
+    zoom: [minZoom, maxZoom],
     blend,
   };
   return config;

@@ -24,9 +24,9 @@ export default (collapseTitle?: string) => {
               dots: false,
               range: true,
               min: 0,
-              max: 23,
+              max: 24,
             },
-            default: [0, 23],
+            default: [0, 24],
             'x-decorator-props': {},
           },
           blend: {
