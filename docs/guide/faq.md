@@ -4,6 +4,7 @@ order: 2
 nav:
   title: 指南
   path: /guide
+  order: 1
 ---
 
 ### 1. LarkMap 是什么？

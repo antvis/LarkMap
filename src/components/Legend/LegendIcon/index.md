@@ -7,6 +7,7 @@ group:
 nav:
   title: 组件
   path: /components
+  order: 2
 ---
 
 # 图标图例 - LegendIcon

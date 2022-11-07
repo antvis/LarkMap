@@ -7,6 +7,7 @@ group:
 nav:
   title: 组件
   path: /components
+  order: 2
 ---
 
 # 定位 - GeoLocate
