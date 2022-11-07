@@ -13,50 +13,7 @@ export * from './components/Layers';
 
 /**
  * 控件组件
- * */
-export { CustomControl } from './components/Control/CustomControl';
-export { CustomControlProps } from './components/Control/CustomControl/types';
-// 兼容修改组件名称，带布局属性的组件加 Control 后缀
-export { ScaleControl, ScaleControl as Scale } from './components/Control/ScaleControl';
-export { ScaleControlProps, ScaleControlProps as ScaleProps } from './components/Control/ScaleControl/type';
-export { ZoomControl, ZoomControl as Zoom } from './components/Control/ZoomControl';
-export { ZoomControlProps, ZoomControlProps as ZoomProps } from './components/Control/ZoomControl/types';
-export { FullscreenControl, FullscreenControl as Fullscreen } from './components/Control/FullscreenControl';
-export {
-  FullscreenControlProps,
-  FullscreenControlProps as FullscreenProps,
-} from './components/Control/FullscreenControl/type';
-export { GeoLocateControl, GeoLocateControl as GeoLocate } from './components/Control/GeoLocateControl';
-export { GeoLocateControlProps as GeoLocateProps } from './components/Control/GeoLocateControl/type';
-export { ExportImageControl, ExportImageControl as ExportImage } from './components/Control/ExportImageControl';
-export {
-  ExportImageControlProps,
-  ExportImageControlProps as ExportImageProps,
-} from './components/Control/ExportImageControl/types';
-export { MouseLocationControl, MouseLocationControl as MouseLocation } from './components/Control/MouseLocationControl';
-export {
-  MouseLocationControlProps,
-  MouseLocationControlProps as MouseLocationProps,
-} from './components/Control/MouseLocationControl/types';
-export { LayerSwitchControl, LayerSwitchControl as LayerSwitch } from './components/Control/LayerSwitchControl';
-export {
-  LayerSwitchControlProps,
-  LayerSwitchControlProps as LayerSwitchProps,
-} from './components/Control/LayerSwitchControl/types';
-export { MapThemeControl, MapThemeControl as MapTheme } from './components/Control/MapThemeControl';
-export {
-  MapThemeControlProps,
-  MapThemeControlProps as MapThemeProps,
-} from './components/Control/MapThemeControl/types';
-
-export { ContextMenu } from './components/ContextMenu';
-export { ContextMenuItemProps, ContextMenuProps } from './components/ContextMenu/types';
-export { LocationSearch } from './components/LocationSearch';
-export {
-  LocationSearchProps,
-  LocationSearchOption,
-  GaodeLocationSearchParams,
-} from './components/LocationSearch/types';
+ */
 export * from './components/Control';
 
 /**
@@ -70,6 +27,14 @@ export { Popup } from './components/Popup';
 export { PopupProps } from './components/Popup/types';
 export { LayerPopup } from './components/LayerPopup';
 export { LayerPopupProps } from './components/LayerPopup/types';
+export { ContextMenu } from './components/ContextMenu';
+export type { ContextMenuItemProps, ContextMenuProps } from './components/ContextMenu/types';
+export { LocationSearch } from './components/LocationSearch';
+export type {
+  LocationSearchProps,
+  LocationSearchOption,
+  GaodeLocationSearchParams,
+} from './components/LocationSearch/types';
 
 /**
  * 图例组件
