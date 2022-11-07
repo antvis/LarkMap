@@ -11,7 +11,7 @@ export default () => {
   };
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '300px' }} onSceneLoaded={onSceneLoaded}>
+    <LarkMap mapType="GaodeV1" style={{ height: '400px' }} onSceneLoaded={onSceneLoaded}>
       <Popup
         lngLat={lngLat}
         closeButton={false}

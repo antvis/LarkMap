@@ -1,9 +1,9 @@
-import { LarkMap, CustomControl } from '@antv/larkmap';
+import { CustomControl, LarkMap } from '@antv/larkmap';
 import React from 'react';
 
 export default () => {
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
+    <LarkMap mapType="GaodeV1" style={{ height: '400px' }}>
       <CustomControl
         position="topleft"
         className="custom-control-class"

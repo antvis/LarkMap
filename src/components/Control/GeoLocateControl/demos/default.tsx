@@ -1,4 +1,4 @@
-import { LarkMap, GeoLocateControl } from '@antv/larkmap';
+import { GeoLocateControl, LarkMap } from '@antv/larkmap';
 import gcoord from 'gcoord';
 import React from 'react';
 
@@ -8,7 +8,7 @@ export default () => {
   };
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
+    <LarkMap mapType="GaodeV1" style={{ height: '400px' }}>
       <GeoLocateControl transform={transform} />
     </LarkMap>
   );

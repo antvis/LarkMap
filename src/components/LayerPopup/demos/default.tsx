@@ -1,4 +1,5 @@
-import { LarkMap, LayerPopup, PolygonLayer, PolygonLayerProps } from '@antv/larkmap';
+import type { PolygonLayerProps } from '@antv/larkmap';
+import { LarkMap, LayerPopup, PolygonLayer } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
 const layerOptions: Omit<PolygonLayerProps, 'source'> = {
@@ -32,7 +33,7 @@ export default () => {
   }, []);
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
+    <LarkMap mapType="GaodeV1" style={{ height: '400px' }}>
       <PolygonLayer {...options} source={source} name="myPolygonLayer" />
       <LayerPopup
         closeButton={false}
