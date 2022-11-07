@@ -1,7 +1,7 @@
-import type { HeatmapLayerStyleAttributeValue, HeatmapLayerProps } from '@antv/larkmap';
-import { LarkMap, HeatmapLayer, CustomControl, HeatmapLayerStyleAttribute } from '@antv/larkmap';
-import React, { useEffect, useState } from 'react';
+import type { HeatmapLayerProps, HeatmapLayerStyleAttributeValue } from '@antv/larkmap';
+import { CustomControl, HeatmapLayer, HeatmapLayerStyleAttribute, LarkMap } from '@antv/larkmap';
 import 'antd/dist/antd.css';
+import React, { useEffect, useState } from 'react';
 
 const FieldList = [
   { type: 'string', lable: 'c', value: 'c', typeColor: 'green' },
@@ -32,6 +32,9 @@ const DefaultHeatmapLayerStyle = {
       positions: [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1],
     },
   },
+  minZoom: 0,
+  maxZoom: 24,
+  blend: 'normal',
 };
 
 const heatmapLayerOptions: Omit<HeatmapLayerProps, 'source'> = {

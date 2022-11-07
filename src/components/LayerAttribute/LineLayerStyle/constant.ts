@@ -16,4 +16,7 @@ export const DefaultLineLayerStyle: LineLayerStyleAttributeValue = {
     // sourceColor: '#F7664E',
     // targetColor: '#5D7092',
   },
+  minZoom: 0,
+  maxZoom: 24,
+  blend: 'normal',
 };

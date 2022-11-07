@@ -1,3 +1,4 @@
+import otherAttributesCollapse from '../common-schema/other-attributes-collapse';
 import type { FieldSelectOptionType } from '../types';
 
 export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] = []) => {
@@ -309,6 +310,8 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
           },
         },
       },
+
+      collapseItem_other: otherAttributesCollapse(),
     },
   };
 };

@@ -15,4 +15,7 @@ export const DefaultHeatmapLayerStyle: HeatmapLayerStyleAttributeValue = {
       positions: [0, 0.2, 0.4, 0.6, 0.8, 1.0],
     },
   },
+  minZoom: 0,
+  maxZoom: 24,
+  blend: 'normal',
 };

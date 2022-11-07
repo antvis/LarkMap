@@ -17,6 +17,9 @@ const DefaultLineLayerStyle = {
   style: {
     opacity: 0.8,
   },
+  minZoom: 0,
+  maxZoom: 24,
+  blend: 'normal',
 };
 
 const lineLayerOptions: Omit<LineLayerProps, 'source'> = {
