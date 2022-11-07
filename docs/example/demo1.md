@@ -5,9 +5,6 @@ nav:
   title: 示例
   path: /example
   order: 3
-group:
-  title: 示例分组1
-  order: 1
 ---
 
 # 示例 1
