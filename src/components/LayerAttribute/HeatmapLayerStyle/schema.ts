@@ -1,4 +1,4 @@
-import stackingPatternsCollapse from '../common-schema/stacking-patterns-collapse';
+import otherAttributesCollapse from '../common-schema/other-attributes-collapse';
 import type { FieldSelectOptionType } from '../types';
 
 export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] = []) => {
@@ -140,7 +140,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
         },
       },
 
-      collapseItem_stackingPatterns: stackingPatternsCollapse(),
+      collapseItem_other: otherAttributesCollapse(),
     },
   };
 };

@@ -1,7 +1,7 @@
 import fillColorCollapse from '../common-schema/fill-color-collapse';
 import lableCollapse from '../common-schema/lable-collapse';
+import otherAttributesCollapse from '../common-schema/other-attributes-collapse';
 import pointRadius from '../common-schema/point-radius-collapse';
-import stackingPatternsCollapse from '../common-schema/stacking-patterns-collapse';
 import strokeCollapse from '../common-schema/stroke-collapse';
 import type { FieldSelectOptionType } from '../types';
 
@@ -13,7 +13,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
       collapseItem_stroke: strokeCollapse(),
       collapseItem_fillradius: pointRadius(fieldList),
       collapseItem_labelstyle: lableCollapse(fieldList),
-      collapseItem_stackingPatterns: stackingPatternsCollapse(),
+      collapseItem_other: otherAttributesCollapse(),
     },
   };
 };

@@ -12,7 +12,7 @@ export default (collapseTitle?: string) => {
         type: 'void',
         'x-component': 'FormCollapse.CollapsePanel',
         'x-component-props': {
-          header: collapseTitle ? collapseTitle : '叠加模式',
+          header: collapseTitle ? collapseTitle : '其它属性',
         },
         properties: {
           zoom: {
@@ -31,7 +31,7 @@ export default (collapseTitle?: string) => {
           },
           blend: {
             type: 'string',
-            title: '叠加模式',
+            title: '混合效果',
             'x-decorator': 'FormItem',
             'x-component': 'Select',
             'x-component-props': {
