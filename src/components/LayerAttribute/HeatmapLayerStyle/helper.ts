@@ -15,6 +15,9 @@ export const heatmapLayerStyleFlatToConfig = (style: Record<string, any>) => {
         positions: style.colors.map((_, index) => index / (style.colors.length - 1)),
       },
     },
+    minZoom: style.zoom?.[0],
+    maxZoom: style.zoom?.[1],
+    blend: style.blend,
   };
 
   return styleConfig;
@@ -25,7 +28,7 @@ export const heatmapLayerStyleFlatToConfig = (style: Record<string, any>) => {
  * 将图层样式的数据结构转为表单的平铺数据
  * */
 export const heatmapLayerStyleConfigToFlat = (styleConfig: HeatmapLayerStyleAttributeValue) => {
-  const { size, style } = styleConfig;
+  const { size, style, minZoom = 0, maxZoom = 24, blend } = styleConfig;
   const config = {
     // @ts-ignore
     colors: style?.rampColors?.colors,
@@ -36,6 +39,8 @@ export const heatmapLayerStyleConfigToFlat = (styleConfig: HeatmapLayerStyleAttr
     sizeField: size?.field,
     // @ts-ignore
     intensity: style?.intensity,
+    zoom: [minZoom, maxZoom],
+    blend,
   };
 
   return config;

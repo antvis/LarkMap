@@ -20,6 +20,9 @@ const DefaultBubbleLayerStyle = {
     visible: true,
     style: { fill: '#454d64', fontSize: 18, textAnchor: 'center' as const, textOffset: [0, 0] },
   },
+  minZoom: 0,
+  maxZoom: 24,
+  blend: 'normal',
 };
 
 const bubbleLayerOptions: Omit<BubbleLayerProps, 'source'> = {
