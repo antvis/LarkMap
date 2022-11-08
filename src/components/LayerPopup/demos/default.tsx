@@ -32,6 +32,23 @@ export default () => {
       });
   }, []);
 
+  const items = [
+    {
+      layer: 'myPolygonLayer',
+      fields: [
+        {
+          field: 'name',
+          formatField: '名称',
+        },
+        {
+          field: 'adcode',
+          formatField: () => '权值',
+          formatValue: '21312',
+        },
+      ],
+    },
+  ];
+
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '400px' }}>
       <PolygonLayer {...options} source={source} name="myPolygonLayer" />
@@ -41,21 +58,7 @@ export default () => {
         anchor="bottom-left"
         title={<div>图层数据</div>}
         trigger="hover"
-        config={[
-          {
-            layer: 'myPolygonLayer',
-            fields: [
-              {
-                field: 'name',
-                formatField: () => '名称',
-              },
-              {
-                field: 'adcode',
-                formatField: () => '权值',
-              },
-            ],
-          },
-        ]}
+        items={items}
       />
     </LarkMap>
   );

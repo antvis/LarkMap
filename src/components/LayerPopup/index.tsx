@@ -1,4 +1,4 @@
-import type { IPopupOption } from '@antv/l7';
+import type { IPopupOption, LayerField } from '@antv/l7';
 import { LayerPopup as L7LayerPopup } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
@@ -24,7 +24,7 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   className,
   lngLat,
   title,
-  config,
+  items,
   trigger,
   onOpen,
   onClose,
@@ -35,6 +35,20 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   const [popup, setPopup] = useState<L7LayerPopup | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
   const { portal: titlePartial, dom: titleDOM } = useL7ComponentPortal(title);
+
+  const config = useMemo(() => {
+    const data = items.map((item) => {
+      const fieldsData = item.fields.map((value: LayerField) => {
+        return {
+          ...value,
+          formatField: typeof value.formatField === 'string' ? () => value.formatField : value.formatField,
+          formatValue: typeof value.formatValue === 'string' ? () => value.formatValue : value.formatValue,
+        };
+      });
+      return { layer: item.layer, fields: fieldsData };
+    });
+    return data;
+  }, [items]);
 
   const layerPopupOptions: Partial<IPopupOption> = useMemo(
     () => ({

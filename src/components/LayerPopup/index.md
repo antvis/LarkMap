@@ -23,7 +23,7 @@ nav:
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| config | 需要展示 Popup 的图层配置数组，每个选项类型可见 [LayerPopupConfigItem](#LayerPopupConfigItem) | `Array<LayerPopupConfigItem>` | `[]` |
+| items | 需要展示 Popup 的图层配置数组，每个选项类型可见 [LayerPopupConfigItem](#LayerPopupConfigItem) | `Array<LayerPopupConfigItem>` | `[]` |
 | trigger | 鼠标触发 Popup 展示的方式 | `'hover'｜'click'` | `'hover'` |
 | title | Popup 标题 | `ReactNode` | - |
 | className | Popup 自定义 `className` | `string` | - |
