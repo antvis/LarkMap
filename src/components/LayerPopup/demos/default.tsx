@@ -1,8 +1,10 @@
-import type { PolygonLayerProps } from '@antv/larkmap';
-import { LarkMap, LayerPopup, PolygonLayer } from '@antv/larkmap';
+import type { LineLayerProps, PolygonLayerProps } from '@antv/larkmap';
+import { LarkMap, LayerPopup, LineLayer, PolygonLayer } from '@antv/larkmap';
+import type { FeatureCollection } from '@turf/turf';
+import { coordAll, featureCollection, lineString } from '@turf/turf';
 import React, { useEffect, useState } from 'react';
 
-const layerOptions: Omit<PolygonLayerProps, 'source'> = {
+const polygonLayerOptions: Omit<PolygonLayerProps, 'source'> = {
   autoFit: true,
   shape: 'fill',
   color: {
@@ -15,6 +17,12 @@ const layerOptions: Omit<PolygonLayerProps, 'source'> = {
   style: {
     opacity: 0.6,
   },
+};
+
+const lineLayerOptions: Omit<LineLayerProps, 'source'> = {
+  shape: 'line',
+  color: '#fff',
+  size: 4,
 };
 
 const items = [
@@ -31,26 +39,35 @@ const items = [
       },
     ],
   },
+  {
+    layer: 'myLineLayer',
+    fields: ['subFeatureIndex', 'childrenNum'],
+  },
 ];
 
 export default () => {
-  const [options, setOptions] = useState(layerOptions);
-  const [source, setSource] = useState({
+  const [polygonSource, setPolygonSource] = useState({
     data: { type: 'FeatureCollection', features: [] },
-    parser: { type: 'geojson' },
+  });
+  const [lineSource, setLineSource] = useState({
+    data: { type: 'FeatureCollection', features: [] },
   });
 
   useEffect(() => {
     fetch('https://gw.alipayobjects.com/os/antfincdn/Y8eGLb9j9v/hangzhou-district.json')
       .then((response) => response.json())
-      .then((data: any) => {
-        setSource((prevState) => ({ ...prevState, data }));
+      .then((data: FeatureCollection) => {
+        setPolygonSource({ data });
+        setLineSource({
+          data: featureCollection(data.features.map((item) => lineString(coordAll(item), item))),
+        });
       });
   }, []);
 
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '400px' }}>
-      <PolygonLayer {...options} source={source} name="myPolygonLayer" />
+      <PolygonLayer {...polygonLayerOptions} source={polygonSource} name="myPolygonLayer" />
+      <LineLayer {...lineLayerOptions} source={lineSource} name="myLineLayer" />
       <LayerPopup
         closeButton={false}
         closeOnClick={false}

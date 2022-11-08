@@ -55,6 +55,7 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       config: items,
       trigger,
       title: titleDOM,
+      items,
     }), // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       styleText,
@@ -73,11 +74,10 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       followCursor,
       className,
       titleDOM,
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      JSON.stringify(items),
       trigger,
       // eslint-disable-next-line react-hooks/exhaustive-deps
       JSON.stringify(lngLat),
+      items,
     ],
   );
 
