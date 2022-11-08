@@ -1,28 +1,79 @@
-import { LegendIcon, LarkMap, CustomControl } from '@antv/larkmap';
-import React from 'react';
+import { LegendIcon, LarkMap, CustomControl, IconImageLayer } from '@antv/larkmap';
+import React, { useEffect, useState } from 'react';
 
 const config = {
   mapType: 'GaodeV1' as const,
   mapOptions: {
     style: 'light',
-    center: [120.210792, 30.246026] as [number, number],
-    zoom: 9,
-    // token: 'xxxx - token',
+    center: [119.94992, 29.80872] as [number, number],
+    zoom: 4,
   },
 };
+
+const iconImageCfg = {
+  autoFit: true,
+  icon: {
+    field: 'type',
+    value: ['icon1', 'icon2', 'icon3', 'icon4', 'icon5', 'icon6'],
+  },
+  radius: {
+    field: 'value',
+    value: [15, 20],
+  },
+  iconAtlas: {
+    icon1: 'https://gw.alipayobjects.com/zos/bmw-prod/bac5245e-7900-4b0a-97fd-dfe6ff28fdd3.svg',
+    icon2: 'https://gw.alipayobjects.com/zos/bmw-prod/1b95f75d-e1b2-4ffe-a412-2ef745286c29.svg',
+    icon3: 'https://gw.alipayobjects.com/zos/bmw-prod/3ae8e112-54ec-4991-9590-b68db49db45a.svg',
+    icon4: 'https://gw.alipayobjects.com/zos/bmw-prod/714a8da0-a8cd-4330-84c0-042a0aff3a6f.svg',
+    icon5: 'https://gw.alipayobjects.com/zos/bmw-prod/e8f6a39d-e8f3-40a2-91cc-50711f223b9a.svg',
+    icon6: 'https://gw.alipayobjects.com/zos/bmw-prod/91754094-7b70-4649-a8b8-df46cc286bef.svg',
+  },
+  opacity: 1,
+};
+
 export default () => {
+  const [pointData, setPointData] = useState([]);
+
+  useEffect(() => {
+    fetch('https://gw.alipayobjects.com/os/bmw-prod/4e466b25-1782-4772-8ec4-8af6f1289044.json')
+      .then((res) => res.json())
+      .then((res) => {
+        const result = res.features.map(({ properties, geometry }) => {
+          return {
+            ...properties,
+            type: ['健身房', '公共厕所', '超市', '邮件', '餐厅', '休息吧'][Math.floor(Math.random() * 6)],
+            lng: geometry.coordinates[0][0],
+            lat: geometry.coordinates[0][1],
+          };
+        });
+        setPointData(result);
+      });
+  }, []);
+
+  const Legend = () => {
+    return (
+      <LegendIcon
+        style={{ background: '#fff', padding: 8 }}
+        labels={['健身房', '公共厕所', '超市', '邮件', '餐厅', '休息吧']}
+        icons={[
+          'https://gw.alipayobjects.com/zos/bmw-prod/bac5245e-7900-4b0a-97fd-dfe6ff28fdd3.svg',
+          'https://gw.alipayobjects.com/zos/bmw-prod/1b95f75d-e1b2-4ffe-a412-2ef745286c29.svg',
+          'https://gw.alipayobjects.com/zos/bmw-prod/3ae8e112-54ec-4991-9590-b68db49db45a.svg',
+          'https://gw.alipayobjects.com/zos/bmw-prod/714a8da0-a8cd-4330-84c0-042a0aff3a6f.svg',
+          'https://gw.alipayobjects.com/zos/bmw-prod/e8f6a39d-e8f3-40a2-91cc-50711f223b9a.svg',
+          'https://gw.alipayobjects.com/zos/bmw-prod/91754094-7b70-4649-a8b8-df46cc286bef.svg',
+        ]}
+      />
+    );
+  };
+
   return (
-    <LarkMap {...config} style={{ height: '300px' }}>
+    <LarkMap {...config} style={{ height: 500 }}>
+      {pointData.length && (
+        <IconImageLayer source={{ data: pointData, parser: { type: 'json', x: 'lng', y: 'lat' } }} {...iconImageCfg} />
+      )}
       <CustomControl position="bottomleft">
-        <LegendIcon
-          style={{ background: '#fff', padding: 8 }}
-          labels={['枫叶图标', '火车图标', '小汽车图标']}
-          icons={[
-            'https://gw.alipayobjects.com/mdn/rms_5e897d/afts/img/A*6ONoRKNECC0AAAAAAAAAAAAAARQnAQ',
-            'https://gw.alipayobjects.com/zos/bmw-prod/e21321e0-8f4a-474f-a0ee-2176492bb824.svg',
-            'https://gw.alipayobjects.com/zos/bmw-prod/7fb22e05-4488-4597-8e33-fc03716d2b0a.svg',
-          ]}
-        />
+        <Legend />
       </CustomControl>
     </LarkMap>
   );
