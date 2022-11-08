@@ -1,4 +1,4 @@
-import type { IPopupOption, LayerField } from '@antv/l7';
+import type { IPopupOption } from '@antv/l7';
 import { LayerPopup as L7LayerPopup } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
@@ -36,20 +36,6 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   const styleText = useMemo(() => getStyleText(style), [style]);
   const { portal: titlePartial, dom: titleDOM } = useL7ComponentPortal(title);
 
-  const config = useMemo(() => {
-    const data = items.map((item) => {
-      const fieldsData = item.fields.map((value: LayerField) => {
-        return {
-          ...value,
-          formatField: typeof value.formatField === 'string' ? () => value.formatField : value.formatField,
-          formatValue: typeof value.formatValue === 'string' ? () => value.formatValue : value.formatValue,
-        };
-      });
-      return { layer: item.layer, fields: fieldsData };
-    });
-    return data;
-  }, [items]);
-
   const layerPopupOptions: Partial<IPopupOption> = useMemo(
     () => ({
       style: styleText,
@@ -66,7 +52,7 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       followCursor,
       className,
       lngLat,
-      config,
+      config: items,
       trigger,
       title: titleDOM,
     }), // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -88,7 +74,7 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       className,
       titleDOM,
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      JSON.stringify(config),
+      JSON.stringify(items),
       trigger,
       // eslint-disable-next-line react-hooks/exhaustive-deps
       JSON.stringify(lngLat),

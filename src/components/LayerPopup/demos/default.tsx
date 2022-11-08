@@ -17,6 +17,22 @@ const layerOptions: Omit<PolygonLayerProps, 'source'> = {
   },
 };
 
+const items = [
+  {
+    layer: 'myPolygonLayer',
+    fields: [
+      {
+        field: 'name',
+        formatField: () => '名称',
+      },
+      {
+        field: 'adcode',
+        formatField: () => '权值',
+      },
+    ],
+  },
+];
+
 export default () => {
   const [options, setOptions] = useState(layerOptions);
   const [source, setSource] = useState({
@@ -31,23 +47,6 @@ export default () => {
         setSource((prevState) => ({ ...prevState, data }));
       });
   }, []);
-
-  const items = [
-    {
-      layer: 'myPolygonLayer',
-      fields: [
-        {
-          field: 'name',
-          formatField: '名称',
-        },
-        {
-          field: 'adcode',
-          formatField: () => '权值',
-          formatValue: '21312',
-        },
-      ],
-    },
-  ];
 
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '400px' }}>

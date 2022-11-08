@@ -56,5 +56,5 @@ nav:
 | 参数        | 说明                        | 类型                        |
 | ----------- | --------------------------- | --------------------------- |
 | field       | 字段的 key 值字符串         | `string`                    |
-| formatField | 对展示的 key 字段进行格式化 | `(field: string) => string` |
-| formatValue | 对展示的 value 值进行格式化 | `(value: any) => any`       |
+| formatField | 对展示的 key 字段进行格式化 | `(field: string) => string｜string` |
+| formatValue | 对展示的 value 值进行格式化 | `(value: any) => any｜string`       |
