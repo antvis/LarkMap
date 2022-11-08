@@ -1,0 +1,42 @@
+.popup-area {
+  min-width: 240px;
+
+  :global {
+    .l7-popup-tip {
+      border-top-color: rgb(41, 50, 60) !important;
+    }
+    .l7-popup-content {
+      background-color: rgb(41, 50, 60);
+    }
+  }
+
+  .title-area {
+    margin-bottom: 8px;
+    color: rgb(240, 240, 240);
+    font-size: 14px;
+  }
+
+  .ul-style {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+      font-size: 14px;
+      list-style: none;
+
+      > div:nth-of-type(1) {
+        color: rgb(160, 167, 180);
+      }
+      > div:nth-of-type(2) {
+        color: rgb(240, 240, 240);
+      }
+    }
+    > li:last-of-type {
+      margin-bottom: 0px;
+    }
+  }
+}
