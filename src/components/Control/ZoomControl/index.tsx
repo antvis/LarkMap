@@ -4,7 +4,7 @@ import { Zoom as L7Zoom } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
 import { useScene } from '../../LarkMap/hooks';
-import { useControlEvent, useControlUpdate, useControlElement } from '../hooks';
+import { useL7ComponentEvent, useL7ComponentUpdate, useL7ComponentPortal } from '../hooks';
 import { getStyleText } from '../../../utils';
 import type { ZoomControlProps } from './types';
 
@@ -25,8 +25,8 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
   const scene = useScene();
   const [control, setControl] = useState<L7Zoom | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
-  const { portal: zoomInTextPortal, dom: zoomInTextDOM } = useControlElement(zoomInText);
-  const { portal: zoomOutTextPortal, dom: zoomOutTextDOM } = useControlElement(zoomOutText);
+  const { portal: zoomInTextPortal, dom: zoomInTextDOM } = useL7ComponentPortal(zoomInText);
+  const { portal: zoomOutTextPortal, dom: zoomOutTextDOM } = useL7ComponentPortal(zoomOutText);
 
   const controlOptions: Partial<IZoomControlOption> = useMemo(() => {
     return {
@@ -51,12 +51,12 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
 
   useUnmount(() => {
     scene.removeControl(control);
-    setControl(control);
+    setControl(undefined);
   });
 
-  useControlUpdate(control, controlOptions);
+  useL7ComponentUpdate(control, controlOptions);
 
-  useControlEvent(control, {
+  useL7ComponentEvent(control, {
     add: onAdd,
     remove: onRemove,
     show: onShow,

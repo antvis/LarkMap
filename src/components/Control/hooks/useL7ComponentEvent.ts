@@ -1,6 +1,6 @@
-import type { Control } from '@antv/l7';
-import { useEffect, useMemo } from 'react';
 import { useUnmount } from 'ahooks';
+import type EventEmitter from 'eventemitter3';
+import { useEffect, useMemo } from 'react';
 
 type CallbackFunction = (...args: any[]) => any;
 
@@ -9,7 +9,7 @@ type CallbackFunction = (...args: any[]) => any;
  * @param control
  * @param props
  */
-export const useControlEvent = <C extends Control>(control: C, props: Record<string, CallbackFunction>) => {
+export const useL7ComponentEvent = <C extends EventEmitter>(control: C, props: Record<string, CallbackFunction>) => {
   const eventNameList = useMemo(() => Object.keys(props), [props]);
 
   useEffect(() => {

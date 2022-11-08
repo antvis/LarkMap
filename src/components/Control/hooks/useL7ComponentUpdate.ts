@@ -1,4 +1,4 @@
-import type { Control } from '@antv/l7';
+import type { Control, Popup } from '@antv/l7';
 import { useTrackedEffect } from 'ahooks';
 import { useMemo, useRef } from 'react';
 
@@ -7,7 +7,10 @@ import { useMemo, useRef } from 'react';
  * @param control
  * @param options
  */
-export const useControlUpdate = <C extends Control, O = C['controlOption']>(control: C, options: Partial<O>) => {
+export const useL7ComponentUpdate = <C extends Control | Popup, O extends Record<string, any>>(
+  control: C,
+  options: Partial<O>,
+) => {
   const isFirst = useRef(true);
   const keyList = useMemo(() => Object.keys(options) as (keyof O)[], [options]);
 

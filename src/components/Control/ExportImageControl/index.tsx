@@ -5,7 +5,7 @@ import { omitBy } from 'lodash-es';
 import { ExportImage as L7ExportImage } from '@antv/l7';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
-import { useControlElement, useControlEvent, useControlUpdate } from '../hooks';
+import { useL7ComponentPortal, useL7ComponentEvent, useL7ComponentUpdate } from '../hooks';
 import type { ExportImageControlProps } from './types';
 
 export const ExportImageControl: React.FC<ExportImageControlProps> = ({
@@ -26,7 +26,7 @@ export const ExportImageControl: React.FC<ExportImageControlProps> = ({
   const scene = useScene();
   const [control, setControl] = useState<L7ExportImage | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
-  const { portal: btnIconPortal, dom: btnIconDOM } = useControlElement(btnIcon);
+  const { portal: btnIconPortal, dom: btnIconDOM } = useL7ComponentPortal(btnIcon);
 
   const controlOptions: Partial<IExportImageControlOption> = useMemo(() => {
     return {
@@ -52,12 +52,12 @@ export const ExportImageControl: React.FC<ExportImageControlProps> = ({
 
   useUnmount(() => {
     scene.removeControl(control);
-    setControl(control);
+    setControl(undefined);
   });
 
-  useControlUpdate(control, controlOptions);
+  useL7ComponentUpdate(control, controlOptions);
 
-  useControlEvent(control, {
+  useL7ComponentEvent(control, {
     add: onAdd,
     remove: onRemove,
     show: onShow,

@@ -46,6 +46,7 @@
     "@formily/shared": "^2.1.11",
     "ahooks": "^3.3.13",
     "classnames": "^2.3.1",
+    "eventemitter3": "^4.0.7",
     "color": "^4.2.3",
     "lodash-es": "^4.17.21",
     "query-string": "^7.1.1"
