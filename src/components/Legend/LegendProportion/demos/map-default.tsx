@@ -1,4 +1,4 @@
-import type { BubbleLayerProps } from '@antv/larkmap';
+import type { BubbleLayerProps, LegendItems } from '@antv/larkmap';
 import { BubbleLayer, LarkMap, CustomControl, LegendProportion } from '@antv/larkmap';
 import { max, min } from 'lodash-es';
 import React, { useEffect, useState } from 'react';
@@ -37,7 +37,7 @@ const bubbleLayerOptions: Omit<BubbleLayerProps, 'source'> = {
 
 export default () => {
   const [layerOptions] = useState(bubbleLayerOptions);
-  const [legendItems, setLegendItems] = useState<any>([]);
+  const [legendItems, setLegendItems] = useState<LegendItems[]>([]);
 
   const [source, setSource] = useState([]);
 
@@ -68,7 +68,6 @@ export default () => {
         {...layerOptions}
         source={{ data: source, parser: { type: 'json', x: 'lng', y: 'lat' } }}
         onCreated={(l) => {
-          console.log(l.getLegend('size').items);
           setLegendItems(l.getLegend('size').items);
         }}
       />

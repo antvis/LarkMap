@@ -1,3 +1,4 @@
+import type { LegendItems } from '@antv/larkmap';
 import { LegendIcon, LarkMap, CustomControl, IconImageLayer } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
@@ -35,7 +36,7 @@ const iconImageCfg = {
 
 export default () => {
   const [pointData, setPointData] = useState([]);
-  const [legendItems, setLegendItems] = useState<any>([]);
+  const [legendItems, setLegendItems] = useState<LegendItems[]>([]);
 
   useEffect(() => {
     fetch('https://gw.alipayobjects.com/os/bmw-prod/4e466b25-1782-4772-8ec4-8af6f1289044.json')
