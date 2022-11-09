@@ -1,6 +1,6 @@
-import { LarkMap, PointLayer, Scale, Zoom, CustomControl } from '@antv/larkmap';
 import type { LarkMapProps, PointLayerProps } from '@antv/larkmap';
-import React, { useEffect, useState, useMemo } from 'react';
+import { CustomControl, LarkMap, PointLayer, Scale, Zoom } from '@antv/larkmap';
+import React, { useEffect, useMemo, useState } from 'react';
 import MyComponent from './MyComponent';
 
 interface IdataType {
@@ -18,19 +18,17 @@ export default () => {
 
   const config: LarkMapProps = useMemo(() => {
     return {
-      mapType: 'GaodeV2',
+      mapType: 'GaodeV1',
       mapOptions: {
         style: 'normal',
         zoom: 4,
         minZoom: 5,
         maxZoom: 9,
       },
-      style: {
-        height: 500,
-      },
       logoPosition: 'bottomleft',
     };
   }, [data]);
+  
   const pointLayerOptions: PointLayerProps = useMemo(() => {
     return {
       id: 'myPoitLayer',
@@ -48,7 +46,7 @@ export default () => {
       size: 7,
       color: {
         field: 'address',
-        value: ['#f00', 'rgba(159, 180, 15, 1)'],
+        value: ['#34B6B7', '#CEF8D6'],
       },
       state: {
         active: {
@@ -79,7 +77,7 @@ export default () => {
   }, []);
 
   return (
-    <LarkMap {...config}>
+    <LarkMap {...config} style={{ height: '60vh' }}>
       <CustomControl position={'topleft'}>
         <h2>鼠标划过显示站点信息</h2>
       </CustomControl>

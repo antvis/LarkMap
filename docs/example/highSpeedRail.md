@@ -9,6 +9,4 @@ nav:
 
 ## 01.高铁站点
 
-### [author by gaoxuebo](https://github.com/gaoxuebo)
-
-<code src= './highSpeedRail/index.tsx'>
+<code src= './highSpeedRail/index.tsx' compact="true" defaultShowCode></code>

@@ -1,9 +1,9 @@
-import { LarkMap, Scale, Zoom, Popup, ChoroplethLayer } from '@antv/larkmap';
-import type { LarkMapProps, PopupProps, ChoroplethLayerProps } from '@antv/larkmap';
 import type { ILngLat } from '@antv/l7';
-import React, { useState, useEffect, useMemo } from 'react';
-import { colorArr } from './utils';
+import type { ChoroplethLayerProps, LarkMapProps, PopupProps } from '@antv/larkmap';
+import { ChoroplethLayer, LarkMap, Popup, Scale, Zoom } from '@antv/larkmap';
+import React, { useEffect, useMemo, useState } from 'react';
 import styles from './index.module.less';
+import { colorArr } from './utils';
 
 interface IpopInfo {
   NAME?: string;
@@ -31,15 +31,12 @@ const CountyUnemployment = () => {
   /** 地图属性配置 */
   const config: LarkMapProps = useMemo(() => {
     return {
-      mapType: 'GaodeV2',
+      mapType: 'GaodeV1',
       mapOptions: {
         style: 'normal',
         pitch: 0,
         zoom: 3.7,
         center: [-97.39054553110171, 39.448335349067435],
-      },
-      style: {
-        height: 700,
       },
       logoPosition: 'bottomleft',
     };
@@ -111,7 +108,7 @@ const CountyUnemployment = () => {
   }, []);
 
   return (
-    <LarkMap {...config}>
+    <LarkMap {...config} style={{ height: '60vh' }}>
       {/* 区域图层 */}
       <ChoroplethLayer {...choroplethOptions} />
       {/* 信息框 */}

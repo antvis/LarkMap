@@ -9,6 +9,4 @@ nav:
 
 ## 17.洛杉矶房屋价值
 
-### [author by websybin](https://github.com/websybin)
-
-<code src= './losAngelesHomes/index.tsx'>
+<code src= './losAngelesHomes/index.tsx' compact="true" defaultShowCode></code>

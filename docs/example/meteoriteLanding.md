@@ -9,6 +9,4 @@ nav:
 
 ## 18.全球陨石着地区域
 
-### 赵千赐
-
-<code src= './meteoriteLanding/index.tsx'>
+<code src= './meteoriteLanding/index.tsx' compact="true" defaultShowCode></code>

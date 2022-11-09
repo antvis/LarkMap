@@ -9,4 +9,4 @@ nav:
 
 ## 02.郑州高铁直达各省份时间
 
-<code src= './highspeed_time/index.tsx'>
+<code src= './highspeedTime/index.tsx' compact="true" defaultShowCode></code>

@@ -9,6 +9,4 @@ nav:
 
 ## 14.旅行时间
 
-## yuaiai0419
-
-<code src= './travelTimes/index.tsx'>
+<code src= './travelTimes/index.tsx' compact="true" defaultShowCode></code>

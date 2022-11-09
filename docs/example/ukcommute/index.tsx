@@ -1,6 +1,6 @@
-import { LineLayer, LarkMap, LarkMapProps, LineLayerProps } from '@antv/larkmap';
+import { LarkMap, LarkMapProps, LineLayer, LineLayerProps } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
-import { MapConfig, LayerConfig } from './helper';
+import { LayerConfig, MapConfig } from './helper';
 
 export default () => {
   const [source, setSource] = useState({ data: [], parse: { type: 'json' } });

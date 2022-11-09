@@ -9,6 +9,4 @@ nav:
 
 ## 22.北京房价数据
 
-## 赵千赐
-
-<code src= './beijingHousePrice/index.tsx' compact="true"></code>
+<code src= './beijingHousePrice/index.tsx' compact="true" defaultShowCode></code>

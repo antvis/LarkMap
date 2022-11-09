@@ -1,8 +1,8 @@
+import { ILngLat } from '@antv/l7';
+import type { LarkMapProps, PolygonLayerProps } from '@antv/larkmap';
 import { LarkMap, PolygonLayer, Popup, PopupProps, Scale, Zoom } from '@antv/larkmap';
-import type { PolygonLayerProps, LarkMapProps } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 import styles from './index.less';
-import { ILngLat, Scene } from '@antv/l7';
 
 const CountyUnemployment = () => {
   const [lngLat, setLngLat] = useState<ILngLat>();
@@ -19,15 +19,12 @@ const CountyUnemployment = () => {
 
   /** 地图属性配置 */
   const config: LarkMapProps = {
-    mapType: 'GaodeV2',
+    mapType: 'GaodeV1',
     mapOptions: {
       style: 'normal',
       pitch: 0,
       zoom: 8.065670701339682,
       center: [-80.00072773620316, 40.381035150924674],
-    },
-    style: {
-      height: 700,
     },
     logoPosition: 'bottomleft',
   };
@@ -93,7 +90,7 @@ const CountyUnemployment = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flex: 1 }}>
+    <div style={{ display: 'flex', flex: 1, height: '60vh' }}>
       <LarkMap {...config}>
         <PolygonLayer {...layerOptions} />
         <Popup {...popupProps}>

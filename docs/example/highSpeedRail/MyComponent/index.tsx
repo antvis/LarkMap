@@ -1,7 +1,7 @@
-import { Popup, useLayer, Marker, TextLayer } from '@antv/larkmap';
-import type { PopupProps, MarkerProps, TextLayerProps } from '@antv/larkmap';
 import type { ILngLat } from '@antv/l7';
-import React, { useEffect, useState, useMemo } from 'react';
+import type { MarkerProps, PopupProps, TextLayerProps } from '@antv/larkmap';
+import { Marker, Popup, TextLayer, useLayer } from '@antv/larkmap';
+import React, { useEffect, useMemo, useState } from 'react';
 import styles from './index.module.less';
 
 const MyComponent = () => {

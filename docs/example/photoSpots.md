@@ -8,6 +8,4 @@ nav:
 ---
 ## 04.全球拍照最多的景点
 
-### [author by websybin](https://github.com/websybin)
-
-<code src= './photo_spots/index.tsx'>
+<code src= './photoSpots/index.tsx' compact="true" defaultShowCode></code>

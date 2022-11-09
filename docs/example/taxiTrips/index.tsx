@@ -2,7 +2,7 @@ import { LarkMap, LarkMapProps, LineLayer, PointLayer } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
 const config = {
-  mapType: 'GaodeV2',
+  mapType: 'GaodeV1',
   mapOptions: {
     style: 'normal',
     center: [-73.993896, 40.75011],
@@ -59,7 +59,7 @@ export default () => {
       .then((data) => setSource(data));
   }, []);
   return (
-    <LarkMap {...(config as LarkMapProps)} style={{ height: '500px' }}>
+    <LarkMap {...(config as LarkMapProps)} style={{ height: '60vh' }}>
       <LineLayer
         source={{
           data: source,

@@ -9,6 +9,4 @@ nav:
 
 ## 10.纽约公交路径
 
-## 赵千赐
-
-<code src= './taxiTrips/index.tsx'>
+<code src= './taxiTrips/index.tsx' compact="true" defaultShowCode></code>

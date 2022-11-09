@@ -6,11 +6,11 @@ import HousePrice from './content';
 export default () => {
   const [source, setSource] = useState([]);
   const [selectLabel, setSelectLabel] = useState<undefined | { value: string; label: string }>(undefined);
-  const [popup, setPopup] = useState();
+  const [popup, setPopup] = useState<Record<string, any> | undefined>();
   const [selectSource, setSelectSource] = useState([]);
 
   document.onkeydown = function (event) {
-    if (event.keyCode == 27) {
+    if (event.code === 'Escape') {
       setSelectLabel(undefined);
     }
   };
@@ -25,7 +25,7 @@ export default () => {
   }, []);
 
   const config = {
-    mapType:"GaodeV2",
+    mapType: 'GaodeV1',
     mapOptions: {
       style: 'normal',
       center: [116.393722, 39.920746],
@@ -33,7 +33,6 @@ export default () => {
     },
   };
 
-  const pointLayerOption = {};
   const polygonLayerOption = {
     color: selectLabel
       ? selectLabel.value
@@ -41,12 +40,12 @@ export default () => {
           field: 'count',
           scale: { type: 'quantile' },
           value: [
-            'rgb(166, 206, 227)',
-            'rgb(31, 120, 180)',
-            'rgb(178, 223, 138)',
-            'rgb(51, 160, 44)',
-            'rgb(251, 154, 153)',
-            'rgb(227, 26, 28)',
+            'rgb(239, 243, 255)',
+            'rgb(198, 219, 239)',
+            'rgb(158, 202, 225)',
+            'rgb(107, 174, 214)',
+            'rgb(49, 130, 189)',
+            'rgb(8, 81, 156)',
           ],
         },
     state: {
@@ -66,9 +65,12 @@ export default () => {
   const onPolygonMouseenter = (e) => {
     setPopup(e.feature.properties);
   };
+  const onPolygonMouseout = () => {
+    setPopup(undefined);
+  };
 
   return (
-    <LarkMap mapType="GaodeV1" {...(config as LarkMapProps)} style={{ height: '700px' }}>
+    <LarkMap {...(config as LarkMapProps)} style={{ height: '60vh' }}>
       <PolygonLayer
         source={{
           data: selectLabel ? { type: 'FeatureCollection', features: selectSource } : source,
@@ -77,15 +79,11 @@ export default () => {
         {...polygonLayerOption}
         onCreated={(layer) => {
           layer?.on('mouseenter', onPolygonMouseenter);
+          layer?.on('mouseout', onPolygonMouseout);
         }}
       />
       {popup && (
-        <Popup
-          lngLat={{ lat: popup.latitude, lng: popup.longitude }}
-          closeButton={false}
-          closeOnClick={false}
-          anchor="bottom-left"
-        >
+        <Popup lngLat={{ lat: popup.latitude, lng: popup.longitude }} closeButton={false} closeOnClick={false}>
           <div>名字:{popup.name}</div>
           <div>房子数量：{popup.count}</div>
           <div>房价：{popup.unit_price}</div>

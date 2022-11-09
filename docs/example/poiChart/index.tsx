@@ -4,13 +4,10 @@ import React, { useEffect, useState } from 'react';
 
 /** 地图属性配置 */
 const larkMapConfig: LarkMapProps = {
-  mapType: 'GaodeV2',
+  mapType: 'GaodeV1',
   mapOptions: {
     style: 'normal',
     pitch: 0,
-  },
-  style: {
-    height: 700,
   },
   logoPosition: 'bottomleft',
 };
@@ -69,7 +66,7 @@ const PoiChart = () => {
   }, []);
 
   return (
-    <LarkMap {...larkMapConfig}>
+    <LarkMap {...larkMapConfig} style={{ height: '60vh' }}>
       <PointLayer {...myPointLayerOpt} source={source} />
       <PointLayer {...myPointLayerTextOpt} source={source} />
     </LarkMap>

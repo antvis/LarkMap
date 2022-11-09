@@ -6,9 +6,9 @@ export default () => {
     type: 'FeatureCollection',
     features: [],
   });
-  
+
   const config = {
-    mapType: 'GaodeV2',
+    mapType: 'GaodeV1',
     mapOptions: {
       style: 'normal',
       center: [120.210792, 30.246026],
@@ -50,7 +50,7 @@ export default () => {
       });
   }, []);
   return (
-    <LarkMap {...(config as LarkMapProps)} style={{ height: '700px' }}>
+    <LarkMap {...(config as LarkMapProps)} style={{ height: '60vh' }}>
       <ChoroplethLayer
         {...(layerOptions as unknown as ChoroplethLayerProps)}
         source={{ data: ChoropletData, parser: { type: 'geojson' } }}

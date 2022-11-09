@@ -1,4 +1,4 @@
-import { LarkMap, HeatmapLayer, HeatmapLayerProps } from '@antv/larkmap';
+import { HeatmapLayer, HeatmapLayerProps, LarkMap } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 export default () => {
   const [pointData, SetPointData] = useState([]);
@@ -27,7 +27,7 @@ export default () => {
 
   return (
     <LarkMap
-      mapType="GaodeV2"
+      mapType="GaodeV1"
       style={{ height: '60vh' }}
       mapOptions={{
         style: 'normal',

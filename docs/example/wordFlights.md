@@ -9,6 +9,4 @@ nav:
 
 ## 16.世界航线
 
-### [author by simplexiao](https://github.com/simplexiao)
-
-<code src= './word_flights/index.tsx'>
+<code src= './wordFlights/index.tsx' compact="true" defaultShowCode></code>

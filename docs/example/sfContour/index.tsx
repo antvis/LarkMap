@@ -46,16 +46,13 @@ const SfContour = () => {
   /** 地图属性配置 */
   const larkMapConfig: LarkMapProps = useMemo(() => {
     return {
-      mapType: 'GaodeV2',
+      mapType: 'GaodeV1',
       mapOptions: {
         style: 'normal',
         pitch: 50,
         zoom: 12.5,
         center: [-122.45397511735388, 37.73927151161908],
         rotation: 30, // 初始旋转角度
-      },
-      style: {
-        height: 700,
       },
       logoPosition: 'bottomleft',
       // onSceneLoaded: (scene: Scene) => {
@@ -78,7 +75,7 @@ const SfContour = () => {
   }, []);
 
   return (
-    <LarkMap {...larkMapConfig}>
+    <LarkMap {...larkMapConfig} style={{ height: '60vh' }}>
       <LineLayer {...lineLayerOptions} source={source} />
     </LarkMap>
   );

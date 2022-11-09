@@ -6,7 +6,7 @@ const typeList = [
 ];
 
 const MapConfig = {
-  mapType: 'GaodeV2',
+  mapType: 'GaodeV1',
   mapOptions: {
     style: 'normal',
     center: [110.481623, 38.068625],

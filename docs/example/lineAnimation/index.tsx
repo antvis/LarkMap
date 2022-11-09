@@ -1,9 +1,9 @@
-import { Scene, LineLayer, ILayer, PointLayer } from '@antv/l7';
+import { ILayer, LineLayer, PointLayer, Scene } from '@antv/l7';
 import { CustomControl, LarkMap, LarkMapProps } from '@antv/larkmap';
-import React, { useEffect, useState } from 'react';
-import { linear, animate } from 'popmotion';
 import { Select } from 'antd';
 import 'antd/dist/antd.css';
+import { animate, linear } from 'popmotion';
+import React, { useEffect, useState } from 'react';
 
 export default () => {
   const [scene, setScene] = useState<Scene>();
@@ -15,8 +15,7 @@ export default () => {
   const [lineLayer, setLinelayer] = useState<ILayer>();
   const [imgeLayer, setImagelayer] = useState<ILayer>();
 
-  const icons =
-    'https://gw.alipayobjects.com/zos/bmw-prod/e21321e0-8f4a-474f-a0ee-2176492bb824.svg';
+  const icons = 'https://gw.alipayobjects.com/zos/bmw-prod/e21321e0-8f4a-474f-a0ee-2176492bb824.svg';
   // const icons = "https://gw.alipayobjects.com/zos/bmw-prod/b2585d77-6ef3-460b-872f-fe3a7a94163b.svg"
   let timer: any = null;
   let count = 0;
@@ -84,7 +83,7 @@ export default () => {
       maxZoom: 12.5,
       minZoom: 8,
     },
-    mapType: 'GaodeV2',
+    mapType: 'GaodeV1',
   };
 
   const onSceneLoaded = (scene: Scene) => {
@@ -147,7 +146,7 @@ export default () => {
   }, [lineName, scene, lineLayer, imgeLayer, subwayData]);
 
   return (
-    <LarkMap {...(config as LarkMapProps)} style={{ height: '50vh' }} onSceneLoaded={onSceneLoaded}>
+    <LarkMap {...(config as LarkMapProps)} style={{ height: '60vh' }} onSceneLoaded={onSceneLoaded}>
       <h2 style={{ position: 'absolute', left: '10px' }}>{subwayData.subways}</h2>
       <CustomControl position="topcenter">
         <Select

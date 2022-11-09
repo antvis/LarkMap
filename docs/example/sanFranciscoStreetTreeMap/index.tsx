@@ -1,11 +1,11 @@
+import { Scene } from '@antv/l7';
 import { CustomControl, HeatmapLayer, LarkMap } from '@antv/larkmap';
 import { Popover, Select, Slider, Typography } from 'antd';
+import { cloneDeep, get, set } from 'lodash';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import styles from './index.less';
-import { cloneDeep, set, get } from 'lodash';
-import { heatmapCfg, scaleType, shapeOpt } from './config';
 import { SketchPicker } from 'react-color';
-import { Scene } from '@antv/l7';
+import { heatmapCfg, scaleType, shapeOpt } from './config';
+import styles from './index.less';
 
 const { Paragraph } = Typography;
 
@@ -38,8 +38,8 @@ function StreetMap() {
 
   return (
     <LarkMap
-      mapType="GaodeV2"
-      style={{ height: '50vh' }}
+      mapType="GaodeV1"
+      style={{ height: '60vh' }}
       mapOptions={{
         style: 'normal',
         center: [-122.4413967, 37.77596769],

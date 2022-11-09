@@ -2,7 +2,7 @@ import { LarkMap, LarkMapProps, PointLayer, Popup } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
 const config = {
-  mapType: 'GaodeV2',
+  mapType: 'GaodeV1',
   mapOptions: {
     style: 'normal',
     center: [120.210792, 30.246026],
@@ -51,7 +51,7 @@ export default () => {
     layer.on('mousemove', (e) => setLngLat(e.lngLat));
   };
   return (
-    <LarkMap {...(config as LarkMapProps)} style={{ height: '500px' }}>
+    <LarkMap {...(config as LarkMapProps)} style={{ height: '60vh' }}>
       <PointLayer
         source={{ data: pointData, parser: { type: 'json', x: 'lat', y: 'lng' } }}
         onCreated={onCreated}

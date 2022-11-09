@@ -1,8 +1,8 @@
-import { LineLayer, LarkMap, LarkMapProps, LineLayerProps } from '@antv/larkmap';
+import { LarkMap, LarkMapProps, LineLayer, LineLayerProps } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
 const MapConfig = {
-  mapType: 'GaodeV2',
+  mapType: 'GaodeV1',
   mapOptions: {
     style: 'normal',
     zoom: 1,

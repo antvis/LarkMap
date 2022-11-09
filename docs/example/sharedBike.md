@@ -9,6 +9,4 @@ nav:
 
 ## 19.共享单单车区域和点位
 
-### [author by websybin](https://github.com/websybin)
-
-<code src= './shareBike/index.tsx'>
+<code src= './shareBike/index.tsx' compact="true" defaultShowCode></code>

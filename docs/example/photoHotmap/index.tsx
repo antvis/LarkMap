@@ -40,8 +40,8 @@ function PhotohotMap() {
 
   return (
     <LarkMap
-      mapType="GaodeV2"
-      style={{ height: '50vh' }}
+      mapType="GaodeV1"
+      style={{ height: '60vh' }}
       mapOptions={{
         style: 'normal',
         center: [10, 44],

@@ -7,7 +7,7 @@ export default () => {
     parser: { type: 'json', x: 'lat', y: 'lng' },
   });
   const config = {
-    mapType: 'GaodeV2',
+    mapType: 'GaodeV1',
     mapOptions: {
       style: 'normal',
       center: [120.210792, 30.246026],
@@ -16,9 +16,7 @@ export default () => {
   };
 
   const fetchPointData = async () => {
-    const res = await fetch(
-      'https://gw.alipayobjects.com/os/bmw-prod/16cd4004-b21c-455e-a2e4-c396a5ecebe1.json',
-    );
+    const res = await fetch('https://gw.alipayobjects.com/os/bmw-prod/16cd4004-b21c-455e-a2e4-c396a5ecebe1.json');
     const result = await res.json();
     setPointData({ ...pointData, data: result });
   };
@@ -46,7 +44,7 @@ export default () => {
   }, []);
 
   return (
-    <LarkMap {...(config as LarkMapProps)} style={{ height: '700px' }}>
+    <LarkMap {...(config as LarkMapProps)} style={{ height: '60vh' }}>
       <PointLayer {...(layerOptions as unknown as PointLayerProps)} source={pointData} />
     </LarkMap>
   );

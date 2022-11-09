@@ -9,6 +9,4 @@ nav:
 
 ## 13.旧金山街道地图
 
-### yzg1025
-
-<code src= './san_francisco_street_tree_map/index.tsx'>
+<code src= './sanFranciscoStreetTreeMap/index.tsx' compact="true" defaultShowCode></code>

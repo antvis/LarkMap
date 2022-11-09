@@ -17,10 +17,14 @@ export default () => {
     const { DateTime, Magnitude, Source, Depth, Latitude, Longitude } = e.feature;
     setInfo({ DateTime, Magnitude, Source, Depth, Latitude, Longitude });
   };
+  const onPointMouseout = (e: any) => {
+    setInfo({});
+  };
+  
 
   return (
     <LarkMap
-      mapType="GaodeV2"
+      mapType="GaodeV1"
       style={{ height: '60vh' }}
       mapOptions={{
         style: 'normal',
@@ -50,6 +54,7 @@ export default () => {
         state={{ active: true }}
         onCreated={(layer) => {
           layer?.on('mouseenter', onPointMouseenter);
+          layer?.on('mouseout', onPointMouseout);
         }}
       />
       {info?.Longitude && (
@@ -57,7 +62,6 @@ export default () => {
           lngLat={{ lng: info?.Longitude, lat: info?.Latitude }}
           closeButton={false}
           closeOnClick={false}
-          anchor="bottom-left"
         >
           <p
             style={{
