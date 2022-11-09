@@ -1,7 +1,7 @@
 const MapConfig = {
   mapType: 'GaodeV2',
   mapOptions: {
-    style: 'dark',
+    style: 'normal',
     center: [-0.9, 52.5],
     zoom: 6,
     pitch: 40,

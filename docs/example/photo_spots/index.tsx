@@ -8,9 +8,8 @@ export default () => {
   });
   const config = {
     mapType: 'GaodeV2',
-
     mapOptions: {
-      style: 'dark',
+      style: 'normal',
       center: [120.210792, 30.246026],
       zoom: 0,
     },

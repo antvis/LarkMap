@@ -25,8 +25,9 @@ export default () => {
   }, []);
 
   const config = {
+    mapType:"GaodeV2",
     mapOptions: {
-      // style: 'normal',
+      style: 'normal',
       center: [116.393722, 39.920746],
       zoom: 8,
     },

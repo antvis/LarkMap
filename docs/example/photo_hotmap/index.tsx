@@ -43,7 +43,7 @@ function PhotohotMap() {
       mapType="GaodeV2"
       style={{ height: '50vh' }}
       mapOptions={{
-        style: 'dark',
+        style: 'normal',
         center: [10, 44],
         pitch: 40,
         zoom: 3.7,

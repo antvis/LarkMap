@@ -30,7 +30,7 @@ export default () => {
       mapType="GaodeV2"
       style={{ height: '60vh' }}
       mapOptions={{
-        style: 'dark',
+        style: 'normal',
         zoom: 5,
         center: [-122.80009283836715, 37.05881309947238],
         pitch: 35,

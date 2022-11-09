@@ -78,7 +78,7 @@ export default () => {
 
   const config = {
     mapOptions: {
-      style: 'dark',
+      style: 'normal',
       center: [120.210792, 30.246026],
       zoom: 10,
       maxZoom: 12.5,

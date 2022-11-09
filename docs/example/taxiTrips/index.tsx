@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 const config = {
   mapType: 'GaodeV2',
   mapOptions: {
-    style: 'dark',
+    style: 'normal',
     center: [-73.993896, 40.75011],
     zoom: 8,
     // rotation: 20,
