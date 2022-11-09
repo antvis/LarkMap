@@ -57,4 +57,5 @@ export function LegendRamp(props: LegendRampProps) {
 LegendRamp.defaultProps = {
   isContinuous: false,
   barWidth: 200,
+  lableUnit: '',
 };
