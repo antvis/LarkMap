@@ -19,12 +19,12 @@ export const lineLayerStyleFlatToConfig = (style: Record<string, any>) => {
           value: style.fillColorRibbon,
           scale: { type: style.fillColorScale },
         }
-      : style.fillColor,
+      : style.sourceColor,
     style: {
       opacity: style.fillColorOpacity,
       lineType: 'solid' as const,
-      // sourceColor: style.sourceColor,
-      // targetColor: style.targetColor,
+      sourceColor: style.sourceColor,
+      targetColor: style.targetColor,
     },
     minZoom: style.zoom?.[0],
     maxZoom: style.zoom?.[1],
@@ -53,7 +53,6 @@ export const lineLayerStyleConfigToFlat = (styleConfig: LineLayerStyleAttributeV
     // @ts-ignore
     sizeRange: typeof size === 'object' ? size?.value : undefined,
 
-    fillColor: typeof color !== 'object' ? color : undefined,
     fillColorField: typeof color === 'object' ? color?.field : undefined,
     fillColorRibbon: typeof color === 'object' ? color?.value : undefined,
     fillColorScale: typeof color === 'object' ? color?.scale?.type : undefined,
@@ -61,14 +60,16 @@ export const lineLayerStyleConfigToFlat = (styleConfig: LineLayerStyleAttributeV
     fillColorOpacity: style?.opacity,
 
     lineType: style?.lineType,
-    // sourceColor: style?.sourceColor,
-    // targetColor: style?.targetColor,
+    sourceColor: style?.sourceColor,
+    targetColor: style?.targetColor,
     zoom: [minZoom, maxZoom],
     blend,
-    animateEnable: typeof animate === 'object' && animate?.enable,
-    animateDuration: typeof animate === 'object' && animate?.duration,
-    animateInterval: typeof animate === 'object' && animate?.interval,
-    animateTrailLength: typeof animate === 'object' && animate?.trailLength,
+
+    animateEnable: typeof animate === 'object' ? animate?.enable : animate,
+    animateDuration: typeof animate === 'object' ? animate?.duration : undefined,
+    animateInterval: typeof animate === 'object' ? animate?.interval : undefined,
+    animateTrailLength: typeof animate === 'object' ? animate?.trailLength : undefined,
   };
+
   return config;
 };
