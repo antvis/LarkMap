@@ -19,4 +19,7 @@ export const DefaultLineLayerStyle: LineLayerStyleAttributeValue = {
   minZoom: 0,
   maxZoom: 24,
   blend: 'normal',
+  animate: {
+    enable: false,
+  },
 };

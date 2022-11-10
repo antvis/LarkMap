@@ -20,6 +20,12 @@ const DefaultLineLayerStyle = {
   minZoom: 0,
   maxZoom: 24,
   blend: 'normal',
+  animate: {
+    enable: true,
+    duration: 4,
+    interval: 0.8,
+    trailLength: 1,
+  },
 };
 
 const lineLayerOptions: Omit<LineLayerProps, 'source'> = {
@@ -43,6 +49,8 @@ export default () => {
         setLayerSource((prevState) => ({ ...prevState, data }));
       });
   }, []);
+
+  console.log(layerOptions, 'layerOptions');
 
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '400px', overflow: 'hidden' }}>

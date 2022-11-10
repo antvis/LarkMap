@@ -29,6 +29,12 @@ export const lineLayerStyleFlatToConfig = (style: Record<string, any>) => {
     minZoom: style.zoom?.[0],
     maxZoom: style.zoom?.[1],
     blend: style.blend,
+    animate: {
+      enable: style.animateEnable,
+      duration: style.animateDuration,
+      interval: style.animateInterval,
+      trailLength: style.animateTrailLength,
+    },
   };
 
   return styleConfig;
@@ -39,7 +45,7 @@ export const lineLayerStyleFlatToConfig = (style: Record<string, any>) => {
  * 将图层样式的数据结构转为表单的平铺数据
  * */
 export const lineLayerStyleConfigToFlat = (styleConfig: LineLayerStyleAttributeValue) => {
-  const { size, color, style, minZoom = 0, maxZoom = 24, blend } = styleConfig;
+  const { size, color, style, minZoom = 0, maxZoom = 24, blend, animate } = styleConfig;
   const config = {
     size: typeof size === 'object' ? undefined : size,
     // @ts-ignore
@@ -59,6 +65,14 @@ export const lineLayerStyleConfigToFlat = (styleConfig: LineLayerStyleAttributeV
     // targetColor: style?.targetColor,
     zoom: [minZoom, maxZoom],
     blend,
+    // @ts-ignore
+    animateEnable: animate?.enable,
+    // @ts-ignore
+    animateDuration: animate?.duration,
+    // @ts-ignore
+    animateInterval: animate?.interval,
+    // @ts-ignore
+    animateTrailLength: animate?.trailLength,
   };
   return config;
 };
