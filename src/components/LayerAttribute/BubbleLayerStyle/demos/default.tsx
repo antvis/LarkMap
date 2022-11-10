@@ -23,11 +23,6 @@ const DefaultBubbleLayerStyle = {
   minZoom: 0,
   maxZoom: 24,
   blend: 'normal' as const,
-  // animate: {
-  //   enable: true,
-  //   speed: 2,
-  //   rings: 4,
-  // },
 };
 
 const bubbleLayerOptions: Omit<BubbleLayerProps, 'source'> = {
