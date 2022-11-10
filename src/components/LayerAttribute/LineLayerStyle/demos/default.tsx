@@ -50,8 +50,6 @@ export default () => {
       });
   }, []);
 
-  console.log(layerOptions, 'layerOptions');
-
   return (
     <LarkMap mapType="GaodeV1" style={{ height: '400px', overflow: 'hidden' }}>
       <CustomControl position="topleft" style={{ width: '300px', background: '#fff', padding: '10px' }}>
