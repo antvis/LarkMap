@@ -13,7 +13,7 @@ nav:
 
 ## 介绍
 
-基于 [PointLayer](https://l7plot.antv.vision/zh/docs/api/composite-layers/point-layer) 封装，用于点数据展示。
+基于 [PointLayer](https://l7plot.antv.vision/zh/docs/api/base-layers/point-layer) 封装，用于点数据展示。
 
 ## 代码演示
 
@@ -74,7 +74,7 @@ nav:
 
 ## Event
 
-<embed src="../../../../../docs/common/layer/core-common/event.md"></embed>
+<embed src="../../../../../docs/common/layer/base-common/event.md"></embed>
 
 ## FAQ
 
