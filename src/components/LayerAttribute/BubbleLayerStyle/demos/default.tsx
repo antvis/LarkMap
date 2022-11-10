@@ -18,11 +18,11 @@ const DefaultBubbleLayerStyle = {
   label: {
     field: 'temperature',
     visible: true,
-    style: { fill: '#454d64', fontSize: 18, textAnchor: 'center' as const, textOffset: [0, 0] },
+    style: { fill: '#454d64', fontSize: 18, textAnchor: 'center' as const, textOffset: [0, 0] as [number, number] },
   },
   minZoom: 0,
   maxZoom: 24,
-  blend: 'normal',
+  blend: 'normal' as const,
 };
 
 const bubbleLayerOptions: Omit<BubbleLayerProps, 'source'> = {

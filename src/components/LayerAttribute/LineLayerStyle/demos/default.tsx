@@ -11,7 +11,7 @@ const DefaultLineLayerStyle = {
   color: {
     field: 'line_id',
     value: ['#5B8FF9', '#5CCEA1', '#5D7092'],
-    scale: { type: 'quantile' },
+    scale: { type: 'quantile' as const },
   },
   size: 1.5,
   style: {
@@ -19,7 +19,8 @@ const DefaultLineLayerStyle = {
   },
   minZoom: 0,
   maxZoom: 24,
-  blend: 'normal',
+  blend: 'normal' as const,
+  animate: false,
 };
 
 const lineLayerOptions: Omit<LineLayerProps, 'source'> = {

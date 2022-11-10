@@ -11,8 +11,11 @@ export const DefaultBubbleLayerStyle: BubbleLayerStyleAttributeValue = {
   strokeColor: 'blue',
   lineWidth: 1,
   lineOpacity: 1,
-  label: { style: { fill: 'red', fontSize: 18, textAnchor: 'center', textOffset: [0, 0] } },
+  label: { style: { fill: 'red', fontSize: 18, textAnchor: 'center', textOffset: [0, 0] as [number, number] } },
   minZoom: 0,
   maxZoom: 24,
-  blend: 'normal',
+  blend: 'normal' as const,
+  // animate: {
+  //   enable: true,
+  // },
 };

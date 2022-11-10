@@ -13,6 +13,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
       collapseItem_stroke: strokeCollapse(),
       collapseItem_fillradius: pointRadius(fieldList),
       collapseItem_labelstyle: lableCollapse(fieldList),
+      // collapseItem_animate: animateCollapse(),
       collapseItem_other: otherAttributesCollapse(),
     },
   };
