@@ -39,7 +39,7 @@ export default () => {
                 dependencies: ['animateEnable'],
                 fulfill: {
                   state: {
-                    visible: '{{ $deps[0] === true  }}',
+                    visible: '{{ $deps[0]}}',
                   },
                 },
               },
@@ -61,7 +61,7 @@ export default () => {
                 dependencies: ['animateEnable'],
                 fulfill: {
                   state: {
-                    visible: '{{ $deps[0] === true  }}',
+                    visible: '{{ $deps[0]}}',
                   },
                 },
               },
@@ -83,7 +83,7 @@ export default () => {
                 dependencies: ['animateEnable'],
                 fulfill: {
                   state: {
-                    visible: '{{ $deps[0] === true  }}',
+                    visible: '{{ $deps[0]}}',
                   },
                 },
               },
