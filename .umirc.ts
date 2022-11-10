@@ -9,14 +9,17 @@ export default defineConfig({
   mode: 'site',
   base: '/',
   publicPath: '/',
-  outputPath: 'docs-dist',
+  outputPath: 'dist',
   resolve: {
     // 排除公共 API 文档目录
     excludes: ['docs/common'],
   },
   metas: [
     { name: 'keywords', content: 'L7, AntV, AntV LarkMap' },
-    { name: 'description', content: '🌍 A React toolkit for geospatial visualization based on L7' },
+    {
+      name: 'description',
+      content: '🌍 A React toolkit for geospatial visualization based on L7',
+    },
   ],
   // Google Analytics
   // analytics: isProduction ? { ga: 'G-CBX7JL1Q57' } : false,
