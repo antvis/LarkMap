@@ -1,3 +1,4 @@
+import type { ColorAttr } from '@antv/l7-composite-layers';
 import type { LineLayerProps, LineLayerStyleAttributeValue } from '@antv/larkmap';
 import { CustomControl, LarkMap, LineLayer, LineLayerStyleAttribute } from '@antv/larkmap';
 import 'antd/dist/antd.css';
@@ -12,14 +13,14 @@ const DefaultLineLayerStyle = {
     field: 'line_id',
     value: ['#5B8FF9', '#5CCEA1', '#5D7092'],
     scale: { type: 'quantile' },
-  },
+  } as ColorAttr,
   size: 1.5,
   style: {
     opacity: 0.8,
   },
   minZoom: 0,
   maxZoom: 24,
-  blend: 'normal',
+  blend: 'normal' as const,
   animate: {
     enable: true,
     duration: 4,

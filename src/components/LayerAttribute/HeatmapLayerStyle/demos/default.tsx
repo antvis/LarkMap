@@ -34,7 +34,7 @@ const DefaultHeatmapLayerStyle = {
   },
   minZoom: 0,
   maxZoom: 24,
-  blend: 'normal',
+  blend: 'normal' as const,
 };
 
 const heatmapLayerOptions: Omit<HeatmapLayerProps, 'source'> = {

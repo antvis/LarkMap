@@ -65,14 +65,10 @@ export const lineLayerStyleConfigToFlat = (styleConfig: LineLayerStyleAttributeV
     // targetColor: style?.targetColor,
     zoom: [minZoom, maxZoom],
     blend,
-    // @ts-ignore
-    animateEnable: animate?.enable,
-    // @ts-ignore
-    animateDuration: animate?.duration,
-    // @ts-ignore
-    animateInterval: animate?.interval,
-    // @ts-ignore
-    animateTrailLength: animate?.trailLength,
+    animateEnable: typeof animate === 'object' && animate?.enable,
+    animateDuration: typeof animate === 'object' && animate?.duration,
+    animateInterval: typeof animate === 'object' && animate?.interval,
+    animateTrailLength: typeof animate === 'object' && animate?.trailLength,
   };
   return config;
 };
