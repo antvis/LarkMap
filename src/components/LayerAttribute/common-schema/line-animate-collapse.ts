@@ -56,6 +56,9 @@ export default () => {
               max: 60,
               step: 1,
             },
+            'x-decorator-props': {
+              tooltip: '动画时间单位秒',
+            },
             'x-reactions': [
               {
                 dependencies: ['animateEnable'],
