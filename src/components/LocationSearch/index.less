@@ -1,0 +1,15 @@
+@cls-prefix: larkmap-location-search;
+
+.@{cls-prefix} {
+  min-width: 200px;
+  &__option-name,
+  &__option-tip {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  &__option-tip {
+    color: #818181;
+    font-size: 12px;
+  }
+}

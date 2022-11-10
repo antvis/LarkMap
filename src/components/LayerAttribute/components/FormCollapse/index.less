@@ -1,0 +1,16 @@
+@root-entry-name: 'default';
+@import (reference) '~antd/es/style/themes/index.less';
+
+@collapse-prefix-cls: ~'@{ant-prefix}-custom-formily-form-collapse';
+
+.@{collapse-prefix-cls} {
+  .@{ant-prefix}-collapse-item {
+    .@{ant-prefix}-collapse-header {
+      padding: 12px 0 !important;
+    }
+
+    .@{ant-prefix}-collapse-content .@{ant-prefix}-collapse-content-box {
+      padding: 5px 0 0 25px !important;
+    }
+  }
+}
