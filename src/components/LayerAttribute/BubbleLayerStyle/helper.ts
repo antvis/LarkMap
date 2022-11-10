@@ -85,8 +85,8 @@ export const bubbleLayerStyleConfigToFlat = (styleConfig: BubbleLayerStyleAttrib
     zoom: [minZoom, maxZoom],
     blend,
     // animateEnable: typeof animate === 'object' ? animate?.enable : animate,
-    // animateSpeed: typeof animate === 'object' && animate?.speed,
-    // animateRings: typeof animate === 'object' && animate?.rings,
+    // animateSpeed: typeof animate === 'object' ? animate?.speed : undefined,
+    // animateRings: typeof animate === 'object' ? animate?.rings : undefined,
   };
 
   return config;
