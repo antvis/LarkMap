@@ -40,8 +40,6 @@ export default () => {
     parser: { type: 'json', x: 'lng', y: 'lat' },
   });
 
-  console.log(layerOptions, 'layerOptions');
-
   useEffect(() => {
     fetch('https://gw.alipayobjects.com/os/antfincdn/Lx96%24Pnwhw/city-weather.json')
       .then((response) => response.json())
