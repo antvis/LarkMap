@@ -1,11 +1,12 @@
-import type { BubbleLayerOptions } from '@antv/l7-composite-layers';
+import type { AnimateAttr, BubbleLayerOptions } from '@antv/l7-composite-layers';
 import type { CommonProps } from '../../../types/common';
 import type { FieldSelectOptionType } from '../types';
+// import type {AnimateAttr} from
 
 /**
  * 气泡图层样式属性值
  */
-export type BubbleLayerStyleAttributeValue = Omit<BubbleLayerOptions, 'source'>;
+export type BubbleLayerStyleAttributeValue = Omit<BubbleLayerOptions, 'source'> & { animate?: AnimateAttr };
 
 /**
  * 组件类型定义

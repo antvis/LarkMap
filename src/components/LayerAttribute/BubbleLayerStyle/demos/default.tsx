@@ -23,6 +23,11 @@ const DefaultBubbleLayerStyle = {
   minZoom: 0,
   maxZoom: 24,
   blend: 'normal' as const,
+  // animate: {
+  //   enable: true,
+  //   speed: 2,
+  //   rings: 4,
+  // },
 };
 
 const bubbleLayerOptions: Omit<BubbleLayerProps, 'source'> = {
@@ -39,6 +44,8 @@ export default () => {
     data: [],
     parser: { type: 'json', x: 'lng', y: 'lat' },
   });
+
+  console.log(layerOptions, 'layerOptions');
 
   useEffect(() => {
     fetch('https://gw.alipayobjects.com/os/antfincdn/Lx96%24Pnwhw/city-weather.json')

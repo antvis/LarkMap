@@ -36,6 +36,11 @@ export const bubbleLayerStyleFlatToConfig = (style: Record<string, any>) => {
     minZoom: style.zoom?.[0],
     maxZoom: style.zoom?.[1],
     blend: style.blend,
+    // animate: {
+    //   enable: style.animateEnable,
+    //   speed: style.animateSpeed,
+    //   rings: style.animateRings,
+    // },
   };
 
   return styleConfig;
@@ -79,6 +84,9 @@ export const bubbleLayerStyleConfigToFlat = (styleConfig: BubbleLayerStyleAttrib
     labelTextOffset: label?.style?.textOffset,
     zoom: [minZoom, maxZoom],
     blend,
+    // animateEnable: typeof animate === 'object' && animate?.enable,
+    // animateSpeed: typeof animate === 'object' && animate?.speed,
+    // animateRings: typeof animate === 'object' && animate?.rings,
   };
 
   return config;

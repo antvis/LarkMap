@@ -1,4 +1,3 @@
-import type { ColorAttr } from '@antv/l7-composite-layers';
 import type { ChoroplethLayerProps, ChoroplethLayerStyleAttributeValue } from '@antv/larkmap';
 import { ChoroplethLayer, ChoroplethLayerStyleAttribute, CustomControl, LarkMap } from '@antv/larkmap';
 import 'antd/dist/antd.css';
@@ -12,8 +11,8 @@ const DefaultChoroplethLayerStyle = {
   fillColor: {
     field: 'adcode',
     value: ['#0f9960', '#33a02c', '#377eb8'],
-    scale: { type: 'quantile' },
-  } as ColorAttr,
+    scale: { type: 'quantile' as const },
+  },
   opacity: 0.3,
   strokeColor: 'blue',
   lineWidth: 1,
