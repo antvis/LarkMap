@@ -1,0 +1,30 @@
+@cls-prefix: larkmap-legend-category;
+
+.@{cls-prefix} {
+  &__content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    &__labels {
+      letter-spacing: 2;
+      text-transform: uppercase;
+      font-family: PingFangSC;
+      line-height: 2;
+    }
+
+    &__shape {
+      margin-right: 15px;
+    }
+
+    &__square {
+      width: 32px;
+      height: 15px
+    }
+
+    &__circle {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@cls-prefix: larkmap-legend-ramp;
+
+.@{cls-prefix} {
+  &__labelbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+
+  &__continuousBar {
+    height: 10px;
+    border-radius: 6px
+  }
+
+
+  &__equidistantBar {
+    display: flex;
+
+    &__bar {
+      height: 10px;
+    }
+
+    &__bar:first-child {
+      border-radius: 6px 0 0 6px;
+    }
+
+    &__bar:last-child {
+      border-radius: 0 6px 6px 0;
+    }
+  }
+}
