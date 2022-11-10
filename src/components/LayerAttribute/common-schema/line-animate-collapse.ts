@@ -26,7 +26,7 @@ export default () => {
           animateInterval: {
             type: 'number',
             title: '轨迹间隔',
-            default: 0.2,
+            default: 0.8,
             'x-decorator': 'FormItem',
             'x-component': 'Slider',
             'x-component-props': {
@@ -73,7 +73,7 @@ export default () => {
           animateTrailLength: {
             type: 'number',
             title: '轨迹长度',
-            default: 0.1,
+            default: 1,
             'x-decorator': 'FormItem',
             'x-component': 'Slider',
             'x-component-props': {
