@@ -39,7 +39,7 @@ export default () => {
     label: {
       field: 'boro_name',
       visible: true,
-      style: { fill: 'blue', fontSize: 12, stroke: '#fff', strokeWidth: 2 },
+      style: { fill: 'black', fontSize: 10 },
     },
   };
   useEffect(() => {

@@ -15,12 +15,12 @@ message.config({
 
 const HousePrice = ({ setSelectLabel }: Props) => {
   const data = [
-    { value: 'rgb(239, 243, 255)', label: '0 到 80' },
-    { value: 'rgb(198, 219, 239)', label: '80 到 176 ' },
-    { value: 'rgb(158, 202, 225)', label: '176 到 250 ' },
-    { value: 'rgb(107, 174, 214)', label: '250 到 331 ' },
-    { value: 'rgb(49, 130, 189)', label: '331 到 531 ' },
-    { value: 'rgb(8, 81, 156)', label: '531 到 2238 ' },
+    { value: 'rgba(239, 243, 255, .8)', label: '0 到 80' },
+    { value: 'rgba(198, 219, 239, .8)', label: '80 到 176 ' },
+    { value: 'rgba(158, 202, 225, .8)', label: '176 到 250 ' },
+    { value: 'rgba(107, 174, 214, .8)', label: '250 到 331 ' },
+    { value: 'rgba(49, 130, 189, .8)', label: '331 到 531 ' },
+    { value: 'rgba(8, 81, 156, .8)', label: '531 到 2238 ' },
   ];
 
   return (

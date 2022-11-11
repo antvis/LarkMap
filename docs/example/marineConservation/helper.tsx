@@ -1,8 +1,8 @@
 const typeList = [
-  { label: '水产种质资源保护区', color: '#CD853F', value: 'Aquatic Germplasm Reserve' },
-  { label: '海洋自然保护区', color: '#483D8B', value: 'Marine Nature Reserves' },
-  { label: '海洋公园', color: '#B0171F', value: 'Marine Park' },
-  { label: '特别海洋保护区', color: '#2E8B57', value: 'Special Marine Protected Areas' },
+  { label: '水产种质资源保护区', color: '#9AC5FF', value: 'Aquatic Germplasm Reserve' },
+  { label: '海洋自然保护区', color: '#5B8FF9', value: 'Marine Nature Reserves' },
+  { label: '海洋公园', color: '#085EC0', value: 'Marine Park' },
+  { label: '特别海洋保护区', color: '#00318A', value: 'Special Marine Protected Areas' },
 ];
 
 const MapConfig = {

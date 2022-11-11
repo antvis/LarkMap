@@ -154,6 +154,7 @@ export default () => {
           options={subwayData.lines}
           style={{ width: 150 }}
           fieldNames={{ value: 'kn', label: 'kn' }}
+          defaultValue={'地铁1号线前段'}
           onChange={(e) => setLineName(e)}
         />
       </CustomControl>

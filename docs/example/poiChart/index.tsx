@@ -30,7 +30,7 @@ const myPointLayerOptions: Omit<PointLayerProps, 'source'> = {
   style: {
     opacity: 0.8,
     strokeWidth: 1,
-    stroke: '#CD853F',
+    stroke: '#fff',
   },
 };
 const myPointLayerTextOptions: Omit<PointLayerProps, 'source'> = {
@@ -39,12 +39,12 @@ const myPointLayerTextOptions: Omit<PointLayerProps, 'source'> = {
     field: 'point_count',
     value: 'text',
   },
-  size: 12,
+  size: 14,
   color: '#fff',
   style: {
     opacity: 1,
     strokeWidth: 0,
-    stroke: 'yellow',
+    stroke: '#fff',
   },
 };
 
