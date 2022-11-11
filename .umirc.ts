@@ -9,7 +9,7 @@ export default defineConfig({
   mode: 'site',
   base: '/',
   publicPath: '/',
-  outputPath: 'docs-dist',
+  outputPath: 'dist',
   resolve: {
     // 排除公共 API 文档目录
     excludes: ['docs/common'],
