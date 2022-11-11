@@ -1,4 +1,4 @@
-import { LarkMap, LarkMapProps, PointLayer, PointLayerProps, PolygonLayer, PolygonLayerProps } from '@antv/larkmap';
+import { LarkMap, LarkMapProps, PointLayer, PointLayerProps } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
 export default () => {
@@ -10,10 +10,7 @@ export default () => {
       radius: 5,
     },
   });
-  const [PolygonData, setPolygonData] = useState({
-    data: [],
-    parser: { type: 'geojson' },
-  });
+
   const config = {
     mapType: 'GaodeV1',
     mapOptions: {
@@ -29,27 +26,28 @@ export default () => {
     setPointData({ ...pointData, data: result });
   };
 
-  const fetchPolygonData = async () => {
-    const res = await fetch('https://gw.alipayobjects.com/os/bmw-prod/163c9fbb-546f-407e-beb1-cc48fdfc2613.json');
-    const result = await res.json();
-    setPolygonData({ ...PolygonData, data: result });
-  };
-
   const layerOptions = {
     autoFit: true,
     shape: 'circle',
     size: {
       field: 'point_count',
-      value: [15, 20, 25, , 30, 35],
+      value: [15, 20, 25, 30, 35],
     },
     blend: 'normal',
-    color: 'rgb(153,52,4)',
+    color: {
+      field: 'point_count',
+      value: ['#FFDF80', '#FFCB33', '#FFB200', '#FF8C00'],
+    },
   };
+
   const layerOptionpoint = {
     autoFit: false,
     shape: { field: 'point_count', value: 'text' },
     size: 15,
-    color: '#fff',
+    color: {
+      field: 'point_count',
+      value: ['#3F4BBA', '#3C73DA', '#3C73DA', '#3C73DA'],
+    },
     style: {
       opacity: 1,
       strokeWidth: 0,
@@ -57,27 +55,14 @@ export default () => {
     },
   };
 
-  const layerOption = {
-    autoFit: true,
-    shape: 'fill',
-    color: '#477eb8',
-    state: {
-      active: true,
-    },
-    style: {
-      opacity: 0.6,
-    },
-  };
   useEffect(() => {
     fetchPointData();
-    fetchPolygonData();
   }, []);
 
   return (
     <LarkMap {...(config as LarkMapProps)} style={{ height: '60vh' }}>
       <PointLayer {...(layerOptions as unknown as PointLayerProps)} source={pointData} />
       <PointLayer {...(layerOptionpoint as unknown as PointLayerProps)} source={pointData} />
-      <PolygonLayer {...(layerOption as unknown as PolygonLayerProps)} source={PolygonData} />
     </LarkMap>
   );
 };
