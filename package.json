@@ -28,7 +28,7 @@
     "doctor": "father doctor",
     "build": "dumi build",
     "docs:build-analyze": "ANALYZE=1 dumi build",
-    "docs:deploy": "gh-pages -d dist",
+    "docs:deploy": "gh-pages -d docs-dist",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "ci": "run-s lint doctor build size",
     "prepublishOnly": "npm run ci",
@@ -128,6 +128,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "yuyanConfig": {
-    "distDir": "/dist"
-  }
+    "distDir": "/docs-dist"
+  },
+  "yuyanId": "180020010001226663"
 }
