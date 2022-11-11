@@ -1,4 +1,4 @@
-import { LarkMap, PointLayer, Popup } from '@antv/larkmap';
+import { LarkMap, LegendCategories, PointLayer, Popup } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 import { LayerConfig, MapConfig } from './helper';
 import Legend from './Legend';
