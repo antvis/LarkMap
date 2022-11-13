@@ -27,6 +27,23 @@ export default defineConfig({
   navs: [
     null,
     {
+      title: '周边生态',
+      children: [
+        {
+          title: 'L7',
+          path: 'https://l7.antv.vision',
+        },
+        {
+          title: 'L7Plot',
+          path: 'https://l7plot.antv.vision/',
+        },
+        {
+          title: 'L7Draw',
+          path: 'https://l7draw.antv.vision/',
+        },
+      ],
+    },
+    {
       title: 'GitHub',
       path: 'https://github.com/antvis/LarkMap',
     },
