@@ -33,7 +33,7 @@ import React from 'react';
 const config = {
   mapType: 'GaodeV1',
   mapOptions: {
-    style: 'normal',
+    style: 'light',
     center: [120.210792, 30.246026],
     pitch: 0,
     zoom: 10,
@@ -55,7 +55,7 @@ import React from 'react';
 const config = {
   mapType: 'GaodeV1',
   mapOptions: {
-    style: 'normal',
+    style: 'light',
     center: [120.210792, 30.246026],
     pitch: 0,
     zoom: 10,

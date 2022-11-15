@@ -1,6 +1,6 @@
 ---
 title: FAQ
-order: 2
+order: 3
 nav:
   title: 指南
   path: /guide
