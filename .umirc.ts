@@ -57,6 +57,7 @@ export default defineConfig({
   themeConfig: {
     carrier: 'LarkMap',
   },
+  exportStatic: {},
   hash: true,
   // 同步 gh-page CNAME 文件
   copy: isProduction ? ['docs/CNAME'] : [],
