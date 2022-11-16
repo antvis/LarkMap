@@ -23,6 +23,6 @@ nav:
 
 ### 在地图中展示
 
-<code src="./demos/map-default.tsx" defaultShowCode></code>
+<code src="./demos/map-default.tsx" compact defaultShowCode></code>
 
 <API></API>
