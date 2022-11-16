@@ -128,7 +128,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "yuyanConfig": {
-    "distDir": "/docs-dist"
+    "distDir": "/dist"
   },
   "yuyanId": "180020010001226663"
 }
