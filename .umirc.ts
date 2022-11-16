@@ -1,6 +1,7 @@
 import { defineConfig } from 'dumi';
 
 const isProduction = process.env.NODE_ENV === 'production';
+const isYuYanPlatform = process.env.PLATFORM_TYPE === 'BASEMENT';
 
 export default defineConfig({
   title: 'LarkMap',
@@ -9,7 +10,7 @@ export default defineConfig({
   mode: 'site',
   base: '/',
   publicPath: '/',
-  outputPath: 'docs-dist',
+  outputPath: isYuYanPlatform ? 'dist' : 'docs-dist',
   resolve: {
     // 排除公共 API 文档目录
     excludes: ['docs/common'],
