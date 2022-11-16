@@ -19,7 +19,7 @@ nav:
 
 ### 默认演示
 
-<code src="./demos/default.tsx" compact defaultShowCode></code>
+<code src="./demos/default.tsx" defaultShowCode></code>
 
 ### 在地图中展示
 
