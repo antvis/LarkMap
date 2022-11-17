@@ -48,9 +48,7 @@
     "classnames": "^2.3.1",
     "eventemitter3": "^4.0.7",
     "color": "^4.2.3",
-    "h3-js": "^4.0.0",
     "lodash-es": "^4.17.21",
-    "popmotion": "^9.4.2",
     "query-string": "^7.1.1"
   },
   "devDependencies": {
