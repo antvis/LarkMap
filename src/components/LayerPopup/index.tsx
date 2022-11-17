@@ -4,7 +4,11 @@ import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
 import React, { useMemo, useState } from 'react';
 import { getStyleText } from '../../utils';
-import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../Control/hooks';
+import {
+  useL7ComponentEvent,
+  useL7ComponentPortal,
+  useL7ComponentUpdate,
+} from '../Control/hooks';
 import { useScene } from '../LarkMap/hooks';
 import type { LayerPopupProps } from './types';
 
@@ -20,7 +24,6 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   stopPropagation,
   autoPan,
   autoClose,
-  followCursor,
   className,
   lngLat,
   title,
@@ -49,7 +52,7 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       stopPropagation,
       autoPan,
       autoClose,
-      followCursor,
+      followCursor: trigger === 'hover',
       className,
       lngLat,
       config: items,
@@ -71,7 +74,6 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       stopPropagation,
       autoPan,
       autoClose,
-      followCursor,
       className,
       titleDOM,
       trigger,
@@ -82,7 +84,9 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   );
 
   useMount(() => {
-    const newPopup = new L7LayerPopup(omitBy(layerPopupOptions, (value) => value === undefined));
+    const newPopup = new L7LayerPopup(
+      omitBy(layerPopupOptions, (value) => value === undefined),
+    );
     setPopup(newPopup);
     setTimeout(() => {
       scene.addPopup(newPopup);
