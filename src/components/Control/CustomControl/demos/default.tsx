@@ -1,4 +1,4 @@
-import { LarkMap, CustomControl } from '@antv/larkmap';
+import { CustomControl, LarkMap } from '@antv/larkmap';
 import React from 'react';
 
 export default () => {

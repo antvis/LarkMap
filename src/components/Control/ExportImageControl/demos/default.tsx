@@ -1,7 +1,7 @@
-import { LarkMap, ExportImageControl, PolygonLayer } from '@antv/larkmap';
 import type { PolygonLayerProps } from '@antv/larkmap';
-import React, { useEffect, useState } from 'react';
+import { ExportImageControl, LarkMap, PolygonLayer } from '@antv/larkmap';
 import { Image, Modal } from 'antd';
+import React, { useEffect, useState } from 'react';
 
 export default () => {
   const [imageData, setInmageData] = useState('');

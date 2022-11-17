@@ -4,7 +4,7 @@
 
 <div align="center">
 
-🌍 基于 <a href="https://github.com/antvis/L7">L7</a> 封装的位置可视分析 React 组件库.
+🌍 基于 <a href="https://github.com/antvis/L7">L7</a> 封装的空间数据可视分析 React 组件库.
 
 <!-- [![NPM downloads](https://img.shields.io/npm/dm/@antv/larkmap.svg)](https://npmjs.com/@antv/larkmap) -->
 <!-- ![Latest commit](https://badgen.net/github/last-commit/antvis/LarkMap) -->
@@ -64,7 +64,7 @@ $ npm run start
 $ npm run ci
 
 # Compile package
-$ npm run build
+$ npm run package:build
 ```
 
 ## 🤝 如何贡献

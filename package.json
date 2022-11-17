@@ -1,6 +1,6 @@
 {
   "name": "@antv/larkmap",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "A React toolkit for geospatial visualization based on L7",
   "license": "MIT",
   "main": "lib/index.js",
@@ -24,9 +24,9 @@
     "test-cover": "jest --coverage",
     "clean": "rimraf es lib dist",
     "size": "limit-size",
-    "build": "father build",
+    "package:build": "father build",
     "doctor": "father doctor",
-    "docs:build": "dumi build",
+    "build": "dumi build",
     "docs:build-analyze": "ANALYZE=1 dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "deploy": "npm run docs:build && npm run docs:deploy",
@@ -46,6 +46,7 @@
     "@formily/shared": "^2.1.11",
     "ahooks": "^3.3.13",
     "classnames": "^2.3.1",
+    "eventemitter3": "^4.0.7",
     "color": "^4.2.3",
     "h3-js": "^4.0.0",
     "lodash-es": "^4.17.21",
@@ -130,5 +131,9 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  }
+  },
+  "yuyanConfig": {
+    "distDir": "/dist"
+  },
+  "yuyanId": "180020010001226663"
 }

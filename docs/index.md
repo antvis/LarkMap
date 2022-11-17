@@ -1,9 +1,9 @@
 ---
-title: LarkMap | 位置可视分析组件库
+title: LarkMap | 空间数据可视分析组件库
 order: 0
 banner:
-  title: LarkMap 位置可视分析组件库
-  desc: 基于 L7 封装的 React 组件库，专注在位置可视分析领域，简单高效，开箱即用。
+  title: LarkMap 空间数据可视分析组件库
+  desc: 新一代 React 地图可视分析组件库，提供丰富/高效/专业/易用的可视化组件，一站式满足地理可视化需求。
   image: https://gw.alipayobjects.com/mdn/antv_site/afts/img/A*cCI7RaJs46AAAAAAAAAAAABkARQnAQ
   actions:
     - text: 快速开始 →

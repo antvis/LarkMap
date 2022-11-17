@@ -1,5 +1,5 @@
 ---
-title: 介绍
+title: 快速开始
 order: 1
 nav:
   title: 指南
@@ -9,7 +9,7 @@ nav:
 
 ## 介绍
 
-LarkMap 是基于 L7 封装的 React 组件库，专注在位置可视分析领域，简单高效，开箱即用。
+新一代 React 地图可视分析组件库，提供丰富/高效/专业/易用的可视化组件，一站式满足地理可视化需求。
 
 ## 特性
 
@@ -20,7 +20,7 @@ LarkMap 是基于 L7 封装的 React 组件库，专注在位置可视分析领�
 ## 安装
 
 ```bash
-$ npm install --save @antv/l7 @antv/larkmap
+$ npm install -S @antv/l7 @antv/larkmap
 # or
 $ yarn add @antv/l7 @antv/larkmap
 ```
@@ -32,14 +32,13 @@ import { LarkMap } from '@antv/larkmap';
 import React from 'react';
 
 const config = {
-  mapType: 'Mapbox',
+  mapType: 'GaodeV1',
   mapOptions: {
     style: 'light',
     center: [120.210792, 30.246026],
     pitch: 0,
     zoom: 10,
     rotation: 0,
-    token: 'xxxx - token',
   },
 };
 
@@ -50,7 +49,7 @@ export default () => {
 
 ## 体验 💻
 
-```tsx
+```tsx | compact
 import { LarkMap } from '@antv/larkmap';
 import React from 'react';
 
@@ -60,7 +59,7 @@ const config = {
     style: 'light',
     center: [120.210792, 30.246026],
     pitch: 0,
-    zoom: 8,
+    zoom: 10,
     rotation: 0,
   },
 };

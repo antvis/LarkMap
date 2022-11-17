@@ -20,10 +20,10 @@ nav:
 
 ### 默认演示
 
-<code src="./demos/default.tsx" defaultShowCode></code>
+<code src="./demos/default.tsx" compact defaultShowCode></code>
 
 ### 在地图中展示
 
-<code src="./demos/map-default.tsx" defaultShowCode></code>
+<code src="./demos/map-default.tsx" compact defaultShowCode></code>
 
 <API></API>

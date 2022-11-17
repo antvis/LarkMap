@@ -21,7 +21,7 @@ hide: true
 
 ### 默认示例
 
-<code src="./demos/default.tsx" defaultShowCode></code>
+<code src="./demos/default.tsx" compact defaultShowCode></code>
 
 <API></API>
 

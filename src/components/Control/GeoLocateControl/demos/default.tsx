@@ -1,4 +1,4 @@
-import { LarkMap, GeoLocateControl } from '@antv/larkmap';
+import { GeoLocateControl, LarkMap } from '@antv/larkmap';
 import gcoord from 'gcoord';
 import React from 'react';
 

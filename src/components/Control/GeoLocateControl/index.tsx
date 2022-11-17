@@ -5,7 +5,7 @@ import { omitBy } from 'lodash-es';
 import { GeoLocate as L7GeoLocate } from '@antv/l7';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
-import { useControlElement, useControlEvent, useControlUpdate } from '../hooks';
+import { useL7ComponentPortal, useL7ComponentEvent, useL7ComponentUpdate } from '../hooks';
 import type { GeoLocateControlProps } from './type';
 
 export const GeoLocateControl: React.FC<GeoLocateControlProps> = ({
@@ -25,7 +25,7 @@ export const GeoLocateControl: React.FC<GeoLocateControlProps> = ({
   const scene = useScene();
   const [control, setControl] = useState<L7GeoLocate | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
-  const { portal: btnIconPortal, dom: btnIconDOM } = useControlElement(btnIcon);
+  const { portal: btnIconPortal, dom: btnIconDOM } = useL7ComponentPortal(btnIcon);
 
   const controlOptions: Partial<IGeoLocateOption> = useMemo(() => {
     return {
@@ -50,12 +50,12 @@ export const GeoLocateControl: React.FC<GeoLocateControlProps> = ({
 
   useUnmount(() => {
     scene.removeControl(control);
-    setControl(control);
+    setControl(undefined);
   });
 
-  useControlUpdate(control, controlOptions);
+  useL7ComponentUpdate(control, controlOptions);
 
-  useControlEvent(control, {
+  useL7ComponentEvent(control, {
     add: onAdd,
     remove: onRemove,
     show: onShow,
