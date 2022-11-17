@@ -73,6 +73,7 @@ export default defineConfig({
   styles: [
     'https://gw.alipayobjects.com/os/lib/antd/4.23.6/dist/antd.css',
     'https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.2/mapbox-gl.css',
+    '.__dumi-default-navbar .products___FFhLJ { height: calc(100vh - 64px); overflow: auto; pointer-events: unset; }',
   ],
   scripts: [
     'https://gw.alipayobjects.com/os/lib/react/17.0.2/umd/react.development.js',
