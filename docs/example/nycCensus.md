@@ -1,12 +1,11 @@
 ---
-toc: content
+toc: false
 order: 9
 nav:
   title: 示例
   path: /example
   order: 3
 ---
-
 
 ## 09.纽约市人口普查区
 

@@ -1,5 +1,5 @@
 ---
-toc: content
+toc: false
 order: 10
 nav:
   title: 示例
