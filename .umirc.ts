@@ -30,7 +30,7 @@ export default defineConfig({
   ],
   extraBabelIncludes: ['@antv/dumi-theme-antv'],
   theme: {
-    '@s-site-menu-width': '280px',
+    '@s-site-menu-width': '320px',
     '@primary-color': '#873bf4',
   },
   themeConfig: {
