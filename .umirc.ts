@@ -31,15 +31,15 @@ export default defineConfig({
       title: '周边生态',
       children: [
         {
-          title: 'L7 地理可视化引擎',
+          title: 'L7：地理可视化引擎',
           path: 'https://l7.antv.vision',
         },
         {
-          title: 'L7Plot 地理图表库',
+          title: 'L7Plot：地理图表库',
           path: 'https://l7plot.antv.vision/',
         },
         {
-          title: 'L7Draw',
+          title: 'L7Draw：基于L7的地理绘制库',
           path: 'https://l7draw.antv.vision/',
         },
       ],
