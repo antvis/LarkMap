@@ -31,11 +31,11 @@ export default defineConfig({
       title: '周边生态',
       children: [
         {
-          title: 'L7',
+          title: 'L7 地理可视化引擎',
           path: 'https://l7.antv.vision',
         },
         {
-          title: 'L7Plot',
+          title: 'L7Plot 地理图表库',
           path: 'https://l7plot.antv.vision/',
         },
         {
@@ -73,7 +73,6 @@ export default defineConfig({
   styles: [
     'https://gw.alipayobjects.com/os/lib/antd/4.23.6/dist/antd.css',
     'https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.2/mapbox-gl.css',
-    '.__dumi-default-navbar .products___FFhLJ { height: calc(100vh - 64px); overflow: auto; pointer-events: unset; }',
   ],
   scripts: [
     'https://gw.alipayobjects.com/os/lib/react/17.0.2/umd/react.development.js',
