@@ -1,8 +1,8 @@
 import type { Scene } from '@antv/l7';
 import type { LocationSearchOption } from '@antv/larkmap';
-import { LocationSearch, LarkMap, CustomControl } from '@antv/larkmap';
-import React, { useCallback, useEffect, useState } from 'react';
+import { CustomControl, LarkMap, LocationSearch } from '@antv/larkmap';
 import { message } from 'antd';
+import React, { useCallback, useEffect, useState } from 'react';
 
 export default () => {
   const [location, setLocation] = useState('');
@@ -35,7 +35,7 @@ export default () => {
   return (
     <>
       <LarkMap
-        mapType="GaodeV1"
+        mapType="Gaode"
         style={{ height: '300px' }}
         onSceneLoaded={(newScene) => {
           setScene(newScene);

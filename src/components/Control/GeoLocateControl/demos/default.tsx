@@ -8,7 +8,7 @@ export default () => {
   };
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '400px' }}>
+    <LarkMap mapType="Gaode" style={{ height: '400px' }}>
       <GeoLocateControl transform={transform} />
     </LarkMap>
   );

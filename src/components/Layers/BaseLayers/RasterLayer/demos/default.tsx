@@ -1,7 +1,7 @@
 import type { RasterLayerProps } from '@antv/larkmap';
 import { LarkMap, RasterLayer } from '@antv/larkmap';
-import React, { useEffect, useState } from 'react';
 import * as GeoTIFF from 'geotiff';
+import React, { useEffect, useState } from 'react';
 
 const layerOptions: Omit<RasterLayerProps, 'source'> = {
   autoFit: true,
@@ -64,7 +64,7 @@ export default () => {
   }, []);
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
+    <LarkMap mapType="Gaode" style={{ height: '300px' }}>
       <RasterLayer {...options} source={source} />
     </LarkMap>
   );

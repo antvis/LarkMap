@@ -1,5 +1,5 @@
 import type { Scene } from '@antv/l7';
-import { LarkMap, ContextMenu } from '@antv/larkmap';
+import { ContextMenu, LarkMap } from '@antv/larkmap';
 import React, { useRef } from 'react';
 
 export default () => {
@@ -23,7 +23,7 @@ export default () => {
 
   return (
     <LarkMap
-      mapType="GaodeV1"
+      mapType="Gaode"
       style={{ height: '400px' }}
       onSceneLoaded={(scene: Scene) => {
         mapScene.current = scene;
