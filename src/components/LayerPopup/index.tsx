@@ -5,7 +5,7 @@ import { omitBy } from 'lodash-es';
 import React, { useMemo, useState } from 'react';
 import { getStyleText } from '../../utils';
 import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../Control/hooks';
-import { useScene } from '../LarkMap/hooks';
+import { useLayerManager, useScene } from '../LarkMap/hooks';
 import type { LayerPopupProps } from './types';
 
 export const LayerPopup: React.FC<LayerPopupProps> = ({
@@ -34,6 +34,25 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   const [popup, setPopup] = useState<L7LayerPopup | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
   const { portal: titlePartial, dom: titleDOM } = useL7ComponentPortal(title);
+  const layerManager = useLayerManager();
+
+  const layerPopupItems = useMemo(() => {
+    const newItems: LayerPopupProps['items'] = [];
+    items.forEach((item) => {
+      const newItem = { ...item };
+      if (typeof item.layer === 'string') {
+        const targetLayer = layerManager.getLayer(item.layer);
+        if (targetLayer) {
+          // @ts-ignore
+          newItem.layer = targetLayer;
+        } else {
+          console.warn('LayerPopup 中传入了未注册的 layerId');
+        }
+      }
+      newItems.push(newItem);
+    });
+    return newItems;
+  }, [items, layerManager]);
 
   const layerPopupOptions: Partial<IPopupOption> = useMemo(
     () => ({
@@ -51,10 +70,9 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       followCursor: trigger === 'hover',
       className,
       lngLat,
-      config: items,
+      items: layerPopupItems,
       trigger,
       title: titleDOM,
-      items,
     }), // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       styleText,
@@ -75,7 +93,7 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       trigger,
       // eslint-disable-next-line react-hooks/exhaustive-deps
       JSON.stringify(lngLat),
-      items,
+      layerPopupItems,
     ],
   );
 
