@@ -70,7 +70,7 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       followCursor: trigger === 'hover',
       className,
       lngLat,
-      config: layerPopupItems,
+      items: layerPopupItems,
       trigger,
       title: titleDOM,
     }), // eslint-disable-next-line react-hooks/exhaustive-deps
