@@ -35,9 +35,7 @@ const config = {
   mapOptions: {
     style: 'light',
     center: [120.210792, 30.246026],
-    pitch: 0,
     zoom: 10,
-    rotation: 0,
   },
 };
 
@@ -46,7 +44,7 @@ export default () => {
 };
 ```
 
-## 体验 💻
+## 体验
 
 ```tsx | compact
 import { LarkMap } from '@antv/larkmap';
@@ -57,9 +55,7 @@ const config = {
   mapOptions: {
     style: 'light',
     center: [120.210792, 30.246026],
-    pitch: 0,
     zoom: 10,
-    rotation: 0,
   },
 };
 
