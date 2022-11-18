@@ -31,9 +31,9 @@ $ npm install @antv/l7 @antv/larkmap
 
 ## 🔨 使用
 
-```tsx
-import { LarkMap } from '@antv/larkmap';
+```jsx
 import React from 'react';
+import { LarkMap } from '@antv/larkmap';
 
 const config = {
   mapType: 'Mapbox',

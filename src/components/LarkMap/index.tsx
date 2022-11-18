@@ -2,11 +2,23 @@ import { Scene } from '@antv/l7';
 import { useDeepCompareEffect } from 'ahooks';
 import classNames from 'classnames';
 import type { CSSProperties } from 'react';
-import React, { memo, forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import React, {
+  forwardRef,
+  memo,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { LayerManager } from '../../utils';
 import { createMap } from './helper';
-import type { LarkMapContextValue, LarkMapProps, LarkMapRefAttributes } from './types';
 import { useSceneEvent } from './hooks/use-scene-event';
+import type {
+  LarkMapContextValue,
+  LarkMapProps,
+  LarkMapRefAttributes,
+} from './types';
 
 export const LarkMapContext = React.createContext<LarkMapContextValue>(null);
 
@@ -17,7 +29,7 @@ export const LarkMap = memo(
       style,
       className,
       map,
-      mapType = 'Mapbox',
+      mapType = 'GaodeV1',
       mapOptions = {},
       onLayerManagerCreated,
       onSceneLoaded,
@@ -27,7 +39,10 @@ export const LarkMap = memo(
 
     const containerRef = useRef();
     const [sceneInstance, setSceneInstance] = useState<Scene>(null);
-    const { current: contextValue } = useRef<LarkMapContextValue>({ scene: null, layerManager: null });
+    const { current: contextValue } = useRef<LarkMapContextValue>({
+      scene: null,
+      layerManager: null,
+    });
 
     useEffect(() => {
       let scene: Scene;
@@ -77,9 +92,14 @@ export const LarkMap = memo(
 
     useSceneEvent(sceneInstance, props);
 
-    useImperativeHandle(ref, () => ({ getScene: () => sceneInstance, getMap: () => sceneInstance.map }), [
-      sceneInstance,
-    ]);
+    useImperativeHandle(
+      ref,
+      () => ({
+        getScene: () => sceneInstance,
+        getMap: () => sceneInstance.map,
+      }),
+      [sceneInstance],
+    );
 
     // 更新地图样式
     useEffect(() => {
@@ -123,16 +143,23 @@ export const LarkMap = memo(
     const styles: CSSProperties = useMemo(
       () => ({
         position: 'relative',
-        width: '100%',
-        height: '100%',
         ...style,
       }),
       [style],
     );
 
     return (
-      <div id={id} ref={containerRef} style={styles} className={classNames('larkmap', className)}>
-        {sceneInstance && <LarkMapContext.Provider value={contextValue}>{children}</LarkMapContext.Provider>}
+      <div
+        id={id}
+        ref={containerRef}
+        style={styles}
+        className={classNames('larkmap', className)}
+      >
+        {sceneInstance && (
+          <LarkMapContext.Provider value={contextValue}>
+            {children}
+          </LarkMapContext.Provider>
+        )}
       </div>
     );
   }),

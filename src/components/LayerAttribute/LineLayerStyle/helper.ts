@@ -19,16 +19,22 @@ export const lineLayerStyleFlatToConfig = (style: Record<string, any>) => {
           value: style.fillColorRibbon,
           scale: { type: style.fillColorScale },
         }
-      : style.fillColor,
+      : style.sourceColor,
     style: {
       opacity: style.fillColorOpacity,
       lineType: 'solid' as const,
-      // sourceColor: style.sourceColor,
-      // targetColor: style.targetColor,
+      sourceColor: style.sourceColor,
+      targetColor: style.targetColor,
     },
     minZoom: style.zoom?.[0],
     maxZoom: style.zoom?.[1],
     blend: style.blend,
+    animate: {
+      enable: style.animateEnable,
+      duration: style.animateDuration,
+      interval: style.animateInterval,
+      trailLength: style.animateTrailLength,
+    },
   };
 
   return styleConfig;
@@ -38,8 +44,18 @@ export const lineLayerStyleFlatToConfig = (style: Record<string, any>) => {
  * 图层样式数据转平铺数据
  * 将图层样式的数据结构转为表单的平铺数据
  * */
-export const lineLayerStyleConfigToFlat = (styleConfig: LineLayerStyleAttributeValue) => {
-  const { size, color, style, minZoom = 0, maxZoom = 24, blend } = styleConfig;
+export const lineLayerStyleConfigToFlat = (
+  styleConfig: LineLayerStyleAttributeValue,
+) => {
+  const {
+    size,
+    color,
+    style,
+    minZoom = 0,
+    maxZoom = 24,
+    blend,
+    animate,
+  } = styleConfig;
   const config = {
     size: typeof size === 'object' ? undefined : size,
     // @ts-ignore
@@ -47,7 +63,6 @@ export const lineLayerStyleConfigToFlat = (styleConfig: LineLayerStyleAttributeV
     // @ts-ignore
     sizeRange: typeof size === 'object' ? size?.value : undefined,
 
-    fillColor: typeof color !== 'object' ? color : undefined,
     fillColorField: typeof color === 'object' ? color?.field : undefined,
     fillColorRibbon: typeof color === 'object' ? color?.value : undefined,
     fillColorScale: typeof color === 'object' ? color?.scale?.type : undefined,
@@ -55,10 +70,19 @@ export const lineLayerStyleConfigToFlat = (styleConfig: LineLayerStyleAttributeV
     fillColorOpacity: style?.opacity,
 
     lineType: style?.lineType,
-    // sourceColor: style?.sourceColor,
-    // targetColor: style?.targetColor,
+    sourceColor: style?.sourceColor,
+    targetColor: style?.targetColor,
     zoom: [minZoom, maxZoom],
     blend,
+
+    animateEnable: typeof animate === 'object' ? animate?.enable : animate,
+    animateDuration:
+      typeof animate === 'object' ? animate?.duration : undefined,
+    animateInterval:
+      typeof animate === 'object' ? animate?.interval : undefined,
+    animateTrailLength:
+      typeof animate === 'object' ? animate?.trailLength : undefined,
   };
+
   return config;
 };

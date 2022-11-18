@@ -36,6 +36,11 @@ export const bubbleLayerStyleFlatToConfig = (style: Record<string, any>) => {
     minZoom: style.zoom?.[0],
     maxZoom: style.zoom?.[1],
     blend: style.blend,
+    // animate: {
+    //   enable: style.animateEnable,
+    //   speed: style.animateSpeed,
+    //   rings: style.animateRings,
+    // },
   };
 
   return styleConfig;
@@ -45,7 +50,9 @@ export const bubbleLayerStyleFlatToConfig = (style: Record<string, any>) => {
  * 图层样式数据转平铺数据
  * 将图层样式的数据结构转为表单的平铺数据
  * */
-export const bubbleLayerStyleConfigToFlat = (styleConfig: BubbleLayerStyleAttributeValue) => {
+export const bubbleLayerStyleConfigToFlat = (
+  styleConfig: BubbleLayerStyleAttributeValue,
+) => {
   const {
     fillColor,
     opacity,
@@ -59,9 +66,12 @@ export const bubbleLayerStyleConfigToFlat = (styleConfig: BubbleLayerStyleAttrib
     blend,
   } = styleConfig;
   const config = {
-    fillColorField: typeof fillColor === 'object' ? fillColor?.field : undefined,
-    fillColorRibbon: typeof fillColor === 'object' ? fillColor?.value : undefined,
-    fillColorScale: typeof fillColor === 'object' ? fillColor?.scale?.type : undefined,
+    fillColorField:
+      typeof fillColor === 'object' ? fillColor?.field : undefined,
+    fillColorRibbon:
+      typeof fillColor === 'object' ? fillColor?.value : undefined,
+    fillColorScale:
+      typeof fillColor === 'object' ? fillColor?.scale?.type : undefined,
     fillColor: typeof fillColor !== 'object' ? fillColor : undefined,
     fillColorOpacity: opacity,
     strokeColor: strokeColor,
@@ -79,6 +89,9 @@ export const bubbleLayerStyleConfigToFlat = (styleConfig: BubbleLayerStyleAttrib
     labelTextOffset: label?.style?.textOffset,
     zoom: [minZoom, maxZoom],
     blend,
+    // animateEnable: typeof animate === 'object' ? animate?.enable : animate,
+    // animateSpeed: typeof animate === 'object' ? animate?.speed : undefined,
+    // animateRings: typeof animate === 'object' ? animate?.rings : undefined,
   };
 
   return config;

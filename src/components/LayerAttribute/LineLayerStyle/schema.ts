@@ -1,7 +1,11 @@
+import lineAnimateCollapse from '../common-schema/line-animate-collapse';
 import otherAttributesCollapse from '../common-schema/other-attributes-collapse';
 import type { FieldSelectOptionType } from '../types';
 
-export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] = []) => {
+export default (
+  fieldList: FieldSelectOptionType[] = [],
+  ribbonList: string[][] = [],
+) => {
   return {
     type: 'object',
     properties: {
@@ -68,11 +72,11 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
                 ],
               },
 
-              // 颜色选择器
-              fillColor: {
-                title: '颜色',
+              // 起点颜色选择器
+              sourceColor: {
+                title: '起点颜色',
                 type: 'string',
-                default: '#5B8FF9',
+                default: '#F7664E',
                 'x-decorator': 'FormItem',
                 'x-component': 'ColorPicker',
                 'x-component-props': {
@@ -91,47 +95,24 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
                 ],
               },
 
-              // 起点颜色选择器
-              // sourceColor: {
-              //   title: '起点颜色',
-              //   type: 'string',
-              //   default: '#F7664E',
-              //   'x-decorator': 'FormItem',
-              //   'x-component': 'ColorPicker',
-              //   'x-component-props': {
-              //     placeholder: '颜色',
-              //   },
-              //   'x-decorator-props': {},
-              //   'x-reactions': [
-              //     {
-              //       dependencies: ['fillColorField'],
-              //       fulfill: {
-              //         state: {
-              //           visible: '{{ $deps[0] === undefined }}',
-              //         },
-              //       },
-              //     },
-              //   ],
-              // },
-
               // 终点颜色选择器
-              // targetColor: {
-              //   type: 'string',
-              //   title: '终点颜色',
-              //   default: '#5B8FF9',
-              //   'x-decorator': 'FormItem',
-              //   'x-component': 'ColorPicker',
-              //   'x-reactions': [
-              //     {
-              //       dependencies: ['fillColorField'],
-              //       fulfill: {
-              //         state: {
-              //           visible: '{{ $deps[0] === undefined }}',
-              //         },
-              //       },
-              //     },
-              //   ],
-              // },
+              targetColor: {
+                type: 'string',
+                title: '终点颜色',
+                default: '#5B8FF9',
+                'x-decorator': 'FormItem',
+                'x-component': 'ColorPicker',
+                'x-reactions': [
+                  {
+                    dependencies: ['fillColorField'],
+                    fulfill: {
+                      state: {
+                        visible: '{{ $deps[0] === undefined }}',
+                      },
+                    },
+                  },
+                ],
+              },
 
               // 色带
               fillColorRibbon: {
@@ -310,6 +291,8 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
           },
         },
       },
+
+      collapseItem_animate: lineAnimateCollapse(),
 
       collapseItem_other: otherAttributesCollapse(),
     },

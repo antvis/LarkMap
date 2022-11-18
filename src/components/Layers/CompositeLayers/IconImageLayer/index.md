@@ -227,7 +227,7 @@ IconLayerActiveOptions 配置如下：
 
 ## Event
 
-<embed src="../../../../../docs/common/layer/core-common/event.md"></embed>
+<embed src="../../../../../docs/common/layer/base-common/event.md"></embed>
 
 ## FAQ
 

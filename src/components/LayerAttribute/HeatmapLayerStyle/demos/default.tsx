@@ -1,5 +1,13 @@
-import type { HeatmapLayerProps, HeatmapLayerStyleAttributeValue } from '@antv/larkmap';
-import { CustomControl, HeatmapLayer, HeatmapLayerStyleAttribute, LarkMap } from '@antv/larkmap';
+import type {
+  HeatmapLayerProps,
+  HeatmapLayerStyleAttributeValue,
+} from '@antv/larkmap';
+import {
+  CustomControl,
+  HeatmapLayer,
+  HeatmapLayerStyleAttribute,
+  LarkMap,
+} from '@antv/larkmap';
 import 'antd/dist/antd.css';
 import React, { useEffect, useState } from 'react';
 
@@ -34,7 +42,7 @@ const DefaultHeatmapLayerStyle = {
   },
   minZoom: 0,
   maxZoom: 24,
-  blend: 'normal',
+  blend: 'normal' as const,
 };
 
 const heatmapLayerOptions: Omit<HeatmapLayerProps, 'source'> = {
@@ -51,7 +59,9 @@ export default () => {
   });
 
   useEffect(() => {
-    fetch('https://gw.alipayobjects.com/os/antfincdn/o1GNZoJ2rK/points-center.json')
+    fetch(
+      'https://gw.alipayobjects.com/os/antfincdn/o1GNZoJ2rK/points-center.json',
+    )
       .then((response) => response.json())
       .then((data: any) => {
         setSource((prevState) => ({ ...prevState, data }));
