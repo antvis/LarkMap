@@ -10,15 +10,15 @@ nav:
 hide: true
 ---
 
-# 样例组件 - Template
+## 样例组件 - Template
 
-## 介绍
+### 介绍
 
-## 使用场景
+### 使用场景
 
-## 代码演示
+### 代码演示
 
-### 默认示例
+#### 默认示例
 
 <code src="./demos/default.tsx" compact defaultShowCode></code>
 

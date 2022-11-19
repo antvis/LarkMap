@@ -9,17 +9,17 @@ nav:
   path: /components
 ---
 
-# 导出图片 - ExportImage
+## 导出图片 - ExportImage
 
-## 介绍
+### 介绍
 
 导出图片组件，用于对当前地图部分进行截图并生成图片的 `Base64` 字符串。
 
-## 代码演示
+### 代码演示
 
 <code src="./demos/default.tsx" defaultShowCode compact></code>
 
-## API
+### API
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -37,7 +37,7 @@ nav:
 | onShow | 组件显示时的回调 | `(this) => void` | - |
 | onHide | 组件隐藏时的回调 | `(this) => void` | - |
 
-### Position
+#### Position
 
 ```ts
 export type Position =

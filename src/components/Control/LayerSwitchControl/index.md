@@ -9,17 +9,17 @@ nav:
   path: /components
 ---
 
-# 图层显隐 - LayerSwitchControl
+## 图层显隐 - LayerSwitchControl
 
-## 介绍
+### 介绍
 
 图层显隐组件，用于控制目标图层组的**显示**和**隐藏**操作。
 
-## 代码演示
+### 代码演示
 
 <code src="./demos/default.tsx" defaultShowCode compact></code>
 
-## API
+### API
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ nav:
 | onPopperHide | 气泡隐藏时的回调 | `(this) => void` | - |
 | onSelectChange | 图层显隐发生改变时的回调 | `(value: string[]) => void` | - |
 
-### PopperPlacement
+#### PopperPlacement
 
 ```ts
 export type PopperPlacement =
@@ -60,7 +60,7 @@ export type PopperPlacement =
   | 'right-end';
 ```
 
-### Position
+#### Position
 
 ```ts
 export type Position =

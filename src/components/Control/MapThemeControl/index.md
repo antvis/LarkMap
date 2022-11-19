@@ -9,17 +9,17 @@ nav:
   path: /components
 ---
 
-# 地图主题 - MapThemeControl
+## 地图主题 - MapThemeControl
 
-## 介绍
+### 介绍
 
 地图主题组件，用于切换地图底图的主题样式。
 
-## 代码演示
+### 代码演示
 
 <code src="./demos/default.tsx" defaultShowCode compact></code>
 
-## API
+### API
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -41,7 +41,7 @@ nav:
 | onPopperHide | 气泡隐藏时的回调 | `(this) => void` | - |
 | onSelectChange | 地图主题发生改变时的回调 | `(value: string) => void` | - |
 
-### IControlOptionItem
+#### IControlOptionItem
 
 ```ts
 export type IControlOptionItem = {
@@ -54,7 +54,7 @@ export type IControlOptionItem = {
 };
 ```
 
-### PopperPlacement
+#### PopperPlacement
 
 ```ts
 export type PopperPlacement =
@@ -72,7 +72,7 @@ export type PopperPlacement =
   | 'right-end';
 ```
 
-### Position
+#### Position
 
 ```ts
 export type Position =

@@ -9,17 +9,17 @@ nav:
   path: /components
 ---
 
-# 信息框 - Popup
+## 信息框 - Popup
 
-## 介绍
+### 介绍
 
 Popup 是用于在地图上指定经纬度位置，展示自定义内容的气泡。
 
-## 代码演示
+### 代码演示
 
 <code src="./demos/default.tsx" compact defaultShowCode></code>
 
-## API
+### API
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -44,7 +44,7 @@ Popup 是用于在地图上指定经纬度位置，展示自定义内容的气�
 | onShow | Popup 显示时回调 | `() => void` | - |
 | onHide | Popup 隐藏时回调 | `() => void` | - |
 
-### AnchorType
+#### AnchorType
 
 ```ts
 export type AnchorType =

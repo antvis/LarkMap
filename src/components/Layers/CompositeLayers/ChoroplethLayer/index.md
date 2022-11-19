@@ -9,27 +9,27 @@ nav:
   path: /components
 ---
 
-# 区域图层 - ChoroplethLayer
+## 区域图层 - ChoroplethLayer
 
-## 介绍
+### 介绍
 
 基于 [ChoroplethLayer](https://l7plot.antv.antgroup.com/zh/docs/api/composite-layers/choropleth-layer) 封装，用于面数据展示，支持描边、文本标注、多选等功能。
 
-## 代码演示
+### 代码演示
 
-### 默认示例
+#### 默认示例
 
 <code src="./demos/default.tsx" compact></code>
 
-## API
+### API
 
 <API hideTitle></API>
 
-### source
+#### source
 
 <embed src="../../../../../docs/common/layer/polygon-layer/source.md"></embed>
 
-### fillColor
+#### fillColor
 
 `string|ColorStyleAttribute|Function` optional default: `'#5FD3A6'`
 
@@ -39,7 +39,7 @@ nav:
 { fillColor: 'red', }
 ```
 
-#### `fillColor.`field
+##### `fillColor.`field
 
 `string` optional
 
@@ -55,7 +55,7 @@ nav:
 }
 ```
 
-#### `fillColor.`value
+##### `fillColor.`value
 
 `string|string[]|Function` optional
 
@@ -72,7 +72,7 @@ nav:
 }
 ```
 
-#### `fillColor.`scale
+##### `fillColor.`scale
 
 <embed src="../../../../../docs/common/layer/attribute/scale.md"></embed>
 
@@ -86,29 +86,29 @@ nav:
 }
 ```
 
-### label
+#### label
 
 `LabelOptions` optional
 
 标签标注。
 
-#### `label.`field
+##### `label.`field
 
 `string` optional
 
 标签值映射关联字段。
 
-#### `label.`visible
+##### `label.`visible
 
 `boolean` optional default: `true`
 
 标签是否可见。
 
-#### `label.`style
+##### `label.`style
 
 标签样式详细配置见 [TextLayerStyleOptions](/components/layers/base-layers/text-layer#style)。
 
-### state
+#### state
 
 `object` optional
 
@@ -127,7 +127,7 @@ nav:
 }
 ```
 
-#### `state.`active
+##### `state.`active
 
 `boolean｜ChoroplethLayerActiveOptions` optional default: `false`
 
@@ -161,7 +161,7 @@ ChoroplethLayerActiveOptions 配置如下：
 }
 ```
 
-#### `state.`select
+##### `state.`select
 
 `boolean｜AreaLayerActiveOptions` optional default: `false`
 
@@ -186,19 +186,19 @@ ChoroplethLayerActiveOptions 配置如下：
 }
 ```
 
-## Event
+### Event
 
 <embed src="../../../../../docs/common/layer/composite-common/event.md"></embed>
 
-#### 选择事件
+##### 选择事件
 
 | 事件名   | 类型         | 描述                         |
 | -------- | ------------ | ---------------------------- |
 | select   | 选择事件     | 鼠标点击选中图层要素事件     |
 | unselect | 取消选择事件 | 鼠标点击取消选中图层要素事件 |
 
-## FAQ
+### FAQ
 
-### 1. 如何获取图层实例？
+#### 1. 如何获取图层实例？
 
 详见 [获取图层实例](/components/layers/composite-layers/bubble-layer#1-如何获取图层实例)

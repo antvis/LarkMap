@@ -9,17 +9,17 @@ nav:
   path: /components
 ---
 
-# 比例尺 - ScaleControl
+## 比例尺 - ScaleControl
 
-## 介绍
+### 介绍
 
 地图比例尺组件，用于显示地图上的距离与地面上相应距离的比率。
 
-## 代码演示
+### 代码演示
 
 <code src="./demos/default.tsx" defaultShowCode compact></code>
 
-## API
+### API
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -36,7 +36,7 @@ nav:
 | onShow | 组件显示时的回调 | `(this) => void` | - |
 | onHide | 组件隐藏时的回调 | `(this) => void` | - |
 
-### Position
+#### Position
 
 ```ts
 export type Position =

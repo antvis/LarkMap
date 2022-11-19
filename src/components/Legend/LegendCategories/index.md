@@ -9,19 +9,19 @@ nav:
   path: /components
 ---
 
-# 分类图例 - LegendCategories
+## 分类图例 - LegendCategories
 
-## 介绍
+### 介绍
 
 分类图例
 
-## 代码演示
+### 代码演示
 
-### 默认演示
+#### 默认演示
 
 <code src="./demos/default.tsx" defaultShowCode></code>
 
-### 在地图中展示
+#### 在地图中展示
 
 <code src="./demos/map-default.tsx" compact defaultShowCode></code>
 

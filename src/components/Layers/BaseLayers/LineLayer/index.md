@@ -9,19 +9,19 @@ nav:
   path: /components
 ---
 
-# 线图层 - LineLayer
+## 线图层 - LineLayer
 
-## 介绍
+### 介绍
 
 基于 [LineLayer](https://l7plot.antv.antgroup.com/zh/docs/api/base-layers/line-layer) 封装，用于线数据展示。
 
-## 代码演示
+### 代码演示
 
-### 默认示例
+#### 默认示例
 
 <code src="./demos/default.tsx" compact></code>
 
-## API
+### API
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -44,40 +44,40 @@ nav:
 | animate | 水波动画，详情可见 [Animate](#animate) | `boolean｜AnimateAttr` | `false` |
 | onCreated | 图层初始化完成后回调，用于获取 layer 对象 | `(layer: LineLayer) => void` | -- |
 
-### source
+#### source
 
 <embed src="../../../../../docs/common/layer/line-layer/source.md"></embed>
 
-### shape
+#### shape
 
 <embed src="../../../../../docs/common/layer/line-layer/shape.md"></embed>
 
-### color
+#### color
 
 <embed src="../../../../../docs/common/layer/attribute/color.md"></embed>
 
-### size
+#### size
 
 <embed src="../../../../../docs/common/layer/attribute/size.md"></embed>
 
-### style
+#### style
 
 <embed src="../../../../../docs/common/layer/line-layer/style.md"></embed>
 
-### state
+#### state
 
 <embed src="../../../../../docs/common/layer/attribute/state.md"></embed>
 
-### animate
+#### animate
 
 <embed src="../../../../../docs/common/layer/line-layer/animate.md"></embed>
 
-## Event
+### Event
 
 <embed src="../../../../../docs/common/layer/base-common/event.md"></embed>
 
-## FAQ
+### FAQ
 
-### 1. 如何获取图层实例？
+#### 1. 如何获取图层实例？
 
 详见 [获取图层实例](/components/layers/composite-layers/bubble-layer#1-如何获取图层实例)

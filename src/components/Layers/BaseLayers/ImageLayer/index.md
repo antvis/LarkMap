@@ -9,19 +9,19 @@ nav:
   path: /components
 ---
 
-# 图片图层 - ImageLayer
+## 图片图层 - ImageLayer
 
-## 介绍
+### 介绍
 
 基于 [ImageLayer](https://l7plot.antv.antgroup.com/zh/docs/api/base-layers/image-layer) 封装，用于图片数据展示。
 
-## 代码演示
+### 代码演示
 
-### 默认示例
+#### 默认示例
 
 <code src="./demos/default.tsx" compact></code>
 
-## API
+### API
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -38,20 +38,20 @@ nav:
 | style | 元素样式，详情可见 [Style](#style) | `ImageLayerStyleOptions` | -- |
 | onCreated | 图层初始化完成后回调，用于获取 layer 对象 | `(layer: ImageLayer) => void` | -- |
 
-### source
+#### source
 
 <embed src="../../../../../docs/common/layer/image-layer/source.md"></embed>
 
-### style
+#### style
 
 <embed src="../../../../../docs/common/layer/image-layer/style.md"></embed>
 
-## Event
+### Event
 
 <embed src="../../../../../docs/common/layer/base-common/event.md"></embed>
 
-## FAQ
+### FAQ
 
-### 1. 如何获取图层实例？
+#### 1. 如何获取图层实例？
 
 详见 [获取图层实例](/components/layers/composite-layers/bubble-layer#1-如何获取图层实例)

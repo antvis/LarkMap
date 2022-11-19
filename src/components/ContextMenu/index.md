@@ -9,23 +9,23 @@ nav:
   path: /components
 ---
 
-# 右键菜单 - ContextMenu
+## 右键菜单 - ContextMenu
 
-## 介绍
+### 介绍
 
 地图右键菜单组件
 
-## 代码演示
+### 代码演示
 
-### 默认示例
+#### 默认示例
 
 <code src="./demos/default.tsx" compact></code>
 
-### 自定义菜单示例
+#### 自定义菜单示例
 
 <code src="./demos/custom.tsx" compact></code>
 
-## API
+### API
 
 | 属性名    | 描述     | 类型            | 默认值 |
 | --------- | -------- | --------------- | ------ |
@@ -33,7 +33,7 @@ nav:
 | className | 类名     | `string`        | --     |
 | style     | 行内样式 | `CSSProperties` | --     |
 
-### ContextMenu.Item
+#### ContextMenu.Item
 
 | 属性名    | 描述         | 类型            | 默认值   |
 | --------- | ------------ | --------------- | -------- |

@@ -9,19 +9,19 @@ nav:
   path: /components
 ---
 
-# 色带图例 - LegendRamp
+## 色带图例 - LegendRamp
 
-## 介绍
+### 介绍
 
 色带图例
 
-## 代码演示
+### 代码演示
 
-### 默认演示
+#### 默认演示
 
 <code src="./demos/default.tsx" defaultShowCode></code>
 
-### 在地图中展示
+#### 在地图中展示
 
 <code src="./demos/map-default.tsx" compact defaultShowCode></code>
 
