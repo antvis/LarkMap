@@ -34,7 +34,7 @@ export default () => {
   }, []);
 
   const config = {
-    mapType: 'GaodeV1' as const,
+    mapType: 'Gaode' as const,
     mapOptions: {
       WebGLParams: {
         preserveDrawingBuffer: true,

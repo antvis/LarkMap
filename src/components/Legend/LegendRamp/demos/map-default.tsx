@@ -1,9 +1,9 @@
 import type { LegendItems } from '@antv/larkmap';
-import { CustomControl, LarkMap, ChoroplethLayer, LegendRamp } from '@antv/larkmap';
+import { ChoroplethLayer, CustomControl, LarkMap, LegendRamp } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
 const config = {
-  mapType: 'GaodeV1' as const,
+  mapType: 'Gaode' as const,
   mapOptions: {
     style: 'light',
     center: [-100.45397511735388, 37.73927151161908],

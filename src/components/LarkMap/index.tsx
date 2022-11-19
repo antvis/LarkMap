@@ -17,7 +17,7 @@ export const LarkMap = memo(
       style,
       className,
       map,
-      mapType = 'GaodeV1',
+      mapType = 'Gaode',
       mapOptions = {},
       onLayerManagerCreated,
       onSceneLoaded,

@@ -60,9 +60,9 @@ export interface LarkMapProps extends CommonProps, Omit<ISceneConfig, 'id' | 'ca
   map?: IMapWrapper;
   /**
    * 地图类型
-   * @default 'GaodeV1'
+   * @default 'Gaode'
    */
-  mapType?: 'GaodeV1' | 'GaodeV2' | 'Mapbox' | 'Map';
+  mapType?: 'Gaode' | 'GaodeV1' | 'GaodeV2' | 'Mapbox' | 'Map';
   /**
    * 地图配置项
    * 配合地图类型配置地图，
