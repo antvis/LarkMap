@@ -15,13 +15,11 @@ nav:
 
 地图右键菜单组件
 
-## 使用场景
-
 ## 代码演示
 
 ### 默认示例
 
-<code src="./demos/default.tsx" compact defaultShowCode></code>
+<code src="./demos/default.tsx" compact></code>
 
 ### 自定义菜单示例
 
