@@ -22,7 +22,7 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 
 ### 通过实例生成
 
-<code src="./demos/map-instance.tsx" defaultShowCode></code>
+<code src="./demos/map-instance.tsx" compact defaultShowCode></code>
 
 ## API
 

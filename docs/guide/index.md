@@ -31,7 +31,7 @@ import React from 'react';
 import { LarkMap } from '@antv/larkmap';
 
 const config = {
-  mapType: 'GaodeV1',
+  mapType: 'Gaode',
   mapOptions: {
     style: 'light',
     center: [120.210792, 30.246026],
@@ -46,7 +46,7 @@ export default () => {
 
 ## 体验
 
-```jsx
+```jsx | compact
 import React from 'react';
 import { LarkMap } from '@antv/larkmap';
 

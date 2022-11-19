@@ -25,7 +25,7 @@ nav:
 
 ### 自定义菜单示例
 
-<code src="./demos/custom.tsx"></code>
+<code src="./demos/custom.tsx" compact></code>
 
 ## API
 
