@@ -2,8 +2,8 @@
 toc: content
 order: 3
 group:
-  title: 分析组件
-  order: 3
+  title: 示例分组
+  order: 100
 nav:
   title: 组件
   path: /components
