@@ -24,14 +24,13 @@
     "test-cover": "jest --coverage",
     "clean": "rimraf es lib dist",
     "size": "limit-size",
-    "package:build": "father build",
+    "build": "father build",
     "doctor": "father doctor",
-    "build": "npm run docs:build",
     "docs:build": "dumi build",
     "docs:build-analyze": "ANALYZE=1 dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
-    "deploy": "npm run build && npm run docs:deploy",
-    "ci": "run-s lint doctor package:build size",
+    "deploy": "npm run docs:build && npm run docs:deploy",
+    "ci": "run-s lint doctor build size",
     "prepublishOnly": "npm run ci",
     "version": "node scripts/sync-version"
   },
@@ -127,9 +126,5 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  },
-  "yuyanConfig": {
-    "distDir": "/dist"
-  },
-  "yuyanId": "180020010001226663"
+  }
 }

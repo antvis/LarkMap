@@ -64,7 +64,7 @@ $ npm run start
 $ npm run ci
 
 # Compile package
-$ npm run package:build
+$ npm run build
 ```
 
 ## 🤝 如何贡献

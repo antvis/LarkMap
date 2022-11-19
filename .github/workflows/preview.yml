@@ -21,4 +21,4 @@ jobs:
         dist: docs-dist
         build: |
           npm install
-          npm run build
+          npm run docs:build
