@@ -15,22 +15,10 @@ export type LarkMapRefAttributes = {
 };
 
 export type SceneMouseEvent = {
-  lnglat: { Q: number; R: number; lng: number; lat: number } | undefined;
-  originEvent: any;
+  lnglat: { lng: number; lat: number } | undefined;
   pixel: { x: number; y: number } | undefined;
   target: any;
-  type:
-    | 'mousemove'
-    | 'mousewheel'
-    | 'mouseover'
-    | 'mouseout'
-    | 'mouseup'
-    | 'mousedown'
-    | 'click'
-    | 'dblclick'
-    | 'zoomchange'
-    | 'zoomstart'
-    | 'zoomend';
+  type: string;
 };
 
 export type SceneDragEvent = {
@@ -38,15 +26,13 @@ export type SceneDragEvent = {
   y: number;
   lngLat: { lng: number; lat: number };
   target: any;
-  type: 'dragstart' | 'dragging' | 'dragend';
+  type: string;
 };
 
 /**
  * 场景事件回调
  */
-export type SceneEventCallback<
-  T = undefined | SceneMouseEvent | SceneDragEvent,
-> = (e?: T) => void;
+export type SceneEventCallback<T = undefined | any> = (e?: T) => void;
 
 /**
  * 场景事件
