@@ -4,7 +4,7 @@ order: 0
 banner:
   title: LarkMap 空间数据可视分析组件库
   desc: 新一代 React 地图可视分析组件库，提供丰富/高效/专业/易用的可视化组件，一站式满足地理可视化需求。
-  image: https://gw.alipayobjects.com/mdn/antv_site/afts/img/A*cCI7RaJs46AAAAAAAAAAAABkARQnAQ
+  image: https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*ZdZcS5MKuAMAAAAAAAAAAAAADmJ7AQ/original
   actions:
     - text: 开始使用 →
       link: /guide
