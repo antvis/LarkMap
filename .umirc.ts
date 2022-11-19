@@ -33,11 +33,11 @@ export default defineConfig({
       children: [
         {
           title: 'L7',
-          path: 'https://l7.antv.vision',
+          path: 'https://l7.antv.antgroup.com',
         },
         {
           title: 'L7Plot',
-          path: 'https://l7plot.antv.vision/',
+          path: 'https://l7plot.antv.antgroup.com',
         },
         {
           title: 'L7Draw',
