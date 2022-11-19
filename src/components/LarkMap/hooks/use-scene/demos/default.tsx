@@ -1,7 +1,7 @@
 import { LarkMap, useScene } from '@antv/larkmap';
 import React, { useEffect } from 'react';
 
-const MyComponent = () => {
+const ChildComponent = () => {
   const scene = useScene();
 
   useEffect(() => {
@@ -13,6 +13,6 @@ const MyComponent = () => {
 
 export default () => (
   <LarkMap mapType="Gaode" style={{ height: '300px' }}>
-    <MyComponent />
+    <ChildComponent />
   </LarkMap>
 );

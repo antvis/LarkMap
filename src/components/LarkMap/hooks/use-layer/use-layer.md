@@ -10,7 +10,7 @@ group:
 
 ### 介绍
 
-获取图层实例 Hook，配合图层组件一起使用，用于子组件拿到图层实例，该 Hook 需放到容器组件内部才能使用。
+获取图层实例 Hook，配合图层组件一起使用，用于子组件拿到图层实例，**该 Hook 需放到容器组件内部才能使用**。
 
 ### 默认示例
 
@@ -19,7 +19,7 @@ group:
 ### API
 
 ```ts
-const layer = useLayer<T>(id: string);
+const layer: Layer = useLayer<T>(id: string);
 ```
 
 #### Params
@@ -30,6 +30,6 @@ const layer = useLayer<T>(id: string);
 
 #### Result
 
-| 参数  | 说明     | 类型    |
-| ----- | -------- | ------- |
-| layer | 图层实例 | `Layer` |
+| 参数  | 说明                                                                                              | 类型    |
+| ----- | ------------------------------------------------------------------------------------------------- | ------- |
+| layer | 图层实例，详情可见 [L7Plot](https://l7plot.antv.antgroup.com/zh/docs/api/base-layers/point-layer) | `Layer` |
