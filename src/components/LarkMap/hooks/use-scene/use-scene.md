@@ -19,7 +19,7 @@ group:
 ### API
 
 ```ts
-const scene = useScene();
+const scene: Scene = useScene();
 ```
 
 #### Result

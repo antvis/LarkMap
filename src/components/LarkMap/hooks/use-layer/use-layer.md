@@ -19,7 +19,7 @@ group:
 ### API
 
 ```ts
-const layer = useLayer<T>(id: string);
+const layer: Layer = useLayer<T>(id: string);
 ```
 
 #### Params
@@ -30,6 +30,6 @@ const layer = useLayer<T>(id: string);
 
 #### Result
 
-| 参数  | 说明     | 类型    |
-| ----- | -------- | ------- |
-| layer | 图层实例 | `Layer` |
+| 参数  | 说明                                                                                              | 类型    |
+| ----- | ------------------------------------------------------------------------------------------------- | ------- |
+| layer | 图层实例，详情可见 [L7Plot](https://l7plot.antv.antgroup.com/zh/docs/api/base-layers/point-layer) | `Layer` |
