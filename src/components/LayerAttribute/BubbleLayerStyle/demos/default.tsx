@@ -10,15 +10,15 @@ const FieldList = [
 
 const DefaultBubbleLayerStyle = {
   radius: 40,
-  fillColor: '#0f9960',
-  opacity: 0.4,
-  strokeColor: 'blue',
+  fillColor: '#00468c',
+  opacity: 0.7,
+  strokeColor: '#222',
   lineWidth: 2,
   lineOpacity: 1,
   label: {
     field: 'temperature',
     visible: true,
-    style: { fill: '#454d64', fontSize: 18, textAnchor: 'center' as const, textOffset: [0, 0] as [number, number] },
+    style: { fill: '#ffffff', fontSize: 18, textAnchor: 'center' as const, textOffset: [0, 0] as [number, number] },
   },
   minZoom: 0,
   maxZoom: 24,
@@ -50,7 +50,7 @@ export default () => {
 
   return (
     <LarkMap mapType="Gaode" style={{ height: '400px', overflow: 'hidden' }}>
-      <CustomControl position="topleft" style={{ width: '300px', background: '#fff', padding: '10px' }}>
+      <CustomControl position="topleft" style={{ width: '300px', background: '#fff', padding: '16px' }}>
         <h3>属性配置</h3>
         <BubbleLayerStyleAttribute
           style={{ overflowX: 'hidden', overflowY: 'auto', maxHeight: '300px' }}

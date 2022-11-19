@@ -14,13 +14,13 @@ const DefaultChoroplethLayerStyle = {
     scale: { type: 'quantile' as const },
   },
   opacity: 0.3,
-  strokeColor: 'blue',
+  strokeColor: '#fff',
   lineWidth: 1,
   lineOpacity: 1,
   label: {
     field: 'name',
     visible: true,
-    style: { fill: 'blue', fontSize: 18, textAnchor: 'center' as const, textOffset: [0, 0] as [number, number] },
+    style: { fill: '#333', fontSize: 18, textAnchor: 'center' as const, textOffset: [0, 0] as [number, number] },
   },
   minZoom: 0,
   maxZoom: 24,
@@ -52,7 +52,7 @@ export default () => {
 
   return (
     <LarkMap mapType="Gaode" style={{ height: '400px', overflow: 'hidden' }}>
-      <CustomControl position="topleft" style={{ width: '300px', background: '#fff', padding: '10px' }}>
+      <CustomControl position="topleft" style={{ width: '300px', background: '#fff', padding: '16px' }}>
         <h3>属性配置</h3>
         <ChoroplethLayerStyleAttribute
           style={{ overflowX: 'hidden', overflowY: 'auto', maxHeight: '300px' }}
