@@ -19,7 +19,7 @@ nav:
 
 ### 默认示例
 
-<code src="./demos/default.tsx"></code>
+<code src="./demos/default.tsx" compact></code>
 
 ## API
 

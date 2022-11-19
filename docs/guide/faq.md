@@ -26,3 +26,9 @@ LarkMap 是基于 L7 技术栈的位置可视分析组件库，它的定位是�
 ### 3. 基础图层与复合图层组件区别是什么？
 
 LarkMap 里面图层分为基础图层与复合图层组件，基础图层组件对应 L7 的图层，复合图层组件是基于基础图层封装多图层组件，满足常见的多图层场景，比如点图层加文本图层完成点数据的标注。
+
+### 4. 使用 LarkMap 过程中遇到问题了怎么办？
+
+可以扫描下方二维码加入 L7 的钉钉答疑群进行提问
+
+<img src="https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*HYbhQrDJHqYAAAAAAAAAAAAADmJ7AQ/original" width="400"/>

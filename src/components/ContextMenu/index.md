@@ -21,11 +21,11 @@ nav:
 
 ### 默认示例
 
-<code src="./demos/default.tsx" defaultShowCode></code>
+<code src="./demos/default.tsx" compact defaultShowCode></code>
 
 ### 自定义菜单示例
 
-<code src="./demos/custom.tsx"></code>
+<code src="./demos/custom.tsx" compact></code>
 
 ## API
 

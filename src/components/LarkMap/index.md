@@ -16,30 +16,51 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 
 ## 代码演示
 
-### 通过配置项生成
+### 通过配置生成地图
 
-<code src="./demos/default.tsx" defaultShowCode></code>
+<code src="./demos/default.tsx" compact defaultShowCode></code>
 
-### 通过实例生成
+### 通过实例生成地图
 
-<code src="./demos/map-instance.tsx" defaultShowCode></code>
+<code src="./demos/map-instance.tsx" compact defaultShowCode></code>
 
 ## API
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| ref | 组件 Ref | `Ref<RefAttributes>` | -- |
-| id | 容器 id | `string` | -- |
-| style | 容器行内样式 | `CSSProperties` | -- |
-| className | 容器类名 | `string` | -- |
-| map | 地图实例，可选，也可以通过配置项自动生成实例，详见 [L7 map](https://l7.antv.antgroup.com/api/map) | `MapInstance` | -- |
-| mapType | 地图类型 | `"Gaode"｜"GaodeV2"｜"Mapbox"｜"Map"` | `'Gaode'` |
-| mapOptions | 地图配置项，配合地图类型配置地图 | `MapOptions` | -- |
-| onSceneLoaded | 场景加载成功回调 | `(scene: Scene) => void` | -- |
-| logoPosition | logo 展示位置，配置项详见 [L7 logoPosition](https://l7.antv.antgroup.com/api/scene#logoposition) | `PositionName` | `'bottomleft'` |
-| logoVisible | 是否显示 logo | `boolean` | `true` |
-| antialias | 是否开启抗锯齿 | `boolean` | `true` |
-| preserveDrawingBuffe | 是否保留缓冲区数据 | `boolean` | `false` |
+| 参数                  | 说明                                                                                              | 类型                                                          | 默认值         |
+| --------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | -------------- |
+| id                    | 容器 id                                                                                           | `string`                                                      | --             |
+| style                 | 容器行内样式                                                                                      | `CSSProperties`                                               | --             |
+| className             | 容器类名                                                                                          | `string`                                                      | --             |
+| map                   | 地图实例，可选，也可以通过配置项自动生成实例，详见 [L7 map](https://l7.antv.antgroup.com/api/map) | `MapInstance`                                                 | --             |
+| mapType               | 地图底图类型                                                                                      | `'Gaode'｜`<br />`'GaodeV2'｜`<br />`'Mapbox'｜`<br />`'Map'` | `'Gaode'`      |
+| mapOptions            | 地图配置项，配合地图类型配置地图，详情可见 [MapOptions](#mapoptions)                              | `MapOptions`                                                  | --             |
+| logoPosition          | logo 展示位置，配置项详见 [L7 logoPosition](https://l7.antv.antgroup.com/api/scene#logoposition)  | `PositionName`                                                | `'bottomleft'` |
+| logoVisible           | 是否显示 logo                                                                                     | `boolean`                                                     | `true`         |
+| antialias             | 是否开启抗锯齿                                                                                    | `boolean`                                                     | `true`         |
+| preserveDrawingBuffer | 是否保留缓冲区数据                                                                                | `boolean`                                                     | `false`        |
+| ref                   | 组件 Ref，详情可见 [LarkMapRefAttributes](#larkmaprefattributes)                                  | `Ref<LarkMapRefAttributes>`                                   | --             |
+| onSceneLoaded         | 场景加载成功回调                                                                                  | `(scene: Scene) => void`                                      | --             |
+| onLoaded              | 加载完成事件                                                                                      | `(e?: any) => void`                                           | --             |
+| onDestroy             | 销毁事件                                                                                          | `(e?: any) => void`                                           | --             |
+| onResize              | 地图容器大小改变事件                                                                              | `(e?: any) => void`                                           | --             |
+| onMapMove             | 地图平移时触发事件                                                                                | `(e?: any) => void`                                           | --             |
+| onMoveStart           | 地图平移开始时触发事件                                                                            | `(e?: any) => void`                                           | --             |
+| onMoveEnd             | 地图移动结束后触发，包括平移，以及中心点变化的缩放。如地图有拖拽缓动效果，则在缓动结束后触发      | `(e?: any) => void`                                           | --             |
+| onZoomStart           | 缩放开始时触发                                                                                    | `(e?: any) => void`                                           | --             |
+| onZoomEnd             | 缩放停止时触发                                                                                    | `(e?: any) => void`                                           | --             |
+| onZoomChange          | 地图缩放级别更改后触发                                                                            | `(e?: any) => void`                                           | --             |
+| onClick               | 点击事件                                                                                          | `(e?: any) => void`                                           | --             |
+| onDblclick            | 双击事件                                                                                          | `(e?: any) => void`                                           | --             |
+| onContextMenu         | 右键点击事件                                                                                      | `(e?: any) => void`                                           | --             |
+| onMouseMove           | 鼠标在地图上移动时触发                                                                            | `(e?: any) => void`                                           | --             |
+| onMouseWheel          | 鼠标滚轮开始缩放地图时触发                                                                        | `(e?: any) => void`                                           | --             |
+| onMouseDown           | 鼠标在地图上单击按下时触发                                                                        | `(e?: any) => void`                                           | --             |
+| onMouseUp             | 鼠标在地图上单击抬起时触发                                                                        | `(e?: any) => void`                                           | --             |
+| onMouseOver           | 鼠标移入地图容器内时触发                                                                          | `(e?: any) => void`                                           | --             |
+| onMouseOut            | 鼠标移出地图容器时触发                                                                            | `(e?: any) => void`                                           | --             |
+| onDragStart           | 开始拖拽地图时触发                                                                                | `(e?: any) => void`                                           | --             |
+| onDragging            | 拖拽地图过程中触发                                                                                | `(e?: any) => void`                                           | --             |
+| onDragEnd             | 停止拖拽地图时触发，如地图有拖拽缓动效果，则在拽停止，缓动开始前触发                              | `(e?: any) => void`                                           | --             |
 
 ### MapOptions
 
@@ -55,7 +76,7 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 | zoom     | 初始缩放层级                                                                   | `number` | --       |
 | minZoom  | 地图最大缩放等级                                                               | `number` | --       |
 
-### RefAttributes
+### LarkMapRefAttributes
 
 | 参数     | 说明            | 类型                | 默认值 |
 | -------- | --------------- | ------------------- | ------ |
@@ -66,21 +87,25 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 
 ### 事件监听
 
-- 通过组件属性
+- 通过组件属性：在 [API](#api) 中已列举了所有事件对应的组件属性。
 
 ```jsx | pure
-<LarkMap onEventName={(...args) => {}} />
+<LarkMap onEventName={() => {}} />
 ```
 
-- 通过实例绑定
+- 通过实例绑定：可以通过组件属性 `onSceneLoaded` 获取到 `Scene` 实例后，监听实例对应事件。
 
-```js
-// 绑定事件
-scene.on(eventName: string, callback: (...args) => void);
-// 绑定一次事件
-scene.once(eventName: string, callback: (...args) => void);
-// 解绑事件
-scene.off(eventName: string, callback: (...args) => void);
+```tsx | pure
+<LarkMap
+  onSceneLoaded={(scene) => {
+    // 绑定事件
+    scene.on('click', () => {});
+    // 绑定一次事件
+    scene.once('click', () => {});
+    // 解绑事件
+    scene.off('click', () => {});
+  }}
+/>
 ```
 
 ### 事件类别
@@ -157,7 +182,11 @@ export default () => {
   };
 
   return (
-    <LarkMap mapType="Gaode" style={{ height: '300px' }} onSceneLoaded={onSceneLoaded}>
+    <LarkMap
+      mapType="Gaode"
+      style={{ height: '300px' }}
+      onSceneLoaded={onSceneLoaded}
+    >
       <h2 style={{ position: 'absolute', left: '10px' }}>LarkMap</h2>
     </LarkMap>
   );
@@ -167,11 +196,11 @@ export default () => {
 2. 挂载到 ref 上
 
 ```tsx | pure
-import { LarkMap } from '@antv/larkmap';
+import { LarkMap, LarkMapRefAttributes } from '@antv/larkmap';
 import { useEffect, useRef } from 'react';
 
 export default () => {
-  const ref = useRef();
+  const ref = useRef<LarkMapRefAttributes>();
   useEffect(() => {
     console.log(ref.current.getScene());
   }, []);

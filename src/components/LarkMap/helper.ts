@@ -2,7 +2,10 @@ import type { IMapConfig } from '@antv/l7';
 import { GaodeMap, GaodeMapV1, GaodeMapV2, Map } from '@antv/l7';
 import type { LarkMapProps } from './types';
 
-export const createMap = async (mapType: LarkMapProps['mapType'], mapOptions: Partial<IMapConfig>) => {
+export const createMap = async (
+  mapType: LarkMapProps['mapType'],
+  mapOptions: Partial<IMapConfig>,
+) => {
   if (mapType === 'Map') {
     return new Map(mapOptions);
   }

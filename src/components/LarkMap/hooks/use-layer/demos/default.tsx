@@ -21,7 +21,13 @@ const layerOptions = {
   label: {
     field: 't',
     visible: true,
-    style: { fill: '#454d64', fontSize: 18, stroke: '#fff', strokeWidth: 2, textOffset: [0, -20] as [number, number] },
+    style: {
+      fill: '#454d64',
+      fontSize: 18,
+      stroke: '#fff',
+      strokeWidth: 2,
+      textOffset: [0, -20] as [number, number],
+    },
   },
 };
 

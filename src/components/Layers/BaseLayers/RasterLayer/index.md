@@ -19,15 +19,15 @@ nav:
 
 ### 默认示例
 
-<code src="./demos/default.tsx"></code>
+<code src="./demos/default.tsx" compact></code>
 
 ### 图片栅格瓦片示例
 
-<code src="./demos/rasterImage.tsx"></code>
+<code src="./demos/rasterImage.tsx" compact></code>
 
 ### 数据栅格瓦片示例
 
-<code src="./demos/rasterData.tsx"></code>
+<code src="./demos/rasterData.tsx" compact></code>
 
 ## API
 

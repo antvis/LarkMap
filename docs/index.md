@@ -4,9 +4,9 @@ order: 0
 banner:
   title: LarkMap 空间数据可视分析组件库
   desc: 新一代 React 地图可视分析组件库，提供丰富/高效/专业/易用的可视化组件，一站式满足地理可视化需求。
-  image: https://gw.alipayobjects.com/mdn/antv_site/afts/img/A*cCI7RaJs46AAAAAAAAAAAABkARQnAQ
+  image: https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*ZdZcS5MKuAMAAAAAAAAAAAAADmJ7AQ/original
   actions:
-    - text: 快速开始 →
+    - text: 开始使用 →
       link: /guide
       type: primary
   notifications:
@@ -29,3 +29,5 @@ ideas:
     title: 开发效率
     description: TypeScript + React + Hooks，拥抱 React 生态同时也不丢掉命令式 API 的便捷
 ---
+
+[//]: # 'TODO: L7 文章记得换成 2022.11.22 的'

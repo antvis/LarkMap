@@ -16,13 +16,34 @@ export default defineConfig({
   },
   metas: [
     { name: 'keywords', content: 'L7, AntV, AntV LarkMap' },
-    { name: 'description', content: '🌍 A React toolkit for geospatial visualization based on L7' },
+    {
+      name: 'description',
+      content: '🌍 A React toolkit for geospatial visualization based on L7',
+    },
   ],
   // Google Analytics
   // analytics: isProduction ? { ga: 'G-CBX7JL1Q57' } : false,
   locales: [['zh-CN', '中文']],
+  // TODO: 各个技术栈栈文案替换
   navs: [
     null,
+    {
+      title: '周边生态',
+      children: [
+        {
+          title: 'L7',
+          path: 'https://l7.antv.antgroup.com',
+        },
+        {
+          title: 'L7Plot',
+          path: 'https://l7plot.antv.antgroup.com',
+        },
+        {
+          title: 'L7Draw',
+          path: 'https://l7draw.antv.vision/',
+        },
+      ],
+    },
     {
       title: 'GitHub',
       path: 'https://github.com/antvis/LarkMap',
@@ -36,6 +57,7 @@ export default defineConfig({
   themeConfig: {
     carrier: 'LarkMap',
   },
+  exportStatic: {},
   hash: true,
   // 同步 gh-page CNAME 文件
   copy: isProduction ? ['docs/CNAME'] : [],
@@ -51,6 +73,7 @@ export default defineConfig({
   styles: [
     'https://gw.alipayobjects.com/os/lib/antd/4.23.6/dist/antd.css',
     'https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.2/mapbox-gl.css',
+    '.__dumi-default-navbar { z-index: 1001 !important; }',
   ],
   scripts: [
     'https://gw.alipayobjects.com/os/lib/react/17.0.2/umd/react.development.js',

@@ -40,8 +40,8 @@ export type SceneEventProps = Partial<{
   onContextMenu: SceneEventCallback;
   // 鼠标事件
   onMouseMove: SceneEventCallback;
-  onMousewheel: SceneEventCallback;
-  onMousedown: SceneEventCallback;
+  onMouseWheel: SceneEventCallback;
+  onMouseDown: SceneEventCallback;
   onMouseOver: SceneEventCallback;
   onMouseOut: SceneEventCallback;
   onMouseUp: SceneEventCallback;
@@ -53,7 +53,10 @@ export type SceneEventProps = Partial<{
 /**
  * 组件类型定义
  */
-export interface LarkMapProps extends CommonProps, Omit<ISceneConfig, 'id' | 'canvas' | 'map'>, SceneEventProps {
+export interface LarkMapProps
+  extends CommonProps,
+    Omit<ISceneConfig, 'id' | 'canvas' | 'map'>,
+    SceneEventProps {
   /** 容器 id */
   id?: string;
   /** 地图实例，可选，也可以通过配置项自动生成实例 */

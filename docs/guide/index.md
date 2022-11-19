@@ -1,5 +1,5 @@
 ---
-title: 介绍
+title: 快速开始
 order: 1
 nav:
   title: 指南
@@ -19,7 +19,7 @@ nav:
 ## 安装
 
 ```bash
-$ npm install --save @antv/l7 @antv/larkmap
+$ npm install -S @antv/l7 @antv/larkmap
 # or
 $ yarn add @antv/l7 @antv/larkmap
 ```
@@ -31,14 +31,11 @@ import React from 'react';
 import { LarkMap } from '@antv/larkmap';
 
 const config = {
-  mapType: 'Mapbox',
+  mapType: 'Gaode',
   mapOptions: {
     style: 'light',
     center: [120.210792, 30.246026],
-    pitch: 0,
     zoom: 10,
-    rotation: 0,
-    token: 'xxxx - token',
   },
 };
 
@@ -47,9 +44,9 @@ export default () => {
 };
 ```
 
-## 体验 💻
+## 体验
 
-```jsx
+```jsx | compact
 import React from 'react';
 import { LarkMap } from '@antv/larkmap';
 
@@ -58,9 +55,7 @@ const config = {
   mapOptions: {
     style: 'light',
     center: [120.210792, 30.246026],
-    pitch: 0,
     zoom: 8,
-    rotation: 0,
   },
 };
 

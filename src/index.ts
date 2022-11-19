@@ -3,7 +3,10 @@
  * 容器组件
  */
 export { LarkMap } from './components/LarkMap';
-export type { LarkMapProps } from './components/LarkMap/types';
+export type {
+  LarkMapProps,
+  LarkMapRefAttributes,
+} from './components/LarkMap/types';
 export * from './components/LarkMap/hooks';
 
 /**
