@@ -14,10 +14,39 @@ export type LarkMapRefAttributes = {
   getMap: () => Scene['map'];
 };
 
+export type SceneMouseEvent = {
+  lnglat: { Q: number; R: number; lng: number; lat: number } | undefined;
+  originEvent: any;
+  pixel: { x: number; y: number } | undefined;
+  target: any;
+  type:
+    | 'mousemove'
+    | 'mousewheel'
+    | 'mouseover'
+    | 'mouseout'
+    | 'mouseup'
+    | 'mousedown'
+    | 'click'
+    | 'dblclick'
+    | 'zoomchange'
+    | 'zoomstart'
+    | 'zoomend';
+};
+
+export type SceneDragEvent = {
+  x: number;
+  y: number;
+  lngLat: { lng: number; lat: number };
+  target: any;
+  type: 'dragstart' | 'dragging' | 'dragend';
+};
+
 /**
  * 场景事件回调
  */
-export type SceneEventCallback = (e?: any) => void;
+export type SceneEventCallback<
+  T = undefined | SceneMouseEvent | SceneDragEvent,
+> = (e?: T) => void;
 
 /**
  * 场景事件
@@ -53,7 +82,10 @@ export type SceneEventProps = Partial<{
 /**
  * 组件类型定义
  */
-export interface LarkMapProps extends CommonProps, Omit<ISceneConfig, 'id' | 'canvas' | 'map'>, SceneEventProps {
+export interface LarkMapProps
+  extends CommonProps,
+    Omit<ISceneConfig, 'id' | 'canvas' | 'map'>,
+    SceneEventProps {
   /** 容器 id */
   id?: string;
   /** 地图实例，可选，也可以通过配置项自动生成实例 */
