@@ -13,7 +13,7 @@ nav:
 
 ## 介绍
 
-基于 [TextLayer](https://l7plot.antv.vision/zh/docs/api/base-layers/text-layer) 封装，用于文本展示。
+基于 [TextLayer](https://l7plot.antv.antgroup.com/zh/docs/api/base-layers/text-layer) 封装，用于文本展示。
 
 ## 代码演示
 

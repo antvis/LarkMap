@@ -69,7 +69,7 @@ export interface LarkMapProps
   /**
    * 地图配置项
    * 配合地图类型配置地图，
-   * 配置项详见 [L7-Map](https://l7.antv.vision/zh/docs/api/map/map)
+   * 配置项详见 [L7-Map](https://l7.antv.antgroup.com/api/map)
    * @default {}
    * */
   mapOptions?: Partial<IMapConfig>;

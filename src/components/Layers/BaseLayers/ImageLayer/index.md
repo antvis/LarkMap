@@ -13,7 +13,7 @@ nav:
 
 ## 介绍
 
-基于 [ImageLayer](https://l7plot.antv.vision/zh/docs/api/base-layers/image-layer) 封装，用于图片数据展示。
+基于 [ImageLayer](https://l7plot.antv.antgroup.com/zh/docs/api/base-layers/image-layer) 封装，用于图片数据展示。
 
 ## 代码演示
 

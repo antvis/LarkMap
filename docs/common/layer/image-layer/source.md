@@ -1,6 +1,6 @@
 `SourceOptions` required
 
-数据配置，详见 source [文档](https://l7plot.antv.vision/zh/docs/api/source)
+数据配置，详见 source [文档](https://l7plot.antv.antgroup.com/zh/docs/api/source)
 
 ```js
 {

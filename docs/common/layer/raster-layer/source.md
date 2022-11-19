@@ -1,6 +1,6 @@
 `SourceOptions` required
 
-数据配置，详见 source [文档](https://l7plot.antv.vision/zh/docs/api/source)
+数据配置，详见 source [文档](https://l7plot.antv.antgroup.com/zh/docs/api/source)
 
 - 配置图片栅格瓦片
 
@@ -19,7 +19,9 @@
 
 ```js
 async function getTiffData() {
-  const response = await fetch('https://gw.alipayobjects.com/os/rmsportal/XKgkjjGaAzRyKupCBiYW.dat');
+  const response = await fetch(
+    'https://gw.alipayobjects.com/os/rmsportal/XKgkjjGaAzRyKupCBiYW.dat',
+  );
   const arrayBuffer = await response.arrayBuffer();
   const tiff = await GeoTIFF.fromArrayBuffer(arrayBuffer);
   const image = await tiff.getImage();

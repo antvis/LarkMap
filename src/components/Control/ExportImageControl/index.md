@@ -21,21 +21,21 @@ nav:
 
 ## API
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| imageType | 截图图片的格式 | `'png'｜'jpeg'` | `'png'` |
-| onExpory | 截图成功后，用于接收图片 Base64 字符串的回调函数 | `(base64: string) => void` | - |
-| btnIcon | 按钮图标 | `ReactNode` | - |
-| btnText | 按钮内容文本 | `string` | - |
-| title | 按钮的 title 属性 | `string` | `'导出图片'` |
-| vertical | 在 btnIcon 有值的情况下，按钮内的图标和文案是否纵向排列 | `boolean` | `false` |
-| position | 控件被添加到地图中的位置以及排列方式，详情可见 [控件插槽](https://l7.antv.vision/zh/docs/api/component/control/control#插槽) | [Position](#position) | `'topright'` |
-| className | 自定义样式名 | `string` | - |
-| style | 自定义样式 | `CSSProperties` | - |
-| onAdd | 组件被添加时的回调 | `(this) => void` | - |
-| onRemove | 组件被移除时的回调 | `(this) => void` | - |
-| onShow | 组件显示时的回调 | `(this) => void` | - |
-| onHide | 组件隐藏时的回调 | `(this) => void` | - |
+| 参数      | 说明                                                                                                                       | 类型                       | 默认值       |
+| --------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ------------ |
+| imageType | 截图图片的格式                                                                                                             | `'png'｜'jpeg'`            | `'png'`      |
+| onExpory  | 截图成功后，用于接收图片 Base64 字符串的回调函数                                                                           | `(base64: string) => void` | -            |
+| btnIcon   | 按钮图标                                                                                                                   | `ReactNode`                | -            |
+| btnText   | 按钮内容文本                                                                                                               | `string`                   | -            |
+| title     | 按钮的 title 属性                                                                                                          | `string`                   | `'导出图片'` |
+| vertical  | 在 btnIcon 有值的情况下，按钮内的图标和文案是否纵向排列                                                                    | `boolean`                  | `false`      |
+| position  | 控件被添加到地图中的位置以及排列方式，详情可见 [控件插槽](https://l7.antv.antgroup.com/api/component/control/control#插槽) | [Position](#position)      | `'topright'` |
+| className | 自定义样式名                                                                                                               | `string`                   | -            |
+| style     | 自定义样式                                                                                                                 | `CSSProperties`            | -            |
+| onAdd     | 组件被添加时的回调                                                                                                         | `(this) => void`           | -            |
+| onRemove  | 组件被移除时的回调                                                                                                         | `(this) => void`           | -            |
+| onShow    | 组件显示时的回调                                                                                                           | `(this) => void`           | -            |
+| onHide    | 组件隐藏时的回调                                                                                                           | `(this) => void`           | -            |
 
 ### Position
 
