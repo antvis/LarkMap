@@ -43,13 +43,16 @@ export default () => {
       .then((data: any) => {
         setSource((prevState) => ({
           ...prevState,
-          data: data.list.map((item) => ({ ...item, text: `${item.m} ${item.t}` })),
+          data: data.list.map((item) => ({
+            ...item,
+            text: `${item.m} ${item.t}`,
+          })),
         }));
       });
   }, []);
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
+    <LarkMap mapType="Gaode" style={{ height: '300px' }}>
       <TextLayer {...options} source={source} />
     </LarkMap>
   );

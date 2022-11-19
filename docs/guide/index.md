@@ -26,9 +26,9 @@ $ yarn add @antv/l7 @antv/larkmap
 
 ## 使用
 
-```tsx | pure
-import { LarkMap } from '@antv/larkmap';
+```jsx | pure
 import React from 'react';
+import { LarkMap } from '@antv/larkmap';
 
 const config = {
   mapType: 'GaodeV1',
@@ -46,16 +46,16 @@ export default () => {
 
 ## 体验
 
-```tsx | compact
-import { LarkMap } from '@antv/larkmap';
+```jsx
 import React from 'react';
+import { LarkMap } from '@antv/larkmap';
 
 const config = {
-  mapType: 'GaodeV1',
+  mapType: 'Gaode',
   mapOptions: {
     style: 'light',
     center: [120.210792, 30.246026],
-    zoom: 10,
+    zoom: 8,
   },
 };
 

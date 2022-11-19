@@ -26,7 +26,9 @@ export default () => {
   };
 
   useEffect(() => {
-    fetch('https://gw.alipayobjects.com/os/antfincdn/Y8eGLb9j9v/hangzhou-district.json')
+    fetch(
+      'https://gw.alipayobjects.com/os/antfincdn/Y8eGLb9j9v/hangzhou-district.json',
+    )
       .then((response) => response.json())
       .then((data: any) => {
         setSource((prevState) => ({ ...prevState, data }));
@@ -34,7 +36,7 @@ export default () => {
   }, []);
 
   const config = {
-    mapType: 'GaodeV1' as const,
+    mapType: 'Gaode' as const,
     mapOptions: {
       WebGLParams: {
         preserveDrawingBuffer: true,
@@ -57,7 +59,12 @@ export default () => {
         <PolygonLayer {...layerOptions} source={source} />
         <ExportImageControl onExport={onExport} />
       </LarkMap>
-      <Modal title="Image Modal" visible={isModalOpen} onOk={handle} onCancel={handle}>
+      <Modal
+        title="Image Modal"
+        visible={isModalOpen}
+        onOk={handle}
+        onCancel={handle}
+      >
         <Image src={imageData} />
       </Modal>
     </>

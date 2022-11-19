@@ -21,7 +21,13 @@ const bubbleLayerOptions: Omit<BubbleLayerProps, 'source'> = {
   label: {
     field: 'temperature',
     visible: true,
-    style: { fill: '#454d64', fontSize: 18, stroke: '#fff', strokeWidth: 2, textOffset: [0, -20] as [number, number] },
+    style: {
+      fill: '#454d64',
+      fontSize: 18,
+      stroke: '#fff',
+      strokeWidth: 2,
+      textOffset: [0, -20] as [number, number],
+    },
   },
 };
 
@@ -33,7 +39,9 @@ export default () => {
   });
 
   useEffect(() => {
-    fetch('https://gw.alipayobjects.com/os/antfincdn/Lx96%24Pnwhw/city-weather.json')
+    fetch(
+      'https://gw.alipayobjects.com/os/antfincdn/Lx96%24Pnwhw/city-weather.json',
+    )
       .then((response) => response.json())
       .then((data: any) => {
         setSource((prevState) => ({ ...prevState, data }));
@@ -41,7 +49,7 @@ export default () => {
   }, []);
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
+    <LarkMap mapType="Gaode" style={{ height: '300px' }}>
       <BubbleLayer {...layerOptions} source={source} />
     </LarkMap>
   );

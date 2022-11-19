@@ -1,5 +1,5 @@
 import type { ImageLayerProps } from '@antv/larkmap';
-import { LarkMap, ImageLayer } from '@antv/larkmap';
+import { ImageLayer, LarkMap } from '@antv/larkmap';
 import React, { useState } from 'react';
 
 const layerOptions: Omit<ImageLayerProps, 'source'> = {
@@ -20,7 +20,7 @@ export default () => {
   });
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
+    <LarkMap mapType="Gaode" style={{ height: '300px' }}>
       <ImageLayer {...options} source={source} />
     </LarkMap>
   );

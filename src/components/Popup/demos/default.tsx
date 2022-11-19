@@ -11,8 +11,17 @@ export default () => {
   };
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '400px' }} onSceneLoaded={onSceneLoaded}>
-      <Popup lngLat={lngLat} title={<div>实时展示经纬度</div>} closeButton={false} closeOnClick={false}>
+    <LarkMap
+      mapType="Gaode"
+      style={{ height: '400px' }}
+      onSceneLoaded={onSceneLoaded}
+    >
+      <Popup
+        lngLat={lngLat}
+        title={<div>实时展示经纬度</div>}
+        closeButton={false}
+        closeOnClick={false}
+      >
         <div>lat: {lngLat.lat}</div>
         <div>lng: {lngLat.lng}</div>
       </Popup>

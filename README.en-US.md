@@ -16,9 +16,9 @@
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/antvis/LarkMap.svg)](http://isitmaintained.com/project/antvis/LarkMap 'Percentage of issues still open') [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/antvis/LarkMap.svg)](http://isitmaintained.com/project/antvis/LarkMap 'Average time to resolve an issue')
 
 <p align="center">
-  <a href="https://larkmap.antv.vision/en">Website</a> •
-  <a href="https://larkmap.antv.vision/guide">Quick Start</a> •
-  <a href="https://larkmap.antv.vision/components/larkmap">Components</a>
+  <a href="https://larkmap.antv.antgroup.com">Website</a> •
+  <a href="https://larkmap.antv.antgroup.com/guide">Quick Start</a> •
+  <a href="https://larkmap.antv.antgroup.com/components/lark-map">Components</a>
 </p>
 
 </div>

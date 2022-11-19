@@ -1,9 +1,14 @@
 import type { LegendItems } from '@antv/larkmap';
-import { CustomControl, LarkMap, ChoroplethLayer, LegendCategories } from '@antv/larkmap';
+import {
+  ChoroplethLayer,
+  CustomControl,
+  LarkMap,
+  LegendCategories,
+} from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
 const config = {
-  mapType: 'GaodeV1' as const,
+  mapType: 'Gaode' as const,
   mapOptions: {
     style: 'light',
     center: [-100.45397511735388, 37.73927151161908],
@@ -28,7 +33,9 @@ export default () => {
   const [legendItems, setLegendItems] = useState<LegendItems[]>([]);
 
   useEffect(() => {
-    fetch('https://gw.alipayobjects.com/os/bmw-prod/9ae0f4f6-01fa-4e08-8f19-ab7ef4548e8c.json')
+    fetch(
+      'https://gw.alipayobjects.com/os/bmw-prod/9ae0f4f6-01fa-4e08-8f19-ab7ef4548e8c.json',
+    )
       .then((res) => res.json())
       .then((res) => setUnemployment(res));
   }, []);

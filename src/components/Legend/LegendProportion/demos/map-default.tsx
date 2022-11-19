@@ -1,5 +1,10 @@
 import type { BubbleLayerProps, LegendItems } from '@antv/larkmap';
-import { BubbleLayer, LarkMap, CustomControl, LegendProportion } from '@antv/larkmap';
+import {
+  BubbleLayer,
+  CustomControl,
+  LarkMap,
+  LegendProportion,
+} from '@antv/larkmap';
 import { max, min } from 'lodash-es';
 import React, { useEffect, useState } from 'react';
 
@@ -42,7 +47,9 @@ export default () => {
   const [source, setSource] = useState([]);
 
   useEffect(() => {
-    fetch('https://gw.alipayobjects.com/os/bmw-prod/4e466b25-1782-4772-8ec4-8af6f1289044.json')
+    fetch(
+      'https://gw.alipayobjects.com/os/bmw-prod/4e466b25-1782-4772-8ec4-8af6f1289044.json',
+    )
       .then((response) => response.json())
       .then((res: any) => {
         const result = res.features.map(({ properties, geometry }) => {
@@ -59,11 +66,16 @@ export default () => {
   const Legend = () => {
     if (!legendItems.length) return null;
     const label = legendItems.map((item) => item.value);
-    return <LegendProportion labels={[min(label), max(label)]} className="demo_cls" />;
+    return (
+      <LegendProportion
+        labels={[min(label), max(label)]}
+        className="demo_cls"
+      />
+    );
   };
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: 500 }}>
+    <LarkMap mapType="Gaode" style={{ height: 500 }}>
       <BubbleLayer
         {...layerOptions}
         source={{ data: source, parser: { type: 'json', x: 'lng', y: 'lat' } }}

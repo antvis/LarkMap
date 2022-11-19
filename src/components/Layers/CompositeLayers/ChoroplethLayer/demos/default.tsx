@@ -30,7 +30,9 @@ export default () => {
   });
 
   useEffect(() => {
-    fetch('https://gw.alipayobjects.com/os/antfincdn/Y8eGLb9j9v/hangzhou-district.json')
+    fetch(
+      'https://gw.alipayobjects.com/os/antfincdn/Y8eGLb9j9v/hangzhou-district.json',
+    )
       .then((response) => response.json())
       .then((data: any) => {
         setSource((prevState) => ({ ...prevState, data }));
@@ -38,7 +40,7 @@ export default () => {
   }, []);
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
+    <LarkMap mapType="Gaode" style={{ height: '300px' }}>
       <ChoroplethLayer {...options} source={source} />
     </LarkMap>
   );

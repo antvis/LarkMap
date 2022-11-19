@@ -63,7 +63,7 @@ const Draw = () => {
           position: 'absolute',
           top: 16,
           left: 16,
-          zIndex: 1
+          zIndex: 1,
         }}
         onClick={() => {
           setColor(randomRgbColor());
@@ -78,7 +78,7 @@ const Draw = () => {
 const Default = () => {
   return (
     <LarkMap
-      mapType="GaodeV1"
+      mapType="Gaode"
       mapOptions={{
         style: 'dark',
       }}

@@ -25,7 +25,9 @@ export default () => {
   });
 
   useEffect(() => {
-    fetch('https://gw.alipayobjects.com/os/antfincdn/1atwIMvcMo/beijinggongjiaoluxian.json')
+    fetch(
+      'https://gw.alipayobjects.com/os/antfincdn/1atwIMvcMo/beijinggongjiaoluxian.json',
+    )
       .then((response) => response.json())
       .then((data: any) => {
         setSource((prevState) => ({ ...prevState, data }));
@@ -33,7 +35,7 @@ export default () => {
   }, []);
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
+    <LarkMap mapType="Gaode" style={{ height: '300px' }}>
       <LineLayer {...options} source={source} />
     </LarkMap>
   );
