@@ -13,7 +13,7 @@ nav:
 
 ## 介绍
 
-基于 [BubbleLayer](https://l7plot.antv.vision/zh/docs/api/composite-layers/bubble-layer) 封装，用于点数据以气泡形式展示，支持描边、文本标注、多选等功能。
+基于 [BubbleLayer](https://l7plot.antv.antgroup.com/zh/docs/api/composite-layers/bubble-layer) 封装，用于点数据以气泡形式展示，支持描边、文本标注、多选等功能。
 
 ## 代码演示
 

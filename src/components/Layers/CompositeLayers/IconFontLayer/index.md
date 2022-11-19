@@ -13,7 +13,7 @@ nav:
 
 ## 介绍
 
-基于 [IconFontLayer ](https://l7plot.antv.vision/zh/docs/api/composite-layers/icon-font-layer) 封装，用于点数据展示 iconfont 标注。
+基于 [IconFontLayer ](https://l7plot.antv.antgroup.com/zh/docs/api/composite-layers/icon-font-layer) 封装，用于点数据展示 iconfont 标注。
 
 ## 代码演示
 
@@ -155,7 +155,7 @@ icon scale 通常使用枚举类型 cat scale
 
 #### `label.`style
 
-标签样式详细配置见 [TextLayerStyleOptions](https://l7plot.antv.vision/zh/docs/api/composite-layers/text-layer#code-classlanguage-textoptionscodestyle)。
+标签样式详细配置见 [TextLayerStyleOptions](https://l7plot.antv.antgroup.com/zh/docs/api/composite-layers/text-layer#code-classlanguage-textoptionscodestyle)。
 
 ### state
 

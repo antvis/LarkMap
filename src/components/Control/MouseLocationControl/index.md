@@ -24,7 +24,7 @@ nav:
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | transform | 转换光标所在经纬度的回调函数 | `(position: [number, number]) => [number, number]` | - |
-| position | 控件被添加到地图中的位置以及排列方式，详情可见 [控件插槽](https://l7.antv.vision/zh/docs/api/component/control/control#插槽) | [Position](#position) | `'bottomleft'` |
+| position | 控件被添加到地图中的位置以及排列方式，详情可见 [控件插槽](https://l7.antv.antgroup.com/api/component/control/control#插槽) | [Position](#position) | `'bottomleft'` |
 | className | 自定义样式名 | `string` | - |
 | style | 自定义样式 | `CSSProperties` | - |
 | onLocationChange | 光标所在经纬度发生变化时触发的回调 | `(position: [number, number]) => void` | - |

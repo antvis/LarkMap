@@ -13,7 +13,7 @@ nav:
 
 ## 介绍
 
-基于 [PolygonLayer](https://l7plot.antv.vision/zh/docs/api/base-layers/polygon-layer) 封装，PolygonLayer 用于面数据展示。
+基于 [PolygonLayer](https://l7plot.antv.antgroup.com/zh/docs/api/base-layers/polygon-layer) 封装，PolygonLayer 用于面数据展示。
 
 ## 代码演示
 

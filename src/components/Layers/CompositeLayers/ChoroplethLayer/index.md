@@ -13,7 +13,7 @@ nav:
 
 ## 介绍
 
-基于 [ChoroplethLayer](https://l7plot.antv.vision/zh/docs/api/composite-layers/choropleth-layer) 封装，用于面数据展示，支持描边、文本标注、多选等功能。
+基于 [ChoroplethLayer](https://l7plot.antv.antgroup.com/zh/docs/api/composite-layers/choropleth-layer) 封装，用于面数据展示，支持描边、文本标注、多选等功能。
 
 ## 代码演示
 
