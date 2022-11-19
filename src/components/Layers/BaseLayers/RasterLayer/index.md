@@ -25,9 +25,9 @@ nav:
 
 <code src="./demos/rasterImage.tsx" compact></code>
 
-### 数据栅格瓦片示例
-
-<code src="./demos/rasterData.tsx" compact></code>
+[//]: # '### 数据栅格瓦片示例'
+[//]: #
+[//]: # '<code src="./demos/rasterData.tsx" compact></code>'
 
 ## API
 
