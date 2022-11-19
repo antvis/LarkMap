@@ -14,7 +14,7 @@ nav:
 
 ## 介绍
 
-基于 [LineLayer](https://l7plot.antv.vision/zh/docs/api/composite-layers/line-layer) 封装，用于线数据展示。
+基于 [LineLayer](https://l7plot.antv.vision/zh/docs/api/base-layers/line-layer) 封装，用于线数据展示。
 
 ## 代码演示
 
@@ -75,7 +75,7 @@ nav:
 
 ## Event
 
-<embed src="../../../../../docs/common/layer/core-common/event.md"></embed>
+<embed src="../../../../../docs/common/layer/base-common/event.md"></embed>
 
 ## FAQ
 

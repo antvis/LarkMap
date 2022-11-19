@@ -1,7 +1,28 @@
-import { ChoroplethLayer, ChoroplethLayerProps, LarkMap, LarkMapProps } from '@antv/larkmap';
+import { ChoroplethLayer, LarkMap } from '@antv/larkmap';
 import { polygon } from '@turf/turf';
 import { cellToBoundary, latLngToCell } from 'h3-js';
 import React, { useEffect, useState } from 'react';
+
+const config = {
+  mapType: 'Gaode',
+  mapOptions: {
+    style: 'normal',
+    center: [120.210792, 30.246026],
+    zoom: 0,
+  },
+};
+
+const layerOption = {
+  autoFit: true,
+  fillColor: '#5B8FF9',
+  opacity: 0.6,
+  strokeColor: '#fff',
+  lineWidth: 1,
+  state: {
+    active: { strokeColor: 'green', lineWidth: 1.5, lineOpacity: 0.8 },
+    select: { strokeColor: 'red', lineWidth: 1.5, lineOpacity: 0.8 },
+  },
+};
 
 export default () => {
   const [PonitData, setPointData] = useState({
@@ -13,17 +34,10 @@ export default () => {
     features: [],
   });
 
-  const config = {
-    mapType: 'GaodeV1',
-    mapOptions: {
-      style: 'normal',
-      center: [120.210792, 30.246026],
-      zoom: 0,
-    },
-  };
-
   useEffect(() => {
-    fetch('https://gw.alipayobjects.com/os/bmw-prod/2dfb73f7-df5a-46e5-9037-846c481d9e45.json')
+    fetch(
+      'https://gw.alipayobjects.com/os/bmw-prod/2dfb73f7-df5a-46e5-9037-846c481d9e45.json',
+    )
       .then((res) => res.json())
       .then((data) => {
         setPointData({ ...PonitData, data: data.slice(0, 100000) });
@@ -50,32 +64,10 @@ export default () => {
     setPolygonData({ ...polygonData, features: polygonDatas });
   }, [PonitData]);
 
-  const layerOption = {
-    autoFit: true,
-    fillColor: '#5B8FF9',
-    // field: 'roll_totalvalue',
-    //   value: [
-    //     'rgb(102,37,6)',
-    //     'rgb(153,52,4)',
-    //     'rgb(204,76,2)',
-    //     'rgb(236,112,20)',
-    //     'rgb(254,153,41)',
-    //     'rgb(254,196,79)',
-    //     'rgb(254,227,145)',
-    //   ],
-    opacity: 0.6,
-    strokeColor: '#fff',
-    lineWidth: 1,
-    state: {
-      active: { strokeColor: 'green', lineWidth: 1.5, lineOpacity: 0.8 },
-      select: { strokeColor: 'red', lineWidth: 1.5, lineOpacity: 0.8 },
-    },
-  };
-
   return (
-    <LarkMap {...(config as LarkMapProps)} style={{ height: '60vh' }}>
+    <LarkMap {...config} style={{ height: '60vh' }}>
       <ChoroplethLayer
-        {...(layerOption as unknown as ChoroplethLayerProps)}
+        {...layerOption}
         source={{ data: polygonData, parser: { type: 'geojson' } }}
       />
     </LarkMap>

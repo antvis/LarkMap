@@ -12,7 +12,7 @@ const MyComponent = () => {
 };
 
 export default () => (
-  <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
+  <LarkMap mapType="Gaode" style={{ height: '300px' }}>
     <MyComponent />
   </LarkMap>
 );

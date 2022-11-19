@@ -18,11 +18,11 @@ const DefaultBubbleLayerStyle = {
   label: {
     field: 'temperature',
     visible: true,
-    style: { fill: '#454d64', fontSize: 18, textAnchor: 'center' as const, textOffset: [0, 0] },
+    style: { fill: '#454d64', fontSize: 18, textAnchor: 'center' as const, textOffset: [0, 0] as [number, number] },
   },
   minZoom: 0,
   maxZoom: 24,
-  blend: 'normal',
+  blend: 'normal' as const,
 };
 
 const bubbleLayerOptions: Omit<BubbleLayerProps, 'source'> = {
@@ -49,7 +49,7 @@ export default () => {
   }, []);
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '400px', overflow: 'hidden' }}>
+    <LarkMap mapType="Gaode" style={{ height: '400px', overflow: 'hidden' }}>
       <CustomControl position="topleft" style={{ width: '300px', background: '#fff', padding: '10px' }}>
         <h3>属性配置</h3>
         <BubbleLayerStyleAttribute

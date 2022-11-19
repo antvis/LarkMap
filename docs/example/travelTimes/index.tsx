@@ -19,7 +19,7 @@ const CountyUnemployment = () => {
 
   /** 地图属性配置 */
   const config: LarkMapProps = {
-    mapType: 'GaodeV1',
+    mapType: 'Gaode',
     mapOptions: {
       style: 'normal',
       pitch: 0,

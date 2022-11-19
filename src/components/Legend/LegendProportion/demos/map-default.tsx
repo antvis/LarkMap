@@ -1,5 +1,5 @@
 import type { BubbleLayerProps, LegendItems } from '@antv/larkmap';
-import { BubbleLayer, LarkMap, CustomControl, LegendProportion } from '@antv/larkmap';
+import { BubbleLayer, CustomControl, LarkMap, LegendProportion } from '@antv/larkmap';
 import { max, min } from 'lodash-es';
 import React, { useEffect, useState } from 'react';
 
@@ -63,7 +63,7 @@ export default () => {
   };
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: 500 }}>
+    <LarkMap mapType="Gaode" style={{ height: 500 }}>
       <BubbleLayer
         {...layerOptions}
         source={{ data: source, parser: { type: 'json', x: 'lng', y: 'lat' } }}

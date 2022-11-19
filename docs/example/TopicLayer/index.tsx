@@ -1,8 +1,8 @@
-import { LarkMap, LarkMapProps, PointLayer, Popup } from '@antv/larkmap';
+import { LarkMap, PointLayer, Popup } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
 const config = {
-  mapType: 'GaodeV1',
+  mapType: 'Gaode',
   mapOptions: {
     style: 'normal',
     center: [120.210792, 30.246026],
@@ -39,25 +39,34 @@ const layerOptions = {
 };
 
 export default () => {
-  const [pointData, setPointData] = useState([]);
+  const [pointData, setPointData] = useState({
+    data: [],
+    parser: { type: 'json', x: 'lat', y: 'lng' },
+  });
   const [lngLat, setLngLat] = useState({ lng: 120.210792, lat: 30.246026 });
   useEffect(() => {
-    fetch('https://gw.alipayobjects.com/os/bmw-prod/6f72e4f7-ac8c-41f6-bcac-9745100083ba.json')
+    fetch(
+      'https://gw.alipayobjects.com/os/bmw-prod/6f72e4f7-ac8c-41f6-bcac-9745100083ba.json',
+    )
       .then((res) => res.json())
-      .then((data) => setPointData(data));
+      .then((data) => setPointData({ ...pointData, data: data }));
   }, []);
 
-  const onCreated = (layer) => {
-    layer.on('mousemove', (e) => setLngLat(e.lngLat));
-  };
   return (
-    <LarkMap {...(config as LarkMapProps)} style={{ height: '60vh' }}>
+    <LarkMap {...config} style={{ height: '60vh' }}>
       <PointLayer
-        source={{ data: pointData, parser: { type: 'json', x: 'lat', y: 'lng' } }}
-        onCreated={onCreated}
+        source={pointData}
+        onMouseMove={(layer) => {
+          setLngLat(layer.lngLat);
+        }}
         {...layerOptions}
       />
-      <Popup lngLat={lngLat} closeButton={false} closeOnClick={false} anchor="bottom-left">
+      <Popup
+        lngLat={lngLat}
+        closeButton={false}
+        closeOnClick={false}
+        anchor="bottom-left"
+      >
         <p>lat: {lngLat.lat}</p>
         <p>lng: {lngLat.lng}</p>
       </Popup>

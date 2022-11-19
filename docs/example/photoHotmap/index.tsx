@@ -29,41 +29,41 @@ const heatmapCfg = {
   },
 };
 
+const config = {
+  mapType: 'Gaode',
+  mapOptions: {
+    style: 'normal',
+    center: [10, 44],
+    pitch: 40,
+    zoom: 3.7,
+  },
+};
+
 function PhotohotMap() {
-  const [heatmapData, setHeatmapData] = useState('');
+  const [heatmapData, setHeatmapData] = useState({
+    data: [],
+    parser: { type: 'json', x: 'lat', y: 'lng' },
+    transforms: [
+      {
+        type: 'hexagon',
+        size: 50000,
+        field: 'value',
+        method: 'sum',
+      },
+    ],
+  });
 
   useEffect(() => {
-    fetch('https://gw.alipayobjects.com/os/bmw-prod/16cd4004-b21c-455e-a2e4-c396a5ecebe1.json')
+    fetch(
+      'https://gw.alipayobjects.com/os/bmw-prod/16cd4004-b21c-455e-a2e4-c396a5ecebe1.json',
+    )
       .then((res) => res.json())
-      .then((res) => setHeatmapData(res));
+      .then((res) => setHeatmapData({ ...heatmapData, data: res }));
   }, []);
 
   return (
-    <LarkMap
-      mapType="GaodeV1"
-      style={{ height: '60vh' }}
-      mapOptions={{
-        style: 'normal',
-        center: [10, 44],
-        pitch: 40,
-        zoom: 3.7,
-      }}
-    >
-      <HeatmapLayer
-        {...heatmapCfg}
-        source={{
-          data: heatmapData,
-          parser: { type: 'json', x: 'lat', y: 'lng' },
-          transforms: [
-            {
-              type: 'hexagon',
-              size: 50000,
-              field: 'value',
-              method: 'sum',
-            },
-          ],
-        }}
-      />
+    <LarkMap {...config} style={{ height: '60vh' }}>
+      <HeatmapLayer {...heatmapCfg} source={heatmapData} />
     </LarkMap>
   );
 }

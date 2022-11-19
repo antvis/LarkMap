@@ -44,7 +44,7 @@ const Draw = () => {
 const Default = () => {
   return (
     <LarkMap
-      mapType="GaodeV1"
+      mapType="Gaode"
       mapOptions={{
         style: 'dark',
       }}

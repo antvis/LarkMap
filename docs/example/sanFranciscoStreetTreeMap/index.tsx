@@ -4,7 +4,7 @@ import { Popover, Select, Slider, Typography } from 'antd';
 import { cloneDeep, get, set } from 'lodash';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { SketchPicker } from 'react-color';
-import { heatmapCfg, scaleType, shapeOpt } from './config';
+import { heatmapCfg, mapCfg, scaleType, shapeOpt } from './config';
 import styles from './index.less';
 
 const { Paragraph } = Typography;
@@ -14,7 +14,9 @@ function StreetMap() {
   const [scene, setScene] = useState<Scene>();
 
   useEffect(() => {
-    fetch('https://gw.alipayobjects.com/os/bmw-prod/44884a0c-b82b-4352-a15d-7c8ba6e44c54.csv')
+    fetch(
+      'https://gw.alipayobjects.com/os/bmw-prod/44884a0c-b82b-4352-a15d-7c8ba6e44c54.csv',
+    )
       .then((res) => res.text())
       .then((res) => setHeatmapData(res));
   }, []);
@@ -38,15 +40,9 @@ function StreetMap() {
 
   return (
     <LarkMap
-      mapType="GaodeV1"
+      {...mapCfg}
       style={{ height: '60vh' }}
-      mapOptions={{
-        style: 'normal',
-        center: [-122.4413967, 37.77596769],
-        zoom: 14,
-        pitch: 30,
-      }}
-      onSceneLoaded={(s: Scene) => setScene(s)}
+      onSceneLoaded={(scene: Scene) => setScene(scene)}
     >
       {heatmapData && (
         // @ts-ignore
@@ -128,7 +124,9 @@ function StreetMap() {
                       />
                     }
                   >
-                    <div style={{ background: `${item}`, width: 20, height: 20 }} />
+                    <div
+                      style={{ background: `${item}`, width: 20, height: 20 }}
+                    />
                   </Popover>
                 );
               })}

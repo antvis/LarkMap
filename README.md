@@ -16,9 +16,9 @@
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/antvis/LarkMap.svg)](http://isitmaintained.com/project/antvis/LarkMap 'Percentage of issues still open') [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/antvis/LarkMap.svg)](http://isitmaintained.com/project/antvis/LarkMap 'Average time to resolve an issue')
 
 <p align="center">
-  <a href="https://larkmap.antv.vision/en">网站</a> •
-  <a href="https://larkmap.antv.vision/guide">快速开始</a> •
-  <a href="https://larkmap.antv.vision/components/larkmap">组件</a>
+  <a href="https://larkmap.antv.antgroup.com">网站</a> •
+  <a href="https://larkmap.antv.antgroup.com/guide">快速开始</a> •
+  <a href="https://larkmap.antv.antgroup.com/components/lark-map">组件</a>
 </p>
 
 </div>
@@ -31,9 +31,9 @@ $ npm install @antv/l7 @antv/larkmap
 
 ## 🔨 使用
 
-```tsx
-import { LarkMap } from '@antv/larkmap';
+```jsx
 import React from 'react';
+import { LarkMap } from '@antv/larkmap';
 
 const config = {
   mapType: 'Mapbox',

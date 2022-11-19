@@ -35,7 +35,6 @@ nav:
 | offsets | Popup 相对于锚点的偏移 | `[number, number]` | `[0, 0]` |
 | autoPan | 当 Popup 展示或者位置发生变化时，地图是否要自动平移至 Popup 所在位置 | `boolean` | `false` |
 | autoClose | 当有其他 Popup 展示时，是否自动关闭当前气泡 | `boolean` | `true` |
-| followCursor | Popup 是否跟随光标移动，若设为 true，则 lngLat 配置无效 | `boolean` | `false` |
 | closeButton | 是否展示关闭 Popup 图标 | `boolean` | `true` |
 | closeButtonOffsets | 关闭 Popup 图标的相对偏移 | `[number, number]` | - |
 | stopPropagation | Popup 上的鼠标事件是否要阻止其冒泡 | `boolean` | `true` |
@@ -53,8 +52,8 @@ nav:
 
 ### LayerField
 
-| 参数        | 说明                        | 类型                        |
-| ----------- | --------------------------- | --------------------------- |
-| field       | 字段的 key 值字符串         | `string`                    |
+| 参数        | 说明                        | 类型                                |
+| ----------- | --------------------------- | ----------------------------------- |
+| field       | 字段的 key 值字符串         | `string`                            |
 | formatField | 对展示的 key 字段进行格式化 | `(field: string) => string｜string` |
 | formatValue | 对展示的 value 值进行格式化 | `(value: any) => any｜string`       |

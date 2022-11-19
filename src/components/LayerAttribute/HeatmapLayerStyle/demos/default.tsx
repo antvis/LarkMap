@@ -34,7 +34,7 @@ const DefaultHeatmapLayerStyle = {
   },
   minZoom: 0,
   maxZoom: 24,
-  blend: 'normal',
+  blend: 'normal' as const,
 };
 
 const heatmapLayerOptions: Omit<HeatmapLayerProps, 'source'> = {
@@ -59,7 +59,7 @@ export default () => {
   }, []);
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '400px', overflow: 'hidden' }}>
+    <LarkMap mapType="Gaode" style={{ height: '400px', overflow: 'hidden' }}>
       <CustomControl
         position="topleft"
         style={{

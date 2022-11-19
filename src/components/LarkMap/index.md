@@ -34,7 +34,7 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 | style | 容器行内样式 | `CSSProperties` | -- |
 | className | 容器类名 | `string` | -- |
 | map | 地图实例，可选，也可以通过配置项自动生成实例，详见 [L7 map](https://l7.antv.vision/zh/docs/api/map/map) | `MapInstance` | -- |
-| mapType | 地图类型 | `"GaodeV1"｜"GaodeV2"｜"Mapbox"｜"Map"` | `'Mapbox'` |
+| mapType | 地图类型 | `"Gaode"｜"GaodeV2"｜"Mapbox"｜"Map"` | `'Gaode'` |
 | mapOptions | 地图配置项，配合地图类型配置地图 | `MapOptions` | -- |
 | onSceneLoaded | 场景加载成功回调 | `(scene: Scene) => void` | -- |
 | logoPosition | logo 展示位置，配置项详见 [L7 logoPosition](https://l7.antv.vision/zh/docs/api/scene#logoposition) | `PositionName` | `'bottomleft'` |
@@ -44,7 +44,7 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 
 ### MapOptions
 
-> 地图底图类型不同时，MapOptions 配置项不完全相同，比如 maxZoom，GaodeV1 最大缩放等级 18，Mapbox 最大缩放等级 22。除此之外还有，底图的交互状态配置，zoomEnable、dragEnable 等。各配置项可详见各官网：高德地图 [配置项](https://lbs.amap.com/api/javascript-api/reference/map)；Mapbox 地图 [配置项](https://docs.mapbox.com/mapbox-gl-js/api/map/#map-parameters)。
+> 地图底图类型不同时，MapOptions 配置项不完全相同，比如 maxZoom，Gaode 最大缩放等级 18，Mapbox 最大缩放等级 22。除此之外还有，底图的交互状态配置，zoomEnable、dragEnable 等。各配置项可详见各官网：高德地图 [配置项](https://lbs.amap.com/api/javascript-api/reference/map)；Mapbox 地图 [配置项](https://docs.mapbox.com/mapbox-gl-js/api/map/#map-parameters)。
 
 | 参数     | 说明                                                                               | 类型     | 默认值   |
 | -------- | ---------------------------------------------------------------------------------- | -------- | -------- |
@@ -158,7 +158,7 @@ export default () => {
   };
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '300px' }} onSceneLoaded={onSceneLoaded}>
+    <LarkMap mapType="Gaode" style={{ height: '300px' }} onSceneLoaded={onSceneLoaded}>
       <h2 style={{ position: 'absolute', left: '10px' }}>LarkMap</h2>
     </LarkMap>
   );
@@ -178,7 +178,7 @@ export default () => {
   }, []);
 
   return (
-    <LarkMap ref={ref} mapType="GaodeV1" style={{ height: '300px' }}>
+    <LarkMap ref={ref} mapType="Gaode" style={{ height: '300px' }}>
       <h2 style={{ position: 'absolute', left: '10px' }}>LarkMap</h2>
     </LarkMap>
   );

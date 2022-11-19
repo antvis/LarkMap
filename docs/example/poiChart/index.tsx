@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 /** 地图属性配置 */
 const larkMapConfig: LarkMapProps = {
-  mapType: 'GaodeV1',
+  mapType: 'Gaode',
   mapOptions: {
     style: 'normal',
     pitch: 0,
@@ -49,8 +49,6 @@ const myPointLayerTextOptions: Omit<PointLayerProps, 'source'> = {
 };
 
 const PoiChart = () => {
-  const [myPointLayerOpt] = useState(myPointLayerOptions);
-  const [myPointLayerTextOpt] = useState(myPointLayerTextOptions);
   const [source, setSource] = useState({
     data: [],
     parser: { type: 'geojson' },
@@ -58,7 +56,9 @@ const PoiChart = () => {
   });
 
   useEffect(() => {
-    fetch('https://gw.alipayobjects.com/os/bmw-prod/4e466b25-1782-4772-8ec4-8af6f1289044.json')
+    fetch(
+      'https://gw.alipayobjects.com/os/bmw-prod/4e466b25-1782-4772-8ec4-8af6f1289044.json',
+    )
       .then((res) => res.json())
       .then((data: any) => {
         setSource((prevState) => ({ ...prevState, data }));
@@ -67,8 +67,8 @@ const PoiChart = () => {
 
   return (
     <LarkMap {...larkMapConfig} style={{ height: '60vh' }}>
-      <PointLayer {...myPointLayerOpt} source={source} />
-      <PointLayer {...myPointLayerTextOpt} source={source} />
+      <PointLayer {...myPointLayerOptions} source={source} />
+      <PointLayer {...myPointLayerTextOptions} source={source} />
     </LarkMap>
   );
 };

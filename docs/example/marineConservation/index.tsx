@@ -1,4 +1,4 @@
-import { LarkMap, LegendCategories, PointLayer, Popup } from '@antv/larkmap';
+import { LarkMap, PointLayer, Popup } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 import { LayerConfig, MapConfig } from './helper';
 import Legend from './Legend';
@@ -8,7 +8,9 @@ export default () => {
   const [info, setInfo] = useState<Record<string, any>>({});
 
   useEffect(() => {
-    fetch('https://gw.alipayobjects.com/os/bmw-prod/b056dc66-1d43-4167-a11e-9d0ada9cfec8.csv')
+    fetch(
+      'https://gw.alipayobjects.com/os/bmw-prod/b056dc66-1d43-4167-a11e-9d0ada9cfec8.csv',
+    )
       .then((res) => res.text())
       .then((data) => {
         setSource({
@@ -31,8 +33,8 @@ export default () => {
       <PointLayer
         {...LayerConfig}
         source={source}
-        onCreated={(layer) => {
-          layer?.on('mouseenter', onPointMouseenter);
+        onMouseMove={(layer) => {
+          onPointMouseenter(layer);
         }}
       />
       {info?.Longitude && (
@@ -51,8 +53,12 @@ export default () => {
           >
             名称：{info.ChineseName}
           </p>
-          <p style={{ width: 250, overflow: 'hidden' }}>省份：{info.Province}</p>
-          <p style={{ width: 250, overflow: 'hidden' }}>面积：{info.Area}(km2)</p>
+          <p style={{ width: 250, overflow: 'hidden' }}>
+            省份：{info.Province}
+          </p>
+          <p style={{ width: 250, overflow: 'hidden' }}>
+            面积：{info.Area}(km2)
+          </p>
         </Popup>
       )}
     </LarkMap>

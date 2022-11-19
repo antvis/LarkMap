@@ -46,7 +46,7 @@ const SfContour = () => {
   /** 地图属性配置 */
   const larkMapConfig: LarkMapProps = useMemo(() => {
     return {
-      mapType: 'GaodeV1',
+      mapType: 'Gaode',
       mapOptions: {
         style: 'normal',
         pitch: 50,

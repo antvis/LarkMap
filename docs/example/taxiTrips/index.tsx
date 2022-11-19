@@ -2,7 +2,7 @@ import { LarkMap, LarkMapProps, LineLayer, PointLayer } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
 const config = {
-  mapType: 'GaodeV1',
+  mapType: 'Gaode',
   mapOptions: {
     style: 'normal',
     center: [-73.993896, 40.75011],
@@ -52,49 +52,48 @@ const dropoffPointLayerStyle = {
 };
 
 export default () => {
-  const [source, setSource] = useState('');
+  const [lineData, setLineData] = useState({
+    data: '',
+    parser: {
+      type: 'csv',
+      y: 'pickup_latitude',
+      x: 'pickup_longitude',
+      y1: 'dropoff_latitude',
+      x1: 'dropoff_longitude',
+    },
+  });
+  const [pickupPointData, setPickupPointData] = useState({
+    data: '',
+    parser: {
+      type: 'csv',
+      y: 'pickup_latitude',
+      x: 'pickup_longitude',
+    },
+  });
+  const [dropoffPointData, setDropoffPoint] = useState({
+    data: '',
+    parser: {
+      type: 'csv',
+      y: 'dropoff_latitude',
+      x: 'dropoff_longitude',
+    },
+  });
   useEffect(() => {
-    fetch('https://gw.alipayobjects.com/os/bmw-prod/4d3e5c6e-d3d6-410e-92bc-2e3fe6745a24.csv')
+    fetch(
+      'https://gw.alipayobjects.com/os/bmw-prod/4d3e5c6e-d3d6-410e-92bc-2e3fe6745a24.csv',
+    )
       .then((res) => res.text())
-      .then((data) => setSource(data));
+      .then((data) => {
+        setLineData({ ...lineData, data: data });
+        setPickupPointData({ ...pickupPointData, data: data });
+        setDropoffPoint({ ...dropoffPointData, data: data });
+      });
   }, []);
   return (
     <LarkMap {...(config as LarkMapProps)} style={{ height: '60vh' }}>
-      <LineLayer
-        source={{
-          data: source,
-          parser: {
-            type: 'csv',
-            y: 'pickup_latitude',
-            x: 'pickup_longitude',
-            y1: 'dropoff_latitude',
-            x1: 'dropoff_longitude',
-          },
-        }}
-        {...lineLayerStyle}
-      />
-      <PointLayer
-        source={{
-          data: source,
-          parser: {
-            type: 'csv',
-            y: 'pickup_latitude',
-            x: 'pickup_longitude',
-          },
-        }}
-        {...pickupPointLayerStyle}
-      />
-      <PointLayer
-        source={{
-          data: source,
-          parser: {
-            type: 'csv',
-            y: 'dropoff_latitude',
-            x: 'dropoff_longitude',
-          },
-        }}
-        {...dropoffPointLayerStyle}
-      />
+      <LineLayer source={lineData} {...lineLayerStyle} />
+      <PointLayer source={pickupPointData} {...pickupPointLayerStyle} />
+      <PointLayer source={dropoffPointData} {...dropoffPointLayerStyle} />
     </LarkMap>
   );
 };

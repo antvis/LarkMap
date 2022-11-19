@@ -65,9 +65,9 @@ export default () => {
   }, []);
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '400px' }}>
-      <PolygonLayer {...polygonLayerOptions} source={polygonSource} name="myPolygonLayer" />
-      <LineLayer {...lineLayerOptions} source={lineSource} name="myLineLayer" />
+    <LarkMap mapType="Gaode" style={{ height: '400px' }}>
+      <PolygonLayer {...polygonLayerOptions} source={polygonSource} id="myPolygonLayer" />
+      <LineLayer {...lineLayerOptions} source={lineSource} id="myLineLayer" />
       <LayerPopup
         closeButton={false}
         closeOnClick={false}

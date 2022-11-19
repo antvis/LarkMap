@@ -1,9 +1,9 @@
 import type { LegendItems } from '@antv/larkmap';
-import { LegendIcon, LarkMap, CustomControl, IconImageLayer } from '@antv/larkmap';
+import { CustomControl, IconImageLayer, LarkMap, LegendIcon } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
 const config = {
-  mapType: 'GaodeV1' as const,
+  mapType: 'Gaode' as const,
   mapOptions: {
     style: 'light',
     center: [119.94992, 29.80872] as [number, number],

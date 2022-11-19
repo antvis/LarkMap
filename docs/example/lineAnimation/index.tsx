@@ -16,7 +16,6 @@ export default () => {
   const [imgeLayer, setImagelayer] = useState<ILayer>();
 
   const icons = 'https://gw.alipayobjects.com/zos/bmw-prod/e21321e0-8f4a-474f-a0ee-2176492bb824.svg';
-  // const icons = "https://gw.alipayobjects.com/zos/bmw-prod/b2585d77-6ef3-460b-872f-fe3a7a94163b.svg"
   let timer: any = null;
   let count = 0;
   let lineData: any = [];
@@ -83,7 +82,7 @@ export default () => {
       maxZoom: 12.5,
       minZoom: 8,
     },
-    mapType: 'GaodeV1',
+    mapType: 'Gaode',
   };
 
   const onSceneLoaded = (scene: Scene) => {

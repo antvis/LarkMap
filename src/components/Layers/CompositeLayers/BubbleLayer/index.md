@@ -269,7 +269,7 @@ export default () => {
   };
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
+    <LarkMap mapType="Gaode" style={{ height: '300px' }}>
       <BubbleLayer
         ref={bubbleLayerRef}
         source={source}
@@ -308,7 +308,7 @@ export default () => {
   };
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '300px' }}>
+    <LarkMap mapType="Gaode" style={{ height: '300px' }}>
       <BubbleLayer
         ref={bubbleLayerRef}
         source={source}

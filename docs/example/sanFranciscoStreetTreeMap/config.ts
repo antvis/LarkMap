@@ -1,3 +1,13 @@
+export const mapCfg = {
+  mapType: 'Gaode',
+  mapOptions: {
+    style: 'normal',
+    center: [-122.4413967, 37.77596769],
+    zoom: 14,
+    pitch: 30,
+  },
+};
+
 export const shapeOpt = [
   { label: 'circle', value: 'circle' },
   { label: 'square', value: 'square' },

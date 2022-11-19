@@ -11,7 +11,7 @@ const DefaultChoroplethLayerStyle = {
   fillColor: {
     field: 'adcode',
     value: ['#0f9960', '#33a02c', '#377eb8'],
-    scale: { type: 'quantile' },
+    scale: { type: 'quantile' as const },
   },
   opacity: 0.3,
   strokeColor: 'blue',
@@ -20,11 +20,11 @@ const DefaultChoroplethLayerStyle = {
   label: {
     field: 'name',
     visible: true,
-    style: { fill: 'blue', fontSize: 18, textAnchor: 'center' as const, textOffset: [0, 0] },
+    style: { fill: 'blue', fontSize: 18, textAnchor: 'center' as const, textOffset: [0, 0] as [number, number] },
   },
   minZoom: 0,
   maxZoom: 24,
-  blend: 'normal',
+  blend: 'normal' as const,
 };
 
 const choroplethLayerOptions: Omit<ChoroplethLayerProps, 'source'> = {
@@ -51,7 +51,7 @@ export default () => {
   }, []);
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '400px', overflow: 'hidden' }}>
+    <LarkMap mapType="Gaode" style={{ height: '400px', overflow: 'hidden' }}>
       <CustomControl position="topleft" style={{ width: '300px', background: '#fff', padding: '10px' }}>
         <h3>属性配置</h3>
         <ChoroplethLayerStyleAttribute

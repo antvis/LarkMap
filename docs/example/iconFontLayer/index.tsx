@@ -6,7 +6,8 @@ const layerOptions: Omit<IconFontLayerProps, 'source'> = {
   autoFit: true,
   iconAtlas: {
     fontFamily: 'iconfont',
-    fontPath: '//at.alicdn.com/t/font_2534097_ao9soua2obv.woff2?t=1622021146076',
+    fontPath:
+      '//at.alicdn.com/t/font_2534097_ao9soua2obv.woff2?t=1622021146076',
     iconFonts: [
       ['smallRain', '&#xe6f7;'],
       ['middleRain', '&#xe61c;'],
@@ -55,23 +56,24 @@ const layerOptions: Omit<IconFontLayerProps, 'source'> = {
 };
 
 export default () => {
-  const [options, setOptions] = useState(layerOptions);
   const [source, setSource] = useState({
     data: [],
     parser: { type: 'json', x: 'lng', y: 'lat' },
   });
 
   useEffect(() => {
-    fetch('https://gw.alipayobjects.com/os/bmw-prod/9eb3f1b5-0c3b-49b2-8221-191d4ba8aa5e.json')
+    fetch(
+      'https://gw.alipayobjects.com/os/bmw-prod/9eb3f1b5-0c3b-49b2-8221-191d4ba8aa5e.json',
+    )
       .then((response) => response.json())
-      .then((data: any[]) => {
+      .then((data) => {
         setSource((prevState) => ({ ...prevState, data }));
       });
   }, []);
 
   return (
-    <LarkMap mapType="GaodeV1" style={{ height: '60vh' }}>
-      <IconFontLayer {...options} source={source} />
+    <LarkMap mapType="Gaode" style={{ height: '60vh' }}>
+      <IconFontLayer {...layerOptions} source={source} />
     </LarkMap>
   );
 };

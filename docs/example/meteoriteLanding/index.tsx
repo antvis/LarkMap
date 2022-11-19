@@ -2,7 +2,7 @@ import { HeatmapLayer, LarkMap, LarkMapProps } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
 const config = {
-  mapType: 'GaodeV1',
+  mapType: 'Gaode',
   mapOptions: {
     style: 'normal',
     center: [48.6, 38],
@@ -10,12 +10,9 @@ const config = {
   },
 };
 
-// const layerOptions = {
-//   shape: 'heatmap',
-// };
 const layerOptions = {
   autoFit: true,
-  shape: 'heatmap' as const,
+  shape: 'heatmap',
   size: {
     field: 'year',
     value: [0, 1],
@@ -25,28 +22,34 @@ const layerOptions = {
     radius: 10,
     opacity: 1,
     rampColors: {
-      colors: ['#FF4818', '#F7B74A', '#FFF598', '#F27DEB', '#8C1EB2', '#421EB2'],
+      colors: [
+        '#FF4818',
+        '#F7B74A',
+        '#FFF598',
+        '#F27DEB',
+        '#8C1EB2',
+        '#421EB2',
+      ],
       positions: [0, 0.2, 0.4, 0.6, 0.8, 1.0],
     },
   },
 };
 
 export default () => {
-  const [source, setSource] = useState('');
+  const [source, setSource] = useState({
+    data: '',
+    parser: { type: 'csv', x: 'reclong', y: 'reclat' },
+  });
   useEffect(() => {
-    fetch('https://gw.alipayobjects.com/os/bmw-prod/60177f74-5330-43f5-9a8c-9e3098640e87.csv')
+    fetch(
+      'https://gw.alipayobjects.com/os/bmw-prod/60177f74-5330-43f5-9a8c-9e3098640e87.csv',
+    )
       .then((res) => res.text())
-      .then((data) => setSource(data));
+      .then((data) => setSource({ ...source, data: data }));
   }, []);
   return (
     <LarkMap {...(config as LarkMapProps)} style={{ height: '60vh' }}>
-      <HeatmapLayer
-        {...layerOptions}
-        source={{
-          data: source,
-          parser: { type: 'csv', x: 'reclong', y: 'reclat' },
-        }}
-      />
+      <HeatmapLayer {...layerOptions} source={source} />
     </LarkMap>
   );
 };
