@@ -29,9 +29,7 @@ export default () => {
   });
 
   useEffect(() => {
-    fetch(
-      'https://gw.alipayobjects.com/os/antfincdn/Lx96%24Pnwhw/city-weather.json',
-    )
+    fetch('https://gw.alipayobjects.com/os/antfincdn/Lx96%24Pnwhw/city-weather.json')
       .then((response) => response.json())
       .then((data: any) => {
         setSource((prevState) => ({ ...prevState, data }));

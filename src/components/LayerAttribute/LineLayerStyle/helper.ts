@@ -44,18 +44,8 @@ export const lineLayerStyleFlatToConfig = (style: Record<string, any>) => {
  * 图层样式数据转平铺数据
  * 将图层样式的数据结构转为表单的平铺数据
  * */
-export const lineLayerStyleConfigToFlat = (
-  styleConfig: LineLayerStyleAttributeValue,
-) => {
-  const {
-    size,
-    color,
-    style,
-    minZoom = 0,
-    maxZoom = 24,
-    blend,
-    animate,
-  } = styleConfig;
+export const lineLayerStyleConfigToFlat = (styleConfig: LineLayerStyleAttributeValue) => {
+  const { size, color, style, minZoom = 0, maxZoom = 24, blend, animate } = styleConfig;
   const config = {
     size: typeof size === 'object' ? undefined : size,
     // @ts-ignore
@@ -76,12 +66,9 @@ export const lineLayerStyleConfigToFlat = (
     blend,
 
     animateEnable: typeof animate === 'object' ? animate?.enable : animate,
-    animateDuration:
-      typeof animate === 'object' ? animate?.duration : undefined,
-    animateInterval:
-      typeof animate === 'object' ? animate?.interval : undefined,
-    animateTrailLength:
-      typeof animate === 'object' ? animate?.trailLength : undefined,
+    animateDuration: typeof animate === 'object' ? animate?.duration : undefined,
+    animateInterval: typeof animate === 'object' ? animate?.interval : undefined,
+    animateTrailLength: typeof animate === 'object' ? animate?.trailLength : undefined,
   };
 
   return config;

@@ -5,10 +5,7 @@ import pointRadius from '../common-schema/point-radius-collapse';
 import strokeCollapse from '../common-schema/stroke-collapse';
 import type { FieldSelectOptionType } from '../types';
 
-export default (
-  fieldList: FieldSelectOptionType[] = [],
-  ribbonList: string[][] = [],
-) => {
+export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] = []) => {
   return {
     type: 'object',
     properties: {

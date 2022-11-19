@@ -1,31 +1,11 @@
-import type {
-  ChoroplethLayerProps,
-  ChoroplethLayerStyleAttributeValue,
-} from '@antv/larkmap';
-import {
-  ChoroplethLayer,
-  ChoroplethLayerStyleAttribute,
-  CustomControl,
-  LarkMap,
-} from '@antv/larkmap';
+import type { ChoroplethLayerProps, ChoroplethLayerStyleAttributeValue } from '@antv/larkmap';
+import { ChoroplethLayer, ChoroplethLayerStyleAttribute, CustomControl, LarkMap } from '@antv/larkmap';
 import 'antd/dist/antd.css';
 import React, { useEffect, useState } from 'react';
 
 const FieldList = [
-  {
-    type: 'string',
-    lable: '区域名称',
-    value: 'name',
-    typeColor: 'green',
-    typeName: '文本',
-  },
-  {
-    type: 'number',
-    lable: '区域编码',
-    value: 'adcode',
-    typeColor: 'gold',
-    typeName: '数值',
-  },
+  { type: 'string', lable: '区域名称', value: 'name', typeColor: 'green', typeName: '文本' },
+  { type: 'number', lable: '区域编码', value: 'adcode', typeColor: 'gold', typeName: '数值' },
 ];
 const DefaultChoroplethLayerStyle = {
   fillColor: {
@@ -40,12 +20,7 @@ const DefaultChoroplethLayerStyle = {
   label: {
     field: 'name',
     visible: true,
-    style: {
-      fill: 'blue',
-      fontSize: 18,
-      textAnchor: 'center' as const,
-      textOffset: [0, 0] as [number, number],
-    },
+    style: { fill: 'blue', fontSize: 18, textAnchor: 'center' as const, textOffset: [0, 0] as [number, number] },
   },
   minZoom: 0,
   maxZoom: 24,
@@ -68,9 +43,7 @@ export default () => {
   });
 
   useEffect(() => {
-    fetch(
-      'https://gw.alipayobjects.com/os/antfincdn/Y8eGLb9j9v/hangzhou-district.json',
-    )
+    fetch('https://gw.alipayobjects.com/os/antfincdn/Y8eGLb9j9v/hangzhou-district.json')
       .then((response) => response.json())
       .then((data: any) => {
         setLayerSource((prevState) => ({ ...prevState, data }));
@@ -79,10 +52,7 @@ export default () => {
 
   return (
     <LarkMap mapType="Gaode" style={{ height: '400px', overflow: 'hidden' }}>
-      <CustomControl
-        position="topleft"
-        style={{ width: '300px', background: '#fff', padding: '10px' }}
-      >
+      <CustomControl position="topleft" style={{ width: '300px', background: '#fff', padding: '10px' }}>
         <h3>属性配置</h3>
         <ChoroplethLayerStyleAttribute
           style={{ overflowX: 'hidden', overflowY: 'auto', maxHeight: '300px' }}

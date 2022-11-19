@@ -17,14 +17,14 @@ nav:
 
 ## 代码演示
 
-<code src="./demos/default.tsx"  defaultShowCode compact></code>
+<code src="./demos/default.tsx" defaultShowCode compact></code>
 
-| 参数      | 说明                                                                                                                       | 类型                  | 默认值      |
-| --------- | -------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
-| position  | 控件被添加到地图中的位置以及排列方式，详情可见 [控件插槽](https://l7.antv.antgroup.com/api/component/control/control#插槽) | [Position](#position) | `'topleft'` |
-| className | 自定义样式名                                                                                                               | `string`              | -           |
-| style     | 自定义样式                                                                                                                 | `CSSProperties`       | -           |
-| children  | 控件内容                                                                                                                   | `ReactNode`           | -           |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| position | 控件被添加到地图中的位置以及排列方式，详情可见 [控件插槽](https://l7.antv.antgroup.com/api/component/control/control#插槽) | [Position](#position) | `'topleft'` |
+| className | 自定义样式名 | `string` | - |
+| style | 自定义样式 | `CSSProperties` | - |
+| children | 控件内容 | `ReactNode` | - |
 
 ### Position
 

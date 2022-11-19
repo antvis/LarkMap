@@ -36,14 +36,8 @@ export default () => {
             handleMenu('zoomIn');
           }}
         />
-        <ContextMenu.Item
-          text="缩小一级"
-          onClick={() => handleMenu('zoomOut')}
-        />
-        <ContextMenu.Item
-          text="缩放至全国范围"
-          onClick={() => handleMenu('center')}
-        />
+        <ContextMenu.Item text="缩小一级" onClick={() => handleMenu('zoomOut')} />
+        <ContextMenu.Item text="缩放至全国范围" onClick={() => handleMenu('center')} />
       </ContextMenu>
     </LarkMap>
   );

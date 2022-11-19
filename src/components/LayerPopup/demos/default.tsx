@@ -54,27 +54,19 @@ export default () => {
   });
 
   useEffect(() => {
-    fetch(
-      'https://gw.alipayobjects.com/os/antfincdn/Y8eGLb9j9v/hangzhou-district.json',
-    )
+    fetch('https://gw.alipayobjects.com/os/antfincdn/Y8eGLb9j9v/hangzhou-district.json')
       .then((response) => response.json())
       .then((data: FeatureCollection) => {
         setPolygonSource({ data });
         setLineSource({
-          data: featureCollection(
-            data.features.map((item) => lineString(coordAll(item), item)),
-          ),
+          data: featureCollection(data.features.map((item) => lineString(coordAll(item), item))),
         });
       });
   }, []);
 
   return (
     <LarkMap mapType="Gaode" style={{ height: '400px' }}>
-      <PolygonLayer
-        {...polygonLayerOptions}
-        source={polygonSource}
-        id="myPolygonLayer"
-      />
+      <PolygonLayer {...polygonLayerOptions} source={polygonSource} id="myPolygonLayer" />
       <LineLayer {...lineLayerOptions} source={lineSource} id="myLineLayer" />
       <LayerPopup
         closeButton={false}

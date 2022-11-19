@@ -31,10 +31,7 @@ export type { PopupProps } from './components/Popup/types';
 export { LayerPopup } from './components/LayerPopup';
 export type { LayerPopupProps } from './components/LayerPopup/types';
 export { ContextMenu } from './components/ContextMenu';
-export type {
-  ContextMenuItemProps,
-  ContextMenuProps,
-} from './components/ContextMenu/types';
+export type { ContextMenuItemProps, ContextMenuProps } from './components/ContextMenu/types';
 export { LocationSearch } from './components/LocationSearch';
 export type {
   LocationSearchProps,

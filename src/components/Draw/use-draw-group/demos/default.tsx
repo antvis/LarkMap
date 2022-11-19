@@ -7,13 +7,7 @@ import styles from './default.less';
  * useDraw 必须在 LarkMap 的子孙组件中调用
  */
 const Draw = () => {
-  const {
-    activeDraw,
-    setActiveDraw,
-    drawMap,
-    drawGroupData,
-    setDrawGroupData,
-  } = useDrawGroup({
+  const { activeDraw, setActiveDraw, drawMap, drawGroupData, setDrawGroupData } = useDrawGroup({
     point: {
       initialData: [
         {
@@ -42,25 +36,19 @@ const Draw = () => {
     <CustomControl className={styles.control}>
       <button
         className={drawMap.point === activeDraw ? styles.active : ''}
-        onClick={() =>
-          setActiveDraw(activeDraw === drawMap.point ? null : drawMap.point)
-        }
+        onClick={() => setActiveDraw(activeDraw === drawMap.point ? null : drawMap.point)}
       >
         绘制点
       </button>
       <button
         className={drawMap.line === activeDraw ? styles.active : ''}
-        onClick={() =>
-          setActiveDraw(activeDraw === drawMap.line ? null : drawMap.line)
-        }
+        onClick={() => setActiveDraw(activeDraw === drawMap.line ? null : drawMap.line)}
       >
         绘制线
       </button>
       <button
         className={drawMap.polygon === activeDraw ? styles.active : ''}
-        onClick={() =>
-          setActiveDraw(activeDraw === drawMap.polygon ? null : drawMap.polygon)
-        }
+        onClick={() => setActiveDraw(activeDraw === drawMap.polygon ? null : drawMap.polygon)}
       >
         绘制面
       </button>

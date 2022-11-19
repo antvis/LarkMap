@@ -13,8 +13,7 @@ group:
 
 ## 默认示例
 
-<code src="./demos/default.tsx" defaultShowCode compact></code>
-
+<code src="./demos/default.tsx" compact></code>
 <!-- <code src="./demos/options.tsx" compact></code> -->
 
 ## API
@@ -28,9 +27,9 @@ const { draw } = useDraw({
 
 ## Params
 
-| 参数    | 说明                             | 类型                                                                     |
-| ------- | -------------------------------- | ------------------------------------------------------------------------ |
-| type    | L7 Draw 中的绘制类型字符串       | `'point' &#124; 'line' &#124; 'polygon' &#124; 'rect' &#124; 'circle'`   |
+| 参数 | 说明 | 类型 |
+| --- | --- | --- |
+| type | L7 Draw 中的绘制类型字符串 | `'point' &#124; 'line' &#124; 'polygon' &#124; 'rect' &#124; 'circle'` |
 | options | type 对应绘制类的 `options` 参数 | [Options](https://antv.vision/L7Draw/docs/draw/point#%E9%85%8D%E7%BD%AE) |
 
 ## Result

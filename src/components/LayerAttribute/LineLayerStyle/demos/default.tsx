@@ -1,31 +1,11 @@
-import type {
-  LineLayerProps,
-  LineLayerStyleAttributeValue,
-} from '@antv/larkmap';
-import {
-  CustomControl,
-  LarkMap,
-  LineLayer,
-  LineLayerStyleAttribute,
-} from '@antv/larkmap';
+import type { LineLayerProps, LineLayerStyleAttributeValue } from '@antv/larkmap';
+import { CustomControl, LarkMap, LineLayer, LineLayerStyleAttribute } from '@antv/larkmap';
 import 'antd/dist/antd.css';
 import React, { useEffect, useState } from 'react';
 
 const FieldList = [
-  {
-    type: 'string',
-    lable: '名称',
-    value: 'line_name',
-    typeColor: 'green',
-    typeName: '文本',
-  },
-  {
-    type: 'number',
-    lable: 'id',
-    value: 'line_id',
-    typeColor: 'green',
-    typeName: '文本',
-  },
+  { type: 'string', lable: '名称', value: 'line_name', typeColor: 'green', typeName: '文本' },
+  { type: 'number', lable: 'id', value: 'line_id', typeColor: 'green', typeName: '文本' },
 ];
 const DefaultLineLayerStyle = {
   color: {
@@ -58,9 +38,7 @@ export default () => {
   });
 
   useEffect(() => {
-    fetch(
-      'https://gw.alipayobjects.com/os/antfincdn/1atwIMvcMo/beijinggongjiaoluxian.json',
-    )
+    fetch('https://gw.alipayobjects.com/os/antfincdn/1atwIMvcMo/beijinggongjiaoluxian.json')
       .then((response) => response.json())
       .then((data: any) => {
         setLayerSource((prevState) => ({ ...prevState, data }));
@@ -69,10 +47,7 @@ export default () => {
 
   return (
     <LarkMap mapType="Gaode" style={{ height: '400px', overflow: 'hidden' }}>
-      <CustomControl
-        position="topleft"
-        style={{ width: '300px', background: '#fff', padding: '10px' }}
-      >
+      <CustomControl position="topleft" style={{ width: '300px', background: '#fff', padding: '10px' }}>
         <h3>属性配置</h3>
         <LineLayerStyleAttribute
           style={{ overflowX: 'hidden', overflowY: 'auto', maxHeight: '300px' }}

@@ -43,10 +43,7 @@ export default () => {
       .then((data: any) => {
         setSource((prevState) => ({
           ...prevState,
-          data: data.list.map((item) => ({
-            ...item,
-            text: `${item.m} ${item.t}`,
-          })),
+          data: data.list.map((item) => ({ ...item, text: `${item.m} ${item.t}` })),
         }));
       });
   }, []);

@@ -1,9 +1,4 @@
-import {
-  LarkMap,
-  LayerSwitchControl,
-  LineLayer,
-  PolygonLayer,
-} from '@antv/larkmap';
+import { LarkMap, LayerSwitchControl, LineLayer, PolygonLayer } from '@antv/larkmap';
 import React from 'react';
 
 export default () => {

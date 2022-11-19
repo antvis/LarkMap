@@ -50,9 +50,7 @@ export const bubbleLayerStyleFlatToConfig = (style: Record<string, any>) => {
  * 图层样式数据转平铺数据
  * 将图层样式的数据结构转为表单的平铺数据
  * */
-export const bubbleLayerStyleConfigToFlat = (
-  styleConfig: BubbleLayerStyleAttributeValue,
-) => {
+export const bubbleLayerStyleConfigToFlat = (styleConfig: BubbleLayerStyleAttributeValue) => {
   const {
     fillColor,
     opacity,
@@ -66,12 +64,9 @@ export const bubbleLayerStyleConfigToFlat = (
     blend,
   } = styleConfig;
   const config = {
-    fillColorField:
-      typeof fillColor === 'object' ? fillColor?.field : undefined,
-    fillColorRibbon:
-      typeof fillColor === 'object' ? fillColor?.value : undefined,
-    fillColorScale:
-      typeof fillColor === 'object' ? fillColor?.scale?.type : undefined,
+    fillColorField: typeof fillColor === 'object' ? fillColor?.field : undefined,
+    fillColorRibbon: typeof fillColor === 'object' ? fillColor?.value : undefined,
+    fillColorScale: typeof fillColor === 'object' ? fillColor?.scale?.type : undefined,
     fillColor: typeof fillColor !== 'object' ? fillColor : undefined,
     fillColorOpacity: opacity,
     strokeColor: strokeColor,
