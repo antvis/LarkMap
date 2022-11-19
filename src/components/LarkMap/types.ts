@@ -40,8 +40,8 @@ export type SceneEventProps = Partial<{
   onContextMenu: SceneEventCallback;
   // 鼠标事件
   onMouseMove: SceneEventCallback;
-  onMousewheel: SceneEventCallback;
-  onMousedown: SceneEventCallback;
+  onMouseWheel: SceneEventCallback;
+  onMouseDown: SceneEventCallback;
   onMouseOver: SceneEventCallback;
   onMouseOut: SceneEventCallback;
   onMouseUp: SceneEventCallback;

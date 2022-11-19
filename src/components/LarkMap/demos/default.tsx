@@ -1,11 +1,12 @@
-import { LarkMap } from '@antv/larkmap';
 import React from 'react';
+import type { LarkMapProps } from '@antv/larkmap';
+import { LarkMap } from '@antv/larkmap';
 
-const config = {
-  mapType: 'Gaode' as const,
+const config: LarkMapProps = {
+  mapType: 'Gaode',
   mapOptions: {
     style: 'light',
-    center: [120.210792, 30.246026] as [number, number],
+    center: [120.210792, 30.246026],
     zoom: 9,
     // token: 'xxxx - token',
   },

@@ -21,8 +21,8 @@ export const SceneEventMap: Record<keyof SceneEventProps, string> = {
   onContextMenu: 'contextmenu',
 
   onMouseMove: 'mousemove',
-  onMousewheel: 'mousewheel',
-  onMousedown: 'mousedown',
+  onMouseWheel: 'mousewheel',
+  onMouseDown: 'mousedown',
   onMouseOver: 'mouseover',
   onMouseOut: 'mouseout',
   onMouseUp: 'mouseup',
