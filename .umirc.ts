@@ -25,6 +25,7 @@ export default defineConfig({
   // Google Analytics
   // analytics: isProduction ? { ga: 'G-CBX7JL1Q57' } : false,
   locales: [['zh-CN', '中文']],
+  // TODO: 各个技术栈栈文案替换
   navs: [
     null,
     {
