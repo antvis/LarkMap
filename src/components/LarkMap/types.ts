@@ -15,8 +15,15 @@ export type LarkMapRefAttributes = {
 };
 
 export type SceneMouseEvent = {
-  lnglat: { lng: number; lat: number } | undefined;
-  pixel: { x: number; y: number } | undefined;
+  lnglat: { lng: number; lat: number };
+  pixel: { x: number; y: number };
+  target: any;
+  type: string;
+};
+
+export type SceneZoomEvent = {
+  lnglat: undefined;
+  pixel: undefined;
   target: any;
   type: string;
 };
@@ -32,37 +39,39 @@ export type SceneDragEvent = {
 /**
  * 场景事件回调
  */
-export type SceneEventCallback<T = undefined | any> = (e?: T) => void;
+export type SceneEventCallback<
+  T = undefined | SceneMouseEvent | SceneDragEvent | SceneZoomEvent,
+> = (e?: T) => void;
 
 /**
  * 场景事件
  */
 export type SceneEventProps = Partial<{
   // 生命周期事件
-  onLoaded: SceneEventCallback;
-  onDestroy: SceneEventCallback;
+  onLoaded: SceneEventCallback<undefined>;
+  onDestroy: SceneEventCallback<undefined>;
   // 地图容器事件
-  onResize: SceneEventCallback;
-  onMapMove: SceneEventCallback;
-  onMoveStart: SceneEventCallback;
-  onMoveEnd: SceneEventCallback;
-  onZoomChange: SceneEventCallback;
-  onZoomStart: SceneEventCallback;
-  onZoomEnd: SceneEventCallback;
+  onResize: SceneEventCallback<undefined>;
+  onMapMove: SceneEventCallback<SceneMouseEvent>;
+  onMoveStart: SceneEventCallback<SceneMouseEvent>;
+  onMoveEnd: SceneEventCallback<SceneMouseEvent>;
+  onZoomChange: SceneEventCallback<SceneZoomEvent>;
+  onZoomStart: SceneEventCallback<SceneZoomEvent>;
+  onZoomEnd: SceneEventCallback<SceneZoomEvent>;
   // 点击事件
-  onClick: SceneEventCallback;
-  onDblclick: SceneEventCallback;
-  onContextMenu: SceneEventCallback;
+  onClick: SceneEventCallback<SceneMouseEvent>;
+  onDblclick: SceneEventCallback<SceneMouseEvent>;
+  onContextMenu: SceneEventCallback<undefined>;
   // 鼠标事件
-  onMouseMove: SceneEventCallback;
-  onMousewheel: SceneEventCallback;
-  onMousedown: SceneEventCallback;
-  onMouseOver: SceneEventCallback;
-  onMouseOut: SceneEventCallback;
-  onMouseUp: SceneEventCallback;
-  onDragStart: SceneEventCallback;
-  onDragging: SceneEventCallback;
-  onDragEnd: SceneEventCallback;
+  onMouseMove: SceneEventCallback<SceneMouseEvent>;
+  onMousewheel: SceneEventCallback<SceneMouseEvent>;
+  onMousedown: SceneEventCallback<SceneMouseEvent>;
+  onMouseOver: SceneEventCallback<SceneMouseEvent>;
+  onMouseOut: SceneEventCallback<SceneMouseEvent>;
+  onMouseUp: SceneEventCallback<SceneMouseEvent>;
+  onDragStart: SceneEventCallback<SceneDragEvent>;
+  onDragging: SceneEventCallback<SceneDragEvent>;
+  onDragEnd: SceneEventCallback<SceneDragEvent>;
 }>;
 
 /**
