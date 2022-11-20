@@ -7,6 +7,6 @@ nav:
   order: 3
 ---
 
-## 13.旧金山街道地图
+## 旧金山街道地图
 
 <code src= './sanFranciscoStreetTreeMap/index.tsx' compact="true" defaultShowCode></code>

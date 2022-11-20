@@ -7,6 +7,6 @@ nav:
   order: 3
 ---
 
-## 02.郑州高铁直达各省份时间
+## 郑州高铁直达各省份时间
 
 <code src= './highspeedTime/index.tsx' compact="true" defaultShowCode></code>

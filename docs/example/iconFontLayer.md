@@ -7,6 +7,6 @@ nav:
   order: 3
 ---
 
-## 24.各地天气标注
+## 各地天气标注
 
 <code src= './iconFontLayer/index.tsx' compact="true" defaultShowCode></code>

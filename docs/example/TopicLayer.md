@@ -7,6 +7,6 @@ nav:
   order: 3
 ---
 
-## 06.全国幼儿园分布数据
+## 全国幼儿园分布数据
 
 <code src= './TopicLayer/index.tsx' compact="true" defaultShowCode></code>

@@ -7,6 +7,6 @@ nav:
   order: 3
 ---
 
-## 10.纽约公交路径
+## 纽约公交路径
 
 <code src= './taxiTrips/index.tsx' compact="true" defaultShowCode></code>

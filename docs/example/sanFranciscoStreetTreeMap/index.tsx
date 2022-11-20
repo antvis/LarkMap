@@ -36,7 +36,6 @@ function StreetMap() {
       trackStyle: { backgroundColor: get(heatmapCfgs, 'color.value[0]') },
     };
   }, [heatmapCfgs]);
-  console.log('heatmapCfgs', heatmapCfgs);
 
   return (
     <LarkMap

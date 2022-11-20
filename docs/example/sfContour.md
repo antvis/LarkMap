@@ -7,6 +7,6 @@ nav:
   order: 3
 ---
 
-## 15.旧金山海拔等高线
+## 旧金山海拔等高线
 
 <code src= './sfContour/index.tsx' compact="true" defaultShowCode></code>

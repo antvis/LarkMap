@@ -7,6 +7,6 @@ nav:
   order: 3
 ---
 
-## 01.高铁站点
+## 高铁站点
 
 <code src= './highSpeedRail/index.tsx' compact="true" defaultShowCode></code>

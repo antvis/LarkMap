@@ -23,7 +23,7 @@ const heatmapLayerOptions: HeatmapLayerProps = {
 };
 
 const config = {
-  mapType: 'GaodeV1',
+  mapType: 'Gaode',
   mapOptions: {
     style: 'normal',
     zoom: 5,

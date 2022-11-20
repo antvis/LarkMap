@@ -60,7 +60,7 @@ const lineLayerOptions = {
   },
 };
 
-const BubbleLayerOptions = {
+const bubbleLayerOptions = {
   label: {
     field: 'time',
     style: { fontSize: 12, textOffset: [70, -4], fill: 'white' },
@@ -88,7 +88,7 @@ export default () => {
       />
 
       <BubbleLayer
-        {...BubbleLayerOptions}
+        {...bubbleLayerOptions}
         source={{
           data: pointData,
           parser: { type: 'json', x: 'longitude_to', y: 'latitude_to' },

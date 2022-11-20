@@ -7,6 +7,6 @@ nav:
   order: 3
 ---
 
-## 20.拍照景点-蜂窝聚合图
+## 拍照景点-蜂窝聚合图
 
 <code src= './photoHotmap/index.tsx' compact="true" defaultShowCode></code>

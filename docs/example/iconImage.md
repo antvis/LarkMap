@@ -7,6 +7,6 @@ nav:
   order: 3
 ---
 
-## 25.北京房价视觉分布
+## 北京房价视觉分布
 
 <code src= './iconImage/index.tsx' compact="true" defaultShowCode></code>

@@ -7,6 +7,6 @@ nav:
   order: 3
 ---
 
-## 08.线图层动画
+## 线图层动画
 
 <code src= './lineAnimation/index.tsx' compact="true" defaultShowCode></code>

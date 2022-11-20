@@ -39,7 +39,7 @@ const config = {
   },
 };
 
-function PhotohotMap() {
+export default () => {
   const [heatmapData, setHeatmapData] = useState({
     data: [],
     parser: { type: 'json', x: 'lat', y: 'lng' },
@@ -66,6 +66,4 @@ function PhotohotMap() {
       <HeatmapLayer {...heatmapCfg} source={heatmapData} />
     </LarkMap>
   );
-}
-
-export default PhotohotMap;
+};

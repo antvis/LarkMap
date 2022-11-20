@@ -64,7 +64,7 @@ const popupProps: PopupProps = {
   anchor: 'bottom',
 };
 
-const CountyUnemployment = () => {
+export default () => {
   const [lngLat, setLngLat] = useState<ILngLat>({
     lng: -97.39054553110171,
     lat: 39.448335349067435,
@@ -131,5 +131,3 @@ const CountyUnemployment = () => {
     </LarkMap>
   );
 };
-
-export default CountyUnemployment;

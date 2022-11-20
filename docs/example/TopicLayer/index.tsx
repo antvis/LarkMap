@@ -9,7 +9,7 @@ const config = {
     zoom: 6,
   },
 };
-const layerOptions = {
+const pointlayerOptions = {
   shape: 'circle',
   size: {
     field: 'count',
@@ -59,7 +59,7 @@ export default () => {
         onMouseMove={(layer) => {
           setLngLat(layer.lngLat);
         }}
-        {...layerOptions}
+        {...pointlayerOptions}
       />
       <Popup
         lngLat={lngLat}

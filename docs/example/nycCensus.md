@@ -7,6 +7,6 @@ nav:
   order: 3
 ---
 
-## 09.纽约市人口普查区
+## 纽约市人口普查区
 
 <code src= './nycCensus/index.tsx' compact="true" defaultShowCode></code>

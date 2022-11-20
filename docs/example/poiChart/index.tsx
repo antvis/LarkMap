@@ -48,7 +48,7 @@ const myPointLayerTextOptions: Omit<PointLayerProps, 'source'> = {
   },
 };
 
-const PoiChart = () => {
+export default () => {
   const [source, setSource] = useState({
     data: [],
     parser: { type: 'geojson' },
@@ -72,5 +72,3 @@ const PoiChart = () => {
     </LarkMap>
   );
 };
-
-export default PoiChart;

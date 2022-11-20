@@ -2,16 +2,6 @@ import type { PointLayerProps } from '@antv/larkmap';
 import { LarkMap, LayerPopup, PointLayer, Scale, Zoom } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
-interface IdataType {
-  province: string;
-  busStop: string;
-  address: string;
-  lng: string;
-  lat: string;
-  WGS84lng: string;
-  WGS84lat: string;
-}
-
 const config = {
   mapType: 'Gaode',
   mapOptions: {
@@ -29,23 +19,23 @@ const items = [
     fields: [
       {
         field: 'province',
-        formatField: () => '省份',
+        formatField: '省份',
       },
       {
         field: 'busStop',
-        formatField: () => '城市',
+        formatField: '城市',
       },
       {
         field: 'address',
-        formatField: () => '站点',
+        formatField: '站点',
       },
       {
         field: 'lng',
-        formatField: () => '经纬度',
+        formatField: '经纬度',
       },
       {
         field: 'lat',
-        formatField: () => '维度',
+        formatField: '维度',
       },
     ],
   },
@@ -53,16 +43,6 @@ const items = [
 
 const pointLayerOptions: PointLayerProps = {
   id: 'myPoitLayer',
-  // autoFit: true, // 设置完数据后自动将点图层放大到视口范围位置
-  // shape: {
-  //   field: 'address',
-  //   value: 'text', // 以文本形式展示
-  // },
-  /* 
-      若是使用简单的圆点图层，建议使用 simple 代替 circle 以获得更好的性能，
-      注意：circle 与 simple 样式有所不同
-      文档参考：https://antv-l7.gitee.io/zh/docs/api/point_layer/pointlayer#shape
-    */
   shape: 'circle',
   size: 7,
   color: {
@@ -103,8 +83,8 @@ export default () => {
   return (
     <LarkMap {...config} style={{ height: '60vh' }}>
       <PointLayer {...pointLayerOptions} source={data} name="PolygonLayer" />
-      <Scale position='bottomleft' />
-      <Zoom position='bottomright' />
+      <Scale position="bottomleft" />
+      <Zoom position="bottomleft" />
       <LayerPopup
         closeButton={false}
         closeOnClick={false}
