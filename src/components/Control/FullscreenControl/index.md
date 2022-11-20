@@ -9,7 +9,7 @@ nav:
   path: /components
 ---
 
-## 全屏 - Fullscreen
+## 全屏 - FullscreenControl
 
 ### 介绍
 

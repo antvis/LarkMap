@@ -9,7 +9,7 @@ nav:
   path: /components
 ---
 
-## 定位 - GeoLocate
+## 定位 - GeoLocateControl
 
 ### 介绍
 

@@ -9,7 +9,7 @@ nav:
   path: /components
 ---
 
-## 导出图片 - ExportImage
+## 导出图片 - ExportImageControl
 
 ### 介绍
 
