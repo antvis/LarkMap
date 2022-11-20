@@ -21,7 +21,6 @@ export type { MapThemeControlProps } from './MapThemeControl/types';
 export { MouseLocationControl } from './MouseLocationControl';
 export type { MouseLocationControlProps } from './MouseLocationControl/types';
 
-// 兼容修改组件名称，带布局属性的组件加 Control 后缀，正式 v1 后不再兼容
 export { ScaleControl } from './ScaleControl';
 export type { ScaleControlProps } from './ScaleControl/type';
 

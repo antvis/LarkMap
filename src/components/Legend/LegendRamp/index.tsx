@@ -1,13 +1,13 @@
-import React from 'react';
 import classnames from 'classnames';
-import type { LegendRampProps } from './types';
-import './index.less';
+import React from 'react';
 import { getGradientColors } from './../../../utils/color';
+import './index.less';
+import type { LegendRampProps } from './types';
 
 export const CLS_PREFIX = 'larkmap-legend-ramp';
 
 export function LegendRamp(props: LegendRampProps) {
-  const { isContinuous, labels, colors, lableUnit, className: cls, style, barWidth = 200 } = props;
+  const { isContinuous, labels, colors, labelUnit, className: cls, style, barWidth = 200 } = props;
 
   function Continuous({ gradient }: Record<string, string>) {
     return (
@@ -36,8 +36,8 @@ export function LegendRamp(props: LegendRampProps) {
       <div style={{ width: barWidth, ...style }} className={classnames(`${CLS_PREFIX}`, cls)}>
         {isContinuous ? <Continuous gradient={gradient} /> : <Equidistant color={color} />}
         <div className={`${CLS_PREFIX}__labelbar`}>
-          <div>{`${min}${lableUnit ?? ''} ${isContinuous ? '' : '<'}`}</div>
-          <div>{`${isContinuous ? '' : '≥'} ${max}${lableUnit ?? ''}`}</div>
+          <div>{`${min}${labelUnit ?? ''} ${isContinuous ? '' : '<'}`}</div>
+          <div>{`${isContinuous ? '' : '≥'} ${max}${labelUnit ?? ''}`}</div>
         </div>
       </div>
     );
@@ -57,5 +57,5 @@ export function LegendRamp(props: LegendRampProps) {
 LegendRamp.defaultProps = {
   isContinuous: false,
   barWidth: 200,
-  lableUnit: '',
+  labelUnit: '',
 };

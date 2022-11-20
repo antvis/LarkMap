@@ -4,8 +4,8 @@ import 'antd/dist/antd.css';
 import React, { useEffect, useState } from 'react';
 
 const FieldList = [
-  { type: 'string', lable: '区域名称', value: 'name', typeColor: 'green', typeName: '文本' },
-  { type: 'number', lable: '区域编码', value: 'adcode', typeColor: 'gold', typeName: '数值' },
+  { type: 'string', label: '区域名称', value: 'name', typeColor: 'green', typeName: '文本' },
+  { type: 'number', label: '区域编码', value: 'adcode', typeColor: 'gold', typeName: '数值' },
 ];
 const DefaultChoroplethLayerStyle = {
   fillColor: {

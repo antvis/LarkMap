@@ -39,7 +39,7 @@ export default () => {
     const labels = [Math.min(...arr), Math.max(...arr)];
     return (
       <LegendRamp
-        lableUnit=""
+        labelUnit=""
         style={{ background: '#fff', padding: 8 }}
         colors={legendItems.map((item) => item.color)}
         labels={labels}

@@ -4,8 +4,8 @@ import 'antd/dist/antd.css';
 import React, { useEffect, useState } from 'react';
 
 const FieldList = [
-  { type: 'string', lable: '名称', value: 'line_name', typeColor: 'green', typeName: '文本' },
-  { type: 'number', lable: 'id', value: 'line_id', typeColor: 'green', typeName: '文本' },
+  { type: 'string', label: '名称', value: 'line_name', typeColor: 'green', typeName: '文本' },
+  { type: 'number', label: 'id', value: 'line_id', typeColor: 'green', typeName: '文本' },
 ];
 const DefaultLineLayerStyle = {
   color: {

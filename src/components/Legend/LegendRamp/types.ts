@@ -7,7 +7,7 @@ export interface LegendRampProps extends CommonProps {
    * 图例项单位
    * @default ""
    */
-  lableUnit?: string;
+  labelUnit?: string;
   /**图例项颜色 */
   colors: { startColor: string; endColor: string } | string[];
   /**
