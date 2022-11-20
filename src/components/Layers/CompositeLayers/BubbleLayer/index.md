@@ -9,27 +9,27 @@ nav:
   path: /components
 ---
 
-# 气泡图层 - BubbleLayer
+## 气泡图层 - BubbleLayer
 
-## 介绍
+### 介绍
 
 基于 [BubbleLayer](https://l7plot.antv.antgroup.com/zh/docs/api/composite-layers/bubble-layer) 封装，用于点数据以气泡形式展示，支持描边、文本标注、多选等功能。
 
-## 代码演示
+### 代码演示
 
-### 默认示例
+#### 默认示例
 
 <code src="./demos/default.tsx" compact></code>
 
-## API
+### API
 
 <API hideTitle></API>
 
-### source
+#### source
 
 <embed src="../../../../../docs/common/layer/point-layer/source.md"></embed>
 
-### fillColor
+#### fillColor
 
 `string|ColorStyleAttribute|Function` optional default: `'#5FD3A6'`
 
@@ -39,7 +39,7 @@ nav:
 { fillColor: 'red', }
 ```
 
-#### `fillColor.`field
+##### `fillColor.`field
 
 `string` optional
 
@@ -55,7 +55,7 @@ nav:
 }
 ```
 
-#### `fillColor.`value
+##### `fillColor.`value
 
 `string|string[]|Function` optional
 
@@ -72,7 +72,7 @@ nav:
 }
 ```
 
-#### `fillColor.`scale
+##### `fillColor.`scale
 
 <embed src="../../../../../docs/common/layer/attribute/scale.md"></embed>
 
@@ -86,7 +86,7 @@ nav:
 }
 ```
 
-### radius
+#### radius
 
 `number|SizeStyleAttribute|Function` optional
 
@@ -96,7 +96,7 @@ nav:
 { radius: 12, }
 ```
 
-#### `radius.`field
+##### `radius.`field
 
 `string` optional
 
@@ -112,7 +112,7 @@ nav:
 }
 ```
 
-#### `radius.`value
+##### `radius.`value
 
 `number|number[]|Function` optional
 
@@ -129,7 +129,7 @@ nav:
 }
 ```
 
-#### `radius.`scale
+##### `radius.`scale
 
 <embed src="../../../../../docs/common/layer/attribute/scale.md"></embed>
 
@@ -143,35 +143,35 @@ nav:
 }
 ```
 
-### label
+#### label
 
 `LabelOptions` optional
 
 标签标注。
 
-#### `label.`field
+##### `label.`field
 
 `string` optional
 
 标签值映射关联字段。
 
-#### `label.`visible
+##### `label.`visible
 
 `boolean` optional default: `true`
 
 标签是否可见。
 
-#### `label.`style
+##### `label.`style
 
 标签样式详细配置见 [TextLayerStyleOptions](/components/layers/base-layers/text-layer#style)。
 
-### state
+#### state
 
 `StateAttribute` optional
 
 元素交互反馈效果。
 
-#### `state.`active
+##### `state.`active
 
 `boolean｜BubbleLayerActiveOptions` optional default: `false`
 
@@ -207,7 +207,7 @@ BubbleLayerActiveOptions 配置如下：
 | lineWidth   | 描边的宽度 | `number`        | `1.5`       | optional |
 | lineOpacity | 描边透明度 | `number`        | `1`         | optional |
 
-#### `state.`select
+##### `state.`select
 
 `boolean｜BubbleLayerActiveOptions` optional default: `false`
 
@@ -234,20 +234,20 @@ BubbleLayerActiveOptions 配置如下：
 }
 ```
 
-## Event
+### Event
 
 <embed src="../../../../../docs/common/layer/composite-common/event.md"></embed>
 
-#### 选择事件
+##### 选择事件
 
 | 事件名   | 类型         | 描述                         |
 | -------- | ------------ | ---------------------------- |
 | select   | 选择事件     | 鼠标点击选中图层要素事件     |
 | unselect | 取消选择事件 | 鼠标点击取消选中图层要素事件 |
 
-## FAQ
+### FAQ
 
-### 1. 如何获取图层实例？
+#### 1. 如何获取图层实例？
 
 1. 通过 onCreated 回调
 

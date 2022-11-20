@@ -9,27 +9,27 @@ nav:
   path: /components
 ---
 
-# 字体标注图层 - IconFontLayer
+## 字体标注图层 - IconFontLayer
 
-## 介绍
+### 介绍
 
 基于 [IconFontLayer ](https://l7plot.antv.antgroup.com/zh/docs/api/composite-layers/icon-font-layer) 封装，用于点数据展示 iconfont 标注。
 
-## 代码演示
+### 代码演示
 
-### 默认示例
+#### 默认示例
 
 <code src="./demos/default.tsx" compact></code>
 
-## API
+### API
 
 <API hideTitle></API>
 
-### source
+#### source
 
 <embed src="../../../../../docs/common/layer/point-layer/source.md"></embed>
 
-### icon
+#### icon
 
 `string|ShapeStyleAttribute|Function` optional
 
@@ -39,13 +39,13 @@ nav:
 { icon: { field: 'n', value: 'text', }, }
 ```
 
-#### `icon.`field
+##### `icon.`field
 
 `string` optional
 
 图标映射关联字段。
 
-#### `icon.`value
+##### `icon.`value
 
 `string|string[]|Function` optional 映射图标类型
 
@@ -58,7 +58,7 @@ nav:
 }
 ```
 
-#### `icon.`scale
+##### `icon.`scale
 
 icon scale 通常使用枚举类型 cat scale
 
@@ -74,11 +74,11 @@ icon scale 通常使用枚举类型 cat scale
 }
 ```
 
-### iconStyle
+#### iconStyle
 
 <embed src="../../../../../docs/common/layer/text-layer/style.md"></embed>
 
-### radius
+#### radius
 
 `number|SizeStyleAttribute|Function` optional
 
@@ -88,7 +88,7 @@ icon scale 通常使用枚举类型 cat scale
 { radius: 12, }
 ```
 
-#### `radius.`field
+##### `radius.`field
 
 `string` optional
 
@@ -104,7 +104,7 @@ icon scale 通常使用枚举类型 cat scale
 }
 ```
 
-#### `radius.`value
+##### `radius.`value
 
 `number|number[]|Function` optional
 
@@ -121,7 +121,7 @@ icon scale 通常使用枚举类型 cat scale
 }
 ```
 
-#### `radius.`scale
+##### `radius.`scale
 
 <embed src="../../../../../docs/common/layer/attribute/scale.md"></embed>
 
@@ -135,35 +135,35 @@ icon scale 通常使用枚举类型 cat scale
 }
 ```
 
-### label
+#### label
 
 `TextLayerOptions` optional
 
 标签标注。
 
-#### `label.`field
+##### `label.`field
 
 `string` optional
 
 标签值映射关联字段。
 
-#### `label.`visible
+##### `label.`visible
 
 `boolean` optional default: `true`
 
 标签是否可见。
 
-#### `label.`style
+##### `label.`style
 
 标签样式详细配置见 [TextLayerStyleOptions](https://l7plot.antv.antgroup.com/zh/docs/api/composite-layers/text-layer#code-classlanguage-textoptionscodestyle)。
 
-### state
+#### state
 
 `StateAttribute` optional
 
 元素交互反馈效果。
 
-#### `state.`active
+##### `state.`active
 
 `boolean｜Pick<IconLayerActiveOptions, 'enable' | 'color'>` optional default: `false`
 
@@ -183,7 +183,7 @@ icon scale 通常使用枚举类型 cat scale
 }
 ```
 
-#### `state.`select
+##### `state.`select
 
 `boolean｜IconLayerActiveOptions` optional default: `false`
 
@@ -215,12 +215,12 @@ IconLayerActiveOptions 配置如下：
 | color   | 图标颜色   | `string`    | `#2f54eb` | optional |
 | opacity | 图标透明度 | `number`    | `1`       | optional |
 
-## Event
+### Event
 
 <embed src="../../../../../docs/common/layer/base-common/event.md"></embed>
 
-## FAQ
+### FAQ
 
-### 1. 如何获取图层实例？
+#### 1. 如何获取图层实例？
 
 详见 [获取图层实例](/components/layers/composite-layers/bubble-layer#1-如何获取图层实例)

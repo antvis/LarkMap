@@ -9,9 +9,9 @@ nav:
   path: /components
 ---
 
-# 定位 - GeoLocate
+## 定位 - GeoLocateControl
 
-## 介绍
+### 介绍
 
 定位组件使用浏览器环境的 `nagigator` 的 `getlocation` 方法，使用浏览器打开位置感应能力获取当前用户所在经纬度。
 
@@ -20,11 +20,11 @@ nav:
 1. 在使用该能力时，会需要用户对浏览器打开位置感知能力进行鉴权。
 2. 当前浏览器获取到的坐标是 WGS84 地理坐标系，在高德地图上使用会有偏差，可以使用 transform 配置进行坐标系的转换。
 
-## 代码演示
+### 代码演示
 
 <code src="./demos/default.tsx" defaultShowCode compact></code>
 
-## API
+### API
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -41,7 +41,7 @@ nav:
 | onShow | 组件显示时的回调 | `(this) => void` | - |
 | onHide | 组件隐藏时的回调 | `(this) => void` | - |
 
-### Position
+#### Position
 
 ```ts
 export type Position =

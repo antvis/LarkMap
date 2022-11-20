@@ -65,7 +65,7 @@ export default () => {
         style={{
           width: '300px',
           background: '#fff',
-          padding: '10px',
+          padding: '16px',
         }}
       >
         <h3>属性配置</h3>

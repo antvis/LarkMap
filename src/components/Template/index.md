@@ -2,23 +2,23 @@
 toc: content
 order: 3
 group:
-  title: 分析组件
-  order: 3
+  title: 示例分组
+  order: 100
 nav:
   title: 组件
   path: /components
 hide: true
 ---
 
-# 样例组件 - Template
+## 样例组件 - Template
 
-## 介绍
+### 介绍
 
-## 使用场景
+### 使用场景
 
-## 代码演示
+### 代码演示
 
-### 默认示例
+#### 默认示例
 
 <code src="./demos/default.tsx" compact defaultShowCode></code>
 

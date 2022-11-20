@@ -13,6 +13,7 @@ const layerOptions: Omit<IconImageLayerProps, 'source'> = {
     field: 'unit_price',
     value: [1, 20],
   },
+  blend: 'normal',
   opacity: 1,
   label: {
     field: 'name',

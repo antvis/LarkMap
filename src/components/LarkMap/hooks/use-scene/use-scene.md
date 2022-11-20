@@ -10,7 +10,7 @@ group:
 
 ### 介绍
 
-获取 scene 实例 Hook，一般用于子组件拿到 scene 实例，该 Hook 需放到容器组件内部才能使用。
+获取 scene 实例 Hook，一般用于子组件拿到 scene 实例，**该 Hook 需放到容器组件内部才能使用**。
 
 ### 默认示例
 
@@ -19,7 +19,7 @@ group:
 ### API
 
 ```ts
-const scene = useScene();
+const scene: Scene = useScene();
 ```
 
 #### Result

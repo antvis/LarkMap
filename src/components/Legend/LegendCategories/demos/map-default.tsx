@@ -6,8 +6,8 @@ const config = {
   mapType: 'Gaode' as const,
   mapOptions: {
     style: 'light',
-    center: [-100.45397511735388, 37.73927151161908],
-    zoom: 4,
+    center: [-113.622713, 53.546444],
+    zoom: 2.12,
   },
 };
 

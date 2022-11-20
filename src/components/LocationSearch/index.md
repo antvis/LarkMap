@@ -9,17 +9,17 @@ nav:
   path: /components
 ---
 
-# 地点搜索 - LocationSearch
+## 地点搜索 - LocationSearch
 
-## 介绍
+### 介绍
 
 内置调用高德搜索 API 的下拉框组件，支持输入地名进行模糊搜索，可以获取搜索地点结果的名称、地址、经纬度等信息。
 
-## 代码演示
+### 代码演示
 
 <code src="./demos/default.tsx" defaultShowCode compact></code>
 
-## API
+### API
 
 | 属性值 | 描述 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -34,7 +34,7 @@ nav:
 
 其他配置可参考 Antd 的 [Select 组件](https://ant.design/components/select-cn/#API)。
 
-### GaodeLocationSearchParams
+#### GaodeLocationSearchParams
 
 | 属性值 | 描述                              | 类型     | 默认值 |
 | ------ | --------------------------------- | -------- | ------ |
@@ -42,7 +42,7 @@ nav:
 
 该其他配置可以查看高德的 [输入提示](https://lbs.amap.com/api/webservice/guide/api/inputtips)
 
-### LocationSearchOption
+#### LocationSearchOption
 
 该类型为调用高德接口返回的地点对象的类型描述
 

@@ -9,17 +9,17 @@ nav:
   path: /components
 ---
 
-# 图层信息框 - LayerPopup
+## 图层信息框 - LayerPopup
 
-## 介绍
+### 介绍
 
 图层信息框组件，一般用于展示地图图层要素的属性信息。
 
-## 代码演示
+### 代码演示
 
 <code src="./demos/default.tsx" compact defaultShowCode></code>
 
-## API
+### API
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -43,14 +43,14 @@ nav:
 | onShow | Popup 显示时回调 | `() => void` | - |
 | onHide | Popup 隐藏时回调 | `() => void` | - |
 
-### LayerPopupConfigItem
+#### LayerPopupConfigItem
 
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
 | layer | 需要展示 Popup 的目标图层实例，或其的 id 或 name | `BaseLayer｜string` |
 | fields | 需要展示的字段数组，支持传入字段 key 值字符串，或者针对该字段的详细配置 [LayerField](#LayerField) | `string｜LayerField` |
 
-### LayerField
+#### LayerField
 
 | 参数        | 说明                        | 类型                                |
 | ----------- | --------------------------- | ----------------------------------- |

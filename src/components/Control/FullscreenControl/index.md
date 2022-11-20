@@ -9,17 +9,17 @@ nav:
   path: /components
 ---
 
-# 全屏 - Fullscreen
+## 全屏 - FullscreenControl
 
-## 介绍
+### 介绍
 
 全屏按钮控件，用于控制地图区域的全屏和退出全屏。
 
-## 代码演示
+### 代码演示
 
 <code src="./demos/default.tsx" defaultShowCode compact></code>
 
-## 配置
+### 配置
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -39,7 +39,7 @@ nav:
 | onShow | 组件显示时的回调 | `(this) => void` | - |
 | onHide | 组件隐藏时的回调 | `(this) => void` | - |
 
-### Position
+#### Position
 
 ```ts
 export type Position =

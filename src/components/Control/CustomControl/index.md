@@ -9,13 +9,13 @@ nav:
   path: /components
 ---
 
-# 自定义控件 - CustomControl
+## 自定义控件 - CustomControl
 
-## 介绍
+### 介绍
 
 地图自定义容器控件，用户可以通过 `CustomControl` 组件将自定义内容悬停在地图上。
 
-## 代码演示
+### 代码演示
 
 <code src="./demos/default.tsx" defaultShowCode compact></code>
 
@@ -26,7 +26,7 @@ nav:
 | style | 自定义样式 | `CSSProperties` | - |
 | children | 控件内容 | `ReactNode` | - |
 
-### Position
+#### Position
 
 ```ts
 export type Position =

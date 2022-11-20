@@ -22,8 +22,8 @@ export { MouseLocationControl } from './MouseLocationControl';
 export type { MouseLocationControlProps } from './MouseLocationControl/types';
 
 // 兼容修改组件名称，带布局属性的组件加 Control 后缀，正式 v1 后不再兼容
-export { ScaleControl as Scale, ScaleControl } from './ScaleControl';
-export type { ScaleControlProps, ScaleControlProps as ScaleProps } from './ScaleControl/type';
+export { ScaleControl } from './ScaleControl';
+export type { ScaleControlProps } from './ScaleControl/type';
 
-export { ZoomControl as Zoom, ZoomControl } from './ZoomControl';
-export type { ZoomControlProps, ZoomControlProps as ZoomProps } from './ZoomControl/types';
+export { ZoomControl } from './ZoomControl';
+export type { ZoomControlProps } from './ZoomControl/types';

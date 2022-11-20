@@ -9,17 +9,17 @@ nav:
   path: /components
 ---
 
-# 缩放器 - ZoomControl
+## 缩放器 - ZoomControl
 
-## 介绍
+### 介绍
 
 地图缩放组件，用于控制地图放大和缩小的控件，并且当地图达到最大或最小缩放比时，会禁用对应缩放按钮。
 
-## 代码演示
+### 代码演示
 
 <code src="./demos/default.tsx" defaultShowCode compact></code>
 
-## API
+### API
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -35,7 +35,7 @@ nav:
 | onShow | 组件显示时的回调 | `(this) => void` | - |
 | onHide | 组件隐藏时的回调 | `(this) => void` | - |
 
-### Position
+#### Position
 
 ```ts
 export type Position =
