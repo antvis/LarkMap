@@ -15,7 +15,7 @@ export default () => {
           'rgb(8, 81, 156)',
         ]}
         barWidth={500}
-        lableUnit="m"
+        labelUnit="m"
       />
       <LegendRamp
         isContinuous

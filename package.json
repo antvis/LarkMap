@@ -54,7 +54,7 @@
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",
     "@antv/dumi-theme-antv": "^0.2.2",
-    "@antv/l7": "^2.10.11",
+    "@antv/l7": "^2.11.0",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
     "@types/color": "^3.0.3",
@@ -85,7 +85,7 @@
   },
   "peerDependencies": {
     "@ant-design/icons": "^4.7.0",
-    "@antv/l7": "^2.10.11",
+    "@antv/l7": "^2.11.0",
     "antd": "^4.22.3",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"

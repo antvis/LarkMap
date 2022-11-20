@@ -16,7 +16,6 @@ export default defineConfig({
       antd: 'antd',
       '@ant-design/icons': 'icons',
       '@antv/l7': 'L7',
-      '@antv/l7-composite-layers': 'L7.CompositeLayers',
       '@antv/l7-draw': 'L7.Draw',
       '@formily/core': 'Formily.Core',
       '@formily/reactive': 'Formily.Reactive',
