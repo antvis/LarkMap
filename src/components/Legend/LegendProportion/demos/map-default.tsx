@@ -1,4 +1,5 @@
-import type { BubbleLayerProps, LegendItems } from '@antv/larkmap';
+import type { LegendItems } from '@antv/l7';
+import type { BubbleLayerProps } from '@antv/larkmap';
 import { BubbleLayer, CustomControl, LarkMap, LegendProportion } from '@antv/larkmap';
 import { max, min } from 'lodash-es';
 import React, { useEffect, useState } from 'react';
@@ -37,7 +38,7 @@ const bubbleLayerOptions: Omit<BubbleLayerProps, 'source'> = {
 
 export default () => {
   const [layerOptions] = useState(bubbleLayerOptions);
-  const [legendItems, setLegendItems] = useState<LegendItems[]>([]);
+  const [legendItems, setLegendItems] = useState<LegendItems>([]);
 
   const [source, setSource] = useState([]);
 

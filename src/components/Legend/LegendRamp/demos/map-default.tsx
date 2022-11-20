@@ -1,4 +1,4 @@
-import type { LegendItems } from '@antv/larkmap';
+import type { LegendItems } from '@antv/l7';
 import { ChoroplethLayer, CustomControl, LarkMap, LegendRamp } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
@@ -25,7 +25,7 @@ const colors = [
 
 export default () => {
   const [unemployment, setUnemployment] = useState('');
-  const [legendItems, setLegendItems] = useState<LegendItems[]>([]);
+  const [legendItems, setLegendItems] = useState<LegendItems>([]);
 
   useEffect(() => {
     fetch('https://gw.alipayobjects.com/os/bmw-prod/9ae0f4f6-01fa-4e08-8f19-ab7ef4548e8c.json')
