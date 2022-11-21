@@ -3,7 +3,7 @@ import type { LarkMapProps, LineLayerProps } from '@antv/larkmap';
 const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
-    style: 'normal',
+    style: 'dark',
     center: [-0.9, 52.5],
     zoom: 6,
     pitch: 40,
