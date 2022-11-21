@@ -1,0 +1,37 @@
+.panel {
+  width: 200px;
+  height: 50vh;
+  margin-top: 10px;
+  margin-right: -10px;
+  padding: 10px;
+  background: black;
+  .setItem {
+    margin-bottom: 10px;
+    padding: 5px;
+    color: #333;
+    background: #fff;
+    border-radius: 2px;
+    :global {
+      .ant-slider-handle {
+        width: 25px;
+        height: 25px;
+        margin-top: -15px;
+        background-color: transparent;
+        background-image: url('https://gw.alipayobjects.com/zos/bmw-prod/7fb22e05-4488-4597-8e33-fc03716d2b0a.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 80% 80%;
+        border: none;
+        border-radius: 100%;
+      }
+      .ant-slider-handle:focus {
+        box-shadow: none;
+      }
+    }
+  }
+}
+.pickColor {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+}
