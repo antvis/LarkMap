@@ -1,8 +1,4 @@
-import type {
-  LarkMapProps,
-  LayerPopupProps,
-  PointLayerProps,
-} from '@antv/larkmap';
+import type { LarkMapProps, LayerPopupProps, PointLayerProps } from '@antv/larkmap';
 import { LarkMap, LayerPopup, PointLayer } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
@@ -63,9 +59,7 @@ export default () => {
   });
 
   useEffect(() => {
-    fetch(
-      'https://gw.alipayobjects.com/os/bmw-prod/6f72e4f7-ac8c-41f6-bcac-9745100083ba.json',
-    )
+    fetch('https://gw.alipayobjects.com/os/bmw-prod/6f72e4f7-ac8c-41f6-bcac-9745100083ba.json')
       .then((res) => res.json())
       .then((data) => {
         setPointData({ ...pointData, data });
