@@ -17,7 +17,7 @@ banner:
     - type: L7
       title: 从矢量到遥感，从引擎到平台，探索地理分析的远方
       date: 2022.11.22
-      link: https://www.yuque.com/antv/blog/2021l7
+      link: https://www.yuque.com/antv/blog/zrz77eat2m4wb7yk
 ideas:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
     title: 开箱即用
@@ -29,5 +29,3 @@ ideas:
     title: 开发效率
     description: TypeScript + React + Hooks，拥抱 React 生态同时也不丢掉命令式 API 的便捷
 ---
-
-[//]: # 'TODO: L7 文章记得换成 2022.11.22 的'
