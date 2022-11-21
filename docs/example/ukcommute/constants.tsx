@@ -1,4 +1,6 @@
-const MapConfig = {
+import type { LarkMapProps, LineLayerProps } from '@antv/larkmap';
+
+const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
     style: 'normal',
@@ -8,7 +10,7 @@ const MapConfig = {
   },
 };
 
-const LayerConfig = {
+const layerConfig: Omit<LineLayerProps, 'source'> = {
   // autoFit: true,
   shape: 'arc3d',
   size: 1,
@@ -24,4 +26,4 @@ const LayerConfig = {
   },
 };
 
-export { MapConfig, LayerConfig };
+export { config, layerConfig };

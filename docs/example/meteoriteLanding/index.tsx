@@ -1,7 +1,8 @@
-import { HeatmapLayer, LarkMap, LarkMapProps } from '@antv/larkmap';
+import type { HeatmapLayerProps, LarkMapProps } from '@antv/larkmap';
+import { HeatmapLayer, LarkMap } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
-const config = {
+const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
     style: 'normal',
@@ -10,7 +11,7 @@ const config = {
   },
 };
 
-const layerOptions = {
+const layerOptions: Omit<HeatmapLayerProps, 'source'> = {
   autoFit: true,
   shape: 'heatmap',
   size: {
@@ -36,7 +37,7 @@ const layerOptions = {
 };
 
 export default () => {
-  const [source, setSource] = useState({
+  const [source, setSource] = useState<HeatmapLayerProps['source']>({
     data: '',
     parser: { type: 'csv', x: 'reclong', y: 'reclat' },
   });
@@ -45,10 +46,10 @@ export default () => {
       'https://gw.alipayobjects.com/os/bmw-prod/60177f74-5330-43f5-9a8c-9e3098640e87.csv',
     )
       .then((res) => res.text())
-      .then((data) => setSource({ ...source, data: data }));
+      .then((data) => setSource({ ...source, data }));
   }, []);
   return (
-    <LarkMap {...(config as LarkMapProps)} style={{ height: '60vh' }}>
+    <LarkMap {...config} style={{ height: '60vh' }}>
       <HeatmapLayer {...layerOptions} source={source} />
     </LarkMap>
   );

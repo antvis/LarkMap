@@ -1,4 +1,9 @@
-import { LarkMap, LarkMapProps, LineLayer, PointLayer, LineLayerProps } from '@antv/larkmap';
+import type {
+  LarkMapProps,
+  LineLayerProps,
+  PointLayerProps,
+} from '@antv/larkmap';
+import { LarkMap, LineLayer, PointLayer } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
 const config: LarkMapProps = {
@@ -8,11 +13,11 @@ const config: LarkMapProps = {
     center: [-73.993896, 40.75011],
     zoom: 8,
     // rotation: 20,
-    pitch: 120,
+    pitch: 70,
   },
 };
 
-const lineLayerStyle: LineLayerProps<'source'> = {
+const lineLayerOptions: Omit<LineLayerProps, 'source'> = {
   shape: 'arc3d',
   state: {
     active: true,
@@ -28,7 +33,7 @@ const lineLayerStyle: LineLayerProps<'source'> = {
   zIndex: 3,
 };
 
-const pickupPointLayerStyle = {
+const pickupPointLayerOptions: Omit<PointLayerProps, 'source'> = {
   shape: 'circle',
   state: {
     active: true,
@@ -36,11 +41,10 @@ const pickupPointLayerStyle = {
   size: 2,
   color: '#2773bd',
   blend: 'normal',
-
   zIndex: 2,
 };
 
-const dropoffPointLayerStyle = {
+const unPickupPointLayerStyle: Omit<PointLayerProps, 'source'> = {
   shape: 'circle',
   state: {
     active: true,
@@ -52,7 +56,7 @@ const dropoffPointLayerStyle = {
 };
 
 export default () => {
-  const [lineData, setLineData] = useState({
+  const [lineData, setLineData] = useState<LineLayerProps['source']>({
     data: '',
     parser: {
       type: 'csv',
@@ -62,7 +66,9 @@ export default () => {
       x1: 'dropoff_longitude',
     },
   });
-  const [pickupPointData, setPickupPointData] = useState({
+  const [pickupPointData, setPickupPointData] = useState<
+    LineLayerProps['source']
+  >({
     data: '',
     parser: {
       type: 'csv',
@@ -70,7 +76,9 @@ export default () => {
       x: 'pickup_longitude',
     },
   });
-  const [dropoffPointData, setDropoffPoint] = useState({
+  const [unPickupPointData, setUnPickupPointData] = useState<
+    LineLayerProps['source']
+  >({
     data: '',
     parser: {
       type: 'csv',
@@ -86,14 +94,14 @@ export default () => {
       .then((data) => {
         setLineData({ ...lineData, data: data });
         setPickupPointData({ ...pickupPointData, data: data });
-        setDropoffPoint({ ...dropoffPointData, data: data });
+        setUnPickupPointData({ ...unPickupPointData, data: data });
       });
   }, []);
   return (
     <LarkMap {...(config as LarkMapProps)} style={{ height: '60vh' }}>
-      <LineLayer source={lineData} {...lineLayerStyle} />
-      <PointLayer source={pickupPointData} {...pickupPointLayerStyle} />
-      <PointLayer source={dropoffPointData} {...dropoffPointLayerStyle} />
+      <LineLayer source={lineData} {...lineLayerOptions} />
+      <PointLayer source={pickupPointData} {...pickupPointLayerOptions} />
+      <PointLayer source={unPickupPointData} {...unPickupPointLayerStyle} />
     </LarkMap>
   );
 };

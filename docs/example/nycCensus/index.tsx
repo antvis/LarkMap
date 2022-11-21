@@ -1,7 +1,8 @@
+import type { ChoroplethLayerProps, LarkMapProps } from '@antv/larkmap';
 import { ChoroplethLayer, LarkMap } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
-const config = {
+const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
     style: 'normal',
@@ -10,7 +11,7 @@ const config = {
   },
 };
 
-const layerOptions = {
+const layerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   autoFit: true,
   fillColor: {
     field: 'boro_ct2010',
@@ -46,7 +47,9 @@ const layerOptions = {
 };
 
 export default () => {
-  const [choropletData, setChoropletData] = useState({
+  const [choroplethLayerData, setChoroplethLayerData] = useState<
+    ChoroplethLayerProps['source']
+  >({
     data: {},
     parser: { type: 'geojson' },
   });
@@ -57,12 +60,13 @@ export default () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        setChoropletData({ ...choropletData, data: data });
+        setChoroplethLayerData({ ...choroplethLayerData, data: data });
       });
   }, []);
+
   return (
     <LarkMap {...config} style={{ height: '60vh' }}>
-      <ChoroplethLayer {...layerOptions} source={choropletData} />
+      <ChoroplethLayer {...layerOptions} source={choroplethLayerData} />
     </LarkMap>
   );
 };

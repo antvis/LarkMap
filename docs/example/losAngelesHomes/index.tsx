@@ -1,9 +1,10 @@
+import type { ChoroplethLayerProps, LarkMapProps } from '@antv/larkmap';
 import { ChoroplethLayer, LarkMap } from '@antv/larkmap';
 import { polygon } from '@turf/turf';
 import { cellToBoundary, latLngToCell } from 'h3-js';
 import React, { useEffect, useState } from 'react';
 
-const config = {
+const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
     style: 'normal',
@@ -12,7 +13,7 @@ const config = {
   },
 };
 
-const layerOption = {
+const layerOption: Omit<ChoroplethLayerProps, 'source'> = {
   autoFit: true,
   fillColor: '#5B8FF9',
   opacity: 0.6,
@@ -25,7 +26,7 @@ const layerOption = {
 };
 
 export default () => {
-  const [PonitData, setPointData] = useState({
+  const [pointData, setPointData] = useState({
     data: [],
     parser: { type: 'json', x: 'center_lon', y: 'center_lat' },
   });
@@ -40,29 +41,29 @@ export default () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        setPointData({ ...PonitData, data: data.slice(0, 100000) });
+        setPointData({ ...pointData, data: data.slice(0, 100000) });
       });
   }, []);
 
   useEffect(() => {
-    const pointList = PonitData.data.map((item: any) => {
+    const pointList = pointData.data.map((item: any) => {
       return [+item.center_lon, +item.center_lat];
     });
-    const ponintFilter = pointList.filter((item) => {
+    const pointFilter = pointList.filter((item) => {
       return item[0] && item[1];
     });
-    const cell = ponintFilter.map((item) => {
+    const cell = pointFilter.map((item) => {
       return latLngToCell(item[1], item[0], 7);
     });
     const polygonSet = [...new Set(cell)];
     const polygonList = polygonSet.map((item) => {
       return cellToBoundary(item, true);
     });
-    const polygonDatas = polygonList.map((item) => {
+    const newPolygonData = polygonList.map((item) => {
       return polygon([item]);
     });
-    setPolygonData({ ...polygonData, features: polygonDatas });
-  }, [PonitData]);
+    setPolygonData({ ...polygonData, features: newPolygonData });
+  }, [pointData, polygonData]);
 
   return (
     <LarkMap {...config} style={{ height: '60vh' }}>

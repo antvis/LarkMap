@@ -1,7 +1,8 @@
+import type { LarkMapProps, PointLayerProps } from '@antv/larkmap';
 import { LarkMap, PointLayer } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
-const config = {
+const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
     style: 'normal',
@@ -10,7 +11,7 @@ const config = {
   },
 };
 
-const layerOptions = {
+const layerOptions2: Omit<PointLayerProps, 'source'> = {
   autoFit: true,
   shape: 'circle',
   size: {
@@ -24,14 +25,11 @@ const layerOptions = {
   },
 };
 
-const layerOptionpoint = {
+const layerOption1: Omit<PointLayerProps, 'source'> = {
   autoFit: false,
   shape: { field: 'point_count', value: 'text' },
   size: 15,
-  color: {
-    field: 'point_count',
-    value: ['#3F4BBA', '#3C73DA', '#3C73DA', '#3C73DA'],
-  },
+  color: '#fff',
   style: {
     opacity: 1,
     strokeWidth: 0,
@@ -40,7 +38,8 @@ const layerOptionpoint = {
 };
 
 export default () => {
-  const [pointData, setPointData] = useState({
+  const [pointData, setPointData] = useState<PointLayerProps['source']>({
+    // @ts-ignore
     data: [],
     parser: { type: 'geojson' },
     cluster: true,
@@ -49,22 +48,20 @@ export default () => {
     },
   });
 
-  const fetchPointData = async () => {
-    const res = await fetch(
-      'https://gw.alipayobjects.com/os/bmw-prod/b75db584-b143-491d-83cc-cb45653cd4ed.json',
-    );
-    const result = await res.json();
-    setPointData({ ...pointData, data: result });
-  };
-
   useEffect(() => {
-    fetchPointData();
+    fetch(
+      'https://gw.alipayobjects.com/os/bmw-prod/b75db584-b143-491d-83cc-cb45653cd4ed.json',
+    )
+      .then(async (res) => await res.json())
+      .then((data) => {
+        setPointData({ ...pointData, data });
+      });
   }, []);
 
   return (
     <LarkMap {...config} style={{ height: '60vh' }}>
-      <PointLayer {...layerOptions} source={pointData} />
-      <PointLayer {...layerOptionpoint} source={pointData} />
+      <PointLayer {...layerOptions2} source={pointData} />
+      <PointLayer {...layerOption1} source={pointData} />
     </LarkMap>
   );
 };

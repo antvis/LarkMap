@@ -49,7 +49,7 @@ const myPointLayerTextOptions: Omit<PointLayerProps, 'source'> = {
 };
 
 export default () => {
-  const [source, setSource] = useState({
+  const [source, setSource] = useState<PointLayerProps['source']>({
     data: [],
     parser: { type: 'geojson' },
     cluster: true,

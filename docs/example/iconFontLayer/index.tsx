@@ -48,10 +48,7 @@ const layerOptions: Omit<IconFontLayerProps, 'source'> = {
     active: {
       color: 'red',
     },
-    select: {
-      radius: 20,
-      opacity: 1,
-    },
+    select: false,
   },
 };
 

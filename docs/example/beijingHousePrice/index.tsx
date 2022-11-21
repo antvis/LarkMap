@@ -1,4 +1,11 @@
-import { LarkMap, LarkMapProps, PolygonLayer, Popup } from '@antv/larkmap';
+import type {
+  LarkMapProps,
+  LayerPopupProps,
+  PolygonLayerProps,
+} from '@antv/larkmap';
+import { LarkMap, LayerPopup, PolygonLayer } from '@antv/larkmap';
+import type { FeatureCollection } from '@turf/turf';
+import { featureCollection } from '@turf/turf';
 import { message } from 'antd';
 import React, { useEffect, useState } from 'react';
 import HousePrice from './legend';
@@ -6,25 +13,27 @@ import HousePrice from './legend';
 const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
-    style: 'normal',
+    style: 'dark',
     center: [116.393722, 39.920746],
     zoom: 8,
   },
 };
 
-export default () => {
-  const [source, setSource] = useState<any>([]);
-  const [selectLabel, setSelectLabel] = useState<
-    { value: string; label: string } | undefined
-  >(undefined);
-  const [popup, setPopup] = useState<Record<string, any> | undefined>();
-  const [selectSource, setSelectSource] = useState([]);
+const layerPopupItems: LayerPopupProps['items'] = [
+  {
+    layer: 'myPolygonLayer',
+    fields: ['name', 'count', 'unit_price'],
+  },
+];
 
-  document.onkeydown = function (event) {
-    if (event.code === 'Escape') {
-      setSelectLabel(undefined);
-    }
-  };
+export default () => {
+  const [source, setSource] = useState<FeatureCollection>(
+    featureCollection([]),
+  );
+  const [selectLabel, setSelectLabel] = useState<
+    { value: [number, number]; label: string; color: string } | undefined
+  >(undefined);
+  const [selectFeatures, setSelectFeatures] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -35,11 +44,18 @@ export default () => {
       .then(() => {
         message.info('点击图例可更换数据');
       });
+
+    document.onkeydown = function (event) {
+      if (event.code === 'Escape') {
+        setSelectLabel(undefined);
+      }
+    };
   }, []);
 
-  const polygonLayerOption = {
+  const polygonLayerOption: Omit<PolygonLayerProps, 'source'> = {
+    id: 'myPolygonLayer',
     color: selectLabel
-      ? selectLabel.value
+      ? selectLabel.color
       : {
           field: 'count',
           scale: { type: 'quantile' },
@@ -59,42 +75,26 @@ export default () => {
 
   useEffect(() => {
     if (selectLabel && source) {
-      const newSelect = source.features.filter((item) => {
-        const [min, max] = selectLabel.label.split(' 到 ');
+      const newSelectFeatures = source.features.filter((item) => {
+        const [min, max] = selectLabel.value;
         return +min < item.properties.count && item.properties.count < +max;
       });
-      setSelectSource(newSelect);
+      setSelectFeatures(newSelectFeatures);
     }
-  }, [selectLabel]);
-  const onPolygonMouseenter = (e) => {
-    setPopup(e.feature.properties);
-  };
+  }, [selectLabel, source]);
 
   return (
     <LarkMap {...(config as LarkMapProps)} style={{ height: '60vh' }}>
       <PolygonLayer
         source={{
           data: selectLabel
-            ? { type: 'FeatureCollection', features: selectSource }
+            ? { type: 'FeatureCollection', features: selectFeatures }
             : source,
           parser: { type: 'geojson' },
         }}
         {...polygonLayerOption}
-        onMouseEnter={(layer) => {
-          onPolygonMouseenter(layer);
-        }}
       />
-      {popup && (
-        <Popup
-          lngLat={{ lat: popup.latitude, lng: popup.longitude }}
-          closeButton={false}
-          closeOnClick={false}
-        >
-          <div>名字:{popup.name}</div>
-          <div>房子数量：{popup.count}</div>
-          <div>房价：{popup.unit_price}</div>
-        </Popup>
-      )}
+      <LayerPopup items={layerPopupItems} trigger="hover" />
       <HousePrice setSelectLabel={setSelectLabel} />
     </LarkMap>
   );

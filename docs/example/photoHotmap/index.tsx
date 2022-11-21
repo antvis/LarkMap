@@ -1,7 +1,8 @@
+import type { HeatmapLayerProps, LarkMapProps } from '@antv/larkmap';
 import { HeatmapLayer, LarkMap } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
-const heatmapCfg = {
+const heatmapCfg: Omit<HeatmapLayerProps, 'source'> = {
   shape: 'hexagonColumn',
   color: {
     field: 'sum',
@@ -29,7 +30,7 @@ const heatmapCfg = {
   },
 };
 
-const config = {
+const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
     style: 'normal',

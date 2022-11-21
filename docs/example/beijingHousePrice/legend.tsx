@@ -3,41 +3,56 @@ import { message } from 'antd';
 import React from 'react';
 import './index.less';
 
-interface Props {
-  setSelectLabel: (label: undefined | { value: string; label: string }) => void;
+type LegendItem = { color: string; label: string; value: [number, number] };
+
+interface IProps {
+  setSelectLabel: (label: undefined | LegendItem) => void;
 }
 
-message.config({
-  top: 100,
-  duration: 2,
-  maxCount: 1,
+// @ts-ignore
+const data: LegendItem[] = [
+  { color: 'rgba(239, 243, 255, .8)', value: [0, 80] },
+  { color: 'rgba(198, 219, 239, .8)', value: [80, 176] },
+  { color: 'rgba(158, 202, 225, .8)', value: [176, 250] },
+  { color: 'rgba(107, 174, 214, .8)', value: [250, 331] },
+  { color: 'rgba(49, 130, 189, .8)', value: [331, 531] },
+  { color: 'rgba(8, 81, 156, .8)', value: [531, 2238] },
+].map((item) => {
+  const [min, max] = item.value;
+  return {
+    ...item,
+    label: `${min} 到 ${max}`,
+  };
 });
 
-const HousePrice = ({ setSelectLabel }: Props) => {
-  const data = [
-    { value: 'rgba(239, 243, 255, .8)', label: '0 到 80' },
-    { value: 'rgba(198, 219, 239, .8)', label: '80 到 176 ' },
-    { value: 'rgba(158, 202, 225, .8)', label: '176 到 250 ' },
-    { value: 'rgba(107, 174, 214, .8)', label: '250 到 331 ' },
-    { value: 'rgba(49, 130, 189, .8)', label: '331 到 531 ' },
-    { value: 'rgba(8, 81, 156, .8)', label: '531 到 2238 ' },
-  ];
-
+const HousePrice = ({ setSelectLabel }: IProps) => {
   return (
-    <CustomControl  style={{ background: '#fff', width: '130px', padding: '10px' }}>
-      <div style={{ padding: 8, background: 'rgb(255,255,255)', borderRadius: '8px' }}>
+    <CustomControl
+      style={{ background: '#fff', width: '130px', padding: '10px' }}
+    >
+      <div
+        style={{
+          padding: 8,
+          background: 'rgb(255,255,255)',
+          borderRadius: '8px',
+        }}
+      >
         房子数量
         {data.map((item) => {
           return (
             <div
               key={item.label}
-              style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                cursor: 'pointer',
+              }}
               onClick={() => {
                 setSelectLabel(item);
                 message.info({ content: '按ESC可退出选择' });
               }}
             >
-              <div className="circle" style={{ background: item.value }} />
+              <div className="circle" style={{ background: item.color }} />
               {item.label}
             </div>
           );

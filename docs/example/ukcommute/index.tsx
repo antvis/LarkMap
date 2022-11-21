@@ -1,9 +1,10 @@
+import type { LineLayerProps } from '@antv/larkmap';
 import { LarkMap, LineLayer } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
-import { LayerConfig, MapConfig } from './helper';
+import { config, layerConfig } from './constants';
 
 export default () => {
-  const [source, setSource] = useState({
+  const [source, setSource] = useState<LineLayerProps['source']>({
     data: '',
     parser: {
       type: 'csv',
@@ -23,10 +24,10 @@ export default () => {
         setSource({ ...source, data: data });
       });
   }, []);
-  
+
   return (
-    <LarkMap {...MapConfig} style={{ height: '60vh' }}>
-      <LineLayer {...LayerConfig} source={source} />
+    <LarkMap {...config} style={{ height: '60vh' }}>
+      <LineLayer {...layerConfig} source={source} />
     </LarkMap>
   );
 };

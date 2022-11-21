@@ -38,16 +38,17 @@ const layerOptions: Omit<IconImageLayerProps, 'source'> = {
   },
 
   state: {
-    active: true,
+    active: false,
     select: {
       radius: 20,
       opacity: 1,
       icon: 'icon2',
     },
   },
+  blend: 'normal',
 };
 
-const geojsonTojson = (data) => {
+const geojsonToJson = (data) => {
   return data?.features.map((item) => {
     return { ...item.properties, ...item.geometry };
   });
@@ -63,9 +64,9 @@ export default () => {
     fetch(
       'https://gw.alipayobjects.com/os/bmw-prod/bc5f49d2-cdde-4a56-a233-b1c227dd0b09.json',
     )
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
-        setSource((prevState) => ({ ...prevState, data: geojsonTojson(data) }));
+        setSource((prevState) => ({ ...prevState, data: geojsonToJson(data) }));
       });
   }, []);
 

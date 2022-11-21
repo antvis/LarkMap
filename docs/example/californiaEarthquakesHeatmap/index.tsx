@@ -1,7 +1,8 @@
-import { HeatmapLayer, HeatmapLayerProps, LarkMap } from '@antv/larkmap';
+import type { HeatmapLayerProps, LarkMapProps } from '@antv/larkmap';
+import { HeatmapLayer, LarkMap } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
-const heatmapLayerOptions: HeatmapLayerProps = {
+const heatmapLayerOptions: Omit<HeatmapLayerProps, 'source'> = {
   size: { field: 'Magnitude', value: [0, 1] },
   shape: 'heatmap3D',
   style: {
@@ -22,20 +23,22 @@ const heatmapLayerOptions: HeatmapLayerProps = {
   },
 };
 
-const config = {
+const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
-    style: 'normal',
+    style: 'dark',
     zoom: 5,
     center: [-122.80009283836715, 37.05881309947238],
-    pitch: 35,
+    pitch: 10,
   },
 };
+
 export default () => {
-  const [pointData, SetPointData] = useState({
+  const [pointData, SetPointData] = useState<HeatmapLayerProps['source']>({
     data: [],
     parser: { type: 'json', x: 'Longitude', y: 'Latitude' },
   });
+
   useEffect(() => {
     fetch(
       'https://gw.alipayobjects.com/os/bmw-prod/141ea8df-e674-4ce4-ac91-ee619f411e36.json',
