@@ -24,23 +24,26 @@ export default defineConfig({
   // Google Analytics
   // analytics: isProduction ? { ga: 'G-CBX7JL1Q57' } : false,
   locales: [['zh-CN', '中文']],
-  // TODO: 各个技术栈栈文案替换
   navs: [
     null,
     {
       title: '周边生态',
       children: [
         {
-          title: 'L7',
+          title: 'L7：地理空间数据可视分析引擎',
           path: 'https://l7.antv.antgroup.com',
         },
         {
-          title: 'L7Plot',
+          title: 'L7Plot：地理图表库',
           path: 'https://l7plot.antv.antgroup.com',
         },
         {
-          title: 'L7Draw',
-          path: 'https://l7draw.antv.vision/',
+          title: 'L7Draw：地理围栏绘制组件库',
+          path: 'https://l7draw.antv.vision',
+        },
+        {
+          title: 'LocationInsight：地理空间数据可视分析平台',
+          path: 'https://li.antv.antgroup.com',
         },
       ],
     },
