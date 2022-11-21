@@ -1,38 +1,24 @@
-import { BubbleLayer, LarkMap, LineLayer } from '@antv/larkmap';
+import {
+  BubbleLayer,
+  BubbleLayerProps,
+  LarkMap,
+  LarkMapProps,
+  LineLayer,
+  LineLayerProps,
+} from '@antv/larkmap';
 import React from 'react';
-import { pointData } from './mock';
+import { LINE_DATA, POINT_DATA } from './mock';
 
-const config = {
+const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
-    style: 'normal',
-    zoom: 2,
+    style: 'dark',
+    zoom: 3,
     center: [113.477391, 34.626256],
   },
 };
 
-const parserData = () => {
-  return {
-    type: 'FeatureCollection',
-    features: pointData
-      .filter((item) => item.latitude_form)
-      .map((item) => {
-        return {
-          type: 'Feature',
-          properties: { ...item },
-          geometry: {
-            type: 'LineString',
-            coordinates: [
-              [item.longitude_form, item.latitude_form],
-              [item.longitude_to, item.latitude_to],
-            ],
-          },
-        };
-      }),
-  };
-};
-
-const lineLayerOptions = {
+const lineLayerOptions: Omit<LineLayerProps, 'source'> = {
   size: {
     field: 'time',
     value: (val: Record<string, any>) => {
@@ -51,6 +37,7 @@ const lineLayerOptions = {
     ],
     sourceColor: 'orange',
     targetColor: 'red',
+    // @ts-ignore
     arrow: {
       enable: true,
       arrowWidth: 0.9,
@@ -60,7 +47,7 @@ const lineLayerOptions = {
   },
 };
 
-const bubbleLayerOptions = {
+const bubbleLayerOptions: Omit<BubbleLayerProps, 'source'> = {
   label: {
     field: 'time',
     style: { fontSize: 12, textOffset: [70, -4], fill: 'white' },
@@ -84,19 +71,19 @@ export default () => {
     <LarkMap {...config} style={{ height: '60vh' }}>
       <LineLayer
         {...lineLayerOptions}
-        source={{ data: parserData(), parser: { type: 'geojson' } }}
+        source={{ data: LINE_DATA, parser: { type: 'geojson' } }}
       />
 
       <BubbleLayer
         {...bubbleLayerOptions}
         source={{
-          data: pointData,
+          data: POINT_DATA,
           parser: { type: 'json', x: 'longitude_to', y: 'latitude_to' },
         }}
       />
       <BubbleLayer
         source={{
-          data: pointData,
+          data: POINT_DATA,
           parser: { type: 'json', x: 'longitude_to', y: 'latitude_to' },
         }}
         fillColor={'white'}

@@ -1,7 +1,7 @@
-import { LarkMap, LarkMapProps, LineLayer, PointLayer } from '@antv/larkmap';
+import { LarkMap, LarkMapProps, LineLayer, PointLayer, LineLayerProps } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
-const config = {
+const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
     style: 'normal',
@@ -12,7 +12,7 @@ const config = {
   },
 };
 
-const lineLayerStyle = {
+const lineLayerStyle: LineLayerProps<'source'> = {
   shape: 'arc3d',
   state: {
     active: true,

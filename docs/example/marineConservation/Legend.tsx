@@ -1,30 +1,18 @@
-import { CustomControl } from '@antv/larkmap';
+import { CustomControl, LegendCategories } from '@antv/larkmap';
 import React from 'react';
-import { typeList } from './helper';
+import { legendItems } from './constants';
 
 const Legend = () => {
   return (
     <CustomControl
-      position="bottomleft"
-      style={{ background: '#fff', width: '130px', padding: '10px' }}
+      position="bottomright"
+      style={{ background: '#fff', width: '160px' }}
     >
-      {typeList.map((item) => {
-        return (
-          <div style={{ marginBottom: 5 }}>
-            <div
-              style={{
-                background: item.color,
-                marginRight: 3,
-                width: 10,
-                height: 10,
-                display: 'inline-block',
-                borderRadius: '50%',
-              }}
-            />
-            {item.label}
-          </div>
-        );
-      })}
+      <LegendCategories
+        style={{ background: '#fff', padding: 8 }}
+        colors={legendItems.map((item) => item.color)}
+        labels={legendItems.map((item) => item.label)}
+      />
     </CustomControl>
   );
 };

@@ -24,7 +24,7 @@ const HousePrice = ({ setSelectLabel }: Props) => {
   ];
 
   return (
-    <CustomControl position="bottomleft" style={{ background: '#fff', width: '130px', padding: '10px' }}>
+    <CustomControl  style={{ background: '#fff', width: '130px', padding: '10px' }}>
       <div style={{ padding: 8, background: 'rgb(255,255,255)', borderRadius: '8px' }}>
         房子数量
         {data.map((item) => {

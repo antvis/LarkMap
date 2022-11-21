@@ -1,17 +1,30 @@
-import { CustomControl, LarkMap, PointLayer } from '@antv/larkmap';
+import {
+  CustomControl,
+  LarkMap,
+  LarkMapProps,
+  LegendCategories,
+  PointLayer,
+  PointLayerProps,
+} from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 import './index.less';
 
-const config = {
+const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
-    style: 'normal',
+    style: 'dark',
     zoom: 1,
     center: [116.368652, 39.93866],
   },
 };
 
-const pointLayerOptions = {
+const legendItems = [
+  { color: 'rgba(31,194,134,.8)', label: '自然景观', value: 'Natural' },
+  { color: 'rgba(249,101,52,.8)', label: '人文景观', value: 'Cultural' },
+  { color: 'rgba(255,255,115,.8)', label: '混合景观', value: 'Mixed' },
+];
+
+const pointLayerOptions: Omit<PointLayerProps, 'source'> = {
   autoFit: false,
   shape: 'simple',
   size: 6,
@@ -24,20 +37,19 @@ const pointLayerOptions = {
   },
   color: {
     field: 'category',
-    value: ['#1fc286', '#ffff73', '#f96534'],
+    value: (category: any) => {
+      return (
+        legendItems.find((item) => item.value === category.category)?.color ??
+        legendItems[0].color
+      );
+    },
   },
   style: {
     opacity: 0.8,
-    strokeWidth: 2,
+    // strokeWidth: 2,
   },
   state: { active: true },
 };
-
-const legendItem = [
-  { value: 'rgba(31,194,134,.8)', label: '自然景观' },
-  { value: 'rgba(249,101,52,.8)', label: '人文景观' },
-  { value: 'rgba(255,255,115,.8)', label: '混合景观' },
-];
 
 export default () => {
   const [pointData, SetPointData] = useState({});
@@ -74,22 +86,12 @@ export default () => {
         {...pointLayerOptions}
         source={{ data: pointData, parser: { type: 'geojson' } }}
       />
-      <CustomControl className="myCustomLegends" position="bottomleft">
-        <div
-        className='legend'
-        >
-          {legendItem.map((item) => {
-            return (
-              <div
-                key={item.label}
-                style={{ display: 'flex', alignItems: 'center' }}
-              >
-                <div className="circle" style={{ background: item.value }} />
-                {item.label}
-              </div>
-            );
-          })}
-        </div>
+      <CustomControl position="bottomleft">
+        <LegendCategories
+          style={{ background: '#fff', padding: 8 }}
+          colors={legendItems.map((item) => item.color)}
+          labels={legendItems.map((item) => item.label)}
+        />
       </CustomControl>
     </LarkMap>
   );

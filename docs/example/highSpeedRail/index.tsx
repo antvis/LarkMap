@@ -1,19 +1,27 @@
-import type { PointLayerProps } from '@antv/larkmap';
-import { LarkMap, LayerPopup, PointLayer, Scale, Zoom } from '@antv/larkmap';
+import type {
+  LarkMapProps,
+  LayerPopupProps,
+  PointLayerProps,
+} from '@antv/larkmap';
+import {
+  LarkMap,
+  LayerPopup,
+  PointLayer,
+  ScaleControl,
+  ZoomControl,
+} from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
-const config = {
+const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
-    style: 'normal',
+    style: 'dark',
     zoom: 4,
-    minZoom: 5,
-    maxZoom: 9,
   },
   logoPosition: 'bottomleft',
 };
 
-const items = [
+const items: LayerPopupProps['items'] = [
   {
     layer: 'PolygonLayer',
     fields: [
@@ -41,8 +49,8 @@ const items = [
   },
 ];
 
-const pointLayerOptions: PointLayerProps = {
-  id: 'myPoitLayer',
+const pointLayerProps: Omit<PointLayerProps, 'source'> = {
+  id: 'myPointLayer',
   shape: 'circle',
   size: 7,
   color: {
@@ -54,6 +62,7 @@ const pointLayerOptions: PointLayerProps = {
       color: 'pink', // 设置鼠标划过点的颜色
     },
   },
+  autoFit: true,
   style: {
     opacity: 0.7,
   },
@@ -82,9 +91,9 @@ export default () => {
 
   return (
     <LarkMap {...config} style={{ height: '60vh' }}>
-      <PointLayer {...pointLayerOptions} source={data} name="PolygonLayer" />
-      <Scale position="bottomleft" />
-      <Zoom position="bottomleft" />
+      <PointLayer {...pointLayerProps} source={data} name="PolygonLayer" />
+      <ScaleControl />
+      <ZoomControl />
       <LayerPopup
         closeButton={false}
         closeOnClick={false}

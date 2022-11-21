@@ -1,16 +1,16 @@
-import { LarkMap, PointLayer } from '@antv/larkmap';
+import { LarkMap, LarkMapProps, PointLayer, PointLayerProps } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
-const config = {
+const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
-    style: 'normal',
+    style: 'dark',
     center: [120.210792, 30.246026],
     zoom: 0,
   },
 };
 
-const layerOptions = {
+const layerOptions: Omit<PointLayerProps, 'source'> = {
   autoFit: true,
   shape: 'circle',
   size: 2,
@@ -30,26 +30,26 @@ const layerOptions = {
 };
 
 export default () => {
-  const [pointData, setPointData] = useState({
+  const [source, setSource] = useState<PointLayerProps['source']>({
     data: [],
     parser: { type: 'json', x: 'lat', y: 'lng' },
   });
 
-  const fetchPointData = async () => {
+  const fetchSourceData = async () => {
     const res = await fetch(
       'https://gw.alipayobjects.com/os/bmw-prod/16cd4004-b21c-455e-a2e4-c396a5ecebe1.json',
     );
     const result = await res.json();
-    setPointData({ ...pointData, data: result });
+    setSource({ ...source, data: result });
   };
 
   useEffect(() => {
-    fetchPointData();
+    fetchSourceData();
   }, []);
 
   return (
     <LarkMap {...config} style={{ height: '60vh' }}>
-      <PointLayer {...layerOptions} source={pointData} />
+      <PointLayer {...layerOptions} source={source} />
     </LarkMap>
   );
 };

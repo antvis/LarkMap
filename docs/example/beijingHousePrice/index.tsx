@@ -3,7 +3,7 @@ import { message } from 'antd';
 import React, { useEffect, useState } from 'react';
 import HousePrice from './legend';
 
-const config = {
+const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
     style: 'normal',

@@ -1,4 +1,4 @@
-export const pointData = [
+export const POINT_DATA = [
   {
     longitude_to: 113.477391,
     latitude_to: 34.626256,
@@ -206,3 +206,23 @@ export const pointData = [
     time: '4h29m',
   },
 ];
+
+
+export const LINE_DATA = (() => {
+  return {
+    type: 'FeatureCollection',
+    features: POINT_DATA.filter((item) => item.latitude_form).map((item) => {
+      return {
+        type: 'Feature',
+        properties: { ...item },
+        geometry: {
+          type: 'LineString',
+          coordinates: [
+            [item.longitude_form, item.latitude_form],
+            [item.longitude_to, item.latitude_to],
+          ],
+        },
+      };
+    }),
+  };
+})();

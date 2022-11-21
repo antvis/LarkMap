@@ -1,6 +1,6 @@
 import { ILngLat } from '@antv/l7';
 import type { LarkMapProps, PolygonLayerProps } from '@antv/larkmap';
-import { LarkMap, PolygonLayer, Popup, PopupProps, Scale, Zoom } from '@antv/larkmap';
+import { LarkMap, PolygonLayer, Popup, PopupProps, ScaleControl, ZoomControl } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 import styles from './index.less';
 
@@ -108,8 +108,8 @@ const CountyUnemployment = () => {
             </ul>
           </div>
         </Popup>
-        <Scale position={'bottomleft'} />
-        <Zoom position={'bottomright'} />
+        <ScaleControl position={'bottomleft'} />
+        <ZoomControl position={'bottomright'} />
       </LarkMap>
 
       <LarkMap {...config}>
@@ -129,8 +129,8 @@ const CountyUnemployment = () => {
             </ul>
           </div>
         </Popup>
-        <Scale position={'bottomleft'} />
-        <Zoom position={'bottomright'} />
+        <ScaleControl position={'bottomleft'} />
+        <ZoomControl position={'bottomright'} />
       </LarkMap>
     </div>
   );

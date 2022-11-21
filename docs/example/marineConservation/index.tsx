@@ -1,11 +1,13 @@
-import { LarkMap, PointLayer, Popup } from '@antv/larkmap';
+import { LarkMap, LayerPopup, PointLayer, PointLayerProps } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
-import { LayerConfig, MapConfig } from './helper';
+import { config, layerConfig } from './constants';
 import Legend from './Legend';
 
 export default () => {
-  const [source, setSource] = useState({ data: [], parse: { type: 'json' } });
-  const [info, setInfo] = useState<Record<string, any>>({});
+  const [source, setSource] = useState<PointLayerProps['source']>({
+    data: [] as any,
+    parser: { type: 'json' },
+  });
 
   useEffect(() => {
     fetch(
@@ -14,53 +16,41 @@ export default () => {
       .then((res) => res.text())
       .then((data) => {
         setSource({
-          // @ts-ignore
-          data: data,
+          data,
           parser: { type: 'csv', x: 'Longitude', y: 'Latitude' },
         });
       });
   }, []);
 
-  const onPointMouseenter = (e: any) => {
-    const { ChineseName, Province, Area, Longitude, Latitude } = e.feature;
-    setInfo({ ChineseName, Province, Area, Longitude, Latitude });
-  };
-
   return (
-    <LarkMap {...MapConfig} style={{ height: '60vh' }}>
+    <LarkMap {...config} style={{ height: '60vh' }}>
       <Legend />
 
-      <PointLayer
-        {...LayerConfig}
-        source={source}
-        onMouseMove={(layer) => {
-          onPointMouseenter(layer);
-        }}
+      <PointLayer name="customPointLayer" {...layerConfig} source={source} />
+
+      <LayerPopup
+        items={[
+          {
+            layer: 'customPointLayer',
+            fields: [
+              {
+                field: 'ChineseName',
+                formatField: '名称',
+              },
+              {
+                field: 'Province',
+                formatField: '省份',
+              },
+              {
+                field: 'Area',
+                formatField: '面积',
+                formatValue: (value) => `${value}(km²)`,
+              },
+            ],
+          },
+        ]}
+        trigger="hover"
       />
-      {info?.Longitude && (
-        <Popup
-          lngLat={{ lng: info?.Longitude, lat: info?.Latitude }}
-          closeButton={false}
-          closeOnClick={false}
-          anchor="bottom-left"
-        >
-          <p
-            style={{
-              width: 200,
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-            }}
-          >
-            名称：{info.ChineseName}
-          </p>
-          <p style={{ width: 250, overflow: 'hidden' }}>
-            省份：{info.Province}
-          </p>
-          <p style={{ width: 250, overflow: 'hidden' }}>
-            面积：{info.Area}(km2)
-          </p>
-        </Popup>
-      )}
     </LarkMap>
   );
 };

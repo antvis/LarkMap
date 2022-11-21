@@ -1,7 +1,14 @@
-import { LarkMap, PointLayer, Popup } from '@antv/larkmap';
+import {
+  LarkMap,
+  LarkMapProps,
+  LayerPopup,
+  LayerPopupProps,
+  PointLayer,
+  PointLayerProps,
+} from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
-const config = {
+const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
     style: 'normal',
@@ -9,12 +16,14 @@ const config = {
     zoom: 6,
   },
 };
-const pointlayerOptions = {
+const pointLayerOptions: Omit<PointLayerProps, 'source'> = {
+  id: 'customPointLayer',
   shape: 'circle',
   size: {
     field: 'count',
     value: [2, 20],
   },
+  autoFit: true,
   color: {
     field: 'count',
     value: [
@@ -37,39 +46,38 @@ const pointlayerOptions = {
     ],
   },
 };
+const layerPopupItems: LayerPopupProps['items'] = [
+  {
+    layer: 'customPointLayer',
+    fields: ['lng', 'lat'].map((field) => {
+      return {
+        field,
+        formatValue: (value) => +value.toFixed(6),
+      };
+    }),
+  },
+];
 
 export default () => {
-  const [pointData, setPointData] = useState({
+  const [pointData, setPointData] = useState<PointLayerProps['source']>({
     data: [],
     parser: { type: 'json', x: 'lat', y: 'lng' },
   });
-  const [lngLat, setLngLat] = useState({ lng: 120.210792, lat: 30.246026 });
+
   useEffect(() => {
     fetch(
       'https://gw.alipayobjects.com/os/bmw-prod/6f72e4f7-ac8c-41f6-bcac-9745100083ba.json',
     )
       .then((res) => res.json())
-      .then((data) => setPointData({ ...pointData, data: data }));
+      .then((data) => {
+        setPointData({ ...pointData, data });
+      });
   }, []);
 
   return (
     <LarkMap {...config} style={{ height: '60vh' }}>
-      <PointLayer
-        source={pointData}
-        onMouseMove={(layer) => {
-          setLngLat(layer.lngLat);
-        }}
-        {...pointlayerOptions}
-      />
-      <Popup
-        lngLat={lngLat}
-        closeButton={false}
-        closeOnClick={false}
-        anchor="bottom-left"
-      >
-        <p>lat: {lngLat.lat}</p>
-        <p>lng: {lngLat.lng}</p>
-      </Popup>
+      <PointLayer source={pointData} {...pointLayerOptions} />
+      <LayerPopup items={layerPopupItems} trigger="hover" />
     </LarkMap>
   );
 };
