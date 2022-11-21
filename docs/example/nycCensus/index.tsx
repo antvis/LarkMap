@@ -60,7 +60,7 @@ export default () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        setChoroplethLayerData({ ...choroplethLayerData, data: data });
+        setChoroplethLayerData({ ...choroplethLayerData, data });
       });
   }, []);
 

@@ -1,13 +1,11 @@
+import type { LarkMapProps, PointLayerProps } from '@antv/larkmap';
 import {
   CustomControl,
   LarkMap,
-  LarkMapProps,
   LegendCategories,
   PointLayer,
-  PointLayerProps,
 } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
-import './index.less';
 
 const config: LarkMapProps = {
   mapType: 'Gaode',

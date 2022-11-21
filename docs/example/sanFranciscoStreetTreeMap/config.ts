@@ -1,4 +1,6 @@
-export const mapCfg = {
+import type { HeatmapLayerProps, LarkMapProps } from '@antv/larkmap';
+
+export const mapCfg: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
     style: 'normal',
@@ -32,8 +34,9 @@ export const scaleType = [
   { label: 'cat', value: 'cat' },
 ];
 
-export const heatmapCfg = {
+export const heatmapCfg: HeatmapLayerProps = {
   source: {
+    data: '',
     parser: { type: 'csv', x: 'longitude', y: 'latitude' },
     transforms: [
       {

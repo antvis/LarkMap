@@ -1,4 +1,4 @@
-import { Scene } from '@antv/l7';
+import type { Scene } from '@antv/l7';
 import { CustomControl, HeatmapLayer, LarkMap } from '@antv/larkmap';
 import { Popover, Select, Slider, Typography } from 'antd';
 import { cloneDeep, get, set } from 'lodash';
@@ -21,36 +21,36 @@ function StreetMap() {
       .then((res) => setHeatmapData(res));
   }, []);
 
-  const [heatmapCfgs, setHeatmapCfgs] = useState(heatmapCfg);
+  const [heatmapConfig, setHeatmapConfig] = useState(heatmapCfg);
 
   const setConfig = useCallback(
     (field: string, value: any) => {
-      set(heatmapCfgs, field, value);
-      setHeatmapCfgs(cloneDeep(heatmapCfgs));
+      set(heatmapConfig, field, value);
+      setHeatmapConfig(cloneDeep(heatmapConfig));
     },
-    [heatmapCfgs],
+    [heatmapConfig],
   );
 
-  const silderStyle = useMemo(() => {
+  const sliderStyle = useMemo(() => {
     return {
-      trackStyle: { backgroundColor: get(heatmapCfgs, 'color.value[0]') },
+      trackStyle: { backgroundColor: get(heatmapConfig, 'color.value[0]') },
     };
-  }, [heatmapCfgs]);
+  }, [heatmapConfig]);
 
   return (
     <LarkMap
       {...mapCfg}
       style={{ height: '60vh' }}
-      onSceneLoaded={(scene: Scene) => setScene(scene)}
+      onSceneLoaded={(newScene: Scene) => setScene(newScene)}
     >
       {heatmapData && (
         // @ts-ignore
         <HeatmapLayer
           size={{ field: 'sum', value: (v: any) => v.sum }}
-          {...heatmapCfgs}
+          {...heatmapConfig}
           // shape={"circle"}
           source={{
-            ...heatmapCfgs.source,
+            ...heatmapConfig.source,
             data: heatmapData,
           }}
         />
@@ -63,7 +63,7 @@ function StreetMap() {
               min={0}
               max={300}
               step={10}
-              {...silderStyle}
+              {...sliderStyle}
               defaultValue={scene?.getRotation()}
               onChange={(e) => {
                 scene?.setRotation(e);
@@ -76,7 +76,7 @@ function StreetMap() {
               min={0}
               max={60}
               step={5}
-              {...silderStyle}
+              {...sliderStyle}
               defaultValue={scene?.getPitch()}
               onChange={(e) => {
                 scene?.setPitch(e);
@@ -87,7 +87,7 @@ function StreetMap() {
             <div>设置shape:</div>
             <Select
               style={{ width: 170 }}
-              defaultValue={heatmapCfgs.shape}
+              defaultValue={heatmapConfig.shape}
               onChange={(e) => {
                 setConfig('shape', e);
               }}
@@ -99,7 +99,7 @@ function StreetMap() {
             <div>设置scale:</div>
             <Select
               style={{ width: 170 }}
-              defaultValue={get(heatmapCfgs, 'color.scale.type')}
+              defaultValue={get(heatmapConfig, 'color.scale.type')}
               onChange={(e) => {
                 setConfig('color.scale.type', e);
               }}
@@ -110,7 +110,8 @@ function StreetMap() {
           <div className={styles.setItem}>
             <div>设置区间颜色:</div>
             <div className={styles.pickColor}>
-              {heatmapCfgs.color.value.map((item, index) => {
+              {/* @ts-ignore */}
+              {heatmapConfig.color.value.map((item, index) => {
                 return (
                   <Popover
                     key={item}
@@ -137,8 +138,8 @@ function StreetMap() {
               min={200}
               max={250}
               step={10}
-              {...silderStyle}
-              defaultValue={get(heatmapCfgs, 'source.transforms[0].size')}
+              {...sliderStyle}
+              defaultValue={get(heatmapConfig, 'source.transforms[0].size')}
               onChange={(e) => {
                 setConfig(`source.transforms[0].size]`, e);
               }}
@@ -148,7 +149,7 @@ function StreetMap() {
             style={{ color: '#fff' }}
             copyable={{
               text: JSON.stringify({
-                ...heatmapCfgs,
+                ...heatmapConfig,
                 data: 'https://gw.alipayobjects.com/os/bmw-prod/44884a0c-b82b-4352-a15d-7c8ba6e44c54.csv',
               }),
               tooltips: false,

@@ -1,11 +1,9 @@
-import {
-  BubbleLayer,
+import type {
   BubbleLayerProps,
-  LarkMap,
   LarkMapProps,
-  LineLayer,
   LineLayerProps,
 } from '@antv/larkmap';
+import { BubbleLayer, LarkMap, LineLayer } from '@antv/larkmap';
 import React from 'react';
 import { LINE_DATA, POINT_DATA } from './mock';
 

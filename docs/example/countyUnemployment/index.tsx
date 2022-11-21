@@ -2,12 +2,11 @@ import type { ChoroplethLayerProps, LarkMapProps } from '@antv/larkmap';
 import {
   ChoroplethLayer,
   LarkMap,
-  LayerPopupProps,
   ScaleControl,
   ZoomControl,
 } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
-import { colorArr } from './utils';
+import { colorList } from './utils';
 
 /** 地图属性配置 */
 const config: LarkMapProps = {
@@ -26,7 +25,7 @@ const choroplethLayerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   // autoFit: true,
   fillColor: {
     field: 'unemployment_rate',
-    value: colorArr,
+    value: colorList,
     scale: {
       type: 'quantile',
     },
@@ -47,18 +46,6 @@ const choroplethLayerOptions: Omit<ChoroplethLayerProps, 'source'> = {
 
   blend: 'normal',
 };
-
-const layerPopupItems: LayerPopupProps['items'] = [
-  {
-    layer: 'unemploymentRateLayer',
-    fields: [
-      {
-        field: 'NAME',
-        formatField: '名称',
-      },
-    ],
-  },
-];
 
 export default () => {
   const [source, setSource] = useState<ChoroplethLayerProps['source']>({

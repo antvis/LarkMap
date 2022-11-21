@@ -1,11 +1,9 @@
-import {
-  LarkMap,
+import type {
   LarkMapProps,
-  LayerPopup,
   LayerPopupProps,
-  PointLayer,
   PointLayerProps,
 } from '@antv/larkmap';
+import { LarkMap, LayerPopup, PointLayer } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
 const config: LarkMapProps = {

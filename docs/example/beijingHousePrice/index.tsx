@@ -40,8 +40,8 @@ export default () => {
       'https://gw.alipayobjects.com/os/bmw-prod/bc5f49d2-cdde-4a56-a233-b1c227dd0b09.json',
     )
       .then((res) => res.json())
-      .then((data) => setSource(data))
-      .then(() => {
+      .then((data) => {
+        setSource(data);
         message.info('点击图例可更换数据');
       });
 

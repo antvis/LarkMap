@@ -1,7 +1,12 @@
-import { LarkMap, PointLayer, Popup } from '@antv/larkmap';
+import type {
+  LarkMapProps,
+  LayerPopupProps,
+  PointLayerProps,
+} from '@antv/larkmap';
+import { LarkMap, LayerPopup, PointLayer } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
-const cofing = {
+const config: LarkMapProps = {
   mapType: 'Gaode',
   mapOptions: {
     style: 'normal',
@@ -10,7 +15,8 @@ const cofing = {
   },
 };
 
-const pointOptions = {
+const layerOptions: Omit<PointLayerProps, 'source'> = {
+  id: 'myPointLayer',
   autoFit: false,
   shape: 'simple',
   size: {
@@ -24,16 +30,22 @@ const pointOptions = {
     scale: { type: 'quantize' },
     value: ['#762a83', '#af8dc3', '#e7d4e8', '#d9f0d3', '#7fbf7b', '#1b7837'],
   },
-  styl: {
+  style: {
     opacity: 0.8,
-    strokeWidth: 2,
   },
   state: { active: true },
+  blend: 'normal',
 };
 
+const layerPopupItems: LayerPopupProps['items'] = [
+  {
+    layer: 'myPointLayer',
+    fields: ['DateTime', 'Depth', 'Magnitude', 'Source'],
+  },
+];
+
 export default () => {
-  const [pointData, SetPointData] = useState({});
-  const [info, setInfo] = useState<Record<string, any>>({});
+  const [pointData, setPointData] = useState({});
 
   useEffect(() => {
     fetch(
@@ -41,54 +53,20 @@ export default () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        SetPointData(data);
+        setPointData(data);
       });
   }, []);
 
-  const onPointMouseenter = (e: any) => {
-    const { DateTime, Magnitude, Source, Depth, Latitude, Longitude } =
-      e.feature;
-    setInfo({ DateTime, Magnitude, Source, Depth, Latitude, Longitude });
-  };
-
   return (
-    <LarkMap {...cofing} style={{ height: '60vh' }}>
+    <LarkMap {...config} style={{ height: '60vh' }}>
       <PointLayer
-        {...pointOptions}
+        {...layerOptions}
         source={{
           data: pointData,
           parser: { type: 'json', x: 'Longitude', y: 'Latitude' },
         }}
-        onMouseEnter={(layer) => {
-          onPointMouseenter(layer);
-        }}
       />
-      {info?.Longitude && (
-        <Popup
-          lngLat={{ lng: info?.Longitude, lat: info?.Latitude }}
-          closeButton={false}
-          closeOnClick={false}
-        >
-          <div
-            style={{
-              width: 200,
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-            }}
-          >
-            时间：{info.DateTime}
-          </div>
-          <div style={{ width: 250, overflow: 'hidden' }}>
-            深度：{info.Depth}
-          </div>
-          <div style={{ width: 250, overflow: 'hidden' }}>
-            地震强度：{info.Magnitude}
-          </div>
-          <div style={{ width: 250, overflow: 'hidden' }}>
-            数据来源：{info.Source}
-          </div>
-        </Popup>
-      )}
+      <LayerPopup items={layerPopupItems} trigger="hover" />
     </LarkMap>
   );
 };

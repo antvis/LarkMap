@@ -1,4 +1,4 @@
-export const colorArr = [
+export const colorList = [
   '#fff7f3',
   '#fde0dd',
   '#fcc5c0',
