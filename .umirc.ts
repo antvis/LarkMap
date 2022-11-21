@@ -43,7 +43,7 @@ export default defineConfig({
         },
         {
           title: 'LocationInsight：地理空间数据可视分析平台',
-          path: 'https://li.antv.antgroup.com',
+          path: 'https://locationinsight.antv.antgroup.com',
         },
       ],
     },
