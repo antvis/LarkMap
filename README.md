@@ -4,7 +4,7 @@
 
 <div align="center">
 
-🌍 基于 <a href="https://github.com/antvis/L7">L7</a> 封装的空间数据可视分析 React 组件库.
+🌍 基于 <a href="https://github.com/antvis/L7">L7</a> 的空间数据可视分析 React 组件库.
 
 <!-- [![NPM downloads](https://img.shields.io/npm/dm/@antv/larkmap.svg)](https://npmjs.com/@antv/larkmap) -->
 <!-- ![Latest commit](https://badgen.net/github/last-commit/antvis/LarkMap) -->
@@ -36,7 +36,7 @@ import React from 'react';
 import { LarkMap } from '@antv/larkmap';
 
 const config = {
-  mapType: 'Mapbox',
+  mapType: 'Gaode',
   mapOptions: {
     style: 'light',
     center: [120.210792, 30.246026],

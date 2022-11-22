@@ -30,19 +30,19 @@ export default defineConfig({
       title: '周边生态',
       children: [
         {
-          title: 'L7：地理空间数据可视分析引擎',
+          title: 'L7',
           path: 'https://l7.antv.antgroup.com',
         },
         {
-          title: 'L7Plot：地理图表库',
+          title: 'L7Plot',
           path: 'https://l7plot.antv.antgroup.com',
         },
         {
-          title: 'L7Draw：地理围栏绘制组件库',
+          title: 'L7Draw',
           path: 'https://l7draw.antv.vision',
         },
         {
-          title: 'LocationInsight：地理空间数据可视分析平台',
+          title: 'LocationInsight',
           path: 'https://locationinsight.antv.antgroup.com',
         },
       ],
