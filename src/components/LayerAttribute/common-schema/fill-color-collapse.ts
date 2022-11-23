@@ -38,11 +38,11 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
             default: 'quantile',
             enum: [
               {
-                label: '等比',
+                label: '等间距',
                 value: 'quantize',
               },
               {
-                label: '等分',
+                label: '等分位',
                 value: 'quantile',
               },
             ],
