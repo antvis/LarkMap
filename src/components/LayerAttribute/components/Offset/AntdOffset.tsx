@@ -26,7 +26,7 @@ const AntdOffset: React.FC<AntdOffsetProps> = (props) => {
     <div className={prefixCls}>
       <InputNumber
         size="small"
-        value={sliderVal[0]}
+        value={sliderVal[0] ?? 0}
         onChange={(val) => {
           const value: [number, number] = [val, Number(sliderVal[1])];
           setSliderVal(value);
@@ -34,7 +34,7 @@ const AntdOffset: React.FC<AntdOffsetProps> = (props) => {
       />
       <InputNumber
         size="small"
-        value={sliderVal[1]}
+        value={sliderVal[1] ?? 0}
         onChange={(val) => {
           const value: [number, number] = [sliderVal[0], Number(val)];
           setSliderVal(value);
