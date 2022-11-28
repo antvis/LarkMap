@@ -1,4 +1,5 @@
 import { usePrefixCls } from '@formily/antd/esm/__builtins__/hooks/usePrefixCls';
+import { isEmpty } from '@formily/shared';
 import { InputNumber } from 'antd';
 import React, { useEffect, useState } from 'react';
 import './AntdOffset.less';
@@ -16,7 +17,7 @@ export interface AntdOffsetProps {
 
 const AntdOffset: React.FC<AntdOffsetProps> = (props) => {
   const prefixCls = usePrefixCls('formily-offset');
-  const [sliderVal, setSliderVal] = useState<[number, number]>(props.value ?? [0, 0]);
+  const [sliderVal, setSliderVal] = useState<[number, number]>(isEmpty(props.value) ? [0, 0] : props.value);
 
   useEffect(() => {
     props.onChange(sliderVal);
@@ -26,7 +27,7 @@ const AntdOffset: React.FC<AntdOffsetProps> = (props) => {
     <div className={prefixCls}>
       <InputNumber
         size="small"
-        value={sliderVal[0] ?? 0}
+        value={sliderVal[0]}
         onChange={(val) => {
           const value: [number, number] = [val, Number(sliderVal[1])];
           setSliderVal(value);
@@ -34,7 +35,7 @@ const AntdOffset: React.FC<AntdOffsetProps> = (props) => {
       />
       <InputNumber
         size="small"
-        value={sliderVal[1] ?? 0}
+        value={sliderVal[1]}
         onChange={(val) => {
           const value: [number, number] = [sliderVal[0], Number(val)];
           setSliderVal(value);
