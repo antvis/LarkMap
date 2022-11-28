@@ -61,7 +61,7 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
                 value: 'top-left',
               },
               {
-                label: '上',
+                label: '中上',
                 value: 'top',
               },
               {
@@ -85,7 +85,7 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
                 value: 'bottom-left',
               },
               {
-                label: '下',
+                label: '中下',
                 value: 'bottom',
               },
               {
