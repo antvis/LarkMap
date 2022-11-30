@@ -19,9 +19,9 @@ export interface AntdOffsetProps {
 const AntdOffset: React.FC<AntdOffsetProps> = (props) => {
   const prefixCls = usePrefixCls('formily-offset');
   const [sliderVal, setSliderVal] = useState<[number, number]>(
-    isEmpty(Object.values(props.value))
+    isEmpty(props.value)
       ? [0, 0]
-      : (Object.values(props.value).map((item) => (isNumber(item) ? item : 0)) as [number, number]),
+      : (props.value.map((item) => (isNumber(item) && !isNaN(item) ? item : 0)) as [number, number]),
   );
 
   useEffect(() => {
