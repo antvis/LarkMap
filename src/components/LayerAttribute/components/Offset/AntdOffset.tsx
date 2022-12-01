@@ -1,7 +1,6 @@
 import { usePrefixCls } from '@formily/antd/esm/__builtins__/hooks/usePrefixCls';
-import { isEmpty } from '@formily/shared';
 import { InputNumber } from 'antd';
-import { isFinite } from 'lodash-es';
+import { isEmpty, isFinite } from 'lodash-es';
 import React, { useEffect, useState } from 'react';
 import './AntdOffset.less';
 
