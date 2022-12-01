@@ -21,7 +21,7 @@ const AntdOffset: React.FC<AntdOffsetProps> = (props) => {
   const [sliderVal, setSliderVal] = useState<[number, number]>(
     isEmpty(props.value)
       ? [0, 0]
-      : (props.value.map((item) => (isNumber(item) && !isNaN(item) ? item : 0)) as [number, number]),
+      : (props.value.map((item) => (isNumber(item) && isFinite(item) ? item : 0)) as [number, number]),
   );
 
   useEffect(() => {
