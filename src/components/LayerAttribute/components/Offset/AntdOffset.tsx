@@ -1,7 +1,7 @@
 import { usePrefixCls } from '@formily/antd/esm/__builtins__/hooks/usePrefixCls';
 import { isEmpty } from '@formily/shared';
 import { InputNumber } from 'antd';
-import { isNumber } from 'lodash-es';
+import { isFinite } from 'lodash-es';
 import React, { useEffect, useState } from 'react';
 import './AntdOffset.less';
 
@@ -19,9 +19,7 @@ export interface AntdOffsetProps {
 const AntdOffset: React.FC<AntdOffsetProps> = (props) => {
   const prefixCls = usePrefixCls('formily-offset');
   const [sliderVal, setSliderVal] = useState<[number, number]>(
-    isEmpty(props.value)
-      ? [0, 0]
-      : (props.value.map((item) => (isNumber(item) && isFinite(item) ? item : 0)) as [number, number]),
+    isEmpty(props.value) ? [0, 0] : (props.value.map((item) => (isFinite(item) ? item : 0)) as [number, number]),
   );
 
   useEffect(() => {
