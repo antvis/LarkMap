@@ -1,10 +1,11 @@
-import type { IPopupOption } from '@antv/l7';
+import type { IPopupOption, LayerField } from '@antv/l7';
 import { LayerPopup as L7LayerPopup } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { getStyleText } from '../../utils';
-import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../Control/hooks';
+import { useL7ComponentEvent, useL7ComponentUpdate } from '../Control/hooks';
 import { useLayerManager, useScene } from '../LarkMap/hooks';
 import type { LayerPopupProps } from './types';
 
@@ -22,7 +23,6 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   autoClose,
   className,
   lngLat,
-  title,
   items,
   trigger,
   onOpen,
@@ -33,11 +33,19 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   const scene = useScene();
   const [popup, setPopup] = useState<L7LayerPopup | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
-  const { portal: titlePartial, dom: titleDOM } = useL7ComponentPortal(title);
+  const [portal, setPortal] = useState([]);
   const layerManager = useLayerManager();
+
+  const newPortal = (data: any, dome: any) => {
+    return {
+      portal: data ? createPortal(data, dome) : null,
+      dom: dome,
+    };
+  };
 
   const layerPopupItems = useMemo(() => {
     const newItems: LayerPopupProps['items'] = [];
+    const portalArr = [];
     items.forEach((item) => {
       const newItem = { ...item };
       if (typeof item.layer === 'string') {
@@ -49,7 +57,40 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
           console.warn('LayerPopup 中传入了未注册的 layerId');
         }
       }
+      if (item.title) {
+        const demo = document.createElement('div');
+        console.log(newPortal(item.title, demo).portal, 'portal');
+        portalArr.push(newPortal(item.title, demo).portal);
+        newItem.title = newPortal(item.title, demo).dom;
+      }
+      if (item.customContent) {
+        const demo = document.createElement('div');
+        portalArr.push(newPortal(item.customContent, demo).portal);
+        newItem.customContent = newPortal(item.customContent, demo).dom;
+      }
+      const newFields = item.fields.map((field: LayerField) => {
+        if (typeof field === 'string') {
+          return field;
+        } else {
+          const newField = { ...field };
+          if (field.formatField && typeof field.formatField === 'object') {
+            const demo = document.createElement('span');
+            portalArr.push(newPortal(field.formatField, demo).portal);
+            newField.formatField = newPortal(field.formatField, demo).dom;
+          }
+          if (field.formatValue && typeof field.formatValue === 'object') {
+            const demo = document.createElement('span');
+            portalArr.push(newPortal(field.formatValue, demo).portal);
+            newField.formatValue = newPortal(field.formatValue, demo).dom;
+          }
+          return newField;
+        }
+      });
+      console.log(newFields, 'newFields');
+      newItem.fields = newFields;
+      setPortal(portalArr);
       newItems.push(newItem);
+      console.log(newItems, '======>>>>>>');
     });
     return newItems;
   }, [items, layerManager]);
@@ -72,8 +113,7 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       lngLat,
       items: layerPopupItems,
       trigger,
-      title: titleDOM,
-    }), // eslint-disable-next-line react-hooks/exhaustive-deps
+    }),
     [
       styleText,
       closeButton,
@@ -89,7 +129,6 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       autoPan,
       autoClose,
       className,
-      titleDOM,
       trigger,
       // eslint-disable-next-line react-hooks/exhaustive-deps
       JSON.stringify(lngLat),
@@ -119,5 +158,7 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
     hide: onHide,
   });
 
-  return <>{titlePartial}</>;
+  console.log(portal);
+
+  return <>{portal}</>;
 };
