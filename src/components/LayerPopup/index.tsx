@@ -1,13 +1,13 @@
-import type { IPopupOption, LayerField } from '@antv/l7';
-import { LayerPopup as L7LayerPopup } from '@antv/l7';
+import type { IPopupOption } from '@antv/l7';
+import { LayerPopup as L7LayerPopup, LayerPopupConfigItem } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import React, { useMemo, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useEffect, useMemo, useState } from 'react';
 import { getStyleText } from '../../utils';
 import { useL7ComponentEvent, useL7ComponentUpdate } from '../Control/hooks';
 import { useLayerManager, useScene } from '../LarkMap/hooks';
 import type { LayerPopupProps } from './types';
+import { getElementTypePortal } from './utils';
 
 export const LayerPopup: React.FC<LayerPopupProps> = ({
   style,
@@ -33,21 +33,19 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   const scene = useScene();
   const [popup, setPopup] = useState<L7LayerPopup | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
-  const [portal, setPortal] = useState([]);
+  const [portalList, setPortalList] = useState<React.ReactPortal[]>([]);
+  const [layerPopupItems, setLayerPopupItems] = useState<LayerPopupConfigItem[]>([]);
   const layerManager = useLayerManager();
 
-  const newPortal = (data: any, dome: any) => {
-    return {
-      portal: data ? createPortal(data, dome) : null,
-      dom: dome,
-    };
-  };
+  useEffect(() => {
+    const newItems: LayerPopupConfigItem[] = [];
+    const newPortalList: React.ReactPortal[] = [];
 
-  const layerPopupItems = useMemo(() => {
-    const newItems: LayerPopupProps['items'] = [];
-    const portalArr = [];
     items.forEach((item) => {
-      const newItem = { ...item };
+      const newItem: LayerPopupConfigItem = {
+        layer: item.layer,
+      };
+      // 若 layer 为字符串格式，统一从 LarkMap 的 LayerManger 中获取 layer 实例
       if (typeof item.layer === 'string') {
         const targetLayer = layerManager.getLayer(item.layer);
         if (targetLayer) {
@@ -57,42 +55,39 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
           console.warn('LayerPopup 中传入了未注册的 layerId');
         }
       }
+
       if (item.title) {
-        const demo = document.createElement('div');
-        console.log(newPortal(item.title, demo).portal, 'portal');
-        portalArr.push(newPortal(item.title, demo).portal);
-        newItem.title = newPortal(item.title, demo).dom;
+        const { elementType, portal } = getElementTypePortal(item.title, 'div', setPortalList);
+        newPortalList.push(portal);
+        newItem.title = elementType;
       }
       if (item.customContent) {
-        const demo = document.createElement('div');
-        portalArr.push(newPortal(item.customContent, demo).portal);
-        newItem.customContent = newPortal(item.customContent, demo).dom;
+        const { elementType, portal } = getElementTypePortal(item.customContent, 'div', setPortalList);
+        newPortalList.push(portal);
+        newItem.title = elementType;
       }
-      const newFields = item.fields.map((field: LayerField) => {
-        if (typeof field === 'string') {
-          return field;
-        } else {
-          const newField = { ...field };
-          if (field.formatField && typeof field.formatField === 'object') {
-            const demo = document.createElement('span');
-            portalArr.push(newPortal(field.formatField, demo).portal);
-            newField.formatField = newPortal(field.formatField, demo).dom;
-          }
-          if (field.formatValue && typeof field.formatValue === 'object') {
-            const demo = document.createElement('span');
-            portalArr.push(newPortal(field.formatValue, demo).portal);
-            newField.formatValue = newPortal(field.formatValue, demo).dom;
-          }
-          return newField;
-        }
-      });
-      console.log(newFields, 'newFields');
-      newItem.fields = newFields;
-      setPortal(portalArr);
+      // newItem.fields = item.fields.map((field: LayerField) => {
+      //   if (typeof field === 'string') {
+      //     return field;
+      //   } else {
+      //     const newField = { ...field };
+      //     if (field.formatField && typeof field.formatField === 'object') {
+      //       const demo = document.createElement('span');
+      //       newPortalList.push(newPortal(field.formatField, demo).portal);
+      //       newField.formatField = newPortal(field.formatField, demo).dom;
+      //     }
+      //     if (field.formatValue && typeof field.formatValue === 'object') {
+      //       const demo = document.createElement('span');
+      //       newPortalList.push(newPortal(field.formatValue, demo).portal);
+      //       newField.formatValue = newPortal(field.formatValue, demo).dom;
+      //     }
+      //     return newField;
+      //   }
+      // });
       newItems.push(newItem);
-      console.log(newItems, '======>>>>>>');
     });
-    return newItems;
+    setPortalList(newPortalList);
+    setLayerPopupItems(newItems);
   }, [items, layerManager]);
 
   const layerPopupOptions: Partial<IPopupOption> = useMemo(
@@ -158,7 +153,5 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
     hide: onHide,
   });
 
-  console.log(portal);
-
-  return <>{portal}</>;
+  return <>{portalList}</>;
 };

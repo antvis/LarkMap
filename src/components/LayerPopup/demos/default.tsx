@@ -28,21 +28,23 @@ const lineLayerOptions: Omit<LineLayerProps, 'source'> = {
 const items = [
   {
     layer: 'myPolygonLayer',
-    fields: [
-      {
-        field: 'name',
-        formatField: () => '名称',
-      },
-      {
-        field: 'adcode',
-        formatField: () => '权值',
-      },
-    ],
+    // fields: [
+    //   {
+    //     field: 'name',
+    //     formatField: () => '名称',
+    //     formatValue: '123456'
+    //   },
+    //   {
+    //     field: 'adcode',
+    //     formatField: () => '权值',
+    //   },
+    // ],
+    title: '123456',
   },
-  {
-    layer: 'myLineLayer',
-    fields: ['subFeatureIndex', 'childrenNum'],
-  },
+  // {
+  //   layer: 'myLineLayer',
+  //   fields: ['subFeatureIndex', 'childrenNum'],
+  // },
 ];
 
 export default () => {
