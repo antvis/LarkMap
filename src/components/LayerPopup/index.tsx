@@ -1,12 +1,12 @@
-import type { IPopupOption } from '@antv/l7';
-import { LayerPopup as L7LayerPopup, LayerPopupConfigItem } from '@antv/l7';
+import type { IPopupOption, LayerField, LayerPopupConfigItem } from '@antv/l7';
+import { LayerPopup as L7LayerPopup } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
 import React, { useEffect, useMemo, useState } from 'react';
 import { getStyleText } from '../../utils';
 import { useL7ComponentEvent, useL7ComponentUpdate } from '../Control/hooks';
 import { useLayerManager, useScene } from '../LarkMap/hooks';
-import type { LayerPopupProps } from './types';
+import type { ILayerField, LayerPopupProps } from './types';
 import { getElementTypePortal } from './utils';
 
 export const LayerPopup: React.FC<LayerPopupProps> = ({
@@ -39,7 +39,6 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
 
   useEffect(() => {
     const newItems: LayerPopupConfigItem[] = [];
-    const newPortalList: React.ReactPortal[] = [];
 
     items.forEach((item) => {
       const newItem: LayerPopupConfigItem = {
@@ -52,41 +51,38 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
           // @ts-ignore
           newItem.layer = targetLayer;
         } else {
-          console.warn('LayerPopup 中传入了未注册的 layerId');
+          console.error('LayerPopup 中传入了未注册的 layerId');
         }
       }
 
       if (item.title) {
-        const { elementType, portal } = getElementTypePortal(item.title, 'div', setPortalList);
-        newPortalList.push(portal);
+        const { elementType } = getElementTypePortal(item.title, 'div', setPortalList);
         newItem.title = elementType;
       }
       if (item.customContent) {
-        const { elementType, portal } = getElementTypePortal(item.customContent, 'div', setPortalList);
-        newPortalList.push(portal);
-        newItem.title = elementType;
+        const { elementType } = getElementTypePortal(item.customContent, 'div', setPortalList);
+        newItem.customContent = elementType;
       }
-      // newItem.fields = item.fields.map((field: LayerField) => {
-      //   if (typeof field === 'string') {
-      //     return field;
-      //   } else {
-      //     const newField = { ...field };
-      //     if (field.formatField && typeof field.formatField === 'object') {
-      //       const demo = document.createElement('span');
-      //       newPortalList.push(newPortal(field.formatField, demo).portal);
-      //       newField.formatField = newPortal(field.formatField, demo).dom;
-      //     }
-      //     if (field.formatValue && typeof field.formatValue === 'object') {
-      //       const demo = document.createElement('span');
-      //       newPortalList.push(newPortal(field.formatValue, demo).portal);
-      //       newField.formatValue = newPortal(field.formatValue, demo).dom;
-      //     }
-      //     return newField;
-      //   }
-      // });
+      if (item.fields?.length) {
+        newItem.fields = item.fields.map((field: ILayerField) => {
+          if (typeof field === 'string') {
+            return field;
+          } else {
+            const newField: LayerField = { field: field.field, getValue: field.getValue };
+            if (field.formatField) {
+              const { elementType } = getElementTypePortal(field.formatField, 'span', setPortalList);
+              newField.formatField = elementType;
+            }
+            if (field.formatValue) {
+              const { elementType } = getElementTypePortal(field.formatValue, 'span', setPortalList);
+              newField.formatValue = elementType;
+            }
+            return newField;
+          }
+        });
+      }
       newItems.push(newItem);
     });
-    setPortalList(newPortalList);
     setLayerPopupItems(newItems);
   }, [items, layerManager]);
 

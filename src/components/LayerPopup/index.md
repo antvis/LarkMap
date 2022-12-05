@@ -23,9 +23,8 @@ nav:
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| items | 需要展示 Popup 的图层配置数组，每个选项类型可见 [LayerPopupConfigItem](#LayerPopupConfigItem) | `Array<LayerPopupConfigItem>` | `[]` |
+| items | 需要展示 Popup 的图层配置数组，每个选项类型可见 [ILayerPopupConfigItem](#ilayerpopupconfigitem) | `Array<ILayerPopupConfigItem>` | `[]` |
 | trigger | 鼠标触发 Popup 展示的方式 | `'hover'｜'click'` | `'hover'` |
-| title | Popup 标题 | `ReactNode` | - |
 | className | Popup 自定义 `className` | `string` | - |
 | style | Popup 样式 | `CSSProperties` | - |
 | closeOnClick | 点击地图区域时，是否关闭当前 Popup | `boolean` | `true` |
@@ -43,17 +42,19 @@ nav:
 | onShow | Popup 显示时回调 | `() => void` | - |
 | onHide | Popup 隐藏时回调 | `() => void` | - |
 
-#### LayerPopupConfigItem
+#### ILayerPopupConfigItem
 
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
-| layer | 需要展示 Popup 的目标图层实例，或其的 id 或 name | `BaseLayer｜string` |
-| fields | 需要展示的字段数组，支持传入字段 key 值字符串，或者针对该字段的详细配置 [LayerField](#LayerField) | `string｜LayerField` |
+| layer | 需要展示 Popup 的目标图层实例，或其的 id 或 name | `string｜BaseLayer` |
+| fields | 需要展示的字段数组，支持传入字段 key 值字符串，或者针对该字段的详细配置 [ILayerField](#ilayerfield) | `string｜ILayerField` |
+| title | 自定义图层气泡标题 | `ReactNode｜(feature: any) => ReactNode` |
+| customContent | 自定义图层气泡标题，会覆盖 `fields` 的配置 | `ReactNode｜(feature: any) => ReactNode` |
 
-#### LayerField
+#### ILayerField
 
-| 参数        | 说明                        | 类型                                |
-| ----------- | --------------------------- | ----------------------------------- |
-| field       | 字段的 key 值字符串         | `string`                            |
-| formatField | 对展示的 key 字段进行格式化 | `(field: string) => string｜string` |
-| formatValue | 对展示的 value 值进行格式化 | `(value: any) => any｜string`       |
+| 参数        | 说明                        | 类型                                                    |
+| ----------- | --------------------------- | ------------------------------------------------------- |
+| field       | 字段的 key 值字符串         | `string`                                                |
+| formatField | 对展示的 key 字段进行格式化 | `ReactNode｜(field: string, feature: any) => ReactNode` |
+| formatValue | 对展示的 value 值进行格式化 | `ReactNode｜(value: any, feature: any) => ReactNode`    |

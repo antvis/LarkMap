@@ -3,6 +3,7 @@ import { LarkMap, LayerPopup, LineLayer, PolygonLayer } from '@antv/larkmap';
 import type { FeatureCollection } from '@turf/turf';
 import { coordAll, featureCollection, lineString } from '@turf/turf';
 import React, { useEffect, useState } from 'react';
+import type { LayerPopupProps } from '../types';
 
 const polygonLayerOptions: Omit<PolygonLayerProps, 'source'> = {
   autoFit: true,
@@ -25,26 +26,32 @@ const lineLayerOptions: Omit<LineLayerProps, 'source'> = {
   size: 4,
 };
 
-const items = [
+const items: LayerPopupProps['items'] = [
   {
     layer: 'myPolygonLayer',
-    // fields: [
-    //   {
-    //     field: 'name',
-    //     formatField: () => '名称',
-    //     formatValue: '123456'
-    //   },
-    //   {
-    //     field: 'adcode',
-    //     formatField: () => '权值',
-    //   },
-    // ],
-    title: '123456',
+    fields: [
+      {
+        field: 'name',
+        formatField: () => '名称',
+      },
+      {
+        field: 'adcode',
+        formatField: '行政编号',
+      },
+    ],
+    title: () => '面图层',
   },
-  // {
-  //   layer: 'myLineLayer',
-  //   fields: ['subFeatureIndex', 'childrenNum'],
-  // },
+  {
+    layer: 'myLineLayer',
+    title: '线图层',
+    customContent: (feature: any) => {
+      return (
+        <p style={{ color: 'red' }}>
+          {feature.properties.name} {feature.properties.adcode}
+        </p>
+      );
+    },
+  },
 ];
 
 export default () => {
