@@ -1,7 +1,7 @@
 import { useUpdateEffect } from 'ahooks';
 import { cloneDeep, isEqual } from 'lodash-es';
 import { useEffect, useRef } from 'react';
-import type { LayerCommonProps, Layer } from '../../../../types';
+import type { Layer, LayerCommonProps } from '../../../../types';
 import { useLayerManager } from '../../../LarkMap/hooks';
 
 /**
