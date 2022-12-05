@@ -1,4 +1,5 @@
-import { LarkMap, LayerPopup, PointLayer, PointLayerProps } from '@antv/larkmap';
+import type { PointLayerProps } from '@antv/larkmap';
+import { LarkMap, LayerPopup, PointLayer } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 import { config, layerConfig } from './constants';
 import Legend from './Legend';
@@ -10,9 +11,7 @@ export default () => {
   });
 
   useEffect(() => {
-    fetch(
-      'https://gw.alipayobjects.com/os/bmw-prod/b056dc66-1d43-4167-a11e-9d0ada9cfec8.csv',
-    )
+    fetch('https://gw.alipayobjects.com/os/bmw-prod/b056dc66-1d43-4167-a11e-9d0ada9cfec8.csv')
       .then((res) => res.text())
       .then((data) => {
         setSource({
@@ -26,7 +25,7 @@ export default () => {
     <LarkMap {...config} style={{ height: '60vh' }}>
       <Legend />
 
-      <PointLayer name="customPointLayer" {...layerConfig} source={source} />
+      <PointLayer id="customPointLayer" {...layerConfig} source={source} />
 
       <LayerPopup
         items={[

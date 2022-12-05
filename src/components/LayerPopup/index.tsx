@@ -2,7 +2,7 @@ import type { IPopupOption, LayerField, LayerPopupConfigItem } from '@antv/l7';
 import { LayerPopup as L7LayerPopup } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { getStyleText } from '../../utils';
 import { useL7ComponentEvent, useL7ComponentUpdate } from '../Control/hooks';
 import { useLayerManager, useScene } from '../LarkMap/hooks';
@@ -34,10 +34,9 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   const [popup, setPopup] = useState<L7LayerPopup | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
   const [portalList, setPortalList] = useState<React.ReactPortal[]>([]);
-  const [layerPopupItems, setLayerPopupItems] = useState<LayerPopupConfigItem[]>([]);
   const layerManager = useLayerManager();
 
-  useEffect(() => {
+  const layerPopupItems = useMemo(() => {
     const newItems: LayerPopupConfigItem[] = [];
 
     items.forEach((item) => {
@@ -83,7 +82,7 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       }
       newItems.push(newItem);
     });
-    setLayerPopupItems(newItems);
+    return newItems;
   }, [items, layerManager]);
 
   const layerPopupOptions: Partial<IPopupOption> = useMemo(
