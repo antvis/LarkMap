@@ -14,7 +14,7 @@ nav:
 
 ### 介绍
 
-LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组件内部才能使用，容器组件可通过属性配置不同的地图，支持 [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/)、[Gaode](https://lbs.amap.com/api/javascript-api/reference/map) 及 [L7Map](https://l7.antv.antgroup.com/api/map) 作为底图。
+LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组件内部才能使用，容器组件可通过属性配置不同的地图，支持 [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/)、[Gaode](https://lbs.amap.com/api/jsapi-v2/documentation#map) 及 [L7Map](https://l7.antv.antgroup.com/api/map) 作为底图。
 
 ### 代码演示
 
@@ -66,7 +66,7 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 
 #### MapOptions
 
-> 地图底图类型不同时，MapOptions 配置项不完全相同，比如 maxZoom，Gaode 最大缩放等级 18，Mapbox 最大缩放等级 22。除此之外还有，底图的交互状态配置，zoomEnable、dragEnable 等。各配置项可详见各官网：高德地图 [配置项](https://lbs.amap.com/api/javascript-api/reference/map)；Mapbox 地图 [配置项](https://docs.mapbox.com/mapbox-gl-js/api/map/#map-parameters)。
+> 地图底图类型不同时，MapOptions 配置项不完全相同，比如 maxZoom，Gaode 最大缩放等级 30，Mapbox 最大缩放等级 22。除此之外还有，底图的交互状态配置，zoomEnable、dragEnable 等。各配置项可详见各官网：高德地图 [配置项](https://lbs.amap.com/api/jsapi-v2/documentation#map)；Mapbox 地图 [配置项](https://docs.mapbox.com/mapbox-gl-js/api/map/#map-parameters)。
 
 | 参数     | 说明                                                                           | 类型     | 默认值   |
 | -------- | ------------------------------------------------------------------------------ | -------- | -------- |
@@ -157,7 +157,7 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 
 #### 1. 如何禁止地图的交互状态？
 
-使用不同的底图，配置地图的交互状态不一样，API 文档有说明，各配置项可详见[高德](https://lbs.amap.com/api/javascript-api/reference/map)、[Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/)。比如要禁止地图的缩放与拖拽操作：
+使用不同的底图，配置地图的交互状态不一样，API 文档有说明，各配置项可详见[高德](https://lbs.amap.com/api/jsapi-v2/documentation#map)、[Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/)。比如要禁止地图的缩放与拖拽操作：
 
 - 高德地图
 
