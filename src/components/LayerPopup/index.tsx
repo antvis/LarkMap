@@ -135,8 +135,10 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   });
 
   useUnmount(() => {
-    scene.removePopup(popup);
-    setPopup(undefined);
+    if (popup) {
+      scene.removePopup(popup);
+      setPopup(undefined);
+    }
   });
 
   useL7ComponentUpdate(popup, layerPopupOptions);

@@ -1,11 +1,11 @@
-import React, { useMemo, useState } from 'react';
 import type { IGeoLocateOption } from '@antv/l7';
+import { LayerSwitch as L7LayerSwitch } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import { LayerSwitch as L7LayerSwitch } from '@antv/l7';
+import React, { useMemo, useState } from 'react';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
-import { useL7ComponentPortal, useL7ComponentEvent, useL7ComponentUpdate } from '../hooks';
+import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../hooks';
 import type { LayerSwitchControlProps } from './types';
 
 export const LayerSwitchControl: React.FC<LayerSwitchControlProps> = ({
@@ -70,8 +70,10 @@ export const LayerSwitchControl: React.FC<LayerSwitchControlProps> = ({
   });
 
   useUnmount(() => {
-    scene.removeControl(control);
-    setControl(undefined);
+    if (control) {
+      scene.removeControl(control);
+      setControl(undefined);
+    }
   });
 
   useL7ComponentUpdate(control, controlOptions);

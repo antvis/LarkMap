@@ -1,11 +1,11 @@
-import React, { useMemo, useState } from 'react';
 import type { ISelectControlOption } from '@antv/l7';
+import { MapTheme as L7MapTheme } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import { MapTheme as L7MapTheme } from '@antv/l7';
+import React, { useMemo, useState } from 'react';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
-import { useL7ComponentPortal, useL7ComponentEvent, useL7ComponentUpdate } from '../hooks';
+import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../hooks';
 import type { MapThemeControlProps } from './types';
 
 export const MapThemeControl: React.FC<MapThemeControlProps> = ({
@@ -70,8 +70,10 @@ export const MapThemeControl: React.FC<MapThemeControlProps> = ({
   });
 
   useUnmount(() => {
-    scene.removeControl(control);
-    setControl(undefined);
+    if (control) {
+      scene.removeControl(control);
+      setControl(undefined);
+    }
   });
 
   useL7ComponentUpdate(control, controlOptions);
