@@ -77,14 +77,7 @@ export default () => {
     <LarkMap mapType="Gaode" style={{ height: '400px' }}>
       <PolygonLayer {...polygonLayerOptions} source={polygonSource} id="myPolygonLayer" />
       <LineLayer {...lineLayerOptions} source={lineSource} id="myLineLayer" />
-      <LayerPopup
-        closeButton={false}
-        closeOnClick={false}
-        anchor="bottom-left"
-        title={<div>图层数据</div>}
-        trigger="hover"
-        items={items}
-      />
+      <LayerPopup closeButton={false} closeOnClick={false} anchor="bottom-left" trigger="hover" items={items} />
     </LarkMap>
   );
 };

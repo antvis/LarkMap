@@ -46,7 +46,7 @@ nav:
 
 | 参数 | 说明 | 类型 |
 | --- | --- | --- |
-| layer | 需要展示 Popup 的目标图层实例，或其的 id 或 name | `string｜BaseLayer` |
+| layer | 需要展示 Popup 的目标图层 id，或其示例 | `string｜BaseLayer` |
 | fields | 需要展示的字段数组，支持传入字段 key 值字符串，或者针对该字段的详细配置 [ILayerField](#ilayerfield) | `string｜ILayerField` |
 | title | 自定义图层气泡标题 | `ReactNode｜(feature: any) => ReactNode` |
 | customContent | 自定义图层气泡标题，会覆盖 `fields` 的配置 | `ReactNode｜(feature: any) => ReactNode` |

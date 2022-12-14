@@ -33,7 +33,6 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   const scene = useScene();
   const [popup, setPopup] = useState<L7LayerPopup | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
-  const [portalList, setPortalList] = useState<React.ReactPortal[]>([]);
   const layerManager = useLayerManager();
 
   const layerPopupItems = useMemo(() => {
@@ -55,12 +54,10 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       }
 
       if (item.title) {
-        const { elementType } = getElementTypePortal(item.title, 'div', setPortalList);
-        newItem.title = elementType;
+        newItem.title = getElementTypePortal(item.title, 'div');
       }
       if (item.customContent) {
-        const { elementType } = getElementTypePortal(item.customContent, 'div', setPortalList);
-        newItem.customContent = elementType;
+        newItem.customContent = getElementTypePortal(item.customContent, 'div');
       }
       if (item.fields?.length) {
         newItem.fields = item.fields.map((field: ILayerField) => {
@@ -69,12 +66,10 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
           } else {
             const newField: LayerField = { field: field.field, getValue: field.getValue };
             if (field.formatField) {
-              const { elementType } = getElementTypePortal(field.formatField, 'span', setPortalList);
-              newField.formatField = elementType;
+              newField.formatField = getElementTypePortal(field.formatField, 'span');
             }
             if (field.formatValue) {
-              const { elementType } = getElementTypePortal(field.formatValue, 'span', setPortalList);
-              newField.formatValue = elementType;
+              newField.formatValue = getElementTypePortal(field.formatValue, 'span');
             }
             return newField;
           }
@@ -150,5 +145,5 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
     hide: onHide,
   });
 
-  return <>{portalList}</>;
+  return <></>;
 };
