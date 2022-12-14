@@ -7,8 +7,9 @@ export const LayerEventMap: Record<keyof LayerEventProps, string> = {
   // 生命周期事件
   // 代理掉的事件
   // onCreated: 'created',
-  onInited: 'inited',
-  onAdd: 'add',
+  // 不代理掉的事件
+  // onInited: 'inited',
+  // onAdd: 'add',
   onRemove: 'remove',
   onShow: 'show',
   onHide: 'hide',

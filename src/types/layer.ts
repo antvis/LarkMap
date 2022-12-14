@@ -11,9 +11,9 @@ export type LayerEventCallback = (e?: any) => void;
 export type LayerEventProps = Partial<{
   // 生命周期事件
   /** 初始化完成事件 */
-  onInited: LayerEventCallback;
+  // onInited: LayerEventCallback;
   /** 加到场景 scene 事件 */
-  onAdd: LayerEventCallback;
+  // onAdd: LayerEventCallback;
   /** 移除时事件 */
   onRemove: LayerEventCallback;
   /** 显示更新事件 */
