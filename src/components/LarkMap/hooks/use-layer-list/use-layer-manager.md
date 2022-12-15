@@ -1,6 +1,6 @@
 ---
 title: useLayerList
-order: 2
+order: 3
 toc: content
 group:
   title: 容器组件
@@ -10,7 +10,7 @@ group:
 
 ### 介绍
 
-获取当前 LarkMap 下所有的图层实例，并且会根据图层组件增删情况动态更新。
+获取当前 LarkMap 下所有的图层实例，并且会根据图层组件增删情况动态更新返回的图层数组。
 
 ### 默认示例
 
