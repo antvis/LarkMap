@@ -43,9 +43,7 @@ export const ScaleControl: React.FC<ScaleControlProps> = ({
   useMount(() => {
     const scale = new L7Scale(omitBy(controlOptions, (value) => value === undefined));
     setControl(scale);
-    setTimeout(() => {
-      scene.addControl(scale);
-    }, 0);
+    scene.addControl(scale);
   });
 
   useUnmount(() => {

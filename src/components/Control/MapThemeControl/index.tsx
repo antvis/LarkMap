@@ -64,9 +64,7 @@ export const MapThemeControl: React.FC<MapThemeControlProps> = ({
   useMount(() => {
     const mapTheme = new L7MapTheme(omitBy(controlOptions, (value) => value === undefined));
     setControl(mapTheme);
-    setTimeout(() => {
-      scene.addControl(mapTheme);
-    }, 0);
+    scene.addControl(mapTheme);
   });
 
   useUnmount(() => {

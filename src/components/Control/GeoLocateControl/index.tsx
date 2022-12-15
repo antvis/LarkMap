@@ -43,9 +43,7 @@ export const GeoLocateControl: React.FC<GeoLocateControlProps> = ({
   useMount(() => {
     const geoLocate = new L7GeoLocate(omitBy(controlOptions, (value) => value === undefined));
     setControl(geoLocate);
-    setTimeout(() => {
-      scene.addControl(geoLocate);
-    }, 0);
+    scene.addControl(geoLocate);
   });
 
   useUnmount(() => {

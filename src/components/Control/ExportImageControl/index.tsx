@@ -45,9 +45,7 @@ export const ExportImageControl: React.FC<ExportImageControlProps> = ({
   useMount(() => {
     const exportImage = new L7ExportImage(omitBy(controlOptions, (value) => value === undefined));
     setControl(exportImage);
-    setTimeout(() => {
-      scene.addControl(exportImage);
-    }, 0);
+    scene.addControl(exportImage);
   });
 
   useUnmount(() => {

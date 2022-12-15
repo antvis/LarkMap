@@ -44,9 +44,7 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
   useMount(() => {
     const zoom = new L7Zoom(omitBy(controlOptions, (value) => value === undefined));
     setControl(zoom);
-    setTimeout(() => {
-      scene.addControl(zoom);
-    }, 0);
+    scene.addControl(zoom);
   });
 
   useUnmount(() => {

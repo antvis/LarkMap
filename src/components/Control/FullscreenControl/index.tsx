@@ -49,9 +49,7 @@ export const FullscreenControl: React.FC<FullscreenControlProps> = ({
   useMount(() => {
     const fullscreen = new L7Fullscreen(omitBy(controlOptions, (value) => value === undefined));
     setControl(fullscreen);
-    setTimeout(() => {
-      scene.addControl(fullscreen);
-    }, 0);
+    scene.addControl(fullscreen);
   });
 
   useUnmount(() => {

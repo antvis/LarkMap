@@ -124,9 +124,7 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   useMount(() => {
     const newPopup = new L7LayerPopup(omitBy(layerPopupOptions, (value) => value === undefined));
     setPopup(newPopup);
-    setTimeout(() => {
-      scene.addPopup(newPopup);
-    }, 0);
+    scene.addPopup(newPopup);
   });
 
   useUnmount(() => {

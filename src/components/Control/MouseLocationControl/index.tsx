@@ -36,9 +36,7 @@ export const MouseLocationControl: React.FC<MouseLocationControlProps> = ({
   useMount(() => {
     const mouseLocation = new L7MouseLocation(omitBy(controlOptions, (value) => value === undefined));
     setControl(mouseLocation);
-    setTimeout(() => {
-      scene.addControl(mouseLocation);
-    }, 0);
+    scene.addControl(mouseLocation);
   });
 
   useUnmount(() => {

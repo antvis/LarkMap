@@ -81,9 +81,7 @@ export const Popup: React.FC<PopupProps> = ({
   useMount(() => {
     const newPopup = new L7Popup(omitBy(popupOptions, (value) => value === undefined));
     setPopup(newPopup);
-    setTimeout(() => {
-      scene.addPopup(newPopup);
-    }, 0);
+    scene.addPopup(newPopup);
   });
 
   useUnmount(() => {
