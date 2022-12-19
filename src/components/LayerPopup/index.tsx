@@ -1,12 +1,13 @@
-import type { IPopupOption } from '@antv/l7';
+import type { IPopupOption, LayerField, LayerPopupConfigItem } from '@antv/l7';
 import { LayerPopup as L7LayerPopup } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
 import React, { useMemo, useState } from 'react';
 import { getStyleText } from '../../utils';
-import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../Control/hooks';
-import { useLayerManager, useScene } from '../LarkMap/hooks';
-import type { LayerPopupProps } from './types';
+import { useL7ComponentEvent, useL7ComponentUpdate } from '../Control/hooks';
+import { useLayerList, useScene } from '../LarkMap/hooks';
+import type { ILayerField, LayerPopupProps } from './types';
+import { getElementTypePortal } from './utils';
 
 export const LayerPopup: React.FC<LayerPopupProps> = ({
   style,
@@ -22,7 +23,6 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   autoClose,
   className,
   lngLat,
-  title,
   items,
   trigger,
   onOpen,
@@ -33,26 +33,52 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   const scene = useScene();
   const [popup, setPopup] = useState<L7LayerPopup | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
-  const { portal: titlePartial, dom: titleDOM } = useL7ComponentPortal(title);
-  const layerManager = useLayerManager();
+  const fullLayerList = useLayerList();
 
   const layerPopupItems = useMemo(() => {
-    const newItems: LayerPopupProps['items'] = [];
+    const newItems: LayerPopupConfigItem[] = [];
+
     items.forEach((item) => {
-      const newItem = { ...item };
+      const newItem: LayerPopupConfigItem = {
+        layer: item.layer,
+      };
+      // 若 layer 为字符串格式，统一从 LarkMap 的 LayerManger 中获取 layer 实例
       if (typeof item.layer === 'string') {
-        const targetLayer = layerManager.getLayer(item.layer);
+        const targetLayer = fullLayerList.find((layer) => layer.id === item.layer);
         if (targetLayer) {
           // @ts-ignore
           newItem.layer = targetLayer;
         } else {
-          console.warn('LayerPopup 中传入了未注册的 layerId');
+          console.error('LayerPopup 中传入了未注册的 layerId');
         }
+      }
+
+      if (item.title) {
+        newItem.title = getElementTypePortal(item.title, 'div');
+      }
+      if (item.customContent) {
+        newItem.customContent = getElementTypePortal(item.customContent, 'div');
+      }
+      if (item.fields?.length) {
+        newItem.fields = item.fields.map((field: ILayerField) => {
+          if (typeof field === 'string') {
+            return field;
+          } else {
+            const newField: LayerField = { field: field.field, getValue: field.getValue };
+            if (field.formatField) {
+              newField.formatField = getElementTypePortal(field.formatField, 'span');
+            }
+            if (field.formatValue) {
+              newField.formatValue = getElementTypePortal(field.formatValue, 'span');
+            }
+            return newField;
+          }
+        });
       }
       newItems.push(newItem);
     });
     return newItems;
-  }, [items, layerManager]);
+  }, [fullLayerList, items]);
 
   const layerPopupOptions: Partial<IPopupOption> = useMemo(
     () => ({
@@ -72,8 +98,7 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       lngLat,
       items: layerPopupItems,
       trigger,
-      title: titleDOM,
-    }), // eslint-disable-next-line react-hooks/exhaustive-deps
+    }),
     [
       styleText,
       closeButton,
@@ -89,7 +114,6 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       autoPan,
       autoClose,
       className,
-      titleDOM,
       trigger,
       // eslint-disable-next-line react-hooks/exhaustive-deps
       JSON.stringify(lngLat),
@@ -100,14 +124,14 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   useMount(() => {
     const newPopup = new L7LayerPopup(omitBy(layerPopupOptions, (value) => value === undefined));
     setPopup(newPopup);
-    setTimeout(() => {
-      scene.addPopup(newPopup);
-    }, 0);
+    scene.addPopup(newPopup);
   });
 
   useUnmount(() => {
-    scene.removePopup(popup);
-    setPopup(undefined);
+    if (popup) {
+      scene.removePopup(popup);
+      setPopup(undefined);
+    }
   });
 
   useL7ComponentUpdate(popup, layerPopupOptions);
@@ -119,5 +143,5 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
     hide: onHide,
   });
 
-  return <>{titlePartial}</>;
+  return <></>;
 };

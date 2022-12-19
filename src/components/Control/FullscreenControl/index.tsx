@@ -1,11 +1,11 @@
-import React, { useMemo, useState } from 'react';
 import type { IFullscreenControlOption } from '@antv/l7';
+import { Fullscreen as L7Fullscreen } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import { Fullscreen as L7Fullscreen } from '@antv/l7';
+import React, { useMemo, useState } from 'react';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
-import { useL7ComponentPortal, useL7ComponentEvent, useL7ComponentUpdate } from '../hooks';
+import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../hooks';
 import type { FullscreenControlProps } from './type';
 
 export const FullscreenControl: React.FC<FullscreenControlProps> = ({
@@ -49,14 +49,14 @@ export const FullscreenControl: React.FC<FullscreenControlProps> = ({
   useMount(() => {
     const fullscreen = new L7Fullscreen(omitBy(controlOptions, (value) => value === undefined));
     setControl(fullscreen);
-    setTimeout(() => {
-      scene.addControl(fullscreen);
-    }, 0);
+    scene.addControl(fullscreen);
   });
 
   useUnmount(() => {
-    scene.removeControl(control);
-    setControl(undefined);
+    if (control) {
+      scene.removeControl(control);
+      setControl(undefined);
+    }
   });
 
   useL7ComponentUpdate(control, controlOptions);

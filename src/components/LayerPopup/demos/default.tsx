@@ -3,6 +3,7 @@ import { LarkMap, LayerPopup, LineLayer, PolygonLayer } from '@antv/larkmap';
 import type { FeatureCollection } from '@turf/turf';
 import { coordAll, featureCollection, lineString } from '@turf/turf';
 import React, { useEffect, useState } from 'react';
+import type { LayerPopupProps } from '../types';
 
 const polygonLayerOptions: Omit<PolygonLayerProps, 'source'> = {
   autoFit: true,
@@ -22,10 +23,10 @@ const polygonLayerOptions: Omit<PolygonLayerProps, 'source'> = {
 const lineLayerOptions: Omit<LineLayerProps, 'source'> = {
   shape: 'line',
   color: '#fff',
-  size: 4,
+  size: 1,
 };
 
-const items = [
+const items: LayerPopupProps['items'] = [
   {
     layer: 'myPolygonLayer',
     fields: [
@@ -35,13 +36,21 @@ const items = [
       },
       {
         field: 'adcode',
-        formatField: () => '权值',
+        formatField: '行政编号',
       },
     ],
+    title: () => '面图层',
   },
   {
     layer: 'myLineLayer',
-    fields: ['subFeatureIndex', 'childrenNum'],
+    title: '线图层',
+    customContent: (feature: any) => {
+      return (
+        <p style={{ color: 'red' }}>
+          {feature.properties.name} {feature.properties.adcode}
+        </p>
+      );
+    },
   },
 ];
 
@@ -68,14 +77,7 @@ export default () => {
     <LarkMap mapType="Gaode" style={{ height: '400px' }}>
       <PolygonLayer {...polygonLayerOptions} source={polygonSource} id="myPolygonLayer" />
       <LineLayer {...lineLayerOptions} source={lineSource} id="myLineLayer" />
-      <LayerPopup
-        closeButton={false}
-        closeOnClick={false}
-        anchor="bottom-left"
-        title={<div>图层数据</div>}
-        trigger="hover"
-        items={items}
-      />
+      <LayerPopup closeButton={false} closeOnClick={false} anchor="bottom-left" trigger="hover" items={items} />
     </LarkMap>
   );
 };

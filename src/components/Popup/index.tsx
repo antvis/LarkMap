@@ -2,7 +2,7 @@ import type { IPopupOption } from '@antv/l7';
 import { Popup as L7Popup } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { getStyleText } from '../../utils';
 import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../Control/hooks';
 import { useScene } from '../LarkMap/hooks';
@@ -81,14 +81,14 @@ export const Popup: React.FC<PopupProps> = ({
   useMount(() => {
     const newPopup = new L7Popup(omitBy(popupOptions, (value) => value === undefined));
     setPopup(newPopup);
-    setTimeout(() => {
-      scene.addPopup(newPopup);
-    }, 0);
+    scene.addPopup(newPopup);
   });
 
   useUnmount(() => {
-    scene.removePopup(popup);
-    setPopup(undefined);
+    if (popup) {
+      scene.removePopup(popup);
+      setPopup(undefined);
+    }
   });
 
   useL7ComponentUpdate(popup, popupOptions);

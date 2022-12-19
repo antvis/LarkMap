@@ -1,11 +1,11 @@
-import React, { useMemo, useState } from 'react';
 import type { IExportImageControlOption } from '@antv/l7';
+import { ExportImage as L7ExportImage } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import { ExportImage as L7ExportImage } from '@antv/l7';
+import React, { useMemo, useState } from 'react';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
-import { useL7ComponentPortal, useL7ComponentEvent, useL7ComponentUpdate } from '../hooks';
+import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../hooks';
 import type { ExportImageControlProps } from './types';
 
 export const ExportImageControl: React.FC<ExportImageControlProps> = ({
@@ -45,14 +45,14 @@ export const ExportImageControl: React.FC<ExportImageControlProps> = ({
   useMount(() => {
     const exportImage = new L7ExportImage(omitBy(controlOptions, (value) => value === undefined));
     setControl(exportImage);
-    setTimeout(() => {
-      scene.addControl(exportImage);
-    }, 0);
+    scene.addControl(exportImage);
   });
 
   useUnmount(() => {
-    scene.removeControl(control);
-    setControl(undefined);
+    if (control) {
+      scene.removeControl(control);
+      setControl(undefined);
+    }
   });
 
   useL7ComponentUpdate(control, controlOptions);

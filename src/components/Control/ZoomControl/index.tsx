@@ -1,11 +1,11 @@
-import React, { useMemo, useState } from 'react';
 import type { IZoomControlOption } from '@antv/l7';
 import { Zoom as L7Zoom } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import { useScene } from '../../LarkMap/hooks';
-import { useL7ComponentEvent, useL7ComponentUpdate, useL7ComponentPortal } from '../hooks';
+import React, { useMemo, useState } from 'react';
 import { getStyleText } from '../../../utils';
+import { useScene } from '../../LarkMap/hooks';
+import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../hooks';
 import type { ZoomControlProps } from './types';
 
 export const ZoomControl: React.FC<ZoomControlProps> = ({
@@ -44,14 +44,14 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
   useMount(() => {
     const zoom = new L7Zoom(omitBy(controlOptions, (value) => value === undefined));
     setControl(zoom);
-    setTimeout(() => {
-      scene.addControl(zoom);
-    }, 0);
+    scene.addControl(zoom);
   });
 
   useUnmount(() => {
-    scene.removeControl(control);
-    setControl(undefined);
+    if (control) {
+      scene.removeControl(control);
+      setControl(undefined);
+    }
   });
 
   useL7ComponentUpdate(control, controlOptions);

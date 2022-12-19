@@ -1,15 +1,5 @@
-import type {
-  LarkMapProps,
-  LayerPopupProps,
-  PointLayerProps,
-} from '@antv/larkmap';
-import {
-  LarkMap,
-  LayerPopup,
-  PointLayer,
-  ScaleControl,
-  ZoomControl,
-} from '@antv/larkmap';
+import type { LarkMapProps, LayerPopupProps, PointLayerProps } from '@antv/larkmap';
+import { LarkMap, LayerPopup, PointLayer, ScaleControl, ZoomControl } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
 const config: LarkMapProps = {
@@ -80,9 +70,7 @@ export default () => {
   });
 
   useEffect(() => {
-    fetch(
-      'https://gw.alipayobjects.com/os/bmw-prod/d5ec85b7-3ac6-4987-924a-3952d7e31bcb.json',
-    )
+    fetch('https://gw.alipayobjects.com/os/bmw-prod/d5ec85b7-3ac6-4987-924a-3952d7e31bcb.json')
       .then((res) => res.json())
       .then((dataArr) => {
         setData({ ...data, data: dataArr });
@@ -91,7 +79,7 @@ export default () => {
 
   return (
     <LarkMap {...config} style={{ height: '60vh' }}>
-      <PointLayer {...pointLayerProps} source={data} name="PolygonLayer" />
+      <PointLayer {...pointLayerProps} source={data} id="PolygonLayer" />
       <ScaleControl />
       <ZoomControl />
       <LayerPopup

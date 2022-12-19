@@ -1,9 +1,9 @@
-import type React from 'react';
 import type { IMouseLocationControlOption } from '@antv/l7';
-import { useMemo, useState } from 'react';
+import { MouseLocation as L7MouseLocation } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import { MouseLocation as L7MouseLocation } from '@antv/l7';
+import type React from 'react';
+import { useMemo, useState } from 'react';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
 import { useL7ComponentEvent, useL7ComponentUpdate } from '../hooks';
@@ -36,14 +36,14 @@ export const MouseLocationControl: React.FC<MouseLocationControlProps> = ({
   useMount(() => {
     const mouseLocation = new L7MouseLocation(omitBy(controlOptions, (value) => value === undefined));
     setControl(mouseLocation);
-    setTimeout(() => {
-      scene.addControl(mouseLocation);
-    }, 0);
+    scene.addControl(mouseLocation);
   });
 
   useUnmount(() => {
-    scene.removeControl(control);
-    setControl(undefined);
+    if (control) {
+      scene.removeControl(control);
+      setControl(undefined);
+    }
   });
 
   useL7ComponentUpdate(control, controlOptions);
