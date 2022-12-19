@@ -23,7 +23,7 @@ const polygonLayerOptions: Omit<PolygonLayerProps, 'source'> = {
 const lineLayerOptions: Omit<LineLayerProps, 'source'> = {
   shape: 'line',
   color: '#fff',
-  size: 4,
+  size: 1,
 };
 
 const items: LayerPopupProps['items'] = [

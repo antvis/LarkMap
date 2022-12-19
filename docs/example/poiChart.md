@@ -7,6 +7,6 @@ nav:
   order: 3
 ---
 
-## poi 聚合图
+## POI 聚合图
 
 <code src= './poiChart/index.tsx' compact="true" defaultShowCode></code>

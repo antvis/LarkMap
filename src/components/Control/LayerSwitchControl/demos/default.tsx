@@ -42,11 +42,9 @@ export default () => {
 
   return (
     <LarkMap mapType="Gaode" style={{ height: '400px' }}>
-      <LayerSwitchControl layers={['边框图层', '填充图层']} />
-
-      <PolygonLayer id="填充图层" {...polygonLayerOptions} source={source} />
-
-      <PolygonLayer id="边框图层" {...lineLayerOptions} source={source} />
+      <LayerSwitchControl layers={['fillLayer', 'strokeLayer']} />
+      <PolygonLayer id="fillLayer" name="填充图层" {...polygonLayerOptions} source={source} />
+      <PolygonLayer id="strokeLayer" name="描边图层" {...lineLayerOptions} source={source} />
     </LarkMap>
   );
 };
