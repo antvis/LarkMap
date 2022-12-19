@@ -35,15 +35,17 @@ export const LayerSwitchControl: React.FC<LayerSwitchControlProps> = ({
   const { portal: btnIconPortal, dom: btnIconDOM } = useL7ComponentPortal(btnIcon);
 
   const layers = useMemo(() => {
-    return layerItems
-      .map((layerItem) => {
-        if (typeof layerItem === 'string') {
-          return fullLayerList.find((layer) => layer.id === layerItem);
-        } else {
-          return layerItem;
-        }
-      })
-      .filter((layer) => !!layer);
+    return layerItems?.length
+      ? layerItems
+          .map((layerItem) => {
+            if (typeof layerItem === 'string') {
+              return fullLayerList.find((layer) => layer.id === layerItem);
+            } else {
+              return layerItem;
+            }
+          })
+          .filter((layer) => !!layer)
+      : fullLayerList;
   }, [layerItems, fullLayerList]);
 
   const controlOptions: Partial<IGeoLocateOption> = useMemo(() => {
