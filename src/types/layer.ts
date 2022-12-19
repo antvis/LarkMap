@@ -11,11 +11,15 @@ export type LayerEventCallback = (e?: any) => void;
 export type LayerEventProps = Partial<{
   // 生命周期事件
   /** 初始化完成事件 */
-  onInited: LayerEventCallback;
+  // onInited: LayerEventCallback;
   /** 加到场景 scene 事件 */
-  onAdd: LayerEventCallback;
+  // onAdd: LayerEventCallback;
   /** 移除时事件 */
   onRemove: LayerEventCallback;
+  /** 显示更新事件 */
+  onShow: LayerEventCallback;
+  /** 隐藏更新事件 */
+  onHide: LayerEventCallback;
   /** 数据源更新事件 */
   onDataUpdate: LayerEventCallback;
   /** 数据映射更新，图例更新事件  */
@@ -32,6 +36,8 @@ export type LayerEventProps = Partial<{
   onUnClick: LayerEventCallback;
   /** 双击图层事件 */
   onDblClick: LayerEventCallback;
+  /** 图层外双击事件 */
+  onUndblclick: LayerEventCallback;
   /** 右键点击图层事件 */
   onContextMenu: LayerEventCallback;
   /**图层外点击右键事件 */

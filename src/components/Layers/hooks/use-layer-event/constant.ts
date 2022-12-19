@@ -4,9 +4,15 @@ import type { LayerEventProps } from '../../../../types';
  * 从 LarkMap 的事件名到 Layer 事件名的映射
  */
 export const LayerEventMap: Record<keyof LayerEventProps, string> = {
-  onInited: 'inited',
-  onAdd: 'add',
+  // 生命周期事件
+  // 代理掉的事件
+  // onCreated: 'created',
+  // 不代理掉的事件
+  // onInited: 'inited',
+  // onAdd: 'add',
   onRemove: 'remove',
+  onShow: 'show',
+  onHide: 'hide',
   onDataUpdate: 'dataUpdate',
   onLegend: 'legend',
   onLegendColor: 'legend:color',
@@ -14,10 +20,12 @@ export const LayerEventMap: Record<keyof LayerEventProps, string> = {
 
   // 点击事件
   onClick: 'click',
-  onDblClick: 'dblclick',
-  onContextMenu: 'contextmenu',
   onUnClick: 'unclick',
+  onDblClick: 'dblclick',
+  onUndblclick: 'undblclick',
+  onContextMenu: 'contextmenu',
   onUnContextMenu: 'uncontextmenu',
+
   // 鼠标事件
   onMouseEnter: 'mouseenter',
   onMouseMove: 'mousemove',

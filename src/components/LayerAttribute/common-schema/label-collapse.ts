@@ -57,33 +57,40 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
             default: 'right',
             enum: [
               {
-                label: '居右',
-                value: 'right',
+                label: '左上',
+                value: 'top-left',
               },
-
+              {
+                label: '中上',
+                value: 'top',
+              },
               {
                 label: '右上',
                 value: 'top-right',
-              },
-              {
-                label: '右下',
-                value: 'bottom-right',
               },
               {
                 label: '居左',
                 value: 'left',
               },
               {
-                label: '左上',
-                value: 'top-left',
+                label: '居中',
+                value: 'center',
+              },
+              {
+                label: '居右',
+                value: 'right',
               },
               {
                 label: '左下',
                 value: 'bottom-left',
               },
               {
-                label: '居中',
-                value: 'center',
+                label: '中下',
+                value: 'bottom',
+              },
+              {
+                label: '右下',
+                value: 'bottom-right',
               },
             ],
             'x-decorator': 'FormItem',
