@@ -5,7 +5,7 @@ import { omitBy } from 'lodash-es';
 import React, { useMemo, useState } from 'react';
 import { getStyleText } from '../../utils';
 import { useL7ComponentEvent, useL7ComponentUpdate } from '../Control/hooks';
-import { useLayerManager, useScene } from '../LarkMap/hooks';
+import { useLayerList, useScene } from '../LarkMap/hooks';
 import type { ILayerField, LayerPopupProps } from './types';
 import { getElementTypePortal } from './utils';
 
@@ -33,7 +33,7 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   const scene = useScene();
   const [popup, setPopup] = useState<L7LayerPopup | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
-  const layerManager = useLayerManager();
+  const fullLayerList = useLayerList();
 
   const layerPopupItems = useMemo(() => {
     const newItems: LayerPopupConfigItem[] = [];
@@ -44,7 +44,7 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       };
       // 若 layer 为字符串格式，统一从 LarkMap 的 LayerManger 中获取 layer 实例
       if (typeof item.layer === 'string') {
-        const targetLayer = layerManager.getLayer(item.layer);
+        const targetLayer = fullLayerList.find((layer) => layer.id === item.layer);
         if (targetLayer) {
           // @ts-ignore
           newItem.layer = targetLayer;
@@ -78,7 +78,7 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       newItems.push(newItem);
     });
     return newItems;
-  }, [items, layerManager]);
+  }, [fullLayerList, items]);
 
   const layerPopupOptions: Partial<IPopupOption> = useMemo(
     () => ({

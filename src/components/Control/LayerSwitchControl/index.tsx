@@ -1,10 +1,10 @@
-import type { IGeoLocateOption, ILayerSwitchOption } from '@antv/l7';
+import type { IGeoLocateOption } from '@antv/l7';
 import { LayerSwitch as L7LayerSwitch } from '@antv/l7';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import React, { useLayoutEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { getStyleText } from '../../../utils';
-import { useLayerManager, useScene } from '../../LarkMap/hooks';
+import { useLayerList, useScene } from '../../LarkMap/hooks';
 import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../hooks';
 import type { LayerSwitchControlProps } from './types';
 
@@ -29,25 +29,22 @@ export const LayerSwitchControl: React.FC<LayerSwitchControlProps> = ({
   onSelectChange,
 }) => {
   const scene = useScene();
-  const layerManager = useLayerManager();
+  const fullLayerList = useLayerList();
   const [control, setControl] = useState<L7LayerSwitch | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
   const { portal: btnIconPortal, dom: btnIconDOM } = useL7ComponentPortal(btnIcon);
-  const [layers, setLayers] = useState<ILayerSwitchOption['layers']>([]);
 
-  useLayoutEffect(() => {
-    setLayers(
-      layerItems
-        .map((layerItem) => {
-          if (layerItem instanceof Object) {
-            return layerItem;
-          } else {
-            return layerManager.getLayer(layerItem);
-          }
-        })
-        .filter((item) => !!item),
-    );
-  }, [layerItems, layerManager]);
+  const layers = useMemo(() => {
+    return layerItems
+      .map((layerItem) => {
+        if (typeof layerItem === 'string') {
+          return fullLayerList.find((layer) => layer.id === layerItem);
+        } else {
+          return layerItem;
+        }
+      })
+      .filter((layer) => !!layer);
+  }, [layerItems, fullLayerList]);
 
   const controlOptions: Partial<IGeoLocateOption> = useMemo(() => {
     return {
