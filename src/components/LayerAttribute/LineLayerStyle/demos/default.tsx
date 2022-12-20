@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 const FieldList = [
   { type: 'string', label: '名称', value: 'line_name', typeColor: 'green', typeName: '文本' },
-  { type: 'number', label: 'id', value: 'line_id', typeColor: 'green', typeName: '文本' },
+  { type: 'number', label: 'id', value: 'line_id', typeColor: 'green', typeName: '数值' },
 ];
 const DefaultLineLayerStyle = {
   color: {

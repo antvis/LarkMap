@@ -5,7 +5,16 @@ import { createSchemaField } from '@formily/react';
 import classNames from 'classnames';
 import { debounce } from 'lodash-es';
 import React, { memo, useMemo } from 'react';
-import { ColorPicker, FieldSelect, FormCollapse, Offset, RibbonSelect, Slider, SliderRange } from '../components';
+import {
+  ColorPicker,
+  ColorType,
+  FieldSelect,
+  FormCollapse,
+  Offset,
+  RibbonSelect,
+  Slider,
+  SliderRange,
+} from '../components';
 import { CLS_PREFIX } from './constant';
 import { bubbleLayerStyleConfigToFlat, bubbleLayerStyleFlatToConfig } from './helper';
 import schema from './schema';
@@ -30,6 +39,7 @@ export const BubbleLayerStyleAttributeSchemaField: React.FC<
           FieldSelect,
           SliderRange,
           Offset,
+          ColorType,
         },
       }),
     [],
