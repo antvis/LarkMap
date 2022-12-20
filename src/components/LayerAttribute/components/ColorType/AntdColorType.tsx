@@ -3,7 +3,7 @@ import type { SelectProps } from 'antd';
 import { Select } from 'antd';
 import React, { useEffect, useMemo } from 'react';
 
-const numbeOptions = [
+const numberOptions = [
   {
     label: '等分位',
     value: 'quantile',
@@ -14,7 +14,7 @@ const numbeOptions = [
   },
 ];
 
-const booleanOptions = [
+const otherOptions = [
   {
     label: '枚举',
     value: 'cat',
@@ -28,9 +28,9 @@ const AntdColorType: React.FC<SelectProps & { fillColorFieldState: IFieldState }
     const { value, dataSource } = fillColorFieldState || {};
     const type = dataSource.find((item) => item.value === value)?.type;
     if (type === 'number') {
-      return numbeOptions;
+      return numberOptions;
     }
-    return booleanOptions;
+    return otherOptions;
   }, [fillColorFieldState, prop]);
 
   useEffect(() => {
