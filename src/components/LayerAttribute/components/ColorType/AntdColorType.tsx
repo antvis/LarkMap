@@ -16,7 +16,7 @@ const numbeOptions = [
 
 const booleanOptions = [
   {
-    label: '分类',
+    label: '枚举',
     value: 'cat',
   },
 ];
