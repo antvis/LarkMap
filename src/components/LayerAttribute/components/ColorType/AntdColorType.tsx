@@ -24,8 +24,6 @@ const booleanOptions = [
 const AntdColorType: React.FC<SelectProps & { fillColorFieldState: IFieldState }> = (props) => {
   const { fillColorFieldState, ...prop } = props;
 
-  console.log(props, 'cewjkghfjs');
-
   const Options = useMemo(() => {
     const { value, dataSource } = fillColorFieldState || {};
     const type = dataSource.find((item) => item.value === value)?.type;
@@ -36,7 +34,9 @@ const AntdColorType: React.FC<SelectProps & { fillColorFieldState: IFieldState }
   }, [fillColorFieldState, prop]);
 
   useEffect(() => {
-    prop?.onChange(Options[0].value, Options);
+    if (!prop.value || Options.findIndex((item) => item.value === prop.value)) {
+      prop?.onChange(Options[0].value, Options);
+    }
   }, [Options]);
 
   return (
