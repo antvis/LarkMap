@@ -7,11 +7,11 @@ import { debounce } from 'lodash-es';
 import React, { memo, useMemo } from 'react';
 import {
   ColorPicker,
-  ColorType,
   FieldSelect,
   FormCollapse,
   Offset,
   RibbonSelect,
+  ScaleSelector,
   Slider,
   SliderRange,
 } from '../components';
@@ -39,7 +39,7 @@ export const ChoroplethLayerStyleAttributeSchemaField: React.FC<
           FieldSelect,
           SliderRange,
           Offset,
-          ColorType,
+          ScaleSelector,
         },
       }),
     [],

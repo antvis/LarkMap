@@ -5,7 +5,15 @@ import { createSchemaField } from '@formily/react';
 import classNames from 'classnames';
 import { debounce } from 'lodash-es';
 import React, { memo, useMemo } from 'react';
-import { ColorPicker, ColorType, FieldSelect, FormCollapse, RibbonSelect, Slider, SliderRange } from '../components';
+import {
+  ColorPicker,
+  FieldSelect,
+  FormCollapse,
+  RibbonSelect,
+  ScaleSelector,
+  Slider,
+  SliderRange,
+} from '../components';
 import { CLS_PREFIX } from './constant';
 import { lineLayerStyleConfigToFlat, lineLayerStyleFlatToConfig } from './helper';
 import schema from './schema';
@@ -29,7 +37,7 @@ export const LineLayerStyleAttributeSchemaField: React.FC<
           ColorPicker,
           FieldSelect,
           SliderRange,
-          ColorType,
+          ScaleSelector,
         },
       }),
     [],

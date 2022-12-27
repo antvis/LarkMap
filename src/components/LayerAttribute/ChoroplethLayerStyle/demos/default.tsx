@@ -11,7 +11,7 @@ const DefaultChoroplethLayerStyle = {
   fillColor: {
     field: 'adcode',
     value: ['#0f9960', '#33a02c', '#377eb8'],
-    scale: { type: 'quantile' as const },
+    scale: { type: 'quantize' as const },
   },
   opacity: 0.3,
   strokeColor: '#fff',

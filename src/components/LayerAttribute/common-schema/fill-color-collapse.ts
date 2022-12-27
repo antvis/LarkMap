@@ -36,10 +36,29 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
             type: 'string',
             title: '颜色划分',
             'x-decorator': 'FormItem',
-            'x-component': 'ColorType',
+            'x-component': 'ScaleSelector',
             'x-component-props': {
               placeholder: '请选择',
-              fillColorFieldState: '{{ $form.getFieldState("fillColorField",state=> state)}}',
+              type: '{{ $form.getFieldState("fillColorField",state=> { return state.dataSource.find((item) => item.value === state.value)?.type })}}',
+              options: {
+                number: [
+                  {
+                    label: '等分位',
+                    value: 'quantile',
+                  },
+                  {
+                    label: '等间距',
+                    value: 'quantize',
+                  },
+                ],
+
+                default: [
+                  {
+                    label: '枚举',
+                    value: 'cat',
+                  },
+                ],
+              },
             },
             'x-decorator-props': {},
             'x-reactions': [
