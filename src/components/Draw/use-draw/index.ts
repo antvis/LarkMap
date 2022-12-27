@@ -1,5 +1,6 @@
 import type { BaseMode } from '@antv/l7-draw';
 import { DrawEvent } from '@antv/l7-draw';
+import { omit } from 'lodash-es';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useScene } from '../../LarkMap/hooks';
 import type { DrawData } from '../types';
@@ -23,7 +24,7 @@ export const useDraw = (params: UseDrawParams) => {
     });
     return newDraw;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scene, JSON.stringify(params.options), params.type]);
+  }, [scene, JSON.stringify(omit(params.options, 'initialData')), params.type]);
 
   // 当前是否在启用中
   const [isEnable, setIsEnable] = useState(draw.isEnable());
@@ -66,6 +67,7 @@ export const useDraw = (params: UseDrawParams) => {
   }, [draw]);
 
   return {
+    drawType: params.type,
     draw,
     drawData,
     setDrawData: syncDrawData,

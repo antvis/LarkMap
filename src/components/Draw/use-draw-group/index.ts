@@ -1,8 +1,8 @@
 import type { BaseMode } from '@antv/l7-draw';
+import { fromPairs, toPairs } from 'lodash-es';
 import { useCallback, useMemo } from 'react';
-import { toPairs, fromPairs } from 'lodash-es';
-import { useDraw } from '../use-draw';
 import type { DrawType } from '../types';
+import { useDraw } from '../use-draw';
 import type { CommonDrawOptions, DrawGroupData, UseDrawGroupConfig } from './types';
 
 export const useDrawGroup = (
@@ -80,7 +80,7 @@ export const useDrawGroup = (
   }, [drawInfoMap]);
 
   const drawGroupData = useMemo(() => {
-    return fromPairs(toPairs(drawInfoMap).map(([type, hook]) => [type, hook.drawData]));
+    return fromPairs(toPairs(drawInfoMap).map(([type, hook]) => [type, hook.drawData])) as DrawGroupData;
   }, [drawInfoMap]);
 
   const setDrawGroupData = useCallback(
@@ -92,13 +92,15 @@ export const useDrawGroup = (
     [drawInfoMap],
   );
 
-  const activeDraw = useMemo(() => {
-    return (
-      Object.values(drawInfoMap).find((hook) => {
-        return hook.isEnable;
-      })?.draw ?? null
-    );
+  const activeDrawInfo = useMemo(() => {
+    return Object.values(drawInfoMap).find((hook) => {
+      return hook.isEnable;
+    });
   }, [drawInfoMap]);
+
+  const activeDraw = useMemo(() => {
+    return activeDrawInfo?.draw ?? null;
+  }, [activeDrawInfo]);
 
   const setActiveDraw = useCallback(
     (target: BaseMode | DrawType | null) => {
@@ -129,6 +131,7 @@ export const useDrawGroup = (
     drawGroupData,
     setDrawGroupData,
     activeDraw,
+    activeDrawInfo,
     setActiveDraw,
   };
 };

@@ -3,10 +3,7 @@
  * 容器组件
  */
 export { LarkMap } from './components/LarkMap';
-export type {
-  LarkMapProps,
-  LarkMapRefAttributes,
-} from './components/LarkMap/types';
+export type { LarkMapProps, LarkMapRefAttributes } from './components/LarkMap/types';
 export * from './components/LarkMap/hooks';
 
 /**
@@ -58,6 +55,9 @@ export { useDraw } from './components/Draw/use-draw';
 export { useDrawGroup } from './components/Draw/use-draw-group';
 // export { DrawControl } from './components/Draw/DrawControl';
 // export type { DrawControlProps } from './components/Draw/DrawControl/types';
+
+export { DrawModal } from './components/Draw/DrawModal';
+export type { DrawModalProps } from './components/Draw/DrawModal/types';
 
 /**
  * 属性组件
