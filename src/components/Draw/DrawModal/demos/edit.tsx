@@ -26,8 +26,8 @@ const Default: React.FC = () => {
         larkmapProps={{
           mapOptions: {
             style: 'normal',
-            center: [120.143205, 30.246123],
-            zoom: 12,
+            center: [120.14266, 30.251864],
+            zoom: 15.29,
           },
         }}
         onOk={(drawData) => {

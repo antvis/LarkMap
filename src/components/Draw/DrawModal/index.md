@@ -12,6 +12,8 @@ group:
 
 用于在框内地图上绘制点、线、面等元素的弹框。
 
+绘制弹框内部使用了 [LarkMap](/components/lark-map) 和 [LocationSearch](/components/location-search) 组件的能力，因此可以通过 [API](#api) 中的 `larkmapProps` 和 `locationSearchProps` 来对以上两组件进行更精细的控制。
+
 ### 代码演示
 
 #### 默认演示
@@ -30,6 +32,7 @@ group:
 | larkmapProps | 地图部分的配置，详情可见 [LarkMapProps](/components/lark-map#api) | `LarkMapProps` | `--` |
 | locationSearchProps | 地点搜索框配置，默认关闭，详情可见 [LocationSearchProps](/components/location-search#api) | `LocationSearchProps \| false` | `--` |
 | onOk | 点击"提交"按钮的回调，会将当前绘制的 `GeoJSON` 作为参数传入 | `(drawData: DrawGroupData) => void` | `--` |
+| onCancel | 点击"取消"按钮的回调 | `() => void` | `--` |
 
 其他参数可以参照 [Ant Design 4.0 Modal](https://4x-ant-design.antgroup.com/components/modal-cn/#API)
 
