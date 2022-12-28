@@ -92,7 +92,7 @@ export const useDrawGroup = (
     [drawInfoMap],
   );
 
-  const activeDrawInfo = useMemo(() => {
+  const activeDrawInfo: ReturnType<typeof useDraw> | undefined = useMemo(() => {
     return Object.values(drawInfoMap).find((hook) => {
       return hook.isEnable;
     });

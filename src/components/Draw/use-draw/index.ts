@@ -1,6 +1,6 @@
 import type { BaseMode } from '@antv/l7-draw';
 import { DrawEvent } from '@antv/l7-draw';
-import { omit } from 'lodash-es';
+import { cloneDeep, omit } from 'lodash-es';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useScene } from '../../LarkMap/hooks';
 import type { DrawData } from '../types';
@@ -10,7 +10,7 @@ import type { UseDrawParams } from './types';
 export const useDraw = (params: UseDrawParams) => {
   const scene = useScene();
   // @ts-ignore
-  const [drawData, setDrawData] = useState<DrawData>(() => params?.options?.initialData ?? []);
+  const [drawData, setDrawData] = useState<DrawData>(() => cloneDeep(params?.options?.initialData) ?? []);
 
   const draw: BaseMode | null = useMemo(() => {
     if (!scene) {
@@ -20,7 +20,7 @@ export const useDraw = (params: UseDrawParams) => {
     const DrawClass = DRAW_TYPE_MAP[params.type];
     const newDraw: BaseMode = new DrawClass(scene, {
       ...params.options,
-      initialData: drawData,
+      initialData: cloneDeep(drawData),
     });
     return newDraw;
     // eslint-disable-next-line react-hooks/exhaustive-deps
