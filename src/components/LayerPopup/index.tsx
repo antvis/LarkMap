@@ -96,7 +96,6 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       });
     });
 
-    console.log(result);
     return result;
   }, [fullLayerList, items]);
 
