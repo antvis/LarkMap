@@ -1,8 +1,10 @@
-import type { IPopupOption, LayerField, LayerPopupConfigItem } from '@antv/l7';
+import type { ILayer, IPopupOption, LayerField, LayerPopupConfigItem } from '@antv/l7';
 import { LayerPopup as L7LayerPopup } from '@antv/l7';
+import type { ICompositeLayer } from '@antv/l7-composite-layers';
 import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
 import React, { useMemo, useState } from 'react';
+import type { Layer } from '../../types';
 import { getStyleText } from '../../utils';
 import { useL7ComponentEvent, useL7ComponentUpdate } from '../Control/hooks';
 import { useLayerList, useScene } from '../LarkMap/hooks';
@@ -36,48 +38,65 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   const fullLayerList = useLayerList();
 
   const layerPopupItems = useMemo(() => {
-    const newItems: LayerPopupConfigItem[] = [];
+    const result: LayerPopupConfigItem[] = [];
 
     items.forEach((item) => {
-      const newItem: LayerPopupConfigItem = {
-        layer: item.layer,
-      };
+      let originLayer: Layer | undefined;
       // 若 layer 为字符串格式，统一从 LarkMap 的 LayerManger 中获取 layer 实例
       if (typeof item.layer === 'string') {
         const targetLayer = fullLayerList.find((layer) => layer.id === item.layer);
         if (targetLayer) {
-          // @ts-ignore
-          newItem.layer = targetLayer;
+          originLayer = targetLayer;
         } else {
-          console.error('LayerPopup 中传入了未注册的 layerId');
+          // 在传 Layer id 的情况下，如果未找到目标图层实例则直接跳过当前配置项
+          return;
         }
+      } else {
+        originLayer = item.layer;
       }
 
-      if (item.title) {
-        newItem.title = getElementTypePortal(item.title, 'div');
+      const layers: ILayer[] = [];
+
+      if (originLayer.isComposite) {
+        // 若 originLayer 为交互图层，
+        // @ts-ignore
+        layers.push(...(originLayer as ICompositeLayer).getInteractionSubLayers());
+      } else {
+        // @ts-ignore
+        layers.push(originLayer);
       }
-      if (item.customContent) {
-        newItem.customContent = getElementTypePortal(item.customContent, 'div');
-      }
-      if (item.fields?.length) {
-        newItem.fields = item.fields.map((field: ILayerField) => {
-          if (typeof field === 'string') {
-            return field;
-          } else {
-            const newField: LayerField = { field: field.field, getValue: field.getValue };
-            if (field.formatField) {
-              newField.formatField = getElementTypePortal(field.formatField, 'span');
+
+      layers.forEach((layer) => {
+        const newItem: LayerPopupConfigItem = { layer };
+
+        if (item.title) {
+          newItem.title = getElementTypePortal(item.title, 'div');
+        }
+        if (item.customContent) {
+          newItem.customContent = getElementTypePortal(item.customContent, 'div');
+        }
+        if (item.fields?.length) {
+          newItem.fields = item.fields.map((field: ILayerField) => {
+            if (typeof field === 'string') {
+              return field;
+            } else {
+              const newField: LayerField = { field: field.field, getValue: field.getValue };
+              if (field.formatField) {
+                newField.formatField = getElementTypePortal(field.formatField, 'span');
+              }
+              if (field.formatValue) {
+                newField.formatValue = getElementTypePortal(field.formatValue, 'span');
+              }
+              return newField;
             }
-            if (field.formatValue) {
-              newField.formatValue = getElementTypePortal(field.formatValue, 'span');
-            }
-            return newField;
-          }
-        });
-      }
-      newItems.push(newItem);
+          });
+        }
+
+        result.push(newItem);
+      });
     });
-    return newItems;
+
+    return result;
   }, [fullLayerList, items]);
 
   const layerPopupOptions: Partial<IPopupOption> = useMemo(

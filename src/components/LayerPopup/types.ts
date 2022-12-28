@@ -1,5 +1,6 @@
 import type { ILayerPopupOption, LayerField, LayerPopupConfigItem } from '@antv/l7';
 import type { ReactNode } from 'react';
+import type { Layer } from '../../types';
 import type { PopupProps } from '../Popup/types';
 
 export interface ILayerField extends Omit<LayerField, 'formatField' | 'formatValue'> {
@@ -7,10 +8,12 @@ export interface ILayerField extends Omit<LayerField, 'formatField' | 'formatVal
   formatValue?: ReactNode | ((value: any, feature: any) => ReactNode);
 }
 
-export interface ILayerPopupConfigItem extends Omit<LayerPopupConfigItem, 'title' | 'customContent' | 'fields'> {
+export interface ILayerPopupConfigItem
+  extends Omit<LayerPopupConfigItem, 'title' | 'customContent' | 'fields' | 'layer'> {
   title?: ReactNode | ((feature: any) => ReactNode);
   customContent?: ReactNode | ((feature: any) => ReactNode);
   fields?: (ILayerField | string)[];
+  layer?: Layer | string;
 }
 
 export interface LayerPopupProps
