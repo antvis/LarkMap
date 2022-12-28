@@ -1,11 +1,15 @@
 import { DrawModal } from '@antv/larkmap';
 import { Button, Input } from 'antd';
 import type { Feature } from 'geojson';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 const Default: React.FC = () => {
   const [featureList, setFeatureList] = useState<Feature[]>([]);
   const [visible, setVisible] = useState(false);
+  const text = useMemo(() => {
+    return JSON.stringify(featureList);
+  }, [featureList]);
+
   return (
     <>
       <DrawModal
@@ -47,7 +51,7 @@ const Default: React.FC = () => {
         绘制元素
       </Button>
 
-      <Input.TextArea rows={7} disabled value={JSON.stringify(featureList)} style={{ marginTop: 16, resize: 'none' }} />
+      <Input.TextArea rows={7} disabled value={text} style={{ marginTop: 16, resize: 'none' }} />
     </>
   );
 };

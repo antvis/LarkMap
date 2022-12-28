@@ -2,7 +2,7 @@ import { DrawModal } from '@antv/larkmap';
 import { Button, Input } from 'antd';
 import type { Feature, Polygon } from 'geojson';
 import { cloneDeep } from 'lodash-es';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { DEFAULT_POLYGON_FEATURE } from './constants';
 
 const Default: React.FC = () => {
@@ -12,6 +12,10 @@ const Default: React.FC = () => {
     return feature;
   });
   const [visible, setVisible] = useState(false);
+
+  const text = useMemo(() => {
+    return JSON.stringify(editPolygon);
+  }, [editPolygon]);
 
   return (
     <>
@@ -53,7 +57,7 @@ const Default: React.FC = () => {
         绘制元素
       </Button>
 
-      <Input.TextArea rows={7} disabled value={JSON.stringify(editPolygon)} style={{ marginTop: 16, resize: 'none' }} />
+      <Input.TextArea rows={7} disabled value={text} style={{ marginTop: 16, resize: 'none' }} />
     </>
   );
 };
