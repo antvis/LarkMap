@@ -8,13 +8,28 @@
     margin-top: 8px;
   }
 
-  &__continuousBar {
+  &__labelSegment{
+    display: flex;
+    align-items: center;
+  }
+
+  &__barItem{
+    letter-spacing: 0;
+  }
+
+  &__barItem:last-child{
+    text-align: end;
+    letter-spacing: 0;
+    width: 10px !important;
+  }
+
+  &__continuous {
     height: 10px;
     border-radius: 6px
   }
 
 
-  &__equidistantBar {
+  &__equidistant {
     display: flex;
 
     &__bar {

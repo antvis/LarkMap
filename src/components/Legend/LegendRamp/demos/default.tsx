@@ -3,7 +3,7 @@ import React from 'react';
 
 export default () => {
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'auto auto', gap: 20 }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto', gap: 20 }}>
       <LegendRamp
         labels={[10, 20, 30, 40, 50, 60]}
         colors={[
@@ -14,8 +14,8 @@ export default () => {
           'rgb(49, 130, 189)',
           'rgb(8, 81, 156)',
         ]}
-        barWidth={500}
-        labelUnit="m"
+        barWidth={200}
+        lableUnit="m"
       />
       <LegendRamp
         isContinuous
@@ -28,6 +28,12 @@ export default () => {
           'rgb(197, 27, 138)',
           'rgb(122, 1, 119)',
         ]}
+      />
+      <LegendRamp
+        isSegment
+        barWidth={300}
+        colors={['#ffd8bf', '#ffbb96', '#ff9c6e', '#ff7a45', '#fa541c', '#d4380d', '#ad2102']}
+        labels={['3333', '5', '83333', '10', '13', '153434', '183232', '2000']}
       />
     </div>
   );

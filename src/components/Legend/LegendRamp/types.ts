@@ -7,7 +7,7 @@ export interface LegendRampProps extends CommonProps {
    * 图例项单位
    * @default ""
    */
-  labelUnit?: string;
+  lableUnit?: string;
   /**图例项颜色 */
   colors: { startColor: string; endColor: string } | string[];
   /**
@@ -19,6 +19,10 @@ export interface LegendRampProps extends CommonProps {
    * 图例项宽度
    * @default 200
    */
-
   barWidth?: number;
+  /**
+   * 是否区间分段
+   * @default false
+   */
+  isSegment?: boolean;
 }

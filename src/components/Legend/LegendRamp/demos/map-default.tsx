@@ -11,17 +11,7 @@ const config = {
   },
 };
 
-const colors = [
-  'rgb(247, 144, 124)',
-  'rgb(231, 225, 239)',
-  'rgb(212, 185, 218)',
-  'rgb(201, 148, 199)',
-  'rgb(223, 101, 176)',
-  'rgb(231, 41, 138)',
-  'rgb(206, 18, 86)',
-  'rgb(152, 0, 67)',
-  'rgb(103, 0, 31)',
-];
+const colors = ['#ffd8bf', '#ffbb96', '#ff9c6e', '#ff7a45', '#fa541c', '#d4380d', '#ad2102'];
 
 export default () => {
   const [unemployment, setUnemployment] = useState('');
@@ -35,14 +25,15 @@ export default () => {
 
   const Legend = () => {
     if (!legendItems.length) return null;
-    const arr: number[] = Array.from(new Set(legendItems.map((item) => [...item.value]).flat()));
-    const labels = [Math.min(...arr), Math.max(...arr)];
+
+    const newValue: any = new Set([...legendItems.map((item) => item.value).flat()]);
     return (
       <LegendRamp
-        labelUnit=""
+        isSegment
+        barWidth={250}
         style={{ background: '#fff', padding: 8 }}
         colors={legendItems.map((item) => item.color)}
-        labels={labels}
+        labels={[...newValue.map((item) => item.toFixed())]}
       />
     );
   };
