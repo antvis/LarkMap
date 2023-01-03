@@ -1,23 +1,30 @@
 import type { SelectProps } from 'antd';
 import { Select } from 'antd';
+import type { DefaultOptionType } from 'antd/es/select';
 import React, { useEffect, useMemo } from 'react';
 
-const AntdScaleSelector: React.FC<SelectProps & { type: string }> = (props) => {
-  const { type, options, ...prop } = props;
+interface OptionType extends DefaultOptionType {
+  type: 'string' | 'number';
+}
 
-  const Options = useMemo(() => {
-    return options[type] ?? options.default;
-  }, [type, options, prop]);
+type AntdScaleSelectorProps = SelectProps<string, OptionType> & { type: 'string' | 'number' };
+
+const AntdScaleSelector = (props: AntdScaleSelectorProps) => {
+  const { type, options, ...others } = props;
+
+  const selectOptions = useMemo(() => {
+    return options.filter((item) => item.type === type);
+  }, [type, options]);
 
   useEffect(() => {
-    if (!prop.value || Options.findIndex((item) => item.value === prop.value) === -1) {
-      prop?.onChange(Options[0]?.value, Options);
+    if (!others.value || selectOptions.findIndex((item) => item.value === others.value) === -1) {
+      others?.onChange(selectOptions[0]?.value, selectOptions);
     }
-  }, [Options]);
+  }, [selectOptions]);
 
   return (
-    <Select {...prop}>
-      {Options?.map((item, index) => {
+    <Select {...others}>
+      {selectOptions?.map((item, index) => {
         return (
           <Select.Option value={item.value} key={index}>
             {item.label}
