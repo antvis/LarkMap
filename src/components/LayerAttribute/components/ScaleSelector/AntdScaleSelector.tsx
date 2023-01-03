@@ -7,7 +7,7 @@ interface OptionType extends DefaultOptionType {
   type: 'string' | 'number';
 }
 
-type AntdScaleSelectorProps = SelectProps<string, OptionType> & { type: 'string' | 'number' };
+export type AntdScaleSelectorProps = SelectProps<string, OptionType> & { type: 'string' | 'number' };
 
 const AntdScaleSelector = (props: AntdScaleSelectorProps) => {
   const { type, options, ...others } = props;
