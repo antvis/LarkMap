@@ -1,11 +1,6 @@
-import type { colorScaleSelectOptionType, FieldSelectOptionType } from '../types';
+import type { FieldSelectOptionType } from '../types';
 
-export default (
-  fieldList: FieldSelectOptionType[] = [],
-  ribbonList: string[][] = [],
-  collapseTitle?: string,
-  colorScaleList?: colorScaleSelectOptionType[],
-) => {
+export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] = [], collapseTitle?: string) => {
   return {
     type: 'void',
     'x-component': 'FormCollapse',
@@ -45,25 +40,6 @@ export default (
             'x-component-props': {
               placeholder: '请选择',
               type: '{{ $form.getFieldState("fillColorField",state=> { return state.dataSource.find((item) => item.value === state.value)?.type })}}',
-              options: colorScaleList
-                ? colorScaleList
-                : [
-                    {
-                      label: '等分位',
-                      value: 'quantile',
-                      type: 'number',
-                    },
-                    {
-                      label: '等间距',
-                      value: 'quantize',
-                      type: 'number',
-                    },
-                    {
-                      label: '枚举',
-                      value: 'cat',
-                      type: 'string',
-                    },
-                  ],
             },
             'x-decorator-props': {},
             'x-reactions': [
