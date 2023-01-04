@@ -22,41 +22,27 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
             },
             properties: {
               // 色带
-              colors: {
+              colorsRange: {
                 type: 'string',
                 title: '颜色',
-                default: [
-                  'rgb(247, 251, 255)',
-                  'rgb(222, 235, 247)',
-                  'rgb(198, 219, 239)',
-                  'rgb(158, 202, 225)',
-                  'rgb(107, 174, 214)',
-                  'rgb(66, 146, 198)',
-                  'rgb(33, 113, 181)',
-                  'rgb(8, 81, 156)',
-                  'rgb(8, 48, 107)',
-                ],
+                default: {
+                  colors: [
+                    '#ffffcc',
+                    '#ffeda0',
+                    '#fed976',
+                    '#feb24c',
+                    '#fd8d3c',
+                    '#fc4e2a',
+                    '#e31a1c',
+                    '#bd0026',
+                    '#800026',
+                  ].reverse(),
+                  isReversed: true,
+                },
                 'x-decorator': 'FormItem',
-                'x-component': 'RibbonSelect',
+                'x-component': 'ColorRangeSelector',
                 'x-decorator-props': {},
                 enum: [...ribbonList],
-              },
-              colorsReverseOrder: {
-                type: 'boolean',
-                title: '倒序',
-                'x-decorator': 'FormItem',
-                'x-component': 'Switch',
-                'x-component-props': {},
-                'x-decorator-props': {},
-                'x-reactions': [
-                  {
-                    target: 'colorsReverseOrder',
-                    effects: ['onFieldInputValueChange'],
-                    fulfill: {
-                      run: "$form.setFieldState('colors', state => { state.value = state.value ? [...state.value].reverse() : [] })",
-                    },
-                  },
-                ],
               },
 
               opacity: {

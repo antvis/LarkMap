@@ -9,8 +9,9 @@ export const bubbleLayerStyleFlatToConfig = (style: Record<string, any>) => {
     fillColor: style.fillColorField
       ? {
           field: style.fillColorField,
-          value: style.fillColorRibbon,
+          value: style.fillColorRange.colors,
           scale: { type: style.fillColorScale },
+          isReversed: style.fillColorRange.isReversed,
         }
       : style.fillColor,
     opacity: style.fillColorOpacity,
@@ -65,7 +66,13 @@ export const bubbleLayerStyleConfigToFlat = (styleConfig: BubbleLayerStyleAttrib
   } = styleConfig;
   const config = {
     fillColorField: typeof fillColor === 'object' ? fillColor?.field : undefined,
-    fillColorRibbon: typeof fillColor === 'object' ? fillColor?.value : undefined,
+    fillColorRange:
+      typeof fillColor === 'object'
+        ? {
+            colors: fillColor?.value || [],
+            isReversed: fillColor?.isReversed || false,
+          }
+        : undefined,
     fillColorScale: typeof fillColor === 'object' ? fillColor?.scale?.type : undefined,
     fillColor: typeof fillColor !== 'object' ? fillColor : undefined,
     fillColorOpacity: opacity,

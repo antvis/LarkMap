@@ -76,22 +76,25 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
             ],
           },
           // 色带
-          fillColorRibbon: {
-            type: 'string',
+          fillColorRange: {
+            type: 'object',
             title: '颜色',
-            default: [
-              'rgb(247, 251, 255)',
-              'rgb(222, 235, 247)',
-              'rgb(198, 219, 239)',
-              'rgb(158, 202, 225)',
-              'rgb(107, 174, 214)',
-              'rgb(66, 146, 198)',
-              'rgb(33, 113, 181)',
-              'rgb(8, 81, 156)',
-              'rgb(8, 48, 107)',
-            ],
+            default: {
+              colors: [
+                '#ffffe5',
+                '#f7fcb9',
+                '#d9f0a3',
+                '#addd8e',
+                '#78c679',
+                '#41ab5d',
+                '#238443',
+                '#006837',
+                '#004529',
+              ],
+              isReversed: false,
+            },
             'x-decorator': 'FormItem',
-            'x-component': 'RibbonSelect',
+            'x-component': 'ColorRangeSelector',
             'x-component-props': {},
             'x-decorator-props': {},
             enum: [...ribbonList],
@@ -102,32 +105,6 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
                   state: {
                     visible: '{{ $deps[0] !== undefined }}',
                   },
-                },
-              },
-            ],
-          },
-
-          fillColorReverseOrder: {
-            type: 'boolean',
-            title: '倒序',
-            'x-decorator': 'FormItem',
-            'x-component': 'Switch',
-            'x-component-props': {},
-            'x-decorator-props': {},
-            'x-reactions': [
-              {
-                dependencies: ['fillColorField'],
-                fulfill: {
-                  state: {
-                    visible: '{{ $deps[0] !== undefined }}',
-                  },
-                },
-              },
-              {
-                target: 'fillColorReverseOrder',
-                effects: ['onFieldInputValueChange'],
-                fulfill: {
-                  run: "$form.setFieldState('fillColorRibbon', state => { state.value = state.value ? [...state.value].reverse() : [] })",
                 },
               },
             ],

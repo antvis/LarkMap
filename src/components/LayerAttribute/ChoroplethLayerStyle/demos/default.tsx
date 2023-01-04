@@ -10,8 +10,9 @@ const FieldList = [
 const DefaultChoroplethLayerStyle = {
   fillColor: {
     field: 'adcode',
-    value: ['#0f9960', '#33a02c', '#377eb8'],
+    value: ['#f7fcb9', '#addd8e', '#31a354'],
     scale: { type: 'quantize' as const },
+    isReversed: false,
   },
   opacity: 0.3,
   strokeColor: '#fff',
@@ -59,7 +60,7 @@ export default () => {
           initialValues={DefaultChoroplethLayerStyle}
           fieldList={FieldList}
           onChange={(values: ChoroplethLayerStyleAttributeValue) => {
-            // console.log('values: ', values);
+            console.log('values: ', values);
             setLayerOptions(values);
           }}
         />

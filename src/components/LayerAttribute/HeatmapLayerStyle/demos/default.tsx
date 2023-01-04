@@ -19,17 +19,18 @@ const DefaultHeatmapLayerStyle = {
     opacity: 1,
     rampColors: {
       colors: [
-        'rgb(255, 247, 236)',
-        'rgb(254, 232, 200)',
-        'rgb(253, 212, 158)',
-        'rgb(253, 187, 132)',
-        'rgb(252, 141, 89)',
-        'rgb(239, 101, 72)',
-        'rgb(215, 48, 31)',
-        'rgb(179, 0, 0)',
-        'rgb(127, 0, 0)',
+        '#ffffcc',
+        '#ffeda0',
+        '#fed976',
+        '#feb24c',
+        '#fd8d3c',
+        '#fc4e2a',
+        '#e31a1c',
+        '#bd0026',
+        '#800026',
       ].reverse(),
       positions: [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1],
+      isReversed: true,
     },
   },
   minZoom: 0,
@@ -74,7 +75,7 @@ export default () => {
           initialValues={DefaultHeatmapLayerStyle}
           fieldList={FieldList}
           onChange={(values: HeatmapLayerStyleAttributeValue) => {
-            // console.log('values: ', values);
+            console.log('values: ', values);
             setLayerOptions(values);
           }}
         />

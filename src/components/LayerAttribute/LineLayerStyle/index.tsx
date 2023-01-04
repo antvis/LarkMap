@@ -7,9 +7,9 @@ import { debounce } from 'lodash-es';
 import React, { memo, useMemo } from 'react';
 import {
   ColorPicker,
+  ColorRangeSelector,
   FieldSelect,
   FormCollapse,
-  RibbonSelect,
   ScaleSelector,
   Slider,
   SliderRange,
@@ -33,7 +33,7 @@ export const LineLayerStyleAttributeSchemaField: React.FC<
           NumberPicker,
           Switch,
           Slider,
-          RibbonSelect,
+          ColorRangeSelector,
           ColorPicker,
           FieldSelect,
           SliderRange,

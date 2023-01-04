@@ -16,8 +16,9 @@ export const lineLayerStyleFlatToConfig = (style: Record<string, any>) => {
     color: style.fillColorField
       ? {
           field: style.fillColorField,
-          value: style.fillColorRibbon,
+          value: style.fillColorRange.colors,
           scale: { type: style.fillColorScale },
+          isReversed: style.fillColorRange.isReversed,
         }
       : style.sourceColor,
     style: {
@@ -52,9 +53,14 @@ export const lineLayerStyleConfigToFlat = (styleConfig: LineLayerStyleAttributeV
     sizeField: typeof size === 'object' ? size?.field : undefined,
     // @ts-ignore
     sizeRange: typeof size === 'object' ? size?.value : undefined,
-
     fillColorField: typeof color === 'object' ? color?.field : undefined,
-    fillColorRibbon: typeof color === 'object' ? color?.value : undefined,
+    fillColorRange:
+      typeof color === 'object'
+        ? {
+            colors: color?.value || [],
+            isReversed: color?.isReversed || false,
+          }
+        : undefined,
     fillColorScale: typeof color === 'object' ? color?.scale?.type : undefined,
 
     fillColorOpacity: style?.opacity,
