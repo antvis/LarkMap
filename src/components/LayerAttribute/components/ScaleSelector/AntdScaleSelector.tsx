@@ -2,7 +2,7 @@ import type { SelectProps } from 'antd';
 import { Select } from 'antd';
 import type { DefaultOptionType } from 'antd/es/select';
 import React, { useEffect, useMemo } from 'react';
-import { DEHAULTOPTIONS } from './constants';
+import { DEHAULT_OPTIONS } from './constants';
 
 export interface ColorScaleSelectOptionType extends DefaultOptionType {
   type: 'string' | 'number';
@@ -12,7 +12,7 @@ export type AntdScaleSelectorProps = SelectProps<string, ColorScaleSelectOptionT
 
 const AntdScaleSelector = (props: AntdScaleSelectorProps) => {
   const selectOptions = useMemo(() => {
-    const options = props.options ?? DEHAULTOPTIONS;
+    const options = props.options ?? DEHAULT_OPTIONS;
     const type = ['string', 'number'].includes(props.type) ? props.type : 'string';
     return options.filter((item) => item.type === type);
   }, [props.type, props.options]);
