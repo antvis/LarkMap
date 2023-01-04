@@ -1,15 +1,15 @@
-import classNames from 'classnames';
-import React, { useMemo, memo } from 'react';
 import { Form, FormItem, Input, NumberPicker, Select, Switch } from '@formily/antd';
-import { createSchemaField } from '@formily/react';
 import type { Form as FormInstance } from '@formily/core';
 import { createForm, onFormValuesChange } from '@formily/core';
+import { createSchemaField } from '@formily/react';
+import classNames from 'classnames';
 import { debounce } from 'lodash-es';
-import { FormCollapse, FieldSelect, ColorPicker, RibbonSelect, Slider, SliderRange } from '../components';
-import type { HeatmapLayerStyleAttributeProps } from './types';
-import schema from './schema';
-import { heatmapLayerStyleConfigToFlat, heatmapLayerStyleFlatToConfig } from './helper';
+import React, { memo, useMemo } from 'react';
+import { ColorPicker, FieldSelect, FormCollapse, RibbonSelect, Slider, SliderRange } from '../components';
 import { CLS_PREFIX } from './constant';
+import { heatmapLayerStyleConfigToFlat, heatmapLayerStyleFlatToConfig } from './helper';
+import schema from './schema';
+import type { HeatmapLayerStyleAttributeProps } from './types';
 
 export const HeatmapLayerStyleAttributeSchemaField: React.FC<
   Pick<HeatmapLayerStyleAttributeProps, 'fieldList' | 'ribbonList'>
