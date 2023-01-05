@@ -6,7 +6,7 @@ export default (options?: {
   colorRanges: ColorRange[];
   collapseTitle?: string;
 }) => {
-  const { fieldList = [], colorRanges = [], collapseTitle } = options || {};
+  const { fieldList = [], colorRanges = [], collapseTitle = '填充颜色' } = options || {};
   return {
     type: 'void',
     'x-component': 'FormCollapse',
@@ -20,7 +20,7 @@ export default (options?: {
         type: 'void',
         'x-component': 'FormCollapse.CollapsePanel',
         'x-component-props': {
-          header: collapseTitle ?? '填充颜色',
+          header: collapseTitle,
         },
         properties: {
           fillColorField: {

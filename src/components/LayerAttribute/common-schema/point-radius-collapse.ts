@@ -1,7 +1,7 @@
 import type { FieldSelectOptionType } from '../types';
 
 export default (options?: { fieldList: FieldSelectOptionType[]; collapseTitle?: string }) => {
-  const { fieldList = [], collapseTitle } = options || {};
+  const { fieldList = [], collapseTitle = '填充半径' } = options || {};
   return {
     type: 'void',
     'x-component': 'FormCollapse',
@@ -15,7 +15,7 @@ export default (options?: { fieldList: FieldSelectOptionType[]; collapseTitle?: 
         type: 'void',
         'x-component': 'FormCollapse.CollapsePanel',
         'x-component-props': {
-          header: collapseTitle ?? '填充半径',
+          header: collapseTitle,
         },
 
         properties: {
