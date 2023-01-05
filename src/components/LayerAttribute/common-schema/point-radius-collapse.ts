@@ -1,6 +1,7 @@
 import type { FieldSelectOptionType } from '../types';
 
-export default (options: { fieldList: FieldSelectOptionType[]; collapseTitle?: string }) => {
+export default (options?: { fieldList: FieldSelectOptionType[]; collapseTitle?: string }) => {
+  const { fieldList = [], collapseTitle } = options || {};
   return {
     type: 'void',
     'x-component': 'FormCollapse',
@@ -14,7 +15,7 @@ export default (options: { fieldList: FieldSelectOptionType[]; collapseTitle?: s
         type: 'void',
         'x-component': 'FormCollapse.CollapsePanel',
         'x-component-props': {
-          header: options?.collapseTitle ? options.collapseTitle : '填充半径',
+          header: collapseTitle ?? '填充半径',
         },
 
         properties: {
@@ -30,7 +31,7 @@ export default (options: { fieldList: FieldSelectOptionType[]; collapseTitle?: s
               allowClear: true,
               placeholder: '请选择字段',
             },
-            enum: options?.fieldList ? [...options.fieldList] : [],
+            enum: [...fieldList],
           },
 
           radius: {

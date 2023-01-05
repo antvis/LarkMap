@@ -1,4 +1,5 @@
 export default (options?: { collapseTitle?: string }) => {
+  const { collapseTitle } = options || {};
   return {
     type: 'void',
     'x-component': 'FormCollapse',
@@ -12,7 +13,7 @@ export default (options?: { collapseTitle?: string }) => {
         type: 'void',
         'x-component': 'FormCollapse.CollapsePanel',
         'x-component-props': {
-          header: options?.collapseTitle ? options.collapseTitle : '其它属性',
+          header: collapseTitle ?? '其它属性',
         },
         properties: {
           zoom: {
