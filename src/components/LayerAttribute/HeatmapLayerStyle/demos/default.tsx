@@ -75,7 +75,7 @@ export default () => {
           initialValues={DefaultHeatmapLayerStyle}
           fieldList={FieldList}
           onChange={(values: HeatmapLayerStyleAttributeValue) => {
-            console.log('values: ', values);
+            // console.log('values: ', values);
             setLayerOptions(values);
           }}
         />

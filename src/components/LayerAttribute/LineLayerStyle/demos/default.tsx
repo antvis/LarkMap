@@ -55,7 +55,7 @@ export default () => {
           initialValues={DefaultLineLayerStyle}
           fieldList={FieldList}
           onChange={(values: LineLayerStyleAttributeValue) => {
-            console.log('values: ', values);
+            // console.log('values: ', values);
             setLayerOptions(values);
           }}
         />

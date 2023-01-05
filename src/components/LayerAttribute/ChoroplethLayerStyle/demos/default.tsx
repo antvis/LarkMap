@@ -60,7 +60,7 @@ export default () => {
           initialValues={DefaultChoroplethLayerStyle}
           fieldList={FieldList}
           onChange={(values: ChoroplethLayerStyleAttributeValue) => {
-            console.log('values: ', values);
+            // console.log('values: ', values);
             setLayerOptions(values);
           }}
         />
