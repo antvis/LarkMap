@@ -1,7 +1,7 @@
 import type { ColorRange } from '@antv/insight-component/es/components/formily/ColorRangeSelector/AntdColorRangeSelector/constants/color-ranges';
 import type { FieldSelectOptionType } from '../types';
 
-export default (fieldList: FieldSelectOptionType[] = [], colorRanges: ColorRange[] = [], collapseTitle?: string) => {
+export default (options: { fieldList: FieldSelectOptionType[]; colorRanges: ColorRange[]; collapseTitle?: string }) => {
   return {
     type: 'void',
     'x-component': 'FormCollapse',
@@ -15,7 +15,7 @@ export default (fieldList: FieldSelectOptionType[] = [], colorRanges: ColorRange
         type: 'void',
         'x-component': 'FormCollapse.CollapsePanel',
         'x-component-props': {
-          header: collapseTitle ? collapseTitle : '填充颜色',
+          header: options?.collapseTitle ? options.collapseTitle : '填充颜色',
         },
         properties: {
           fillColorField: {
@@ -30,7 +30,7 @@ export default (fieldList: FieldSelectOptionType[] = [], colorRanges: ColorRange
               allowClear: true,
               placeholder: '请选择字段',
             },
-            enum: [...fieldList],
+            enum: [...options?.fieldList],
           },
 
           fillColorScale: {
@@ -87,7 +87,7 @@ export default (fieldList: FieldSelectOptionType[] = [], colorRanges: ColorRange
             'x-decorator': 'FormItem',
             'x-component': 'ColorRangeSelector',
             'x-component-props': {
-              options: [...colorRanges],
+              options: [...options?.colorRanges],
             },
             'x-decorator-props': {},
             'x-reactions': [

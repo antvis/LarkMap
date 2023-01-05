@@ -10,10 +10,10 @@ export default (fieldList: FieldSelectOptionType[] = [], colorRanges: ColorRange
   return {
     type: 'object',
     properties: {
-      collapseItem_fillColor: fillColorCollapse(fieldList, colorRanges),
+      collapseItem_fillColor: fillColorCollapse({ fieldList, colorRanges }),
       collapseItem_stroke: strokeCollapse(),
-      collapseItem_fillradius: pointRadius(fieldList),
-      collapseItem_labelstyle: labelCollapse(fieldList),
+      collapseItem_fillradius: pointRadius({ fieldList }),
+      collapseItem_labelstyle: labelCollapse({ fieldList }),
       // collapseItem_animate: animateCollapse(),
       collapseItem_other: otherAttributesCollapse(),
     },

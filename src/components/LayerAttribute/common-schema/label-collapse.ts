@@ -1,6 +1,6 @@
 import type { FieldSelectOptionType } from '../types';
 
-export default (fieldList: FieldSelectOptionType[] = []) => {
+export default (options: { fieldList: FieldSelectOptionType[] }) => {
   return {
     type: 'void',
     'x-component': 'FormCollapse',
@@ -21,7 +21,7 @@ export default (fieldList: FieldSelectOptionType[] = []) => {
           labelField: {
             type: 'string',
             title: '标签字段',
-            enum: [...fieldList],
+            enum: options?.fieldList ? [...options.fieldList] : [],
             'x-decorator': 'FormItem',
             'x-component': 'FieldSelect',
             'x-component-props': {
