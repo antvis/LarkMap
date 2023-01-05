@@ -21,7 +21,7 @@ import schema from './schema';
 import type { ChoroplethLayerStyleAttributeProps } from './types';
 
 export const ChoroplethLayerStyleAttributeSchemaField: React.FC<
-  Pick<ChoroplethLayerStyleAttributeProps, 'fieldList' | 'ribbonList'>
+  Pick<ChoroplethLayerStyleAttributeProps, 'fieldList' | 'colorRanges'>
 > = (props) => {
   const SchemaField = useMemo(
     () =>
@@ -44,7 +44,7 @@ export const ChoroplethLayerStyleAttributeSchemaField: React.FC<
       }),
     [],
   );
-  const _schema = useMemo(() => schema(props.fieldList, props.ribbonList), [props.fieldList, props.ribbonList]);
+  const _schema = useMemo(() => schema(props.fieldList, props.colorRanges), [props.fieldList, props.colorRanges]);
 
   return <SchemaField schema={_schema} />;
 };

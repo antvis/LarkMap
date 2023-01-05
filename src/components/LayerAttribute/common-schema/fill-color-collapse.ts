@@ -1,6 +1,7 @@
+import type { ColorRange } from '@antv/insight-component/es/components/formily/ColorRangeSelector/AntdColorRangeSelector/constants/color-ranges';
 import type { FieldSelectOptionType } from '../types';
 
-export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] = [], collapseTitle?: string) => {
+export default (fieldList: FieldSelectOptionType[] = [], colorRanges: ColorRange[] = [], collapseTitle?: string) => {
   return {
     type: 'void',
     'x-component': 'FormCollapse',
@@ -95,9 +96,10 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
             },
             'x-decorator': 'FormItem',
             'x-component': 'ColorRangeSelector',
-            'x-component-props': {},
+            'x-component-props': {
+              options: [...colorRanges],
+            },
             'x-decorator-props': {},
-            enum: [...ribbonList],
             'x-reactions': [
               {
                 dependencies: ['fillColorField'],

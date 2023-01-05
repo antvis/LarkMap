@@ -1,7 +1,8 @@
+import type { ColorRange } from '@antv/insight-component/es/components/formily/ColorRangeSelector/AntdColorRangeSelector/constants/color-ranges';
 import otherAttributesCollapse from '../common-schema/other-attributes-collapse';
 import type { FieldSelectOptionType } from '../types';
 
-export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] = []) => {
+export default (fieldList: FieldSelectOptionType[] = [], colorRanges: ColorRange[] = []) => {
   return {
     type: 'object',
     properties: {
@@ -42,7 +43,9 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
                 'x-decorator': 'FormItem',
                 'x-component': 'ColorRangeSelector',
                 'x-decorator-props': {},
-                enum: [...ribbonList],
+                'x-component-props': {
+                  options: [...colorRanges],
+                },
               },
 
               opacity: {

@@ -20,7 +20,7 @@ import schema from './schema';
 import type { LineLayerStyleAttributeProps } from './types';
 
 export const LineLayerStyleAttributeSchemaField: React.FC<
-  Pick<LineLayerStyleAttributeProps, 'fieldList' | 'ribbonList'>
+  Pick<LineLayerStyleAttributeProps, 'fieldList' | 'colorRanges'>
 > = (props) => {
   const SchemaField = useMemo(
     () =>
@@ -42,7 +42,7 @@ export const LineLayerStyleAttributeSchemaField: React.FC<
       }),
     [],
   );
-  const _schema = useMemo(() => schema(props.fieldList, props.ribbonList), [props.fieldList, props.ribbonList]);
+  const _schema = useMemo(() => schema(props.fieldList, props.colorRanges), [props.fieldList, props.colorRanges]);
 
   return <SchemaField schema={_schema} />;
 };

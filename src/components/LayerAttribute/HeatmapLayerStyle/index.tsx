@@ -12,7 +12,7 @@ import schema from './schema';
 import type { HeatmapLayerStyleAttributeProps } from './types';
 
 export const HeatmapLayerStyleAttributeSchemaField: React.FC<
-  Pick<HeatmapLayerStyleAttributeProps, 'fieldList' | 'ribbonList'>
+  Pick<HeatmapLayerStyleAttributeProps, 'fieldList' | 'colorRanges'>
 > = (props) => {
   const SchemaField = useMemo(
     () =>
@@ -34,7 +34,7 @@ export const HeatmapLayerStyleAttributeSchemaField: React.FC<
     [],
   );
 
-  const _schema = useMemo(() => schema(props.fieldList, props.ribbonList), [props.fieldList, props.ribbonList]);
+  const _schema = useMemo(() => schema(props.fieldList, props.colorRanges), [props.fieldList, props.colorRanges]);
 
   return <SchemaField schema={_schema} />;
 };
