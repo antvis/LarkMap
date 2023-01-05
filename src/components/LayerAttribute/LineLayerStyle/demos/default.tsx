@@ -11,6 +11,7 @@ const DefaultLineLayerStyle = {
   color: {
     field: 'line_id',
     value: ['#a6cee3', '#1f78b4', '#b2df8a'],
+    // value: ['#5B8FF9', '#5CCEA1', '#5D7092'],
     isReversed: false,
     scale: { type: 'quantile' as const },
   },
