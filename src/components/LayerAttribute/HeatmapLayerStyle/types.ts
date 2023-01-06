@@ -1,7 +1,6 @@
-import type { ColorRange } from '@antv/insight-component/es/components/formily/ColorRangeSelector/AntdColorRangeSelector/constants/color-ranges';
 import type { HeatmapLayerOptions } from '@antv/l7-composite-layers';
 import type { CommonProps } from '../../../types/common';
-import type { FieldSelectOptionType } from '../types';
+import type { OptionsType } from '../types';
 
 /**
  * 区域图层样式属性值
@@ -13,13 +12,9 @@ export type HeatmapLayerStyleAttributeValue = Omit<HeatmapLayerOptions, 'source'
  */
 export interface HeatmapLayerStyleAttributeProps extends CommonProps {
   /**
-   * 数据字段
+   * 传入配置项
    */
-  fieldList: FieldSelectOptionType[];
-  /**
-   * 色带配置
-   */
-  colorRanges?: ColorRange[];
+  options: OptionsType;
   /**
    * 初始值
    */

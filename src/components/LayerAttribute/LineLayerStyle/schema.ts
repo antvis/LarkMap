@@ -1,9 +1,9 @@
-import type { ColorRange } from '@antv/insight-component/es/components/formily/ColorRangeSelector/AntdColorRangeSelector/constants/color-ranges';
 import lineAnimateCollapse from '../common-schema/line-animate-collapse';
 import otherAttributesCollapse from '../common-schema/other-attributes-collapse';
-import type { FieldSelectOptionType } from '../types';
+import type { OptionsType } from '../types';
 
-export default (fieldList: FieldSelectOptionType[] = [], colorRanges: ColorRange[] = []) => {
+export default (options: OptionsType) => {
+  const { fieldList = [], colorRanges = [] } = options;
   return {
     type: 'object',
     properties: {

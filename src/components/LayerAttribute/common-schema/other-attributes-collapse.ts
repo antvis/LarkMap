@@ -1,5 +1,7 @@
-export default (options?: { collapseTitle?: string }) => {
-  const { collapseTitle = '其它属性' } = options || {};
+import type { OptionsType } from '../types';
+
+export default (options: OptionsType) => {
+  const { collapseTitle = '其它属性' } = options;
   return {
     type: 'void',
     'x-component': 'FormCollapse',

@@ -1,12 +1,7 @@
-import type { ColorRange } from '@antv/insight-component/es/components/formily/ColorRangeSelector/AntdColorRangeSelector/constants/color-ranges';
-import type { FieldSelectOptionType } from '../types';
+import type { OptionsType } from '../types';
 
-export default (options?: {
-  fieldList: FieldSelectOptionType[];
-  colorRanges: ColorRange[];
-  collapseTitle?: string;
-}) => {
-  const { fieldList = [], colorRanges = [], collapseTitle = '填充颜色' } = options || {};
+export default (options: OptionsType) => {
+  const { fieldList = [], colorRanges = [], collapseTitle = '填充颜色' } = options;
   return {
     type: 'void',
     'x-component': 'FormCollapse',
