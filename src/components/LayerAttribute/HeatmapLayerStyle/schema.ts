@@ -130,7 +130,7 @@ export default (options: OptionsType) => {
         },
       },
 
-      collapseItem_other: otherAttributesCollapse(),
+      collapseItem_other: otherAttributesCollapse(options),
     },
   };
 };

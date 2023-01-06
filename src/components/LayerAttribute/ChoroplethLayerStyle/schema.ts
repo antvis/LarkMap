@@ -11,7 +11,7 @@ export default (options: OptionsType) => {
       collapseItem_fillColor: fillColorCollapse(options),
       collapseItem_stroke: strokeCollapse(),
       collapseItem_labelstyle: labelCollapse(options),
-      collapseItem_other: otherAttributesCollapse(),
+      collapseItem_other: otherAttributesCollapse(options),
     },
   };
 };

@@ -58,7 +58,7 @@ export default () => {
         <ChoroplethLayerStyleAttribute
           style={{ overflowX: 'hidden', overflowY: 'auto', maxHeight: '300px' }}
           initialValues={DefaultChoroplethLayerStyle}
-          options={{ FieldList: FieldList }}
+          options={{ fieldList: FieldList }}
           onChange={(values: ChoroplethLayerStyleAttributeValue) => {
             // console.log('values: ', values);
             setLayerOptions(values);

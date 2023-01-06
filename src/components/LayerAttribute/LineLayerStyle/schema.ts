@@ -249,7 +249,7 @@ export default (options: OptionsType) => {
 
       collapseItem_animate: lineAnimateCollapse(),
 
-      collapseItem_other: otherAttributesCollapse(),
+      collapseItem_other: otherAttributesCollapse(options),
     },
   };
 };
