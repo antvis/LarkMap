@@ -1,7 +1,6 @@
-import type { ColorRange } from '@antv/insight-component/es/components/formily/ColorRangeSelector/AntdColorRangeSelector/constants/color-ranges';
 import type { LineLayerOptions } from '@antv/l7-composite-layers';
 import type { CommonProps } from '../../../types/common';
-import type { FieldSelectOptionType } from '../types';
+import type { ColorRange, FieldSelectOptionType } from '../types';
 
 /**
  * 线图层样式属性值
