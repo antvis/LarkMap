@@ -63,7 +63,7 @@ export default () => {
         <HeatmapLayerStyleAttribute
           style={{ overflowX: 'hidden', overflowY: 'auto', maxHeight: '300px' }}
           initialValues={DefaultHeatmapLayerStyle}
-          options={{ fieldList: FieldList }}
+          fieldList={FieldList}
           onChange={(values: HeatmapLayerStyleAttributeValue) => {
             // console.log('values: ', values);
             setLayerOptions(values);

@@ -20,9 +20,9 @@ import { bubbleLayerStyleConfigToFlat, bubbleLayerStyleFlatToConfig } from './he
 import schema from './schema';
 import type { BubbleLayerStyleAttributeProps } from './types';
 
-export const BubbleLayerStyleAttributeSchemaField: React.FC<Pick<BubbleLayerStyleAttributeProps, 'options'>> = (
-  props,
-) => {
+export const BubbleLayerStyleAttributeSchemaField: React.FC<
+  Pick<BubbleLayerStyleAttributeProps, 'fieldList' | 'colorRanges'>
+> = (props) => {
   const SchemaField = useMemo(
     () =>
       createSchemaField({
@@ -45,7 +45,10 @@ export const BubbleLayerStyleAttributeSchemaField: React.FC<Pick<BubbleLayerStyl
     [],
   );
 
-  const _schema = useMemo(() => schema(props.options), [props.options]);
+  const _schema = useMemo(
+    () => schema({ fieldList: props.fieldList, colorRanges: props.colorRanges }),
+    [props.fieldList, props.colorRanges],
+  );
 
   return <SchemaField schema={_schema} />;
 };
@@ -81,7 +84,7 @@ export const BubbleLayerStyleAttribute: React.FC<BubbleLayerStyleAttributeProps>
         wrapperAlign="right"
         feedbackLayout="terse"
       >
-        <BubbleLayerStyleAttributeSchemaField options={props.options} />
+        <BubbleLayerStyleAttributeSchemaField fieldList={props.fieldList} />
       </Form>
     );
   },

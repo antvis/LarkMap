@@ -55,7 +55,7 @@ export default () => {
         <BubbleLayerStyleAttribute
           style={{ overflowX: 'hidden', overflowY: 'auto', maxHeight: '300px' }}
           initialValues={DefaultBubbleLayerStyle}
-          options={{ fieldList: FieldList }}
+          fieldList={FieldList}
           onChange={(values: BubbleLayerStyleAttributeValue) => {
             // console.log('values: ', values);
             setLayerOptions(values);

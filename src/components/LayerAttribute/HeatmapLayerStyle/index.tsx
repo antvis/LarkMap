@@ -11,9 +11,9 @@ import { heatmapLayerStyleConfigToFlat, heatmapLayerStyleFlatToConfig } from './
 import schema from './schema';
 import type { HeatmapLayerStyleAttributeProps } from './types';
 
-export const HeatmapLayerStyleAttributeSchemaField: React.FC<Pick<HeatmapLayerStyleAttributeProps, 'options'>> = (
-  props,
-) => {
+export const HeatmapLayerStyleAttributeSchemaField: React.FC<
+  Pick<HeatmapLayerStyleAttributeProps, 'fieldList' | 'colorRanges'>
+> = (props) => {
   const SchemaField = useMemo(
     () =>
       createSchemaField({
@@ -34,7 +34,10 @@ export const HeatmapLayerStyleAttributeSchemaField: React.FC<Pick<HeatmapLayerSt
     [],
   );
 
-  const _schema = useMemo(() => schema(props.options), [props.options]);
+  const _schema = useMemo(
+    () => schema({ fieldList: props.fieldList, colorRanges: props.colorRanges }),
+    [props.fieldList, props.colorRanges],
+  );
 
   return <SchemaField schema={_schema} />;
 };
@@ -70,7 +73,7 @@ export const HeatmapLayerStyleAttribute: React.FC<HeatmapLayerStyleAttributeProp
         wrapperAlign="right"
         feedbackLayout="terse"
       >
-        <HeatmapLayerStyleAttributeSchemaField options={props.options} />
+        <HeatmapLayerStyleAttributeSchemaField fieldList={props.fieldList} />
       </Form>
     );
   },

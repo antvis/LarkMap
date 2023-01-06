@@ -53,7 +53,7 @@ export default () => {
         <LineLayerStyleAttribute
           style={{ overflowX: 'hidden', overflowY: 'auto', maxHeight: '300px' }}
           initialValues={DefaultLineLayerStyle}
-          options={{ fieldList: FieldList }}
+          fieldList={FieldList}
           onChange={(values: LineLayerStyleAttributeValue) => {
             // console.log('values: ', values);
             setLayerOptions(values);

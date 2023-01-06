@@ -1,6 +1,7 @@
+import type { ColorRange } from '@antv/insight-component/es/components/formily/ColorRangeSelector/AntdColorRangeSelector/constants/color-ranges';
 import type { BubbleLayerOptions } from '@antv/l7-composite-layers';
 import type { CommonProps } from '../../../types/common';
-import type { OptionsType } from '../types';
+import type { FieldSelectOptionType } from '../types';
 
 /**
  * 气泡图层样式属性值
@@ -12,9 +13,13 @@ export type BubbleLayerStyleAttributeValue = Omit<BubbleLayerOptions, 'source'>;
  */
 export interface BubbleLayerStyleAttributeProps extends CommonProps {
   /**
-   * 传入配置项
+   * 数据字段
    */
-  options: OptionsType;
+  fieldList: FieldSelectOptionType[];
+  /**
+   * 色带配置
+   */
+  colorRanges?: ColorRange[];
   /**
    * 初始值
    */

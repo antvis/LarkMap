@@ -20,9 +20,9 @@ import { choroplethLayerStyleConfigToFlat, choroplethLayerStyleFlatToConfig } fr
 import schema from './schema';
 import type { ChoroplethLayerStyleAttributeProps } from './types';
 
-export const ChoroplethLayerStyleAttributeSchemaField: React.FC<Pick<ChoroplethLayerStyleAttributeProps, 'options'>> = (
-  props,
-) => {
+export const ChoroplethLayerStyleAttributeSchemaField: React.FC<
+  Pick<ChoroplethLayerStyleAttributeProps, 'fieldList' | 'colorRanges'>
+> = (props) => {
   const SchemaField = useMemo(
     () =>
       createSchemaField({
@@ -44,7 +44,10 @@ export const ChoroplethLayerStyleAttributeSchemaField: React.FC<Pick<ChoroplethL
       }),
     [],
   );
-  const _schema = useMemo(() => schema(props.options), [props.options]);
+  const _schema = useMemo(
+    () => schema({ fieldList: props.fieldList, colorRanges: props.colorRanges }),
+    [props.fieldList, props.colorRanges],
+  );
 
   return <SchemaField schema={_schema} />;
 };
@@ -80,7 +83,7 @@ export const ChoroplethLayerStyleAttribute: React.FC<ChoroplethLayerStyleAttribu
         wrapperAlign="right"
         feedbackLayout="terse"
       >
-        <ChoroplethLayerStyleAttributeSchemaField options={props.options} />
+        <ChoroplethLayerStyleAttributeSchemaField fieldList={props.fieldList} />
       </Form>
     );
   },

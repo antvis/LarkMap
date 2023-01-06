@@ -19,7 +19,9 @@ import { lineLayerStyleConfigToFlat, lineLayerStyleFlatToConfig } from './helper
 import schema from './schema';
 import type { LineLayerStyleAttributeProps } from './types';
 
-export const LineLayerStyleAttributeSchemaField: React.FC<Pick<LineLayerStyleAttributeProps, 'options'>> = (props) => {
+export const LineLayerStyleAttributeSchemaField: React.FC<
+  Pick<LineLayerStyleAttributeProps, 'fieldList' | 'colorRanges'>
+> = (props) => {
   const SchemaField = useMemo(
     () =>
       createSchemaField({
@@ -40,7 +42,10 @@ export const LineLayerStyleAttributeSchemaField: React.FC<Pick<LineLayerStyleAtt
       }),
     [],
   );
-  const _schema = useMemo(() => schema(props.options), [props.options]);
+  const _schema = useMemo(
+    () => schema({ fieldList: props.fieldList, colorRanges: props.colorRanges }),
+    [props.fieldList, props.colorRanges],
+  );
 
   return <SchemaField schema={_schema} />;
 };
@@ -77,7 +82,7 @@ export const LineLayerStyleAttribute: React.FC<LineLayerStyleAttributeProps> = m
       wrapperAlign="right"
       feedbackLayout="terse"
     >
-      <LineLayerStyleAttributeSchemaField options={props.options} />
+      <LineLayerStyleAttributeSchemaField fieldList={props.fieldList} />
     </Form>
   );
 });
