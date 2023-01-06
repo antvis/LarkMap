@@ -9,7 +9,7 @@ export type OptionsType = {
   /**
    * 数据字段
    */
-  fieldList: FieldSelectOptionType[];
+  fieldList?: FieldSelectOptionType[];
   /**
    * 色带配置
    */
