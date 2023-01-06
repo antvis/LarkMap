@@ -1,6 +1,6 @@
 import type { OptionsType } from '../types';
 
-export default (options: OptionsType) => {
+export default (options?: OptionsType) => {
   const { collapseTitle = '其它属性' } = options;
   return {
     type: 'void',
