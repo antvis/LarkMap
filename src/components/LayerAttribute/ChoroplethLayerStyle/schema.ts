@@ -4,7 +4,7 @@ import otherAttributesCollapse from '../common-schema/other-attributes-collapse'
 import strokeCollapse from '../common-schema/stroke-collapse';
 import type { OptionsType } from '../types';
 
-export default (options: OptionsType) => {
+export default (options: OptionsType = {}) => {
   return {
     type: 'object',
     properties: {

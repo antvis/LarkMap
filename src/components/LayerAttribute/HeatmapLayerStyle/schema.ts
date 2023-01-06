@@ -1,7 +1,7 @@
 import otherAttributesCollapse from '../common-schema/other-attributes-collapse';
 import type { OptionsType } from '../types';
 
-export default (options: OptionsType) => {
+export default (options: OptionsType = {}) => {
   const { fieldList = [], colorRanges = [] } = options;
 
   return {
