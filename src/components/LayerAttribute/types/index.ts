@@ -1,4 +1,5 @@
 export type { FieldSelectOptionType } from '@antv/insight-component';
+import type { FieldSelectOptionType } from '@antv/insight-component';
 import type { ColorRange } from '@antv/insight-component/es/components/formily/ColorRangeSelector/AntdColorRangeSelector/constants/color-ranges';
 
 /**
