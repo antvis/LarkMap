@@ -11,8 +11,9 @@ export const DefaultHeatmapLayerStyle: HeatmapLayerStyleAttributeValue = {
     radius: 20,
     opacity: 0.8,
     rampColors: {
-      colors: ['#FF4818', '#F7B74A', '#FFF598', '#F27DEB', '#8C1EB2', '#421EB2'],
-      positions: [0, 0.2, 0.4, 0.6, 0.8, 1.0],
+      colors: ['#800026', '#bd0026', '#e31a1c', '#fc4e2a', '#fd8d3c', '#feb24c', '#fed976', '#ffeda0', '#ffffcc'],
+      positions: [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1],
+      isReversed: true,
     },
   },
   minZoom: 0,

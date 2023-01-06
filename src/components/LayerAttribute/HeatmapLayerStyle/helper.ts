@@ -11,8 +11,9 @@ export const heatmapLayerStyleFlatToConfig = (style: Record<string, any>) => {
       radius: style.radius,
       opacity: style.opacity,
       rampColors: {
-        colors: style.colors,
-        positions: style.colors.map((_, index) => index / (style.colors.length - 1)),
+        colors: style.colorsRange.colors,
+        positions: style.colorsRange.colors.map((_, index) => index / (style.colorsRange.colors.length - 1)),
+        isReversed: style.colorsRange.isReversed,
       },
     },
     minZoom: style.zoom?.[0],
@@ -32,6 +33,10 @@ export const heatmapLayerStyleConfigToFlat = (styleConfig: HeatmapLayerStyleAttr
   const config = {
     // @ts-ignore
     colors: style?.rampColors?.colors,
+    colorsRange: {
+      colors: style?.rampColors?.colors,
+      isReversed: style?.rampColors?.isReversed,
+    },
     opacity: style?.opacity,
     // @ts-ignore
     radius: style?.radius,

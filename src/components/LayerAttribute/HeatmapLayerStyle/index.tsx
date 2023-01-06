@@ -5,14 +5,14 @@ import { createSchemaField } from '@formily/react';
 import classNames from 'classnames';
 import { debounce } from 'lodash-es';
 import React, { memo, useMemo } from 'react';
-import { ColorPicker, FieldSelect, FormCollapse, RibbonSelect, Slider, SliderRange } from '../components';
+import { ColorPicker, ColorRangeSelector, FieldSelect, FormCollapse, Slider, SliderRange } from '../components';
 import { CLS_PREFIX } from './constant';
 import { heatmapLayerStyleConfigToFlat, heatmapLayerStyleFlatToConfig } from './helper';
 import schema from './schema';
 import type { HeatmapLayerStyleAttributeProps } from './types';
 
 export const HeatmapLayerStyleAttributeSchemaField: React.FC<
-  Pick<HeatmapLayerStyleAttributeProps, 'fieldList' | 'ribbonList'>
+  Pick<HeatmapLayerStyleAttributeProps, 'fieldList' | 'colorRanges'>
 > = (props) => {
   const SchemaField = useMemo(
     () =>
@@ -25,7 +25,7 @@ export const HeatmapLayerStyleAttributeSchemaField: React.FC<
           NumberPicker,
           Switch,
           Slider,
-          RibbonSelect,
+          ColorRangeSelector,
           ColorPicker,
           FieldSelect,
           SliderRange,
@@ -34,7 +34,10 @@ export const HeatmapLayerStyleAttributeSchemaField: React.FC<
     [],
   );
 
-  const _schema = useMemo(() => schema(props.fieldList, props.ribbonList), [props.fieldList, props.ribbonList]);
+  const _schema = useMemo(
+    () => schema({ fieldList: props.fieldList, colorRanges: props.colorRanges }),
+    [props.fieldList, props.colorRanges],
+  );
 
   return <SchemaField schema={_schema} />;
 };

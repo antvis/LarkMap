@@ -1,8 +1,9 @@
 import lineAnimateCollapse from '../common-schema/line-animate-collapse';
 import otherAttributesCollapse from '../common-schema/other-attributes-collapse';
-import type { FieldSelectOptionType } from '../types';
+import type { OptionsType } from '../types';
 
-export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] = []) => {
+export default (options: OptionsType = {}) => {
+  const { fieldList = [], colorRanges = [] } = options;
   return {
     type: 'object',
     properties: {
@@ -102,25 +103,18 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
               },
 
               // 色带
-              fillColorRibbon: {
-                type: 'string',
+              fillColorRange: {
+                type: 'object',
                 title: '颜色',
-                default: [
-                  'rgb(247, 251, 255)',
-                  'rgb(222, 235, 247)',
-                  'rgb(198, 219, 239)',
-                  'rgb(158, 202, 225)',
-                  'rgb(107, 174, 214)',
-                  'rgb(66, 146, 198)',
-                  'rgb(33, 113, 181)',
-                  'rgb(8, 81, 156)',
-                  'rgb(8, 48, 107)',
-                ],
+                default: {
+                  colors: ['#a6cee3', '#1f78b4', '#b2df8a'],
+                  isReversed: false,
+                },
                 'x-decorator': 'FormItem',
-                'x-component': 'RibbonSelect',
+                'x-component': 'ColorRangeSelector',
                 'x-component-props': {},
                 'x-decorator-props': {},
-                enum: [...ribbonList],
+                enum: [...colorRanges],
                 'x-reactions': [
                   {
                     dependencies: ['fillColorField'],
@@ -128,32 +122,6 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
                       state: {
                         visible: '{{ $deps[0] !== undefined }}',
                       },
-                    },
-                  },
-                ],
-              },
-
-              fillColorReverseOrder: {
-                type: 'boolean',
-                title: '倒序',
-                'x-decorator': 'FormItem',
-                'x-component': 'Switch',
-                'x-component-props': {},
-                'x-decorator-props': {},
-                'x-reactions': [
-                  {
-                    dependencies: ['fillColorField'],
-                    fulfill: {
-                      state: {
-                        visible: '{{ $deps[0] !== undefined }}',
-                      },
-                    },
-                  },
-                  {
-                    target: 'fillColorReverseOrder',
-                    effects: ['onFieldInputValueChange'],
-                    fulfill: {
-                      run: "$form.setFieldState('fillColorRibbon', state => { state.value = state.value ? [...state.value].reverse() : [] })",
                     },
                   },
                 ],
@@ -281,7 +249,7 @@ export default (fieldList: FieldSelectOptionType[] = [], ribbonList: string[][] 
 
       collapseItem_animate: lineAnimateCollapse(),
 
-      collapseItem_other: otherAttributesCollapse(),
+      collapseItem_other: otherAttributesCollapse(options),
     },
   };
 };

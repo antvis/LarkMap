@@ -10,8 +10,9 @@ const FieldList = [
 const DefaultChoroplethLayerStyle = {
   fillColor: {
     field: 'adcode',
-    value: ['#0f9960', '#33a02c', '#377eb8'],
-    scale: { type: 'quantize' as const },
+    value: ['#edf8b1', '#7fcdbb', '#2c7fb8'],
+    scale: { type: 'quantile' as const },
+    isReversed: false,
   },
   opacity: 0.3,
   strokeColor: '#fff',

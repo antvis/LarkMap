@@ -7,10 +7,10 @@ import { debounce } from 'lodash-es';
 import React, { memo, useMemo } from 'react';
 import {
   ColorPicker,
+  ColorRangeSelector,
   FieldSelect,
   FormCollapse,
   Offset,
-  RibbonSelect,
   ScaleSelector,
   Slider,
   SliderRange,
@@ -21,7 +21,7 @@ import schema from './schema';
 import type { ChoroplethLayerStyleAttributeProps } from './types';
 
 export const ChoroplethLayerStyleAttributeSchemaField: React.FC<
-  Pick<ChoroplethLayerStyleAttributeProps, 'fieldList' | 'ribbonList'>
+  Pick<ChoroplethLayerStyleAttributeProps, 'fieldList' | 'colorRanges'>
 > = (props) => {
   const SchemaField = useMemo(
     () =>
@@ -34,7 +34,7 @@ export const ChoroplethLayerStyleAttributeSchemaField: React.FC<
           NumberPicker,
           Switch,
           Slider,
-          RibbonSelect,
+          ColorRangeSelector,
           ColorPicker,
           FieldSelect,
           SliderRange,
@@ -44,7 +44,10 @@ export const ChoroplethLayerStyleAttributeSchemaField: React.FC<
       }),
     [],
   );
-  const _schema = useMemo(() => schema(props.fieldList, props.ribbonList), [props.fieldList, props.ribbonList]);
+  const _schema = useMemo(
+    () => schema({ fieldList: props.fieldList, colorRanges: props.colorRanges }),
+    [props.fieldList, props.colorRanges],
+  );
 
   return <SchemaField schema={_schema} />;
 };

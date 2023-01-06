@@ -7,10 +7,10 @@ import { debounce } from 'lodash-es';
 import React, { memo, useMemo } from 'react';
 import {
   ColorPicker,
+  ColorRangeSelector,
   FieldSelect,
   FormCollapse,
   Offset,
-  RibbonSelect,
   ScaleSelector,
   Slider,
   SliderRange,
@@ -21,7 +21,7 @@ import schema from './schema';
 import type { BubbleLayerStyleAttributeProps } from './types';
 
 export const BubbleLayerStyleAttributeSchemaField: React.FC<
-  Pick<BubbleLayerStyleAttributeProps, 'fieldList' | 'ribbonList'>
+  Pick<BubbleLayerStyleAttributeProps, 'fieldList' | 'colorRanges'>
 > = (props) => {
   const SchemaField = useMemo(
     () =>
@@ -34,7 +34,7 @@ export const BubbleLayerStyleAttributeSchemaField: React.FC<
           NumberPicker,
           Switch,
           Slider,
-          RibbonSelect,
+          ColorRangeSelector,
           ColorPicker,
           FieldSelect,
           SliderRange,
@@ -45,7 +45,10 @@ export const BubbleLayerStyleAttributeSchemaField: React.FC<
     [],
   );
 
-  const _schema = useMemo(() => schema(props.fieldList, props.ribbonList), [props.fieldList, props.ribbonList]);
+  const _schema = useMemo(
+    () => schema({ fieldList: props.fieldList, colorRanges: props.colorRanges }),
+    [props.fieldList, props.colorRanges],
+  );
 
   return <SchemaField schema={_schema} />;
 };

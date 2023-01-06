@@ -7,9 +7,9 @@ import { debounce } from 'lodash-es';
 import React, { memo, useMemo } from 'react';
 import {
   ColorPicker,
+  ColorRangeSelector,
   FieldSelect,
   FormCollapse,
-  RibbonSelect,
   ScaleSelector,
   Slider,
   SliderRange,
@@ -20,7 +20,7 @@ import schema from './schema';
 import type { LineLayerStyleAttributeProps } from './types';
 
 export const LineLayerStyleAttributeSchemaField: React.FC<
-  Pick<LineLayerStyleAttributeProps, 'fieldList' | 'ribbonList'>
+  Pick<LineLayerStyleAttributeProps, 'fieldList' | 'colorRanges'>
 > = (props) => {
   const SchemaField = useMemo(
     () =>
@@ -33,7 +33,7 @@ export const LineLayerStyleAttributeSchemaField: React.FC<
           NumberPicker,
           Switch,
           Slider,
-          RibbonSelect,
+          ColorRangeSelector,
           ColorPicker,
           FieldSelect,
           SliderRange,
@@ -42,7 +42,10 @@ export const LineLayerStyleAttributeSchemaField: React.FC<
       }),
     [],
   );
-  const _schema = useMemo(() => schema(props.fieldList, props.ribbonList), [props.fieldList, props.ribbonList]);
+  const _schema = useMemo(
+    () => schema({ fieldList: props.fieldList, colorRanges: props.colorRanges }),
+    [props.fieldList, props.colorRanges],
+  );
 
   return <SchemaField schema={_schema} />;
 };

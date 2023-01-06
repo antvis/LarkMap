@@ -1,4 +1,4 @@
-export { ColorPicker, FieldSelect, RibbonSelect } from '@antv/insight-component';
+export { ColorPicker, ColorRangeSelector, FieldSelect } from '@antv/insight-component';
 export { default as FormCollapse } from './FormCollapse';
 export { default as Offset } from './Offset';
 export { default as ScaleSelector } from './ScaleSelector';

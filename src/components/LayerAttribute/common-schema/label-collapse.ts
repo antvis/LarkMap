@@ -1,6 +1,7 @@
-import type { FieldSelectOptionType } from '../types';
+import type { OptionsType } from '../types';
 
-export default (fieldList: FieldSelectOptionType[] = []) => {
+export default (options: OptionsType) => {
+  const { fieldList = [] } = options;
   return {
     type: 'void',
     'x-component': 'FormCollapse',

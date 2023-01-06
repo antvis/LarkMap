@@ -10,7 +10,8 @@ const FieldList = [
 const DefaultLineLayerStyle = {
   color: {
     field: 'line_id',
-    value: ['#5B8FF9', '#5CCEA1', '#5D7092'],
+    value: ['#a6cee3', '#1f78b4', '#b2df8a'],
+    isReversed: false,
     scale: { type: 'quantile' as const },
   },
   size: 1.5,
