@@ -3,9 +3,9 @@ import labelCollapse from '../common-schema/label-collapse';
 import otherAttributesCollapse from '../common-schema/other-attributes-collapse';
 import pointRadius from '../common-schema/point-radius-collapse';
 import strokeCollapse from '../common-schema/stroke-collapse';
-import type { OptionsType } from '../types';
+import type { AttributeSchemaOptions } from '../types';
 
-export default (options: OptionsType = {}) => {
+export default (options: AttributeSchemaOptions = {}) => {
   return {
     type: 'object',
     properties: {

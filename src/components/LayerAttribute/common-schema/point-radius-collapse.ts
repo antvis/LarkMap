@@ -1,6 +1,6 @@
-import type { OptionsType } from '../types';
+import type { AttributeSchemaOptions } from '../types';
 
-export default (options: OptionsType) => {
+export default (options: AttributeSchemaOptions) => {
   const { fieldList = [], collapseTitle = '填充半径' } = options;
   return {
     type: 'void',
