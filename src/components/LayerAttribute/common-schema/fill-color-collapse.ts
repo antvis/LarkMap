@@ -1,6 +1,6 @@
-import type { OptionsType } from '../types';
+import type { AttributeSchemaOptions } from '../types';
 
-export default (options: OptionsType) => {
+export default (options: AttributeSchemaOptions) => {
   const { fieldList = [], colorRanges = [], collapseTitle = '填充颜色' } = options;
   return {
     type: 'void',

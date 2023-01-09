@@ -5,7 +5,7 @@ export type { FieldSelectOptionType, ColorRange };
 /**
  * 配置项
  */
-export type OptionsType = {
+export type AttributeSchemaOptions = {
   /**
    * 数据字段
    */

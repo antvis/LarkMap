@@ -1,6 +1,6 @@
-import type { OptionsType } from '../types';
+import type { AttributeSchemaOptions } from '../types';
 
-export default (options?: OptionsType) => {
+export default (options?: AttributeSchemaOptions) => {
   const { collapseTitle = '其它属性' } = options;
   return {
     type: 'void',
