@@ -31,9 +31,9 @@ export default () => {
       />
       <LegendRamp
         isSegment
-        barWidth={300}
-        colors={['#ffd8bf', '#ffbb96', '#ff9c6e', '#ff7a45', '#fa541c', '#d4380d', '#ad2102']}
-        labels={['3333', '5', '83333', '10', '13', '153434', '183232', '2000']}
+        barWidth={400}
+        colors={['#ffd8bf', '#ffbb96', '#ff9c6e', '#ff7a45', '#fa541c']}
+        labels={['-85.34%', '-23.34%', '1.23%', '12.33%', '54.68%', '98.45%']}
       />
     </div>
   );

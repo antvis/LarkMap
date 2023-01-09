@@ -1,4 +1,3 @@
-import { Tooltip } from 'antd';
 import classnames from 'classnames';
 import React, { useMemo } from 'react';
 import { getGradientColors } from './../../../utils/color';
@@ -19,17 +18,25 @@ export function LegendRamp(props: LegendRampProps) {
   function Equidistant({ color }: Record<string, any>) {
     return (
       <div className={`${CLS_PREFIX}__equidistant`}>
-        {color.map((item: string, i: number) => (
-          <Tooltip key={item} title={`${labels[i] || 0}~${labels[i + 1]}`}>
-            <div
-              className={`${CLS_PREFIX}__equidistant__bar`}
-              style={{ background: item, width: barWidth / color.length }}
-              key={item}
-            />
-          </Tooltip>
+        {color.map((item: string) => (
+          <div
+            className={`${CLS_PREFIX}__equidistant__bar`}
+            style={{ background: item, width: barWidth / color.length }}
+            key={item}
+          />
         ))}
       </div>
     );
+  }
+
+  /**
+   * zoom随文字长度 -= 0.1
+   * @param str
+   * @returns
+   */
+  function setZoom(str: string | number) {
+    const zoom = 1;
+    return String(str).length === 1 ? zoom : zoom - String(str).length * 0.02;
   }
 
   const labelCell = useMemo(() => {
@@ -37,14 +44,17 @@ export function LegendRamp(props: LegendRampProps) {
     if (isSegment) {
       return (
         <div className={`${CLS_PREFIX}__labelSegment`}>
-          {labels.map((item: any) => {
+          {labels.map((item: string | number) => {
             return (
               <div
                 key={Math.random()}
                 className={`${CLS_PREFIX}__barItem`}
-                style={{ width: barWidth / (labels.length - 1) }}
+                style={{
+                  width: barWidth / (labels.length - 1),
+                  zoom: +setZoom(item),
+                }}
               >
-                {item.length > 2 ? `${item.substring(0, 2)}...` : item}
+                {String(item).length > 7 ? `${String(item).substring(0, 7)}...` : item}
               </div>
             );
           })}
