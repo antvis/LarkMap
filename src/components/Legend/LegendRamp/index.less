@@ -5,44 +5,37 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 8px;
   }
 
-  &__labelSegment{
+  &__disContinuous {
     display: flex;
     align-items: baseline;
-    margin-top: 8px;
-  }
 
-  &__barItem{
-    letter-spacing: 0;
-  }
+    &__cell {
+      &__color {
+        height: 10px;
+        margin-bottom: 8px;
+      }
+      &__label{
+        text-align: center;
+      }
+    }
 
-  &__barItem:last-child{
-    text-align: end;
-    letter-spacing: 0;
-    width: 10px !important;
+    &__cell:first-child {
+      div {
+        border-radius:5px 0 0 5px;
+      }
+    }
+    &__cell:last-child {
+      div {
+        border-radius: 0 5px 5px 0;
+      }
+    }
   }
-
   &__continuous {
     height: 10px;
-    border-radius: 6px
-  }
-
-
-  &__equidistant {
-    display: flex;
-
-    &__bar {
-      height: 10px;
-    }
-
-    &__bar:first-child {
-      border-radius: 6px 0 0 6px;
-    }
-
-    &__bar:last-child {
-      border-radius: 0 6px 6px 0;
-    }
+    border-radius: 5px;
+    margin-bottom: 8px;
   }
 }
+

@@ -30,7 +30,7 @@ export default () => {
     return (
       <LegendRamp
         isSegment
-        barWidth={250}
+        barWidth={280}
         style={{ background: '#fff', padding: 8 }}
         colors={legendItems.map((item) => item.color)}
         labels={[...newValue.map((item) => item.toFixed())]}
@@ -50,6 +50,8 @@ export default () => {
             value: colors,
             scale: { type: 'quantile', domain: [3, 20] },
           }}
+          strokeColor={'#fff'}
+          lineWidth={1}
           onCreated={(l) => {
             setLegendItems(l.getLegend('color').items);
           }}

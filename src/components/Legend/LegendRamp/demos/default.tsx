@@ -6,19 +6,15 @@ export default () => {
     <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto', gap: 20 }}>
       <LegendRamp
         labels={[10, 20, 30, 40, 50, 60]}
-        colors={[
-          'rgb(239, 243, 255)',
-          'rgb(198, 219, 239)',
-          'rgb(158, 202, 225)',
-          'rgb(107, 174, 214)',
-          'rgb(49, 130, 189)',
-          'rgb(8, 81, 156)',
-        ]}
+        colors={{
+          startColor: 'rgb(239, 243, 255)',
+          endColor: 'rgb(8, 81, 156)',
+        }}
         barWidth={200}
         lableUnit="m"
       />
       <LegendRamp
-        isContinuous
+        // isContinuous
         labels={[100, 200, 300, 400, 500, 600]}
         colors={[
           'rgb(254, 235, 226)',
@@ -30,10 +26,11 @@ export default () => {
         ]}
       />
       <LegendRamp
-        isSegment
         barWidth={400}
         colors={['#ffd8bf', '#ffbb96', '#ff9c6e', '#ff7a45', '#fa541c']}
-        labels={['-85.34%', '-23.34%', '1.23%', '12.33%', '54.68%', '98.45%']}
+        labels={['-85.34', '-23.34', '1.23', '12.33', '54.68']}
+        lableUnit="%"
+        isSegment
       />
     </div>
   );
