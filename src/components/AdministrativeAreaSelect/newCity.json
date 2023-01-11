@@ -1,0 +1,6430 @@
+{
+  "bbox": [
+    [73.502355, 3.83703],
+    [135.09567, 53.563624]
+  ],
+  "name": "全国",
+  "level": "country",
+  "adcode": "100000",
+  "lng": "116.3683244",
+  "lat": "39.915085",
+  "parent": null,
+  "label": "中华人民共和国",
+  "spell": "China",
+  "sequence": "Q",
+  "children": [
+    {
+      "bbox": [
+        [115.425215, 39.442758],
+        [117.51459, 41.060798]
+      ],
+      "short": "BJ",
+      "areacode": "010",
+      "adcode": "110000",
+      "enName": "Beijing",
+      "name": "北京",
+      "x": "116.407387",
+      "y": "39.904179",
+      "label": "北京市",
+      "spell": "BeiJing",
+      "children": [],
+      "sequence": "B"
+    },
+    {
+      "bbox": [
+        [116.708028, 38.556177],
+        [118.064779, 40.252469]
+      ],
+      "short": "TJ",
+      "areacode": "022",
+      "adcode": "120000",
+      "enName": "Tianjin",
+      "name": "天津",
+      "x": "117.201509",
+      "y": "39.085318",
+      "label": "天津市",
+      "spell": "TianJin",
+      "children": [],
+      "sequence": "T"
+    },
+    {
+      "bbox": [
+        [113.465369, 36.051986],
+        [119.872377, 42.618597]
+      ],
+      "short": "HB",
+      "areacode": "",
+      "adcode": "130000",
+      "enName": "Hebei",
+      "name": "河北",
+      "x": "114.530399",
+      "y": "38.037707",
+      "label": "河北省",
+      "spell": "HeBei",
+      "children": [
+        {
+          "short": "SJZ",
+          "areacode": "0311",
+          "adcode": "130100",
+          "enName": "jiazhuang",
+          "name": "石家庄",
+          "x": "114.514976",
+          "y": "38.042007",
+          "label": "石家庄市",
+          "spell": "JiaZhuang",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [113.525437, 37.435468],
+            [115.482977, 38.763298]
+          ]
+        },
+        {
+          "short": "TS",
+          "areacode": "0315",
+          "adcode": "130200",
+          "enName": "Tangshan",
+          "name": "唐山",
+          "x": "118.180149",
+          "y": "39.63068",
+          "label": "唐山市",
+          "spell": "TangShan",
+          "children": [],
+          "sequence": "T",
+          "bbox": [
+            [117.507432, 38.909063],
+            [119.319026, 40.464654]
+          ]
+        },
+        {
+          "short": "QHD",
+          "areacode": "0335",
+          "adcode": "130300",
+          "enName": "Qinhuangdao",
+          "name": "秦皇岛",
+          "x": "119.52022",
+          "y": "39.888243",
+          "label": "秦皇岛市",
+          "spell": "QinHuangDao",
+          "children": [],
+          "sequence": "Q",
+          "bbox": [
+            [118.56894, 39.422882],
+            [119.872377, 40.614393]
+          ]
+        },
+        {
+          "short": "HD",
+          "areacode": "0310",
+          "adcode": "130400",
+          "enName": "Handan",
+          "name": "邯郸",
+          "x": "114.53915",
+          "y": "36.625849",
+          "label": "邯郸市",
+          "spell": "HanDan",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [113.465369, 36.048341],
+            [115.483553, 37.01205]
+          ]
+        },
+        {
+          "short": "XT",
+          "areacode": "0319",
+          "adcode": "130500",
+          "enName": "Xingtai",
+          "name": "邢台",
+          "x": "114.49742",
+          "y": "37.060227",
+          "label": "邢台市",
+          "spell": "XingTai",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [113.758151, 36.754691],
+            [115.853918, 37.811474]
+          ]
+        },
+        {
+          "short": "BD",
+          "areacode": "0312",
+          "adcode": "130600",
+          "enName": "Baoding",
+          "name": "保定",
+          "x": "115.464523",
+          "y": "38.874476",
+          "label": "保定市",
+          "spell": "BaoDing",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [113.767545, 38.235282],
+            [116.335359, 39.950082]
+          ]
+        },
+        {
+          "short": "ZJK",
+          "areacode": "0313",
+          "adcode": "130700",
+          "enName": "Zhangjiakou",
+          "name": "张家口",
+          "x": "114.885895",
+          "y": "40.768931",
+          "label": "张家口市",
+          "spell": "ZhangJiaKou",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [113.820342, 39.555869],
+            [116.465844, 42.149497]
+          ]
+        },
+        {
+          "short": "CD",
+          "areacode": "0314",
+          "adcode": "130800",
+          "enName": "Chengde",
+          "name": "承德",
+          "x": "117.962749",
+          "y": "40.952942",
+          "label": "承德市",
+          "spell": "ChengDe",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [115.909991, 40.192804],
+            [119.24834, 42.618597]
+          ]
+        },
+        {
+          "short": "CZ",
+          "areacode": "0317",
+          "adcode": "130900",
+          "enName": "Cangzhou",
+          "name": "沧州",
+          "x": "116.838715",
+          "y": "38.304676",
+          "label": "沧州市",
+          "spell": "CangZhou",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [115.705289, 37.47335],
+            [117.958013, 38.948381]
+          ]
+        },
+        {
+          "short": "LF",
+          "areacode": "0316",
+          "adcode": "131000",
+          "enName": "Langfang",
+          "name": "廊坊",
+          "x": "116.683546",
+          "y": "39.538304",
+          "label": "廊坊市",
+          "spell": "LangFang",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [116.116822, 38.47102],
+            [117.25223, 40.082243]
+          ]
+        },
+        {
+          "short": "HS",
+          "areacode": "0318",
+          "adcode": "131100",
+          "enName": "Hengshui",
+          "name": "衡水",
+          "x": "115.668987",
+          "y": "37.739367",
+          "label": "衡水市",
+          "spell": "HengShui",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [115.172741, 37.05927],
+            [116.565189, 38.369562]
+          ]
+        }
+      ],
+      "sequence": "H"
+    },
+    {
+      "bbox": [
+        [110.229593, 34.583478],
+        [114.568922, 40.737285]
+      ],
+      "short": "SX",
+      "areacode": "",
+      "adcode": "140000",
+      "enName": "Shanxi",
+      "name": "山西",
+      "x": "112.578781",
+      "y": "37.813948",
+      "label": "山西省",
+      "spell": "ShanXi",
+      "children": [
+        {
+          "short": "TY",
+          "areacode": "0351",
+          "adcode": "140100",
+          "enName": "Taiyuan",
+          "name": "太原",
+          "x": "112.549656",
+          "y": "37.870451",
+          "label": "太原市",
+          "spell": "TaiYuan",
+          "children": [],
+          "sequence": "T",
+          "bbox": [
+            [111.51688, 37.458858],
+            [113.151574, 38.421313]
+          ]
+        },
+        {
+          "short": "DT",
+          "areacode": "0352",
+          "adcode": "140200",
+          "enName": "Datong",
+          "name": "大同",
+          "x": "113.366749",
+          "y": "40.09711",
+          "label": "大同市",
+          "spell": "DaTong",
+          "children": [],
+          "sequence": "D",
+          "bbox": [
+            [112.580464, 39.049085],
+            [114.563442, 40.737285]
+          ]
+        },
+        {
+          "short": "YQ",
+          "areacode": "0353",
+          "adcode": "140300",
+          "enName": "Yangquan",
+          "name": "阳泉",
+          "x": "113.580426",
+          "y": "37.857094",
+          "label": "阳泉市",
+          "spell": "YangQuan",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [112.91987, 37.662958],
+            [114.043856, 38.521041]
+          ]
+        },
+        {
+          "short": "CZ",
+          "areacode": "0355",
+          "adcode": "140400",
+          "enName": "Changzhi",
+          "name": "长治",
+          "x": "113.117394",
+          "y": "36.195142",
+          "label": "长治市",
+          "spell": "ChangZhi",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [111.985529, 35.822511],
+            [113.736403, 37.125221]
+          ]
+        },
+        {
+          "short": "JC",
+          "areacode": "0356",
+          "adcode": "140500",
+          "enName": "Jincheng",
+          "name": "晋城",
+          "x": "112.852022",
+          "y": "35.491315",
+          "label": "晋城市",
+          "spell": "JinCheng",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [111.942183, 35.204087],
+            [113.624854, 36.062304]
+          ]
+        },
+        {
+          "short": "SZ",
+          "areacode": "0349",
+          "adcode": "140600",
+          "enName": "Shuozhou",
+          "name": "朔州",
+          "x": "112.432906",
+          "y": "39.331734",
+          "label": "朔州市",
+          "spell": "ShuoZhou",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [111.895777, 39.088404],
+            [113.577269, 40.300055]
+          ]
+        },
+        {
+          "short": "JZ",
+          "areacode": "0354",
+          "adcode": "140700",
+          "enName": "Jinzhong",
+          "name": "晋中",
+          "x": "112.752633",
+          "y": "37.688006",
+          "label": "晋中市",
+          "spell": "JinZhong",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [111.414695, 36.656921],
+            [114.139712, 38.091977]
+          ]
+        },
+        {
+          "short": "YC",
+          "areacode": "0359",
+          "adcode": "140800",
+          "enName": "Yuncheng",
+          "name": "运城",
+          "x": "111.007051",
+          "y": "35.02667",
+          "label": "运城市",
+          "spell": "YunCheng",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [110.229593, 34.583478],
+            [112.079636, 35.812415]
+          ]
+        },
+        {
+          "short": "XZ",
+          "areacode": "0350",
+          "adcode": "140900",
+          "enName": "Xinzhou",
+          "name": "忻州",
+          "x": "112.734149",
+          "y": "38.415958",
+          "label": "忻州市",
+          "spell": "XinZhou",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [110.945272, 38.132392],
+            [113.967182, 39.663094]
+          ]
+        },
+        {
+          "short": "LF",
+          "areacode": "0357",
+          "adcode": "141000",
+          "enName": "Linfen",
+          "name": "临汾",
+          "x": "111.51931",
+          "y": "36.088581",
+          "label": "临汾市",
+          "spell": "LinFen",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [110.376042, 35.387895],
+            [112.574435, 36.933723]
+          ]
+        },
+        {
+          "short": "LL",
+          "areacode": "0358",
+          "adcode": "141100",
+          "enName": "Lvliang",
+          "name": "吕梁",
+          "x": "111.14454",
+          "y": "37.518996",
+          "label": "吕梁市",
+          "spell": "LvLiang",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [110.377122, 36.738536],
+            [112.330118, 38.729483]
+          ]
+        }
+      ],
+      "sequence": "S"
+    },
+    {
+      "bbox": [
+        [97.172763, 37.406779],
+        [126.068247, 53.337178]
+      ],
+      "short": "NMGZZ",
+      "areacode": "",
+      "adcode": "150000",
+      "enName": "Nei Mongol Zizhiqu",
+      "name": "内蒙古",
+      "x": "111.765226",
+      "y": "40.818233",
+      "label": "内蒙古自治区",
+      "spell": "NeiMengGuZiZhiQu",
+      "children": [
+        {
+          "short": "HHHT",
+          "areacode": "0471",
+          "adcode": "150100",
+          "enName": "Hohhot",
+          "name": "呼和浩特",
+          "x": "111.748814",
+          "y": "40.842127",
+          "label": "呼和浩特市",
+          "spell": "HuHeHaoTe",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [110.519414, 39.589702],
+            [112.310309, 41.386259]
+          ]
+        },
+        {
+          "short": "BT",
+          "areacode": "0472",
+          "adcode": "150200",
+          "enName": "Baotou",
+          "name": "包头",
+          "x": "109.95315",
+          "y": "40.621327",
+          "label": "包头市",
+          "spell": "BaoTou",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [109.277392, 40.244327],
+            [111.440987, 42.738521]
+          ]
+        },
+        {
+          "short": "WH",
+          "areacode": "0473",
+          "adcode": "150300",
+          "enName": "Wuhai",
+          "name": "乌海",
+          "x": "106.79415",
+          "y": "39.655048",
+          "label": "乌海市",
+          "spell": "WuHai",
+          "children": [],
+          "sequence": "W",
+          "bbox": [
+            [106.611372, 39.036399],
+            [107.139314, 39.915113]
+          ]
+        },
+        {
+          "short": "CF",
+          "areacode": "0476",
+          "adcode": "150400",
+          "enName": "Chifeng",
+          "name": "赤峰",
+          "x": "118.887613",
+          "y": "42.256876",
+          "label": "赤峰市",
+          "spell": "ChiFeng",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [116.356502, 41.282313],
+            [120.987609, 45.252308]
+          ]
+        },
+        {
+          "short": "TL",
+          "areacode": "0475",
+          "adcode": "150500",
+          "enName": "Tongliao",
+          "name": "通辽",
+          "x": "122.243309",
+          "y": "43.653566",
+          "label": "通辽市",
+          "spell": "TongLiao",
+          "children": [],
+          "sequence": "T",
+          "bbox": [
+            [119.248183, 42.243406],
+            [123.711416, 45.655871]
+          ]
+        },
+        {
+          "short": "EEDS",
+          "areacode": "0477",
+          "adcode": "150600",
+          "enName": "Ordos",
+          "name": "鄂尔多斯",
+          "x": "109.782473",
+          "y": "39.608744",
+          "label": "鄂尔多斯市",
+          "spell": "EErDuoSi",
+          "children": [],
+          "sequence": "E",
+          "bbox": [
+            [106.482468, 37.62201],
+            [111.462923, 40.874305]
+          ]
+        },
+        {
+          "short": "HLBE",
+          "areacode": "0470",
+          "adcode": "150700",
+          "enName": "Hulun Buir",
+          "name": "呼伦贝尔",
+          "x": "119.77845",
+          "y": "49.166536",
+          "label": "呼伦贝尔市",
+          "spell": "HuLunBeiEr",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [115.529317, 47.096248],
+            [126.068247, 53.337178]
+          ]
+        },
+        {
+          "short": "BYNE",
+          "areacode": "0478",
+          "adcode": "150800",
+          "enName": "Bayan Nur",
+          "name": "巴彦淖尔",
+          "x": "107.387767",
+          "y": "40.742987",
+          "label": "巴彦淖尔市",
+          "spell": "BaYanNaoEr",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [105.201607, 40.168057],
+            [109.900775, 42.460344]
+          ]
+        },
+        {
+          "short": "WLCB",
+          "areacode": "0474",
+          "adcode": "150900",
+          "enName": "Ulanqab",
+          "name": "乌兰察布",
+          "x": "113.132227",
+          "y": "40.994526",
+          "label": "乌兰察布市",
+          "spell": "WuLanChaBu",
+          "children": [],
+          "sequence": "W",
+          "bbox": [
+            [110.339884, 40.16802],
+            [114.809227, 43.380246]
+          ]
+        },
+        {
+          "short": "XAM",
+          "areacode": "0482",
+          "adcode": "152200",
+          "enName": "Hinggan",
+          "name": "兴安盟",
+          "x": "122.037796",
+          "y": "46.082373",
+          "label": "兴安盟",
+          "spell": "XingAnMeng",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [119.483501, 44.255427],
+            [123.631314, 47.658137]
+          ]
+        },
+        {
+          "short": "XLGLM",
+          "areacode": "0479",
+          "adcode": "152500",
+          "enName": "Xilin Gol",
+          "name": "锡林郭勒盟",
+          "x": "116.047387",
+          "y": "43.933212",
+          "label": "锡林郭勒盟",
+          "spell": "XiLinGuoLeMeng",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [111.150972, 41.571413],
+            [119.984569, 46.774907]
+          ]
+        },
+        {
+          "short": "ALSM",
+          "areacode": "0483",
+          "adcode": "152900",
+          "enName": "Alxa",
+          "name": "阿拉善盟",
+          "x": "105.729135",
+          "y": "38.851554",
+          "label": "阿拉善盟",
+          "spell": "ALaShanMeng",
+          "children": [],
+          "sequence": "A",
+          "bbox": [
+            [97.172763, 37.406779],
+            [106.866854, 42.795163]
+          ]
+        }
+      ],
+      "sequence": "N"
+    },
+    {
+      "bbox": [
+        [118.849108, 38.719842],
+        [125.791087, 43.489572]
+      ],
+      "short": "LN",
+      "areacode": "",
+      "adcode": "210000",
+      "enName": "Liaoning",
+      "name": "辽宁",
+      "x": "123.435093",
+      "y": "41.836743",
+      "label": "辽宁省",
+      "spell": "LiaoNing",
+      "children": [
+        {
+          "short": "SY",
+          "areacode": "024",
+          "adcode": "210100",
+          "enName": "Shenyang",
+          "name": "沈阳",
+          "x": "123.464675",
+          "y": "41.677576",
+          "label": "沈阳市",
+          "spell": "ShenYang",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [122.42595, 41.199854],
+            [123.814142, 43.042711]
+          ]
+        },
+        {
+          "short": "DL",
+          "areacode": "0411",
+          "adcode": "210200",
+          "enName": "Dalian",
+          "name": "大连",
+          "x": "121.614786",
+          "y": "38.913962",
+          "label": "大连市",
+          "spell": "DaLian",
+          "children": [],
+          "sequence": "D",
+          "bbox": [
+            [121.089428, 38.719842],
+            [123.518817, 40.205189]
+          ]
+        },
+        {
+          "short": "AS",
+          "areacode": "0412",
+          "adcode": "210300",
+          "enName": "Anshan",
+          "name": "鞍山",
+          "x": "122.994183",
+          "y": "41.108239",
+          "label": "鞍山市",
+          "spell": "AnShan",
+          "children": [],
+          "sequence": "A",
+          "bbox": [
+            [122.193771, 40.001668],
+            [123.76926, 41.566308]
+          ]
+        },
+        {
+          "short": "FS",
+          "areacode": "0413",
+          "adcode": "210400",
+          "enName": "Fushun",
+          "name": "抚顺",
+          "x": "123.957053",
+          "y": "41.881311",
+          "label": "抚顺市",
+          "spell": "FuShun",
+          "children": [],
+          "sequence": "F",
+          "bbox": [
+            [123.669396, 41.239794],
+            [125.489931, 42.478881]
+          ]
+        },
+        {
+          "short": "BX",
+          "areacode": "0414",
+          "adcode": "210500",
+          "enName": "Benxi",
+          "name": "本溪",
+          "x": "123.684984",
+          "y": "41.486834",
+          "label": "本溪市",
+          "spell": "BenXi",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [123.582283, 40.815349],
+            [125.791087, 41.568445]
+          ]
+        },
+        {
+          "short": "DD",
+          "areacode": "0415",
+          "adcode": "210600",
+          "enName": "Dandong",
+          "name": "丹东",
+          "x": "124.354419",
+          "y": "40.000646",
+          "label": "丹东市",
+          "spell": "DanDong",
+          "children": [],
+          "sequence": "D",
+          "bbox": [
+            [123.3771, 39.745235],
+            [125.707754, 41.154818]
+          ]
+        },
+        {
+          "short": "JZ",
+          "areacode": "0416",
+          "adcode": "210700",
+          "enName": "Jinzhou",
+          "name": "锦州",
+          "x": "121.126859",
+          "y": "41.096114",
+          "label": "锦州市",
+          "spell": "JinZhou",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [120.720372, 40.790561],
+            [122.596508, 42.129026]
+          ]
+        },
+        {
+          "short": "YK",
+          "areacode": "0417",
+          "adcode": "210800",
+          "enName": "Yingkou",
+          "name": "营口",
+          "x": "122.219148",
+          "y": "40.625027",
+          "label": "营口市",
+          "spell": "YingKou",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [121.940282, 39.920611],
+            [122.999225, 40.940059]
+          ]
+        },
+        {
+          "short": "FX",
+          "areacode": "0418",
+          "adcode": "210900",
+          "enName": "Fuxin",
+          "name": "阜新",
+          "x": "121.670052",
+          "y": "42.022028",
+          "label": "阜新市",
+          "spell": "FuXin",
+          "children": [],
+          "sequence": "F",
+          "bbox": [
+            [121.027498, 41.694981],
+            [122.969882, 42.842571]
+          ]
+        },
+        {
+          "short": "LY",
+          "areacode": "0419",
+          "adcode": "211000",
+          "enName": "Liaoyang",
+          "name": "辽阳",
+          "x": "123.239669",
+          "y": "41.267396",
+          "label": "辽阳市",
+          "spell": "LiaoYang",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [122.595077, 40.712669],
+            [123.689739, 41.617107]
+          ]
+        },
+        {
+          "short": "PJ",
+          "areacode": "0427",
+          "adcode": "211100",
+          "enName": "Panjin",
+          "name": "盘锦",
+          "x": "122.170729",
+          "y": "40.71956",
+          "label": "盘锦市",
+          "spell": "PanJin",
+          "children": [],
+          "sequence": "P",
+          "bbox": [
+            [121.552917, 40.648624],
+            [122.488777, 41.459604]
+          ]
+        },
+        {
+          "short": "TL",
+          "areacode": "0410",
+          "adcode": "211200",
+          "enName": "Tieling",
+          "name": "铁岭",
+          "x": "123.726008",
+          "y": "42.223709",
+          "label": "铁岭市",
+          "spell": "TieLing",
+          "children": [],
+          "sequence": "T",
+          "bbox": [
+            [123.449597, 41.989227],
+            [125.107951, 43.489572]
+          ]
+        },
+        {
+          "short": "CY",
+          "areacode": "0421",
+          "adcode": "211300",
+          "enName": "Chaoyang",
+          "name": "朝阳",
+          "x": "120.488801",
+          "y": "41.601855",
+          "label": "朝阳市",
+          "spell": "ChaoYang",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [118.849108, 40.5971],
+            [121.292555, 42.388031]
+          ]
+        },
+        {
+          "short": "HLD",
+          "areacode": "0429",
+          "adcode": "211400",
+          "enName": "Huludao",
+          "name": "葫芦岛",
+          "x": "120.836783",
+          "y": "40.710974",
+          "label": "葫芦岛市",
+          "spell": "HuLuDao",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [119.220602, 39.988478],
+            [121.042491, 41.200986]
+          ]
+        }
+      ],
+      "sequence": "L"
+    },
+    {
+      "bbox": [
+        [121.644363, 40.866985],
+        [131.319527, 46.302363]
+      ],
+      "short": "JL",
+      "areacode": "",
+      "adcode": "220000",
+      "enName": "Jilin",
+      "name": "吉林",
+      "x": "125.325802",
+      "y": "43.896942",
+      "label": "吉林省",
+      "spell": "JiLin",
+      "children": [
+        {
+          "short": "CC",
+          "areacode": "0431",
+          "adcode": "220100",
+          "enName": "Changchun",
+          "name": "长春",
+          "x": "125.323643",
+          "y": "43.816996",
+          "label": "长春市",
+          "spell": "ChangChun",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [124.015699, 43.161456],
+            [127.093726, 45.252276]
+          ]
+        },
+        {
+          "short": "JL",
+          "areacode": "0432",
+          "adcode": "220200",
+          "enName": "Jilin",
+          "name": "吉林",
+          "x": "126.549719",
+          "y": "43.838132",
+          "label": "吉林市",
+          "spell": "JiLin",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [125.645738, 42.566809],
+            [127.924638, 44.643602]
+          ]
+        },
+        {
+          "short": "SP",
+          "areacode": "0434",
+          "adcode": "220300",
+          "enName": "Siping",
+          "name": "四平",
+          "x": "124.350599",
+          "y": "43.166764",
+          "label": "四平市",
+          "spell": "SiPing",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [123.304512, 42.825919],
+            [125.788408, 44.110136]
+          ]
+        },
+        {
+          "short": "LY",
+          "areacode": "0437",
+          "adcode": "220400",
+          "enName": "Liaoyuan",
+          "name": "辽源",
+          "x": "125.144676",
+          "y": "42.887961",
+          "label": "辽源市",
+          "spell": "LiaoYuan",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [124.840783, 42.300486],
+            [125.8432, 43.233981]
+          ]
+        },
+        {
+          "short": "TH",
+          "areacode": "0435",
+          "adcode": "220500",
+          "enName": "Tonghua",
+          "name": "通化",
+          "x": "125.939721",
+          "y": "41.728312",
+          "label": "通化市",
+          "spell": "TongHua",
+          "children": [],
+          "sequence": "T",
+          "bbox": [
+            [125.262902, 40.866985],
+            [126.750385, 43.02006]
+          ]
+        },
+        {
+          "short": "BS",
+          "areacode": "0439",
+          "adcode": "220600",
+          "enName": "Baishan",
+          "name": "白山",
+          "x": "126.414274",
+          "y": "41.944132",
+          "label": "白山市",
+          "spell": "BaiShan",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [126.120581, 41.364475],
+            [128.315545, 42.843439]
+          ]
+        },
+        {
+          "short": "SY",
+          "areacode": "0438",
+          "adcode": "220700",
+          "enName": "Songyuan",
+          "name": "松原",
+          "x": "124.825321",
+          "y": "45.14191",
+          "label": "松原市",
+          "spell": "SongYuan",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [123.114528, 43.986247],
+            [126.196415, 45.539478]
+          ]
+        },
+        {
+          "short": "BC",
+          "areacode": "0436",
+          "adcode": "220800",
+          "enName": "Baicheng",
+          "name": "白城",
+          "x": "122.838102",
+          "y": "45.620131",
+          "label": "白城市",
+          "spell": "BaiCheng",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [121.644363, 44.232907],
+            [124.373755, 46.302363]
+          ]
+        },
+        {
+          "short": "YBCXZZZ",
+          "areacode": "1433",
+          "adcode": "222400",
+          "enName": "Yanbian",
+          "name": "延边朝鲜族自治州",
+          "x": "129.470605",
+          "y": "42.909426",
+          "label": "延边朝鲜族自治州",
+          "spell": "YanBian ChaoXianZu ZiZhiZhou",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [127.469958, 41.996431],
+            [131.319527, 44.514248]
+          ]
+        }
+      ],
+      "sequence": "J"
+    },
+    {
+      "bbox": [
+        [121.182446, 43.42588],
+        [135.09454, 53.563624]
+      ],
+      "short": "HLJ",
+      "areacode": "",
+      "adcode": "230000",
+      "enName": "Heilongjiang",
+      "name": "黑龙江",
+      "x": "126.661998",
+      "y": "45.742253",
+      "label": "黑龙江省",
+      "spell": "HeiLongJiang",
+      "children": [
+        {
+          "short": "HEB",
+          "areacode": "0451",
+          "adcode": "230100",
+          "enName": "Harbin",
+          "name": "哈尔滨",
+          "x": "126.53505",
+          "y": "45.802981",
+          "label": "哈尔滨市",
+          "spell": "HaErBin",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [125.687894, 44.062245],
+            [130.240126, 46.671422]
+          ]
+        },
+        {
+          "short": "QQHE",
+          "areacode": "0452",
+          "adcode": "230200",
+          "enName": "Qiqihar",
+          "name": "齐齐哈尔",
+          "x": "123.918193",
+          "y": "47.354892",
+          "label": "齐齐哈尔市",
+          "spell": "QiQiHaEr",
+          "children": [],
+          "sequence": "Q",
+          "bbox": [
+            [122.418106, 46.22297],
+            [126.666539, 48.929375]
+          ]
+        },
+        {
+          "short": "JX",
+          "areacode": "0467",
+          "adcode": "230300",
+          "enName": "Jixi",
+          "name": "鸡西",
+          "x": "130.969385",
+          "y": "45.295087",
+          "label": "鸡西市",
+          "spell": "JiXi",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [130.400358, 44.854601],
+            [133.949999, 46.610286]
+          ]
+        },
+        {
+          "short": "HG",
+          "areacode": "0468",
+          "adcode": "230400",
+          "enName": "Hegang",
+          "name": "鹤岗",
+          "x": "130.297687",
+          "y": "47.350659",
+          "label": "鹤岗市",
+          "spell": "HeGang",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [129.675083, 47.060859],
+            [132.523984, 48.357349]
+          ]
+        },
+        {
+          "short": "SYS",
+          "areacode": "0469",
+          "adcode": "230500",
+          "enName": "Shuangyashan",
+          "name": "双鸭山",
+          "x": "131.141563",
+          "y": "46.676157",
+          "label": "双鸭山市",
+          "spell": "ShuangYaShan",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [130.656854, 45.789632],
+            [134.551711, 47.887103]
+          ]
+        },
+        {
+          "short": "DQ",
+          "areacode": "0459",
+          "adcode": "230600",
+          "enName": "Daqing",
+          "name": "大庆",
+          "x": "125.104078",
+          "y": "46.589498",
+          "label": "大庆市",
+          "spell": "DaQing",
+          "children": [],
+          "sequence": "D",
+          "bbox": [
+            [123.754497, 45.384631],
+            [125.806586, 47.478802]
+          ]
+        },
+        {
+          "short": "YC",
+          "areacode": "0458",
+          "adcode": "230700",
+          "enName": "Yichun",
+          "name": "伊春",
+          "x": "128.840863",
+          "y": "47.728332",
+          "label": "伊春市",
+          "spell": "YiChun",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [127.628981, 46.483801],
+            [130.785132, 49.441344]
+          ]
+        },
+        {
+          "short": "JMS",
+          "areacode": "0454",
+          "adcode": "230800",
+          "enName": "Jiamusi",
+          "name": "佳木斯",
+          "x": "130.318916",
+          "y": "46.800002",
+          "label": "佳木斯市",
+          "spell": "JiaMuSi",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [129.501453, 45.947569],
+            [135.09454, 48.459567]
+          ]
+        },
+        {
+          "short": "QTH",
+          "areacode": "0464",
+          "adcode": "230900",
+          "enName": "Qitaihe",
+          "name": "七台河",
+          "x": "131.003015",
+          "y": "45.771178",
+          "label": "七台河市",
+          "spell": "QiTaiHe",
+          "children": [],
+          "sequence": "Q",
+          "bbox": [
+            [130.103727, 45.59063],
+            [131.929091, 46.249221]
+          ]
+        },
+        {
+          "short": "MDJ",
+          "areacode": "0453",
+          "adcode": "231000",
+          "enName": "Mudanjiang",
+          "name": "牡丹江",
+          "x": "129.632928",
+          "y": "44.551486",
+          "label": "牡丹江市",
+          "spell": "MuDanJiang",
+          "children": [],
+          "sequence": "M",
+          "bbox": [
+            [128.232176, 43.42588],
+            [131.310655, 45.987449]
+          ]
+        },
+        {
+          "short": "HH",
+          "areacode": "0456",
+          "adcode": "231100",
+          "enName": "Heihe",
+          "name": "黑河",
+          "x": "127.528226",
+          "y": "50.244887",
+          "label": "黑河市",
+          "spell": "HeiHe",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [124.750119, 47.58569],
+            [129.526614, 51.001849]
+          ]
+        },
+        {
+          "short": "SH",
+          "areacode": "0455",
+          "adcode": "231200",
+          "enName": "Suihua",
+          "name": "绥化",
+          "x": "126.968714",
+          "y": "46.654147",
+          "label": "绥化市",
+          "spell": "SuiHua",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [124.875928, 45.509732],
+            [128.552535, 48.09767]
+          ]
+        },
+        {
+          "short": "DXALD",
+          "areacode": "0457",
+          "adcode": "232700",
+          "enName": "Da Hinggan Ling",
+          "name": "大兴安岭",
+          "x": "124.11786",
+          "y": "50.41129",
+          "label": "大兴安岭地区",
+          "spell": "DaXingAnLingDiQu",
+          "children": [],
+          "sequence": "D",
+          "bbox": [
+            [121.182446, 50.178427],
+            [127.030984, 53.563624]
+          ]
+        }
+      ],
+      "sequence": "H"
+    },
+    {
+      "bbox": [
+        [120.856804, 30.677396],
+        [122.122684, 31.868533]
+      ],
+      "short": "SH",
+      "areacode": "021",
+      "adcode": "310000",
+      "enName": "Shanghai",
+      "name": "上海",
+      "x": "121.473667",
+      "y": "31.230525",
+      "label": "上海市",
+      "spell": "ShangHai",
+      "children": [],
+      "sequence": "S"
+    },
+    {
+      "bbox": [
+        [116.363798, 30.757973],
+        [121.975185, 35.122919]
+      ],
+      "short": "JS",
+      "areacode": "",
+      "adcode": "320000",
+      "enName": "Jiangsu",
+      "name": "江苏",
+      "x": "118.763563",
+      "y": "32.061377",
+      "label": "江苏省",
+      "spell": "JiangSu",
+      "children": [
+        {
+          "short": "NJ",
+          "areacode": "025",
+          "adcode": "320100",
+          "enName": "Nanjing",
+          "name": "南京",
+          "x": "118.796624",
+          "y": "32.059344",
+          "label": "南京市",
+          "spell": "NanJing",
+          "children": [],
+          "sequence": "N",
+          "bbox": [
+            [118.364372, 31.229368],
+            [119.241663, 32.608231]
+          ]
+        },
+        {
+          "short": "WX",
+          "areacode": "0510",
+          "adcode": "320200",
+          "enName": "Wuxi",
+          "name": "无锡",
+          "x": "120.311889",
+          "y": "31.491064",
+          "label": "无锡市",
+          "spell": "WuXi",
+          "children": [],
+          "sequence": "W",
+          "bbox": [
+            [119.520032, 31.10917],
+            [120.60549, 31.99082]
+          ]
+        },
+        {
+          "short": "XZ",
+          "areacode": "0516",
+          "adcode": "320300",
+          "enName": "Xuzhou",
+          "name": "徐州",
+          "x": "117.283752",
+          "y": "34.204224",
+          "label": "徐州市",
+          "spell": "XuZhou",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [116.363798, 33.711501],
+            [118.673958, 34.975087]
+          ]
+        },
+        {
+          "short": "CZ",
+          "areacode": "0519",
+          "adcode": "320400",
+          "enName": "Changzhou",
+          "name": "常州",
+          "x": "119.974092",
+          "y": "31.811313",
+          "label": "常州市",
+          "spell": "ChangZhou",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [119.140911, 31.156378],
+            [120.202811, 32.058111]
+          ]
+        },
+        {
+          "short": "SZ",
+          "areacode": "0512",
+          "adcode": "320500",
+          "enName": "Suzhou",
+          "name": "苏州",
+          "x": "120.585294",
+          "y": "31.299758",
+          "label": "苏州市",
+          "spell": "SuZhou",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [119.920013, 30.757973],
+            [121.372212, 32.045827]
+          ]
+        },
+        {
+          "short": "NT",
+          "areacode": "0513",
+          "adcode": "320600",
+          "enName": "Nantong",
+          "name": "南通",
+          "x": "120.894522",
+          "y": "31.981269",
+          "label": "南通市",
+          "spell": "NanTong",
+          "children": [],
+          "sequence": "N",
+          "bbox": [
+            [120.202315, 31.617039],
+            [121.975185, 32.707238]
+          ]
+        },
+        {
+          "short": "LYG",
+          "areacode": "0518",
+          "adcode": "320700",
+          "enName": "Lianyungang",
+          "name": "连云港",
+          "x": "119.221487",
+          "y": "34.596639",
+          "label": "连云港市",
+          "spell": "LianYunGang",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [118.408233, 33.979602],
+            [119.822995, 35.122919]
+          ]
+        },
+        {
+          "short": "HA",
+          "areacode": "0517",
+          "adcode": "320800",
+          "enName": "Huai&#39;an",
+          "name": "淮安",
+          "x": "119.113166",
+          "y": "33.551495",
+          "label": "淮安市",
+          "spell": "HuaiAn",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [118.219615, 32.718103],
+            [119.645848, 34.093509]
+          ]
+        },
+        {
+          "short": "YC",
+          "areacode": "0515",
+          "adcode": "320900",
+          "enName": "Yancheng",
+          "name": "盐城",
+          "x": "120.16263",
+          "y": "33.348176",
+          "label": "盐城市",
+          "spell": "YanCheng",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [119.467632, 32.578453],
+            [120.981368, 34.481984]
+          ]
+        },
+        {
+          "short": "YZ",
+          "areacode": "0514",
+          "adcode": "321000",
+          "enName": "Yangzhou",
+          "name": "扬州",
+          "x": "119.412834",
+          "y": "32.394404",
+          "label": "扬州市",
+          "spell": "YangZhou",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [119.017533, 32.222172],
+            [119.911871, 33.414887]
+          ]
+        },
+        {
+          "short": "ZJ",
+          "areacode": "0511",
+          "adcode": "321100",
+          "enName": "Zhenjiang",
+          "name": "镇江",
+          "x": "119.424441",
+          "y": "32.188141",
+          "label": "镇江市",
+          "spell": "ZhenJiang",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [118.970388, 31.627034],
+            [119.975506, 32.318916]
+          ]
+        },
+        {
+          "short": "TZ",
+          "areacode": "0523",
+          "adcode": "321200",
+          "enName": "Taizhou",
+          "name": "泰州",
+          "x": "119.922883",
+          "y": "32.456692",
+          "label": "泰州市",
+          "spell": "TaiZhou",
+          "children": [],
+          "sequence": "T",
+          "bbox": [
+            [119.640298, 31.932907],
+            [120.553125, 33.219088]
+          ]
+        },
+        {
+          "short": "SQ",
+          "areacode": "0527",
+          "adcode": "321300",
+          "enName": "Suqian",
+          "name": "宿迁",
+          "x": "118.275228",
+          "y": "33.963186",
+          "label": "宿迁市",
+          "spell": "SuQian",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [117.939471, 33.135176],
+            [119.175834, 34.421886]
+          ]
+        }
+      ],
+      "sequence": "J"
+    },
+    {
+      "bbox": [
+        [118.028374, 27.136157],
+        [122.836279, 31.178782]
+      ],
+      "short": "ZJ",
+      "areacode": "",
+      "adcode": "330000",
+      "enName": "Zhejiang",
+      "name": "浙江",
+      "x": "120.152575",
+      "y": "30.266619",
+      "label": "浙江省",
+      "spell": "ZheJiang",
+      "children": [
+        {
+          "short": "HZ",
+          "areacode": "0571",
+          "adcode": "330100",
+          "enName": "Hangzhou",
+          "name": "杭州",
+          "x": "120.210792",
+          "y": "30.246026",
+          "label": "杭州市",
+          "spell": "HangZhou",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [118.344968, 29.188757],
+            [120.721945, 30.566516]
+          ]
+        },
+        {
+          "short": "NB",
+          "areacode": "0574",
+          "adcode": "330200",
+          "enName": "Ningbo",
+          "name": "宁波",
+          "x": "121.62454",
+          "y": "29.860258",
+          "label": "宁波市",
+          "spell": "NingBo",
+          "children": [],
+          "sequence": "N",
+          "bbox": [
+            [120.867041, 29.051055],
+            [122.224848, 30.489772]
+          ]
+        },
+        {
+          "short": "WZ",
+          "areacode": "0577",
+          "adcode": "330300",
+          "enName": "Wenzhou",
+          "name": "温州",
+          "x": "120.699279",
+          "y": "27.993849",
+          "label": "温州市",
+          "spell": "WenZhou",
+          "children": [],
+          "sequence": "W",
+          "bbox": [
+            [119.626468, 27.136157],
+            [121.257706, 28.611587]
+          ]
+        },
+        {
+          "short": "JX",
+          "areacode": "0573",
+          "adcode": "330400",
+          "enName": "Jiaxing",
+          "name": "嘉兴",
+          "x": "120.755623",
+          "y": "30.746814",
+          "label": "嘉兴市",
+          "spell": "JiaXing",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [120.299517, 30.263128],
+            [121.274652, 31.029958]
+          ]
+        },
+        {
+          "short": "HZ",
+          "areacode": "0572",
+          "adcode": "330500",
+          "enName": "Huzhou",
+          "name": "湖州",
+          "x": "120.086881",
+          "y": "30.894178",
+          "label": "湖州市",
+          "spell": "HuZhou",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [119.236936, 30.373326],
+            [120.489072, 31.178782]
+          ]
+        },
+        {
+          "short": "SX",
+          "areacode": "0575",
+          "adcode": "330600",
+          "enName": "Shaoxing",
+          "name": "绍兴",
+          "x": "120.582886",
+          "y": "30.051549",
+          "label": "绍兴市",
+          "spell": "ShaoXing",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [119.890357, 29.225091],
+            [121.231541, 30.286319]
+          ]
+        },
+        {
+          "short": "JH",
+          "areacode": "0579",
+          "adcode": "330700",
+          "enName": "Jinhua",
+          "name": "金华",
+          "x": "119.647265",
+          "y": "29.079195",
+          "label": "金华市",
+          "spell": "JinHua",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [119.233342, 28.523875],
+            [120.776541, 29.67482]
+          ]
+        },
+        {
+          "short": "QZ",
+          "areacode": "0570",
+          "adcode": "330800",
+          "enName": "Quzhou",
+          "name": "衢州",
+          "x": "118.859307",
+          "y": "28.970229",
+          "label": "衢州市",
+          "spell": "QuZhou",
+          "children": [],
+          "sequence": "Q",
+          "bbox": [
+            [118.028374, 28.238427],
+            [119.345556, 29.49693]
+          ]
+        },
+        {
+          "short": "ZS",
+          "areacode": "0580",
+          "adcode": "330900",
+          "enName": "Zhoushan",
+          "name": "舟山",
+          "x": "122.207395",
+          "y": "29.985578",
+          "label": "舟山市",
+          "spell": "ZhouShan",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [121.835237, 29.650753],
+            [122.836279, 30.789198]
+          ]
+        },
+        {
+          "short": "TZ",
+          "areacode": "0576",
+          "adcode": "331000",
+          "enName": "Taizhou",
+          "name": "台州",
+          "x": "121.42079",
+          "y": "28.655716",
+          "label": "台州市",
+          "spell": "TaiZhou",
+          "children": [],
+          "sequence": "T",
+          "bbox": [
+            [120.290954, 28.022311],
+            [121.91994, 29.340089]
+          ]
+        },
+        {
+          "short": "LS",
+          "areacode": "0578",
+          "adcode": "331100",
+          "enName": "Lishui",
+          "name": "丽水",
+          "x": "119.923249",
+          "y": "28.467694",
+          "label": "丽水市",
+          "spell": "LiShui",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [118.700169, 27.418746],
+            [120.43843, 28.95011]
+          ]
+        }
+      ],
+      "sequence": "Z"
+    },
+    {
+      "bbox": [
+        [114.890331, 29.395271],
+        [119.649144, 34.650809]
+      ],
+      "short": "AH",
+      "areacode": "",
+      "adcode": "340000",
+      "enName": "Anhui",
+      "name": "安徽",
+      "x": "117.330139",
+      "y": "31.734559",
+      "label": "安徽省",
+      "spell": "AnHui",
+      "children": [
+        {
+          "short": "HF",
+          "areacode": "0551",
+          "adcode": "340100",
+          "enName": "Hefei",
+          "name": "合肥",
+          "x": "117.227267",
+          "y": "31.820567",
+          "label": "合肥市",
+          "spell": "HeFei",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [116.687804, 30.95099],
+            [117.971944, 32.535848]
+          ]
+        },
+        {
+          "short": "WH",
+          "areacode": "0553",
+          "adcode": "340200",
+          "enName": "Wuhu",
+          "name": "芜湖",
+          "x": "118.433065",
+          "y": "31.352614",
+          "label": "芜湖市",
+          "spell": "WuHu",
+          "children": [],
+          "sequence": "W",
+          "bbox": [
+            [117.494436, 30.64125],
+            [118.733578, 31.538069]
+          ]
+        },
+        {
+          "short": "BB",
+          "areacode": "0552",
+          "adcode": "340300",
+          "enName": "Bengbu",
+          "name": "蚌埠",
+          "x": "117.388566",
+          "y": "32.91682",
+          "label": "蚌埠市",
+          "spell": "BengBu",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [116.735668, 32.716167],
+            [118.072701, 33.501553]
+          ]
+        },
+        {
+          "short": "HN",
+          "areacode": "0554",
+          "adcode": "340400",
+          "enName": "Huainan",
+          "name": "淮南",
+          "x": "117.018603",
+          "y": "32.585384",
+          "label": "淮南市",
+          "spell": "HuaiNan",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [116.365896, 31.903425],
+            [117.214656, 33.004778]
+          ]
+        },
+        {
+          "short": "MAS",
+          "areacode": "0555",
+          "adcode": "340500",
+          "enName": "Ma&#39;anshan",
+          "name": "马鞍山",
+          "x": "118.50685",
+          "y": "31.668765",
+          "label": "马鞍山市",
+          "spell": "MaAnShan",
+          "children": [],
+          "sequence": "M",
+          "bbox": [
+            [117.901366, 31.291366],
+            [118.885833, 32.05811]
+          ]
+        },
+        {
+          "short": "HB",
+          "areacode": "0561",
+          "adcode": "340600",
+          "enName": "Huaibei",
+          "name": "淮北",
+          "x": "116.798362",
+          "y": "33.956264",
+          "label": "淮北市",
+          "spell": "HuaiBei",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [116.393699, 33.28153],
+            [117.049574, 34.242789]
+          ]
+        },
+        {
+          "short": "TL",
+          "areacode": "0562",
+          "adcode": "340700",
+          "enName": "Tongling",
+          "name": "铜陵",
+          "x": "117.811298",
+          "y": "30.945214",
+          "label": "铜陵市",
+          "spell": "TongLing",
+          "children": [],
+          "sequence": "T",
+          "bbox": [
+            [116.920629, 30.414479],
+            [118.164784, 31.140212]
+          ]
+        },
+        {
+          "short": "AQ",
+          "areacode": "0556",
+          "adcode": "340800",
+          "enName": "Anqing",
+          "name": "安庆",
+          "x": "117.115349",
+          "y": "30.531828",
+          "label": "安庆市",
+          "spell": "AnQing",
+          "children": [],
+          "sequence": "A",
+          "bbox": [
+            [115.762523, 29.783128],
+            [117.252237, 31.267704]
+          ]
+        },
+        {
+          "short": "HS",
+          "areacode": "0559",
+          "adcode": "341000",
+          "enName": "Huangshan",
+          "name": "黄山",
+          "x": "118.337643",
+          "y": "29.714886",
+          "label": "黄山市",
+          "spell": "HuangShan",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [117.206155, 29.395271],
+            [118.902578, 30.517288]
+          ]
+        },
+        {
+          "short": "CZ",
+          "areacode": "0550",
+          "adcode": "341100",
+          "enName": "Chuzhou",
+          "name": "滁州",
+          "x": "118.333439",
+          "y": "32.255904",
+          "label": "滁州市",
+          "spell": "ChuZhou",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [117.161284, 31.85382],
+            [119.230997, 33.21796]
+          ]
+        },
+        {
+          "short": "FY",
+          "areacode": "1558",
+          "adcode": "341200",
+          "enName": "Fuyang",
+          "name": "阜阳",
+          "x": "115.814252",
+          "y": "32.891032",
+          "label": "阜阳市",
+          "spell": "FuYang",
+          "children": [],
+          "sequence": "F",
+          "bbox": [
+            [114.890331, 32.402996],
+            [116.6351, 33.585118]
+          ]
+        },
+        {
+          "short": "SZ",
+          "areacode": "0557",
+          "adcode": "341300",
+          "enName": "Suzhou",
+          "name": "宿州",
+          "x": "116.96419",
+          "y": "33.647726",
+          "label": "宿州市",
+          "spell": "SuZhou",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [116.162049, 33.275081],
+            [118.168338, 34.650809]
+          ]
+        },
+        {
+          "short": "LA",
+          "areacode": "0564",
+          "adcode": "341500",
+          "enName": "Lu&#39;an",
+          "name": "六安",
+          "x": "116.519729",
+          "y": "31.735892",
+          "label": "六安市",
+          "spell": "LuAn",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [115.371154, 31.011923],
+            [117.250696, 32.605085]
+          ]
+        },
+        {
+          "short": "BZ",
+          "areacode": "0558",
+          "adcode": "341600",
+          "enName": "Bozhou",
+          "name": "亳州",
+          "x": "115.778588",
+          "y": "33.846285",
+          "label": "亳州市",
+          "spell": "BoZhou",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [115.546172, 32.85897],
+            [116.825995, 34.076832]
+          ]
+        },
+        {
+          "short": "CZ",
+          "areacode": "0566",
+          "adcode": "341700",
+          "enName": "Chizhou",
+          "name": "池州",
+          "x": "117.495663",
+          "y": "30.674264",
+          "label": "池州市",
+          "spell": "ChiZhou",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [116.652251, 29.564787],
+            [118.134951, 30.843789]
+          ]
+        },
+        {
+          "short": "XC",
+          "areacode": "0563",
+          "adcode": "341800",
+          "enName": "Xuancheng",
+          "name": "宣城",
+          "x": "118.759127",
+          "y": "30.939278",
+          "label": "宣城市",
+          "spell": "XuanCheng",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [117.970111, 29.945219],
+            [119.649144, 31.322676]
+          ]
+        }
+      ],
+      "sequence": "A"
+    },
+    {
+      "bbox": [
+        [115.855602, 23.550381],
+        [120.497916, 28.310473]
+      ],
+      "short": "FJ",
+      "areacode": "",
+      "adcode": "350000",
+      "enName": "Fujian",
+      "name": "福建",
+      "x": "119.296194",
+      "y": "26.101082",
+      "label": "福建省",
+      "spell": "FuJian",
+      "children": [
+        {
+          "short": "FZ",
+          "areacode": "0591",
+          "adcode": "350100",
+          "enName": "Fuzhou",
+          "name": "福州",
+          "x": "119.296411",
+          "y": "26.074286",
+          "label": "福州市",
+          "spell": "FuZhou",
+          "children": [],
+          "sequence": "F",
+          "bbox": [
+            [118.382125, 25.303866],
+            [120.497916, 26.630663]
+          ]
+        },
+        {
+          "short": "XM",
+          "areacode": "0592",
+          "adcode": "350200",
+          "enName": "Xiamen",
+          "name": "厦门",
+          "x": "118.08891",
+          "y": "24.479627",
+          "label": "厦门市",
+          "spell": "XiaMen",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [117.886012, 24.418307],
+            [118.375507, 24.899705]
+          ]
+        },
+        {
+          "short": "PT",
+          "areacode": "0594",
+          "adcode": "350300",
+          "enName": "Putian",
+          "name": "莆田",
+          "x": "119.007662",
+          "y": "25.454202",
+          "label": "莆田市",
+          "spell": "PuTian",
+          "children": [],
+          "sequence": "P",
+          "bbox": [
+            [118.46007, 25.012668],
+            [119.570894, 25.760047]
+          ]
+        },
+        {
+          "short": "SM",
+          "areacode": "0598",
+          "adcode": "350400",
+          "enName": "Sanming",
+          "name": "三明",
+          "x": "117.638919",
+          "y": "26.263455",
+          "label": "三明市",
+          "spell": "SanMing",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [116.385437, 25.478023],
+            [118.668654, 27.129132]
+          ]
+        },
+        {
+          "short": "QZ",
+          "areacode": "0595",
+          "adcode": "350500",
+          "enName": "Quanzhou",
+          "name": "泉州",
+          "x": "118.675724",
+          "y": "24.874452",
+          "label": "泉州市",
+          "spell": "QuanZhou",
+          "children": [],
+          "sequence": "Q",
+          "bbox": [
+            [117.555387, 24.38371],
+            [119.032761, 25.935489]
+          ]
+        },
+        {
+          "short": "ZZ",
+          "areacode": "0596",
+          "adcode": "350600",
+          "enName": "Zhangzhou",
+          "name": "漳州",
+          "x": "117.647298",
+          "y": "24.515297",
+          "label": "漳州市",
+          "spell": "ZhangZhou",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [116.896136, 23.550381],
+            [118.155495, 25.211686]
+          ]
+        },
+        {
+          "short": "NP",
+          "areacode": "0599",
+          "adcode": "350700",
+          "enName": "Nanping",
+          "name": "南平",
+          "x": "118.081325",
+          "y": "27.382829",
+          "label": "南平市",
+          "spell": "NanPing",
+          "children": [],
+          "sequence": "N",
+          "bbox": [
+            [117.003407, 26.243434],
+            [119.275321, 28.310473]
+          ]
+        },
+        {
+          "short": "LY",
+          "areacode": "0597",
+          "adcode": "350800",
+          "enName": "Longyan",
+          "name": "龙岩",
+          "x": "117.017362",
+          "y": "25.075884",
+          "label": "龙岩市",
+          "spell": "LongYan",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [115.855602, 24.369863],
+            [117.748255, 26.03308]
+          ]
+        },
+        {
+          "short": "ND",
+          "areacode": "0593",
+          "adcode": "350900",
+          "enName": "Ningde",
+          "name": "宁德",
+          "x": "119.547729",
+          "y": "26.666222",
+          "label": "宁德市",
+          "spell": "NingDe",
+          "children": [],
+          "sequence": "N",
+          "bbox": [
+            [118.549607, 26.275321],
+            [120.461656, 27.668392]
+          ]
+        }
+      ],
+      "sequence": "F"
+    },
+    {
+      "bbox": [
+        [113.578819, 24.486252],
+        [118.487106, 30.076736]
+      ],
+      "short": "JX",
+      "areacode": "",
+      "adcode": "360000",
+      "enName": "Jiangxi",
+      "name": "江西",
+      "x": "115.816587",
+      "y": "28.637234",
+      "label": "江西省",
+      "spell": "JiangXi",
+      "children": [
+        {
+          "short": "NC",
+          "areacode": "0791",
+          "adcode": "360100",
+          "enName": "Nanchang",
+          "name": "南昌",
+          "x": "115.857972",
+          "y": "28.682976",
+          "label": "南昌市",
+          "spell": "NanChang",
+          "children": [],
+          "sequence": "N",
+          "bbox": [
+            [115.438705, 28.160254],
+            [116.565482, 29.122388]
+          ]
+        },
+        {
+          "short": "JDZ",
+          "areacode": "0798",
+          "adcode": "360200",
+          "enName": "Jingdezhen",
+          "name": "景德镇",
+          "x": "117.184892",
+          "y": "29.2744",
+          "label": "景德镇市",
+          "spell": "JingDeZhen",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [116.957078, 28.719209],
+            [117.707662, 29.927515]
+          ]
+        },
+        {
+          "short": "PX",
+          "areacode": "0799",
+          "adcode": "360300",
+          "enName": "Pingxiang",
+          "name": "萍乡",
+          "x": "113.887147",
+          "y": "27.658721",
+          "label": "萍乡市",
+          "spell": "PingXiang",
+          "children": [],
+          "sequence": "P",
+          "bbox": [
+            [113.578819, 26.960062],
+            [114.281953, 28.001731]
+          ]
+        },
+        {
+          "short": "JJ",
+          "areacode": "0792",
+          "adcode": "360400",
+          "enName": "Jiujiang",
+          "name": "九江",
+          "x": "115.95356",
+          "y": "29.66116",
+          "label": "九江市",
+          "spell": "JiuJiang",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [113.94206, 28.686052],
+            [116.900133, 30.076736]
+          ]
+        },
+        {
+          "short": "XY",
+          "areacode": "0790",
+          "adcode": "360500",
+          "enName": "Xinyu",
+          "name": "新余",
+          "x": "114.916665",
+          "y": "27.818553",
+          "label": "新余市",
+          "spell": "XinYu",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [114.485696, 27.530224],
+            [115.405804, 28.107643]
+          ]
+        },
+        {
+          "short": "YT",
+          "areacode": "0701",
+          "adcode": "360600",
+          "enName": "Yingtan",
+          "name": "鹰潭",
+          "x": "117.039532",
+          "y": "28.272092",
+          "label": "鹰潭市",
+          "spell": "YingTan",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [116.692359, 27.848052],
+            [117.464406, 28.626615]
+          ]
+        },
+        {
+          "short": "GZ",
+          "areacode": "0797",
+          "adcode": "360700",
+          "enName": "Ganzhou",
+          "name": "赣州",
+          "x": "114.933494",
+          "y": "25.831139",
+          "label": "赣州市",
+          "spell": "GanZhou",
+          "children": [],
+          "sequence": "G",
+          "bbox": [
+            [113.913607, 24.486252],
+            [116.63809, 27.142251]
+          ]
+        },
+        {
+          "short": "JA",
+          "areacode": "0796",
+          "adcode": "360800",
+          "enName": "Ji&#39;an",
+          "name": "吉安",
+          "x": "114.96681",
+          "y": "27.091243",
+          "label": "吉安市",
+          "spell": "JiAn",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [113.835774, 25.972184],
+            [115.935357, 27.957296]
+          ]
+        },
+        {
+          "short": "YC",
+          "areacode": "0795",
+          "adcode": "360900",
+          "enName": "Yichun",
+          "name": "宜春",
+          "x": "114.416826",
+          "y": "27.816245",
+          "label": "宜春市",
+          "spell": "YiChun",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [113.891176, 27.54674],
+            [116.150791, 29.099408]
+          ]
+        },
+        {
+          "short": "FZ",
+          "areacode": "0794",
+          "adcode": "361000",
+          "enName": "Fuzhou",
+          "name": "抚州",
+          "x": "116.358054",
+          "y": "27.948979",
+          "label": "抚州市",
+          "spell": "FuZhou",
+          "children": [],
+          "sequence": "F",
+          "bbox": [
+            [115.591931, 26.499057],
+            [117.30562, 28.496885]
+          ]
+        },
+        {
+          "short": "SR",
+          "areacode": "0793",
+          "adcode": "361100",
+          "enName": "Shangrao",
+          "name": "上饶",
+          "x": "117.943064",
+          "y": "28.45513",
+          "label": "上饶市",
+          "spell": "ShangRao",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [116.240009, 27.801166],
+            [118.487106, 29.699254]
+          ]
+        }
+      ],
+      "sequence": "J"
+    },
+    {
+      "bbox": [
+        [114.819254, 34.379138],
+        [122.71582, 38.40145]
+      ],
+      "short": "SD",
+      "areacode": "",
+      "adcode": "370000",
+      "enName": "Shandong",
+      "name": "山东",
+      "x": "117.020725",
+      "y": "36.670201",
+      "label": "山东省",
+      "spell": "ShanDong ",
+      "children": [
+        {
+          "short": "JN",
+          "areacode": "0531",
+          "adcode": "370100",
+          "enName": "Jinan",
+          "name": "济南",
+          "x": "117.120128",
+          "y": "36.652069",
+          "label": "济南市",
+          "spell": "JiNan",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [116.226065, 35.991904],
+            [117.972965, 37.532886]
+          ]
+        },
+        {
+          "short": "QD",
+          "areacode": "0532",
+          "adcode": "370200",
+          "enName": "Qingdao",
+          "name": "青岛",
+          "x": "120.382665",
+          "y": "36.066938",
+          "label": "青岛市",
+          "spell": "QingDao",
+          "children": [],
+          "sequence": "Q",
+          "bbox": [
+            [119.514842, 35.57723],
+            [120.99004, 37.148841]
+          ]
+        },
+        {
+          "short": "ZB",
+          "areacode": "0533",
+          "adcode": "370300",
+          "enName": "Zibo",
+          "name": "淄博",
+          "x": "118.054994",
+          "y": "36.813787",
+          "label": "淄博市",
+          "spell": "ZiBo",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [117.551341, 35.925295],
+            [118.522182, 37.282466]
+          ]
+        },
+        {
+          "short": "ZZ",
+          "areacode": "0632",
+          "adcode": "370400",
+          "enName": "Zaozhuang",
+          "name": "枣庄",
+          "x": "117.323759",
+          "y": "34.810858",
+          "label": "枣庄市",
+          "spell": "ZaoZhuang",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [116.811186, 34.462531],
+            [117.831718, 35.320246]
+          ]
+        },
+        {
+          "short": "DY",
+          "areacode": "0546",
+          "adcode": "370500",
+          "enName": "Dongying",
+          "name": "东营",
+          "x": "118.674633",
+          "y": "37.433992",
+          "label": "东营市",
+          "spell": "DongYing",
+          "children": [],
+          "sequence": "D",
+          "bbox": [
+            [118.112733, 36.93677],
+            [119.309142, 38.154994]
+          ]
+        },
+        {
+          "short": "YT",
+          "areacode": "0535",
+          "adcode": "370600",
+          "enName": "Yantai",
+          "name": "烟台",
+          "x": "121.447755",
+          "y": "37.464551",
+          "label": "烟台市",
+          "spell": "YanTai",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [119.563376, 36.573179],
+            [121.933956, 38.40145]
+          ]
+        },
+        {
+          "short": "WF",
+          "areacode": "0536",
+          "adcode": "370700",
+          "enName": "Weifang",
+          "name": "潍坊",
+          "x": "119.161721",
+          "y": "36.707668",
+          "label": "潍坊市",
+          "spell": "WeiFang",
+          "children": [],
+          "sequence": "W",
+          "bbox": [
+            [118.180371, 35.70945],
+            [120.01184, 37.304466]
+          ]
+        },
+        {
+          "short": "JN",
+          "areacode": "0537",
+          "adcode": "370800",
+          "enName": "Jining",
+          "name": "济宁",
+          "x": "116.587116",
+          "y": "35.415117",
+          "label": "济宁市",
+          "spell": "JiNing",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [115.875106, 34.4345],
+            [117.596915, 35.981899]
+          ]
+        },
+        {
+          "short": "TA",
+          "areacode": "0538",
+          "adcode": "370900",
+          "enName": "Tai&#39;an",
+          "name": "泰安",
+          "x": "117.086963",
+          "y": "36.201784",
+          "label": "泰安市",
+          "spell": "TaiAn",
+          "children": [],
+          "sequence": "T",
+          "bbox": [
+            [116.048692, 35.630463],
+            [117.999231, 36.476049]
+          ]
+        },
+        {
+          "short": "WH",
+          "areacode": "0631",
+          "adcode": "371000",
+          "enName": "Weihai",
+          "name": "威海",
+          "x": "122.120519",
+          "y": "37.513315",
+          "label": "威海市",
+          "spell": "WeiHai",
+          "children": [],
+          "sequence": "W",
+          "bbox": [
+            [121.177558, 36.724941],
+            [122.71582, 37.568752]
+          ]
+        },
+        {
+          "short": "RZ",
+          "areacode": "0633",
+          "adcode": "371100",
+          "enName": "Rizhao",
+          "name": "日照",
+          "x": "119.52685",
+          "y": "35.416912",
+          "label": "日照市",
+          "spell": "RiZhao",
+          "children": [],
+          "sequence": "R",
+          "bbox": [
+            [118.601409, 35.072823],
+            [119.665755, 36.0384]
+          ]
+        },
+        {
+          "short": "LY",
+          "areacode": "0539",
+          "adcode": "371300",
+          "enName": "Linyi",
+          "name": "临沂",
+          "x": "118.356464",
+          "y": "35.103771",
+          "label": "临沂市",
+          "spell": "LinYi",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [117.419219, 34.379138],
+            [119.203239, 36.206648]
+          ]
+        },
+        {
+          "short": "DZ",
+          "areacode": "0534",
+          "adcode": "371400",
+          "enName": "Dezhou",
+          "name": "德州",
+          "x": "116.359244",
+          "y": "37.436492",
+          "label": "德州市",
+          "spell": "DeZhou",
+          "children": [],
+          "sequence": "D",
+          "bbox": [
+            [115.761379, 36.408916],
+            [117.606557, 38.011243]
+          ]
+        },
+        {
+          "short": "LC",
+          "areacode": "0635",
+          "adcode": "371500",
+          "enName": "Liaocheng",
+          "name": "聊城",
+          "x": "115.985238",
+          "y": "36.455857",
+          "label": "聊城市",
+          "spell": "LiaoCheng",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [115.272847, 35.779921],
+            [116.546186, 37.032217]
+          ]
+        },
+        {
+          "short": "BZ",
+          "areacode": "0543",
+          "adcode": "371600",
+          "enName": "Binzhou",
+          "name": "滨州",
+          "x": "117.970731",
+          "y": "37.382687",
+          "label": "滨州市",
+          "spell": "BinZhou",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [117.273403, 36.695226],
+            [118.387562, 38.311263]
+          ]
+        },
+        {
+          "short": "HZ",
+          "areacode": "0530",
+          "adcode": "371700",
+          "enName": "Heze",
+          "name": "菏泽",
+          "x": "115.479646",
+          "y": "35.234309",
+          "label": "菏泽市",
+          "spell": "HeZe",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [114.819254, 34.551758],
+            [116.409772, 35.867135]
+          ]
+        }
+      ],
+      "sequence": "S"
+    },
+    {
+      "bbox": [
+        [110.360476, 31.383428],
+        [116.648034, 36.365941]
+      ],
+      "short": "HN",
+      "areacode": "",
+      "adcode": "410000",
+      "enName": "Henan",
+      "name": "河南",
+      "x": "113.753094",
+      "y": "34.767052",
+      "label": "河南省",
+      "spell": "HeNan",
+      "children": [
+        {
+          "short": "ZZ",
+          "areacode": "0371",
+          "adcode": "410100",
+          "enName": "Zhengzhou",
+          "name": "郑州",
+          "x": "113.625351",
+          "y": "34.746303",
+          "label": "郑州市",
+          "spell": "ZhengZhou",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [112.729892, 34.263459],
+            [114.220727, 34.989506]
+          ]
+        },
+        {
+          "short": "KF",
+          "areacode": "0378",
+          "adcode": "410200",
+          "enName": "Kaifeng",
+          "name": "开封",
+          "x": "114.314278",
+          "y": "34.798083",
+          "label": "开封市",
+          "spell": "KaiFeng",
+          "children": [],
+          "sequence": "K",
+          "bbox": [
+            [113.878153, 34.198204],
+            [115.267246, 35.02446]
+          ]
+        },
+        {
+          "short": "LY",
+          "areacode": "0379",
+          "adcode": "410300",
+          "enName": "Luoyang",
+          "name": "洛阳",
+          "x": "112.453895",
+          "y": "34.619702",
+          "label": "洛阳市",
+          "spell": "LuoYang",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [111.141202, 33.571075],
+            [112.976713, 35.070236]
+          ]
+        },
+        {
+          "short": "PDS",
+          "areacode": "0375",
+          "adcode": "410400",
+          "enName": "Pingdingshan",
+          "name": "平顶山",
+          "x": "113.192595",
+          "y": "33.766554",
+          "label": "平顶山市",
+          "spell": "PingDingShan",
+          "children": [],
+          "sequence": "P",
+          "bbox": [
+            [112.249338, 33.128414],
+            [113.688349, 34.345054]
+          ]
+        },
+        {
+          "short": "AY",
+          "areacode": "0372",
+          "adcode": "410500",
+          "enName": "Anyang",
+          "name": "安阳",
+          "x": "114.39248",
+          "y": "36.098779",
+          "label": "安阳市",
+          "spell": "AnYang",
+          "children": [],
+          "sequence": "A",
+          "bbox": [
+            [113.637388, 35.206641],
+            [114.988339, 36.365941]
+          ]
+        },
+        {
+          "short": "HB",
+          "areacode": "0392",
+          "adcode": "410600",
+          "enName": "Hebi",
+          "name": "鹤壁",
+          "x": "114.297305",
+          "y": "35.748329",
+          "label": "鹤壁市",
+          "spell": "HeBi",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [113.996018, 35.444514],
+            [114.752977, 36.052121]
+          ]
+        },
+        {
+          "short": "XX",
+          "areacode": "0373",
+          "adcode": "410700",
+          "enName": "Xinxiang",
+          "name": "新乡",
+          "x": "113.92679",
+          "y": "35.303589",
+          "label": "新乡市",
+          "spell": "XinXiang",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [113.383155, 34.879942],
+            [115.017248, 35.837289]
+          ]
+        },
+        {
+          "short": "JZ",
+          "areacode": "0391",
+          "adcode": "410800",
+          "enName": "Jiaozuo",
+          "name": "焦作",
+          "x": "113.241902",
+          "y": "35.215726",
+          "label": "焦作市",
+          "spell": "JiaoZuo",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [112.569217, 34.810741],
+            [113.645494, 35.495044]
+          ]
+        },
+        {
+          "short": "PY",
+          "areacode": "0393",
+          "adcode": "410900",
+          "enName": "Puyang",
+          "name": "濮阳",
+          "x": "115.029246",
+          "y": "35.762731",
+          "label": "濮阳市",
+          "spell": "PuYang",
+          "children": [],
+          "sequence": "P",
+          "bbox": [
+            [114.875472, 35.337443],
+            [116.099359, 36.212761]
+          ]
+        },
+        {
+          "short": "XC",
+          "areacode": "0374",
+          "adcode": "411000",
+          "enName": "Xuchang",
+          "name": "许昌",
+          "x": "113.852004",
+          "y": "34.03732",
+          "label": "许昌市",
+          "spell": "XuChang",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [113.066994, 33.690199],
+            [114.325057, 34.404734]
+          ]
+        },
+        {
+          "short": "LH",
+          "areacode": "0395",
+          "adcode": "411100",
+          "enName": "Luohe",
+          "name": "漯河",
+          "x": "114.0166",
+          "y": "33.58038",
+          "label": "漯河市",
+          "spell": "LuoHe",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [113.468865, 33.404736],
+            [114.295333, 33.98724]
+          ]
+        },
+        {
+          "short": "SMX",
+          "areacode": "0398",
+          "adcode": "411200",
+          "enName": "Sanmenxia",
+          "name": "三门峡",
+          "x": "111.200482",
+          "y": "34.773196",
+          "label": "三门峡市",
+          "spell": "SanMenXia",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [110.360476, 33.550582],
+            [112.031982, 35.079834]
+          ]
+        },
+        {
+          "short": "NY",
+          "areacode": "0377",
+          "adcode": "411300",
+          "enName": "Nanyang",
+          "name": "南阳",
+          "x": "112.528549",
+          "y": "32.990218",
+          "label": "南阳市",
+          "spell": "NanYang",
+          "children": [],
+          "sequence": "N",
+          "bbox": [
+            [110.982874, 32.27057],
+            [113.814453, 33.79757]
+          ]
+        },
+        {
+          "short": "SQ",
+          "areacode": "0370",
+          "adcode": "411400",
+          "enName": "Shangqiu",
+          "name": "商丘",
+          "x": "115.656358",
+          "y": "34.415165",
+          "label": "商丘市",
+          "spell": "ShangQiu",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [114.835605, 33.709924],
+            [116.648034, 34.859182]
+          ]
+        },
+        {
+          "short": "XY",
+          "areacode": "0376",
+          "adcode": "411500",
+          "enName": "Xinyang",
+          "name": "信阳",
+          "x": "114.091058",
+          "y": "32.148624",
+          "label": "信阳市",
+          "spell": "XinYang",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [113.71858, 31.383428],
+            [115.94194, 32.659964]
+          ]
+        },
+        {
+          "short": "ZK",
+          "areacode": "0394",
+          "adcode": "411600",
+          "enName": "Zhoukou",
+          "name": "周口",
+          "x": "114.701222",
+          "y": "33.634652",
+          "label": "周口市",
+          "spell": "ZhouKou",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [114.093179, 33.055407],
+            [115.653584, 34.330268]
+          ]
+        },
+        {
+          "short": "ZMD",
+          "areacode": "0396",
+          "adcode": "411700",
+          "enName": "Zhumadian",
+          "name": "驻马店",
+          "x": "114.021988",
+          "y": "33.014038",
+          "label": "驻马店市",
+          "spell": "ZhuMaDian",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [113.097764, 32.279435],
+            [115.209492, 33.530877]
+          ]
+        },
+        {
+          "short": "JY",
+          "areacode": "1391",
+          "adcode": "419001",
+          "enName": "Jiyuan",
+          "name": "济源",
+          "x": "112.602347",
+          "y": "35.069057",
+          "label": "济源市",
+          "spell": "JiYuan",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [112.038936, 34.893754],
+            [112.766325, 35.279896]
+          ]
+        }
+      ],
+      "sequence": "H"
+    },
+    {
+      "bbox": [
+        [108.366976, 29.029488],
+        [116.135188, 33.27414]
+      ],
+      "short": "HB",
+      "areacode": "",
+      "adcode": "420000",
+      "enName": "Hubei",
+      "name": "湖北",
+      "x": "114.341552",
+      "y": "30.546222",
+      "label": "湖北省",
+      "spell": "HuBei",
+      "children": [
+        {
+          "short": "WH",
+          "areacode": "027",
+          "adcode": "420100",
+          "enName": "Wuhan",
+          "name": "武汉",
+          "x": "114.304569",
+          "y": "30.593354",
+          "label": "武汉市",
+          "spell": "WuHan",
+          "children": [],
+          "sequence": "W",
+          "bbox": [
+            [113.702281, 29.969304],
+            [115.081659, 31.36126]
+          ]
+        },
+        {
+          "short": "HS",
+          "areacode": "0714",
+          "adcode": "420200",
+          "enName": "Huangshi",
+          "name": "黄石",
+          "x": "115.038999",
+          "y": "30.201082",
+          "label": "黄石市",
+          "spell": "Huang",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [114.532245, 29.509715],
+            [115.511592, 30.325258]
+          ]
+        },
+        {
+          "short": "SY",
+          "areacode": "0719",
+          "adcode": "420300",
+          "enName": "yan",
+          "name": "十堰",
+          "x": "110.798921",
+          "y": "32.629057",
+          "label": "十堰市",
+          "spell": "Yan",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [109.438902, 31.506691],
+            [111.583019, 33.27414]
+          ]
+        },
+        {
+          "short": "YC",
+          "areacode": "0717",
+          "adcode": "420500",
+          "enName": "Yichang",
+          "name": "宜昌",
+          "x": "111.286962",
+          "y": "30.69217",
+          "label": "宜昌市",
+          "spell": "YiChang",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [110.255636, 29.943074],
+            [112.079896, 31.566426]
+          ]
+        },
+        {
+          "short": "XY",
+          "areacode": "0710",
+          "adcode": "420600",
+          "enName": "Xiangyang",
+          "name": "襄阳",
+          "x": "112.121743",
+          "y": "32.010161",
+          "label": "襄阳市",
+          "spell": "XiangYang",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [110.766843, 31.228775],
+            [113.118715, 32.634757]
+          ]
+        },
+        {
+          "short": "EZ",
+          "areacode": "0711",
+          "adcode": "420700",
+          "enName": "Ezhou",
+          "name": "鄂州",
+          "x": "114.894909",
+          "y": "30.391461",
+          "label": "鄂州市",
+          "spell": "EZhou",
+          "children": [],
+          "sequence": "E",
+          "bbox": [
+            [114.505447, 30.015509],
+            [115.088665, 30.616824]
+          ]
+        },
+        {
+          "short": "JM",
+          "areacode": "0724",
+          "adcode": "420800",
+          "enName": "Jingmen",
+          "name": "荆门",
+          "x": "112.199009",
+          "y": "31.035445",
+          "label": "荆门市",
+          "spell": "JingMen",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [111.861513, 30.394458],
+            [113.49483, 31.609839]
+          ]
+        },
+        {
+          "short": "XG",
+          "areacode": "0712",
+          "adcode": "420900",
+          "enName": "Xiaogan",
+          "name": "孝感",
+          "x": "113.956962",
+          "y": "30.918311",
+          "label": "孝感市",
+          "spell": "XiaoGan",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [113.316679, 30.384346],
+            [114.584501, 31.850179]
+          ]
+        },
+        {
+          "short": "JZ",
+          "areacode": "0716",
+          "adcode": "421000",
+          "enName": "Jingzhou",
+          "name": "荆州",
+          "x": "112.24143",
+          "y": "30.336282",
+          "label": "荆州市",
+          "spell": "JingZhou",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [111.243799, 29.434078],
+            [114.086868, 30.659305]
+          ]
+        },
+        {
+          "short": "HG",
+          "areacode": "0713",
+          "adcode": "421100",
+          "enName": "Huanggang",
+          "name": "黄冈",
+          "x": "114.872425",
+          "y": "30.453722",
+          "label": "黄冈市",
+          "spell": "HuangGang",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [114.402201, 29.724197],
+            [116.135188, 31.604568]
+          ]
+        },
+        {
+          "short": "XN",
+          "areacode": "0715",
+          "adcode": "421200",
+          "enName": "Xianning",
+          "name": "咸宁",
+          "x": "114.322601",
+          "y": "29.84135",
+          "label": "咸宁市",
+          "spell": "XianNing",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [113.540134, 29.029488],
+            [114.966684, 30.295216]
+          ]
+        },
+        {
+          "short": "SZ",
+          "areacode": "0722",
+          "adcode": "421300",
+          "enName": "Suizhou",
+          "name": "随州",
+          "x": "113.382324",
+          "y": "31.690275",
+          "label": "随州市",
+          "spell": "SuiZhou",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [112.729822, 31.340119],
+            [114.127731, 32.431988]
+          ]
+        },
+        {
+          "short": "ESTJZMZZZ",
+          "areacode": "0718",
+          "adcode": "422800",
+          "enName": "Enshi",
+          "name": "恩施土家族苗族自治州",
+          "x": "109.488076",
+          "y": "30.272104",
+          "label": "恩施土家族苗族自治州",
+          "spell": "En TuJiaZu MiaoZu ZiZhiZhou",
+          "children": [],
+          "sequence": "E",
+          "bbox": [
+            [108.366976, 29.11946],
+            [110.642767, 31.394845]
+          ]
+        },
+        {
+          "short": "XT",
+          "areacode": "0728",
+          "adcode": "429004",
+          "enName": "Xiantao",
+          "name": "仙桃",
+          "x": "113.442973",
+          "y": "30.328407",
+          "label": "仙桃市",
+          "spell": "XianTao",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [112.943424, 30.069292],
+            [113.822584, 30.529314]
+          ]
+        },
+        {
+          "short": "QJ",
+          "areacode": "2728",
+          "adcode": "429005",
+          "enName": "Qianjiang",
+          "name": "潜江",
+          "x": "112.900279",
+          "y": "30.401954",
+          "label": "潜江市",
+          "spell": "QianJiang",
+          "children": [],
+          "sequence": "Q",
+          "bbox": [
+            [112.502355, 30.078289],
+            [113.033596, 30.644651]
+          ]
+        },
+        {
+          "short": "TM",
+          "areacode": "1728",
+          "adcode": "429006",
+          "enName": "Tianmen",
+          "name": "天门",
+          "x": "113.166545",
+          "y": "30.663706",
+          "label": "天门市",
+          "spell": "TianMen",
+          "children": [],
+          "sequence": "T",
+          "bbox": [
+            [112.593219, 30.391941],
+            [113.466173, 30.90332]
+          ]
+        },
+        {
+          "short": "SNJL",
+          "areacode": "1719",
+          "adcode": "429021",
+          "enName": "Shennongjia",
+          "name": "神农架林区",
+          "x": "110.675879",
+          "y": "31.745103",
+          "label": "神农架林区",
+          "spell": "ShenNongJiaLinQu",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [109.940552, 31.295566],
+            [110.976421, 31.860383]
+          ]
+        }
+      ],
+      "sequence": "H"
+    },
+    {
+      "bbox": [
+        [108.790841, 24.636552],
+        [114.260128, 30.126085]
+      ],
+      "short": "HN",
+      "areacode": "",
+      "adcode": "430000",
+      "enName": "Hunan",
+      "name": "湖南",
+      "x": "112.982951",
+      "y": "28.116007",
+      "label": "湖南省",
+      "spell": "HuNan",
+      "children": [
+        {
+          "short": "CS",
+          "areacode": "0731",
+          "adcode": "430100",
+          "enName": "Changsha",
+          "name": "长沙",
+          "x": "112.938882",
+          "y": "28.228304",
+          "label": "长沙市",
+          "spell": "ChangSha",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [111.899169, 27.848072],
+            [114.260128, 28.661612]
+          ]
+        },
+        {
+          "short": "ZZ",
+          "areacode": "0733",
+          "adcode": "430200",
+          "enName": "Zhuzhou",
+          "name": "株洲",
+          "x": "113.132783",
+          "y": "27.828862",
+          "label": "株洲市",
+          "spell": "ZhuZhou",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [112.969421, 26.041123],
+            [114.110128, 28.024071]
+          ]
+        },
+        {
+          "short": "XT",
+          "areacode": "0732",
+          "adcode": "430300",
+          "enName": "Xiangtan",
+          "name": "湘潭",
+          "x": "112.945439",
+          "y": "27.83136",
+          "label": "湘潭市",
+          "spell": "XiangTan",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [111.999701, 27.338351],
+            [113.090952, 28.073564]
+          ]
+        },
+        {
+          "short": "HY",
+          "areacode": "0734",
+          "adcode": "430400",
+          "enName": "Hengyang",
+          "name": "衡阳",
+          "x": "112.572016",
+          "y": "26.894216",
+          "label": "衡阳市",
+          "spell": "HengYang",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [111.543611, 26.101051],
+            [113.280982, 27.465984]
+          ]
+        },
+        {
+          "short": "SY",
+          "areacode": "0739",
+          "adcode": "430500",
+          "enName": "Shaoyang",
+          "name": "邵阳",
+          "x": "111.467855",
+          "y": "27.239528",
+          "label": "邵阳市",
+          "spell": "ShaoYang",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [109.826844, 25.96138],
+            [112.092154, 27.660103]
+          ]
+        },
+        {
+          "short": "YY",
+          "areacode": "0730",
+          "adcode": "430600",
+          "enName": "Yueyang",
+          "name": "岳阳",
+          "x": "113.128922",
+          "y": "29.35648",
+          "label": "岳阳市",
+          "spell": "YueYang",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [112.315732, 28.422183],
+            [114.157127, 29.848931]
+          ]
+        },
+        {
+          "short": "CD",
+          "areacode": "0736",
+          "adcode": "430700",
+          "enName": "Changde",
+          "name": "常德",
+          "x": "111.69905",
+          "y": "29.031446",
+          "label": "常德市",
+          "spell": "ChangDe",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [110.491577, 28.404902],
+            [112.305961, 30.126085]
+          ]
+        },
+        {
+          "short": "ZJJ",
+          "areacode": "0744",
+          "adcode": "430800",
+          "enName": "Zhangjiajie",
+          "name": "张家界",
+          "x": "110.478887",
+          "y": "29.117343",
+          "label": "张家界市",
+          "spell": "ZhangJiaJie",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [109.701234, 28.874109],
+            [111.337528, 29.789678]
+          ]
+        },
+        {
+          "short": "YY",
+          "areacode": "0737",
+          "adcode": "430900",
+          "enName": "Yiyang",
+          "name": "益阳",
+          "x": "112.355994",
+          "y": "28.554853",
+          "label": "益阳市",
+          "spell": "YiYang",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [110.721085, 27.974829],
+            [112.949378, 29.524275]
+          ]
+        },
+        {
+          "short": "CZ",
+          "areacode": "0735",
+          "adcode": "431000",
+          "enName": "Chenzhou",
+          "name": "郴州",
+          "x": "113.015517",
+          "y": "25.770117",
+          "label": "郴州市",
+          "spell": "ChenZhou",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [112.232433, 24.890728],
+            [114.237257, 26.834467]
+          ]
+        },
+        {
+          "short": "YZ",
+          "areacode": "0746",
+          "adcode": "431100",
+          "enName": "Yongzhou",
+          "name": "永州",
+          "x": "111.613482",
+          "y": "26.419861",
+          "label": "永州市",
+          "spell": "YongZhou",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [110.951925, 24.636552],
+            [112.458429, 26.867788]
+          ]
+        },
+        {
+          "short": "HH",
+          "areacode": "0745",
+          "adcode": "431200",
+          "enName": "Huaihua",
+          "name": "怀化",
+          "x": "110.001598",
+          "y": "27.569813",
+          "label": "怀化市",
+          "spell": "HuaiHua",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [108.790841, 25.865956],
+            [111.115147, 29.035729]
+          ]
+        },
+        {
+          "short": "LD",
+          "areacode": "0738",
+          "adcode": "431300",
+          "enName": "Loudi",
+          "name": "娄底",
+          "x": "111.994468",
+          "y": "27.699838",
+          "label": "娄底市",
+          "spell": "LouDi",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [110.767768, 27.205677],
+            [112.521994, 28.234214]
+          ]
+        },
+        {
+          "short": "XXTJZMZZZ",
+          "areacode": "0743",
+          "adcode": "433100",
+          "enName": "Xiangxi",
+          "name": "湘西土家族苗族自治州",
+          "x": "109.737428",
+          "y": "28.312592",
+          "label": "湘西土家族苗族自治州",
+          "spell": "XiangXi TuJiaZu MiaoZu ZiZhiZhou",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [109.181407, 27.721355],
+            [110.396331, 29.634485]
+          ]
+        }
+      ],
+      "sequence": "H"
+    },
+    {
+      "bbox": [
+        [109.655642, 20.211718],
+        [117.192939, 25.516381]
+      ],
+      "short": "GD",
+      "areacode": "",
+      "adcode": "440000",
+      "enName": "Guangdong",
+      "name": "广东",
+      "x": "113.266887",
+      "y": "23.133306",
+      "label": "广东省",
+      "spell": "GuangDong",
+      "children": [
+        {
+          "short": "GZ",
+          "areacode": "020",
+          "adcode": "440100",
+          "enName": "Guangzhou",
+          "name": "广州",
+          "x": "113.264499",
+          "y": "23.130061",
+          "label": "广州市",
+          "spell": "GuangZhou",
+          "children": [],
+          "sequence": "G",
+          "bbox": [
+            [112.960204, 22.515153],
+            [114.057763, 23.932912]
+          ]
+        },
+        {
+          "short": "SG",
+          "areacode": "0751",
+          "adcode": "440200",
+          "enName": "Shaoguan",
+          "name": "韶关",
+          "x": "113.597324",
+          "y": "24.810977",
+          "label": "韶关市",
+          "spell": "ShaoGuan",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [112.856391, 23.887916],
+            [114.742897, 25.516381]
+          ]
+        },
+        {
+          "short": "SZ",
+          "areacode": "0755",
+          "adcode": "440300",
+          "enName": "Shenzhen",
+          "name": "深圳",
+          "x": "114.057939",
+          "y": "22.543527",
+          "label": "深圳市",
+          "spell": "ShenZhen",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [113.751453, 22.396344],
+            [114.627797, 22.854448]
+          ]
+        },
+        {
+          "short": "ZH",
+          "areacode": "0756",
+          "adcode": "440400",
+          "enName": "Zhuhai",
+          "name": "珠海",
+          "x": "113.576892",
+          "y": "22.271644",
+          "label": "珠海市",
+          "spell": "ZhuHai",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [113.087147, 21.831696],
+            [114.322996, 22.442974]
+          ]
+        },
+        {
+          "short": "ST",
+          "areacode": "0754",
+          "adcode": "440500",
+          "enName": "Shantou",
+          "name": "汕头",
+          "x": "116.681956",
+          "y": "23.354152",
+          "label": "汕头市",
+          "spell": "ShanTou",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [116.24457, 23.039823],
+            [117.14541, 23.645782]
+          ]
+        },
+        {
+          "short": "FS",
+          "areacode": "0757",
+          "adcode": "440600",
+          "enName": "Foshan",
+          "name": "佛山",
+          "x": "113.121586",
+          "y": "23.021351",
+          "label": "佛山市",
+          "spell": "FoShan",
+          "children": [],
+          "sequence": "F",
+          "bbox": [
+            [112.392477, 22.642289],
+            [113.393428, 23.570892]
+          ]
+        },
+        {
+          "short": "JM",
+          "areacode": "0750",
+          "adcode": "440700",
+          "enName": "Jiangmen",
+          "name": "江门",
+          "x": "113.081548",
+          "y": "22.578948",
+          "label": "江门市",
+          "spell": "JiangMen",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [112.004248, 21.564084],
+            [113.262638, 22.856291]
+          ]
+        },
+        {
+          "short": "ZJ",
+          "areacode": "0759",
+          "adcode": "440800",
+          "enName": "Zhanjiang",
+          "name": "湛江",
+          "x": "110.357538",
+          "y": "21.270108",
+          "label": "湛江市",
+          "spell": "ZhanJiang",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [109.655642, 20.211718],
+            [110.977023, 21.953834]
+          ]
+        },
+        {
+          "short": "MM",
+          "areacode": "0668",
+          "adcode": "440900",
+          "enName": "Maoming",
+          "name": "茂名",
+          "x": "110.925533",
+          "y": "21.662728",
+          "label": "茂名市",
+          "spell": "MaoMing",
+          "children": [],
+          "sequence": "M",
+          "bbox": [
+            [110.326583, 21.406766],
+            [111.680292, 22.704334]
+          ]
+        },
+        {
+          "short": "ZQ",
+          "areacode": "0758",
+          "adcode": "441200",
+          "enName": "Zhaoqing",
+          "name": "肇庆",
+          "x": "112.465245",
+          "y": "23.047747",
+          "label": "肇庆市",
+          "spell": "ZhaoQing",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [111.364732, 22.769758],
+            [112.88328, 24.388663]
+          ]
+        },
+        {
+          "short": "HZ",
+          "areacode": "0752",
+          "adcode": "441300",
+          "enName": "Huizhou",
+          "name": "惠州",
+          "x": "114.415587",
+          "y": "23.112368",
+          "label": "惠州市",
+          "spell": "HuiZhou",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [113.813985, 22.448497],
+            [115.41928, 23.95949]
+          ]
+        },
+        {
+          "short": "MZ",
+          "areacode": "0753",
+          "adcode": "441400",
+          "enName": "Meizhou",
+          "name": "梅州",
+          "x": "116.122046",
+          "y": "24.288832",
+          "label": "梅州市",
+          "spell": "MeiZhou",
+          "children": [],
+          "sequence": "M",
+          "bbox": [
+            [115.317164, 23.373675],
+            [116.936692, 24.937107]
+          ]
+        },
+        {
+          "short": "SW",
+          "areacode": "0660",
+          "adcode": "441500",
+          "enName": "Shanwei",
+          "name": "汕尾",
+          "x": "115.375557",
+          "y": "22.787204",
+          "label": "汕尾市",
+          "spell": "ShanWei",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [114.917832, 20.582652],
+            [116.933783, 23.471869]
+          ]
+        },
+        {
+          "short": "HY",
+          "areacode": "0762",
+          "adcode": "441600",
+          "enName": "Heyuan",
+          "name": "河源",
+          "x": "114.700215",
+          "y": "23.744276",
+          "label": "河源市",
+          "spell": "HeYuan",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [114.241836, 23.165266],
+            [115.593066, 24.792857]
+          ]
+        },
+        {
+          "short": "YJ",
+          "areacode": "0662",
+          "adcode": "441700",
+          "enName": "Yangjiang",
+          "name": "阳江",
+          "x": "111.98343",
+          "y": "21.856853",
+          "label": "阳江市",
+          "spell": "YangJiang",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [111.283423, 21.499397],
+            [112.370087, 22.687789]
+          ]
+        },
+        {
+          "short": "QY",
+          "areacode": "0763",
+          "adcode": "441800",
+          "enName": "Qingyuan",
+          "name": "清远",
+          "x": "113.056098",
+          "y": "23.682064",
+          "label": "清远市",
+          "spell": "QingYuan",
+          "children": [],
+          "sequence": "Q",
+          "bbox": [
+            [111.927434, 23.447571],
+            [113.92971, 25.191716]
+          ]
+        },
+        {
+          "short": "DG",
+          "areacode": "0769",
+          "adcode": "441900",
+          "enName": "Dongguan",
+          "name": "东莞",
+          "x": "113.751884",
+          "y": "23.021016",
+          "label": "东莞市",
+          "spell": "DongGuan",
+          "children": [],
+          "sequence": "D",
+          "bbox": [
+            [113.522892, 22.654395],
+            [114.260303, 23.138917]
+          ]
+        },
+        {
+          "short": "ZS",
+          "areacode": "0760",
+          "adcode": "442000",
+          "enName": "Zhongshan",
+          "name": "中山",
+          "x": "113.392517",
+          "y": "22.517024",
+          "label": "中山市",
+          "spell": "ZhongShan",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [113.157014, 22.201286],
+            [113.692042, 22.772602]
+          ]
+        },
+        {
+          "short": "CZ",
+          "areacode": "0768",
+          "adcode": "445100",
+          "enName": "Chaozhou",
+          "name": "潮州",
+          "x": "116.621901",
+          "y": "23.657662",
+          "label": "潮州市",
+          "spell": "ChaoZhou",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [116.36846, 23.429401],
+            [117.192939, 24.232804]
+          ]
+        },
+        {
+          "short": "JY",
+          "areacode": "0663",
+          "adcode": "445200",
+          "enName": "Jieyang",
+          "name": "揭阳",
+          "x": "116.372732",
+          "y": "23.550968",
+          "label": "揭阳市",
+          "spell": "JieYang",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [115.606563, 22.886182],
+            [116.63358, 23.775551]
+          ]
+        },
+        {
+          "short": "YF",
+          "areacode": "0766",
+          "adcode": "445300",
+          "enName": "Yunfu",
+          "name": "云浮",
+          "x": "112.044524",
+          "y": "22.915163",
+          "label": "云浮市",
+          "spell": "YunFu",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [111.060531, 22.364655],
+            [112.521708, 23.325229]
+          ]
+        }
+      ],
+      "sequence": "G"
+    },
+    {
+      "bbox": [
+        [104.475317, 21.00539],
+        [112.059631, 26.385566]
+      ],
+      "short": "GXZZZZ",
+      "areacode": "",
+      "adcode": "450000",
+      "enName": "Guangxi Zhuangzu Zizhiqu",
+      "name": "广西",
+      "x": "108.327537",
+      "y": "22.816659",
+      "label": "广西壮族自治区",
+      "spell": "GuangXi ZhuangZu ZiZhiQu",
+      "children": [
+        {
+          "short": "NN",
+          "areacode": "0771",
+          "adcode": "450100",
+          "enName": "Nanning",
+          "name": "南宁",
+          "x": "108.366407",
+          "y": "22.8177",
+          "label": "南宁市",
+          "spell": "NanNing",
+          "children": [],
+          "sequence": "N",
+          "bbox": [
+            [107.330254, 22.206972],
+            [109.6189, 24.032927]
+          ]
+        },
+        {
+          "short": "LZ",
+          "areacode": "0772",
+          "adcode": "450200",
+          "enName": "Liuzhou",
+          "name": "柳州",
+          "x": "109.428071",
+          "y": "24.326442",
+          "label": "柳州市",
+          "spell": "LiuZhou",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [108.587687, 23.908625],
+            [110.177606, 26.047313]
+          ]
+        },
+        {
+          "short": "GL",
+          "areacode": "0773",
+          "adcode": "450300",
+          "enName": "Guilin",
+          "name": "桂林",
+          "x": "110.179752",
+          "y": "25.235615",
+          "label": "桂林市",
+          "spell": "GuiLin",
+          "children": [],
+          "sequence": "G",
+          "bbox": [
+            [109.619196, 24.259163],
+            [111.492074, 26.385566]
+          ]
+        },
+        {
+          "short": "WZ",
+          "areacode": "0774",
+          "adcode": "450400",
+          "enName": "Wuzhou",
+          "name": "梧州",
+          "x": "111.279022",
+          "y": "23.476733",
+          "label": "梧州市",
+          "spell": "WuZhou",
+          "children": [],
+          "sequence": "W",
+          "bbox": [
+            [110.316906, 22.608116],
+            [111.666766, 24.404386]
+          ]
+        },
+        {
+          "short": "BH",
+          "areacode": "0779",
+          "adcode": "450500",
+          "enName": "Beihai",
+          "name": "北海",
+          "x": "109.120248",
+          "y": "21.481305",
+          "label": "北海市",
+          "spell": "BeiHai",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [108.850295, 21.00539],
+            [109.788325, 21.91492]
+          ]
+        },
+        {
+          "short": "FCG",
+          "areacode": "0770",
+          "adcode": "450600",
+          "enName": "Fangchenggang",
+          "name": "防城港",
+          "x": "108.35467",
+          "y": "21.686732",
+          "label": "防城港市",
+          "spell": "FangChengGang",
+          "children": [],
+          "sequence": "F",
+          "bbox": [
+            [107.481501, 21.491027],
+            [108.591682, 22.371652]
+          ]
+        },
+        {
+          "short": "QZ",
+          "areacode": "0777",
+          "adcode": "450700",
+          "enName": "Qinzhou",
+          "name": "钦州",
+          "x": "108.654355",
+          "y": "21.980894",
+          "label": "钦州市",
+          "spell": "QinZhou",
+          "children": [],
+          "sequence": "Q",
+          "bbox": [
+            [108.184998, 21.587932],
+            [109.870904, 22.681269]
+          ]
+        },
+        {
+          "short": "GG",
+          "areacode": "1755",
+          "adcode": "450800",
+          "enName": "Guigang",
+          "name": "贵港",
+          "x": "109.598903",
+          "y": "23.11182",
+          "label": "贵港市",
+          "spell": "GuiGang",
+          "children": [],
+          "sequence": "G",
+          "bbox": [
+            [109.210837, 22.652756],
+            [110.659215, 24.042181]
+          ]
+        },
+        {
+          "short": "YL",
+          "areacode": "0775",
+          "adcode": "450900",
+          "enName": "Yulin",
+          "name": "玉林",
+          "x": "110.18097",
+          "y": "22.654001",
+          "label": "玉林市",
+          "spell": "YuLin",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [109.549996, 21.628898],
+            [110.895873, 23.126275]
+          ]
+        },
+        {
+          "short": "BS",
+          "areacode": "0776",
+          "adcode": "451000",
+          "enName": "Baise",
+          "name": "百色",
+          "x": "106.61869",
+          "y": "23.90307",
+          "label": "百色市",
+          "spell": "BaiSe",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [104.475317, 22.858074],
+            [107.883659, 25.098265]
+          ]
+        },
+        {
+          "short": "HZ",
+          "areacode": "1774",
+          "adcode": "451100",
+          "enName": "Hezhou",
+          "name": "贺州",
+          "x": "111.567216",
+          "y": "24.404182",
+          "label": "贺州市",
+          "spell": "HeZhou",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [110.567472, 23.659975],
+            [112.059631, 25.151154]
+          ]
+        },
+        {
+          "short": "HC",
+          "areacode": "0778",
+          "adcode": "451200",
+          "enName": "Hechi",
+          "name": "河池",
+          "x": "108.085244",
+          "y": "24.692906",
+          "label": "河池市",
+          "spell": "HeChi",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [106.571122, 23.554048],
+            [109.157994, 25.609192]
+          ]
+        },
+        {
+          "short": "LB",
+          "areacode": "1772",
+          "adcode": "451300",
+          "enName": "Laibin",
+          "name": "来宾",
+          "x": "109.221243",
+          "y": "23.750105",
+          "label": "来宾市",
+          "spell": "LaiBin",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [108.415926, 23.266555],
+            [110.456215, 24.467561]
+          ]
+        },
+        {
+          "short": "CZ",
+          "areacode": "1771",
+          "adcode": "451400",
+          "enName": "Chongzuo",
+          "name": "崇左",
+          "x": "107.364973",
+          "y": "22.377139",
+          "label": "崇左市",
+          "spell": "ChongZuo",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [106.562284, 21.594142],
+            [108.115707, 23.351489]
+          ]
+        }
+      ],
+      "sequence": "G"
+    },
+    {
+      "bbox": [
+        [108.587216, 3.83703],
+        [117.839892, 20.163553]
+      ],
+      "short": "HN",
+      "areacode": "",
+      "adcode": "460000",
+      "enName": "Hainan",
+      "name": "海南",
+      "x": "110.348781",
+      "y": "20.018639",
+      "label": "海南省",
+      "spell": "HaiNan",
+      "children": [
+        {
+          "short": "HK",
+          "areacode": "0898",
+          "adcode": "460100",
+          "enName": "Haikou",
+          "name": "海口",
+          "x": "110.198418",
+          "y": "20.045805",
+          "label": "海口市",
+          "spell": "HaiKou",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [110.106537, 19.523873],
+            [110.704662, 20.113474]
+          ]
+        },
+        {
+          "short": "SY",
+          "areacode": "0899",
+          "adcode": "460200",
+          "enName": "Sanya",
+          "name": "三亚",
+          "x": "109.511709",
+          "y": "18.252865",
+          "label": "三亚市",
+          "spell": "SanYa",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [108.932391, 18.143561],
+            [109.809976, 18.623386]
+          ]
+        },
+        {
+          "short": "SS",
+          "areacode": "2898",
+          "adcode": "460300",
+          "enName": "Sansha",
+          "name": "三沙",
+          "x": "112.338649",
+          "y": "16.831004",
+          "label": "三沙市",
+          "spell": "SanSha",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [109.463995, 3.83703],
+            [117.839892, 19.528877]
+          ]
+        },
+        {
+          "short": "DZ",
+          "areacode": "0805",
+          "adcode": "460400",
+          "enName": "Danzhou",
+          "name": "儋州",
+          "x": "109.580812",
+          "y": "19.520948",
+          "label": "儋州市",
+          "spell": "DanZhou",
+          "children": [],
+          "sequence": "D",
+          "bbox": [
+            [108.928684, 19.178935],
+            [109.769426, 19.925745]
+          ]
+        }
+      ],
+      "sequence": "H"
+    },
+    {
+      "bbox": [
+        [105.294337, 28.161394],
+        [110.198879, 32.201187]
+      ],
+      "short": "CQ",
+      "areacode": "023",
+      "adcode": "500000",
+      "enName": "Chongqing",
+      "name": "重庆",
+      "x": "106.550483",
+      "y": "29.563707",
+      "label": "重庆市",
+      "spell": "ChongQing",
+      "children": [],
+      "sequence": "C"
+    },
+    {
+      "bbox": [
+        [97.350091, 26.045865],
+        [108.546461, 34.312946]
+      ],
+      "short": "SC",
+      "areacode": "",
+      "adcode": "510000",
+      "enName": "Sichuan",
+      "name": "四川",
+      "x": "104.076452",
+      "y": "30.651696",
+      "label": "四川省",
+      "spell": "SiChuan",
+      "children": [
+        {
+          "short": "CD",
+          "areacode": "028",
+          "adcode": "510100",
+          "enName": "Chengdu",
+          "name": "成都",
+          "x": "104.066301",
+          "y": "30.572961",
+          "label": "成都市",
+          "spell": "ChengDu",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [102.992886, 30.089759],
+            [104.895899, 31.434061]
+          ]
+        },
+        {
+          "short": "ZG",
+          "areacode": "0813",
+          "adcode": "510300",
+          "enName": "Zigong",
+          "name": "自贡",
+          "x": "104.779307",
+          "y": "29.33924",
+          "label": "自贡市",
+          "spell": "ZiGong",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [104.052639, 28.928328],
+            [105.271804, 29.63615]
+          ]
+        },
+        {
+          "short": "PZH",
+          "areacode": "0812",
+          "adcode": "510400",
+          "enName": "Panzhihua",
+          "name": "攀枝花",
+          "x": "101.71846",
+          "y": "26.582417",
+          "label": "攀枝花市",
+          "spell": "PanZhiHua",
+          "children": [],
+          "sequence": "P",
+          "bbox": [
+            [101.137424, 26.082396],
+            [102.246767, 27.339532]
+          ]
+        },
+        {
+          "short": "LZ",
+          "areacode": "0830",
+          "adcode": "510500",
+          "enName": "Luzhou",
+          "name": "泸州",
+          "x": "105.441866",
+          "y": "28.87098",
+          "label": "泸州市",
+          "spell": "LuZhou",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [105.145137, 27.659956],
+            [106.378894, 29.321596]
+          ]
+        },
+        {
+          "short": "DY",
+          "areacode": "0838",
+          "adcode": "510600",
+          "enName": "Deyang",
+          "name": "德阳",
+          "x": "104.397795",
+          "y": "31.127449",
+          "label": "德阳市",
+          "spell": "DeYang",
+          "children": [],
+          "sequence": "D",
+          "bbox": [
+            [103.795754, 30.529279],
+            [105.168698, 31.698236]
+          ]
+        },
+        {
+          "short": "MY",
+          "areacode": "0816",
+          "adcode": "510700",
+          "enName": "Mianyang",
+          "name": "绵阳",
+          "x": "104.679127",
+          "y": "31.467673",
+          "label": "绵阳市",
+          "spell": "MianYang",
+          "children": [],
+          "sequence": "M",
+          "bbox": [
+            [103.75425, 30.706396],
+            [105.726228, 33.041252]
+          ]
+        },
+        {
+          "short": "GY",
+          "areacode": "0839",
+          "adcode": "510800",
+          "enName": "Guangyuan",
+          "name": "广元",
+          "x": "105.844004",
+          "y": "32.435774",
+          "label": "广元市",
+          "spell": "GuangYuan",
+          "children": [],
+          "sequence": "G",
+          "bbox": [
+            [104.616247, 31.526957],
+            [106.776168, 32.932655]
+          ]
+        },
+        {
+          "short": "SN",
+          "areacode": "0825",
+          "adcode": "510900",
+          "enName": "Suining",
+          "name": "遂宁",
+          "x": "105.592602",
+          "y": "30.53268",
+          "label": "遂宁市",
+          "spell": "SuiNing",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [105.059941, 30.183692],
+            [106.000785, 31.160601]
+          ]
+        },
+        {
+          "short": "NJ",
+          "areacode": "1832",
+          "adcode": "511000",
+          "enName": "Neijiang",
+          "name": "内江",
+          "x": "105.057992",
+          "y": "29.58021",
+          "label": "内江市",
+          "spell": "NeiJiang",
+          "children": [],
+          "sequence": "N",
+          "bbox": [
+            [104.269526, 29.188498],
+            [105.443083, 30.036263]
+          ]
+        },
+        {
+          "short": "LS",
+          "areacode": "0833",
+          "adcode": "511100",
+          "enName": "Leshan",
+          "name": "乐山",
+          "x": "103.766085",
+          "y": "29.552275",
+          "label": "乐山市",
+          "spell": "LeShan",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [102.909046, 28.420659],
+            [104.249799, 29.928172]
+          ]
+        },
+        {
+          "short": "NC",
+          "areacode": "0817",
+          "adcode": "511300",
+          "enName": "Nanchong",
+          "name": "南充",
+          "x": "106.110565",
+          "y": "30.837235",
+          "label": "南充市",
+          "spell": "NanChong",
+          "children": [],
+          "sequence": "N",
+          "bbox": [
+            [105.440958, 30.458865],
+            [106.964738, 31.848445]
+          ]
+        },
+        {
+          "short": "MS",
+          "areacode": "1833",
+          "adcode": "511400",
+          "enName": "Meishan",
+          "name": "眉山",
+          "x": "103.848417",
+          "y": "30.077113",
+          "label": "眉山市",
+          "spell": "MeiShan",
+          "children": [],
+          "sequence": "M",
+          "bbox": [
+            [102.8232, 29.397766],
+            [104.503666, 30.353986]
+          ]
+        },
+        {
+          "short": "YB",
+          "areacode": "0831",
+          "adcode": "511500",
+          "enName": "Yibin",
+          "name": "宜宾",
+          "x": "104.642826",
+          "y": "28.752354",
+          "label": "宜宾市",
+          "spell": "YiBin",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [103.613881, 27.842042],
+            [105.35807, 29.261327]
+          ]
+        },
+        {
+          "short": "GA",
+          "areacode": "0826",
+          "adcode": "511600",
+          "enName": "Guang&#39;an",
+          "name": "广安",
+          "x": "106.632647",
+          "y": "30.456354",
+          "label": "广安市",
+          "spell": "GuangAn",
+          "children": [],
+          "sequence": "G",
+          "bbox": [
+            [105.948267, 30.017254],
+            [107.304738, 30.838863]
+          ]
+        },
+        {
+          "short": "DZ",
+          "areacode": "0818",
+          "adcode": "511700",
+          "enName": "Dazhou",
+          "name": "达州",
+          "x": "107.46778",
+          "y": "31.209278",
+          "label": "达州市",
+          "spell": "DaZhou",
+          "children": [],
+          "sequence": "D",
+          "bbox": [
+            [106.666468, 30.325945],
+            [108.546461, 32.338239]
+          ]
+        },
+        {
+          "short": "YA",
+          "areacode": "0835",
+          "adcode": "511800",
+          "enName": "Ya&#39;an",
+          "name": "雅安",
+          "x": "103.041538",
+          "y": "30.009998",
+          "label": "雅安市",
+          "spell": "YaAn",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [101.93598, 28.845463],
+            [103.395135, 30.936781]
+          ]
+        },
+        {
+          "short": "BZ",
+          "areacode": "0827",
+          "adcode": "511900",
+          "enName": "Bazhong",
+          "name": "巴中",
+          "x": "106.747548",
+          "y": "31.867853",
+          "label": "巴中市",
+          "spell": "BaZhong",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [106.363495, 31.248743],
+            [107.763942, 32.739379]
+          ]
+        },
+        {
+          "short": "ZY",
+          "areacode": "0832",
+          "adcode": "512000",
+          "enName": "Ziyang",
+          "name": "资阳",
+          "x": "104.627265",
+          "y": "30.129236",
+          "label": "资阳市",
+          "spell": "ZiYang",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [104.449407, 29.674693],
+            [105.748739, 30.628647]
+          ]
+        },
+        {
+          "short": "ABZZQZZZ",
+          "areacode": "0837",
+          "adcode": "513200",
+          "enName": "Aba",
+          "name": "阿坝藏族羌族自治州",
+          "x": "102.224504",
+          "y": "31.899427",
+          "label": "阿坝藏族羌族自治州",
+          "spell": "ABa ZangZu QiangZu ZiZhiZhou",
+          "children": [],
+          "sequence": "A",
+          "bbox": [
+            [100.531638, 30.594502],
+            [104.437299, 34.312946]
+          ]
+        },
+        {
+          "short": "GZZZZZ",
+          "areacode": "0836",
+          "adcode": "513300",
+          "enName": "Garze",
+          "name": "甘孜藏族自治州",
+          "x": "101.96231",
+          "y": "30.04952",
+          "label": "甘孜藏族自治州",
+          "spell": "GanZi ZangZu ZiZhiZhou",
+          "children": [],
+          "sequence": "G",
+          "bbox": [
+            [97.350091, 27.9664],
+            [102.494447, 34.207453]
+          ]
+        },
+        {
+          "short": "LSYZZZ",
+          "areacode": "0834",
+          "adcode": "513400",
+          "enName": "Liangshan",
+          "name": "凉山彝族自治州",
+          "x": "102.267713",
+          "y": "27.881396",
+          "label": "凉山彝族自治州",
+          "spell": "LiangShan YiZu ZiZhiZhou",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [100.061499, 26.045865],
+            [103.877419, 29.302879]
+          ]
+        }
+      ],
+      "sequence": "S"
+    },
+    {
+      "bbox": [
+        [103.601439, 24.622239],
+        [109.596442, 29.218716]
+      ],
+      "short": "GZ",
+      "areacode": "",
+      "adcode": "520000",
+      "enName": "Guizhou",
+      "name": "贵州",
+      "x": "106.705251",
+      "y": "26.600328",
+      "label": "贵州省",
+      "spell": "GuiZhou",
+      "children": [
+        {
+          "short": "GY",
+          "areacode": "0851",
+          "adcode": "520100",
+          "enName": "Guiyang",
+          "name": "贵阳",
+          "x": "106.628201",
+          "y": "26.646694",
+          "label": "贵阳市",
+          "spell": "GuiYang",
+          "children": [],
+          "sequence": "G",
+          "bbox": [
+            [106.12575, 26.183396],
+            [107.279169, 27.356611]
+          ]
+        },
+        {
+          "short": "LPS",
+          "areacode": "0858",
+          "adcode": "520200",
+          "enName": "Liupanshui",
+          "name": "六盘水",
+          "x": "104.830357",
+          "y": "26.592538",
+          "label": "六盘水市",
+          "spell": "LiuPanShui",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [104.311729, 25.328576],
+            [105.722836, 26.917752]
+          ]
+        },
+        {
+          "short": "ZY",
+          "areacode": "0852",
+          "adcode": "520300",
+          "enName": "Zunyi",
+          "name": "遵义",
+          "x": "107.031922",
+          "y": "27.721931",
+          "label": "遵义市",
+          "spell": "ZunYi",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [105.609871, 27.141568],
+            [108.213695, 29.218716]
+          ]
+        },
+        {
+          "short": "AS",
+          "areacode": "0853",
+          "adcode": "520400",
+          "enName": "Anshun",
+          "name": "安顺",
+          "x": "105.9476",
+          "y": "26.253103",
+          "label": "安顺市",
+          "spell": "AnShun",
+          "children": [],
+          "sequence": "A",
+          "bbox": [
+            [105.25424, 25.357633],
+            [106.562696, 26.624424]
+          ]
+        },
+        {
+          "short": "BJ",
+          "areacode": "0857",
+          "adcode": "520500",
+          "enName": "Bijie",
+          "name": "毕节",
+          "x": "105.291544",
+          "y": "27.283615",
+          "label": "毕节市",
+          "spell": "BiJie",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [103.601439, 26.359663],
+            [106.721005, 27.77524]
+          ]
+        },
+        {
+          "short": "TR",
+          "areacode": "0856",
+          "adcode": "520600",
+          "enName": "Tongren",
+          "name": "铜仁",
+          "x": "109.189528",
+          "y": "27.731555",
+          "label": "铜仁市",
+          "spell": "TongRen",
+          "children": [],
+          "sequence": "T",
+          "bbox": [
+            [107.755214, 27.121197],
+            [109.470465, 29.090906]
+          ]
+        },
+        {
+          "short": "QXNBYZMZZZ",
+          "areacode": "0859",
+          "adcode": "522300",
+          "enName": "Qianxinan",
+          "name": "黔西南布依族苗族自治州",
+          "x": "104.906419",
+          "y": "25.087733",
+          "label": "黔西南布依族苗族自治州",
+          "spell": "QianXiNan BuYiZu MiaoZu ZiZhiZhou",
+          "children": [],
+          "sequence": "Q",
+          "bbox": [
+            [104.529438, 24.622239],
+            [106.531605, 26.17457]
+          ]
+        },
+        {
+          "short": "QDNMZDZZZ",
+          "areacode": "0855",
+          "adcode": "522600",
+          "enName": "Qiandongnan",
+          "name": "黔东南苗族侗族自治州",
+          "x": "107.982838",
+          "y": "26.583759",
+          "label": "黔东南苗族侗族自治州",
+          "spell": "QianDongNan MiaoZu DongZu ZiZhiZhou",
+          "children": [],
+          "sequence": "Q",
+          "bbox": [
+            [107.301938, 25.30813],
+            [109.596442, 27.521621]
+          ]
+        },
+        {
+          "short": "QNBYZMZZZ",
+          "areacode": "0854",
+          "adcode": "522700",
+          "enName": "Qiannan",
+          "name": "黔南布依族苗族自治州",
+          "x": "107.522303",
+          "y": "26.253136",
+          "label": "黔南布依族苗族自治州",
+          "spell": "QianNan BuYiZu MiaoZu ZiZhiZhou",
+          "children": [],
+          "sequence": "Q",
+          "bbox": [
+            [106.226812, 25.059859],
+            [108.303267, 27.47615]
+          ]
+        }
+      ],
+      "sequence": "G"
+    },
+    {
+      "bbox": [
+        [97.529581, 21.14177],
+        [106.192437, 29.221362]
+      ],
+      "short": "YN",
+      "areacode": "",
+      "adcode": "530000",
+      "enName": "Yunnan",
+      "name": "云南",
+      "x": "102.709372",
+      "y": "25.046432",
+      "label": "云南省",
+      "spell": "YunNan",
+      "children": [
+        {
+          "short": "KM",
+          "areacode": "0871",
+          "adcode": "530100",
+          "enName": "Kunming",
+          "name": "昆明",
+          "x": "102.833669",
+          "y": "24.88149",
+          "label": "昆明市",
+          "spell": "KunMing",
+          "children": [],
+          "sequence": "K",
+          "bbox": [
+            [102.171512, 24.386149],
+            [103.670058, 26.541846]
+          ]
+        },
+        {
+          "short": "QJ",
+          "areacode": "0874",
+          "adcode": "530300",
+          "enName": "Qujing",
+          "name": "曲靖",
+          "x": "103.796288",
+          "y": "25.490866",
+          "label": "曲靖市",
+          "spell": "QuJing",
+          "children": [],
+          "sequence": "Q",
+          "bbox": [
+            [103.059525, 24.351927],
+            [104.827969, 27.051671]
+          ]
+        },
+        {
+          "short": "YX",
+          "areacode": "0877",
+          "adcode": "530400",
+          "enName": "Yuxi",
+          "name": "玉溪",
+          "x": "102.526673",
+          "y": "24.346786",
+          "label": "玉溪市",
+          "spell": "YuXi",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [101.277084, 23.316245],
+            [103.151168, 24.952363]
+          ]
+        },
+        {
+          "short": "BS",
+          "areacode": "0875",
+          "adcode": "530500",
+          "enName": "Baoshan",
+          "name": "保山",
+          "x": "99.161489",
+          "y": "25.112018",
+          "label": "保山市",
+          "spell": "BaoShan",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [98.089475, 24.121238],
+            [100.046643, 25.856346]
+          ]
+        },
+        {
+          "short": "ZT",
+          "areacode": "0870",
+          "adcode": "530600",
+          "enName": "Zhaotong",
+          "name": "昭通",
+          "x": "103.717078",
+          "y": "27.338185",
+          "label": "昭通市",
+          "spell": "ZhaoTong",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [102.872593, 26.534641],
+            [105.314153, 28.668264]
+          ]
+        },
+        {
+          "short": "LJ",
+          "areacode": "0888",
+          "adcode": "530700",
+          "enName": "Lijiang",
+          "name": "丽江",
+          "x": "100.225936",
+          "y": "26.855165",
+          "label": "丽江市",
+          "spell": "LiJiang",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [99.383373, 25.985228],
+            [101.512607, 27.924198]
+          ]
+        },
+        {
+          "short": "PE",
+          "areacode": "0879",
+          "adcode": "530800",
+          "enName": "Pu&#39;er",
+          "name": "普洱",
+          "x": "100.966011",
+          "y": "22.825229",
+          "label": "普洱市",
+          "spell": "PuEr",
+          "children": [],
+          "sequence": "P",
+          "bbox": [
+            [99.158437, 22.028107],
+            [102.322579, 24.821994]
+          ]
+        },
+        {
+          "short": "LC",
+          "areacode": "0883",
+          "adcode": "530900",
+          "enName": "Lincang",
+          "name": "临沧",
+          "x": "100.088837",
+          "y": "23.884175",
+          "label": "临沧市",
+          "spell": "LinCang",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [98.668863, 23.073181],
+            [100.546379, 25.032725]
+          ]
+        },
+        {
+          "short": "CXYZZZ",
+          "areacode": "0878",
+          "adcode": "532300",
+          "enName": "Chuxiong",
+          "name": "楚雄彝族自治州",
+          "x": "101.528304",
+          "y": "25.045678",
+          "label": "楚雄彝族自治州",
+          "spell": "ChuXiong YiZu ZiZhiZhou",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [100.720598, 24.220431],
+            [102.479514, 26.499681]
+          ]
+        },
+        {
+          "short": "HHHNZYZZZ",
+          "areacode": "0873",
+          "adcode": "532500",
+          "enName": "Honghe",
+          "name": "红河哈尼族彝族自治州",
+          "x": "103.374873",
+          "y": "23.363129",
+          "label": "红河哈尼族彝族自治州",
+          "spell": "HongHe HaNiZu YiZu ZiZhiZhou",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [101.800269, 22.441441],
+            [104.276197, 24.753961]
+          ]
+        },
+        {
+          "short": "WSZZMZZZ",
+          "areacode": "0876",
+          "adcode": "532600",
+          "enName": "Wenshan",
+          "name": "文山壮族苗族自治州",
+          "x": "104.21567",
+          "y": "23.400983",
+          "label": "文山壮族苗族自治州",
+          "spell": "WenShan ZhuangZu MiaoZu ZiZhiZhou",
+          "children": [],
+          "sequence": "W",
+          "bbox": [
+            [103.574955, 22.688161],
+            [106.192437, 24.472644]
+          ]
+        },
+        {
+          "short": "XSBNDZZZ",
+          "areacode": "0691",
+          "adcode": "532800",
+          "enName": "Xishuangbanna",
+          "name": "西双版纳傣族自治州",
+          "x": "100.797002",
+          "y": "22.009037",
+          "label": "西双版纳傣族自治州",
+          "spell": "XiShuangBanNa DaiZu ZiZhiZhou",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [99.944208, 21.14177],
+            [101.835428, 22.594469]
+          ]
+        },
+        {
+          "short": "DLBZZZ",
+          "areacode": "0872",
+          "adcode": "532900",
+          "enName": "Dali",
+          "name": "大理白族自治州",
+          "x": "100.267608",
+          "y": "25.606548",
+          "label": "大理白族自治州",
+          "spell": "DaLi BaiZu ZiZhiZhou",
+          "children": [],
+          "sequence": "D",
+          "bbox": [
+            [98.864656, 24.663432],
+            [101.035638, 26.695862]
+          ]
+        },
+        {
+          "short": "DHDZJPZZZ",
+          "areacode": "0692",
+          "adcode": "533100",
+          "enName": "Dehong",
+          "name": "德宏傣族景颇族自治州",
+          "x": "98.585621",
+          "y": "24.433146",
+          "label": "德宏傣族景颇族自治州",
+          "spell": "DeHong DaiZu JingPoZu ZiZhiZhou",
+          "children": [],
+          "sequence": "D",
+          "bbox": [
+            [97.529581, 23.841018],
+            [98.726908, 25.336057]
+          ]
+        },
+        {
+          "short": "NJLSZZZ",
+          "areacode": "0886",
+          "adcode": "533300",
+          "enName": "Nujiang",
+          "name": "怒江傈僳族自治州",
+          "x": "98.8566",
+          "y": "25.817555",
+          "label": "怒江傈僳族自治州",
+          "spell": "NuJiangLiSuZuZiZhiZhou",
+          "children": [],
+          "sequence": "N",
+          "bbox": [
+            [98.132451, 25.55071],
+            [99.643359, 28.385984]
+          ]
+        },
+        {
+          "short": "DQZZZZ",
+          "areacode": "0887",
+          "adcode": "533400",
+          "enName": "Deqen",
+          "name": "迪庆藏族自治州",
+          "x": "99.70211",
+          "y": "27.819149",
+          "label": "迪庆藏族自治州",
+          "spell": "DiQing ZangZu ZiZhiZhou",
+          "children": [],
+          "sequence": "D",
+          "bbox": [
+            [98.594216, 26.867162],
+            [100.309178, 29.221362]
+          ]
+        }
+      ],
+      "sequence": "Y"
+    },
+    {
+      "bbox": [
+        [78.395544, 26.854815],
+        [99.115227, 36.483334]
+      ],
+      "short": "XZZZ",
+      "areacode": "",
+      "adcode": "540000",
+      "enName": "Xizang Zizhiqu",
+      "name": "西藏",
+      "x": "91.117449",
+      "y": "29.648694",
+      "label": "西藏自治区",
+      "spell": "XiZangZiZhiQu",
+      "children": [
+        {
+          "short": "LS",
+          "areacode": "0891",
+          "adcode": "540100",
+          "enName": "Lhasa",
+          "name": "拉萨",
+          "x": "91.171924",
+          "y": "29.653491",
+          "label": "拉萨市",
+          "spell": "LaSa",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [89.75467, 29.237927],
+            [92.625365, 31.055864]
+          ]
+        },
+        {
+          "short": "RKZ",
+          "areacode": "0892",
+          "adcode": "540200",
+          "enName": "Xigaze",
+          "name": "日喀则",
+          "x": "88.880423",
+          "y": "29.266838",
+          "label": "日喀则市",
+          "spell": "RiKaZe",
+          "children": [],
+          "sequence": "R",
+          "bbox": [
+            [82.143466, 27.209343],
+            [90.34917, 31.806777]
+          ]
+        },
+        {
+          "short": "CD",
+          "areacode": "0895",
+          "adcode": "540300",
+          "enName": "Qamdo",
+          "name": "昌都",
+          "x": "97.170425",
+          "y": "31.142879",
+          "label": "昌都市",
+          "spell": "ChangDu",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [93.598649, 28.435266],
+            [99.115227, 32.587241]
+          ]
+        },
+        {
+          "short": "LZ",
+          "areacode": "0894",
+          "adcode": "540400",
+          "enName": "Nyingchi",
+          "name": "林芝",
+          "x": "94.361436",
+          "y": "29.64875",
+          "label": "林芝市",
+          "spell": "LinZhi",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [92.166826, 27.555432],
+            [98.746673, 30.660871]
+          ]
+        },
+        {
+          "short": "SN",
+          "areacode": "0893",
+          "adcode": "540500",
+          "enName": "Shannan",
+          "name": "山南",
+          "x": "91.771426",
+          "y": "29.237722",
+          "label": "山南市",
+          "spell": "ShanNan",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [90.063731, 26.854815],
+            [94.362549, 29.823054]
+          ]
+        },
+        {
+          "short": "NQD",
+          "areacode": "0896",
+          "adcode": "540600",
+          "enName": "Nagqu",
+          "name": "那曲",
+          "x": "92.05151",
+          "y": "31.477905",
+          "label": "那曲市",
+          "spell": "NaQuDi",
+          "children": [],
+          "sequence": "N",
+          "bbox": [
+            [85.056134, 29.939001],
+            [95.047642, 36.483334]
+          ]
+        },
+        {
+          "short": "ALD",
+          "areacode": "0897",
+          "adcode": "542500",
+          "enName": "Ngari",
+          "name": "阿里",
+          "x": "80.105786",
+          "y": "32.500987",
+          "label": "阿里地区",
+          "spell": "ALiDiQu",
+          "children": [],
+          "sequence": "A",
+          "bbox": [
+            [78.395544, 29.679399],
+            [86.318379, 35.860696]
+          ]
+        }
+      ],
+      "sequence": "X"
+    },
+    {
+      "bbox": [
+        [105.495523, 31.705114],
+        [111.247493, 39.58701]
+      ],
+      "short": "SX",
+      "areacode": "",
+      "adcode": "610000",
+      "enName": "Shaanxi",
+      "name": "陕西",
+      "x": "108.953939",
+      "y": "34.266611",
+      "label": "陕西省",
+      "spell": "ShaanXi",
+      "children": [
+        {
+          "short": "XA",
+          "areacode": "029",
+          "adcode": "610100",
+          "enName": "Xi&#39;an",
+          "name": "西安",
+          "x": "108.939645",
+          "y": "34.343207",
+          "label": "西安市",
+          "spell": "XiAn",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [107.66444, 33.694108],
+            [109.822216, 34.742897]
+          ]
+        },
+        {
+          "short": "TC",
+          "areacode": "0919",
+          "adcode": "610200",
+          "enName": "Tongchuan",
+          "name": "铜川",
+          "x": "108.945116",
+          "y": "34.897133",
+          "label": "铜川市",
+          "spell": "TongChuan",
+          "children": [],
+          "sequence": "T",
+          "bbox": [
+            [108.583512, 34.804872],
+            [109.495666, 35.580771]
+          ]
+        },
+        {
+          "short": "BJ",
+          "areacode": "0917",
+          "adcode": "610300",
+          "enName": "Baoji",
+          "name": "宝鸡",
+          "x": "107.237682",
+          "y": "34.362862",
+          "label": "宝鸡市",
+          "spell": "BaoJi",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [106.314034, 33.579411],
+            [108.053089, 35.105585]
+          ]
+        },
+        {
+          "short": "XY",
+          "areacode": "0910",
+          "adcode": "610400",
+          "enName": "Xianyang",
+          "name": "咸阳",
+          "x": "108.708837",
+          "y": "34.329896",
+          "label": "咸阳市",
+          "spell": "XianYang",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [107.651965, 34.19595],
+            [109.173194, 35.540747]
+          ]
+        },
+        {
+          "short": "WN",
+          "areacode": "0913",
+          "adcode": "610500",
+          "enName": "Weinan",
+          "name": "渭南",
+          "x": "109.470962",
+          "y": "34.520632",
+          "label": "渭南市",
+          "spell": "WeiNan",
+          "children": [],
+          "sequence": "W",
+          "bbox": [
+            [108.967335, 34.20976],
+            [110.609331, 35.854066]
+          ]
+        },
+        {
+          "short": "YA",
+          "areacode": "0911",
+          "adcode": "610600",
+          "enName": "Yan&#39;an",
+          "name": "延安",
+          "x": "109.49468",
+          "y": "36.650109",
+          "label": "延安市",
+          "spell": "YanAn",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [107.660116, 35.344618],
+            [110.551218, 37.498481]
+          ]
+        },
+        {
+          "short": "HZ",
+          "areacode": "0916",
+          "adcode": "610700",
+          "enName": "Hanzhong",
+          "name": "汉中",
+          "x": "107.02319",
+          "y": "33.066373",
+          "label": "汉中市",
+          "spell": "HanZhong",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [105.495523, 32.146037],
+            [108.279143, 33.874347]
+          ]
+        },
+        {
+          "short": "YL",
+          "areacode": "0912",
+          "adcode": "610800",
+          "enName": "Yulin",
+          "name": "榆林",
+          "x": "109.734104",
+          "y": "38.28576",
+          "label": "榆林市",
+          "spell": "YuLin",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [107.257929, 36.817797],
+            [111.247493, 39.58701]
+          ]
+        },
+        {
+          "short": "AK",
+          "areacode": "0915",
+          "adcode": "610900",
+          "enName": "Ankang",
+          "name": "安康",
+          "x": "109.029017",
+          "y": "32.685435",
+          "label": "安康市",
+          "spell": "AnKang",
+          "children": [],
+          "sequence": "A",
+          "bbox": [
+            [108.021843, 31.705114],
+            [110.206428, 33.841519]
+          ]
+        },
+        {
+          "short": "SL",
+          "areacode": "0914",
+          "adcode": "611000",
+          "enName": "Shangluo",
+          "name": "商洛",
+          "x": "109.918646",
+          "y": "33.873358",
+          "label": "商洛市",
+          "spell": "ShangLuo",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [108.569888, 33.09715],
+            [111.031144, 34.432196]
+          ]
+        }
+      ],
+      "sequence": "S"
+    },
+    {
+      "bbox": [
+        [92.340047, 32.59411],
+        [108.712336, 42.795163]
+      ],
+      "short": "GS",
+      "areacode": "",
+      "adcode": "620000",
+      "enName": "Gansu",
+      "name": "甘肃",
+      "x": "103.826777",
+      "y": "36.060634",
+      "label": "甘肃省",
+      "spell": "GanSu",
+      "children": [
+        {
+          "short": "LZ",
+          "areacode": "0931",
+          "adcode": "620100",
+          "enName": "Lanzhou",
+          "name": "兰州",
+          "x": "103.834228",
+          "y": "36.060798",
+          "label": "兰州市",
+          "spell": "LanZhou",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [102.601275, 35.571135],
+            [104.577268, 36.996761]
+          ]
+        },
+        {
+          "short": "JYG",
+          "areacode": "1937",
+          "adcode": "620200",
+          "enName": "Jiayuguan",
+          "name": "嘉峪关",
+          "x": "98.2882",
+          "y": "39.77325",
+          "label": "嘉峪关市",
+          "spell": "JiaYuGuan",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [97.855599, 39.654263],
+            [98.51884, 39.999715]
+          ]
+        },
+        {
+          "short": "JC",
+          "areacode": "0935",
+          "adcode": "620300",
+          "enName": "Jinchang",
+          "name": "金昌",
+          "x": "102.187972",
+          "y": "38.521468",
+          "label": "金昌市",
+          "spell": "JinChang",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [101.337769, 38.029665],
+            [102.723737, 38.996847]
+          ]
+        },
+        {
+          "short": "BY",
+          "areacode": "0943",
+          "adcode": "620400",
+          "enName": "Baiyin",
+          "name": "白银",
+          "x": "104.138872",
+          "y": "36.545123",
+          "label": "白银市",
+          "spell": "BaiYin",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [103.547455, 35.418628],
+            [105.520633, 37.633173]
+          ]
+        },
+        {
+          "short": "TS",
+          "areacode": "0938",
+          "adcode": "620500",
+          "enName": "Tianshui",
+          "name": "天水",
+          "x": "105.724828",
+          "y": "34.581514",
+          "label": "天水市",
+          "spell": "TianShui",
+          "children": [],
+          "sequence": "T",
+          "bbox": [
+            [104.577932, 34.080631],
+            [106.717368, 35.181363]
+          ]
+        },
+        {
+          "short": "WW",
+          "areacode": "1935",
+          "adcode": "620600",
+          "enName": "Wuwei",
+          "name": "武威",
+          "x": "102.637821",
+          "y": "37.92898",
+          "label": "武威市",
+          "spell": "WuWei",
+          "children": [],
+          "sequence": "W",
+          "bbox": [
+            [101.830981, 36.673406],
+            [104.207327, 39.461375]
+          ]
+        },
+        {
+          "short": "ZY",
+          "areacode": "0936",
+          "adcode": "620700",
+          "enName": "Zhangye",
+          "name": "张掖",
+          "x": "100.449858",
+          "y": "38.924766",
+          "label": "张掖市",
+          "spell": "ZhangYe",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [97.395053, 37.627679],
+            [102.202389, 39.888057]
+          ]
+        },
+        {
+          "short": "PL",
+          "areacode": "0933",
+          "adcode": "620800",
+          "enName": "Pingliang",
+          "name": "平凉",
+          "x": "106.664913",
+          "y": "35.542417",
+          "label": "平凉市",
+          "spell": "PingLiang",
+          "children": [],
+          "sequence": "P",
+          "bbox": [
+            [105.345483, 34.878138],
+            [107.858576, 35.747709]
+          ]
+        },
+        {
+          "short": "JQ",
+          "areacode": "0937",
+          "adcode": "620900",
+          "enName": "Jiuquan",
+          "name": "酒泉",
+          "x": "98.49432",
+          "y": "39.733416",
+          "label": "酒泉市",
+          "spell": "JiuQuan",
+          "children": [],
+          "sequence": "J",
+          "bbox": [
+            [92.340047, 38.145432],
+            [100.242573, 42.795163]
+          ]
+        },
+        {
+          "short": "QY",
+          "areacode": "0934",
+          "adcode": "621000",
+          "enName": "Qingyang",
+          "name": "庆阳",
+          "x": "107.643433",
+          "y": "35.709459",
+          "label": "庆阳市",
+          "spell": "QingYang",
+          "children": [],
+          "sequence": "Q",
+          "bbox": [
+            [106.364294, 35.241574],
+            [108.712336, 37.156594]
+          ]
+        },
+        {
+          "short": "DX",
+          "areacode": "0932",
+          "adcode": "621100",
+          "enName": "Dingxi",
+          "name": "定西",
+          "x": "104.592342",
+          "y": "35.607947",
+          "label": "定西市",
+          "spell": "DingXi",
+          "children": [],
+          "sequence": "D",
+          "bbox": [
+            [103.470999, 34.127228],
+            [105.638748, 36.041954]
+          ]
+        },
+        {
+          "short": "LN",
+          "areacode": "2935",
+          "adcode": "621200",
+          "enName": "Longnan",
+          "name": "陇南",
+          "x": "104.960296",
+          "y": "33.370174",
+          "label": "陇南市",
+          "spell": "LongNan",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [104.02653, 32.59411],
+            [106.584848, 34.528674]
+          ]
+        },
+        {
+          "short": "LXHZZZ",
+          "areacode": "0930",
+          "adcode": "622900",
+          "enName": "Linxia",
+          "name": "临夏回族自治州",
+          "x": "103.210386",
+          "y": "35.601792",
+          "label": "临夏回族自治州",
+          "spell": "LinXia HuiZu ZiZhiZhou",
+          "children": [],
+          "sequence": "L",
+          "bbox": [
+            [102.686003, 34.913593],
+            [103.854384, 36.21184]
+          ]
+        },
+        {
+          "short": "GNZZZZ",
+          "areacode": "0941",
+          "adcode": "623000",
+          "enName": "Gannan",
+          "name": "甘南藏族自治州",
+          "x": "102.911736",
+          "y": "34.983266",
+          "label": "甘南藏族自治州",
+          "spell": "GanNan ZangZu ZiZhiZhou",
+          "children": [],
+          "sequence": "G",
+          "bbox": [
+            [100.767658, 33.103025],
+            [104.759457, 35.584284]
+          ]
+        }
+      ],
+      "sequence": "G"
+    },
+    {
+      "bbox": [
+        [89.404633, 31.598662],
+        [103.063626, 39.208344]
+      ],
+      "short": "QH",
+      "areacode": "",
+      "adcode": "630000",
+      "enName": "Qinghai",
+      "name": "青海",
+      "x": "101.780482",
+      "y": "36.622538",
+      "label": "青海省",
+      "spell": "QingHai",
+      "children": [
+        {
+          "short": "XN",
+          "areacode": "0971",
+          "adcode": "630100",
+          "enName": "Xining",
+          "name": "西宁",
+          "x": "101.777795",
+          "y": "36.616621",
+          "label": "西宁市",
+          "spell": "XiNing",
+          "children": [],
+          "sequence": "X",
+          "bbox": [
+            [100.870639, 36.231082],
+            [101.914497, 37.470317]
+          ]
+        },
+        {
+          "short": "HD",
+          "areacode": "0972",
+          "adcode": "630200",
+          "enName": "Haidong",
+          "name": "海东",
+          "x": "102.41064",
+          "y": "36.473448",
+          "label": "海东市",
+          "spell": "HaiDong",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [101.666874, 35.448312],
+            [103.070971, 37.148158]
+          ]
+        },
+        {
+          "short": "HBZZZZ",
+          "areacode": "0970",
+          "adcode": "632200",
+          "enName": "Haibei",
+          "name": "海北藏族自治州",
+          "x": "100.900944",
+          "y": "36.954612",
+          "label": "海北藏族自治州",
+          "spell": "HaiBei ZangZu ZiZhiZhou",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [98.093325, 36.740675],
+            [102.642155, 39.087663]
+          ]
+        },
+        {
+          "short": "HNZZZZ",
+          "areacode": "0973",
+          "adcode": "632300",
+          "enName": "Huangnan",
+          "name": "黄南藏族自治州",
+          "x": "102.015397",
+          "y": "35.519317",
+          "label": "黄南藏族自治州",
+          "spell": "HuangNan ZangZu ZiZhiZhou",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [100.687739, 34.080097],
+            [102.450619, 36.167498]
+          ]
+        },
+        {
+          "short": "HNZZZZ",
+          "areacode": "0974",
+          "adcode": "632500",
+          "enName": "Hainan",
+          "name": "海南藏族自治州",
+          "x": "100.622647",
+          "y": "36.296399",
+          "label": "海南藏族自治州",
+          "spell": "HaiNan ZangZu ZiZhiZhou",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [98.921209, 34.641974],
+            [101.772479, 37.175334]
+          ]
+        },
+        {
+          "short": "GLZZZZ",
+          "areacode": "0975",
+          "adcode": "632600",
+          "enName": "Golog",
+          "name": "果洛藏族自治州",
+          "x": "100.245161",
+          "y": "34.472179",
+          "label": "果洛藏族自治州",
+          "spell": "GuoLuo ZangZu ZiZhiZhou",
+          "children": [],
+          "sequence": "G",
+          "bbox": [
+            [96.935342, 32.523662],
+            [101.777266, 35.619786]
+          ]
+        },
+        {
+          "short": "YSZZZZ",
+          "areacode": "0976",
+          "adcode": "632700",
+          "enName": "Yushu",
+          "name": "玉树藏族自治州",
+          "x": "97.006292",
+          "y": "33.006308",
+          "label": "玉树藏族自治州",
+          "spell": "YuShu ZangZu ZiZhiZhou",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [89.404633, 31.598662],
+            [97.758782, 36.278535]
+          ]
+        },
+        {
+          "short": "HXMGZZZZZ",
+          "areacode": "0977",
+          "adcode": "632800",
+          "enName": "Haixi",
+          "name": "海西蒙古族藏族自治州",
+          "x": "97.33197",
+          "y": "37.348114",
+          "label": "海西蒙古族藏族自治州",
+          "spell": "HaiXi MengGuZu ZangZu ZiZhiZhou",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [89.634926, 32.720761],
+            [99.697373, 39.208344]
+          ]
+        }
+      ],
+      "sequence": "Q"
+    },
+    {
+      "bbox": [
+        [104.287231, 35.238303],
+        [107.659274, 39.381569]
+      ],
+      "short": "NXHZZZ",
+      "areacode": "",
+      "adcode": "640000",
+      "enName": "Ningxia Huizu Zizhiqu",
+      "name": "宁夏",
+      "x": "106.258889",
+      "y": "38.472273",
+      "label": "宁夏回族自治区",
+      "spell": "NingXia HuiZu ZiZhiQu",
+      "children": [
+        {
+          "short": "YC",
+          "areacode": "0951",
+          "adcode": "640100",
+          "enName": "Yinchuan",
+          "name": "银川",
+          "x": "106.230977",
+          "y": "38.487783",
+          "label": "银川市",
+          "spell": "YinChuan",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [105.82175, 37.637163],
+            [106.885679, 38.87517]
+          ]
+        },
+        {
+          "short": "SZS",
+          "areacode": "0952",
+          "adcode": "640200",
+          "enName": "zuishan",
+          "name": "石嘴山",
+          "x": "106.382792",
+          "y": "38.984632",
+          "label": "石嘴山市",
+          "spell": "ZuiShan",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [105.972542, 38.601478],
+            [106.971383, 39.381569]
+          ]
+        },
+        {
+          "short": "WZ",
+          "areacode": "0953",
+          "adcode": "640300",
+          "enName": "Wuzhong",
+          "name": "吴忠",
+          "x": "106.198613",
+          "y": "37.997755",
+          "label": "吴忠市",
+          "spell": "WuZhong",
+          "children": [],
+          "sequence": "W",
+          "bbox": [
+            [105.56128, 36.587161],
+            [107.659274, 38.264714]
+          ]
+        },
+        {
+          "short": "GY",
+          "areacode": "0954",
+          "adcode": "640400",
+          "enName": "Guyuan",
+          "name": "固原",
+          "x": "106.24267",
+          "y": "36.01628",
+          "label": "固原市",
+          "spell": "GuYuan",
+          "children": [],
+          "sequence": "G",
+          "bbox": [
+            [105.325049, 35.238303],
+            [106.958812, 36.519386]
+          ]
+        },
+        {
+          "short": "ZW",
+          "areacode": "1953",
+          "adcode": "640500",
+          "enName": "Zhongwei",
+          "name": "中卫",
+          "x": "105.19677",
+          "y": "37.500185",
+          "label": "中卫市",
+          "spell": "ZhongWei",
+          "children": [],
+          "sequence": "Z",
+          "bbox": [
+            [104.287231, 36.121268],
+            [106.471648, 37.739851]
+          ]
+        }
+      ],
+      "sequence": "N"
+    },
+    {
+      "bbox": [
+        [73.506547, 34.334502],
+        [96.386194, 49.18234]
+      ],
+      "short": "XJWWEZZ",
+      "areacode": "",
+      "adcode": "650000",
+      "enName": "Xinjiang Uygur Zizhiqu",
+      "name": "新疆",
+      "x": "87.628579",
+      "y": "43.793301",
+      "label": "新疆维吾尔自治区",
+      "spell": "XinJiang WeiWuEr ZiZhiQu",
+      "children": [
+        {
+          "short": "WLMQ",
+          "areacode": "0991",
+          "adcode": "650100",
+          "enName": "Urumqi",
+          "name": "乌鲁木齐",
+          "x": "87.616824",
+          "y": "43.825377",
+          "label": "乌鲁木齐市",
+          "spell": "WuLuMuQi",
+          "children": [],
+          "sequence": "W",
+          "bbox": [
+            [86.797891, 42.923366],
+            [88.974136, 45.002005]
+          ]
+        },
+        {
+          "short": "KLMY",
+          "areacode": "0990",
+          "adcode": "650200",
+          "enName": "Karamay",
+          "name": "克拉玛依",
+          "x": "84.889239",
+          "y": "45.577712",
+          "label": "克拉玛依市",
+          "spell": "KeLaMaYi",
+          "children": [],
+          "sequence": "K",
+          "bbox": [
+            [84.579295, 44.126159],
+            [86.024295, 46.212155]
+          ]
+        },
+        {
+          "short": "TLF",
+          "areacode": "0995",
+          "adcode": "650400",
+          "enName": "Turpan",
+          "name": "吐鲁番",
+          "x": "89.190374",
+          "y": "42.950736",
+          "label": "吐鲁番市",
+          "spell": "TuLuFan",
+          "children": [],
+          "sequence": "T",
+          "bbox": [
+            [87.269546, 41.197772],
+            [91.917471, 43.632538]
+          ]
+        },
+        {
+          "short": "HM",
+          "areacode": "0902",
+          "adcode": "650500",
+          "enName": "Kumul",
+          "name": "哈密",
+          "x": "93.515053",
+          "y": "42.819346",
+          "label": "哈密市",
+          "spell": "HaMi",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [91.154781, 40.872549],
+            [96.386194, 45.096884]
+          ]
+        },
+        {
+          "short": "CJHZZZ",
+          "areacode": "0994",
+          "adcode": "652300",
+          "enName": "Changji",
+          "name": "昌吉回族自治州",
+          "x": "87.308995",
+          "y": "44.011044",
+          "label": "昌吉回族自治州",
+          "spell": "ChangJi HuiZu ZiZhiZhou",
+          "children": [],
+          "sequence": "C",
+          "bbox": [
+            [85.579566, 43.097128],
+            [91.568874, 45.48769]
+          ]
+        },
+        {
+          "short": "BETLMGZZ",
+          "areacode": "0909",
+          "adcode": "652700",
+          "enName": "Bortala",
+          "name": "博尔塔拉蒙古自治州",
+          "x": "82.066363",
+          "y": "44.906039",
+          "label": "博尔塔拉蒙古自治州",
+          "spell": "BoErTaLa MengGu ZiZhiZhou",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [79.887836, 44.006372],
+            [83.795759, 45.383676]
+          ]
+        },
+        {
+          "short": "BYGLMGZZ",
+          "areacode": "0996",
+          "adcode": "652800",
+          "enName": "Bayingol",
+          "name": "巴音郭楞蒙古自治州",
+          "x": "86.145298",
+          "y": "41.764115",
+          "label": "巴音郭楞蒙古自治州",
+          "spell": "BaYinGuoLeng MengGu ZiZhiZhou",
+          "children": [],
+          "sequence": "B",
+          "bbox": [
+            [82.470332, 35.641262],
+            [93.821096, 43.569886]
+          ]
+        },
+        {
+          "short": "AKSD",
+          "areacode": "0997",
+          "adcode": "652900",
+          "enName": "Aksu",
+          "name": "阿克苏",
+          "x": "80.265068",
+          "y": "41.170712",
+          "label": "阿克苏地区",
+          "spell": "AKeSuDiQu",
+          "children": [],
+          "sequence": "A",
+          "bbox": [
+            [78.029302, 39.464038],
+            [84.086382, 42.644855]
+          ]
+        },
+        {
+          "short": "KZLSKEKZZZ",
+          "areacode": "0908",
+          "adcode": "653000",
+          "enName": "Kizilsu",
+          "name": "克孜勒苏柯尔克孜自治州",
+          "x": "76.167327",
+          "y": "39.714734",
+          "label": "克孜勒苏柯尔克孜自治州",
+          "spell": "KeZiLeSu KeErKeZi ZiZhiZhou",
+          "children": [],
+          "sequence": "K",
+          "bbox": [
+            [73.506547, 37.652096],
+            [78.875524, 41.408232]
+          ]
+        },
+        {
+          "short": "KSD",
+          "areacode": "0998",
+          "adcode": "653100",
+          "enName": "Kashgar",
+          "name": "喀什",
+          "x": "75.989746",
+          "y": "39.470492",
+          "label": "喀什地区",
+          "spell": "KaDiQu",
+          "children": [],
+          "sequence": "K",
+          "bbox": [
+            [74.465027, 35.448246],
+            [79.862902, 40.257059]
+          ]
+        },
+        {
+          "short": "HTD",
+          "areacode": "0903",
+          "adcode": "653200",
+          "enName": "Hotan",
+          "name": "和田",
+          "x": "79.921646",
+          "y": "37.114406",
+          "label": "和田地区",
+          "spell": "HeTianDiQu",
+          "children": [],
+          "sequence": "H",
+          "bbox": [
+            [77.407004, 34.334502],
+            [84.986352, 39.622896]
+          ]
+        },
+        {
+          "short": "YLHSKZZ",
+          "areacode": "0999",
+          "adcode": "654000",
+          "enName": "Ili",
+          "name": "伊犁哈萨克自治州",
+          "x": "81.323691",
+          "y": "43.917106",
+          "label": "伊犁哈萨克自治州",
+          "spell": "YiLi HaSaKe ZiZhiZhou",
+          "children": [],
+          "sequence": "Y",
+          "bbox": [
+            [80.163939, 42.259923],
+            [85.254632, 44.843567]
+          ]
+        },
+        {
+          "short": "TCD",
+          "areacode": "0901",
+          "adcode": "654200",
+          "enName": "Qoqek",
+          "name": "塔城",
+          "x": "82.980316",
+          "y": "46.745364",
+          "label": "塔城地区",
+          "spell": "TaChengDiQu",
+          "children": [],
+          "sequence": "T",
+          "bbox": [
+            [82.266753, 43.478868],
+            [87.339441, 47.236088]
+          ]
+        },
+        {
+          "short": "ALTD",
+          "areacode": "0906",
+          "adcode": "654300",
+          "enName": "Altay",
+          "name": "阿勒泰",
+          "x": "88.141253",
+          "y": "47.844924",
+          "label": "阿勒泰地区",
+          "spell": "ALeTaiDiQu",
+          "children": [],
+          "sequence": "A",
+          "bbox": [
+            [85.531773, 45.001753],
+            [91.079147, 49.18234]
+          ]
+        },
+        {
+          "short": "SHZ",
+          "areacode": "0993",
+          "adcode": "659001",
+          "enName": "hezi",
+          "name": "石河子",
+          "x": "86.080397",
+          "y": "44.305368",
+          "label": "石河子市",
+          "spell": "HeZi",
+          "children": [],
+          "sequence": "S",
+          "bbox": [
+            [85.904777, 44.125948],
+            [86.141615, 44.459042]
+          ]
+        },
+        {
+          "short": "ALE",
+          "areacode": "1997",
+          "adcode": "659002",
+          "enName": "Aral",
+          "name": "阿拉尔",
+          "x": "81.280532",
+          "y": "40.547205",
+          "label": "阿拉尔市",
+          "spell": "ALaEr",
+          "children": [],
+          "sequence": "A",
+          "bbox": [
+            [80.592289, 40.369299],
+            [81.978617, 40.944066]
+          ]
+        },
+        {
+          "short": "TMSK",
+          "areacode": "1998",
+          "adcode": "659003",
+          "enName": "Tumxuk",
+          "name": "图木舒克",
+          "x": "79.074965",
+          "y": "39.867776",
+          "label": "图木舒克市",
+          "spell": "TuMuShuKe",
+          "children": [],
+          "sequence": "T",
+          "bbox": [
+            [78.657389, 39.611193],
+            [79.606754, 40.097601]
+          ]
+        },
+        {
+          "short": "WJQ",
+          "areacode": "1994",
+          "adcode": "659004",
+          "enName": "Wujiaqu",
+          "name": "五家渠",
+          "x": "87.542852",
+          "y": "44.166489",
+          "label": "五家渠市",
+          "spell": "WuJiaQu",
+          "children": [],
+          "sequence": "W",
+          "bbox": [
+            [87.370571, 44.007796],
+            [87.716181, 44.594823]
+          ]
+        }
+      ],
+      "sequence": "X"
+    },
+    {
+      "bbox": [
+        [119.421305, 21.883328],
+        [123.497822, 25.744891]
+      ],
+      "adcode": "710000",
+      "name": "台湾",
+      "label": "台湾省",
+      "spell": "TaiWan",
+      "x": "121.509062",
+      "y": "25.044332",
+      "citycode": "1886",
+      "children": [],
+      "sequence": "T"
+    },
+    {
+      "bbox": [
+        [113.842951, 22.177763],
+        [114.411927, 22.558891]
+      ],
+      "adcode": "810000",
+      "name": "香港",
+      "label": "香港特別行政區",
+      "spell": "XiangGang",
+      "x": "114.173355",
+      "y": "22.320048",
+      "citycode": "1852",
+      "children": [],
+      "sequence": "X"
+    },
+    {
+      "bbox": [
+        [113.53456, 22.107312],
+        [113.603872, 22.212377]
+      ],
+      "adcode": "820000",
+      "name": "澳门",
+      "label": "澳門特別行政區",
+      "spell": "AoMen",
+      "x": "113.54909",
+      "y": "22.198951",
+      "citycode": "1853",
+      "children": [],
+      "sequence": "A"
+    }
+  ]
+}

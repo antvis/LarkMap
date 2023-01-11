@@ -3,10 +3,7 @@
  * 容器组件
  */
 export { LarkMap } from './components/LarkMap';
-export type {
-  LarkMapProps,
-  LarkMapRefAttributes,
-} from './components/LarkMap/types';
+export type { LarkMapProps, LarkMapRefAttributes } from './components/LarkMap/types';
 export * from './components/LarkMap/hooks';
 
 /**
@@ -38,7 +35,8 @@ export type {
   LocationSearchOption,
   GaodeLocationSearchParams,
 } from './components/LocationSearch/types';
-
+export { AdministrativeAreaSelect } from './components/AdministrativeAreaSelect';
+export type { AdministrativeAreaSelectProps } from './components/AdministrativeAreaSelect/types';
 /**
  * 图例组件
  */
