@@ -50,6 +50,14 @@
     &-label {
       float: left;
       margin-right: 10px;
+      cursor: pointer;
+    }
+    &-name {
+      display: flex;
+      margin-bottom: 8px;
+      div {
+        cursor: pointer;
+      }
     }
     &-value {
       display: flex;
@@ -59,6 +67,9 @@
         margin-right: 9px;
         color: #999;
         cursor: pointer;
+      }
+      :hover {
+        color: #42a5f5;
       }
     }
   }
@@ -76,15 +87,20 @@
         color: #999;
         cursor: pointer;
       }
+      :hover {
+        color: #42a5f5;
+      }
     }
   }
   &__location {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 8px;
     &-item {
       width: 20px;
       color: #999;
       line-height: 18px;
+      padding: 4px;
     }
   }
 }

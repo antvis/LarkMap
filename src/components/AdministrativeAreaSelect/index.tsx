@@ -1,5 +1,6 @@
 import { CaretDownOutlined } from '@ant-design/icons';
 import { Popover, Select, Tabs } from 'antd';
+import classNames from 'classnames';
 import { groupBy } from 'lodash-es';
 import React, { useMemo, useState } from 'react';
 import { CLS_PREFIX, hotCitys } from './constant';
@@ -8,7 +9,13 @@ import data from './newCity.json';
 import { AdministrativeAreaSelectProps } from './types';
 import { treeToArr } from './util';
 
-export const AdministrativeAreaSelect: React.FC<AdministrativeAreaSelectProps> = ({ cityClick, onSelectChange }) => {
+export const AdministrativeAreaSelect: React.FC<AdministrativeAreaSelectProps> = ({
+  cityClick,
+  onSelectChange,
+  style,
+  className: cls,
+  popoverClassName,
+}) => {
   const [cityName, setCityName] = useState('全国');
   const [open, setOpen] = useState(false);
 
@@ -64,19 +71,21 @@ export const AdministrativeAreaSelect: React.FC<AdministrativeAreaSelectProps> =
                       {v.name}:
                     </div>
                   ) : (
-                    <div onClick={() => onClick(v)}>{v.name}</div>
+                    <div className={`${CLS_PREFIX}__province-content-name`}>
+                      <div onClick={() => onClick(v)}>{v.name}</div>
+                    </div>
                   )}
-                  <div className={`${CLS_PREFIX}__province-content-value`}>
-                    {v.children.length
-                      ? v.children.map((s) => {
-                          return (
-                            <div onClick={() => onClick(s)} className={`${CLS_PREFIX}__province-content-value-item`}>
-                              {s.name}
-                            </div>
-                          );
-                        })
-                      : null}
-                  </div>
+                  {v.children.length ? (
+                    <div className={`${CLS_PREFIX}__province-content-value`}>
+                      {v.children.map((s) => {
+                        return (
+                          <div onClick={() => onClick(s)} className={`${CLS_PREFIX}__province-content-value-item`}>
+                            {s.name}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : null}
                 </div>
               );
             });
@@ -136,7 +145,7 @@ export const AdministrativeAreaSelect: React.FC<AdministrativeAreaSelectProps> =
       </div>
       <div>
         <Tabs
-          defaultActiveKey="1"
+          defaultActiveKey="province"
           type="card"
           tabBarExtraContent={
             <Select
@@ -152,12 +161,12 @@ export const AdministrativeAreaSelect: React.FC<AdministrativeAreaSelectProps> =
           items={[
             {
               label: `按省份`,
-              key: '1',
+              key: 'province',
               children: provinceContent,
             },
             {
               label: `按城市`,
-              key: '2',
+              key: 'city',
               children: cityContent,
             },
           ]}
@@ -167,7 +176,7 @@ export const AdministrativeAreaSelect: React.FC<AdministrativeAreaSelectProps> =
   );
   return (
     <Popover
-      overlayClassName={`${CLS_PREFIX}__popover`}
+      overlayClassName={classNames(`${CLS_PREFIX}__popover`, popoverClassName)}
       placement="bottomLeft"
       title={<div>当前城市：{cityName}</div>}
       content={content}
@@ -178,7 +187,7 @@ export const AdministrativeAreaSelect: React.FC<AdministrativeAreaSelectProps> =
       trigger="click"
       destroyTooltipOnHide
     >
-      <div className={`${CLS_PREFIX}`}>
+      <div className={classNames(`${CLS_PREFIX}`, cls)} style={style}>
         <div className={`${CLS_PREFIX}__title`}>
           <div className={`${CLS_PREFIX}__title-name`}>{cityName}</div>
           <CaretDownOutlined />
