@@ -8,34 +8,27 @@
   }
 
   &__disContinuous {
-    display: flex;
-    align-items: baseline;
-
     &__cell {
+      display: flex;
+      align-items: center;
       &__color {
         height: 10px;
         margin-bottom: 8px;
       }
-      &__label{
-        text-align: center;
+      &__color:first-child {
+        border-radius: 5px 0 0 5px;
       }
-    }
-
-    &__cell:first-child {
-      div {
-        border-radius:5px 0 0 5px;
-      }
-    }
-    &__cell:last-child {
-      div {
+      &__color:last-child {
         border-radius: 0 5px 5px 0;
+      }
+      &__label{
+        text-align: start;
       }
     }
   }
   &__continuous {
     height: 10px;
-    border-radius: 5px;
     margin-bottom: 8px;
+    border-radius: 5px;
   }
 }
-

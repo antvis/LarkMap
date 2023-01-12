@@ -1,6 +1,5 @@
 import classnames from 'classnames';
 import React from 'react';
-import { getGradientColors } from './../../../utils/color';
 import './index.less';
 import type { LegendRampProps } from './types';
 
@@ -21,11 +20,8 @@ function getMinMax(labels) {
 export function LegendRamp(props: LegendRampProps) {
   const { isContinuous, labels, colors, lableUnit, className: cls, style, barWidth, isSegment } = props;
 
-  const colorGradient = Array.isArray(colors)
-    ? colors
-    : getGradientColors(colors.startColor, colors.endColor, labels.length);
-
-  const newlabel = labels.slice(0, colorGradient.length);
+  console.log('color', colors, labels);
+  const newlabel = labels;
 
   const label = getMinMax(labels);
   let [minLabel, maxLabel] = label;
@@ -46,8 +42,14 @@ export function LegendRamp(props: LegendRampProps) {
   }
 
   function Label() {
+    const styles = labels.length !== colors.length;
     return (
-      <div className={`${CLS_PREFIX}__labelbar`}>
+      <div
+        className={`${CLS_PREFIX}__labelbar`}
+        style={{
+          width: styles ? barWidth - barWidth / labels.length : 'auto',
+        }}
+      >
         <div>{minLabel}</div>
         <div>{maxLabel}</div>
       </div>
@@ -59,29 +61,17 @@ export function LegendRamp(props: LegendRampProps) {
    * @param param0
    * @returns
    */
-  function Continuous({ color }: Record<string, string[]>) {
+  function Continuous() {
     return (
       <>
-        <div className={`${CLS_PREFIX}__continuous`} style={{ background: `linear-gradient(to right,${color})` }} />
+        <div className={`${CLS_PREFIX}__continuous`} style={{ background: `linear-gradient(to right,${colors})` }} />
         <Label />
       </>
     );
   }
 
-  function tooltip(item: string, idx: number) {
-    let title;
-    switch (idx) {
-      case 0:
-        title = String(minLabel);
-        break;
-      case newlabel.length - 1:
-        title = String(maxLabel);
-        break;
-      default:
-        title = `${newlabel[idx - 1]}${lableUnit ?? ''} - ${item}${lableUnit ?? ''}`;
-        break;
-    }
-
+  function tooltip(idx: number) {
+    const title = `${newlabel[idx]}${lableUnit ?? ''} - ${newlabel[idx + 1]}${lableUnit ?? ''}`;
     return title;
   }
 
@@ -90,46 +80,49 @@ export function LegendRamp(props: LegendRampProps) {
    * @param param0
    * @returns
    */
-  function DisContinuous({ color }: Record<string, string[]>) {
+  function DisContinuous() {
     return (
       <>
         <div className={`${CLS_PREFIX}__disContinuous`}>
-          {newlabel?.map((item: string | number, i: number) => {
-            return (
-              <div
-                key={Math.random()}
-                className={`${CLS_PREFIX}__disContinuous__cell`}
-                style={{ width: barWidth / color.length }}
-              >
+          <div className={`${CLS_PREFIX}__disContinuous__cell`}>
+            {colors?.map((item: string | number, i: number) => {
+              return (
                 <div
-                  title={tooltip(item as string, i)}
+                  key={Math.random()}
+                  title={tooltip(i)}
                   className={`${CLS_PREFIX}__disContinuous__cell__color`}
-                  style={{ background: color[i] }}
+                  style={{ background: item, width: barWidth / labels.length }}
                 />
-                {isSegment ? (
+              );
+            })}
+          </div>
+          {isSegment ? (
+            <div className={`${CLS_PREFIX}__disContinuous__cell`}>
+              {labels?.map((item: string | number) => {
+                return (
                   <div
+                    key={item}
                     className={`${CLS_PREFIX}__disContinuous__cell__label`}
-                    style={{
-                      zoom: +setZoom(item),
-                    }}
+                    style={{ zoom: +setZoom(item), width: barWidth / labels.length }}
                   >
                     {String(item).length > 7
                       ? `${String(item).substring(0, 7)}${lableUnit ?? ''}...`
                       : `${item}${lableUnit ?? ''}`}
                   </div>
-                ) : null}
-              </div>
-            );
-          })}
+                );
+              })}
+            </div>
+          ) : (
+            <Label />
+          )}
         </div>
-        {!isSegment ? <Label /> : null}
       </>
     );
   }
 
   return (
     <div style={{ width: barWidth, ...style }} className={classnames(`${CLS_PREFIX}`, cls)}>
-      {isContinuous ? <Continuous color={colorGradient} /> : <DisContinuous color={colorGradient} />}
+      {isContinuous ? <Continuous /> : <DisContinuous />}
     </div>
   );
 }
