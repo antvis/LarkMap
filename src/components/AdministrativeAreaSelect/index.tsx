@@ -53,9 +53,15 @@ export const AdministrativeAreaSelect: React.FC<AdministrativeAreaSelectProps> =
           .sort()
           .map((item) => {
             return (
-              <a className={`${CLS_PREFIX}__location-item`} href={`#province${item}`}>
+              <div
+                className={`${CLS_PREFIX}__location-item`}
+                onClick={() => {
+                  const element = document.getElementById(`province${item}`);
+                  element.scrollIntoView({ block: 'nearest' });
+                }}
+              >
                 {item}
-              </a>
+              </div>
             );
           })}
       </div>
@@ -101,9 +107,15 @@ export const AdministrativeAreaSelect: React.FC<AdministrativeAreaSelectProps> =
           .sort()
           .map((item) => {
             return (
-              <a className={`${CLS_PREFIX}__location-item`} href={`#city${item}`}>
+              <div
+                className={`${CLS_PREFIX}__location-item`}
+                onClick={() => {
+                  const element = document.getElementById(`city${item}`);
+                  element.scrollIntoView({ block: 'nearest' });
+                }}
+              >
                 {item}
-              </a>
+              </div>
             );
           })}
       </div>
