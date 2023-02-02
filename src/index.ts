@@ -3,10 +3,7 @@
  * 容器组件
  */
 export { LarkMap } from './components/LarkMap';
-export type {
-  LarkMapProps,
-  LarkMapRefAttributes,
-} from './components/LarkMap/types';
+export type { LarkMapProps, LarkMapRefAttributes } from './components/LarkMap/types';
 export * from './components/LarkMap/hooks';
 
 /**
@@ -68,3 +65,4 @@ export * from './components/LayerAttribute';
  * 版本号
  */
 export { default as version } from './version';
+export { syncScene } from './utils/syncScene';
