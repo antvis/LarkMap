@@ -1,6 +1,6 @@
 ---
 toc: false
-order: 10
+order: 1
 nav:
   title: 示例
   path: /example
@@ -11,9 +11,9 @@ nav:
 
 ## 介绍
 
-地图同步状态工具函数
+用于同步地图状态「缩放层级和地图中心」的方法。
 
-地图类型 支持 Gaode 和 Mapbox
+支持 Gaode 和 Mapbox 两种地图类型
 
 ### 使用场景
 
@@ -24,6 +24,7 @@ nav:
 ### 示例一：基础使用
 
 ```tsx
+import type { Scene } from '@antv/l7';
 import type { LarkMapProps } from '@antv/larkmap';
 import { LarkMap, syncScene } from '@antv/larkmap';
 import React from 'react';
@@ -37,13 +38,13 @@ const config: LarkMapProps = {
 };
 export default () => {
   const [sceneArray, setSceneArray] = React.useState([]);
-  const clearRef = React.useRef();
+  const clearRef = React.useRef<() => void>();
   const onSceneLoaded = (scene: Scene) => {
     setSceneArray((oldValue) => [...oldValue, scene]);
   };
 
   const clearSync = () => {
-    clearRef.current();
+    if (clearRef.current) clearRef.current();
   };
   const addSync = () => {
     clearRef.current = syncScene(sceneArray);
@@ -52,9 +53,7 @@ export default () => {
   return (
     <div>
       <button onClick={addSync}>添加场景同步</button>
-
       <button onClick={clearSync}>清除同步</button>
-
       <div style={{ display: 'flex', flexDirection: 'row', height: '300px' }}>
         <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="scene" style={{ flex: 1 }}>
           <h2 style={{ position: 'absolute', left: '10px' }}>地图1</h2>
@@ -71,8 +70,10 @@ export default () => {
 ### 示例二： 设置 zoomGap
 
 ```tsx
+import type { Scene } from '@antv/l7';
 import type { LarkMapProps } from '@antv/larkmap';
 import { LarkMap, syncScene } from '@antv/larkmap';
+
 import React from 'react';
 const config: LarkMapProps = {
   // mapType: 'Gaode',
@@ -84,12 +85,14 @@ const config: LarkMapProps = {
 };
 export default () => {
   const [sceneArray, setSceneArray] = React.useState([]);
-  const [zoomGap, setZoomGap] = React.useState(0);
+  const [zoomGap, setZoomGap] = React.useState<Number>();
   const onSceneLoaded = (scene: Scene) => {
     setSceneArray((oldValue) => [...oldValue, scene]);
   };
   const changeHandler = (e) => {
-    setZoomGap(e.target.value);
+    // 转为Number类型
+    const gap = Number(e.target.value);
+    setZoomGap(gap);
   };
   React.useEffect(() => {
     const callback = syncScene(sceneArray, {
@@ -106,7 +109,7 @@ export default () => {
       设置zoomGap： <input onChange={changeHandler}></input>
       <div style={{ display: 'flex', flexDirection: 'row', height: '300px' }}>
         <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="scene" style={{ flex: 1 }}>
-          <h2 style={{ position: 'absolute', left: '10px' }}>地图1</h2>
+          <h2 style={{ position: 'absolute', left: '10px' }}>主地图</h2>
         </LarkMap>
         <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="scene2" style={{ flex: 1 }}>
           <h2 style={{ position: 'absolute', left: '10px' }}>地图2</h2>
@@ -119,17 +122,17 @@ export default () => {
 
 ## API
 
-方法：syncScene(sceneArray,option)
+方法：`syncScene(sceneArray,option)`
 
 ### sceneArray
 
-L7.Scene 的数组
+`L7.Scene` 的数组
 
 ### options
 
-| 参数           | 说明                                                                 | 类型   | 默认值 |
-| -------------- | -------------------------------------------------------------------- | ------ | ------ |
-| zoomGap        | 用于设置同步场景的地图层级差                                         | number | 0      |
-| mainSceneIndex | 搭配 zoomGap 使用，用于设置主场景，其余场景为主场景的 zoom + zoomGap | number | 0      |
+| 参数        | 说明                                                                       | 类型     | 默认值 |
+| ----------- | -------------------------------------------------------------------------- | -------- | ------ |
+| `zoomGap`   | 用于设置同步场景的地图层级差                                               | `number` | 0      |
+| `mainIndex` | 搭配 `zoomGap` 使用，用于设置主场景，其余场景为主场景的 `zoom` + `zoomGap` | `number` | 0      |
 
 ## FAQ
