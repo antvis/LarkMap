@@ -73,28 +73,32 @@ function DisContinuous({
 
   return (
     <div className={`${CLS_PREFIX}__dis-continuous`} ref={containerRef}>
-      <div className={`${CLS_PREFIX}__dis-continuous__colors`} style={{ paddingLeft: stepWidth / 2 }}>
-        {colors?.map((item, i) => {
-          return (
-            <div
-              key={item}
-              title={tooltip(i)}
-              className={`${CLS_PREFIX}__dis-continuous__color`}
-              style={{ background: item, width: stepWidth }}
-            />
-          );
-        })}
-      </div>
-      <div className={`${CLS_PREFIX}__dis-continuous__labels`}>
-        {labels?.map((item) => {
-          const label = item + labelUnit;
-          return (
-            <span key={item} className={`${CLS_PREFIX}__dis-continuous__label`}>
-              {label}
-            </span>
-          );
-        })}
-      </div>
+      {Number.isNaN(stepWidth) ? null : (
+        <>
+          <div className={`${CLS_PREFIX}__dis-continuous__colors`} style={{ paddingLeft: stepWidth / 2 }}>
+            {colors?.map((item, i) => {
+              return (
+                <div
+                  key={item}
+                  title={tooltip(i)}
+                  className={`${CLS_PREFIX}__dis-continuous__color`}
+                  style={{ background: item, width: stepWidth }}
+                />
+              );
+            })}
+          </div>
+          <div className={`${CLS_PREFIX}__dis-continuous__labels`}>
+            {labels?.map((item) => {
+              const label = item + labelUnit;
+              return (
+                <span key={item} className={`${CLS_PREFIX}__dis-continuous__label`}>
+                  {label}
+                </span>
+              );
+            })}
+          </div>
+        </>
+      )}
     </div>
   );
 }
