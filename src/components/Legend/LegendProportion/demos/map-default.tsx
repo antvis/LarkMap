@@ -1,7 +1,6 @@
 import type { LegendItems } from '@antv/l7';
 import type { BubbleLayerProps } from '@antv/larkmap';
 import { BubbleLayer, CustomControl, LarkMap, LegendProportion } from '@antv/larkmap';
-import { max, min } from 'lodash-es';
 import React, { useEffect, useState } from 'react';
 
 const colors = [
@@ -21,6 +20,7 @@ const bubbleLayerOptions: Omit<BubbleLayerProps, 'source'> = {
   radius: {
     field: 'value',
     value: [10, 50],
+    scale: { type: 'quantize' },
   },
   fillColor: {
     field: 'type',
@@ -59,8 +59,8 @@ export default () => {
 
   const Legend = () => {
     if (!legendItems.length) return null;
-    const label = legendItems.map((item) => item.value);
-    return <LegendProportion labels={[min(label), max(label)]} className="demo_cls" />;
+    const label = legendItems.map((item) => item.value).flat();
+    return <LegendProportion labels={label} className="demo_cls" />;
   };
 
   return (
