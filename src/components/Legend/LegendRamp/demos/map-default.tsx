@@ -29,9 +29,7 @@ export default () => {
     const newValue: any = new Set([...legendItems.map((item) => item.value).flat()]);
     return (
       <LegendRamp
-        isSegment
-        barWidth={280}
-        style={{ background: '#fff', padding: 8 }}
+        style={{ background: '#fff', padding: 5, width: 280 }}
         colors={legendItems.map((item) => item.color)}
         labels={[...newValue.map((item) => item.toFixed())]}
       />
