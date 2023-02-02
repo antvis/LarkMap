@@ -1,32 +1,54 @@
 @cls-prefix: larkmap-legend-ramp;
 
 .@{cls-prefix} {
-  &__labelbar {
+  width: 100%;
+
+  &__dis-continuous {
+    width: 100%;
+
+    &__colors {
+      display: flex;
+      align-items: center;
+      padding: 4px 0;
+    }
+
+    &__color {
+      height: 10px;
+
+      &:first-child {
+        border-radius: 5px 0 0 5px;
+      }
+
+      &:last-child {
+        border-radius: 0 5px 5px 0;
+      }
+    }
+
+    &__labels {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    &__label {
+      flex-basis: 0;
+      flex-grow: 1;
+      max-width: 100%;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+
+  &__continuous {
+    height: 10px;
+    margin: 4px 0;
+    border-radius: 5px;
+  }
+
+  &__continuous-labelbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 8px;
-  }
-
-  &__continuousBar {
-    height: 10px;
-    border-radius: 6px
-  }
-
-
-  &__equidistantBar {
-    display: flex;
-
-    &__bar {
-      height: 10px;
-    }
-
-    &__bar:first-child {
-      border-radius: 6px 0 0 6px;
-    }
-
-    &__bar:last-child {
-      border-radius: 0 6px 6px 0;
-    }
+    font-size: 12px;
   }
 }
