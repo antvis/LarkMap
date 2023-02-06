@@ -5,6 +5,7 @@
  */
 
 import type { Scene } from '@antv/l7';
+import { isNumber } from 'lodash-es';
 interface GaodeMap {
   setCenter: (center: [number, number], immediately?: boolean) => void;
   setZoom: (zoom: number, immediately?: boolean) => void;
@@ -34,14 +35,14 @@ const updateSceneStatus = (
     const map = scene?.map as GaodeMap;
     // 高德地图关闭动画效果
     if (center) map.setCenter(center, true);
-    if (zoom) map?.setZoom(zoom + 1, true);
-    if (rotation) map?.setRotation(360 - rotation, true);
-    if (pitch) map?.setPitch(pitch, true);
+    if (isNumber(zoom)) map?.setZoom(zoom + 1, true);
+    if (isNumber(rotation)) map?.setRotation(360 - rotation, true);
+    if (isNumber(pitch)) map?.setPitch(pitch, true);
   } else {
-    if (zoom) scene?.setZoom(zoom);
+    if (isNumber(zoom)) scene?.setZoom(zoom);
     if (center) scene?.setCenter(center);
-    if (rotation) scene.setRotation(rotation);
-    if (pitch) scene?.setPitch(pitch);
+    if (isNumber(rotation)) scene.setRotation(rotation);
+    if (isNumber(pitch)) scene?.setPitch(pitch);
   }
 };
 
