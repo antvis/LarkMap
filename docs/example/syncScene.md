@@ -120,6 +120,62 @@ export default () => {
 };
 ```
 
+### 示例三：多地图场景同步
+
+```tsx
+import type { Scene } from '@antv/l7';
+import type { LarkMapProps } from '@antv/larkmap';
+import { LarkMap, syncScene } from '@antv/larkmap';
+import React from 'react';
+const config: LarkMapProps = {
+  mapType: 'Gaode',
+  mapOptions: {
+    style: 'light',
+    center: [120.210792, 30.246026],
+    zoom: 9,
+  },
+};
+export default () => {
+  const [sceneArray, setSceneArray] = React.useState([]);
+  const clearRef = React.useRef<() => void>();
+  const onSceneLoaded = (scene: Scene) => {
+    setSceneArray((oldValue) => [...oldValue, scene]);
+  };
+
+  const clearSync = () => {
+    if (clearRef.current) clearRef.current();
+  };
+  const addSync = () => {
+    clearRef.current = syncScene(sceneArray, {
+      zoomGap: 2,
+      mainIndex: 0,
+    });
+  };
+
+  return (
+    <div>
+      <h2>设置主地图与其余地图缩放层级差为2</h2>
+      <button onClick={addSync}>添加场景同步</button>
+      <button onClick={clearSync}>清除同步</button>
+      <div style={{ display: 'flex', flexDirection: 'row', height: '400px' }}>
+        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="scene" style={{ flex: 1 }}>
+          <h3 style={{ position: 'absolute', left: '10px' }}>主地图</h3>
+        </LarkMap>
+        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="scene2" style={{ flex: 1 }}>
+          <h3 style={{ position: 'absolute', left: '10px' }}>地图2</h3>
+        </LarkMap>
+        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="scene2" style={{ flex: 1 }}>
+          <h3 style={{ position: 'absolute', left: '10px' }}>地图3</h3>
+        </LarkMap>
+        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="scene2" style={{ flex: 1 }}>
+          <h3 style={{ position: 'absolute', left: '10px' }}>地图4</h3>
+        </LarkMap>
+      </div>
+    </div>
+  );
+};
+```
+
 ## API
 
 `syncScene(scenes: Scene[], options: { zoomGap: number, mainIndex: number })`

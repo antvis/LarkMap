@@ -12,36 +12,39 @@ function getMapType(scene: Scene) {
   return mapVersion?.includes('MAPBOX') ? 'Mapbox' : 'Gaode';
 }
 
-// 根据不同地图引擎类型，设置地图的缩放层级
-function setZoom(scene: Scene, zoom: number): void {
+// 根据不同地图引擎类型，设置地图的状态「缩放层级、地图中心点、旋转角、倾角」
+const updateSceneStatus = (
+  scene: Scene,
+  status: {
+    zoom?: number;
+    center?: [number, number];
+    pitch?: number;
+    rotation?: number;
+  },
+) => {
   const mapType = getMapType(scene);
+  const { zoom, center, pitch, rotation } = status;
   if (mapType === 'Gaode') {
-    /**
-     * NOTE: 高德地图必须关闭动画效果，否则无法实现联动
-     *       L7 针对 Gaode 地图，进行的 zoom + 1 的操作
-     */
-    //@ts-ignore
-    scene?.map?.setZoom(zoom + 1, true);
+    // 高德地图关闭动画效果
+    // @ts-ignore
+    if (center) scene?.map.setCenter(center, true);
+    // @ts-ignore
+    if (zoom) scene?.map?.setZoom(zoom + 1, true);
+    // @ts-ignore
+    if (rotation) scene?.map?.setRotation(rotation, true);
+    // @ts-ignore
+    if (pitch) scene?.map?.setPitch(pitch, true);
   } else {
-    scene.setZoom(zoom);
+    if (zoom) scene?.setZoom(zoom);
+    if (center) scene?.setCenter(center);
+    if (rotation) scene?.setRotation(rotation);
+    if (pitch) scene?.setPitch(pitch);
   }
-}
-
-// 根据不同地图引擎类型，设置地图的中心点
-function setCenter(scene: Scene, center: [number, number]) {
-  const mapType = getMapType(scene);
-  if (mapType === 'Gaode') {
-    // 同 setZoom ，高德地图关闭设置 center 的动画效果
-    //@ts-ignore
-    scene?.map.setCenter(center, true);
-  } else {
-    scene?.setCenter(center);
-  }
-}
+};
 
 /**
  *
- * @param array scene 的数组
+ * @param scenes l7实例化的scene 的数组
  * @param options
  * @param options.zoomGap number  同步的缩放层级差距
  * @param options.mainIndex number  主场景的数组索引，用于搭配 zoomGap
@@ -74,22 +77,29 @@ export function syncScene(
     listeners.length = 0;
   };
 
-  // 同步指定索引的 scene 地图状态
+  // 根据指定索引的 scene 同步其他 scene 状态
   const moveScenePosition = (index: number) => {
-    const usedScene = scenes[index];
-    const center = usedScene.getCenter();
-    const zoom = usedScene.getZoom();
-    scenes.forEach((item, num) => {
-      // 非当前使用 scene
+    const movedScene = scenes[index];
+    const center = movedScene.getCenter();
+    const zoom = movedScene.getZoom();
+    const rotation = movedScene.getRotation();
+    const pitch = movedScene.getPitch();
+    /**
+     * 根据当前地图是否为主地图，分两种情况
+     * 1. 非主地图，则其他非主地图 zoom 设置当前 zoom ，主地图设置为 zoom - zoomGap
+     * 2. 主地图，则其他非主地图 zoom 设置为 zoom + zoomGap
+     */
+    const isMovedMainScene = index === mainIndex;
+    scenes.forEach((scene, num) => {
       if (num !== index) {
-        if (num === mainIndex) {
-          // 非主 scene
-          setZoom(item, zoom - zoomGap);
-          setCenter(item, [center.lng, center.lat]);
-        } else {
-          setZoom(item, zoom + zoomGap);
-          setCenter(item, [center.lng, center.lat]);
-        }
+        // 当前需要同步的状态是不是主地图
+        const sceneZoom = isMovedMainScene ? zoom + zoomGap : num === mainIndex ? zoom - zoomGap : zoom;
+        updateSceneStatus(scene, {
+          zoom: sceneZoom,
+          center: [center.lng, center.lat],
+          rotation,
+          pitch,
+        });
       }
     });
   };
