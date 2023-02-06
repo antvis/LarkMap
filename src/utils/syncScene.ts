@@ -124,11 +124,10 @@ export function syncScene(
   const syncHandler = (index: number) => {
     clearListener();
     moveScenePosition(index);
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     initListener();
   };
 
-  const initListener = () => {
+  function initListener() {
     handlers = scenes.map((value, index) => {
       // 每个地图有自己的状态同步函数
       return syncHandler.bind(null, index);
@@ -137,7 +136,7 @@ export function syncScene(
       // 给每个地图绑定监听
       listeners.push(listen(index));
     });
-  };
+  }
 
   // 初始化,先将所有地图状态同步。
   scenes.forEach((value, index) => {
