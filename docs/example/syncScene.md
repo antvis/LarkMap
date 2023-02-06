@@ -120,7 +120,7 @@ export default () => {
 };
 ```
 
-### 示例三：不同引擎
+### 示例三：Mapbox 引擎
 
 ```tsx
 import type { Scene } from '@antv/l7';
@@ -136,12 +136,8 @@ const config: LarkMapProps = {
 };
 export default () => {
   const [sceneArray, setSceneArray] = React.useState([]);
-  const [mapType, setMapType] = React.useState();
   const onSceneLoaded = (scene: Scene) => {
     setSceneArray((oldValue) => [...oldValue, scene]);
-  };
-  const changeMapType = (e) => {
-    setMapType(e.target.value);
   };
 
   React.useEffect(() => {
@@ -151,17 +147,11 @@ export default () => {
 
   return (
     <div>
-      <select onChange={changeMapType}>
-        <option value="Mapbox">Mapbox</option>
-        <option value="Gaode" selected>
-          Gaode
-        </option>
-      </select>
       <div style={{ display: 'flex', flexDirection: 'row', height: '300px' }}>
-        <LarkMap onSceneLoaded={onSceneLoaded} {...config} mapType={mapType} id="engineScene" style={{ flex: 1 }}>
+        <LarkMap onSceneLoaded={onSceneLoaded} {...config} mapType="Mapbox" id="engineScene" style={{ flex: 1 }}>
           <h2 style={{ position: 'absolute', left: '10px' }}>地图1</h2>
         </LarkMap>
-        <LarkMap onSceneLoaded={onSceneLoaded} {...config} mapType={mapType} id="engineScene2" style={{ flex: 1 }}>
+        <LarkMap onSceneLoaded={onSceneLoaded} {...config} mapType="Mapbox" id="engineScene2" style={{ flex: 1 }}>
           <h2 style={{ position: 'absolute', left: '10px' }}>地图2</h2>
         </LarkMap>
       </div>
