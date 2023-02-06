@@ -26,3 +26,6 @@ export type { ScaleControlProps } from './ScaleControl/type';
 
 export { ZoomControl } from './ZoomControl';
 export type { ZoomControlProps } from './ZoomControl/types';
+
+export { LogoControl } from './LogoControl';
+export type { LogoControlProps } from './LogoControl/types';
