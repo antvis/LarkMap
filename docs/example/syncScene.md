@@ -55,10 +55,10 @@ export default () => {
       <button onClick={addSync}>添加场景同步</button>
       <button onClick={clearSync}>清除同步</button>
       <div style={{ display: 'flex', flexDirection: 'row', height: '300px' }}>
-        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="scene" style={{ flex: 1 }}>
+        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="baseScene" style={{ flex: 1 }}>
           <h2 style={{ position: 'absolute', left: '10px' }}>地图1</h2>
         </LarkMap>
-        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="scene2" style={{ flex: 1 }}>
+        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="baseScene2" style={{ flex: 1 }}>
           <h2 style={{ position: 'absolute', left: '10px' }}>地图2</h2>
         </LarkMap>
       </div>
@@ -108,10 +108,10 @@ export default () => {
     <div>
       设置zoomGap： <input onChange={changeHandler}></input>
       <div style={{ display: 'flex', flexDirection: 'row', height: '300px' }}>
-        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="scene" style={{ flex: 1 }}>
+        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="gapScene" style={{ flex: 1 }}>
           <h2 style={{ position: 'absolute', left: '10px' }}>主地图</h2>
         </LarkMap>
-        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="scene2" style={{ flex: 1 }}>
+        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="gapScene2" style={{ flex: 1 }}>
           <h2 style={{ position: 'absolute', left: '10px' }}>地图2</h2>
         </LarkMap>
       </div>
@@ -120,7 +120,57 @@ export default () => {
 };
 ```
 
-### 示例三：多地图场景同步
+### 示例三：不同引擎
+
+```tsx
+import type { Scene } from '@antv/l7';
+import type { LarkMapProps } from '@antv/larkmap';
+import { LarkMap, syncScene } from '@antv/larkmap';
+import React from 'react';
+const config: LarkMapProps = {
+  mapOptions: {
+    style: 'light',
+    center: [120.210792, 30.246026],
+    zoom: 9,
+  },
+};
+export default () => {
+  const [sceneArray, setSceneArray] = React.useState([]);
+  const [mapType, setMapType] = React.useState();
+  const onSceneLoaded = (scene: Scene) => {
+    setSceneArray((oldValue) => [...oldValue, scene]);
+  };
+  const changeMapType = (e) => {
+    setMapType(e.target.value);
+  };
+
+  React.useEffect(() => {
+    const callback = syncScene(sceneArray);
+    return callback;
+  }, [sceneArray]);
+
+  return (
+    <div>
+      <select onChange={changeMapType}>
+        <option value="Mapbox">Mapbox</option>
+        <option value="Gaode" selected>
+          Gaode
+        </option>
+      </select>
+      <div style={{ display: 'flex', flexDirection: 'row', height: '300px' }}>
+        <LarkMap onSceneLoaded={onSceneLoaded} {...config} mapType={mapType} id="engineScene" style={{ flex: 1 }}>
+          <h2 style={{ position: 'absolute', left: '10px' }}>地图1</h2>
+        </LarkMap>
+        <LarkMap onSceneLoaded={onSceneLoaded} {...config} mapType={mapType} id="engineScene2" style={{ flex: 1 }}>
+          <h2 style={{ position: 'absolute', left: '10px' }}>地图2</h2>
+        </LarkMap>
+      </div>
+    </div>
+  );
+};
+```
+
+### 示例四：多地图场景同步
 
 ```tsx
 import type { Scene } from '@antv/l7';
@@ -158,16 +208,16 @@ export default () => {
       <button onClick={addSync}>添加场景同步</button>
       <button onClick={clearSync}>清除同步</button>
       <div style={{ display: 'flex', flexDirection: 'row', height: '400px' }}>
-        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="scene" style={{ flex: 1 }}>
+        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="multiScene" style={{ flex: 1 }}>
           <h3 style={{ position: 'absolute', left: '10px' }}>主地图</h3>
         </LarkMap>
-        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="scene2" style={{ flex: 1 }}>
+        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="multiScene2" style={{ flex: 1 }}>
           <h3 style={{ position: 'absolute', left: '10px' }}>地图2</h3>
         </LarkMap>
-        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="scene2" style={{ flex: 1 }}>
+        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="multiScene3" style={{ flex: 1 }}>
           <h3 style={{ position: 'absolute', left: '10px' }}>地图3</h3>
         </LarkMap>
-        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="scene2" style={{ flex: 1 }}>
+        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="multiScene4" style={{ flex: 1 }}>
           <h3 style={{ position: 'absolute', left: '10px' }}>地图4</h3>
         </LarkMap>
       </div>

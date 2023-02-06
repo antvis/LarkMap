@@ -5,6 +5,12 @@
  */
 
 import type { Scene } from '@antv/l7';
+interface GaodeMap {
+  setCenter: (center: [number, number], immediately?: boolean) => void;
+  setZoom: (zoom: number, immediately?: boolean) => void;
+  setRotation: (rotation: number, immediately?: boolean) => void;
+  setPitch: (pitch: number, immediately?: boolean) => void;
+}
 
 // 通过 Scene 获取到地图引擎类型
 function getMapType(scene: Scene) {
@@ -25,19 +31,16 @@ const updateSceneStatus = (
   const mapType = getMapType(scene);
   const { zoom, center, pitch, rotation } = status;
   if (mapType === 'Gaode') {
+    const map = scene?.map as GaodeMap;
     // 高德地图关闭动画效果
-    // @ts-ignore
-    if (center) scene?.map.setCenter(center, true);
-    // @ts-ignore
-    if (zoom) scene?.map?.setZoom(zoom + 1, true);
-    // @ts-ignore
-    if (rotation) scene?.map?.setRotation(rotation, true);
-    // @ts-ignore
-    if (pitch) scene?.map?.setPitch(pitch, true);
+    if (center) map.setCenter(center, true);
+    if (zoom) map?.setZoom(zoom + 1, true);
+    if (rotation) map?.setRotation(360 - rotation, true);
+    if (pitch) map?.setPitch(pitch, true);
   } else {
     if (zoom) scene?.setZoom(zoom);
     if (center) scene?.setCenter(center);
-    if (rotation) scene?.setRotation(rotation);
+    // if (rotation) scene?.setRotation(rotation);
     if (pitch) scene?.setPitch(pitch);
   }
 };
@@ -65,10 +68,16 @@ export function syncScene(
   const listen = (index: number) => {
     const scene = scenes[index];
     scene.on('mapmove', handlers[index]);
+    // Gaode 地图调整倾角和旋转角的事件
+    scene.on('dragging', handlers[index]);
+    // Mapbox 地图调整倾角和旋转角的事件
+    scene.on('drag', handlers[index]);
     scene.on('zoomchange', handlers[index]);
     return () => {
       scene.off('mapmove', handlers[index]);
+      scene.off('dragging', handlers[index]);
       scene.off('zoomchange', handlers[index]);
+      scene.on('drag', handlers[index]);
     };
   };
 
