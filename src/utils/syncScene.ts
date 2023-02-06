@@ -1,7 +1,7 @@
 /*
- * @name         : 地图同步方法
+ * @name         : 地图状态同步方法
  * @Description  : 用于将多个地图动作、视角同步
- * @Principle    : 监听所有地图场景的 mapmove 与zoomChange 事件。触发时，解绑自己事件 => 同步所有的地图状态 => 重新添加监听
+ * @Principle    : 监听所有地图场景的 mapmove、zoomchange、rotate 等事件。触发时，解绑自己事件 => 同步所有的地图状态 => 重新添加监听
  */
 
 import type { Scene } from '@antv/l7';
@@ -40,14 +40,14 @@ const updateSceneStatus = (
   } else {
     if (zoom) scene?.setZoom(zoom);
     if (center) scene?.setCenter(center);
-    // if (rotation) scene?.setRotation(rotation);
+    if (rotation) scene.setRotation(rotation);
     if (pitch) scene?.setPitch(pitch);
   }
 };
 
 /**
  *
- * @param scenes l7实例化的scene 的数组
+ * @param scenes l7实例化的 scene 的数组
  * @param options
  * @param options.zoomGap number  同步的缩放层级差距
  * @param options.mainIndex number  主场景的数组索引，用于搭配 zoomGap
@@ -71,13 +71,14 @@ export function syncScene(
     // Gaode 地图调整倾角和旋转角的事件
     scene.on('dragging', handlers[index]);
     // Mapbox 地图调整倾角和旋转角的事件
-    scene.on('drag', handlers[index]);
+    scene.on('rotate', handlers[index]);
     scene.on('zoomchange', handlers[index]);
+
     return () => {
       scene.off('mapmove', handlers[index]);
       scene.off('dragging', handlers[index]);
       scene.off('zoomchange', handlers[index]);
-      scene.on('drag', handlers[index]);
+      scene.off('rotate', handlers[index]);
     };
   };
 

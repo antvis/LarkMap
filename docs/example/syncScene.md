@@ -11,13 +11,13 @@ nav:
 
 ## 介绍
 
-用于同步地图状态「缩放层级和地图中心」的方法。
+用于同步地图状态「缩放层级、地图中心点、旋转角、倾斜角」。
 
-支持 Gaode 和 Mapbox 两种地图类型
+支持 Gaode 和 Mapbox 两种地图引擎类型
 
 ### 使用场景
 
-适用于同步两个场景的地图状态，适用于两幅或多幅地图的联动。
+适用于同步多个场景的地图状态，适用于两幅或多幅地图的联动。
 
 ## 代码演示
 
@@ -163,6 +163,9 @@ export default () => {
 ### 示例四：多地图场景同步
 
 ```tsx
+/**
+ * title: 主地图与其余地图缩放层级差为2
+ */
 import type { Scene } from '@antv/l7';
 import type { LarkMapProps } from '@antv/larkmap';
 import { LarkMap, syncScene } from '@antv/larkmap';
@@ -194,7 +197,7 @@ export default () => {
 
   return (
     <div>
-      <h2>设置主地图与其余地图缩放层级差为2</h2>
+      <h1>主地图与其余地图缩放层级差为2</h1>
       <button onClick={addSync}>添加场景同步</button>
       <button onClick={clearSync}>清除同步</button>
       <div style={{ display: 'flex', flexDirection: 'row', height: '400px' }}>
@@ -206,9 +209,6 @@ export default () => {
         </LarkMap>
         <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="multiScene3" style={{ flex: 1 }}>
           <h3 style={{ position: 'absolute', left: '10px' }}>地图3</h3>
-        </LarkMap>
-        <LarkMap onSceneLoaded={onSceneLoaded} {...config} id="multiScene4" style={{ flex: 1 }}>
-          <h3 style={{ position: 'absolute', left: '10px' }}>地图4</h3>
         </LarkMap>
       </div>
     </div>
