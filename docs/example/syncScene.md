@@ -17,7 +17,7 @@ nav:
 
 ### 使用场景
 
-可用于同步两个场景的地图状态，适用于 两幅地图的联动。
+适用于同步两个场景的地图状态，适用于两幅或多幅地图的联动。
 
 ## 代码演示
 
@@ -122,7 +122,7 @@ export default () => {
 
 ## API
 
-` syncScene(scenes: Scene[], options: { zoomGap: number, mainIndex: number }) `
+`syncScene(scenes: Scene[], options: { zoomGap: number, mainIndex: number })`
 
 ### scenes
 
