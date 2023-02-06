@@ -122,11 +122,11 @@ export default () => {
 
 ## API
 
-方法：`syncScene(sceneArray,option)`
+` syncScene(scenes: Scene[], options: { zoomGap: number, mainIndex: number }) `
 
-### sceneArray
+### scenes
 
-`L7.Scene` 的数组
+LarkMap 加载完成的 Scene 实例数组
 
 ### options
 
@@ -134,5 +134,3 @@ export default () => {
 | ----------- | -------------------------------------------------------------------------- | -------- | ------ |
 | `zoomGap`   | 用于设置同步场景的地图层级差                                               | `number` | 0      |
 | `mainIndex` | 搭配 `zoomGap` 使用，用于设置主场景，其余场景为主场景的 `zoom` + `zoomGap` | `number` | 0      |
-
-## FAQ

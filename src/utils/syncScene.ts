@@ -1,12 +1,12 @@
 /*
  * @name         : 地图同步方法
  * @Description  : 用于将多个地图动作、视角同步
- * @Principle    : 监听所有地图的move事件，触发时，先解绑自己事件，在同步所有的地图状态。再重新添加监听
+ * @Principle    : 监听所有地图场景的 mapmove 与zoomChange 事件。触发时，解绑自己事件 => 同步所有的地图状态 => 重新添加监听
  */
 
 import type { Scene } from '@antv/l7';
 
-// 通过Scene获取到地图引擎类型
+// 通过 Scene 获取到地图引擎类型
 function getMapType(scene: Scene) {
   const mapVersion = scene.getMapService().version;
   return mapVersion?.includes('MAPBOX') ? 'Mapbox' : 'Gaode';
@@ -18,7 +18,7 @@ function setZoom(scene: Scene, zoom: number): void {
   if (mapType === 'Gaode') {
     /**
      * NOTE: 高德地图必须关闭动画效果，否则无法实现联动
-     *       L7 针对Gaode地图，进行的zoom + 1 的操作
+     *       L7 针对 Gaode 地图，进行的 zoom + 1 的操作
      */
     //@ts-ignore
     scene?.map?.setZoom(zoom + 1, true);
@@ -31,7 +31,7 @@ function setZoom(scene: Scene, zoom: number): void {
 function setCenter(scene: Scene, center: [number, number]) {
   const mapType = getMapType(scene);
   if (mapType === 'Gaode') {
-    // 同setZoom，高德地图关闭设置center的动画效果
+    // 同 setZoom ，高德地图关闭设置 center 的动画效果
     //@ts-ignore
     scene?.map.setCenter(center, true);
   } else {
@@ -41,26 +41,26 @@ function setCenter(scene: Scene, center: [number, number]) {
 
 /**
  *
- * @param array scene的数组
+ * @param array scene 的数组
  * @param options
  * @param options.zoomGap number  同步的缩放层级差距
  * @param options.mainIndex number  主场景的数组索引，用于搭配 zoomGap
  * @returns Function  清除同步状态的监听函数。
  */
 export function syncScene(
-  array: Scene[],
+  scenes: Scene[],
   options?: {
     zoomGap?: number;
     mainIndex?: number;
   },
 ) {
   const { zoomGap = 0, mainIndex = 0 } = options ?? {};
-  const listeners: any = [];
-  let handlers: any = [];
+  const listeners: (() => void)[] = [];
+  let handlers: (() => void)[] = [];
 
   // 添加地图事件监听
   const listen = (index: number) => {
-    const scene = array[index];
+    const scene = scenes[index];
     scene.on('mapmove', handlers[index]);
     scene.on('zoomchange', handlers[index]);
     return () => {
@@ -74,16 +74,16 @@ export function syncScene(
     listeners.length = 0;
   };
 
-  // 同步指定索引的scene 地图状态
+  // 同步指定索引的 scene 地图状态
   const moveScenePosition = (index: number) => {
-    const usedScene = array[index];
+    const usedScene = scenes[index];
     const center = usedScene.getCenter();
     const zoom = usedScene.getZoom();
-    array.forEach((item, num) => {
-      // 非当前使用scene
+    scenes.forEach((item, num) => {
+      // 非当前使用 scene
       if (num !== index) {
         if (num === mainIndex) {
-          // 非主scene
+          // 非主 scene
           setZoom(item, zoom - zoomGap);
           setCenter(item, [center.lng, center.lat]);
         } else {
@@ -109,18 +109,18 @@ export function syncScene(
   };
 
   const initListener = () => {
-    handlers = array.map((value, index) => {
+    handlers = scenes.map((value, index) => {
       // 每个地图有自己的状态同步函数
       return syncHandler.bind(null, index);
     });
-    array.forEach((scene, index) => {
+    scenes.forEach((scene, index) => {
       // 给每个地图绑定监听
       listeners.push(listen(index));
     });
   };
 
   // 初始化,先将所有地图状态同步。
-  array.forEach((value, index) => {
+  scenes.forEach((value, index) => {
     moveScenePosition(index);
   });
 
