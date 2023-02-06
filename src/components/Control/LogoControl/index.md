@@ -9,7 +9,7 @@ nav:
   path: /components
 ---
 
-## 徽标 - LogoControl
+## Logo - LogoControl
 
 ### 介绍
 
