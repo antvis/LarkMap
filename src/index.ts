@@ -3,10 +3,7 @@
  * 容器组件
  */
 export { LarkMap } from './components/LarkMap';
-export type {
-  LarkMapProps,
-  LarkMapRefAttributes,
-} from './components/LarkMap/types';
+export type { LarkMapProps, LarkMapRefAttributes } from './components/LarkMap/types';
 export * from './components/LarkMap/hooks';
 
 /**
@@ -58,6 +55,12 @@ export { useDraw } from './components/Draw/use-draw';
 export { useDrawGroup } from './components/Draw/use-draw-group';
 // export { DrawControl } from './components/Draw/DrawControl';
 // export type { DrawControlProps } from './components/Draw/DrawControl/types';
+
+/**
+ * 行政区域数据下载
+ */
+
+export { RegionDownload } from './components/RegionDownload';
 
 /**
  * 属性组件
