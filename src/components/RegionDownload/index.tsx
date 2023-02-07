@@ -51,7 +51,7 @@ export const RegionDownload: React.FC<any> = () => {
         .then((data: any) => {
           const geojson = geobuf.decode(new Pbf(data));
           const options = { tolerance: 0.001, highQuality: false };
-          var simplified = turf.simplify(geojson, options);
+          const simplified = turf.simplify(geojson, options);
           setSource((prevState) => ({
             ...prevState,
             data: { features: simplified.features, type: simplified.type },
@@ -76,7 +76,7 @@ export const RegionDownload: React.FC<any> = () => {
         .then((data: any) => {
           const geojson = geobuf.decode(new Pbf(data));
           const options = { tolerance: 0.001, highQuality: false };
-          var simplified = turf.simplify(geojson, options);
+          const simplified = turf.simplify(geojson, options);
           setThirdPartySource((prevState) => ({
             ...prevState,
             province: { ...prevState.province, data: { features: simplified.features, type: simplified.type } },
@@ -87,7 +87,7 @@ export const RegionDownload: React.FC<any> = () => {
         .then((data: any) => {
           const geojson = geobuf.decode(new Pbf(data));
           const options = { tolerance: 0.001, highQuality: false };
-          var simplified = turf.simplify(geojson, options);
+          const simplified = turf.simplify(geojson, options);
           setThirdPartySource((prevState) => ({
             ...prevState,
             city: { ...prevState.city, data: { features: simplified.features, type: simplified.type } },
@@ -98,7 +98,7 @@ export const RegionDownload: React.FC<any> = () => {
         .then((data: any) => {
           const geojson = geobuf.decode(new Pbf(data));
           const options = { tolerance: 0.001, highQuality: false };
-          var simplified = turf.simplify(geojson, options);
+          const simplified = turf.simplify(geojson, options);
           setThirdPartySource((prevState) => ({
             ...prevState,
             district: { ...prevState.district, data: { features: simplified.features, type: simplified.type } },
