@@ -53,8 +53,11 @@ export class DataSource {
         this.district = simplified;
       });
   }
-  getProvinceData() {
-    console.log('=>get', this.country);
-    return this.DataVSource;
-  }
+  getDrillingData = async (sourceValue: string, code: number, areaLevel: string) => {
+    if (sourceValue === 'dataV') {
+      const data = await fetch(`https://geo.datav.aliyun.com/areas_v3/bound/${code}_full.json`);
+      const geojson = data.json();
+      return geojson;
+    }
+  };
 }

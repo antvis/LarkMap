@@ -50,13 +50,14 @@ export const RegionDownload: React.FC<any> = () => {
     }
   }, [sourceValue]);
 
-  const onDblClick = (e: any) => {
-    console.log('=>', a.getProvinceData());
+  const onDblClick = async (e: any) => {
+    console.log(e, 121212);
+    const aa = await a.getDrillingData(sourceValue, e.feature.properties.adcode, e.feature.properties.level);
+    console.log(aa);
+    // console.log('=>', a.getProvinceData());
   };
 
-  const onUndblclick = () => {
-    console.log(a.getProvinceData());
-  };
+  const onUndblclick = () => {};
 
   const handleChange = (e) => {
     setSourceValue(e);
