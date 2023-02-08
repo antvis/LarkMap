@@ -1,6 +1,6 @@
 import type { ChoroplethLayerProps } from '@antv/larkmap';
 import { ChoroplethLayer } from '@antv/larkmap';
-import { Select } from 'antd';
+import { message, Select } from 'antd';
 import React, { useEffect, useState } from 'react';
 import './index.less';
 import { DataSource } from './unit';
@@ -20,8 +20,7 @@ const layerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   },
 };
 
-export const RegionDownload: React.FC<any> = () => {
-  // const a = new DataSource();
+export const RegionDownload: React.FC = () => {
   const [source, setSource] = useState({
     data: { type: 'FeatureCollection', features: [] },
     parser: { type: 'geojson' },
@@ -48,19 +47,49 @@ export const RegionDownload: React.FC<any> = () => {
     } else {
       setSource((prevState) => ({ ...prevState, data: { type: a.country.type, features: a.country.features } }));
     }
+    console.log(adcode, '1213213');
   }, [sourceValue]);
 
   const onDblClick = async (e: any) => {
-    console.log(e, 121212);
-    const aa = await a.getDrillingData(sourceValue, e.feature.properties.adcode, e.feature.properties.level);
-    console.log(aa);
-    // console.log('=>', a.getProvinceData());
+    if (sourceValue === 'dataV') {
+      const code = e.feature.properties.adcode;
+      const areaLevel = e.feature.properties.level;
+      const data = await a.getDrillingData(sourceValue, code, areaLevel);
+      setSource((prevState) => ({ ...prevState, data: data }));
+      if (e.feature.properties.parent.adcode) {
+        setAdcode({ code: e.feature.properties.parent.adcode, level: areaLevel });
+      } else {
+        const codeJson = JSON.parse(e.feature.properties.parent).adcode;
+        setAdcode({ code: codeJson, level: areaLevel });
+      }
+    } else {
+      const L7code = e.feature.properties.FIRST_GID
+        ? e.feature.properties.FIRST_GID
+        : e.feature.properties.code
+        ? e.feature.properties.code
+        : 100000;
+      const data = await a.getDrillingData(sourceValue, L7code, adcode.level);
+      setSource((prevState) => ({ ...prevState, data: data.geoJson }));
+      setAdcode({ code: L7code, level: data.areaLevel });
+    }
   };
 
-  const onUndblclick = () => {};
+  const onUndblclick = async () => {
+    if (adcode.level === 'country') {
+      message.info('已经上钻到最上层级');
+    } else {
+      const data = await a.gitRollupData(sourceValue, adcode.code);
+      setSource((prevState) => ({ ...prevState, data: data.geoJson }));
+      setAdcode({ code: data.dataCode, level: data.dataLevel });
+    }
+  };
 
   const handleChange = (e) => {
     setSourceValue(e);
+    setAdcode({
+      code: 100000,
+      level: 'country',
+    });
   };
   return (
     <>
