@@ -71,3 +71,4 @@ export * from './components/LayerAttribute';
  * 版本号
  */
 export { default as version } from './version';
+export { syncScene } from './utils/syncScene';
