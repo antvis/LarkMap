@@ -1,19 +1,17 @@
+import { CopyOutlined, DownloadOutlined } from '@ant-design/icons';
 import type { ChoroplethLayerProps } from '@antv/larkmap';
-import { ChoroplethLayer } from '@antv/larkmap';
-import { message, Select } from 'antd';
+import { ChoroplethLayer, CustomControl, MapThemeControl } from '@antv/larkmap';
+import { Button, Input, message, Select } from 'antd';
 import React, { useEffect, useState } from 'react';
 import './index.less';
 import { DataSource } from './unit';
 
 const layerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   autoFit: true,
-  fillColor: {
-    field: 'adcode',
-    value: ['#0f9960', '#33a02c', '#377eb8'],
-  },
+  fillColor: '#377eb8',
   opacity: 0.3,
   strokeColor: 'blue',
-  lineWidth: 1,
+  lineWidth: 0.5,
   state: {
     active: { strokeColor: 'green', lineWidth: 1.5, lineOpacity: 0.8 },
     select: { strokeColor: 'red', lineWidth: 1.5, lineOpacity: 0.8 },
@@ -33,6 +31,7 @@ export const RegionDownload: React.FC = () => {
   });
   const [a, seta] = useState<DataSource>();
   const [sourceValue, setSourceValue] = useState('dataV');
+  const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
     const obj = new DataSource();
@@ -45,6 +44,7 @@ export const RegionDownload: React.FC = () => {
         .then((response) => response.json())
         .then((data: any) => {
           setSource((prevState) => ({ ...prevState, data: data }));
+          setInputValue(JSON.stringify(data));
         });
     } else {
       setSource((prevState) => ({ ...prevState, data: { type: a.country.type, features: a.country.features } }));
@@ -81,10 +81,6 @@ export const RegionDownload: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(adcode);
-  }, [adcode]);
-
   const onUndblclick = async () => {
     if (adcode.level === 'country') {
       message.info('已经上钻到最上层级');
@@ -95,25 +91,91 @@ export const RegionDownload: React.FC = () => {
     }
   };
 
+  const layerClick = (e) => {
+    setInputValue(JSON.stringify(e.feature));
+  };
+
+  useEffect(() => {
+    setInputValue(JSON.stringify(source.data));
+  }, [source.data]);
+
   const handleChange = (e) => {
     setSourceValue(e);
     setAdcode((state) => ({ ...state, code: 100000, level: 'country' }));
-    console.log(a.country);
   };
+
+  const copy = (data: any) => {
+    const oInput = document.createElement('input');
+    oInput.value = data;
+    document.body.appendChild(oInput);
+    oInput.select();
+    document.execCommand('Copy');
+    oInput.style.display = 'none';
+    message.success('复制成功');
+  };
+
   return (
     <>
-      <ChoroplethLayer {...layerOptions} source={source} onDblClick={onDblClick} onUndblclick={onUndblclick} />
+      <ChoroplethLayer
+        {...layerOptions}
+        source={source}
+        onDblClick={onDblClick}
+        onUndblclick={onUndblclick}
+        onClick={layerClick}
+      />
+      <MapThemeControl position="topleft" />
+      <CustomControl
+        position="bottomleft"
+        className="custom-control-class"
+        style={{ background: '#fff', borderRadius: 4, overflow: 'hidden', padding: 16 }}
+      >
+        <div>单击选择区域数据</div>
+        <div>下钻: 双击要下钻的区域</div>
+        <div>下卷: 双击要上卷的区域</div>
+      </CustomControl>
       <div className="panel">
-        <div>数据源：</div>
-        <Select
-          value={sourceValue}
-          style={{ width: 220 }}
-          onChange={handleChange}
-          options={[
-            { value: 'dataV', label: 'dataV数据源' },
-            { value: 'thirdParty', label: '第三方数据源' },
-          ]}
-        />
+        <div className="sourceSelect">
+          <div>数据源：</div>
+          <Select
+            value={sourceValue}
+            style={{ width: 150 }}
+            onChange={handleChange}
+            options={[
+              { value: 'dataV', label: 'dataV数据源' },
+              { value: 'thirdParty', label: '第三方数据源' },
+            ]}
+          />
+        </div>
+        <div style={{ marginTop: 10 }}>
+          <div>数据来源：</div>
+          {sourceValue === 'dataV' ? (
+            <a href="https://datav.aliyun.com/portal/school/atlas/area_selector">dataV.GeoAtlas官网</a>
+          ) : (
+            <div>
+              <a href="https://github.com/ruiduobao/shengshixian.com">GitHub</a>
+            </div>
+          )}
+        </div>
+
+        <div className="downloadContent">
+          <div>数据下载</div>
+          <div className="dataInput">
+            <Input disabled value={inputValue} />
+            <Button onClick={() => copy(inputValue)}>
+              <CopyOutlined />
+            </Button>
+            <a
+              download="区域数据.json"
+              href={`data:text/json;charset=utf-8,${encodeURIComponent(inputValue)}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Button>
+                <DownloadOutlined />
+              </Button>
+            </a>
+          </div>
+        </div>
       </div>
     </>
   );
