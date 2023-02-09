@@ -134,7 +134,7 @@ export const RegionDownload: React.FC = () => {
         <div>下卷: 双击要上卷的区域</div>
       </CustomControl>
       <div className="panel">
-        <div className="sourceSelect">
+        <div className="source-select">
           <div>数据源：</div>
           <Select
             value={sourceValue}
@@ -157,9 +157,9 @@ export const RegionDownload: React.FC = () => {
           )}
         </div>
 
-        <div className="downloadContent">
+        <div className="download-content">
           <div>数据下载</div>
-          <div className="dataInput">
+          <div className="data-input">
             <Input disabled value={inputValue} />
             <Button onClick={() => copy(inputValue)}>
               <CopyOutlined />
