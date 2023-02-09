@@ -3,8 +3,9 @@ import type { ChoroplethLayerProps } from '@antv/larkmap';
 import { ChoroplethLayer, CustomControl, MapThemeControl } from '@antv/larkmap';
 import { Button, Input, message, Select } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { DataSource } from './DataSource';
 import './index.less';
-import { DataSource } from './unit';
+import { getFetch } from './units';
 
 const layerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   autoFit: true,
@@ -29,25 +30,28 @@ export const RegionDownload: React.FC = () => {
     GID_1: undefined,
     GID_2: undefined,
   });
-  const [a, seta] = useState<DataSource>();
+  const [dataLead, setdataLead] = useState<DataSource>();
   const [sourceValue, setSourceValue] = useState('dataV');
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
     const obj = new DataSource();
-    seta(obj);
+    setdataLead(obj);
   }, []);
 
   useEffect(() => {
     if (sourceValue === 'dataV') {
-      fetch(`https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json`)
+      fetch(getFetch('dataV', 'areas_v3', `${100000}_full`))
         .then((response) => response.json())
         .then((data: any) => {
           setSource((prevState) => ({ ...prevState, data: data }));
           setInputValue(JSON.stringify(data));
         });
     } else {
-      setSource((prevState) => ({ ...prevState, data: { type: a.country.type, features: a.country.features } }));
+      setSource((prevState) => ({
+        ...prevState,
+        data: { type: dataLead.country.type, features: dataLead.country.features },
+      }));
     }
   }, [sourceValue]);
 
@@ -55,7 +59,7 @@ export const RegionDownload: React.FC = () => {
     if (sourceValue === 'dataV') {
       const code = e.feature.properties.adcode;
       const areaLevel = e.feature.properties.level;
-      const data = await a.getDrillingData(sourceValue, code, areaLevel);
+      const data = await dataLead.getDrillingData(sourceValue, code, areaLevel);
       setSource((prevState) => ({ ...prevState, data: data }));
       if (e.feature.properties.parent.adcode) {
         setAdcode((state) => ({ ...state, code: e.feature.properties.parent.adcode, level: areaLevel }));
@@ -69,7 +73,7 @@ export const RegionDownload: React.FC = () => {
         : e.feature.properties.code
         ? e.feature.properties.code
         : 100000;
-      const data = await a.getDrillingData(sourceValue, L7code, adcode.level);
+      const data = await dataLead.getDrillingData(sourceValue, L7code, adcode.level);
       setSource((prevState) => ({ ...prevState, data: data.geoJson }));
       setAdcode((state) => ({
         ...state,
@@ -85,7 +89,7 @@ export const RegionDownload: React.FC = () => {
     if (adcode.level === 'country') {
       message.info('已经上钻到最上层级');
     } else {
-      const data = await a.gitRollupData(sourceValue, adcode.code, adcode.level, adcode.GID_1, adcode.GID_2);
+      const data = await dataLead.gitRollupData(sourceValue, adcode.code, adcode.level, adcode.GID_1, adcode.GID_2);
       setSource((prevState) => ({ ...prevState, data: data.geoJson }));
       setAdcode({ code: data.code, level: data.areaLevel, GID_1: data?.GID_1, GID_2: data?.GID_2 });
     }

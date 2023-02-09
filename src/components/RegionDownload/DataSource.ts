@@ -1,6 +1,7 @@
 import { simplify } from '@turf/turf';
 import geobuf from 'geobuf';
 import Pbf from 'pbf';
+import { getFetch } from './units';
 
 export class DataSource {
   public DataVSource = { type: 'FeatureCollection', features: [] };
@@ -17,22 +18,22 @@ export class DataSource {
     const L7Geojson = (data) => {
       return geobuf.decode(new Pbf(data));
     };
-    const dataVData = await fetch(`https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json`);
+    const dataVData = await fetch(getFetch('dataV', 'areas_v3', '100000_full'));
     this.DataVSource = await dataVData.json();
 
-    const L7CountryData = await fetch('https://unpkg.com/xinzhengqu@1.0.0/data/2023_guojie.pbf');
+    const L7CountryData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_guojie'));
     const L7CountryDataJson = await L7CountryData.arrayBuffer();
     this.country = simplify(L7Geojson(L7CountryDataJson), options);
 
-    const L7ProvinceData = await fetch('https://unpkg.com/xinzhengqu@1.0.0/data/2023_sheng.pbf');
+    const L7ProvinceData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_sheng'));
     const L7ProvinceDataJson = await L7ProvinceData.arrayBuffer();
     this.province = simplify(L7Geojson(L7ProvinceDataJson), options);
 
-    const L7CityData = await fetch('https://unpkg.com/xinzhengqu@1.0.0/data/2023_shi.pbf');
+    const L7CityData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_shi'));
     const L7CityDataJson = await L7CityData.arrayBuffer();
     this.city = simplify(L7Geojson(L7CityDataJson), options);
 
-    const L7DistrictData = await fetch('https://unpkg.com/xinzhengqu@1.0.0/data/2023_xian.pbf');
+    const L7DistrictData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_xian'));
     const L7DistrictDataJson = await L7DistrictData.arrayBuffer();
     this.district = simplify(L7Geojson(L7DistrictDataJson), options);
   };
@@ -81,11 +82,11 @@ export class DataSource {
   getDrillingData = async (sourceValue: string, code?: number, areaLevel?: string) => {
     if (sourceValue === 'dataV') {
       if (areaLevel !== 'district') {
-        const data = await fetch(`https://geo.datav.aliyun.com/areas_v3/bound/${code}_full.json`);
+        const data = await fetch(getFetch('dataV', 'areas_v3', `${code}_full`));
         const geojson = await data.json();
         return geojson;
       } else {
-        const data = await fetch(`https://geo.datav.aliyun.com/areas_v3/bound/${code}.json`);
+        const data = await fetch(getFetch('dataV', 'areas_v3', `${code}`));
         const geojson = await data.json();
         return geojson;
       }
@@ -122,9 +123,9 @@ export class DataSource {
         GID_1: undefined,
         GID_2: undefined,
       };
-      const dataFull = await fetch(`https://geo.datav.aliyun.com/areas_v3/bound/${code}_full.json`);
+      const dataFull = await fetch(getFetch('dataV', 'areas_v3', `${code}_full`));
       const dataFullJson = await dataFull.json();
-      const data = await fetch(`https://geo.datav.aliyun.com/areas_v3/bound/${code}.json`);
+      const data = await fetch(getFetch('dataV', 'areas_v3', `${code}`));
       const dataJson = await data.json();
       const dataCode = dataJson.features[0].properties.parent.adcode;
       const dataLevel = dataJson.features[0].properties.level;
