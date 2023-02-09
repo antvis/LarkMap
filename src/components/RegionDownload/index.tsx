@@ -13,7 +13,7 @@ const layerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   },
   opacity: 0.3,
   strokeColor: 'blue',
-  lineWidth: 0.1,
+  lineWidth: 1,
   state: {
     active: { strokeColor: 'green', lineWidth: 1.5, lineOpacity: 0.8 },
     select: { strokeColor: 'red', lineWidth: 1.5, lineOpacity: 0.8 },
@@ -28,6 +28,8 @@ export const RegionDownload: React.FC = () => {
   const [adcode, setAdcode] = useState({
     code: 100000,
     level: 'country',
+    GID_1: undefined,
+    GID_2: undefined,
   });
   const [a, seta] = useState<DataSource>();
   const [sourceValue, setSourceValue] = useState('dataV');
@@ -47,7 +49,6 @@ export const RegionDownload: React.FC = () => {
     } else {
       setSource((prevState) => ({ ...prevState, data: { type: a.country.type, features: a.country.features } }));
     }
-    console.log(adcode, '1213213');
   }, [sourceValue]);
 
   const onDblClick = async (e: any) => {
@@ -57,10 +58,10 @@ export const RegionDownload: React.FC = () => {
       const data = await a.getDrillingData(sourceValue, code, areaLevel);
       setSource((prevState) => ({ ...prevState, data: data }));
       if (e.feature.properties.parent.adcode) {
-        setAdcode({ code: e.feature.properties.parent.adcode, level: areaLevel });
+        setAdcode((state) => ({ ...state, code: e.feature.properties.parent.adcode, level: areaLevel }));
       } else {
         const codeJson = JSON.parse(e.feature.properties.parent).adcode;
-        setAdcode({ code: codeJson, level: areaLevel });
+        setAdcode((state) => ({ ...state, code: codeJson, level: areaLevel }));
       }
     } else {
       const L7code = e.feature.properties.FIRST_GID
@@ -70,26 +71,34 @@ export const RegionDownload: React.FC = () => {
         : 100000;
       const data = await a.getDrillingData(sourceValue, L7code, adcode.level);
       setSource((prevState) => ({ ...prevState, data: data.geoJson }));
-      setAdcode({ code: L7code, level: data.areaLevel });
+      setAdcode((state) => ({
+        ...state,
+        code: L7code,
+        level: data.areaLevel,
+        GID_1: e.feature.properties.GID_1,
+        GID_2: e.feature.properties.GID_2,
+      }));
     }
   };
+
+  useEffect(() => {
+    console.log(adcode);
+  }, [adcode]);
 
   const onUndblclick = async () => {
     if (adcode.level === 'country') {
       message.info('已经上钻到最上层级');
     } else {
-      const data = await a.gitRollupData(sourceValue, adcode.code);
+      const data = await a.gitRollupData(sourceValue, adcode.code, adcode.level, adcode.GID_1, adcode.GID_2);
       setSource((prevState) => ({ ...prevState, data: data.geoJson }));
-      setAdcode({ code: data.dataCode, level: data.dataLevel });
+      setAdcode({ code: data.code, level: data.areaLevel, GID_1: data?.GID_1, GID_2: data?.GID_2 });
     }
   };
 
   const handleChange = (e) => {
     setSourceValue(e);
-    setAdcode({
-      code: 100000,
-      level: 'country',
-    });
+    setAdcode((state) => ({ ...state, code: 100000, level: 'country' }));
+    console.log(a.country);
   };
   return (
     <>
