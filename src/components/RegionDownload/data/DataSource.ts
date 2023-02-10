@@ -13,6 +13,17 @@ export class DataSource {
     this.init();
   }
 
+  gitCountryData = async () => {
+    const options = { tolerance: 0.001, highQuality: false };
+    const L7Geojson = (data) => {
+      return geobuf.decode(new Pbf(data));
+    };
+    const L7CountryData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_guojie'));
+    const L7CountryDataJson = await L7CountryData.arrayBuffer();
+    this.country = await simplify(L7Geojson(L7CountryDataJson), options);
+    return simplify(L7Geojson(L7CountryDataJson), options);
+  };
+
   init = async () => {
     const options = { tolerance: 0.001, highQuality: false };
     const L7Geojson = (data) => {
@@ -20,10 +31,6 @@ export class DataSource {
     };
     const dataVData = await fetch(getFetch('dataV', 'areas_v3', '100000_full'));
     this.DataVSource = await dataVData.json();
-
-    const L7CountryData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_guojie'));
-    const L7CountryDataJson = await L7CountryData.arrayBuffer();
-    this.country = simplify(L7Geojson(L7CountryDataJson), options);
 
     const L7ProvinceData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_sheng'));
     const L7ProvinceDataJson = await L7ProvinceData.arrayBuffer();

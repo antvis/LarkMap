@@ -8,7 +8,6 @@ import type { ChoroplethLayerProps } from '../Layers';
 import { ChoroplethLayer } from '../Layers';
 import { DataSource } from './data/DataSource';
 import './index.less';
-import { getFetch } from './utli';
 
 const layerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   autoFit: true,
@@ -34,7 +33,7 @@ export const RegionDownload: React.FC = () => {
     GID_2: undefined,
   });
   const [dataLead, setdataLead] = useState<DataSource>();
-  const [sourceValue, setSourceValue] = useState('dataV');
+  const [sourceValue, setSourceValue] = useState('thirdParty');
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
@@ -42,21 +41,24 @@ export const RegionDownload: React.FC = () => {
     setdataLead(obj);
   }, []);
 
-  useEffect(() => {
+  // @ts-ignore
+  useEffect(async () => {
     if (sourceValue === 'dataV') {
-      fetch(getFetch('dataV', 'areas_v3', `${100000}_full`))
-        .then((response) => response.json())
-        .then((data: any) => {
-          setSource((prevState) => ({ ...prevState, data: data }));
-          setInputValue(JSON.stringify(data));
-        });
-    } else {
       setSource((prevState) => ({
         ...prevState,
-        data: { type: dataLead.country.type, features: dataLead.country.features },
+        data: dataLead.DataVSource,
       }));
+    } else {
+      if (dataLead) {
+        await dataLead.gitCountryData().then((res) => {
+          setSource((prevState) => ({
+            ...prevState,
+            data: { type: res?.type, features: res?.features },
+          }));
+        });
+      }
     }
-  }, [sourceValue]);
+  }, [sourceValue, dataLead]);
 
   const onDblClick = async (e: any) => {
     if (sourceValue === 'dataV') {
