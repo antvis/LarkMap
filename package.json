@@ -44,6 +44,7 @@
     "@formily/react": "^2.1.11",
     "@formily/reactive": "^2.1.11",
     "@formily/shared": "^2.1.11",
+    "@turf/turf": "^6.5.0",
     "ahooks": "^3.3.13",
     "classnames": "^2.3.1",
     "color": "^4.2.3",

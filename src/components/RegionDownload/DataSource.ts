@@ -1,6 +1,6 @@
 import { simplify } from '@turf/turf';
-import { geobuf } from 'geobuf';
-import { Pbf } from 'pbf';
+import geobuf from 'geobuf';
+import Pbf from 'pbf';
 import { getFetch } from './units';
 
 export class DataSource {
