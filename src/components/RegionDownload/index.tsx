@@ -1,8 +1,9 @@
 import { CopyOutlined, DownloadOutlined } from '@ant-design/icons';
-import type { ChoroplethLayerProps } from '@antv/larkmap';
-import { ChoroplethLayer, CustomControl, MapThemeControl } from '@antv/larkmap';
 import { Button, Input, message, Select } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { CustomControl, MapThemeControl } from '../Control';
+import type { ChoroplethLayerProps } from '../Layers';
+import { ChoroplethLayer } from '../Layers';
 import { DataSource } from './DataSource';
 import './index.less';
 import { getFetch } from './units';
