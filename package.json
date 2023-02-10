@@ -47,7 +47,9 @@
     "ahooks": "^3.3.13",
     "classnames": "^2.3.1",
     "color": "^4.2.3",
+    "geobuf": "^3.0.2",
     "lodash-es": "^4.17.21",
+    "pbf": "^3.2.1",
     "query-string": "^7.1.1"
   },
   "devDependencies": {
@@ -65,10 +67,8 @@
     "dumi": "^1.1.40",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.26.0",
-    "eventemitter3": "^4.0.7",
     "father": "^4.0.7",
     "gcoord": "^0.3.2",
-    "geobuf": "^3.0.2",
     "geotiff": "1.0.0-beta.10",
     "gh-pages": "^4.0.0",
     "h3-js": "^4.0.1",
@@ -78,7 +78,6 @@
     "limit-size": "^0.1.4",
     "lint-staged": "^12.4.1",
     "npm-run-all": "^4.1.5",
-    "pbf": "^3.2.1",
     "prettier": "^2.8.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
