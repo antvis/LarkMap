@@ -1,7 +1,7 @@
 import { simplify } from '@turf/turf';
 import geobuf from 'geobuf';
 import Pbf from 'pbf';
-import { getFetch } from './units';
+import { getFetch } from '../utli';
 
 export class DataSource {
   public DataVSource = { type: 'FeatureCollection', features: [] };

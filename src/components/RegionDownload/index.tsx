@@ -1,12 +1,14 @@
 import { CopyOutlined, DownloadOutlined } from '@ant-design/icons';
 import { Button, Input, message, Select } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { CustomControl, MapThemeControl } from '../Control';
+import { LayerPopup } from '../LayerPopup';
+import type { LayerPopupProps } from '../LayerPopup/types';
 import type { ChoroplethLayerProps } from '../Layers';
 import { ChoroplethLayer } from '../Layers';
-import { DataSource } from './DataSource';
+import { DataSource } from './data/DataSource';
 import './index.less';
-import { getFetch } from './units';
+import { getFetch } from './utli';
 
 const layerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   autoFit: true,
@@ -119,6 +121,77 @@ export const RegionDownload: React.FC = () => {
     message.success('复制成功');
   };
 
+  useEffect(() => {
+    console.log(source.data);
+  }, [source.data]);
+  const items: LayerPopupProps['items'] = useMemo(() => {
+    if (sourceValue === 'dataV') {
+      return [
+        {
+          layer: 'myChoroplethLayer',
+          fields: [
+            {
+              field: 'name',
+              formatField: () => '名称',
+            },
+            {
+              field: 'adcode',
+              formatField: '行政编号',
+            },
+          ],
+        },
+      ];
+    } else {
+      if (adcode.level === 'country') {
+        return [
+          {
+            layer: 'myChoroplethLayer',
+            fields: [
+              {
+                field: 'ENG_NAME',
+              },
+
+              {
+                field: 'code',
+                formatValue: '100000',
+              },
+            ],
+          },
+        ];
+      } else if (adcode.level === 'province') {
+        return [
+          {
+            layer: 'myChoroplethLayer',
+            fields: [
+              {
+                field: 'ENG_NAME',
+              },
+
+              {
+                field: 'FIRST_GID',
+                formatField: 'code',
+              },
+            ],
+          },
+        ];
+      } else {
+        return [
+          {
+            layer: 'myChoroplethLayer',
+            fields: [
+              {
+                field: 'ENG_NAME',
+              },
+              {
+                field: 'code',
+              },
+            ],
+          },
+        ];
+      }
+    }
+  }, [sourceValue, adcode.level]);
+
   return (
     <>
       <ChoroplethLayer
@@ -127,7 +200,9 @@ export const RegionDownload: React.FC = () => {
         onDblClick={onDblClick}
         onUndblclick={onUndblclick}
         onClick={layerClick}
+        id="myChoroplethLayer"
       />
+      <LayerPopup closeButton={false} closeOnClick={false} anchor="bottom-left" trigger="hover" items={items} />
       <MapThemeControl position="topleft" />
       <CustomControl
         position="bottomleft"
