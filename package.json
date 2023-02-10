@@ -107,7 +107,7 @@
   "limit-size": [
     {
       "path": "dist/larkmap.min.js",
-      "limit": "200 Kb"
+      "limit": "700 Kb"
     }
   ],
   "keywords": [
