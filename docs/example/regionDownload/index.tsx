@@ -1,14 +1,11 @@
 import { CopyOutlined, DownloadOutlined } from '@ant-design/icons';
+import type { ChoroplethLayerProps, LarkMapProps, LayerPopupProps } from '@antv/larkmap';
+import { ChoroplethLayer, CustomControl, LarkMap, LayerPopup, MapThemeControl } from '@antv/larkmap';
 import { Button, message, Select } from 'antd';
 import React, { useEffect, useMemo, useState } from 'react';
-import { CustomControl, MapThemeControl } from '../Control';
-import { LayerPopup } from '../LayerPopup';
-import type { LayerPopupProps } from '../LayerPopup/types';
-import type { ChoroplethLayerProps } from '../Layers';
-import { ChoroplethLayer } from '../Layers';
-import { DataSource } from './data/DataSource';
+import { DataSource } from './data/dataSource';
 import './index.less';
-import { getDrillingData, gitRollupData } from './utli';
+import { getDrillingData, gitRollupData } from './util';
 
 const layerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   autoFit: true,
@@ -22,7 +19,17 @@ const layerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   },
 };
 
-export const RegionDownload: React.FC = () => {
+const config: LarkMapProps = {
+  mapType: 'Gaode',
+  mapOptions: {
+    style: 'light',
+    center: [120.210792, 30.246026],
+    zoom: 9,
+    // token: 'xxxx - token',
+  },
+};
+
+export default () => {
   const [source, setSource] = useState({
     data: { type: 'FeatureCollection', features: [] },
     parser: { type: 'geojson' },
@@ -191,7 +198,7 @@ export const RegionDownload: React.FC = () => {
   }, [sourceValue, adcode.level]);
 
   return (
-    <>
+    <LarkMap {...config} style={{ height: '300px' }}>
       <ChoroplethLayer
         {...layerOptions}
         source={source}
@@ -254,6 +261,6 @@ export const RegionDownload: React.FC = () => {
           </div>
         </div>
       </div>
-    </>
+    </LarkMap>
   );
 };

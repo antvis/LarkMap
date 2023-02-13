@@ -1,4 +1,4 @@
-import type { DataSource } from './data/DataSource';
+import type { DataSource } from './data/dataSource';
 
 /**
  *

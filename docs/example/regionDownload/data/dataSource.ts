@@ -1,7 +1,7 @@
 import { simplify } from '@turf/turf';
 import geobuf from 'geobuf';
 import Pbf from 'pbf';
-import { getFetch } from '../utli';
+import { getFetch } from '../util';
 
 export class DataSource {
   public DataVSource = { type: 'FeatureCollection', features: [] };
@@ -31,6 +31,10 @@ export class DataSource {
     };
     const dataVData = await fetch(getFetch('dataV', 'areas_v3', '100000_full'));
     this.DataVSource = await dataVData.json();
+
+    const L7ProvinceData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_sheng'));
+    const L7ProvinceDataJson = await L7ProvinceData.arrayBuffer();
+    this.province = simplify(L7Geojson(L7ProvinceDataJson), options);
 
     const L7CityData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_shi'));
     const L7CityDataJson = await L7CityData.arrayBuffer();

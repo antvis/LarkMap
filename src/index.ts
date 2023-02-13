@@ -57,12 +57,6 @@ export { useDrawGroup } from './components/Draw/use-draw-group';
 // export type { DrawControlProps } from './components/Draw/DrawControl/types';
 
 /**
- * 行政区域数据下载
- */
-
-export { RegionDownload } from './components/RegionDownload';
-
-/**
  * 属性组件
  */
 export * from './components/LayerAttribute';
