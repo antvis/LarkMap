@@ -44,13 +44,10 @@
     "@formily/react": "^2.1.11",
     "@formily/reactive": "^2.1.11",
     "@formily/shared": "^2.1.11",
-    "@turf/turf": "^6.5.0",
     "ahooks": "^3.3.13",
     "classnames": "^2.3.1",
     "color": "^4.2.3",
-    "geobuf": "^3.0.2",
     "lodash-es": "^4.17.21",
-    "pbf": "^3.2.1",
     "query-string": "^7.1.1"
   },
   "devDependencies": {
@@ -85,6 +82,8 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.0",
     "typescript": "^4.6.4",
+    "geobuf": "^3.0.2",
+    "pbf": "^3.2.1",
     "webpack-bundle-analyzer": "^4.6.1"
   },
   "peerDependencies": {
