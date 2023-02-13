@@ -25,35 +25,67 @@ export class DataSource {
   };
 
   init = async () => {
+    const dataVData = await fetch(getFetch('dataV', 'areas_v3', '100000_full'));
+    this.DataVSource = await dataVData.json();
+  };
+
+  gitFetchData = async (areaLevel: 'country' | 'province' | 'city' | 'district') => {
     const options = { tolerance: 0.001, highQuality: false };
     const L7Geojson = (data) => {
       return geobuf.decode(new Pbf(data));
     };
-    const dataVData = await fetch(getFetch('dataV', 'areas_v3', '100000_full'));
-    this.DataVSource = await dataVData.json();
-
-    const L7ProvinceData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_sheng'));
-    const L7ProvinceDataJson = await L7ProvinceData.arrayBuffer();
-    this.province = simplify(L7Geojson(L7ProvinceDataJson), options);
-
-    const L7CityData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_shi'));
-    const L7CityDataJson = await L7CityData.arrayBuffer();
-    this.city = simplify(L7Geojson(L7CityDataJson), options);
-
-    const L7DistrictData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_xian'));
-    const L7DistrictDataJson = await L7DistrictData.arrayBuffer();
-    this.district = simplify(L7Geojson(L7DistrictDataJson), options);
+    if (areaLevel === 'country') {
+      if (this.country) {
+        return this.country;
+      } else {
+        const L7CountryData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_guojie'));
+        const L7CountryDataJson = await L7CountryData.arrayBuffer();
+        this.country = await simplify(L7Geojson(L7CountryDataJson), options);
+        return await simplify(L7Geojson(L7CountryDataJson), options);
+      }
+    }
+    if (areaLevel === 'province') {
+      if (this.province) {
+        return this.province;
+      } else {
+        const L7ProvinceData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_sheng'));
+        const L7ProvinceDataJson = await L7ProvinceData.arrayBuffer();
+        this.province = await simplify(L7Geojson(L7ProvinceDataJson), options);
+        return await simplify(L7Geojson(L7ProvinceDataJson), options);
+      }
+    }
+    if (areaLevel === 'city') {
+      if (this.city) {
+        return this.city;
+      } else {
+        const L7CityData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_shi'));
+        const L7CityDataJson = await L7CityData.arrayBuffer();
+        this.city = await simplify(L7Geojson(L7CityDataJson), options);
+        return await simplify(L7Geojson(L7CityDataJson), options);
+      }
+    }
+    if (areaLevel === 'district') {
+      if (this.district) {
+        return this.district;
+      } else {
+        const L7DistrictData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_xian'));
+        const L7DistrictDataJson = await L7DistrictData.arrayBuffer();
+        this.district = await simplify(L7Geojson(L7DistrictDataJson), options);
+        return await simplify(L7Geojson(L7DistrictDataJson), options);
+      }
+    }
   };
 
   getCityData = async (
-    data: any,
+    dataType: 'country' | 'province' | 'city' | 'district',
     code: number,
     codeIndex: string,
     drillLevel: string,
     level?: 'country' | 'province',
   ) => {
     if (level === 'country') {
-      const dataJson = { type: 'FeatureCollection', features: this.province.features };
+      const data = await this.gitFetchData('province');
+      const dataJson = { type: 'FeatureCollection', features: data.features };
       return {
         geoJson: dataJson,
         code: 100000,
@@ -62,7 +94,8 @@ export class DataSource {
         GID_2: undefined,
       };
     } else if (level === 'province') {
-      const dataJson = { type: 'FeatureCollection', features: this.country.features };
+      const data = await this.gitFetchData('country');
+      const dataJson = { type: 'FeatureCollection', features: data.features };
       return {
         geoJson: dataJson,
         code: 100000,
@@ -71,6 +104,7 @@ export class DataSource {
         GID_2: undefined,
       };
     } else {
+      const data = await this.gitFetchData(dataType);
       const filterData = data.features.filter((item) => {
         return item.properties[codeIndex] === code;
       });

@@ -35,15 +35,15 @@ export const getDrillingData = async (example: DataSource, sourceValue: string, 
     }
   } else {
     if (areaLevel === 'country') {
-      return example.getCityData(example.province, 100000, '', 'province', 'country');
+      return example.getCityData('province', 100000, '', 'province', 'country');
     } else if (areaLevel === 'province') {
-      return example.getCityData(example.city, code, 'GID_1', 'city');
+      return example.getCityData('city', code, 'GID_1', 'city');
     } else if (areaLevel === 'city') {
-      return example.getCityData(example.district, code, 'GID_2', 'city1');
+      return example.getCityData('district', code, 'GID_2', 'city1');
     } else if (areaLevel === 'city1') {
-      return example.getCityData(example.district, code, 'GID_3', 'district');
+      return example.getCityData('district', code, 'GID_3', 'district');
     } else if (areaLevel === 'district') {
-      return example.getCityData(example.district, code, 'GID_3', 'district');
+      return example.getCityData('district', code, 'GID_3', 'district');
     }
   }
 };
@@ -91,13 +91,13 @@ export const gitRollupData = async (
     }
   } else {
     if (areaLevel === 'province') {
-      return example.getCityData(example.country, 100000, 'FIRST_GID', 'country', 'province');
+      return example.getCityData('country', 100000, 'FIRST_GID', 'country', 'province');
     } else if (areaLevel === 'city') {
-      return example.getCityData(example.province, code, '', 'province');
+      return example.getCityData('province', code, '', 'province');
     } else if (areaLevel === 'city1') {
-      return example.getCityData(example.city, GID_1, 'GID_1', 'city');
+      return example.getCityData('city', GID_1, 'GID_1', 'city');
     } else if (areaLevel === 'district') {
-      return example.getCityData(example.district, GID_2, 'GID_2', 'city1');
+      return example.getCityData('district', GID_2, 'GID_2', 'city1');
     }
   }
 };
