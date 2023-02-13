@@ -1,5 +1,5 @@
 import { CopyOutlined, DownloadOutlined } from '@ant-design/icons';
-import { Button, Input, message, Select } from 'antd';
+import { Button, message, Select } from 'antd';
 import React, { useEffect, useMemo, useState } from 'react';
 import { CustomControl, MapThemeControl } from '../Control';
 import { LayerPopup } from '../LayerPopup';
@@ -8,6 +8,7 @@ import type { ChoroplethLayerProps } from '../Layers';
 import { ChoroplethLayer } from '../Layers';
 import { DataSource } from './data/DataSource';
 import './index.less';
+import { getDrillingData, gitRollupData } from './utli';
 
 const layerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   autoFit: true,
@@ -34,7 +35,6 @@ export const RegionDownload: React.FC = () => {
   });
   const [dataLead, setdataLead] = useState<DataSource>();
   const [sourceValue, setSourceValue] = useState('thirdParty');
-  const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
     const obj = new DataSource();
@@ -64,7 +64,7 @@ export const RegionDownload: React.FC = () => {
     if (sourceValue === 'dataV') {
       const code = e.feature.properties.adcode;
       const areaLevel = e.feature.properties.level;
-      const data = await dataLead.getDrillingData(sourceValue, code, areaLevel);
+      const data = await getDrillingData(dataLead, sourceValue, code, areaLevel);
       setSource((prevState) => ({ ...prevState, data: data }));
       if (e.feature.properties.parent.adcode) {
         setAdcode((state) => ({ ...state, code: e.feature.properties.parent.adcode, level: areaLevel }));
@@ -78,7 +78,7 @@ export const RegionDownload: React.FC = () => {
         : e.feature.properties.code
         ? e.feature.properties.code
         : 100000;
-      const data = await dataLead.getDrillingData(sourceValue, L7code, adcode.level);
+      const data = await getDrillingData(dataLead, sourceValue, L7code, adcode.level);
       setSource((prevState) => ({ ...prevState, data: data.geoJson }));
       setAdcode((state) => ({
         ...state,
@@ -94,23 +94,19 @@ export const RegionDownload: React.FC = () => {
     if (adcode.level === 'country') {
       message.info('已经上钻到最上层级');
     } else {
-      const data = await dataLead.gitRollupData(sourceValue, adcode.code, adcode.level, adcode.GID_1, adcode.GID_2);
+      const data = await gitRollupData(dataLead, sourceValue, adcode.code, adcode.level, adcode.GID_1, adcode.GID_2);
       setSource((prevState) => ({ ...prevState, data: data.geoJson }));
       setAdcode({ code: data.code, level: data.areaLevel, GID_1: data?.GID_1, GID_2: data?.GID_2 });
     }
   };
 
   const layerClick = (e) => {
-    setInputValue(JSON.stringify(e.feature));
+    console.log(e);
   };
 
-  useEffect(() => {
-    setInputValue(JSON.stringify(source.data));
-  }, [source.data]);
-
   const handleChange = (e) => {
-    setSourceValue(e);
     setAdcode((state) => ({ ...state, code: 100000, level: 'country' }));
+    setSourceValue(e);
   };
 
   const copy = (data: any) => {
@@ -242,13 +238,12 @@ export const RegionDownload: React.FC = () => {
         <div className="download-content">
           <div>数据下载</div>
           <div className="data-input">
-            <Input disabled value={inputValue} />
-            <Button onClick={() => copy(inputValue)}>
+            <Button onClick={() => copy(source.data)}>
               <CopyOutlined />
             </Button>
             <a
               download="区域数据.json"
-              href={`data:text/json;charset=utf-8,${encodeURIComponent(inputValue)}`}
+              href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(source.data))}`}
               target="_blank"
               rel="noreferrer"
             >
