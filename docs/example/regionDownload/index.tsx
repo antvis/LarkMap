@@ -35,6 +35,7 @@ export default () => {
   });
   const [adcode, setAdcode] = useState({
     code: 100000,
+    adcode: 10000,
     level: 'country',
     GID_1: undefined,
     GID_2: undefined,
@@ -77,10 +78,10 @@ export default () => {
       const data = await getDrillingData(dataLead, sourceValue, code, areaLevel);
       setSource((prevState) => ({ ...prevState, data: data }));
       if (e.feature.properties.parent.adcode) {
-        setAdcode((state) => ({ ...state, code: e.feature.properties.parent.adcode, level: areaLevel }));
+        setAdcode((state) => ({ ...state, code: e.feature.properties.parent.adcode, level: areaLevel, adcode: code }));
       } else {
         const codeJson = JSON.parse(e.feature.properties.parent).adcode;
-        setAdcode((state) => ({ ...state, code: codeJson, level: areaLevel }));
+        setAdcode((state) => ({ ...state, code: codeJson, level: areaLevel, adcode: code }));
       }
     } else {
       const L7code = e.feature.properties.FIRST_GID
@@ -93,6 +94,7 @@ export default () => {
       setAdcode((state) => ({
         ...state,
         code: L7code,
+        adcode: L7code,
         level: data.areaLevel,
         GID_1: e.feature.properties.GID_1,
         GID_2: e.feature.properties.GID_2,
@@ -108,13 +110,9 @@ export default () => {
     } else {
       const data = await gitRollupData(dataLead, sourceValue, adcode.code, adcode.level, adcode.GID_1, adcode.GID_2);
       setSource((prevState) => ({ ...prevState, data: data.geoJson }));
-      setAdcode({ code: data.code, level: data.areaLevel, GID_1: data?.GID_1, GID_2: data?.GID_2 });
+      setAdcode({ code: data.code, level: data.areaLevel, GID_1: data?.GID_1, GID_2: data?.GID_2, adcode: data.code });
     }
     setLoading(false);
-  };
-
-  const layerClick = (e) => {
-    console.log(e);
   };
 
   const handleChange = (e) => {
@@ -207,7 +205,6 @@ export default () => {
           source={source}
           onDblClick={onDblClick}
           onUndblclick={onUndblclick}
-          onClick={layerClick}
           id="myChoroplethLayer"
         />
         <LayerPopup closeButton={false} closeOnClick={false} anchor="bottom-left" trigger="hover" items={items} />
@@ -234,25 +231,14 @@ export default () => {
               ]}
             />
           </div>
-          <div style={{ marginTop: 10 }}>
-            <div>数据来源：</div>
-            {sourceValue === 'dataV' ? (
-              <a href="https://datav.aliyun.com/portal/school/atlas/area_selector">dataV.GeoAtlas官网</a>
-            ) : (
-              <div>
-                <a href="https://github.com/ruiduobao/shengshixian.com">GitHub</a>
-              </div>
-            )}
-          </div>
-
           <div className="download-content">
-            <div>数据下载</div>
+            <div style={{ marginRight: 10 }}>数据下载</div>
             <div className="data-input">
               <Button onClick={() => copy(source.data)}>
                 <CopyOutlined />
               </Button>
               <a
-                download={`${adcode.code}.json`}
+                download={`${adcode.adcode}.json`}
                 href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(source.data))}`}
                 target="_blank"
                 rel="noreferrer"
@@ -262,6 +248,16 @@ export default () => {
                 </Button>
               </a>
             </div>
+          </div>
+          <div style={{ marginTop: 10, display: 'flex' }}>
+            <div>数据来源：</div>
+            {sourceValue === 'dataV' ? (
+              <a href="https://datav.aliyun.com/portal/school/atlas/area_selector">dataV.GeoAtlas官网</a>
+            ) : (
+              <div>
+                <a href="https://github.com/ruiduobao/shengshixian.com">GitHub</a>
+              </div>
+            )}
           </div>
         </div>
       </LarkMap>
