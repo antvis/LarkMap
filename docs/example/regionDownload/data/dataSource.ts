@@ -76,6 +76,20 @@ export class DataSource {
     }
   };
 
+  // gitFilterData = async (level:'country' | 'province' | 'city' | 'district', code: number)=>{
+  //   if(level === 'country'){
+  //     return this.country
+  //   }
+  //   if(level === 'province'){
+  //     return this.province
+  //   }
+  //   if(level === 'city'){
+  //     this.province.filter((item)=>{
+  //       return item.properties.
+  //     })
+  //   }
+  // }
+
   getCityData = async (
     dataType: 'country' | 'province' | 'city' | 'district',
     code: number,

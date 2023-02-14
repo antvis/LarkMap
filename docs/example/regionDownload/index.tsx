@@ -25,7 +25,6 @@ const config: LarkMapProps = {
     style: 'light',
     center: [120.210792, 30.246026],
     zoom: 9,
-    // token: 'xxxx - token',
   },
 };
 
@@ -132,10 +131,6 @@ export default () => {
     oInput.style.display = 'none';
     message.success('复制成功');
   };
-
-  useEffect(() => {
-    console.log(source.data);
-  }, [source.data]);
   const items: LayerPopupProps['items'] = useMemo(() => {
     if (sourceValue === 'dataV') {
       return [
@@ -257,7 +252,7 @@ export default () => {
                 <CopyOutlined />
               </Button>
               <a
-                download="区域数据.json"
+                download={`${adcode.code}.json`}
                 href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(source.data))}`}
                 target="_blank"
                 rel="noreferrer"
