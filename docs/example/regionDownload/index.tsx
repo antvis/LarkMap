@@ -1,7 +1,7 @@
 import { CopyOutlined, DownloadOutlined } from '@ant-design/icons';
 import type { ChoroplethLayerProps, LarkMapProps, LayerPopupProps } from '@antv/larkmap';
 import { ChoroplethLayer, CustomControl, LarkMap, LayerPopup, MapThemeControl } from '@antv/larkmap';
-import { Button, message, Select } from 'antd';
+import { Button, message, Select, Spin } from 'antd';
 import React, { useEffect, useMemo, useState } from 'react';
 import { DataSource } from './data/dataSource';
 import './index.less';
@@ -42,6 +42,7 @@ export default () => {
   });
   const [dataLead, setdataLead] = useState<DataSource>();
   const [sourceValue, setSourceValue] = useState('thirdParty');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const obj = new DataSource();
@@ -50,6 +51,7 @@ export default () => {
 
   // @ts-ignore
   useEffect(async () => {
+    setLoading(true);
     if (sourceValue === 'dataV') {
       setSource((prevState) => ({
         ...prevState,
@@ -65,9 +67,11 @@ export default () => {
         });
       }
     }
+    setLoading(false);
   }, [sourceValue, dataLead]);
 
   const onDblClick = async (e: any) => {
+    setLoading(true);
     if (sourceValue === 'dataV') {
       const code = e.feature.properties.adcode;
       const areaLevel = e.feature.properties.level;
@@ -95,9 +99,11 @@ export default () => {
         GID_2: e.feature.properties.GID_2,
       }));
     }
+    setLoading(false);
   };
 
   const onUndblclick = async () => {
+    setLoading(true);
     if (adcode.level === 'country') {
       message.info('已经上钻到最上层级');
     } else {
@@ -105,6 +111,7 @@ export default () => {
       setSource((prevState) => ({ ...prevState, data: data.geoJson }));
       setAdcode({ code: data.code, level: data.areaLevel, GID_1: data?.GID_1, GID_2: data?.GID_2 });
     }
+    setLoading(false);
   };
 
   const layerClick = (e) => {
@@ -198,69 +205,71 @@ export default () => {
   }, [sourceValue, adcode.level]);
 
   return (
-    <LarkMap {...config} style={{ height: '300px' }}>
-      <ChoroplethLayer
-        {...layerOptions}
-        source={source}
-        onDblClick={onDblClick}
-        onUndblclick={onUndblclick}
-        onClick={layerClick}
-        id="myChoroplethLayer"
-      />
-      <LayerPopup closeButton={false} closeOnClick={false} anchor="bottom-left" trigger="hover" items={items} />
-      <MapThemeControl position="topleft" />
-      <CustomControl
-        position="bottomleft"
-        className="custom-control-class"
-        style={{ background: '#fff', borderRadius: 4, overflow: 'hidden', padding: 16 }}
-      >
-        <div>单击选择区域数据</div>
-        <div>下钻: 双击要下钻的区域</div>
-        <div>下卷: 双击要上卷的区域</div>
-      </CustomControl>
-      <div className="panel">
-        <div className="source-select">
-          <div>数据源：</div>
-          <Select
-            value={sourceValue}
-            style={{ width: 150 }}
-            onChange={handleChange}
-            options={[
-              { value: 'dataV', label: 'dataV数据源' },
-              { value: 'thirdParty', label: '第三方数据源' },
-            ]}
-          />
-        </div>
-        <div style={{ marginTop: 10 }}>
-          <div>数据来源：</div>
-          {sourceValue === 'dataV' ? (
-            <a href="https://datav.aliyun.com/portal/school/atlas/area_selector">dataV.GeoAtlas官网</a>
-          ) : (
-            <div>
-              <a href="https://github.com/ruiduobao/shengshixian.com">GitHub</a>
-            </div>
-          )}
-        </div>
+    <Spin spinning={loading}>
+      <LarkMap {...config} style={{ height: '300px' }}>
+        <ChoroplethLayer
+          {...layerOptions}
+          source={source}
+          onDblClick={onDblClick}
+          onUndblclick={onUndblclick}
+          onClick={layerClick}
+          id="myChoroplethLayer"
+        />
+        <LayerPopup closeButton={false} closeOnClick={false} anchor="bottom-left" trigger="hover" items={items} />
+        <MapThemeControl position="topleft" />
+        <CustomControl
+          position="bottomleft"
+          className="custom-control-class"
+          style={{ background: '#fff', borderRadius: 4, overflow: 'hidden', padding: 16 }}
+        >
+          <div>单击选择区域数据</div>
+          <div>下钻: 双击要下钻的区域</div>
+          <div>下卷: 双击要上卷的区域</div>
+        </CustomControl>
+        <div className="panel">
+          <div className="source-select">
+            <div>数据源：</div>
+            <Select
+              value={sourceValue}
+              style={{ width: 150 }}
+              onChange={handleChange}
+              options={[
+                { value: 'dataV', label: 'dataV数据源' },
+                { value: 'thirdParty', label: '第三方数据源' },
+              ]}
+            />
+          </div>
+          <div style={{ marginTop: 10 }}>
+            <div>数据来源：</div>
+            {sourceValue === 'dataV' ? (
+              <a href="https://datav.aliyun.com/portal/school/atlas/area_selector">dataV.GeoAtlas官网</a>
+            ) : (
+              <div>
+                <a href="https://github.com/ruiduobao/shengshixian.com">GitHub</a>
+              </div>
+            )}
+          </div>
 
-        <div className="download-content">
-          <div>数据下载</div>
-          <div className="data-input">
-            <Button onClick={() => copy(source.data)}>
-              <CopyOutlined />
-            </Button>
-            <a
-              download="区域数据.json"
-              href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(source.data))}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Button>
-                <DownloadOutlined />
+          <div className="download-content">
+            <div>数据下载</div>
+            <div className="data-input">
+              <Button onClick={() => copy(source.data)}>
+                <CopyOutlined />
               </Button>
-            </a>
+              <a
+                download="区域数据.json"
+                href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(source.data))}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Button>
+                  <DownloadOutlined />
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </LarkMap>
+      </LarkMap>
+    </Spin>
   );
 };

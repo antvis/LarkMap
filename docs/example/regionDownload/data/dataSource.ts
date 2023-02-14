@@ -34,49 +34,44 @@ export class DataSource {
     this.DataVSource = await dataVData.json();
   };
 
-  gitFetchData = async (areaLevel: 'country' | 'province' | 'city' | 'district') => {
+  gitL7GeoJson = async (city: string, cityLevel: string) => {
     const options = { tolerance: 0.001, highQuality: false };
     const L7Geojson = (data) => {
       return geobuf.decode(new Pbf(data));
     };
+    const L7CountryData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', city));
+    const L7CountryDataJson = await L7CountryData.arrayBuffer();
+    this[cityLevel] = await simplify(L7Geojson(L7CountryDataJson), options);
+    return await simplify(L7Geojson(L7CountryDataJson), options);
+  };
+
+  gitFetchData = async (areaLevel: 'country' | 'province' | 'city' | 'district') => {
     if (areaLevel === 'country') {
       if (this.country) {
         return this.country;
       } else {
-        const L7CountryData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_guojie'));
-        const L7CountryDataJson = await L7CountryData.arrayBuffer();
-        this.country = await simplify(L7Geojson(L7CountryDataJson), options);
-        return await simplify(L7Geojson(L7CountryDataJson), options);
+        return await this.gitL7GeoJson('2023_guojie', 'country');
       }
     }
     if (areaLevel === 'province') {
       if (this.province) {
         return this.province;
       } else {
-        const L7ProvinceData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_sheng'));
-        const L7ProvinceDataJson = await L7ProvinceData.arrayBuffer();
-        this.province = await simplify(L7Geojson(L7ProvinceDataJson), options);
-        return await simplify(L7Geojson(L7ProvinceDataJson), options);
+        return await this.gitL7GeoJson('2023_sheng', 'province');
       }
     }
     if (areaLevel === 'city') {
       if (this.city) {
         return this.city;
       } else {
-        const L7CityData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_shi'));
-        const L7CityDataJson = await L7CityData.arrayBuffer();
-        this.city = await simplify(L7Geojson(L7CityDataJson), options);
-        return await simplify(L7Geojson(L7CityDataJson), options);
+        return await this.gitL7GeoJson('2023_shi', 'city');
       }
     }
     if (areaLevel === 'district') {
       if (this.district) {
         return this.district;
       } else {
-        const L7DistrictData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_xian'));
-        const L7DistrictDataJson = await L7DistrictData.arrayBuffer();
-        this.district = await simplify(L7Geojson(L7DistrictDataJson), options);
-        return await simplify(L7Geojson(L7DistrictDataJson), options);
+        return await this.gitL7GeoJson('2023_xian', 'district');
       }
     }
   };
