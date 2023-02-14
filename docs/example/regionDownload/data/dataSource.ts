@@ -5,6 +5,7 @@ import { getFetch } from '../util';
 
 export class DataSource {
   public DataVSource = { type: 'FeatureCollection', features: [] };
+  public line: any;
   public country: any;
   public province: any;
   public city: any;
@@ -21,7 +22,11 @@ export class DataSource {
     const L7CountryData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_guojie'));
     const L7CountryDataJson = await L7CountryData.arrayBuffer();
     this.country = await simplify(L7Geojson(L7CountryDataJson), options);
-    return simplify(L7Geojson(L7CountryDataJson), options);
+    const data = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_jiuduanxian'));
+    const L7LineDataJson = await data.arrayBuffer();
+    this.line = await simplify(L7Geojson(L7LineDataJson), options);
+    this.country = { type: 'FeatureCollection', features: [...this.country.features, ...this.line.features] };
+    return await this.country;
   };
 
   init = async () => {
