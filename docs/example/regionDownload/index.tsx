@@ -1,11 +1,11 @@
-import { CopyOutlined, DownloadOutlined } from '@ant-design/icons';
+import { CopyOutlined, DownloadOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import type { ChoroplethLayerProps, LarkMapProps, LayerPopupProps } from '@antv/larkmap';
 import { ChoroplethLayer, CustomControl, LarkMap, LayerPopup, MapThemeControl } from '@antv/larkmap';
-import { Button, message, Select, Spin } from 'antd';
+import { Button, message, Popover, Select, Spin } from 'antd';
 import React, { useEffect, useMemo, useState } from 'react';
 import { DataSource } from './data/dataSource';
 import './index.less';
-import { getDrillingData, gitRollupData } from './util';
+import { getDrillingData, gitFilterData, gitRollupData } from './util';
 
 const layerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   autoFit: true,
@@ -43,6 +43,11 @@ export default () => {
   const [dataLead, setdataLead] = useState<DataSource>();
   const [sourceValue, setSourceValue] = useState('thirdParty');
   const [loading, setLoading] = useState(false);
+  const [cityData, setCityData] = useState({
+    code: 100000,
+    name: `'the People's Republic of China'`,
+    data: undefined,
+  });
 
   useEffect(() => {
     const obj = new DataSource();
@@ -57,6 +62,11 @@ export default () => {
         ...prevState,
         data: dataLead.DataVSource,
       }));
+      setCityData({
+        code: 100000,
+        name: `中华人民共和国`,
+        data: dataLead.DataVSource,
+      });
     } else {
       if (dataLead) {
         await dataLead.gitCountryData().then((res) => {
@@ -64,6 +74,11 @@ export default () => {
             ...prevState,
             data: { type: res?.type, features: res?.features },
           }));
+          setCityData({
+            code: 100000,
+            name: `'the People's Republic of China'`,
+            data: dataLead.country,
+          });
         });
       }
     }
@@ -76,6 +91,11 @@ export default () => {
       const code = e.feature.properties.adcode;
       const areaLevel = e.feature.properties.level;
       const data = await getDrillingData(dataLead, sourceValue, code, areaLevel);
+      setCityData({
+        code: code,
+        name: e.feature.properties.name,
+        data: e.feature,
+      });
       setSource((prevState) => ({ ...prevState, data: data }));
       if (e.feature.properties.parent.adcode) {
         setAdcode((state) => ({ ...state, code: e.feature.properties.parent.adcode, level: areaLevel, adcode: code }));
@@ -90,6 +110,7 @@ export default () => {
         ? e.feature.properties.code
         : 100000;
       const data = await getDrillingData(dataLead, sourceValue, L7code, adcode.level);
+
       setSource((prevState) => ({ ...prevState, data: data.geoJson }));
       setAdcode((state) => ({
         ...state,
@@ -99,6 +120,11 @@ export default () => {
         GID_1: e.feature.properties.GID_1,
         GID_2: e.feature.properties.GID_2,
       }));
+      setCityData({
+        code: L7code,
+        name: e.feature.properties.ENG_NAME,
+        data: e.feature,
+      });
     }
     setLoading(false);
   };
@@ -107,11 +133,55 @@ export default () => {
     setLoading(true);
     if (adcode.level === 'country') {
       message.info('已经上钻到最上层级');
+      if (sourceValue === 'dataV') {
+        setCityData({
+          code: 100000,
+          name: `中华人民共和国`,
+          data: dataLead.DataVSource,
+        });
+      } else {
+        setCityData({
+          code: 100000,
+          name: `'the People's Republic of China'`,
+          data: dataLead.country,
+        });
+      }
     } else {
       const data = await gitRollupData(dataLead, sourceValue, adcode.code, adcode.level, adcode.GID_1, adcode.GID_2);
+      const filterdata = await gitFilterData(
+        dataLead,
+        sourceValue,
+        adcode.code,
+        adcode.level,
+        adcode.GID_1,
+        adcode.GID_2,
+      );
+      if (sourceValue === 'dataV') {
+        setCityData({
+          code: filterdata.code,
+          name: filterdata.geoJson.features[0].properties.name,
+          data: filterdata.geoJson,
+        });
+      } else {
+        if (adcode.level === 'city') {
+          setCityData({
+            code: 100000,
+            name: `'the People's Republic of China'`,
+            data: dataLead.country,
+          });
+        } else {
+          setCityData({
+            code: data.code,
+            name: filterdata.geoJson.features[0].properties.ENG_NAME,
+            data: filterdata.geoJson,
+          });
+        }
+      }
+
       setSource((prevState) => ({ ...prevState, data: data.geoJson }));
       setAdcode({ code: data.code, level: data.areaLevel, GID_1: data?.GID_1, GID_2: data?.GID_2, adcode: data.code });
     }
+
     setLoading(false);
   };
 
@@ -197,6 +267,12 @@ export default () => {
     }
   }, [sourceValue, adcode.level]);
 
+  const content = (
+    <div>
+      <p>点击下载当前层级对应上级数据</p>
+    </div>
+  );
+
   return (
     <Spin spinning={loading}>
       <LarkMap {...config} style={{ height: '300px' }}>
@@ -214,7 +290,6 @@ export default () => {
           className="custom-control-class"
           style={{ background: '#fff', borderRadius: 4, overflow: 'hidden', padding: 16 }}
         >
-          <div>单击选择区域数据</div>
           <div>下钻: 双击要下钻的区域</div>
           <div>下卷: 双击要上卷的区域</div>
         </CustomControl>
@@ -231,22 +306,47 @@ export default () => {
               ]}
             />
           </div>
+          {cityData.code ? (
+            <div style={{ marginTop: 10 }}>
+              <div>当前选择</div>
+              <div>地名：{cityData.name}</div>
+              <div>
+                城市编码：
+                <a
+                  download={`${cityData.name}.json`}
+                  href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(cityData.data))}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {cityData.code}
+                </a>
+                <Popover content={content}>
+                  <QuestionCircleOutlined />
+                </Popover>
+              </div>
+            </div>
+          ) : null}
+
           <div className="download-content">
             <div style={{ marginRight: 10 }}>数据下载</div>
             <div className="data-input">
-              <Button onClick={() => copy(source.data)}>
-                <CopyOutlined />
-              </Button>
-              <a
-                download={`${adcode.adcode}.json`}
-                href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(source.data))}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Button>
-                  <DownloadOutlined />
+              <Popover content={'复制'}>
+                <Button onClick={() => copy(source.data)}>
+                  <CopyOutlined />
                 </Button>
-              </a>
+              </Popover>
+              <Popover content={'下载当前层级全部数据'}>
+                <a
+                  download={`${adcode.adcode}.json`}
+                  href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(source.data))}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Button>
+                    <DownloadOutlined />
+                  </Button>
+                </a>
+              </Popover>
             </div>
           </div>
           <div style={{ marginTop: 10, display: 'flex' }}>

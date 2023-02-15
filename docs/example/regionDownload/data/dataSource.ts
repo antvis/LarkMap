@@ -113,8 +113,8 @@ export class DataSource {
         geoJson: dataJson,
         code,
         areaLevel: drillLevel,
-        GID_1: dataJson.features[0].properties.GID_1,
-        GID_2: dataJson.features[0].properties.GID_2,
+        GID_1: dataJson?.features[0]?.properties?.GID_1,
+        GID_2: dataJson?.features[0]?.properties?.GID_2,
       };
     }
   };

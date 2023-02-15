@@ -101,3 +101,37 @@ export const gitRollupData = async (
     }
   }
 };
+
+export const gitFilterData = async (
+  example: DataSource,
+  sourceValue: string,
+  code: number,
+  areaLevel?: string,
+  GID_1?: number,
+  GID_2?: number,
+) => {
+  if (sourceValue === 'dataV') {
+    const datas = {
+      geoJson: { type: 'FeatureCollection', features: [] },
+      code: 10000,
+      areaLevel: 'country',
+      GID_1: undefined,
+      GID_2: undefined,
+    };
+    const data = await fetch(getFetch('dataV', 'areas_v3', `${code}`));
+    const dataJson = await data.json();
+    const dataCode = dataJson.features[0].properties.adcode;
+    const dataLevel = dataJson.features[0].properties.level;
+    return { ...datas, geoJson: dataJson, code: dataCode, areaLevel: dataLevel };
+  } else {
+    if (areaLevel === 'province') {
+      return example.getCityData('country', 100000, 'FIRST_GID', 'country', 'province');
+    } else if (areaLevel === 'city') {
+      return example.getCityData('country', 100000, 'FIRST_GID', 'country', 'province');
+    } else if (areaLevel === 'city1') {
+      return example.getCityData('province', GID_1, 'FIRST_GID', 'city');
+    } else if (areaLevel === 'district') {
+      return example.getCityData('city', GID_2, 'GID_2', 'city1');
+    }
+  }
+};
