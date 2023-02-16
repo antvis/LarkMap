@@ -1,11 +1,11 @@
 import { CopyOutlined, DownloadOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import type { ChoroplethLayerProps, LarkMapProps, LayerPopupProps } from '@antv/larkmap';
 import { ChoroplethLayer, CustomControl, LarkMap, LayerPopup, MapThemeControl } from '@antv/larkmap';
-import { Button, message, Popover, Select, Spin } from 'antd';
+import { Button, Checkbox, message, Popover, Select, Spin } from 'antd';
 import React, { useEffect, useMemo, useState } from 'react';
 import { DataSource } from './data/dataSource';
 import './index.less';
-import { downloadData, getDrillingData, gitFilterData, gitRollupData } from './util';
+import { adda, downloadData, getDrillingData, gitFilterData, gitRollupData } from './util';
 
 const layerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   autoFit: true,
@@ -49,6 +49,8 @@ export default () => {
     name: `'the People's Republic of China'`,
     data: undefined,
   });
+  const [clickData, setClickData] = useState(undefined);
+  const [CheckValue, setCheckboxValue] = useState([]);
 
   useEffect(() => {
     const obj = new DataSource();
@@ -127,6 +129,8 @@ export default () => {
         data: e.feature,
       });
     }
+    setClickData(undefined);
+    setCheckboxValue([]);
     setLoading(false);
   };
 
@@ -182,7 +186,8 @@ export default () => {
       setSource((prevState) => ({ ...prevState, data: data.geoJson }));
       setAdcode({ code: data.code, level: data.areaLevel, GID_1: data?.GID_1, GID_2: data?.GID_2, adcode: data.code });
     }
-
+    setClickData(undefined);
+    setCheckboxValue([]);
     setLoading(false);
   };
 
@@ -295,11 +300,109 @@ export default () => {
     }
   }, [sourceValue, adcode.level]);
 
+  const onLayerClick = (e) => {
+    if (sourceValue === 'thirdParty') {
+      const L7code = e.feature.properties.FIRST_GID
+        ? e.feature.properties.FIRST_GID
+        : e.feature.properties.code
+        ? e.feature.properties.code
+        : 100000;
+      setClickData({
+        geojson: e.feature,
+        name: e.feature.properties.ENG_NAME,
+        code: L7code,
+      });
+    } else {
+      setClickData({
+        geojson: e.feature,
+        name: e.feature.properties.name,
+        code: e.feature.properties.code,
+      });
+    }
+  };
+
   const content = (
     <div>
       <p>点击下载当前层级对应上级数据</p>
     </div>
   );
+
+  const granularity = useMemo(() => {
+    if (adcode.level === 'country') {
+      return [
+        { label: '省', value: 'province' },
+        { label: '市', value: 'city' },
+        { label: '县', value: 'district' },
+      ];
+    }
+    if (adcode.level === 'province') {
+      return [
+        { label: '市', value: 'city' },
+        { label: '县', value: 'district' },
+      ];
+    }
+    if (adcode.level === 'city' || adcode.level === 'city1') {
+      return [{ label: '县', value: 'district' }];
+    }
+    return [];
+  }, [adcode.level]);
+
+  const onCheckChange = (e) => {
+    setCheckboxValue(e);
+  };
+
+  const clickDownload = () => {
+    if (sourceValue === 'thirdParty') {
+      if (adcode.level === 'country') {
+        CheckValue.forEach(async (item: string) => {
+          if (item === 'province') {
+            const provinceData = await dataLead.gitData(0.05, 'province');
+            adda(provinceData, 'province');
+          }
+          if (item === 'city') {
+            const cityDatas = await dataLead.gitData(0.05, 'city');
+            adda(cityDatas, 'city');
+          }
+          if (item === 'district') {
+            const districtData = await dataLead.gitData(0.05, 'district');
+            adda(districtData, 'district');
+          }
+        });
+      }
+      if (adcode.level === 'province') {
+        CheckValue.forEach(async (item: string) => {
+          if (item === 'city') {
+            const Data = await dataLead.gitData(0.05, 'city');
+            const filterdata = Data.features.filter((v) => {
+              return v.properties.GID_1 === adcode.code;
+            });
+            adda(filterdata, 'city');
+          }
+          if (item === 'district') {
+            const Data = await dataLead.gitData(0.05, 'district');
+            const filterdata = Data.features.filter((v) => {
+              return v.properties.GID_1 === adcode.code;
+            });
+            adda(filterdata, 'district');
+          }
+        });
+      }
+      if (adcode.level === 'city' || adcode.level === 'city1') {
+        CheckValue.forEach(async (item: string) => {
+          if (item === 'district') {
+            const Data = await dataLead.gitData(0.05, 'district');
+            const filterdata = Data.features.filter((v) => {
+              return v.properties.GID_2 === adcode.code;
+            });
+            adda(filterdata, 'district');
+          }
+        });
+      }
+      adda(clickData.geojson, adcode.level);
+    } else {
+      adda(clickData.geojson, clickData.name);
+    }
+  };
 
   return (
     <Spin spinning={loading}>
@@ -309,6 +412,7 @@ export default () => {
           source={source}
           onDblClick={onDblClick}
           onUndblclick={onUndblclick}
+          onClick={onLayerClick}
           id="myChoroplethLayer"
         />
         <LayerPopup closeButton={false} closeOnClick={false} anchor="bottom-left" trigger="hover" items={items} />
@@ -372,6 +476,28 @@ export default () => {
               </div>
             </>
           )}
+          {clickData && (
+            <div>
+              <div>选中数据下载</div>
+              {sourceValue === 'thirdParty' && (
+                <div style={{ display: 'flex' }}>
+                  <div>数据粒度选择：</div>
+                  <Checkbox.Group options={granularity} onChange={onCheckChange} />
+                </div>
+              )}
+              <div style={{ display: 'flex' }}>
+                <div>选中名称：</div>
+                <div>{clickData.name}</div>
+              </div>
+              <div style={{ display: 'flex' }}>
+                <div>选中城市编码：</div>
+                <Popover content={'点击下载选中数据'}>
+                  <a onClick={clickDownload}>{clickData.code}</a>
+                </Popover>
+              </div>
+            </div>
+          )}
+
           <div className="download-content">
             <div style={{ marginRight: 10 }}>数据下载</div>
 

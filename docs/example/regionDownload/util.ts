@@ -177,3 +177,12 @@ export const downloadData = async (
     }
   }
 };
+
+export const adda = (data: any, level: string) => {
+  const download = document.createElement('a');
+  download.download = `${level}.json`;
+  download.href = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(data))}`;
+  download.target = '_blank';
+  download.rel = 'noreferrer';
+  download.click();
+};
