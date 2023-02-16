@@ -503,7 +503,7 @@ export default () => {
 
             <div className="data-input">
               <Popover content={'复制'}>
-                <Button onClick={() => copy(source.data)}>
+                <Button onClick={() => copy(JSON.stringify(source.data))}>
                   <CopyOutlined />
                 </Button>
               </Popover>
