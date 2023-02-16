@@ -14,19 +14,53 @@ export class DataSource {
     this.init();
   }
 
-  gitCountryData = async () => {
-    const options = { tolerance: 0.001, highQuality: false };
-    const L7Geojson = (data) => {
-      return geobuf.decode(new Pbf(data));
-    };
+  L7Geojson = (data) => {
+    return geobuf.decode(new Pbf(data));
+  };
+
+  gitCountryData = async (accuracy: number = 0.005) => {
+    const options = { tolerance: accuracy, highQuality: false };
     const L7CountryData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_guojie'));
     const L7CountryDataJson = await L7CountryData.arrayBuffer();
-    this.country = await simplify(L7Geojson(L7CountryDataJson), options);
+    this.country = await simplify(this.L7Geojson(L7CountryDataJson), options);
     const data = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_jiuduanxian'));
     const L7LineDataJson = await data.arrayBuffer();
-    this.line = await simplify(L7Geojson(L7LineDataJson), options);
+    this.line = await simplify(this.L7Geojson(L7LineDataJson), options);
     this.country = { type: 'FeatureCollection', features: [...this.country.features, ...this.line.features] };
     return await this.country;
+  };
+
+  gitData = async (accuracy: number = 0.005, cityLevel: 'country' | 'province' | 'city' | 'district') => {
+    const options = { tolerance: accuracy, highQuality: false };
+    const L7CountryData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_guojie'));
+    const L7CountryDataJson = await L7CountryData.arrayBuffer();
+    const data = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_jiuduanxian'));
+    const L7LineDataJson = await data.arrayBuffer();
+    const CountryDataJson = await simplify(this.L7Geojson(L7CountryDataJson), options);
+    const dataJson = await simplify(this.L7Geojson(L7LineDataJson), options);
+    const newCountryDataJson = {
+      type: 'FeatureCollection',
+      features: [...CountryDataJson.features, ...dataJson.features],
+    };
+    const L7ProvinceData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_sheng'));
+    const L7ProvinceDataJson = await L7ProvinceData.arrayBuffer();
+    const provinceDataJson = await simplify(this.L7Geojson(L7ProvinceDataJson), options);
+    const L7CityData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_shi'));
+    const L7CityDataJson = await L7CityData.arrayBuffer();
+    const cityDataJson = await simplify(this.L7Geojson(L7CityDataJson), options);
+    const L7DistrictData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', '2023_xian'));
+    const L7DistrictDataJson = await L7DistrictData.arrayBuffer();
+    const districtDataJson = await simplify(this.L7Geojson(L7DistrictDataJson), options);
+    return {
+      country: newCountryDataJson,
+      province: provinceDataJson,
+      city: cityDataJson,
+      district: districtDataJson,
+    }[cityLevel];
+  };
+
+  gitCityData = async (accuracy: number = 0.005) => {
+    const options = { tolerance: accuracy, highQuality: false };
   };
 
   init = async () => {
@@ -35,14 +69,12 @@ export class DataSource {
   };
 
   gitL7GeoJson = async (city: string, cityLevel: string) => {
-    const options = { tolerance: 0.001, highQuality: false };
-    const L7Geojson = (data) => {
-      return geobuf.decode(new Pbf(data));
-    };
+    const options = { tolerance: 0.005, highQuality: false };
+
     const L7CountryData = await fetch(getFetch('L7', 'xinzhengqu@1.0.0', city));
     const L7CountryDataJson = await L7CountryData.arrayBuffer();
-    this[cityLevel] = await simplify(L7Geojson(L7CountryDataJson), options);
-    return await simplify(L7Geojson(L7CountryDataJson), options);
+    this[cityLevel] = await simplify(this.L7Geojson(L7CountryDataJson), options);
+    return await simplify(this.L7Geojson(L7CountryDataJson), options);
   };
 
   gitFetchData = async (areaLevel: 'country' | 'province' | 'city' | 'district') => {

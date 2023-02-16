@@ -135,3 +135,45 @@ export const gitFilterData = async (
     }
   }
 };
+
+export const downloadData = async (
+  example: DataSource,
+  sourceValue: string,
+  code: number,
+  accuracy: number,
+  areaLevel?: string,
+  GID_1?: number,
+  GID_2?: number,
+) => {
+  if (sourceValue === 'dataV') {
+    return;
+  } else {
+    if (areaLevel === 'country') {
+      return await example.gitData(accuracy, 'country');
+    }
+    if (areaLevel === 'province') {
+      return await example.gitData(accuracy, 'province');
+    }
+    if (areaLevel === 'city') {
+      const cityData = await example.gitData(accuracy, 'city');
+      const newCityData = cityData.features.filter((item: any) => {
+        return item.properties.GID_1 === code;
+      });
+      return newCityData;
+    }
+    if (areaLevel === 'city1') {
+      const cityData = await example.gitData(accuracy, 'district');
+      const newCityData = cityData.features.filter((item: any) => {
+        return item.properties.GID_2 === GID_2;
+      });
+      return newCityData;
+    }
+    if (areaLevel === 'district') {
+      const cityData = await example.gitData(accuracy, 'district');
+      const newCityData = cityData.features.filter((item: any) => {
+        return item.properties.GID_3 === code;
+      });
+      return newCityData;
+    }
+  }
+};

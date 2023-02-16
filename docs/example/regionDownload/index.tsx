@@ -5,7 +5,7 @@ import { Button, message, Popover, Select, Spin } from 'antd';
 import React, { useEffect, useMemo, useState } from 'react';
 import { DataSource } from './data/dataSource';
 import './index.less';
-import { getDrillingData, gitFilterData, gitRollupData } from './util';
+import { downloadData, getDrillingData, gitFilterData, gitRollupData } from './util';
 
 const layerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   autoFit: true,
@@ -43,6 +43,7 @@ export default () => {
   const [dataLead, setdataLead] = useState<DataSource>();
   const [sourceValue, setSourceValue] = useState('thirdParty');
   const [loading, setLoading] = useState(false);
+  const [accuracyValue, setAccuracyVAlue] = useState(0.005);
   const [cityData, setCityData] = useState({
     code: 100000,
     name: `'the People's Republic of China'`,
@@ -199,6 +200,33 @@ export default () => {
     oInput.style.display = 'none';
     message.success('复制成功');
   };
+
+  const onDownload = async () => {
+    message.info('数据下载中');
+    const data = await downloadData(
+      dataLead,
+      sourceValue,
+      adcode.code,
+      accuracyValue,
+      adcode.level,
+      adcode.GID_1,
+      adcode.GID_2,
+    );
+    const download = document.createElement('a');
+    download.download = `${adcode.adcode}.json`;
+    download.href = `data:text/json;charset=utf-8,${encodeURIComponent(
+      JSON.stringify(sourceValue === 'dataV' ? source.data : data),
+    )}`;
+    download.target = '_blank';
+    download.rel = 'noreferrer';
+    download.click();
+    message.success('数据下载完成');
+  };
+
+  const onAccuracyChange = (e) => {
+    setAccuracyVAlue(e);
+  };
+
   const items: LayerPopupProps['items'] = useMemo(() => {
     if (sourceValue === 'dataV') {
       return [
@@ -326,9 +354,27 @@ export default () => {
               </div>
             </div>
           ) : null}
-
+          {sourceValue === 'thirdParty' && (
+            <>
+              <div>高级设置</div>
+              <div className="download-content">
+                <div>数据精度：</div>
+                <Select
+                  style={{ width: 120 }}
+                  value={accuracyValue}
+                  onChange={onAccuracyChange}
+                  options={[
+                    { value: 0.001, label: '高' },
+                    { value: 0.005, label: '中' },
+                    { value: 0.01, label: '低' },
+                  ]}
+                />
+              </div>
+            </>
+          )}
           <div className="download-content">
             <div style={{ marginRight: 10 }}>数据下载</div>
+
             <div className="data-input">
               <Popover content={'复制'}>
                 <Button onClick={() => copy(source.data)}>
@@ -336,16 +382,9 @@ export default () => {
                 </Button>
               </Popover>
               <Popover content={'下载当前层级全部数据'}>
-                <a
-                  download={`${adcode.adcode}.json`}
-                  href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(source.data))}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Button>
-                    <DownloadOutlined />
-                  </Button>
-                </a>
+                <Button onClick={onDownload}>
+                  <DownloadOutlined />
+                </Button>
               </Popover>
             </div>
           </div>
