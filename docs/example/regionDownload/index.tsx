@@ -341,7 +341,7 @@ export default () => {
         { label: '县', value: 'district' },
       ];
     }
-    if (adcode.level === 'city' || adcode.level === 'city1') {
+    if (adcode.level === 'city') {
       return [{ label: '县', value: 'district' }];
     }
     return [];
@@ -387,7 +387,7 @@ export default () => {
           }
         });
       }
-      if (adcode.level === 'city' || adcode.level === 'city1') {
+      if (adcode.level === 'city') {
         CheckValue.forEach(async (item: string) => {
           if (item === 'district') {
             const Data = await dataLead.gitData(0.05, 'district');
