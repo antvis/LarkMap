@@ -316,7 +316,7 @@ export default () => {
       setClickData({
         geojson: e.feature,
         name: e.feature.properties.name,
-        code: e.feature.properties.code,
+        code: e.feature.properties.adcode,
       });
     }
   };
