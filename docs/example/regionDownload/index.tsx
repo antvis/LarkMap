@@ -439,7 +439,7 @@ export default () => {
             />
           </div>
           {cityData.code ? (
-            <div style={{ marginTop: 10 }}>
+            <div className="LayerCity">
               <div>当前选择</div>
               <div>地名：{cityData.name}</div>
               <div>
@@ -459,9 +459,9 @@ export default () => {
             </div>
           ) : null}
           {sourceValue === 'thirdParty' && (
-            <>
+            <div>
               <div>高级设置</div>
-              <div className="download-content">
+              <div className="flexCenter">
                 <div>数据精度：</div>
                 <Select
                   style={{ width: 120 }}
@@ -474,10 +474,10 @@ export default () => {
                   ]}
                 />
               </div>
-            </>
+            </div>
           )}
           {clickData && (
-            <div>
+            <div className="LayerCity">
               <div>选中数据下载</div>
               {sourceValue === 'thirdParty' && (
                 <div style={{ display: 'flex' }}>
