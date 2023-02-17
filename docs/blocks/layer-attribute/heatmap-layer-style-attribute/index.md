@@ -1,9 +1,9 @@
 ---
 toc: false
-order: 2
+order: 3
 group:
   title: 属性面板
-  order: 3
+  order: 2
 nav:
   title: 区块
   path: /blocks
