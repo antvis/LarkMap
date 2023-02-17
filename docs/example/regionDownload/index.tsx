@@ -406,7 +406,7 @@ export default () => {
 
   return (
     <Spin spinning={loading}>
-      <LarkMap {...config} style={{ height: '300px' }}>
+      <LarkMap {...config} style={{ height: '90vh' }}>
         <ChoroplethLayer
           {...layerOptions}
           source={source}
