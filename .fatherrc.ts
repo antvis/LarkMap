@@ -17,12 +17,6 @@ export default defineConfig({
       '@ant-design/icons': 'icons',
       '@antv/l7': 'L7',
       '@antv/l7-draw': 'L7.Draw',
-      '@formily/core': 'Formily.Core',
-      '@formily/reactive': 'Formily.Reactive',
-      '@formily/shared': 'Formily.Shared',
-      '@formily/react': 'Formily.React',
-      '@formily/antd': 'Formily.Antd',
-      '@antv/insight-component': 'InsightComponent',
     },
     chainWebpack(memo) {
       memo
