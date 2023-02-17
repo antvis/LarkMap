@@ -43,7 +43,8 @@
     "eventemitter3": "^4.0.7",
     "color": "^4.2.3",
     "lodash-es": "^4.17.21",
-    "query-string": "^7.1.1"
+    "query-string": "^7.1.1",
+    "rc-select": "^14.1.13"
   },
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",
@@ -82,7 +83,6 @@
   "peerDependencies": {
     "@ant-design/icons": "^4.7.0",
     "@antv/l7": "^2.11.0",
-    "antd": "^4.22.3",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   },
@@ -99,7 +99,7 @@
   "limit-size": [
     {
       "path": "dist/larkmap.min.js",
-      "limit": "200 Kb"
+      "limit": "300 Kb"
     }
   ],
   "keywords": [
