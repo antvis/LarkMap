@@ -10,7 +10,7 @@ nav:
   order: 3
 ---
 
-## 气泡图层样式属性 - BubbleLayerStyleAttribute
+## 气泡图层样式属性面板 - BubbleLayerStyleAttribute
 
 ### 介绍
 

@@ -10,7 +10,7 @@ nav:
   order: 3
 ---
 
-## 区域图层样式属性 - ChoroplethLayerStyleAttribute
+## 区域图层样式属性面板 - ChoroplethLayerStyleAttribute
 
 ### 介绍
 

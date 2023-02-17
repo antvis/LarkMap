@@ -10,7 +10,7 @@ nav:
   order: 3
 ---
 
-## 线图层样式属性 - LineLayerStyleAttribute
+## 线图层样式属性面板 - LineLayerStyleAttribute
 
 ### 介绍
 

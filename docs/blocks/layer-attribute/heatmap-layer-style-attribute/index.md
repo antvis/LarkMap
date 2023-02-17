@@ -10,7 +10,7 @@ nav:
   order: 3
 ---
 
-## 热力图层样式属性 - HeatmapLayerStyleAttribute
+## 热力图层样式属性面板 - HeatmapLayerStyleAttribute
 
 ### 介绍
 
