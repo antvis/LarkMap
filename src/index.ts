@@ -57,11 +57,6 @@ export { useDrawGroup } from './components/Draw/use-draw-group';
 // export type { DrawControlProps } from './components/Draw/DrawControl/types';
 
 /**
- * 属性组件
- */
-export * from './components/LayerAttribute';
-
-/**
  * 版本号
  */
 export { default as version } from './version';
