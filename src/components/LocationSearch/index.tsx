@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import qs from 'query-string';
 import { SearchOutlined } from '@ant-design/icons';
 import { useDebounceFn } from 'ahooks';
-import Select from './select';
+import Select from './Select';
 import type { LocationSearchProps, LocationSearchOption } from './types';
 import { CLS_PREFIX, GAO_DE_API_URL } from './constant';
 import './index.less';
