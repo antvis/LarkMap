@@ -1,8 +1,8 @@
-import { Select, Spin } from 'antd';
 import React, { useCallback, useEffect, useState } from 'react';
 import qs from 'query-string';
 import { SearchOutlined } from '@ant-design/icons';
 import { useDebounceFn } from 'ahooks';
+import Select from './select';
 import type { LocationSearchProps, LocationSearchOption } from './types';
 import { CLS_PREFIX, GAO_DE_API_URL } from './constant';
 import './index.less';
@@ -17,7 +17,6 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
   onChange,
   ...selectProps
 }) => {
-  const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState<LocationSearchOption[]>([]);
 
   useEffect(() => {
@@ -30,7 +29,6 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
         setOptions([]);
         return;
       }
-      setIsLoading(true);
       const url = qs.stringifyUrl({
         url: GAO_DE_API_URL,
         query: {
@@ -38,16 +36,16 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
           keywords: [...(searchParams.keywords ?? '').split('|'), searchText].filter((item) => !!item).join('|'),
         },
       });
-      const res = await (await fetch(url)).json().finally(() => {
-        setIsLoading(false);
-      });
+      const res = await (await fetch(url)).json();
       setOptions(
-        (res?.tips ?? []).filter(item => item.location && item.location.length).map((item) => {
-          const [lon, lat] = item.location.split(',');
-          item.longitude = +lon;
-          item.latitude = +lat;
-          return item;
-        }),
+        (res?.tips ?? [])
+          .filter((item) => item.location && item.location.length)
+          .map((item) => {
+            const [lon, lat] = item.location.split(',');
+            item.longitude = +lon;
+            item.latitude = +lat;
+            return item;
+          }),
       );
     },
     {
@@ -66,9 +64,10 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
   return (
     <Select
       className={`${CLS_PREFIX}`}
-      notFoundContent={isLoading ? <Spin size="small" /> : null}
+      notFoundContent={null}
       onSearch={onSearch}
       onChange={onLocationChange}
+      clearIcon={() => null}
       {...selectProps}
     >
       {options.map((option) => {
