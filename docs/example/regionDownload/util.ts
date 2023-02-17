@@ -146,7 +146,8 @@ export const downloadData = async (
   GID_2?: number,
 ) => {
   if (sourceValue === 'dataV') {
-    return;
+    const dataFull = await fetch(getFetch('dataV', 'areas_v3', `${code}_full`));
+    return dataFull;
   } else {
     if (areaLevel === 'country') {
       return await example.gitData(accuracy, 'country');
