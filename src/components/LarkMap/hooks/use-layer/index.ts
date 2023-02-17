@@ -32,6 +32,7 @@ export const useLayer = <T extends Layer = Layer>(id: string): T | undefined => 
         layerManager.off('remove', onLayerRemove);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   return layer;
