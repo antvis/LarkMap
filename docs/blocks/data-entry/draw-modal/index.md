@@ -8,6 +8,7 @@ nav:
   title: 区块
   path: /blocks
   order: 3
+hide: true
 ---
 
 ## 绘制弹框
