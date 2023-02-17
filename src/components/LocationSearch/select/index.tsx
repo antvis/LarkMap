@@ -1,23 +1,13 @@
 import classNames from 'classnames';
-import type { SelectProps as RcSelectProps } from 'rc-select';
-import RcSelect, { BaseSelectRef, OptGroup, Option } from 'rc-select';
-import { OptionProps } from 'rc-select/lib/Option';
+import type { SelectProps as RcSelectProps, BaseSelectRef } from 'rc-select';
+import RcSelect, { OptGroup, Option } from 'rc-select';
+import type { OptionProps } from 'rc-select/lib/Option';
 import type { BaseOptionType, DefaultOptionType } from 'rc-select/lib/Select';
 import { omit } from 'lodash-es';
 import * as React from 'react';
 import './index.less';
 
-type RawValue = string | number;
-
-export { OptionProps, BaseSelectRef as RefSelectProps, BaseOptionType, DefaultOptionType };
-
-export interface LabeledValue {
-  key?: string;
-  value: RawValue;
-  label: React.ReactNode;
-}
-
-export type SelectValue = RawValue | RawValue[] | LabeledValue | LabeledValue[] | undefined;
+export { OptionProps, BaseOptionType, DefaultOptionType };
 
 export interface InternalSelectProps<
   ValueType = any,
@@ -98,7 +88,7 @@ const InternalSelect = <OptionType extends BaseOptionType | DefaultOptionType = 
       mode={mode as any}
       prefixCls={PREFIX_CLS}
       placement={placement}
-      notFoundContent="当前无数据"
+      notFoundContent={notFoundContent ?? '当前无数据'}
       className={mergedClassName}
       getPopupContainer={getPopupContainer}
       dropdownClassName={popupClassName}

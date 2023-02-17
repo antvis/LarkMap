@@ -64,7 +64,6 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
   return (
     <Select
       className={`${CLS_PREFIX}`}
-      notFoundContent={null}
       onSearch={onSearch}
       onChange={onLocationChange}
       clearIcon={() => null}
