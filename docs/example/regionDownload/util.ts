@@ -1,3 +1,4 @@
+import { message } from 'antd';
 import type { DataSource } from './data/dataSource';
 
 /**
@@ -25,11 +26,11 @@ export const getFetch = (fetchType: 'dataV' | 'L7', version: string, code: strin
 export const getDrillingData = async (example: DataSource, sourceValue: string, code?: number, areaLevel?: string) => {
   if (sourceValue === 'dataV') {
     if (areaLevel !== 'district') {
-      const data = await fetch(getFetch('dataV', 'areas_v3', `${code}_full`));
+      const data = await example.gitDataVData(code, 'full');
       const geojson = await data.json();
       return geojson;
     } else {
-      const data = await fetch(getFetch('dataV', 'areas_v3', `${code}`));
+      const data = await example.gitDataVData(code);
       const geojson = await data.json();
       return geojson;
     }
@@ -73,9 +74,9 @@ export const gitRollupData = async (
       GID_1: undefined,
       GID_2: undefined,
     };
-    const dataFull = await fetch(getFetch('dataV', 'areas_v3', `${code}_full`));
+    const dataFull = await example.gitDataVData(code, 'full');
     const dataFullJson = await dataFull.json();
-    const data = await fetch(getFetch('dataV', 'areas_v3', `${code}`));
+    const data = await example.gitDataVData(code);
     const dataJson = await data.json();
     const dataCode = dataJson.features[0].properties.parent.adcode;
     const dataLevel = dataJson.features[0].properties.level;
@@ -118,7 +119,7 @@ export const gitFilterData = async (
       GID_1: undefined,
       GID_2: undefined,
     };
-    const data = await fetch(getFetch('dataV', 'areas_v3', `${code}`));
+    const data = await example.gitDataVData(code);
     const dataJson = await data.json();
     const dataCode = dataJson.features[0].properties.adcode;
     const dataLevel = dataJson.features[0].properties.level;
@@ -179,6 +180,16 @@ export const downloadData = async (
   }
 };
 
+export const copy = (data: any) => {
+  const oInput = document.createElement('input');
+  oInput.value = data;
+  document.body.appendChild(oInput);
+  oInput.select();
+  document.execCommand('Copy');
+  oInput.style.display = 'none';
+  message.success('复制成功');
+};
+
 export const adda = (data: any, level: string) => {
   const download = document.createElement('a');
   download.download = `${level}.json`;
@@ -187,3 +198,102 @@ export const adda = (data: any, level: string) => {
   download.rel = 'noreferrer';
   download.click();
 };
+
+export const item = (value: string, level: string) => {
+  if (value === 'dataV') {
+    return [
+      {
+        layer: 'myChoroplethLayer',
+        fields: [
+          {
+            field: 'name',
+            formatField: () => '名称',
+          },
+          {
+            field: 'adcode',
+            formatField: '行政编号',
+          },
+        ],
+      },
+    ];
+  } else {
+    if (level === 'country') {
+      return [
+        {
+          layer: 'myChoroplethLayer',
+          fields: [
+            {
+              field: 'ENG_NAME',
+            },
+
+            {
+              field: 'code',
+              formatValue: '100000',
+            },
+          ],
+        },
+      ];
+    } else if (level === 'province') {
+      return [
+        {
+          layer: 'myChoroplethLayer',
+          fields: [
+            {
+              field: 'ENG_NAME',
+            },
+
+            {
+              field: 'FIRST_GID',
+              formatField: 'code',
+            },
+          ],
+        },
+      ];
+    } else {
+      return [
+        {
+          layer: 'myChoroplethLayer',
+          fields: [
+            {
+              field: 'ENG_NAME',
+            },
+            {
+              field: 'code',
+            },
+          ],
+        },
+      ];
+    }
+  }
+};
+
+export const cityValue = (level: string) => {
+  if (level === 'country') {
+    return [
+      { label: '省', value: 'province' },
+      { label: '市', value: 'city' },
+      { label: '县', value: 'district' },
+    ];
+  }
+  if (level === 'province') {
+    return [
+      { label: '市', value: 'city' },
+      { label: '县', value: 'district' },
+    ];
+  }
+  if (level === 'city') {
+    return [{ label: '县', value: 'district' }];
+  }
+  return [];
+};
+
+export const sourceOptions = [
+  { value: 'dataV', label: 'dataV数据源' },
+  { value: 'thirdParty', label: '第三方数据源' },
+];
+
+export const accuracyOption = [
+  { value: 0.001, label: '高' },
+  { value: 0.005, label: '中' },
+  { value: 0.01, label: '低' },
+];

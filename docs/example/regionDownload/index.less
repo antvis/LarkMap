@@ -1,11 +1,8 @@
 .panel {
-  position: absolute;
-  right: 0;
-  z-index: 1000;
   width: 350px;
   height: 100%;
-  padding: 10px 20px;
-  overflow: scroll;
+  padding: 10px 15px;
+  overflow: auto;
   background: #fff;
 
   .source-select {
@@ -31,4 +28,12 @@
     display: flex;
     align-items: center;
   }
+  .originData {
+    position: absolute;
+    bottom: 10px;
+  }
+}
+
+.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  padding: 0;
 }

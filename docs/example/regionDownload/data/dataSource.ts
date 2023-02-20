@@ -68,6 +68,14 @@ export class DataSource {
     this.DataVSource = await dataVData.json();
   };
 
+  gitDataVData = async (code: number, full?: string) => {
+    if (full) {
+      return fetch(getFetch('dataV', 'areas_v3', `${code}_full`));
+    } else {
+      return fetch(getFetch('dataV', 'areas_v3', `${code}`));
+    }
+  };
+
   gitL7GeoJson = async (city: string, cityLevel: string) => {
     const options = { tolerance: 0.005, highQuality: false };
 
