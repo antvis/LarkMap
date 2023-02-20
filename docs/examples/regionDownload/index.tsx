@@ -1,11 +1,24 @@
-import { CopyOutlined, DownloadOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import { CopyOutlined, DownloadOutlined } from '@ant-design/icons';
 import type { ChoroplethLayerProps, LarkMapProps, LayerPopupProps } from '@antv/larkmap';
 import { ChoroplethLayer, CustomControl, LarkMap, LayerPopup, MapThemeControl } from '@antv/larkmap';
-import { Button, Checkbox, message, Popover, Select, Spin } from 'antd';
+import { Button, Checkbox, Collapse, message, Popover, Select, Spin } from 'antd';
 import React, { useEffect, useMemo, useState } from 'react';
 import { DataSource } from './data/dataSource';
 import './index.less';
-import { adda, downloadData, getDrillingData, gitFilterData, gitRollupData } from './util';
+import {
+  accuracyOption,
+  adda,
+  cityValue,
+  copy,
+  downloadData,
+  getDrillingData,
+  gitFilterData,
+  gitRollupData,
+  item,
+  sourceOptions,
+} from './util';
+
+const { Panel } = Collapse;
 
 const layerOptions: Omit<ChoroplethLayerProps, 'source'> = {
   autoFit: true,
@@ -196,16 +209,6 @@ export default () => {
     setSourceValue(e);
   };
 
-  const copy = (data: any) => {
-    const oInput = document.createElement('input');
-    oInput.value = data;
-    document.body.appendChild(oInput);
-    oInput.select();
-    document.execCommand('Copy');
-    oInput.style.display = 'none';
-    message.success('复制成功');
-  };
-
   const onDownload = async () => {
     message.info('数据下载中');
     const data = await downloadData(
@@ -233,71 +236,7 @@ export default () => {
   };
 
   const items: LayerPopupProps['items'] = useMemo(() => {
-    if (sourceValue === 'dataV') {
-      return [
-        {
-          layer: 'myChoroplethLayer',
-          fields: [
-            {
-              field: 'name',
-              formatField: () => '名称',
-            },
-            {
-              field: 'adcode',
-              formatField: '行政编号',
-            },
-          ],
-        },
-      ];
-    } else {
-      if (adcode.level === 'country') {
-        return [
-          {
-            layer: 'myChoroplethLayer',
-            fields: [
-              {
-                field: 'ENG_NAME',
-              },
-
-              {
-                field: 'code',
-                formatValue: '100000',
-              },
-            ],
-          },
-        ];
-      } else if (adcode.level === 'province') {
-        return [
-          {
-            layer: 'myChoroplethLayer',
-            fields: [
-              {
-                field: 'ENG_NAME',
-              },
-
-              {
-                field: 'FIRST_GID',
-                formatField: 'code',
-              },
-            ],
-          },
-        ];
-      } else {
-        return [
-          {
-            layer: 'myChoroplethLayer',
-            fields: [
-              {
-                field: 'ENG_NAME',
-              },
-              {
-                field: 'code',
-              },
-            ],
-          },
-        ];
-      }
-    }
+    return item(sourceValue, adcode.level);
   }, [sourceValue, adcode.level]);
 
   const onLayerClick = (e) => {
@@ -328,23 +267,7 @@ export default () => {
   );
 
   const granularity = useMemo(() => {
-    if (adcode.level === 'country') {
-      return [
-        { label: '省', value: 'province' },
-        { label: '市', value: 'city' },
-        { label: '县', value: 'district' },
-      ];
-    }
-    if (adcode.level === 'province') {
-      return [
-        { label: '市', value: 'city' },
-        { label: '县', value: 'district' },
-      ];
-    }
-    if (adcode.level === 'city') {
-      return [{ label: '县', value: 'district' }];
-    }
-    return [];
+    return cityValue(adcode.level);
   }, [adcode.level]);
 
   const onCheckChange = (e) => {
@@ -406,101 +329,93 @@ export default () => {
 
   return (
     <Spin spinning={loading}>
-      <LarkMap {...config} style={{ height: '90vh' }}>
-        <ChoroplethLayer
-          {...layerOptions}
-          source={source}
-          onDblClick={onDblClick}
-          onUndblclick={onUndblclick}
-          onClick={onLayerClick}
-          id="myChoroplethLayer"
-        />
-        <LayerPopup closeButton={false} closeOnClick={false} anchor="bottom-left" trigger="hover" items={items} />
-        <MapThemeControl position="topleft" />
-        <CustomControl
-          position="bottomleft"
-          className="custom-control-class"
-          style={{ background: '#fff', borderRadius: 4, overflow: 'hidden', padding: 16 }}
-        >
-          <div>下钻: 双击要下钻的区域</div>
-          <div>下卷: 双击要上卷的区域</div>
-        </CustomControl>
+      <div style={{ display: 'flex' }}>
+        <LarkMap {...config} style={{ height: '90vh', width: 'calc(100% - 300px)' }}>
+          <ChoroplethLayer
+            {...layerOptions}
+            source={source}
+            onDblClick={onDblClick}
+            onUndblclick={onUndblclick}
+            onClick={onLayerClick}
+            id="myChoroplethLayer"
+          />
+          <LayerPopup closeButton={false} closeOnClick={false} anchor="bottom-left" trigger="hover" items={items} />
+          <MapThemeControl position="topleft" />
+          <CustomControl
+            position="bottomleft"
+            className="custom-control-class"
+            style={{ background: '#fff', borderRadius: 4, overflow: 'hidden', padding: 16 }}
+          >
+            <div>下钻: 双击要下钻的区域</div>
+            <div>下卷: 双击要上卷的区域</div>
+          </CustomControl>
+        </LarkMap>
         <div className="panel">
           <div className="source-select">
             <div>数据源：</div>
-            <Select
-              value={sourceValue}
-              style={{ width: 150 }}
-              onChange={handleChange}
-              options={[
-                { value: 'dataV', label: 'dataV数据源' },
-                { value: 'thirdParty', label: '第三方数据源' },
-              ]}
-            />
+            <Select value={sourceValue} style={{ width: 150 }} onChange={handleChange} options={sourceOptions} />
           </div>
           {cityData.code ? (
             <div className="LayerCity">
-              <div>当前选择</div>
-              <div>地名：{cityData.name}</div>
-              <div>
-                城市编码：
-                <a
-                  download={`${cityData.name}.json`}
-                  href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(cityData.data))}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {cityData.code}
-                </a>
-                <Popover content={content}>
-                  <QuestionCircleOutlined />
-                </Popover>
-              </div>
+              <Collapse defaultActiveKey={['1']} ghost style={{ paddingTop: '12px' }}>
+                <Panel header="当前图层信息" key="1">
+                  <div>当前图层地名：{cityData.name}</div>
+                  <div>
+                    当前图层城市编码：
+                    <Popover content={content}>
+                      <a
+                        download={`${cityData.name}.json`}
+                        href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(cityData.data))}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {cityData.code}
+                      </a>
+                    </Popover>
+                  </div>
+                </Panel>
+              </Collapse>
             </div>
           ) : null}
-          {sourceValue === 'thirdParty' && (
-            <div>
-              <div>高级设置</div>
-              <div className="flexCenter">
-                <div>数据精度：</div>
-                <Select
-                  style={{ width: 120 }}
-                  value={accuracyValue}
-                  onChange={onAccuracyChange}
-                  options={[
-                    { value: 0.001, label: '高' },
-                    { value: 0.005, label: '中' },
-                    { value: 0.01, label: '低' },
-                  ]}
-                />
-              </div>
-            </div>
-          )}
           {clickData && (
-            <div className="LayerCity">
-              <div>选中数据下载</div>
-              {sourceValue === 'thirdParty' && (
+            <Collapse defaultActiveKey={['1']} ghost style={{ paddingTop: '12px' }}>
+              <Panel header="下载选中数据" key="1">
+                {sourceValue === 'thirdParty' && (
+                  <div style={{ display: 'flex' }}>
+                    <div>数据粒度选择：</div>
+                    <Checkbox.Group options={granularity} onChange={onCheckChange} />
+                  </div>
+                )}
                 <div style={{ display: 'flex' }}>
-                  <div>数据粒度选择：</div>
-                  <Checkbox.Group options={granularity} onChange={onCheckChange} />
+                  <div>选中名称：</div>
+                  <div>{clickData.name}</div>
                 </div>
-              )}
-              <div style={{ display: 'flex' }}>
-                <div>选中名称：</div>
-                <div>{clickData.name}</div>
-              </div>
-              <div style={{ display: 'flex' }}>
-                <div>选中城市编码：</div>
-                <Popover content={'点击下载选中数据'}>
-                  <a onClick={clickDownload}>{clickData.code}</a>
-                </Popover>
-              </div>
-            </div>
+                <div style={{ display: 'flex' }}>
+                  <div>选中城市编码：</div>
+                  <Popover content={'点击下载选中数据'}>
+                    <a onClick={clickDownload}>{clickData.code}</a>
+                  </Popover>
+                </div>
+              </Panel>
+            </Collapse>
           )}
-
+          {sourceValue === 'thirdParty' && (
+            <Collapse defaultActiveKey={['1']} ghost style={{ paddingTop: '12px' }}>
+              <Panel header="高级设置" key="1">
+                <div className="flexCenter">
+                  <div>数据精度：</div>
+                  <Select
+                    style={{ width: 120 }}
+                    value={accuracyValue}
+                    onChange={onAccuracyChange}
+                    options={accuracyOption}
+                  />
+                </div>
+              </Panel>
+            </Collapse>
+          )}
           <div className="download-content">
             <div style={{ marginRight: 10 }}>数据下载</div>
-
             <div className="data-input">
               <Popover content={'复制'}>
                 <Button onClick={() => copy(JSON.stringify(source.data))}>
@@ -514,7 +429,7 @@ export default () => {
               </Popover>
             </div>
           </div>
-          <div style={{ marginTop: 10, display: 'flex' }}>
+          <div className='originData' style={{}}>
             <div>数据来源：</div>
             {sourceValue === 'dataV' ? (
               <a href="https://datav.aliyun.com/portal/school/atlas/area_selector">dataV.GeoAtlas官网</a>
@@ -525,7 +440,7 @@ export default () => {
             )}
           </div>
         </div>
-      </LarkMap>
+      </div>
     </Spin>
   );
 };

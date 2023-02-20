@@ -3,7 +3,7 @@ toc: false
 order: 100
 nav:
   title: 示例
-  path: /example
+  path: /examples
   order: 3
 ---
 
