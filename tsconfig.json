@@ -20,6 +20,6 @@
       "@antv/larkmap": ["./src/index.ts"]
     }
   },
-  "include": ["src/**/*", "__tests__/*", "typings.d.ts", "docs/**/*"],
+  "include": ["src/**/*", "__tests__/*", "typings.d.ts", "docs/**/*", "docs/**/**/**/*"],
   "exclude": ["node_modules", "es", "lib", "dist", "src/.umi/*"]
 }

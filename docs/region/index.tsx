@@ -277,31 +277,31 @@ export default () => {
   const clickDownload = () => {
     if (sourceValue === 'thirdParty') {
       if (adcode.level === 'country') {
-        CheckValue.forEach(async (item: string) => {
-          if (item === 'province') {
+        CheckValue.forEach(async (level: string) => {
+          if (level === 'province') {
             const provinceData = await dataLead.gitData(0.05, 'province');
             adda(provinceData, 'province');
           }
-          if (item === 'city') {
+          if (level === 'city') {
             const cityDatas = await dataLead.gitData(0.05, 'city');
             adda(cityDatas, 'city');
           }
-          if (item === 'district') {
+          if (level === 'district') {
             const districtData = await dataLead.gitData(0.05, 'district');
             adda(districtData, 'district');
           }
         });
       }
       if (adcode.level === 'province') {
-        CheckValue.forEach(async (item: string) => {
-          if (item === 'city') {
+        CheckValue.forEach(async (level: string) => {
+          if (level === 'city') {
             const Data = await dataLead.gitData(0.05, 'city');
             const filterdata = Data.features.filter((v) => {
               return v.properties.GID_1 === adcode.code;
             });
             adda(filterdata, 'city');
           }
-          if (item === 'district') {
+          if (level === 'district') {
             const Data = await dataLead.gitData(0.05, 'district');
             const filterdata = Data.features.filter((v) => {
               return v.properties.GID_1 === adcode.code;
@@ -311,8 +311,8 @@ export default () => {
         });
       }
       if (adcode.level === 'city') {
-        CheckValue.forEach(async (item: string) => {
-          if (item === 'district') {
+        CheckValue.forEach(async (level: string) => {
+          if (level === 'district') {
             const Data = await dataLead.gitData(0.05, 'district');
             const filterdata = Data.features.filter((v) => {
               return v.properties.GID_2 === adcode.code;
@@ -429,7 +429,7 @@ export default () => {
               </Popover>
             </div>
           </div>
-          <div className='originData' style={{}}>
+          <div className="originData" style={{}}>
             <div>数据来源：</div>
             {sourceValue === 'dataV' ? (
               <a href="https://datav.aliyun.com/portal/school/atlas/area_selector">dataV.GeoAtlas官网</a>
