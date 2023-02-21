@@ -3,7 +3,8 @@ import type { ChoroplethLayerProps, LarkMapProps, LayerPopupProps } from '@antv/
 import { ChoroplethLayer, CustomControl, LarkMap, LayerPopup, MapThemeControl } from '@antv/larkmap';
 import { Button, Checkbox, Collapse, message, Popover, Select, Spin } from 'antd';
 import React, { useEffect, useMemo, useState } from 'react';
-import { DataSource } from './data/dataSource';
+import { DataVSource, L7Source } from './data';
+import type { DataPrecision } from './data/BaseDataSource';
 import './index.less';
 import {
   accuracyOption,
@@ -53,10 +54,11 @@ export default () => {
     GID_1: undefined,
     GID_2: undefined,
   });
-  const [dataLead, setdataLead] = useState<DataSource>();
+  const [newDataV, setNewDatav] = useState<DataVSource>();
+  const [newL7Source, setNewL7Source] = useState<L7Source>();
   const [sourceValue, setSourceValue] = useState('thirdParty');
   const [loading, setLoading] = useState(false);
-  const [accuracyValue, setAccuracyVAlue] = useState(0.005);
+  const [accuracyValue, setAccuracyVAlue] = useState<DataPrecision>('low');
   const [cityData, setCityData] = useState({
     code: 100000,
     name: `'the People's Republic of China'`,
@@ -66,8 +68,10 @@ export default () => {
   const [CheckValue, setCheckboxValue] = useState([]);
 
   useEffect(() => {
-    const obj = new DataSource();
-    setdataLead(obj);
+    const obj = new DataVSource();
+    const newObj = new L7Source({ version: 'xinzhengqu' });
+    setNewDatav(obj);
+    setNewL7Source(newObj);
   }, []);
 
   // @ts-ignore
@@ -76,37 +80,36 @@ export default () => {
     if (sourceValue === 'dataV') {
       setSource((prevState) => ({
         ...prevState,
-        data: dataLead.DataVSource,
+        data: newDataV.DataVSource,
       }));
       setCityData({
         code: 100000,
         name: `中华人民共和国`,
-        data: dataLead.DataVSource,
+        data: newDataV.DataVSource,
       });
     } else {
-      if (dataLead) {
-        await dataLead.gitCountryData().then((res) => {
-          setSource((prevState) => ({
-            ...prevState,
-            data: { type: res?.type, features: res?.features },
-          }));
-          setCityData({
-            code: 100000,
-            name: `'the People's Republic of China'`,
-            data: dataLead.country,
-          });
+      if (newL7Source) {
+        const data = await newL7Source.getData({ level: 'country' });
+        setSource((prevState) => ({
+          ...prevState,
+          data: { type: data.type, features: data.features },
+        }));
+        setCityData({
+          code: 100000,
+          name: `'the People's Republic of China'`,
+          data: data,
         });
       }
     }
     setLoading(false);
-  }, [sourceValue, dataLead]);
+  }, [sourceValue, newDataV]);
 
   const onDblClick = async (e: any) => {
     setLoading(true);
     if (sourceValue === 'dataV') {
       const code = e.feature.properties.adcode;
       const areaLevel = e.feature.properties.level;
-      const data = await getDrillingData(dataLead, sourceValue, code, areaLevel);
+      const data = await getDrillingData(newDataV, newL7Source, sourceValue, code, areaLevel);
       setCityData({
         code: code,
         name: e.feature.properties.name,
@@ -120,27 +123,32 @@ export default () => {
         setAdcode((state) => ({ ...state, code: codeJson, level: areaLevel, adcode: code }));
       }
     } else {
-      const L7code = e.feature.properties.FIRST_GID
-        ? e.feature.properties.FIRST_GID
-        : e.feature.properties.code
-        ? e.feature.properties.code
-        : 100000;
-      const data = await getDrillingData(dataLead, sourceValue, L7code, adcode.level);
-
-      setSource((prevState) => ({ ...prevState, data: data.geoJson }));
-      setAdcode((state) => ({
-        ...state,
-        code: L7code,
-        adcode: L7code,
-        level: data.areaLevel,
-        GID_1: e.feature.properties.GID_1,
-        GID_2: e.feature.properties.GID_2,
-      }));
-      setCityData({
-        code: L7code,
-        name: e.feature.properties.ENG_NAME,
-        data: e.feature,
-      });
+      if (adcode.level !== 'district') {
+        const L7code = e.feature.properties.FIRST_GID
+          ? e.feature.properties.FIRST_GID
+          : e.feature.properties.code
+          ? e.feature.properties.code
+          : 100000;
+        // const data = await getDrillingData(dataLead, sourceValue, L7code, adcode.level);
+        const datas = await getDrillingData(newDataV, newL7Source, sourceValue, L7code, adcode.level);
+        console.log(datas, 'datas');
+        setSource((prevState) => ({ ...prevState, data: datas.GeoJSON }));
+        setAdcode((state) => ({
+          ...state,
+          code: L7code,
+          adcode: L7code,
+          level: datas.level,
+          GID_1: e.feature.properties.GID_1,
+          GID_2: e.feature.properties.GID_2,
+        }));
+        setCityData({
+          code: L7code,
+          name: e.feature.properties.ENG_NAME,
+          data: e.feature,
+        });
+      } else {
+        message.info('已下钻到最后一层');
+      }
     }
     setClickData(undefined);
     setCheckboxValue([]);
@@ -155,21 +163,31 @@ export default () => {
         setCityData({
           code: 100000,
           name: `中华人民共和国`,
-          data: dataLead.DataVSource,
+          data: newDataV.DataVSource,
         });
       } else {
+        const data = await newL7Source.getData({ level: 'country' });
         setCityData({
           code: 100000,
           name: `'the People's Republic of China'`,
-          data: dataLead.country,
+          data,
         });
       }
     } else {
-      const data = await gitRollupData(dataLead, sourceValue, adcode.code, adcode.level, adcode.GID_1, adcode.GID_2);
-      const filterdata = await gitFilterData(
-        dataLead,
+      const data = await gitRollupData(
+        newDataV,
+        newL7Source,
         sourceValue,
         adcode.code,
+        adcode.level,
+        adcode.GID_1,
+        adcode.GID_2,
+      );
+      const filterdata = await gitFilterData(
+        sourceValue,
+        adcode.code,
+        newDataV,
+        newL7Source,
         adcode.level,
         adcode.GID_1,
         adcode.GID_2,
@@ -181,19 +199,11 @@ export default () => {
           data: filterdata.geoJson,
         });
       } else {
-        if (adcode.level === 'city') {
-          setCityData({
-            code: 100000,
-            name: `'the People's Republic of China'`,
-            data: dataLead.country,
-          });
-        } else {
-          setCityData({
-            code: data.code,
-            name: filterdata.geoJson.features[0].properties.ENG_NAME,
-            data: filterdata.geoJson,
-          });
-        }
+        setCityData({
+          code: data.code,
+          name: filterdata.geoJson.features[0].properties.ENG_NAME,
+          data: filterdata.geoJson,
+        });
       }
 
       setSource((prevState) => ({ ...prevState, data: data.geoJson }));
@@ -211,15 +221,7 @@ export default () => {
 
   const onDownload = async () => {
     message.info('数据下载中');
-    const data = await downloadData(
-      dataLead,
-      sourceValue,
-      adcode.code,
-      accuracyValue,
-      adcode.level,
-      adcode.GID_1,
-      adcode.GID_2,
-    );
+    const data = await downloadData(newL7Source, sourceValue, adcode.code, accuracyValue, adcode.level);
     const download = document.createElement('a');
     download.download = `${adcode.adcode}.json`;
     download.href = `data:text/json;charset=utf-8,${encodeURIComponent(
@@ -277,48 +279,29 @@ export default () => {
   const clickDownload = () => {
     if (sourceValue === 'thirdParty') {
       if (adcode.level === 'country') {
-        CheckValue.forEach(async (level: string) => {
-          if (level === 'province') {
-            const provinceData = await dataLead.gitData(0.05, 'province');
-            adda(provinceData, 'province');
-          }
-          if (level === 'city') {
-            const cityDatas = await dataLead.gitData(0.05, 'city');
-            adda(cityDatas, 'city');
-          }
-          if (level === 'district') {
-            const districtData = await dataLead.gitData(0.05, 'district');
-            adda(districtData, 'district');
-          }
+        CheckValue.forEach(async (level: any) => {
+          const data = await newL7Source.getChildrenData({ childrenLevel: level });
+          adda(data, level);
         });
       }
       if (adcode.level === 'province') {
-        CheckValue.forEach(async (level: string) => {
-          if (level === 'city') {
-            const Data = await dataLead.gitData(0.05, 'city');
-            const filterdata = Data.features.filter((v) => {
-              return v.properties.GID_1 === adcode.code;
-            });
-            adda(filterdata, 'city');
-          }
-          if (level === 'district') {
-            const Data = await dataLead.gitData(0.05, 'district');
-            const filterdata = Data.features.filter((v) => {
-              return v.properties.GID_1 === adcode.code;
-            });
-            adda(filterdata, 'district');
-          }
+        CheckValue.forEach(async (level: any) => {
+          const data = await newL7Source.getChildrenData({
+            parentName: adcode.code,
+            parenerLevel: 'province',
+            childrenLevel: level,
+          });
+          adda(data, level);
         });
       }
       if (adcode.level === 'city') {
-        CheckValue.forEach(async (level: string) => {
-          if (level === 'district') {
-            const Data = await dataLead.gitData(0.05, 'district');
-            const filterdata = Data.features.filter((v) => {
-              return v.properties.GID_2 === adcode.code;
-            });
-            adda(filterdata, 'district');
-          }
+        CheckValue.forEach(async (level: any) => {
+          const data = await newL7Source.getChildrenData({
+            parentName: adcode.code,
+            parenerLevel: 'city',
+            childrenLevel: level,
+          });
+          adda(data, level);
         });
       }
       adda(clickData.geojson, adcode.level);
