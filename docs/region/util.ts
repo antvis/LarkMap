@@ -1,20 +1,7 @@
 import { message } from 'antd';
-import type { DataSource } from './data/dataSource';
-
-/**
- *
- * @param fetchType 数据类型
- * @param version 版本号
- * @param code 数据code
- * @returns
- */
-export const getFetch = (fetchType: 'dataV' | 'L7', version: string, code: string | number) => {
-  if (fetchType === 'dataV') {
-    return `https://geo.datav.aliyun.com/${version}/bound/${code}.json`;
-  } else {
-    return `https://unpkg.com/${version}/data/${code}.pbf`;
-  }
-};
+import type { L7Source } from './data';
+import type { DataLevel, DataPrecision } from './data/BaseDataSource';
+import type { DataVSource } from './data/dataSource';
 
 /**
  *
@@ -23,7 +10,13 @@ export const getFetch = (fetchType: 'dataV' | 'L7', version: string, code: strin
  * @param areaLevel 城市等级
  * @returns
  */
-export const getDrillingData = async (example: DataSource, sourceValue: string, code?: number, areaLevel?: string) => {
+export const getDrillingData = async (
+  example: DataVSource,
+  L7Source: L7Source,
+  sourceValue: string,
+  code?: number,
+  areaLevel?: DataLevel,
+) => {
   if (sourceValue === 'dataV') {
     if (areaLevel !== 'district') {
       const data = await example.gitDataVData(code, 'full');
@@ -36,15 +29,32 @@ export const getDrillingData = async (example: DataSource, sourceValue: string, 
     }
   } else {
     if (areaLevel === 'country') {
-      return example.getCityData('province', 100000, '', 'province', 'country');
+      const data = await L7Source.getData({ level: 'province' });
+      return {
+        GeoJSON: data,
+        level: 'province',
+      };
     } else if (areaLevel === 'province') {
-      return example.getCityData('city', code, 'GID_1', 'city');
+      const data = await L7Source.getData({ level: 'city' });
+      const filterData = data.features.filter((item) => {
+        return item.properties.GID_1 === code;
+      });
+      const dataJson = { type: 'FeatureCollection', features: filterData };
+      return {
+        GeoJSON: dataJson,
+        level: 'city',
+      };
     } else if (areaLevel === 'city') {
-      return example.getCityData('district', code, 'GID_2', 'city1');
-    } else if (areaLevel === 'city1') {
-      return example.getCityData('district', code, 'GID_3', 'district');
-    } else if (areaLevel === 'district') {
-      return example.getCityData('district', code, 'GID_3', 'district');
+      const data = await L7Source.getData({ level: 'district' });
+      console.log(data, 'data=?');
+      const filterData = data.features.filter((item) => {
+        return item.properties.GID_2 === code;
+      });
+      const dataJson = { type: 'FeatureCollection', features: filterData };
+      return {
+        GeoJSON: dataJson,
+        level: 'district',
+      };
     }
   }
 };
@@ -59,7 +69,8 @@ export const getDrillingData = async (example: DataSource, sourceValue: string, 
  * @returns
  */
 export const gitRollupData = async (
-  example: DataSource,
+  example: DataVSource,
+  L7Source: L7Source,
   sourceValue: string,
   code: number,
   areaLevel?: string,
@@ -92,21 +103,45 @@ export const gitRollupData = async (
     }
   } else {
     if (areaLevel === 'province') {
-      return example.getCityData('country', 100000, 'FIRST_GID', 'country', 'province');
+      const data = await L7Source.getData({ level: 'country' });
+      return {
+        geoJson: data,
+        code: 100000,
+        areaLevel: 'country',
+        GID_1: undefined,
+        GID_2: undefined,
+      };
     } else if (areaLevel === 'city') {
-      return example.getCityData('province', code, '', 'province');
-    } else if (areaLevel === 'city1') {
-      return example.getCityData('city', GID_1, 'GID_1', 'city');
+      const data = await L7Source.getData({ level: 'province' });
+      return {
+        geoJson: data,
+        code: 100000,
+        areaLevel: 'province',
+        GID_1: undefined,
+        GID_2: undefined,
+      };
     } else if (areaLevel === 'district') {
-      return example.getCityData('district', GID_2, 'GID_2', 'city1');
+      const data = await L7Source.getData({ level: 'city' });
+      const filterData = data.features.filter((item) => {
+        return item.properties.GID_1 === GID_1;
+      });
+      const dataJson = { type: 'FeatureCollection', features: filterData };
+      return {
+        geoJson: dataJson,
+        code: code,
+        areaLevel: 'city',
+        GID_1: dataJson.features[0].properties.GID_1,
+        GID_2: dataJson.features[0].properties.GID_2,
+      };
     }
   }
 };
 
 export const gitFilterData = async (
-  example: DataSource,
   sourceValue: string,
   code: number,
+  example?: DataVSource,
+  L7Source?: L7Source,
   areaLevel?: string,
   GID_1?: number,
   GID_2?: number,
@@ -126,56 +161,79 @@ export const gitFilterData = async (
     return { ...datas, geoJson: dataJson, code: dataCode, areaLevel: dataLevel };
   } else {
     if (areaLevel === 'province') {
-      return example.getCityData('country', 100000, 'FIRST_GID', 'country', 'province');
+      const countryData = await L7Source.getData({ level: 'country' });
+      const data = await L7Source.getData({ level: 'jiuduanxian' });
+      const newData = { type: 'FeatureCollection', features: [...countryData.features, ...data.features] };
+      return {
+        geoJson: newData,
+        code: 100000,
+        areaLevel: 'country',
+        GID_1: undefined,
+        GID_2: undefined,
+      };
     } else if (areaLevel === 'city') {
-      return example.getCityData('country', 100000, 'FIRST_GID', 'country', 'province');
-    } else if (areaLevel === 'city1') {
-      return example.getCityData('province', GID_1, 'FIRST_GID', 'city');
+      const data = await L7Source.getData({ level: 'province' });
+      const filterData = data.features.filter((item) => {
+        return item.properties.GID_1 === GID_1;
+      });
+      const newData = { type: 'FeatureCollection', features: filterData };
+      return {
+        geoJson: newData,
+        code: newData.features[0].properties.FIRST_GID,
+        areaLevel: 'province',
+        GID_1: undefined,
+        GID_2: undefined,
+      };
     } else if (areaLevel === 'district') {
-      return example.getCityData('city', GID_2, 'GID_2', 'city1');
+      const data = await L7Source.getData({ level: 'city' });
+      const filterData = data.features.filter((item) => {
+        return item.properties.GID_2 === GID_2;
+      });
+      const newData = { type: 'FeatureCollection', features: filterData };
+      return {
+        geoJson: newData,
+        code: newData.features[0].properties.GID_2,
+        areaLevel: 'province',
+        GID_1: newData.features[0].properties.GID_1,
+        GID_2: newData.features[0].properties.GID_2,
+      };
     }
   }
 };
 
 export const downloadData = async (
-  example: DataSource,
+  example: DataVSource,
+  L7Source: L7Source,
   sourceValue: string,
   code: number,
-  accuracy: number,
+  accuracy: DataPrecision,
   areaLevel?: string,
-  GID_1?: number,
-  GID_2?: number,
 ) => {
   if (sourceValue === 'dataV') {
-    const dataFull = await fetch(getFetch('dataV', 'areas_v3', `${code}_full`));
+    const dataFull = await example.gitDataVData(code, 'full');
     return dataFull;
   } else {
     if (areaLevel === 'country') {
-      return await example.gitData(accuracy, 'country');
+      return await L7Source.getData({ precision: accuracy, level: 'country' });
     }
     if (areaLevel === 'province') {
-      return await example.gitData(accuracy, 'province');
+      return await L7Source.getData({ precision: accuracy, level: 'province' });
     }
     if (areaLevel === 'city') {
-      const cityData = await example.gitData(accuracy, 'city');
+      const cityData = await L7Source.getData({ precision: accuracy, level: 'city' });
       const newCityData = cityData.features.filter((item: any) => {
         return item.properties.GID_1 === code;
       });
-      return newCityData;
-    }
-    if (areaLevel === 'city1') {
-      const cityData = await example.gitData(accuracy, 'district');
-      const newCityData = cityData.features.filter((item: any) => {
-        return item.properties.GID_2 === GID_2;
-      });
-      return newCityData;
+      const dataJson = { type: 'FeatureCollection', features: newCityData };
+      return dataJson;
     }
     if (areaLevel === 'district') {
-      const cityData = await example.gitData(accuracy, 'district');
+      const cityData = await L7Source.getData({ precision: accuracy, level: 'district' });
       const newCityData = cityData.features.filter((item: any) => {
         return item.properties.GID_3 === code;
       });
-      return newCityData;
+      const dataJson = { type: 'FeatureCollection', features: newCityData };
+      return dataJson;
     }
   }
 };
@@ -190,7 +248,7 @@ export const copy = (data: any) => {
   message.success('复制成功');
 };
 
-export const adda = (data: any, level: string) => {
+export const bulkDownload = (data: any, level: string) => {
   const download = document.createElement('a');
   download.download = `${level}.json`;
   download.href = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(data))}`;
@@ -289,11 +347,11 @@ export const cityValue = (level: string) => {
 
 export const sourceOptions = [
   { value: 'dataV', label: 'dataV数据源' },
-  { value: 'thirdParty', label: '第三方数据源' },
+  { value: 'thirdParty', label: 'L7数据源' },
 ];
 
 export const accuracyOption = [
-  { value: 0.001, label: '高' },
-  { value: 0.005, label: '中' },
-  { value: 0.01, label: '低' },
+  { value: 'low', label: '低' },
+  { value: 'middle', label: '中' },
+  { value: 'high', label: '高' },
 ];

@@ -1,7 +1,7 @@
 import type { FeatureCollection, Geometry, GeometryCollection } from '@turf/helpers';
 
 export interface ISourceOptions {
-  dataInfo: string;
+  dataInfo?: string;
   version: string;
 }
 
@@ -12,7 +12,7 @@ export interface IDataOptions {
 }
 
 export interface ChildrenDataOptions {
-  parentName: string;
+  parentName: number;
   parenerLevel: DataLevel;
   childrenLevel: DataLevel;
   precision: DataPrecision;
@@ -23,7 +23,13 @@ export type DataLevel = 'country' | 'province' | 'city' | 'district' | 'jiuduanx
 export default abstract class BaseSource {
   static dataInfo: string;
   private options: Partial<ISourceOptions> = {};
-  protected data: Record<DataLevel, FeatureCollection>;
+  protected data: Record<DataLevel, any> = {
+    country: undefined,
+    province: undefined,
+    city: undefined,
+    district: undefined,
+    jiuduanxian: undefined,
+  };
   protected version: string;
 
   constructor(options: ISourceOptions) {

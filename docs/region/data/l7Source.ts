@@ -48,6 +48,29 @@ export class L7Source extends BaseSource {
     const { parentName, parenerLevel, childrenLevel, precision = 'low' } = ChildrenDataOptions;
     const rawData = await this.getData({ level: childrenLevel, precision });
     //TODO 根据 parentName, parenerLevel 进行数据过滤
+    if (parenerLevel === 'country') {
+      return rawData;
+    }
+    if (parenerLevel === 'province') {
+      const data = rawData.features.filter((v) => {
+        return v.properties.GID_1 === parentName;
+      });
+      const newData = { type: 'FeatureCollection', features: data } as FeatureCollection<
+        Geometry | GeometryCollection,
+        Record<string, any>
+      >;
+      return newData;
+    }
+    if (parenerLevel === 'city') {
+      const data = rawData.features.filter((v) => {
+        return v.properties.GID_2 === parentName;
+      });
+      const newData = { type: 'FeatureCollection', features: data } as FeatureCollection<
+        Geometry | GeometryCollection,
+        Record<string, any>
+      >;
+      return newData;
+    }
     return rawData;
   }
 
@@ -64,8 +87,8 @@ export class L7Source extends BaseSource {
     }
     const url = `${DataConfig.url}/${this.version}/data/${DataLevelRecord[level]}.pbf`;
     const data = await this.fetchArrayBuffer(url);
-    const jsonData = geobuf.decode(new Pbf(data));
-    this.data[level] = jsonData;
+    const jsonData = await geobuf.decode(new Pbf(data));
+    this.data[level] = await jsonData;
     return jsonData; // 原始数据
   }
 
