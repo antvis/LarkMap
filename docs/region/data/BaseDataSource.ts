@@ -1,7 +1,7 @@
 import type { FeatureCollection, Geometry, GeometryCollection } from '@turf/helpers';
 
 export interface ISourceOptions {
-  dataInfo: string;
+  dataInfo?: string;
   version: string;
 }
 
