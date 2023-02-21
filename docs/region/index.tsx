@@ -8,7 +8,7 @@ import type { DataPrecision } from './data/BaseDataSource';
 import './index.less';
 import {
   accuracyOption,
-  adda,
+  bulkDownload,
   cityValue,
   copy,
   downloadData,
@@ -221,7 +221,7 @@ export default () => {
 
   const onDownload = async () => {
     message.info('数据下载中');
-    const data = await downloadData(newL7Source, sourceValue, adcode.code, accuracyValue, adcode.level);
+    const data = await downloadData(newDataV, newL7Source, sourceValue, adcode.code, accuracyValue, adcode.level);
     const download = document.createElement('a');
     download.download = `${adcode.adcode}.json`;
     download.href = `data:text/json;charset=utf-8,${encodeURIComponent(
@@ -278,35 +278,17 @@ export default () => {
 
   const clickDownload = () => {
     if (sourceValue === 'thirdParty') {
-      if (adcode.level === 'country') {
-        CheckValue.forEach(async (level: any) => {
-          const data = await newL7Source.getChildrenData({ childrenLevel: level });
-          adda(data, level);
+      CheckValue.forEach(async (level: any) => {
+        const data = await newL7Source.getChildrenData({
+          parentName: adcode.code,
+          parenerLevel: adcode.level,
+          childrenLevel: level,
         });
-      }
-      if (adcode.level === 'province') {
-        CheckValue.forEach(async (level: any) => {
-          const data = await newL7Source.getChildrenData({
-            parentName: adcode.code,
-            parenerLevel: 'province',
-            childrenLevel: level,
-          });
-          adda(data, level);
-        });
-      }
-      if (adcode.level === 'city') {
-        CheckValue.forEach(async (level: any) => {
-          const data = await newL7Source.getChildrenData({
-            parentName: adcode.code,
-            parenerLevel: 'city',
-            childrenLevel: level,
-          });
-          adda(data, level);
-        });
-      }
-      adda(clickData.geojson, adcode.level);
+        bulkDownload(data, level);
+      });
+      bulkDownload(clickData.geojson, adcode.level);
     } else {
-      adda(clickData.geojson, clickData.name);
+      bulkDownload(clickData.geojson, clickData.name);
     }
   };
 

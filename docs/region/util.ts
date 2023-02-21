@@ -217,24 +217,25 @@ export const gitFilterData = async (
 };
 
 export const downloadData = async (
-  example: L7Source,
+  example: DataVSource,
+  L7Source: L7Source,
   sourceValue: string,
   code: number,
   accuracy: DataPrecision,
   areaLevel?: string,
 ) => {
   if (sourceValue === 'dataV') {
-    const dataFull = await fetch(getFetch('dataV', 'areas_v3', `${code}_full`));
+    const dataFull = await example.gitDataVData(code, 'full');
     return dataFull;
   } else {
     if (areaLevel === 'country') {
-      return await example.getData({ precision: accuracy, level: 'country' });
+      return await L7Source.getData({ precision: accuracy, level: 'country' });
     }
     if (areaLevel === 'province') {
-      return await example.getData({ precision: accuracy, level: 'province' });
+      return await L7Source.getData({ precision: accuracy, level: 'province' });
     }
     if (areaLevel === 'city') {
-      const cityData = await example.getData({ precision: accuracy, level: 'city' });
+      const cityData = await L7Source.getData({ precision: accuracy, level: 'city' });
       const newCityData = cityData.features.filter((item: any) => {
         return item.properties.GID_1 === code;
       });
@@ -242,7 +243,7 @@ export const downloadData = async (
       return dataJson;
     }
     if (areaLevel === 'district') {
-      const cityData = await example.getData({ precision: accuracy, level: 'district' });
+      const cityData = await L7Source.getData({ precision: accuracy, level: 'district' });
       const newCityData = cityData.features.filter((item: any) => {
         return item.properties.GID_3 === code;
       });
@@ -262,7 +263,7 @@ export const copy = (data: any) => {
   message.success('复制成功');
 };
 
-export const adda = (data: any, level: string) => {
+export const bulkDownload = (data: any, level: string) => {
   const download = document.createElement('a');
   download.download = `${level}.json`;
   download.href = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(data))}`;
@@ -361,7 +362,7 @@ export const cityValue = (level: string) => {
 
 export const sourceOptions = [
   { value: 'dataV', label: 'dataV数据源' },
-  { value: 'thirdParty', label: '第三方数据源' },
+  { value: 'thirdParty', label: 'L7数据源' },
 ];
 
 export const accuracyOption = [
