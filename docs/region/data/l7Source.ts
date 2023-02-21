@@ -37,7 +37,6 @@ export class L7Source extends BaseSource {
     options: Partial<IDataOptions>,
   ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>> {
     const { level, precision = 'low' } = options;
-    console.log(level, '1111');
     const data = await this.fetchData(level);
     return this.simplifyData(data, precision);
   }
@@ -83,7 +82,7 @@ export class L7Source extends BaseSource {
   private async fetchData(
     level: DataLevel,
   ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>> {
-    if (this.data?.[level]) {
+    if (this.data[level]) {
       return this.data[level];
     }
     const url = `${DataConfig.url}/${this.version}/data/${DataLevelRecord[level]}.pbf`;

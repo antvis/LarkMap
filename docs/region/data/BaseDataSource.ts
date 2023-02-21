@@ -1,8 +1,8 @@
 import type { FeatureCollection, Geometry, GeometryCollection } from '@turf/helpers';
 
 export interface ISourceOptions {
-  dataInfo?: string;
-  version?: string;
+  dataInfo: string;
+  version: string;
 }
 
 export type DataPrecision = 'high' | 'middle' | 'low';
