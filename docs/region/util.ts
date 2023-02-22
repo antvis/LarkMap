@@ -48,9 +48,15 @@ export const getDrillingData = async (
   areaLevel?: DataLevel,
 ) => {
   if (sourceValue === 'dataV') {
-    const data = await example.gitDataVData(code, 'full');
-    const geojson = await data.json();
-    return geojson;
+    if (areaLevel !== 'district') {
+      const data = await example.gitDataVData(code, 'full');
+      const geojson = await data.json();
+      return geojson;
+    } else {
+      const data = await example.gitDataVData(code);
+      const geojson = await data.json();
+      return geojson;
+    }
   }
   const data = await L7Source.getChildrenData({
     parentName: code,

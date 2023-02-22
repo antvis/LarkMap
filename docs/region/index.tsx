@@ -106,24 +106,29 @@ export default () => {
 
   const onDblClick = async (e: any) => {
     setLoading(true);
-    if (sourceValue === 'dataV') {
-      const code = e.feature.properties.adcode;
-      const areaLevel = e.feature.properties.level;
-      const data = await getDrillingData(newDataV, newL7Source, sourceValue, code, areaLevel);
-      setCityData({
-        code: code,
-        name: e.feature.properties.name,
-        data: e.feature,
-      });
-      setSource((prevState) => ({ ...prevState, data: data }));
-      if (e.feature.properties.parent.adcode) {
-        setAdcode((state) => ({ ...state, code: e.feature.properties.parent.adcode, level: areaLevel, adcode: code }));
+    if (adcode.level !== 'district') {
+      if (sourceValue === 'dataV') {
+        const code = e.feature.properties.adcode;
+        const areaLevel = e.feature.properties.level;
+        const data = await getDrillingData(newDataV, newL7Source, sourceValue, code, areaLevel);
+        setCityData({
+          code: code,
+          name: e.feature.properties.name,
+          data: e.feature,
+        });
+        setSource((prevState) => ({ ...prevState, data: data }));
+        if (e.feature.properties.parent.adcode) {
+          setAdcode((state) => ({
+            ...state,
+            code: e.feature.properties.parent.adcode,
+            level: areaLevel,
+            adcode: code,
+          }));
+        } else {
+          const codeJson = JSON.parse(e.feature.properties.parent).adcode;
+          setAdcode((state) => ({ ...state, code: codeJson, level: areaLevel, adcode: code }));
+        }
       } else {
-        const codeJson = JSON.parse(e.feature.properties.parent).adcode;
-        setAdcode((state) => ({ ...state, code: codeJson, level: areaLevel, adcode: code }));
-      }
-    } else {
-      if (adcode.level !== 'district') {
         const L7code = e.feature.properties.FIRST_GID
           ? e.feature.properties.FIRST_GID
           : e.feature.properties.code
@@ -145,13 +150,13 @@ export default () => {
           name: e.feature.properties.ENG_NAME,
           data: e.feature,
         });
-      } else {
-        message.info('已下钻到最后一层');
       }
-      setClickData(undefined);
-      setCheckboxValue([]);
-      setLoading(false);
+    } else {
+      message.info('已下钻到最后一层');
     }
+    setClickData(undefined);
+    setCheckboxValue([]);
+    setLoading(false);
   };
 
   const onUndblclick = async () => {
