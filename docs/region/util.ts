@@ -17,14 +17,6 @@ const RollupType: Record<DataLevel, any> = {
   jiuduanxian: '',
 };
 
-const DrillingCode: Record<DataLevel, any> = {
-  country: '',
-  province: 'GID_1',
-  city: 'GID_2',
-  district: '',
-  jiuduanxian: '',
-};
-
 const parent: Record<DataLevel, string> = {
   country: '',
   province: 'FIRST_GID',
@@ -67,7 +59,7 @@ export const getDrillingData = async (
     parentName: code,
     parentLevel: areaLevel,
     childrenLevel: DrillingType[areaLevel],
-    shineUpon: DrillingCode,
+    shineUpon: { country: '', province: 'GID_1', city: 'GID_2', district: '', jiuduanxian: '' },
   });
 
   return {
