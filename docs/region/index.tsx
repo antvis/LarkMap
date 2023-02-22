@@ -61,7 +61,7 @@ export default () => {
   const [accuracyValue, setAccuracyVAlue] = useState<DataPrecision>('low');
   const [cityData, setCityData] = useState({
     code: 100000,
-    name: `'the People's Republic of China'`,
+    name: `the People's Republic of China`,
     data: undefined,
   });
   const [clickData, setClickData] = useState(undefined);
@@ -106,54 +106,57 @@ export default () => {
 
   const onDblClick = async (e: any) => {
     setLoading(true);
-    if (sourceValue === 'dataV') {
-      const code = e.feature.properties.adcode;
-      const areaLevel = e.feature.properties.level;
-      const data = await getDrillingData(newDataV, newL7Source, sourceValue, code, areaLevel);
+    // if (sourceValue === 'dataV') {
+    //   const code = e.feature.properties.adcode;
+    //   const areaLevel = e.feature.properties.level;
+    //   const data = await getDrillingData(newDataV, newL7Source, sourceValue, code, areaLevel);
+    //   setCityData({
+    //     code: code,
+    //     name: e.feature.properties.name,
+    //     data: e.feature,
+    //   });
+    //   setSource((prevState) => ({ ...prevState, data: data }));
+    //   if (e.feature.properties.parent.adcode) {
+    //     setAdcode((state) => ({ ...state, code: e.feature.properties.parent.adcode, level: areaLevel, adcode: code }));
+    //   } else {
+    //     const codeJson = JSON.parse(e.feature.properties.parent).adcode;
+    //     setAdcode((state) => ({ ...state, code: codeJson, level: areaLevel, adcode: code }));
+    //   }
+    // } else {
+    if (adcode.level !== 'district') {
+      const L7code = e.feature.properties.FIRST_GID
+        ? e.feature.properties.FIRST_GID
+        : e.feature.properties.code
+        ? e.feature.properties.code
+        : 100000;
+      // const data = await getDrillingData(dataLead, sourceValue, L7code, adcode.level);
+      const datas = await getDrillingData(newDataV, newL7Source, sourceValue, L7code, adcode.level);
+      setSource((prevState) => ({ ...prevState, data: datas.GeoJSON }));
+      setAdcode((state) => ({
+        ...state,
+        code: L7code,
+        adcode: L7code,
+        level: datas.level,
+        GID_1: e.feature.properties.GID_1,
+        GID_2: e.feature.properties.GID_2,
+      }));
       setCityData({
-        code: code,
-        name: e.feature.properties.name,
+        code: L7code,
+        name: e.feature.properties.ENG_NAME,
         data: e.feature,
       });
-      setSource((prevState) => ({ ...prevState, data: data }));
-      if (e.feature.properties.parent.adcode) {
-        setAdcode((state) => ({ ...state, code: e.feature.properties.parent.adcode, level: areaLevel, adcode: code }));
-      } else {
-        const codeJson = JSON.parse(e.feature.properties.parent).adcode;
-        setAdcode((state) => ({ ...state, code: codeJson, level: areaLevel, adcode: code }));
-      }
     } else {
-      if (adcode.level !== 'district') {
-        const L7code = e.feature.properties.FIRST_GID
-          ? e.feature.properties.FIRST_GID
-          : e.feature.properties.code
-          ? e.feature.properties.code
-          : 100000;
-        // const data = await getDrillingData(dataLead, sourceValue, L7code, adcode.level);
-        const datas = await getDrillingData(newDataV, newL7Source, sourceValue, L7code, adcode.level);
-        console.log(datas, 'datas');
-        setSource((prevState) => ({ ...prevState, data: datas.GeoJSON }));
-        setAdcode((state) => ({
-          ...state,
-          code: L7code,
-          adcode: L7code,
-          level: datas.level,
-          GID_1: e.feature.properties.GID_1,
-          GID_2: e.feature.properties.GID_2,
-        }));
-        setCityData({
-          code: L7code,
-          name: e.feature.properties.ENG_NAME,
-          data: e.feature,
-        });
-      } else {
-        message.info('已下钻到最后一层');
-      }
+      message.info('已下钻到最后一层');
     }
+    // }
     setClickData(undefined);
     setCheckboxValue([]);
     setLoading(false);
   };
+
+  useEffect(() => {
+    console.log(adcode.level);
+  }, [adcode.level]);
 
   const onUndblclick = async () => {
     setLoading(true);
@@ -169,7 +172,7 @@ export default () => {
         const data = await newL7Source.getData({ level: 'country' });
         setCityData({
           code: 100000,
-          name: `'the People's Republic of China'`,
+          name: `the People's Republic of China`,
           data,
         });
       }
@@ -183,15 +186,15 @@ export default () => {
         adcode.GID_1,
         adcode.GID_2,
       );
-      const filterdata = await gitFilterData(
-        sourceValue,
-        adcode.code,
-        newDataV,
-        newL7Source,
-        adcode.level,
-        adcode.GID_1,
-        adcode.GID_2,
-      );
+      const filterdata = await gitFilterData({
+        sourceValue: sourceValue,
+        code: adcode.code,
+        example: newDataV,
+        L7Source: newL7Source,
+        areaLevel: adcode.level,
+        GID_1: adcode.GID_1,
+        GID_2: adcode.GID_2,
+      });
       if (sourceValue === 'dataV') {
         setCityData({
           code: filterdata.code,
@@ -200,8 +203,8 @@ export default () => {
         });
       } else {
         setCityData({
-          code: data.code,
-          name: filterdata.geoJson.features[0].properties.ENG_NAME,
+          code: filterdata.code,
+          name: filterdata.name,
           data: filterdata.geoJson,
         });
       }
@@ -280,9 +283,14 @@ export default () => {
     if (sourceValue === 'thirdParty') {
       CheckValue.forEach(async (level: any) => {
         const data = await newL7Source.getChildrenData({
-          parentName: adcode.code,
-          parenerLevel: adcode.level,
+          parentName: clickData.code,
+          parentLevel: adcode.level,
           childrenLevel: level,
+          shineUpon: {
+            country: '',
+            province: 'GID_1',
+            city: 'GID_2',
+          },
         });
         bulkDownload(data, level);
       });

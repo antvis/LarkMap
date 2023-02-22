@@ -13,9 +13,10 @@ export interface IDataOptions {
 
 export interface ChildrenDataOptions {
   parentName: number;
-  parenerLevel: DataLevel;
+  parentLevel: DataLevel;
   childrenLevel: DataLevel;
   precision: DataPrecision;
+  shineUpon: Record<string, string>;
 }
 
 export type DataLevel = 'country' | 'province' | 'city' | 'district' | 'jiuduanxian';
@@ -48,6 +49,10 @@ export default abstract class BaseSource {
   ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>>;
 
   public abstract getChildrenData(
+    ChildrenDataOptions: Partial<ChildrenDataOptions>,
+  ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>>;
+
+  public abstract getParentData(
     ChildrenDataOptions: Partial<ChildrenDataOptions>,
   ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>>;
 
