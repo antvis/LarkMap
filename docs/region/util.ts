@@ -9,23 +9,28 @@ const DrillingType = {
   city: 'district',
 };
 
-const RollupType = {
+const RollupType: Record<DataLevel, any> = {
   district: 'city',
   city: 'province',
   province: 'country',
+  country: '',
+  jiuduanxian: '',
 };
 
-const DrillingCode = {
+const DrillingCode: Record<DataLevel, any> = {
   country: '',
   province: 'GID_1',
   city: 'GID_2',
+  district: '',
+  jiuduanxian: '',
 };
 
-const parent: Record<string, string> = {
+const parent: Record<DataLevel, string> = {
   country: '',
   province: 'FIRST_GID',
   city: 'GID_1',
   district: 'GID_1',
+  jiuduanxian: '',
 };
 
 const filterType = {
@@ -187,7 +192,7 @@ export const downloadData = async (
   sourceValue: string,
   code: number,
   accuracy: DataPrecision,
-  areaLevel?: string,
+  areaLevel?: DataLevel,
 ) => {
   if (sourceValue === 'dataV') {
     const dataFull = await example.gitDataVData(code, 'full');
