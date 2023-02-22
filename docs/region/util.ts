@@ -81,8 +81,32 @@ export const gitRollupData = async (
   code: number,
   areaLevel?: string,
   GID_1?: number,
-  GID_2?: number,
 ) => {
+  if (sourceValue === 'dataV') {
+    const datas = {
+      geoJson: { type: 'FeatureCollection', features: [] },
+      code: 10000,
+      areaLevel: 'country',
+      GID_1: undefined,
+      GID_2: undefined,
+    };
+    const dataFull = await example.gitDataVData(code, 'full');
+    const dataFullJson = await dataFull.json();
+    const data = await example.gitDataVData(code);
+    const dataJson = await data.json();
+    const dataCode = dataJson.features[0].properties.parent.adcode;
+    const dataLevel = dataJson.features[0].properties.level;
+    if (typeof dataCode !== 'undefined') {
+      return { ...datas, geoJson: dataFullJson, code: dataCode, areaLevel: dataLevel };
+    } else {
+      if (dataCode === null) {
+        return { ...datas, geoJson: dataFullJson, areaLevel: dataLevel };
+      } else {
+        const codeJson = JSON.parse(dataJson.features[0].properties.parent).adcode;
+        return { ...datas, geoJson: dataFullJson, code: codeJson, areaLevel: dataLevel };
+      }
+    }
+  }
   if (areaLevel === 'district') {
     const data = await L7Source.getParentData({
       parentName: GID_1,
@@ -105,65 +129,6 @@ export const gitRollupData = async (
     GID_1: undefined,
     GID_2: undefined,
   };
-
-  // if (sourceValue === 'dataV') {
-  //   const datas = {
-  //     geoJson: { type: 'FeatureCollection', features: [] },
-  //     code: 10000,
-  //     areaLevel: 'country',
-  //     GID_1: undefined,
-  //     GID_2: undefined,
-  //   };
-  //   const dataFull = await example.gitDataVData(code, 'full');
-  //   const dataFullJson = await dataFull.json();
-  //   const data = await example.gitDataVData(code);
-  //   const dataJson = await data.json();
-  //   const dataCode = dataJson.features[0].properties.parent.adcode;
-  //   const dataLevel = dataJson.features[0].properties.level;
-  //   if (typeof dataCode !== 'undefined') {
-  //     return { ...datas, geoJson: dataFullJson, code: dataCode, areaLevel: dataLevel };
-  //   } else {
-  //     if (dataCode === null) {
-  //       return { ...datas, geoJson: dataFullJson, areaLevel: dataLevel };
-  //     } else {
-  //       const codeJson = JSON.parse(dataJson.features[0].properties.parent).adcode;
-  //       return { ...datas, geoJson: dataFullJson, code: codeJson, areaLevel: dataLevel };
-  //     }
-  //   }
-  // } else {
-  //   if (areaLevel === 'province') {
-  //     const data = await L7Source.getData({ level: 'country' });
-  //     return {
-  //       geoJson: data,
-  //       code: 100000,
-  //       areaLevel: 'country',
-  //       GID_1: undefined,
-  //       GID_2: undefined,
-  //     };
-  //   } else if (areaLevel === 'city') {
-  //     const data = await L7Source.getData({ level: 'province' });
-  //     return {
-  //       geoJson: data,
-  //       code: 100000,
-  //       areaLevel: 'province',
-  //       GID_1: undefined,
-  //       GID_2: undefined,
-  //     };
-  //   } else if (areaLevel === 'district') {
-  //     const data = await L7Source.getData({ level: 'city' });
-  //     const filterData = data.features.filter((item) => {
-  //       return item.properties.GID_1 === GID_1;
-  //     });
-  //     const dataJson = { type: 'FeatureCollection', features: filterData };
-  //     return {
-  //       geoJson: dataJson,
-  //       code: code,
-  //       areaLevel: 'city',
-  //       GID_1: dataJson.features[0].properties.GID_1,
-  //       GID_2: dataJson.features[0].properties.GID_2,
-  //     };
-  //   }
-  // }
 };
 
 export const gitFilterData = async (options: {
@@ -189,13 +154,11 @@ export const gitFilterData = async (options: {
     const dataLevel = dataJson.features[0].properties.level;
     return { ...datas, geoJson: dataJson, code: dataCode, areaLevel: dataLevel };
   }
-  console.log(options[parent[options.areaLevel]], options.areaLevel, filterType[options.areaLevel]);
   const data = await options.L7Source.getParentData({
     parentName: options[parent[options.areaLevel]],
     parentLevel: filterType[options.areaLevel],
     childrenLevel: filterType[options.areaLevel],
   });
-  console.log(data);
   return {
     geoJson: data,
     code:

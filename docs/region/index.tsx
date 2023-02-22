@@ -106,57 +106,53 @@ export default () => {
 
   const onDblClick = async (e: any) => {
     setLoading(true);
-    // if (sourceValue === 'dataV') {
-    //   const code = e.feature.properties.adcode;
-    //   const areaLevel = e.feature.properties.level;
-    //   const data = await getDrillingData(newDataV, newL7Source, sourceValue, code, areaLevel);
-    //   setCityData({
-    //     code: code,
-    //     name: e.feature.properties.name,
-    //     data: e.feature,
-    //   });
-    //   setSource((prevState) => ({ ...prevState, data: data }));
-    //   if (e.feature.properties.parent.adcode) {
-    //     setAdcode((state) => ({ ...state, code: e.feature.properties.parent.adcode, level: areaLevel, adcode: code }));
-    //   } else {
-    //     const codeJson = JSON.parse(e.feature.properties.parent).adcode;
-    //     setAdcode((state) => ({ ...state, code: codeJson, level: areaLevel, adcode: code }));
-    //   }
-    // } else {
-    if (adcode.level !== 'district') {
-      const L7code = e.feature.properties.FIRST_GID
-        ? e.feature.properties.FIRST_GID
-        : e.feature.properties.code
-        ? e.feature.properties.code
-        : 100000;
-      // const data = await getDrillingData(dataLead, sourceValue, L7code, adcode.level);
-      const datas = await getDrillingData(newDataV, newL7Source, sourceValue, L7code, adcode.level);
-      setSource((prevState) => ({ ...prevState, data: datas.GeoJSON }));
-      setAdcode((state) => ({
-        ...state,
-        code: L7code,
-        adcode: L7code,
-        level: datas.level,
-        GID_1: e.feature.properties.GID_1,
-        GID_2: e.feature.properties.GID_2,
-      }));
+    if (sourceValue === 'dataV') {
+      const code = e.feature.properties.adcode;
+      const areaLevel = e.feature.properties.level;
+      const data = await getDrillingData(newDataV, newL7Source, sourceValue, code, areaLevel);
       setCityData({
-        code: L7code,
-        name: e.feature.properties.ENG_NAME,
+        code: code,
+        name: e.feature.properties.name,
         data: e.feature,
       });
+      setSource((prevState) => ({ ...prevState, data: data }));
+      if (e.feature.properties.parent.adcode) {
+        setAdcode((state) => ({ ...state, code: e.feature.properties.parent.adcode, level: areaLevel, adcode: code }));
+      } else {
+        const codeJson = JSON.parse(e.feature.properties.parent).adcode;
+        setAdcode((state) => ({ ...state, code: codeJson, level: areaLevel, adcode: code }));
+      }
     } else {
-      message.info('已下钻到最后一层');
+      if (adcode.level !== 'district') {
+        const L7code = e.feature.properties.FIRST_GID
+          ? e.feature.properties.FIRST_GID
+          : e.feature.properties.code
+          ? e.feature.properties.code
+          : 100000;
+        // const data = await getDrillingData(dataLead, sourceValue, L7code, adcode.level);
+        const datas = await getDrillingData(newDataV, newL7Source, sourceValue, L7code, adcode.level);
+        setSource((prevState) => ({ ...prevState, data: datas.GeoJSON }));
+        setAdcode((state) => ({
+          ...state,
+          code: L7code,
+          adcode: L7code,
+          level: datas.level,
+          GID_1: e.feature.properties.GID_1,
+          GID_2: e.feature.properties.GID_2,
+        }));
+        setCityData({
+          code: L7code,
+          name: e.feature.properties.ENG_NAME,
+          data: e.feature,
+        });
+      } else {
+        message.info('已下钻到最后一层');
+      }
+      setClickData(undefined);
+      setCheckboxValue([]);
+      setLoading(false);
     }
-    // }
-    setClickData(undefined);
-    setCheckboxValue([]);
-    setLoading(false);
   };
-
-  useEffect(() => {
-    console.log(adcode.level);
-  }, [adcode.level]);
 
   const onUndblclick = async () => {
     setLoading(true);
@@ -177,15 +173,7 @@ export default () => {
         });
       }
     } else {
-      const data = await gitRollupData(
-        newDataV,
-        newL7Source,
-        sourceValue,
-        adcode.code,
-        adcode.level,
-        adcode.GID_1,
-        adcode.GID_2,
-      );
+      const data = await gitRollupData(newDataV, newL7Source, sourceValue, adcode.code, adcode.level, adcode.GID_1);
       const filterdata = await gitFilterData({
         sourceValue: sourceValue,
         code: adcode.code,
