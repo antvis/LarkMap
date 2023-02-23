@@ -37,6 +37,12 @@ export class L7Source extends BaseSource {
     options: Partial<IDataOptions>,
   ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>> {
     const { level, precision = 'low' } = options;
+    if (level === 'country' || level === 'province') {
+      const data = await this.fetchData(level);
+      const jiuduanxian = await this.fetchData('jiuduanxian');
+      const newData = { type: 'FeatureCollection', features: [...data.features, ...jiuduanxian.features] };
+      return newData as FeatureCollection<Geometry | GeometryCollection, Record<string, any>>;
+    }
     const data = await this.fetchData(level);
     return this.simplifyData(data, precision);
   }
@@ -45,25 +51,19 @@ export class L7Source extends BaseSource {
   public async getChildrenData(
     ChildrenDataOptions: Partial<ChildrenDataOptions>,
   ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>> {
-    const { parentName, parenerLevel, childrenLevel, precision = 'low' } = ChildrenDataOptions;
+    const {
+      parentName,
+      parentLevel,
+      childrenLevel,
+      shineUpon = { country: '', province: 'FIRST_GID', city: 'GID_1', district: 'GID_2' },
+      precision = 'low',
+    } = ChildrenDataOptions;
+    console.log(ChildrenDataOptions, '111');
     const rawData = await this.getData({ level: childrenLevel, precision });
     //TODO 根据 parentName, parenerLevel 进行数据过滤
-    if (parenerLevel === 'country') {
-      return rawData;
-    }
-    if (parenerLevel === 'province') {
+    if (shineUpon[parentLevel] && parentName) {
       const data = rawData.features.filter((v) => {
-        return v.properties.GID_1 === parentName;
-      });
-      const newData = { type: 'FeatureCollection', features: data } as FeatureCollection<
-        Geometry | GeometryCollection,
-        Record<string, any>
-      >;
-      return newData;
-    }
-    if (parenerLevel === 'city') {
-      const data = rawData.features.filter((v) => {
-        return v.properties.GID_2 === parentName;
+        return v.properties[shineUpon[parentLevel]] === parentName;
       });
       const newData = { type: 'FeatureCollection', features: data } as FeatureCollection<
         Geometry | GeometryCollection,
@@ -72,7 +72,7 @@ export class L7Source extends BaseSource {
       return newData;
     }
     return rawData;
-  }
+  } /*  */
 
   private fetchArrayBuffer = async (url: string) => {
     const res = await fetch(url);

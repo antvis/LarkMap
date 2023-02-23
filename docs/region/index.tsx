@@ -13,7 +13,6 @@ import {
   copy,
   downloadData,
   getDrillingData,
-  gitFilterData,
   gitRollupData,
   item,
   sourceOptions,
@@ -54,101 +53,74 @@ export default () => {
     GID_1: undefined,
     GID_2: undefined,
   });
-  const [newDataV, setNewDatav] = useState<DataVSource>();
-  const [newL7Source, setNewL7Source] = useState<L7Source>();
+  const [newL7Source, setNewL7Source] = useState<L7Source>(new L7Source({ version: 'xinzhengqu' }));
   const [sourceValue, setSourceValue] = useState('thirdParty');
   const [loading, setLoading] = useState(false);
   const [accuracyValue, setAccuracyVAlue] = useState<DataPrecision>('low');
-  const [cityData, setCityData] = useState({
-    code: 100000,
-    name: `'the People's Republic of China'`,
-    data: undefined,
-  });
   const [clickData, setClickData] = useState(undefined);
   const [CheckValue, setCheckboxValue] = useState([]);
-
-  useEffect(() => {
-    const obj = new DataVSource();
-    const newObj = new L7Source({ version: 'xinzhengqu' });
-    setNewDatav(obj);
-    setNewL7Source(newObj);
-  }, []);
 
   // @ts-ignore
   useEffect(async () => {
     setLoading(true);
-    if (sourceValue === 'dataV') {
+    if (newL7Source) {
+      const data = await newL7Source.getData({ level: 'country', code: 100000, full: true });
+      const jiuduanxian = await newL7Source.getData({ level: 'jiuduanxian' });
+      console.log(jiuduanxian);
       setSource((prevState) => ({
         ...prevState,
-        data: newDataV.DataVSource,
+        data: { type: data.type, features: data.features },
       }));
-      setCityData({
-        code: 100000,
-        name: `中华人民共和国`,
-        data: newDataV.DataVSource,
-      });
-    } else {
-      if (newL7Source) {
-        const data = await newL7Source.getData({ level: 'country' });
-        setSource((prevState) => ({
-          ...prevState,
-          data: { type: data.type, features: data.features },
-        }));
-        setCityData({
-          code: 100000,
-          name: `'the People's Republic of China'`,
-          data: data,
-        });
-      }
     }
     setLoading(false);
-  }, [sourceValue, newDataV]);
+  }, [sourceValue]);
+
+  useEffect(() => {
+    console.log(adcode.level);
+  }, [adcode.level]);
 
   const onDblClick = async (e: any) => {
     setLoading(true);
-    if (sourceValue === 'dataV') {
-      const code = e.feature.properties.adcode;
-      const areaLevel = e.feature.properties.level;
-      const data = await getDrillingData(newDataV, newL7Source, sourceValue, code, areaLevel);
-      setCityData({
-        code: code,
-        name: e.feature.properties.name,
-        data: e.feature,
-      });
-      setSource((prevState) => ({ ...prevState, data: data }));
-      if (e.feature.properties.parent.adcode) {
-        setAdcode((state) => ({ ...state, code: e.feature.properties.parent.adcode, level: areaLevel, adcode: code }));
-      } else {
-        const codeJson = JSON.parse(e.feature.properties.parent).adcode;
-        setAdcode((state) => ({ ...state, code: codeJson, level: areaLevel, adcode: code }));
-      }
+    if (adcode.level !== 'district') {
+      const L7Code = e.feature.properties?.FIRST_GID
+        ? e.feature.properties?.FIRST_GID
+        : e.feature.properties?.code
+        ? e.feature.properties?.code
+        : 100000;
+      const dataVCode = e.feature.properties?.adcode;
+      const data = {
+        dataV: {
+          code: dataVCode,
+          parentCode: e.feature.properties?.parent?.adcode
+            ? e.feature.properties?.parent?.adcode
+            : e.feature.properties?.parent
+            ? JSON.parse(e.feature.properties?.parent)?.adcode
+            : undefined,
+          full: adcode.level !== 'city' ? true : false,
+        },
+        thirdParty: {
+          code: L7Code,
+          parentCode: L7Code,
+          full: undefined,
+        },
+      };
+      const datas = await getDrillingData(newL7Source, data[sourceValue].code, data[sourceValue].full, adcode.level);
+
+      const dataLevel = {
+        dataV: e.feature.properties.level,
+        thirdParty: datas.level,
+      };
+      setSource((prevState) => ({ ...prevState, data: datas.GeoJSON }));
+      setAdcode((state) => ({
+        ...state,
+        code: data[sourceValue].parentCode,
+        adcode: data[sourceValue].code,
+        level: dataLevel[sourceValue],
+        GID_1: e.feature.properties.GID_1,
+        GID_2: e.feature.properties.GID_2,
+      }));
     } else {
-      if (adcode.level !== 'district') {
-        const L7code = e.feature.properties.FIRST_GID
-          ? e.feature.properties.FIRST_GID
-          : e.feature.properties.code
-          ? e.feature.properties.code
-          : 100000;
-        // const data = await getDrillingData(dataLead, sourceValue, L7code, adcode.level);
-        const datas = await getDrillingData(newDataV, newL7Source, sourceValue, L7code, adcode.level);
-        console.log(datas, 'datas');
-        setSource((prevState) => ({ ...prevState, data: datas.GeoJSON }));
-        setAdcode((state) => ({
-          ...state,
-          code: L7code,
-          adcode: L7code,
-          level: datas.level,
-          GID_1: e.feature.properties.GID_1,
-          GID_2: e.feature.properties.GID_2,
-        }));
-        setCityData({
-          code: L7code,
-          name: e.feature.properties.ENG_NAME,
-          data: e.feature,
-        });
-      } else {
-        message.info('已下钻到最后一层');
-      }
+      message.info('已下钻到最后一层');
     }
     setClickData(undefined);
     setCheckboxValue([]);
@@ -159,52 +131,18 @@ export default () => {
     setLoading(true);
     if (adcode.level === 'country') {
       message.info('已经上钻到最上层级');
-      if (sourceValue === 'dataV') {
-        setCityData({
-          code: 100000,
-          name: `中华人民共和国`,
-          data: newDataV.DataVSource,
-        });
-      } else {
-        const data = await newL7Source.getData({ level: 'country' });
-        setCityData({
-          code: 100000,
-          name: `'the People's Republic of China'`,
-          data,
-        });
-      }
     } else {
-      const data = await gitRollupData(
-        newDataV,
-        newL7Source,
-        sourceValue,
-        adcode.code,
-        adcode.level,
-        adcode.GID_1,
-        adcode.GID_2,
-      );
-      const filterdata = await gitFilterData(
-        sourceValue,
-        adcode.code,
-        newDataV,
-        newL7Source,
-        adcode.level,
-        adcode.GID_1,
-        adcode.GID_2,
-      );
-      if (sourceValue === 'dataV') {
-        setCityData({
-          code: filterdata.code,
-          name: filterdata.geoJson.features[0].properties.name,
-          data: filterdata.geoJson,
-        });
-      } else {
-        setCityData({
-          code: data.code,
-          name: filterdata.geoJson.features[0].properties.ENG_NAME,
-          data: filterdata.geoJson,
-        });
-      }
+      const type = {
+        dataV: true,
+        thirdParty: false,
+      };
+      const data = await gitRollupData({
+        L7Source: newL7Source,
+        code: adcode.code,
+        type: type[sourceValue],
+        areaLevel: adcode.level,
+        GID_1: adcode.GID_1,
+      });
 
       setSource((prevState) => ({ ...prevState, data: data.geoJson }));
       setAdcode({ code: data.code, level: data.areaLevel, GID_1: data?.GID_1, GID_2: data?.GID_2, adcode: data.code });
@@ -215,13 +153,18 @@ export default () => {
   };
 
   const handleChange = (e) => {
+    const data = {
+      dataV: new DataVSource({ version: 'areas_v3' }),
+      thirdParty: new L7Source({ version: 'xinzhengqu' }),
+    };
+    setNewL7Source(data[e]);
     setAdcode((state) => ({ ...state, code: 100000, level: 'country' }));
     setSourceValue(e);
   };
 
   const onDownload = async () => {
     message.info('数据下载中');
-    const data = await downloadData(newDataV, newL7Source, sourceValue, adcode.code, accuracyValue, adcode.level);
+    const data = await downloadData(newL7Source, adcode.code, accuracyValue, adcode.level);
     const download = document.createElement('a');
     download.download = `${adcode.adcode}.json`;
     download.href = `data:text/json;charset=utf-8,${encodeURIComponent(
@@ -280,9 +223,14 @@ export default () => {
     if (sourceValue === 'thirdParty') {
       CheckValue.forEach(async (level: any) => {
         const data = await newL7Source.getChildrenData({
-          parentName: adcode.code,
-          parenerLevel: adcode.level,
+          parentName: clickData.code,
+          parentLevel: adcode.level,
           childrenLevel: level,
+          shineUpon: {
+            country: '',
+            province: 'GID_1',
+            city: 'GID_2',
+          },
         });
         bulkDownload(data, level);
       });
@@ -320,28 +268,6 @@ export default () => {
             <div>数据源：</div>
             <Select value={sourceValue} style={{ width: 150 }} onChange={handleChange} options={sourceOptions} />
           </div>
-          {cityData.code ? (
-            <div className="LayerCity">
-              <Collapse defaultActiveKey={['1']} ghost style={{ paddingTop: '12px' }}>
-                <Panel header="当前图层信息" key="1">
-                  <div>当前图层地名：{cityData.name}</div>
-                  <div>
-                    当前图层城市编码：
-                    <Popover content={content}>
-                      <a
-                        download={`${cityData.name}.json`}
-                        href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(cityData.data))}`}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {cityData.code}
-                      </a>
-                    </Popover>
-                  </div>
-                </Panel>
-              </Collapse>
-            </div>
-          ) : null}
           {clickData && (
             <Collapse defaultActiveKey={['1']} ghost style={{ paddingTop: '12px' }}>
               <Panel header="下载选中数据" key="1">
