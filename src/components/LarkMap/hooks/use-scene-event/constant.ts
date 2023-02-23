@@ -35,4 +35,4 @@ export const SceneEventMap: Record<keyof SceneEventProps, string> = {
 /**
  * LarkMap 事件名列表
  */
-export const SceneEventList = Object.keys(SceneEventMap);
+export const SceneEventList = Object.keys(SceneEventMap) as (keyof SceneEventProps)[];

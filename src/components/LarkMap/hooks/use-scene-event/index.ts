@@ -10,17 +10,17 @@ export const useSceneEvent = (scene: Scene, props: SceneEventProps) => {
         return;
       }
       // 需要更新的事件对应到 deps 的数组下标，但是不包含 scene 实例的更新
-      let indexList = changeIndexList.filter((index) => index);
+      let eventIndexList = changeIndexList.filter((index) => !!index).map((index) => index - 1);
 
       // 如果本次变化为 scene 的实例化则无差别遍历所有事件类型
       if (changeIndexList.includes(0)) {
-        indexList = SceneEventList.map((_, index) => index + 1);
+        eventIndexList = SceneEventList.map((_, index) => index);
       }
 
-      indexList.forEach((index) => {
+      eventIndexList.forEach((index) => {
         const eventName = SceneEventMap[SceneEventList[index]] as string;
-        const previousCallback = previousDeps[index];
-        const currentCallback = currentDeps[index];
+        const previousCallback = previousDeps[index + 1];
+        const currentCallback = currentDeps[index + 1];
         // 分别注销旧的事件回调并绑定新的事件
         if (previousCallback) {
           scene.off(eventName, previousCallback);
