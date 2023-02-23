@@ -27,13 +27,7 @@ const RollupType: Record<DataLevel, any> = {
   country: '',
   jiuduanxian: '',
 };
-/**
- *
- * @param sourceValue 数据源类型
- * @param code 对应编码
- * @param areaLevel 城市等级
- * @returns
- */
+
 export const getDrillingData = async (L7Source: L7Source, code?: number, full?: boolean, areaLevel?: DataLevel) => {
   const data = await L7Source.getChildrenData({
     parentName: code,
@@ -49,15 +43,6 @@ export const getDrillingData = async (L7Source: L7Source, code?: number, full?: 
   };
 };
 
-/**
- *
- * @param sourceValue 数据源类型
- * @param code 对应编码
- * @param areaLevel 城市等级
- * @param GID_1 一级编码
- * @param GID_2 二级编码
- * @returns
- */
 export const gitRollupData = async (option: {
   L7Source: L7Source;
   code: number;
@@ -100,28 +85,6 @@ export const gitRollupData = async (option: {
     GID_1: undefined,
     GID_2: undefined,
   };
-  // if (areaLevel === 'district' && type === false) {
-  //   const data = await L7Source.getChildrenData({
-  //     parentName: GID_1,
-  //     parentLevel: RollupType[areaLevel],
-  //     childrenLevel: RollupType[areaLevel],
-  //   });
-  //   return {
-  //     geoJson: data,
-  //     code: code,
-  //     areaLevel: 'city',
-  //     GID_1: data.features[0].properties.GID_1,
-  //     GID_2: data.features[0].properties.GID_2,
-  //   };
-  // }
-  // const data = await L7Source.getData({ level: RollupType[areaLevel] });
-  // return {
-  //   geoJson: data,
-  //   code: 100000,
-  //   areaLevel: RollupType[areaLevel],
-  //   GID_1: undefined,
-  //   GID_2: undefined,
-  // };
 };
 
 export const downloadData = async (
