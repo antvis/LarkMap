@@ -1,7 +1,6 @@
 import { message } from 'antd';
 import type { L7Source } from './data';
 import type { DataLevel, DataPrecision } from './data/BaseDataSource';
-import type { DataVSource } from './data/dataSource';
 
 const DrillingType = {
   country: 'province',
@@ -37,29 +36,13 @@ const filterType = {
  * @param areaLevel 城市等级
  * @returns
  */
-export const getDrillingData = async (
-  example: DataVSource,
-  L7Source: L7Source,
-  sourceValue: string,
-  code?: number,
-  areaLevel?: DataLevel,
-) => {
-  if (sourceValue === 'dataV') {
-    if (areaLevel !== 'district') {
-      const data = await example.gitDataVData(code, 'full');
-      const geojson = await data.json();
-      return geojson;
-    } else {
-      const data = await example.gitDataVData(code);
-      const geojson = await data.json();
-      return geojson;
-    }
-  }
+export const getDrillingData = async (L7Source: L7Source, code?: number, full?: boolean, areaLevel?: DataLevel) => {
   const data = await L7Source.getChildrenData({
     parentName: code,
     parentLevel: areaLevel,
     childrenLevel: DrillingType[areaLevel],
     shineUpon: { country: '', province: 'GID_1', city: 'GID_2', district: '', jiuduanxian: '' },
+    full: full,
   });
 
   return {
@@ -78,40 +61,36 @@ export const getDrillingData = async (
  * @returns
  */
 export const gitRollupData = async (
-  example: DataVSource,
   L7Source: L7Source,
-  sourceValue: string,
   code: number,
+  type: boolean,
   areaLevel?: string,
   GID_1?: number,
 ) => {
-  if (sourceValue === 'dataV') {
-    const datas = {
-      geoJson: { type: 'FeatureCollection', features: [] },
-      code: 10000,
-      areaLevel: 'country',
-      GID_1: undefined,
-      GID_2: undefined,
-    };
-    const dataFull = await example.gitDataVData(code, 'full');
-    const dataFullJson = await dataFull.json();
-    const data = await example.gitDataVData(code);
-    const dataJson = await data.json();
-    const dataCode = dataJson.features[0].properties.parent.adcode;
-    const dataLevel = dataJson.features[0].properties.level;
+  if (type) {
+    const fullData = await L7Source.getData({ code: code, full: true });
+    const data = await L7Source.getData({ code: code });
+    const dataCode = data.features[0].properties.parent.adcode;
+    const dataLevel = data.features[0].properties.level;
     if (typeof dataCode !== 'undefined') {
-      return { ...datas, geoJson: dataFullJson, code: dataCode, areaLevel: dataLevel };
+      return {
+        geoJson: fullData,
+        code: dataCode,
+        areaLevel: dataLevel,
+        GID_1: undefined,
+        GID_2: undefined,
+      };
     } else {
       if (dataCode === null) {
-        return { ...datas, geoJson: dataFullJson, areaLevel: dataLevel };
+        return { geoJson: fullData, areaLevel: dataLevel, code: 100000, GID_1: undefined, GID_2: undefined };
       } else {
-        const codeJson = JSON.parse(dataJson.features[0].properties.parent).adcode;
-        return { ...datas, geoJson: dataFullJson, code: codeJson, areaLevel: dataLevel };
+        const codeJson = JSON.parse(data.features[0].properties.parent).adcode;
+        return { geoJson: fullData, code: codeJson, areaLevel: dataLevel, GID_1: undefined, GID_2: undefined };
       }
     }
   }
-  if (areaLevel === 'district') {
-    const data = await L7Source.getParentData({
+  if (areaLevel === 'district' && type === false) {
+    const data = await L7Source.getChildrenData({
       parentName: GID_1,
       parentLevel: RollupType[areaLevel],
       childrenLevel: RollupType[areaLevel],
@@ -134,71 +113,21 @@ export const gitRollupData = async (
   };
 };
 
-export const gitFilterData = async (options: {
-  sourceValue: any;
-  code: number;
-  example: DataVSource;
-  L7Source: L7Source;
-  areaLevel: string;
-  GID_1?: number;
-  GID_2?: number;
-}) => {
-  if (options.sourceValue === 'dataV') {
-    const datas = {
-      geoJson: { type: 'FeatureCollection', features: [] },
-      code: 10000,
-      areaLevel: 'country',
-      GID_1: undefined,
-      GID_2: undefined,
-    };
-    const data = await options.example.gitDataVData(options.code);
-    const dataJson = await data.json();
-    const dataCode = dataJson.features[0].properties.adcode;
-    const dataLevel = dataJson.features[0].properties.level;
-    return { ...datas, geoJson: dataJson, code: dataCode, areaLevel: dataLevel };
-  }
-  const data = await options.L7Source.getParentData({
-    parentName: options[parent[options.areaLevel]],
-    parentLevel: filterType[options.areaLevel],
-    childrenLevel: filterType[options.areaLevel],
-  });
-  return {
-    geoJson: data,
-    code:
-      options.areaLevel === 'province' || options.areaLevel === 'city'
-        ? 100000
-        : data.features[0]?.properties.FIRST_GID,
-    name:
-      options.areaLevel === 'province' || options.areaLevel === 'city'
-        ? `'the People's Republic of China'`
-        : data.features[0].properties.ENG_NAME,
-    areaLevel: RollupType[options.areaLevel],
-    GID_1: data.features[0].properties?.GID_1,
-    GID_2: data.features[0].properties?.GID_2,
-  };
-};
-
 export const downloadData = async (
-  example: DataVSource,
   L7Source: L7Source,
-  sourceValue: string,
   code: number,
   accuracy: DataPrecision,
   areaLevel?: DataLevel,
 ) => {
-  if (sourceValue === 'dataV') {
-    const dataFull = await example.gitDataVData(code, 'full');
-    return dataFull;
-  } else {
-    const data = await L7Source.getChildrenData({
-      parentName: code,
-      parentLevel: areaLevel,
-      childrenLevel: areaLevel,
-      shineUpon: { country: '', province: '', city: 'GID_1', district: 'GID_3' },
-      precision: accuracy,
-    });
-    return data;
-  }
+  const data = await L7Source.getChildrenData({
+    parentName: code,
+    parentLevel: areaLevel,
+    childrenLevel: areaLevel,
+    shineUpon: { country: '', province: '', city: 'GID_1', district: 'GID_3' },
+    precision: accuracy,
+    full: true,
+  });
+  return data;
 };
 
 export const copy = (data: any) => {

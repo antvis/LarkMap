@@ -9,6 +9,8 @@ export type DataPrecision = 'high' | 'middle' | 'low';
 export interface IDataOptions {
   precision: DataPrecision;
   level: DataLevel;
+  code: number;
+  full: boolean;
 }
 
 export interface ChildrenDataOptions {
@@ -17,6 +19,7 @@ export interface ChildrenDataOptions {
   childrenLevel: DataLevel;
   precision: DataPrecision;
   shineUpon: Record<string, string>;
+  full: boolean;
 }
 
 export type DataLevel = 'country' | 'province' | 'city' | 'district' | 'jiuduanxian';
@@ -49,10 +52,6 @@ export default abstract class BaseSource {
   ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>>;
 
   public abstract getChildrenData(
-    ChildrenDataOptions: Partial<ChildrenDataOptions>,
-  ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>>;
-
-  public abstract getParentData(
     ChildrenDataOptions: Partial<ChildrenDataOptions>,
   ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>>;
 

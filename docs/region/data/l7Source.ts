@@ -27,30 +27,6 @@ const DataLevelRecord: Record<DataLevel, string> = {
 // `https://unpkg.com/${version}/data/${code}.pbf`;
 
 export class L7Source extends BaseSource {
-  public async getParentData(
-    ChildrenDataOptions: Partial<ChildrenDataOptions>,
-  ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>> {
-    const {
-      parentName,
-      parentLevel,
-      childrenLevel,
-      shineUpon = { country: '', province: 'FIRST_GID', city: 'GID_1', district: 'GID_2' },
-      precision = 'low',
-    } = ChildrenDataOptions;
-    const rawData = await this.getData({ level: childrenLevel, precision });
-    //TODO 根据 parentName, parenerLevel 进行数据过滤
-    if (shineUpon[parentLevel]) {
-      const data = rawData.features.filter((v) => {
-        return v.properties[shineUpon[parentLevel]] === parentName;
-      });
-      const newData = { type: 'FeatureCollection', features: data } as FeatureCollection<
-        Geometry | GeometryCollection,
-        Record<string, any>
-      >;
-      return newData;
-    }
-    return rawData;
-  }
   // 使用 Low 精度数据进行数据渲染
   public async getRenderData(
     options: Partial<IDataOptions>,
@@ -76,9 +52,10 @@ export class L7Source extends BaseSource {
       shineUpon = { country: '', province: 'FIRST_GID', city: 'GID_1', district: 'GID_2' },
       precision = 'low',
     } = ChildrenDataOptions;
+    console.log(ChildrenDataOptions, '111');
     const rawData = await this.getData({ level: childrenLevel, precision });
     //TODO 根据 parentName, parenerLevel 进行数据过滤
-    if (shineUpon[parentLevel]) {
+    if (shineUpon[parentLevel] && parentName) {
       const data = rawData.features.filter((v) => {
         return v.properties[shineUpon[parentLevel]] === parentName;
       });
