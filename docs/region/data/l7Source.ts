@@ -37,6 +37,12 @@ export class L7Source extends BaseSource {
     options: Partial<IDataOptions>,
   ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>> {
     const { level, precision = 'low' } = options;
+    if (level === 'country' || level === 'province') {
+      const data = await this.fetchData(level);
+      const jiuduanxian = await this.fetchData('jiuduanxian');
+      const newData = { type: 'FeatureCollection', features: [...data.features, ...jiuduanxian.features] };
+      return newData as FeatureCollection<Geometry | GeometryCollection, Record<string, any>>;
+    }
     const data = await this.fetchData(level);
     return this.simplifyData(data, precision);
   }
@@ -45,7 +51,6 @@ export class L7Source extends BaseSource {
   public async getChildrenData(
     ChildrenDataOptions: Partial<ChildrenDataOptions>,
   ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>> {
-    console.log(ChildrenDataOptions)
     const {
       parentName,
       parentLevel,
