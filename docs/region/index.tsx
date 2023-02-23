@@ -129,11 +129,6 @@ export default () => {
     setLoading(true);
     if (adcode.level === 'country') {
       message.info('已经上钻到最上层级');
-      const name = {
-        dataV: `中华人民共和国`,
-        thirdParty: `the People's Republic of China`,
-      };
-      const data = await newL7Source.getData({ level: 'country', code: 100000, full: true });
     } else {
       const type = {
         dataV: true,
