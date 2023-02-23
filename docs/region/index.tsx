@@ -134,7 +134,13 @@ export default () => {
         dataV: true,
         thirdParty: false,
       };
-      const data = await gitRollupData(newL7Source, adcode.code, type[sourceValue], adcode.level, adcode.GID_1);
+      const data = await gitRollupData({
+        L7Source: newL7Source,
+        code: adcode.code,
+        type: type[sourceValue],
+        areaLevel: adcode.level,
+        GID_1: adcode.GID_1,
+      });
 
       setSource((prevState) => ({ ...prevState, data: data.geoJson }));
       setAdcode({ code: data.code, level: data.areaLevel, GID_1: data?.GID_1, GID_2: data?.GID_2, adcode: data.code });

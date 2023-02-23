@@ -8,26 +8,24 @@ const DrillingType = {
   city: 'district',
 };
 
+const DrillingCode = {
+  province: '',
+  city: '',
+  district: 'code',
+};
+
+const DrillingName = {
+  province: '',
+  city: '',
+  district: 'GID_1',
+};
+
 const RollupType: Record<DataLevel, any> = {
   district: 'city',
   city: 'province',
   province: 'country',
   country: '',
   jiuduanxian: '',
-};
-
-const parent: Record<DataLevel, string> = {
-  country: '',
-  province: 'FIRST_GID',
-  city: 'GID_1',
-  district: 'GID_1',
-  jiuduanxian: '',
-};
-
-const filterType = {
-  district: 'province',
-  city: 'province',
-  province: 'country',
 };
 /**
  *
@@ -60,13 +58,14 @@ export const getDrillingData = async (L7Source: L7Source, code?: number, full?: 
  * @param GID_2 二级编码
  * @returns
  */
-export const gitRollupData = async (
-  L7Source: L7Source,
-  code: number,
-  type: boolean,
-  areaLevel?: string,
-  GID_1?: number,
-) => {
+export const gitRollupData = async (option: {
+  L7Source: L7Source;
+  code: number;
+  type: boolean;
+  areaLevel?: string;
+  GID_1?: number;
+}) => {
+  const { L7Source, code, type, areaLevel, GID_1 } = option;
   if (type) {
     const fullData = await L7Source.getData({ code: code, full: true });
     const data = await L7Source.getData({ code: code });
@@ -89,28 +88,40 @@ export const gitRollupData = async (
       }
     }
   }
-  if (areaLevel === 'district' && type === false) {
-    const data = await L7Source.getChildrenData({
-      parentName: GID_1,
-      parentLevel: RollupType[areaLevel],
-      childrenLevel: RollupType[areaLevel],
-    });
-    return {
-      geoJson: data,
-      code: code,
-      areaLevel: 'city',
-      GID_1: data.features[0].properties.GID_1,
-      GID_2: data.features[0].properties.GID_2,
-    };
-  }
-  const data = await L7Source.getData({ level: RollupType[areaLevel] });
+  const data = await L7Source.getChildrenData({
+    parentName: option[DrillingName[areaLevel]],
+    parentLevel: RollupType[areaLevel],
+    childrenLevel: RollupType[areaLevel],
+  });
   return {
     geoJson: data,
-    code: 100000,
+    code: option[DrillingCode[areaLevel]] ? option[DrillingCode[areaLevel]] : 100000,
     areaLevel: RollupType[areaLevel],
     GID_1: undefined,
     GID_2: undefined,
   };
+  // if (areaLevel === 'district' && type === false) {
+  //   const data = await L7Source.getChildrenData({
+  //     parentName: GID_1,
+  //     parentLevel: RollupType[areaLevel],
+  //     childrenLevel: RollupType[areaLevel],
+  //   });
+  //   return {
+  //     geoJson: data,
+  //     code: code,
+  //     areaLevel: 'city',
+  //     GID_1: data.features[0].properties.GID_1,
+  //     GID_2: data.features[0].properties.GID_2,
+  //   };
+  // }
+  // const data = await L7Source.getData({ level: RollupType[areaLevel] });
+  // return {
+  //   geoJson: data,
+  //   code: 100000,
+  //   areaLevel: RollupType[areaLevel],
+  //   GID_1: undefined,
+  //   GID_2: undefined,
+  // };
 };
 
 export const downloadData = async (

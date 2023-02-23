@@ -45,6 +45,7 @@ export class L7Source extends BaseSource {
   public async getChildrenData(
     ChildrenDataOptions: Partial<ChildrenDataOptions>,
   ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>> {
+    console.log(ChildrenDataOptions)
     const {
       parentName,
       parentLevel,
