@@ -68,8 +68,9 @@ export class L7Source extends BaseSource {
       shineUpon = { country: '', province: 'FIRST_GID', city: 'GID_1', district: 'GID_2' },
       precision = 'low',
     } = ChildrenDataOptions;
-    console.log(ChildrenDataOptions, '111');
+    console.log(ChildrenDataOptions)
     const rawData = await this.getData({ level: childrenLevel, precision });
+    console.log(rawData)
     //TODO 根据 parentName, parenerLevel 进行数据过滤
     if (shineUpon[parentLevel] && parentName) {
       const data = rawData.features.filter((v) => {
