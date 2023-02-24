@@ -1,5 +1,5 @@
 import { message } from 'antd';
-import type { L7Source } from './data';
+import type { BaseSource } from './data';
 import type { DataLevel, DataPrecision } from './data/BaseDataSource';
 
 const DrillingType = {
@@ -28,15 +28,15 @@ const RollupType: Record<DataLevel, any> = {
   jiuduanxian: '',
 };
 
-export const getDrillingData = async (L7Source: L7Source, code?: number, full?: boolean, areaLevel?: DataLevel) => {
-  const data = await L7Source.getChildrenData({
+export const getDrillingData = async (source: BaseSource, code?: number, full?: boolean, areaLevel?: DataLevel) => {
+  const data = await source.getChildrenData({
     parentName: code,
     parentLevel: areaLevel,
     childrenLevel: DrillingType[areaLevel],
     shineUpon: { country: '', province: 'GID_1', city: 'GID_2', district: '', jiuduanxian: '' },
     full: full,
   });
-
+  console.log(data);
   return {
     GeoJSON: data,
     level: DrillingType[areaLevel],
@@ -44,16 +44,16 @@ export const getDrillingData = async (L7Source: L7Source, code?: number, full?: 
 };
 
 export const gitRollupData = async (option: {
-  L7Source: L7Source;
+  source: BaseSource;
   code: number;
   type: boolean;
   areaLevel?: string;
   GID_1?: number;
 }) => {
-  const { L7Source, code, type, areaLevel, GID_1 } = option;
+  const { source, code, type, areaLevel, GID_1 } = option;
   if (type) {
-    const fullData = await L7Source.getData({ code: code, full: true });
-    const data = await L7Source.getData({ code: code });
+    const fullData = await source.getData({ code: code, full: true });
+    const data = await source.getData({ code: code });
     const dataCode = data.features[0].properties.parent.adcode;
     const dataLevel = data.features[0].properties.level;
     if (typeof dataCode !== 'undefined') {
@@ -73,7 +73,7 @@ export const gitRollupData = async (option: {
       }
     }
   }
-  const data = await L7Source.getChildrenData({
+  const data = await source.getChildrenData({
     parentName: option[DrillingName[areaLevel]],
     parentLevel: RollupType[areaLevel],
     childrenLevel: RollupType[areaLevel],
@@ -88,12 +88,12 @@ export const gitRollupData = async (option: {
 };
 
 export const downloadData = async (
-  L7Source: L7Source,
+  source: BaseSource,
   code: number,
   accuracy: DataPrecision,
   areaLevel?: DataLevel,
 ) => {
-  const data = await L7Source.getChildrenData({
+  const data = await source.getChildrenData({
     parentName: code,
     parentLevel: areaLevel,
     childrenLevel: areaLevel,
@@ -212,8 +212,8 @@ export const cityValue = (level: string) => {
 };
 
 export const sourceOptions = [
-  { value: 'dataV', label: 'dataV数据源' },
-  { value: 'thirdParty', label: 'L7数据源' },
+  { value: 'DataVSource', label: 'dataV数据源' },
+  { value: 'L7Source', label: 'L7数据源' },
 ];
 
 export const accuracyOption = [
