@@ -1,4 +1,4 @@
-import type { SelectProps } from 'antd';
+import type { SelectProps } from './Select';
 
 export interface LocationSearchProps extends Omit<SelectProps, 'onChange' | 'onSearch'> {
   /**

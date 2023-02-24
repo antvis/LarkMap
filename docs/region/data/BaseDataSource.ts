@@ -25,7 +25,13 @@ export interface ChildrenDataOptions {
 export type DataLevel = 'country' | 'province' | 'city' | 'district' | 'jiuduanxian';
 
 export default abstract class BaseSource {
-  static dataInfo: string;
+  public info: {
+    url: string;
+    desc: {
+      text: string;
+      href: string;
+    };
+  };
   private options: Partial<ISourceOptions> = {};
   protected data: Record<DataLevel, any> = {
     country: undefined,
@@ -36,10 +42,15 @@ export default abstract class BaseSource {
   };
   protected version: string;
 
-  constructor(options: ISourceOptions) {
-    this.options = options;
-    this.version = options.version;
+  constructor(options: Partial<ISourceOptions>) {
+    this.options = {
+      ...this.getDefaultOptions(),
+      ...options,
+    };
+    this.version = this.options.version;
   }
+
+  protected abstract getDefaultOptions(): Partial<ISourceOptions>;
 
   // 获取渲染数据
   public abstract getRenderData(
