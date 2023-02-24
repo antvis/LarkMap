@@ -65,8 +65,6 @@ export default () => {
     setLoading(true);
     if (newL7Source) {
       const data = await newL7Source.getData({ level: 'country', code: 100000, full: true });
-      const jiuduanxian = await newL7Source.getData({ level: 'jiuduanxian' });
-      console.log(jiuduanxian);
       setSource((prevState) => ({
         ...prevState,
         data: { type: data.type, features: data.features },
