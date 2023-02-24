@@ -10,7 +10,7 @@ const DataConfig = {
     text: '锐多宝的地理空间',
     href: 'https://github.com/ruiduobao/shengshixian.com',
   },
-  url: 'https://unpkg.com',
+  url: 'https://unpkg.com/xingzhengqu',
 };
 
 const DataAccuracy: Record<DataPrecision, number> = {
@@ -20,11 +20,11 @@ const DataAccuracy: Record<DataPrecision, number> = {
 };
 
 const DataLevelRecord: Record<DataLevel, string> = {
-  country: '2023_guojie',
-  province: '2023_sheng',
-  city: '2023_shi',
-  district: '2023_xian',
-  jiuduanxian: '2023_jiuduanxian',
+  country: 'country',
+  province: 'province',
+  city: 'city',
+  district: 'county',
+  jiuduanxian: 'jiuduanxian',
 };
 
 // `https://unpkg.com/${version}/data/${code}.pbf`;
@@ -33,7 +33,7 @@ export class L7Source extends BaseSource {
   public info = DataConfig;
   protected getDefaultOptions(): Partial<ISourceOptions> {
     return {
-      version: 'xinzhengqu',
+      version: '2023',
     };
   }
 
@@ -89,7 +89,7 @@ export class L7Source extends BaseSource {
     if (this.data[level]) {
       return this.data[level];
     }
-    const url = `${DataConfig.url}/${this.version}/data/${DataLevelRecord[level]}.pbf`;
+    const url = `${DataConfig.url}@${this.version}/data/${DataLevelRecord[level]}.pbf`;
     const data = await this.fetchArrayBuffer(url);
     const jsonData = await geobuf.decode(new Pbf(data));
     this.data[level] = await jsonData;
