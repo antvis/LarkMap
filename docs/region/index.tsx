@@ -3,8 +3,9 @@ import type { ChoroplethLayerProps, LarkMapProps, LayerPopupProps } from '@antv/
 import { ChoroplethLayer, CustomControl, LarkMap, LayerPopup, MapThemeControl } from '@antv/larkmap';
 import { Button, Checkbox, Collapse, message, Popover, Select, Spin } from 'antd';
 import React, { useEffect, useMemo, useState } from 'react';
-import { DataVSource, L7Source } from './data';
-import type { DataPrecision } from './data/BaseDataSource';
+import type { BaseSource, SourceType } from './data';
+import { DataSourceMap } from './data';
+import type { DataLevel, DataPrecision } from './data/BaseDataSource';
 import './index.less';
 import {
   accuracyOption,
@@ -37,15 +38,16 @@ const config: LarkMapProps = {
   mapOptions: {
     style: 'light',
     center: [120.210792, 30.246026],
-    zoom: 9,
+    zoom: 3,
   },
 };
 
 export default () => {
-  const [source, setSource] = useState({
+  const [layerSource, setLayerSource] = useState({
     data: { type: 'FeatureCollection', features: [] },
     parser: { type: 'geojson' },
   });
+  const [sourceType, setSourceType] = useState<SourceType>('L7Source');
   const [adcode, setAdcode] = useState({
     code: 100000,
     adcode: 10000,
@@ -53,34 +55,32 @@ export default () => {
     GID_1: undefined,
     GID_2: undefined,
   });
-  const [newL7Source, setNewL7Source] = useState<L7Source>(new L7Source({ version: 'xinzhengqu' }));
-  const [sourceValue, setSourceValue] = useState('thirdParty');
+
+  const [dataSource, setDataSource] = useState<BaseSource>();
   const [loading, setLoading] = useState(false);
   const [accuracyValue, setAccuracyVAlue] = useState<DataPrecision>('low');
   const [clickData, setClickData] = useState(undefined);
   const [CheckValue, setCheckboxValue] = useState([]);
 
-  // @ts-ignore
-  useEffect(async () => {
-    setLoading(true);
-    if (newL7Source) {
-      const data = await newL7Source.getData({ level: 'country', code: 100000, full: true });
-      const jiuduanxian = await newL7Source.getData({ level: 'jiuduanxian' });
-      console.log(jiuduanxian);
-      setSource((prevState) => ({
-        ...prevState,
-        data: { type: data.type, features: data.features },
-      }));
-    }
-    setLoading(false);
-  }, [sourceValue]);
-
+  // 切换数据源
   useEffect(() => {
-    console.log(adcode.level);
-  }, [adcode.level]);
+    const currentSource = new DataSourceMap[sourceType]({});
+    setLoading(true);
+    setDataSource(currentSource);
+    // 初始化数据
+    currentSource.getData({ level: 'country', code: 100000, full: true }).then((data) => {
+      setLayerSource((prevState) => ({
+        ...prevState,
+        data,
+      }));
+      setLoading(false);
+    });
+  }, [sourceType]);
 
+  // 下钻
   const onDblClick = async (e: any) => {
     setLoading(true);
+    console.log(e);
     if (adcode.level !== 'district') {
       const L7Code = e.feature.properties?.FIRST_GID
         ? e.feature.properties?.FIRST_GID
@@ -89,7 +89,7 @@ export default () => {
         : 100000;
       const dataVCode = e.feature.properties?.adcode;
       const data = {
-        dataV: {
+        DataVSource: {
           code: dataVCode,
           parentCode: e.feature.properties?.parent?.adcode
             ? e.feature.properties?.parent?.adcode
@@ -98,24 +98,24 @@ export default () => {
             : undefined,
           full: adcode.level !== 'city' ? true : false,
         },
-        thirdParty: {
+        L7Source: {
           code: L7Code,
           parentCode: L7Code,
           full: undefined,
         },
       };
-      const datas = await getDrillingData(newL7Source, data[sourceValue].code, data[sourceValue].full, adcode.level);
+      const datas = await getDrillingData(dataSource, data[sourceType].code, data[sourceType].full, adcode.level);
 
       const dataLevel = {
-        dataV: e.feature.properties.level,
-        thirdParty: datas.level,
+        DataVSource: e.feature.properties.level,
+        L7Source: datas.level,
       };
-      setSource((prevState) => ({ ...prevState, data: datas.GeoJSON }));
+      setLayerSource((prevState) => ({ ...prevState, data: datas.GeoJSON }));
       setAdcode((state) => ({
         ...state,
-        code: data[sourceValue].parentCode,
-        adcode: data[sourceValue].code,
-        level: dataLevel[sourceValue],
+        code: data[sourceType].parentCode,
+        adcode: data[sourceType].code,
+        level: dataLevel[sourceType],
         GID_1: e.feature.properties.GID_1,
         GID_2: e.feature.properties.GID_2,
       }));
@@ -134,17 +134,17 @@ export default () => {
     } else {
       const type = {
         dataV: true,
-        thirdParty: false,
+        L7Source: false,
       };
       const data = await gitRollupData({
-        L7Source: newL7Source,
+        L7Source: dataSource,
         code: adcode.code,
-        type: type[sourceValue],
+        type: type[sourceType],
         areaLevel: adcode.level,
         GID_1: adcode.GID_1,
       });
 
-      setSource((prevState) => ({ ...prevState, data: data.geoJson }));
+      setLayerSource((prevState) => ({ ...prevState, data: data.geoJson }));
       setAdcode({ code: data.code, level: data.areaLevel, GID_1: data?.GID_1, GID_2: data?.GID_2, adcode: data.code });
     }
     setClickData(undefined);
@@ -152,24 +152,12 @@ export default () => {
     setLoading(false);
   };
 
-  const handleChange = (e) => {
-    const data = {
-      dataV: new DataVSource({ version: 'areas_v3' }),
-      thirdParty: new L7Source({ version: 'xinzhengqu' }),
-    };
-    setNewL7Source(data[e]);
-    setAdcode((state) => ({ ...state, code: 100000, level: 'country' }));
-    setSourceValue(e);
-  };
-
   const onDownload = async () => {
     message.info('数据下载中');
-    const data = await downloadData(newL7Source, adcode.code, accuracyValue, adcode.level);
+    const data = await downloadData(dataSource, adcode.code, accuracyValue, adcode.level);
     const download = document.createElement('a');
     download.download = `${adcode.adcode}.json`;
-    download.href = `data:text/json;charset=utf-8,${encodeURIComponent(
-      JSON.stringify(sourceValue === 'dataV' ? source.data : data),
-    )}`;
+    download.href = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(data))}`;
     download.target = '_blank';
     download.rel = 'noreferrer';
     download.click();
@@ -181,11 +169,11 @@ export default () => {
   };
 
   const items: LayerPopupProps['items'] = useMemo(() => {
-    return item(sourceValue, adcode.level);
-  }, [sourceValue, adcode.level]);
+    return item(sourceType, adcode.level);
+  }, [sourceType, adcode.level]);
 
   const onLayerClick = (e) => {
-    if (sourceValue === 'thirdParty') {
+    if (sourceType === 'L7Source') {
       const L7code = e.feature.properties.FIRST_GID
         ? e.feature.properties.FIRST_GID
         : e.feature.properties.code
@@ -205,12 +193,6 @@ export default () => {
     }
   };
 
-  const content = (
-    <div>
-      <p>点击下载当前层级对应上级数据</p>
-    </div>
-  );
-
   const granularity = useMemo(() => {
     return cityValue(adcode.level);
   }, [adcode.level]);
@@ -220,11 +202,11 @@ export default () => {
   };
 
   const clickDownload = () => {
-    if (sourceValue === 'thirdParty') {
+    if (sourceType === 'L7Source') {
       CheckValue.forEach(async (level: any) => {
-        const data = await newL7Source.getChildrenData({
+        const data = await dataSource.getChildrenData({
           parentName: clickData.code,
-          parentLevel: adcode.level,
+          parentLevel: adcode.level as DataLevel,
           childrenLevel: level,
           shineUpon: {
             country: '',
@@ -246,7 +228,7 @@ export default () => {
         <LarkMap {...config} style={{ height: '90vh', width: 'calc(100% - 300px)' }}>
           <ChoroplethLayer
             {...layerOptions}
-            source={source}
+            source={layerSource}
             onDblClick={onDblClick}
             onUndblclick={onUndblclick}
             onClick={onLayerClick}
@@ -266,12 +248,12 @@ export default () => {
         <div className="panel">
           <div className="source-select">
             <div>数据源：</div>
-            <Select value={sourceValue} style={{ width: 150 }} onChange={handleChange} options={sourceOptions} />
+            <Select value={sourceType} style={{ width: 150 }} onChange={setSourceType} options={sourceOptions} />
           </div>
           {clickData && (
             <Collapse defaultActiveKey={['1']} ghost style={{ paddingTop: '12px' }}>
               <Panel header="下载选中数据" key="1">
-                {sourceValue === 'thirdParty' && (
+                {sourceType === 'L7Source' && (
                   <div style={{ display: 'flex' }}>
                     <div>数据粒度选择：</div>
                     <Checkbox.Group options={granularity} onChange={onCheckChange} />
@@ -290,7 +272,7 @@ export default () => {
               </Panel>
             </Collapse>
           )}
-          {sourceValue === 'thirdParty' && (
+          {sourceType === 'L7Source' && (
             <Collapse defaultActiveKey={['1']} ghost style={{ paddingTop: '12px' }}>
               <Panel header="高级设置" key="1">
                 <div className="flexCenter">
@@ -309,7 +291,7 @@ export default () => {
             <div style={{ marginRight: 10 }}>数据下载</div>
             <div className="data-input">
               <Popover content={'复制'}>
-                <Button onClick={() => copy(JSON.stringify(source.data))}>
+                <Button onClick={() => copy(JSON.stringify(layerSource.data))}>
                   <CopyOutlined />
                 </Button>
               </Popover>
@@ -322,13 +304,7 @@ export default () => {
           </div>
           <div className="originData" style={{}}>
             <div>数据来源：</div>
-            {sourceValue === 'dataV' ? (
-              <a href="https://datav.aliyun.com/portal/school/atlas/area_selector">dataV.GeoAtlas官网</a>
-            ) : (
-              <div>
-                <a href="https://github.com/ruiduobao/shengshixian.com">GitHub</a>
-              </div>
-            )}
+            <a href={`${dataSource?.info.desc.href}`}>{`${dataSource?.info.desc.text}`}</a>
           </div>
         </div>
       </div>

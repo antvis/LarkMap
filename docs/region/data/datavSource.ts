@@ -1,14 +1,23 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { FeatureCollection, Geometry, GeometryCollection } from '@turf/helpers';
-import type { ChildrenDataOptions, IDataOptions } from './BaseDataSource';
+import type { ChildrenDataOptions, IDataOptions, ISourceOptions } from './BaseDataSource';
 import BaseSource from './BaseDataSource';
 
 const DataConfig = {
-  dataInfo: '数据来源：DataV https://datav.aliyun.com/portal/school/atlas/area_selector',
+  desc: {
+    text: 'DataV',
+    href: 'https://datav.aliyun.com/portal/school/atlas/area_selector',
+  },
   url: 'https://geo.datav.aliyun.com',
 };
 
 export class DataVSource extends BaseSource {
+  public info = DataConfig;
+  protected getDefaultOptions(): Partial<ISourceOptions> {
+    return {
+      version: 'areas_v3',
+    };
+  }
   public getRenderData(
     options: Partial<IDataOptions>,
   ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>> {

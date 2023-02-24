@@ -2,18 +2,21 @@ import type { FeatureCollection, Geometry, GeometryCollection } from '@turf/help
 import { simplify } from '@turf/turf';
 import geobuf from 'geobuf';
 import Pbf from 'pbf';
-import type { ChildrenDataOptions, DataLevel, DataPrecision, IDataOptions } from './BaseDataSource';
+import type { ChildrenDataOptions, DataLevel, DataPrecision, IDataOptions, ISourceOptions } from './BaseDataSource';
 import BaseSource from './BaseDataSource';
 
 const DataConfig = {
-  dataInfo: '数据来源：公众号：锐多宝的地理空间 https://github.com/ruiduobao/shengshixian.com',
+  desc: {
+    text: '锐多宝的地理空间',
+    href: 'https://github.com/ruiduobao/shengshixian.com',
+  },
   url: 'https://unpkg.com',
 };
 
 const DataAccuracy: Record<DataPrecision, number> = {
-  high: 0.0001,
-  middle: 0.005,
-  low: 0.01,
+  high: 0.000001,
+  middle: 0.00001,
+  low: 0.005,
 };
 
 const DataLevelRecord: Record<DataLevel, string> = {
@@ -27,6 +30,13 @@ const DataLevelRecord: Record<DataLevel, string> = {
 // `https://unpkg.com/${version}/data/${code}.pbf`;
 
 export class L7Source extends BaseSource {
+  public info = DataConfig;
+  protected getDefaultOptions(): Partial<ISourceOptions> {
+    return {
+      version: 'xinzhengqu',
+    };
+  }
+
   // 使用 Low 精度数据进行数据渲染
   public async getRenderData(
     options: Partial<IDataOptions>,
@@ -37,12 +47,6 @@ export class L7Source extends BaseSource {
     options: Partial<IDataOptions>,
   ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>> {
     const { level, precision = 'low' } = options;
-    if (level === 'country' || level === 'province') {
-      const data = await this.fetchData(level);
-      const jiuduanxian = await this.fetchData('jiuduanxian');
-      const newData = { type: 'FeatureCollection', features: [...data.features, ...jiuduanxian.features] };
-      return newData as FeatureCollection<Geometry | GeometryCollection, Record<string, any>>;
-    }
     const data = await this.fetchData(level);
     return this.simplifyData(data, precision);
   }
