@@ -1,5 +1,5 @@
 import { CopyOutlined, DownloadOutlined } from '@ant-design/icons';
-import type { ChoroplethLayerProps, LarkMapProps, LayerPopupProps } from '@antv/larkmap';
+import type { LayerPopupProps } from '@antv/larkmap';
 import { ChoroplethLayer, CustomControl, LarkMap, LayerPopup, MapThemeControl } from '@antv/larkmap';
 import { Button, Checkbox, Collapse, message, Popover, Select, Spin } from 'antd';
 import React, { useEffect, useMemo, useState } from 'react';
@@ -11,36 +11,19 @@ import {
   accuracyOption,
   bulkDownload,
   cityValue,
+  config,
   copy,
   downloadData,
+  editionOptions,
   getDrillingData,
   gitRollupData,
   item,
+  layerOptions,
+  RollupType,
   sourceOptions,
 } from './util';
 
 const { Panel } = Collapse;
-
-const layerOptions: Omit<ChoroplethLayerProps, 'source'> = {
-  autoFit: true,
-  fillColor: '#377eb8',
-  opacity: 0.3,
-  strokeColor: 'blue',
-  lineWidth: 0.5,
-  state: {
-    active: { strokeColor: 'green', lineWidth: 1.5, lineOpacity: 0.8 },
-    select: { strokeColor: 'red', lineWidth: 1.5, lineOpacity: 0.8 },
-  },
-};
-
-const config: LarkMapProps = {
-  mapType: 'Gaode',
-  mapOptions: {
-    style: 'light',
-    center: [120.210792, 30.246026],
-    zoom: 3,
-  },
-};
 
 export default () => {
   const [layerSource, setLayerSource] = useState({
@@ -48,24 +31,30 @@ export default () => {
     parser: { type: 'geojson' },
   });
   const [sourceType, setSourceType] = useState<SourceType>('L7Source');
+  const [sourceEdition, setSourceEdition] = useState('2023');
   const [adcode, setAdcode] = useState({
     code: 100000,
-    adcode: 10000,
+    adcode: 100000,
     level: 'country',
-    GID_1: undefined,
-    GID_2: undefined,
   });
 
   const [dataSource, setDataSource] = useState<BaseSource>();
-  const [loading, setLoading] = useState(false);
   const [accuracyValue, setAccuracyVAlue] = useState<DataPrecision>('low');
-  const [clickData, setClickData] = useState(undefined);
-  const [CheckValue, setCheckboxValue] = useState([]);
+  const [panelData, setPanelData] = useState({
+    clickData: undefined,
+    CheckValue: [],
+    loading: false,
+  });
+
+  useEffect(() => {
+    setSourceEdition(editionOptions[sourceType][0].value);
+  }, [sourceType]);
 
   // 切换数据源
   useEffect(() => {
-    const currentSource = new DataSourceMap[sourceType]({});
-    setLoading(true);
+    // setSourceEdition(editionOptions[sourceType][0].value);
+    const currentSource = new DataSourceMap[sourceType]({ version: sourceEdition });
+    setPanelData((v) => ({ ...v, loading: true }));
     setDataSource(currentSource);
     // 初始化数据
     currentSource.getData({ level: 'country', code: 100000, full: true }).then((data) => {
@@ -73,24 +62,16 @@ export default () => {
         ...prevState,
         data,
       }));
-      setLoading(false);
+      setPanelData((v) => ({ ...v, loading: false, clickData: undefined }));
     });
-  }, [sourceType]);
+  }, [sourceType, sourceEdition]);
 
   // 下钻
   const onDblClick = async (e: any) => {
-    setLoading(true);
-    console.log(e);
+    setPanelData((v) => ({ ...v, loading: true }));
     if (adcode.level !== 'district') {
-      const L7Code = e.feature.properties?.FIRST_GID
-        ? e.feature.properties?.FIRST_GID
-        : e.feature.properties?.code
-        ? e.feature.properties?.code
-        : 100000;
-      const dataVCode = e.feature.properties?.adcode;
       const data = {
         DataVSource: {
-          code: dataVCode,
           parentCode: e.feature.properties?.parent?.adcode
             ? e.feature.properties?.parent?.adcode
             : e.feature.properties?.parent
@@ -99,12 +80,12 @@ export default () => {
           full: adcode.level !== 'city' ? true : false,
         },
         L7Source: {
-          code: L7Code,
-          parentCode: L7Code,
+          parentCode: e.feature.properties[`${RollupType[adcode.level]}_adcode`],
           full: undefined,
         },
       };
-      const datas = await getDrillingData(dataSource, data[sourceType].code, data[sourceType].full, adcode.level);
+      const code = e.feature.properties.adcode;
+      const datas = await getDrillingData(dataSource, code, data[sourceType].full, adcode.level);
 
       const dataLevel = {
         DataVSource: e.feature.properties.level,
@@ -114,42 +95,35 @@ export default () => {
       setAdcode((state) => ({
         ...state,
         code: data[sourceType].parentCode,
-        adcode: data[sourceType].code,
+        adcode: code,
         level: dataLevel[sourceType],
-        GID_1: e.feature.properties.GID_1,
-        GID_2: e.feature.properties.GID_2,
       }));
     } else {
       message.info('已下钻到最后一层');
     }
-    setClickData(undefined);
-    setCheckboxValue([]);
-    setLoading(false);
+    setPanelData((v) => ({ ...v, clickData: undefined, CheckValue: [], loading: false }));
   };
 
   const onUndblclick = async () => {
-    setLoading(true);
+    setPanelData({ ...panelData, loading: true });
     if (adcode.level === 'country') {
       message.info('已经上钻到最上层级');
     } else {
       const type = {
-        dataV: true,
+        DataVSource: true,
         L7Source: false,
       };
       const data = await gitRollupData({
-        L7Source: dataSource,
+        source: dataSource,
         code: adcode.code,
         type: type[sourceType],
         areaLevel: adcode.level,
-        GID_1: adcode.GID_1,
       });
 
       setLayerSource((prevState) => ({ ...prevState, data: data.geoJson }));
-      setAdcode({ code: data.code, level: data.areaLevel, GID_1: data?.GID_1, GID_2: data?.GID_2, adcode: data.code });
+      setAdcode({ code: data.code, level: data.areaLevel, adcode: data.code });
     }
-    setClickData(undefined);
-    setCheckboxValue([]);
-    setLoading(false);
+    setPanelData((v) => ({ ...v, clickData: undefined, CheckValue: [], loading: false }));
   };
 
   const onDownload = async () => {
@@ -169,28 +143,18 @@ export default () => {
   };
 
   const items: LayerPopupProps['items'] = useMemo(() => {
-    return item(sourceType, adcode.level);
+    return item();
   }, [sourceType, adcode.level]);
 
   const onLayerClick = (e) => {
-    if (sourceType === 'L7Source') {
-      const L7code = e.feature.properties.FIRST_GID
-        ? e.feature.properties.FIRST_GID
-        : e.feature.properties.code
-        ? e.feature.properties.code
-        : 100000;
-      setClickData({
-        geojson: e.feature,
-        name: e.feature.properties.ENG_NAME,
-        code: L7code,
-      });
-    } else {
-      setClickData({
+    setPanelData((v) => ({
+      ...v,
+      clickData: {
         geojson: e.feature,
         name: e.feature.properties.name,
         code: e.feature.properties.adcode,
-      });
-    }
+      },
+    }));
   };
 
   const granularity = useMemo(() => {
@@ -198,32 +162,32 @@ export default () => {
   }, [adcode.level]);
 
   const onCheckChange = (e) => {
-    setCheckboxValue(e);
+    setPanelData((v) => ({ ...v, CheckValue: e }));
+  };
+
+  const onSourceEdition = (e) => {
+    setSourceEdition(e);
   };
 
   const clickDownload = () => {
-    if (sourceType === 'L7Source') {
-      CheckValue.forEach(async (level: any) => {
-        const data = await dataSource.getChildrenData({
-          parentName: clickData.code,
-          parentLevel: adcode.level as DataLevel,
-          childrenLevel: level,
-          shineUpon: {
-            country: '',
-            province: 'GID_1',
-            city: 'GID_2',
-          },
-        });
-        bulkDownload(data, level);
+    panelData.CheckValue.forEach(async (level: any) => {
+      const data = await dataSource.getChildrenData({
+        parentName: panelData.clickData.code,
+        parentLevel: adcode.level as DataLevel,
+        childrenLevel: level,
+        shineUpon: {
+          country: '',
+          province: 'province_adcode',
+          city: 'city_adcode',
+        },
       });
-      bulkDownload(clickData.geojson, adcode.level);
-    } else {
-      bulkDownload(clickData.geojson, clickData.name);
-    }
+      bulkDownload(data, level);
+    });
+    bulkDownload(panelData.clickData.geojson, panelData.clickData.name);
   };
 
   return (
-    <Spin spinning={loading}>
+    <Spin spinning={panelData.loading}>
       <div style={{ display: 'flex' }}>
         <LarkMap {...config} style={{ height: '90vh', width: 'calc(100% - 300px)' }}>
           <ChoroplethLayer
@@ -247,33 +211,51 @@ export default () => {
         </LarkMap>
         <div className="panel">
           <div className="source-select">
-            <div>数据源：</div>
-            <Select value={sourceType} style={{ width: 150 }} onChange={setSourceType} options={sourceOptions} />
+            <div className="source-flex">
+              <div>数据源：</div>
+              <Select value={sourceType} style={{ width: 140 }} onChange={setSourceType} options={sourceOptions} />
+            </div>
+            <div className="source-flex">
+              <div>版本号：</div>
+              <Select
+                value={sourceEdition}
+                style={{ width: 140 }}
+                onChange={onSourceEdition}
+                options={editionOptions[sourceType]}
+              />
+            </div>
+            <div className="infoText">选择切换不同的数据源和版本号</div>
           </div>
-          {clickData && (
-            <Collapse defaultActiveKey={['1']} ghost style={{ paddingTop: '12px' }}>
-              <Panel header="下载选中数据" key="1">
-                {sourceType === 'L7Source' && (
-                  <div style={{ display: 'flex' }}>
-                    <div>数据粒度选择：</div>
-                    <Checkbox.Group options={granularity} onChange={onCheckChange} />
+
+          <Collapse defaultActiveKey={['1']} ghost style={{ paddingTop: '12px' }}>
+            <Panel header="下载选中数据" key="1">
+              {sourceType === 'L7Source' && (
+                <div style={{ display: 'flex', marginBottom: 10 }}>
+                  <div>数据粒度选择：</div>
+                  <Checkbox.Group options={granularity} onChange={onCheckChange} />
+                </div>
+              )}
+              {panelData.clickData ? (
+                <>
+                  <div style={{ display: 'flex', marginBottom: 10 }}>
+                    <div>选中名称：</div>
+                    <div>{panelData.clickData.name}</div>
                   </div>
-                )}
-                <div style={{ display: 'flex' }}>
-                  <div>选中名称：</div>
-                  <div>{clickData.name}</div>
-                </div>
-                <div style={{ display: 'flex' }}>
-                  <div>选中城市编码：</div>
-                  <Popover content={'点击下载选中数据'}>
-                    <a onClick={clickDownload}>{clickData.code}</a>
-                  </Popover>
-                </div>
-              </Panel>
-            </Collapse>
-          )}
+                  <div style={{ display: 'flex' }}>
+                    <div>选中城市编码：</div>
+                    <Popover content={'点击下载选中数据'}>
+                      <a onClick={clickDownload}>{panelData.clickData.code}</a>
+                    </Popover>
+                  </div>
+                </>
+              ) : (
+                <div className="infoText">暂无数据，请单击图层选择数据</div>
+              )}
+            </Panel>
+          </Collapse>
+
           {sourceType === 'L7Source' && (
-            <Collapse defaultActiveKey={['1']} ghost style={{ paddingTop: '12px' }}>
+            <Collapse defaultActiveKey={['1']} ghost style={{ paddingTop: '10px' }}>
               <Panel header="高级设置" key="1">
                 <div className="flexCenter">
                   <div>数据精度：</div>

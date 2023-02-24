@@ -28,7 +28,6 @@ export class DataVSource extends BaseSource {
     options: Partial<IDataOptions>,
   ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>> {
     const { code, full } = options;
-    console.log(full);
     const data = this.fetchData(code, full);
     return data;
   }

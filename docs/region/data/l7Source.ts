@@ -47,6 +47,12 @@ export class L7Source extends BaseSource {
     options: Partial<IDataOptions>,
   ): Promise<FeatureCollection<Geometry | GeometryCollection, Record<string, any>>> {
     const { level, precision = 'low' } = options;
+    if (level === 'country' || level === 'province') {
+      const data = await this.fetchData(level);
+      const jiuduanxian = await this.fetchData('jiuduanxian');
+      const newData = { type: 'FeatureCollection', features: [...data.features, ...jiuduanxian.features] };
+      return newData as FeatureCollection<Geometry | GeometryCollection, Record<string, any>>;
+    }
     const data = await this.fetchData(level);
     return this.simplifyData(data, precision);
   }
@@ -62,8 +68,9 @@ export class L7Source extends BaseSource {
       shineUpon = { country: '', province: 'FIRST_GID', city: 'GID_1', district: 'GID_2' },
       precision = 'low',
     } = ChildrenDataOptions;
-    console.log(ChildrenDataOptions, '111');
+    console.log(ChildrenDataOptions)
     const rawData = await this.getData({ level: childrenLevel, precision });
+    console.log(rawData)
     //TODO 根据 parentName, parenerLevel 进行数据过滤
     if (shineUpon[parentLevel] && parentName) {
       const data = rawData.features.filter((v) => {
