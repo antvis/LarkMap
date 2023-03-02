@@ -1,6 +1,6 @@
 import type { Scene } from '@antv/l7';
 import { useTrackedEffect, useUnmount } from 'ahooks';
-import type { SceneEventProps, SceneEventCallback } from '../../types';
+import type { SceneEventCallback, SceneEventProps } from '../../types';
 import { SceneEventList, SceneEventMap } from './constant';
 
 export const useSceneEvent = (scene: Scene, props: SceneEventProps) => {
