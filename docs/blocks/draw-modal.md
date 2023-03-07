@@ -1,4 +1,5 @@
 ---
+title: 绘制弹框
 toc: false
 order: 1
 group:
@@ -6,9 +7,8 @@ group:
   order: 1
 nav:
   title: 区块
-  path: /blocks
   order: 3
-hide: true
+debug: true
 ---
 
 ## 绘制弹框

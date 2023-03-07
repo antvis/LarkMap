@@ -26,8 +26,7 @@ coverage
 package-lock.json
 yarn.lock
 
-# umi
-.umi
-.umi-production
-.umi-test
-.env.local
+# dumi
+.dumi/tmp
+.dumi/tmp-test
+.dumi/tmp-production

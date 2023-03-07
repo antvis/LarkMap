@@ -1,5 +1,5 @@
 ---
-hide: true
+debug: true
 ---
 
 `ScaleConfig` optional default: `{}`

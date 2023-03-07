@@ -1,6 +1,6 @@
 ---
 title: useLayerList
-hide: true
+debug: true
 order: 3
 toc: content
 group:

@@ -17,9 +17,10 @@
     "baseUrl": "src",
     "outDir": "dist",
     "paths": {
+      "@@/*": [".dumi/tmp/*"],
       "@antv/larkmap": ["./src/index.ts"]
     }
   },
-  "include": ["src/**/*", "__tests__/*", "typings.d.ts", "docs/**/*", "docs/**/**/**/*"],
-  "exclude": ["node_modules", "es", "lib", "dist", "src/.umi/*"]
+  "include": ["src/**/*", "__tests__/*", "typings.d.ts", "docs/**/*", "docs/**/**/**/*", ".dumi/**/*", ".dumirc.ts"],
+  "exclude": ["node_modules", "es", "lib", "dist"]
 }

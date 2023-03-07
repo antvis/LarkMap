@@ -13,7 +13,7 @@
     "dist"
   ],
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky install && dumi setup",
     "start": "dumi dev",
     "lint": "run-p lint:*",
     "lint:ts": "eslint src __tests__ --ext .ts,.tsx --ignore-pattern 'src/**/demos/'",
@@ -58,7 +58,7 @@
     "@types/lodash-es": "^4.17.6",
     "@umijs/fabric": "^3.0.0",
     "antd": "^4.22.3",
-    "dumi": "^1.1.40",
+    "dumi": "^2.0.0",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.26.0",
     "eventemitter3": "^5.0.0",

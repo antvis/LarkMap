@@ -3,16 +3,18 @@ import { defineConfig } from 'dumi';
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
-  title: 'LarkMap',
-  favicon: 'https://gw.alipayobjects.com/zos/antfincdn/FLrTNDvlna/antv.png',
-  logo: 'https://gw.alipayobjects.com/zos/antfincdn/FLrTNDvlna/antv.png',
-  mode: 'site',
+  favicons: ['https://gw.alipayobjects.com/zos/antfincdn/FLrTNDvlna/antv.png'],
   base: '/',
   publicPath: '/',
   outputPath: 'docs-dist',
+  apiParser: {},
   resolve: {
+    entryFile: './src/index.ts',
+    atomDirs: [{ type: 'components', dir: 'src/components' }],
+  },
+  conventionRoutes: {
     // 排除公共 API 文档目录
-    excludes: ['docs/common'],
+    // exclude: ['docs/common/'],
   },
   metas: [
     { name: 'keywords', content: 'L7, Map, React, L7React, ReactMap, AntV, LarkMap' },
@@ -23,42 +25,43 @@ export default defineConfig({
   ],
   // Google Analytics
   // analytics: isProduction ? { ga: 'G-CBX7JL1Q57' } : false,
-  locales: [['zh-CN', '中文']],
-  navs: [
-    null,
-    {
-      title: '周边生态',
-      children: [
-        {
-          title: 'L7',
-          path: 'https://l7.antv.antgroup.com',
-        },
-        {
-          title: 'L7Plot',
-          path: 'https://l7plot.antv.antgroup.com',
-        },
-        {
-          title: 'L7Draw',
-          path: 'https://l7draw.antv.vision',
-        },
-        {
-          title: 'LocationInsight',
-          path: 'https://locationinsight.antv.antgroup.com',
-        },
-      ],
-    },
-    {
-      title: 'GitHub',
-      path: 'https://github.com/antvis/LarkMap',
-    },
-  ],
+  locales: [{ id: 'zh-CN', name: '中文' }],
+  themeConfig: {
+    name: 'LarkMap',
+    logo: 'https://gw.alipayobjects.com/zos/antfincdn/FLrTNDvlna/antv.png',
+    navs: [
+      null,
+      {
+        title: '周边生态',
+        children: [
+          {
+            title: 'L7',
+            path: 'https://l7.antv.antgroup.com',
+          },
+          {
+            title: 'L7Plot',
+            path: 'https://l7plot.antv.antgroup.com',
+          },
+          {
+            title: 'L7Draw',
+            path: 'https://l7draw.antv.vision',
+          },
+          {
+            title: 'LocationInsight',
+            path: 'https://locationinsight.antv.antgroup.com',
+          },
+        ],
+      },
+      {
+        title: 'GitHub',
+        path: 'https://github.com/antvis/LarkMap',
+      },
+    ],
+  },
   extraBabelIncludes: ['@antv/dumi-theme-antv'],
   theme: {
     '@s-site-menu-width': '280px',
     '@primary-color': '#873bf4',
-  },
-  themeConfig: {
-    carrier: 'LarkMap',
   },
   exportStatic: {},
   hash: true,
@@ -80,7 +83,7 @@ export default defineConfig({
     '.__dumi-default-menu { width: 300px !important; }',
     '.__dumi-default-layout { padding-left: 350px !important; }',
   ],
-  scripts: [
+  headScripts: [
     'https://gw.alipayobjects.com/os/lib/react/17.0.2/umd/react.development.js',
     'https://gw.alipayobjects.com/os/lib/react-dom/17.0.2/umd/react-dom.development.js',
     'https://gw.alipayobjects.com/os/lib/antd/4.23.6/dist/antd.js',
@@ -91,27 +94,5 @@ export default defineConfig({
     /** mapbox */
     'https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.2/mapbox-gl.js',
   ],
-  // chunks: ['vendors', 'umi'],
-  // chainWebpack: function (config) {
-  //   config.merge({
-  //     optimization: {
-  //       splitChunks: {
-  //         chunks: 'all',
-  //         // minSize: 30000,
-  //         // minChunks: 2,
-  //         automaticNameDelimiter: '.',
-  //         cacheGroups: {
-  //           vendor: {
-  //             name: 'vendors',
-  //             test({ resource }) {
-  //               return /[\\/]node_modules[\\/]/.test(resource);
-  //             },
-  //             priority: 10,
-  //           },
-  //         },
-  //       },
-  //     },
-  //   });
-  // },
   // more config: https://d.umijs.org/config
 });

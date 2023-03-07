@@ -3,7 +3,6 @@ toc: false
 order: 2
 nav:
   title: 区块
-  path: /blocks
   order: 3
 ---
 
@@ -23,13 +22,13 @@ nav:
 
 ### 示例一：基础使用
 
-```tsx
+```jsx
 /**
  * compact: true
  */
-import type { Scene } from '@antv/l7';
-import { LarkMap, syncScene } from '@antv/larkmap';
 import React from 'react';
+import { Scene } from '@antv/l7';
+import { LarkMap, syncScene } from '@antv/larkmap';
 
 export default () => {
   const [sceneArray, setSceneArray] = React.useState([]);
@@ -80,7 +79,7 @@ export default () => {
 /**
  * compact: true
  */
-import type { Scene } from '@antv/l7';
+import { Scene } from '@antv/l7';
 import { LarkMap, syncScene } from '@antv/larkmap';
 import React from 'react';
 
@@ -138,9 +137,8 @@ export default () => {
 /**
  * compact: true
  */
-import type { Scene } from '@antv/l7';
-import type { LarkMapProps } from '@antv/larkmap';
-import { LarkMap, syncScene } from '@antv/larkmap';
+import { Scene } from '@antv/l7';
+import { LarkMap, LarkMapProps, syncScene } from '@antv/larkmap';
 import React from 'react';
 const config: LarkMapProps = {
   mapType: 'Gaode',
