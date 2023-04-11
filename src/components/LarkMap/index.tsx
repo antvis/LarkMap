@@ -1,7 +1,7 @@
 import { Scene } from '@antv/l7';
 import { useDeepCompareEffect } from 'ahooks';
 import classNames from 'classnames';
-import { isNull, isNumber } from 'lodash-es';
+import { isNull, isNumber, isUndefined } from 'lodash-es';
 import type { CSSProperties } from 'react';
 import React, { forwardRef, memo, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { LayerManager } from '../../utils';
@@ -37,12 +37,12 @@ export const LarkMap = memo(
       let scene: Scene;
       let isMounted = true;
 
-      Promise.resolve(map || createMap(mapType, mapOptions))
+      const callback = isUndefined(map) ? createMap(mapType, mapOptions) : typeof map === 'function' ? map() : map;
+      Promise.resolve(callback)
         .then((mapInstance) => {
           if (!isMounted) {
             return;
           }
-
           scene = new Scene({
             ...sceneConfig,
             id: containerRef.current,
