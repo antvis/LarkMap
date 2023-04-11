@@ -9,12 +9,12 @@ const mapInstance = new GaodeMap({
   // token: 'xxxx - token',
 });
 
+// https://codesandbox.io/s/nervous-sound-g8iu2t?file=/App.tsx
+
 export default () => {
   return (
     <LarkMap map={mapInstance} style={{ height: '300px' }}>
-      <h2 style={{ position: 'absolute', left: '10px', color: '#fff' }}>
-        LarkMap
-      </h2>
+      <h2 style={{ position: 'absolute', left: '10px', color: '#fff' }}>LarkMap</h2>
     </LarkMap>
   );
 };
