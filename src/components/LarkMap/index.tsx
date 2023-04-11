@@ -37,7 +37,7 @@ export const LarkMap = memo(
       let scene: Scene;
       let isMounted = true;
 
-      const callback = isUndefined(map) ? createMap(mapType, mapOptions) : map;
+      const callback = isUndefined(map) ? createMap(mapType, mapOptions) : typeof map === 'function' ? map() : map;
       Promise.resolve(callback)
         .then((mapInstance) => {
           if (!isMounted) {

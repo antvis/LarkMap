@@ -57,7 +57,7 @@ export interface LarkMapProps extends CommonProps, Omit<ISceneConfig, 'id' | 'ca
   /** 容器 id */
   id?: string;
   /** 地图实例，可选，也可以通过配置项自动生成实例 */
-  map?: IMapWrapper | Promise<IMapWrapper>;
+  map?: IMapWrapper | (() => Promise<IMapWrapper>);
   /**
    * 地图类型
    * @default 'Gaode'

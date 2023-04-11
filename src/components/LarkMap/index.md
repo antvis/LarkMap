@@ -33,7 +33,7 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 | id | 容器 id | `string` | -- |
 | style | 容器行内样式 | `CSSProperties` | -- |
 | className | 容器类名 | `string` | -- |
-| map | 地图实例，可选，也可以通过配置项自动生成实例，详见 [L7 map](https://l7.antv.antgroup.com/api/map) | `MapInstance` | -- |
+| map | 地图实例，可选，也可以通过配置项自动生成实例，详见 [L7 map](https://l7.antv.antgroup.com/api/map/map) | `MapInstance ｜ (() => Promise<IMapWrapper>)` | -- |
 | mapType | 地图底图类型 | `'Gaode'｜`<br />`'GaodeV2'｜`<br />`'Mapbox'｜`<br />`'Map'` | `'Gaode'` |
 | mapOptions | 地图配置项，配合地图类型配置地图，详情可见 [MapOptions](#mapoptions) | `MapOptions` | -- |
 | logoPosition | logo 展示位置，配置项详见 [L7 logoPosition](https://l7.antv.antgroup.com/api/scene#logoposition) | `PositionName` | `'bottomleft'` |
@@ -68,15 +68,15 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 
 > 地图底图类型不同时，MapOptions 配置项不完全相同，比如 maxZoom，Gaode 最大缩放等级 30，Mapbox 最大缩放等级 22。除此之外还有，底图的交互状态配置，zoomEnable、dragEnable 等。各配置项可详见各官网：高德地图 [配置项](https://lbs.amap.com/api/jsapi-v2/documentation#map)；Mapbox 地图 [配置项](https://docs.mapbox.com/mapbox-gl-js/api/map/#map-parameters)。
 
-| 参数     | 说明                                                                           | 类型     | 默认值   |
-| -------- | ------------------------------------------------------------------------------ | -------- | -------- |
-| style    | 地图样式，详见 [L7 map](https://l7.antv.antgroup.com/api/map#style-地图图样式) | `string` | `light`  |
-| token    | 地图服务 token，需到服务平台申请                                               | `string` | `(必选)` |
-| center   | 初始中心经纬度                                                                 | `number` | --       |
-| pitch    | 初始倾角                                                                       | `number` | --       |
-| rotation | 初始旋转角度                                                                   | `number` | --       |
-| zoom     | 初始缩放层级                                                                   | `number` | --       |
-| minZoom  | 地图最大缩放等级                                                               | `number` | --       |
+| 参数     | 说明                                                                                | 类型     | 默认值   |
+| -------- | ----------------------------------------------------------------------------------- | -------- | -------- |
+| style    | 地图样式，详见 [L7 map](https://l7.antv.antgroup.com/api/map/map/#style-地图图样式) | `string` | `light`  |
+| token    | 地图服务 token，需到服务平台申请                                                    | `string` | `(必选)` |
+| center   | 初始中心经纬度                                                                      | `number` | --       |
+| pitch    | 初始倾角                                                                            | `number` | --       |
+| rotation | 初始旋转角度                                                                        | `number` | --       |
+| zoom     | 初始缩放层级                                                                        | `number` | --       |
+| minZoom  | 地图最大缩放等级                                                                    | `number` | --       |
 
 #### LarkMapRefAttributes
 
