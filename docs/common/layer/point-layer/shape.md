@@ -33,7 +33,22 @@ const images = [
   { id: '02', image: 'https://gw.alipayobjects.com/zos/basement_prod/30580bc9-506f-4438-8c1a-744e082054ec.svg' },
   { id: '03', image: 'https://gw.alipayobjects.com/zos/basement_prod/7aa1f460-9f9f-499f-afdf-13424aa26bbf.svg' },
 ];
-registerImages(images);
+
+export default () => {
+  const [loadedImages, setLoadedImages] = useState(false);
+  const onSceneLoaded = (scene: Scene) => {
+    Promise.all(images.map(({ id, image }) => scene?.addImage(id, image))).then(() => {
+      setLoadedImages(true);
+    });
+    console.log(scene);
+  };
+
+  return (
+    <LarkMap mapType="Gaode" style={{ height: '300px' }} onSceneLoaded={onSceneLoaded}>
+      {loadedImages && <PointLayer {...options} source={source} />}
+    </LarkMap>
+  );
+};
 ```
 
 2. 使用注册图标

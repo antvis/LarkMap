@@ -1,7 +1,7 @@
 import type { HeatmapLayerProps } from '@antv/larkmap';
 import { CustomControl, HeatmapLayer, LarkMap } from '@antv/larkmap';
-import type { HeatmapLayerStyleAttributeValue } from '@antv/li-core-assets/dist/esm/components/LayerAttribute';
-import { HeatmapLayerStyleAttribute } from '@antv/li-core-assets/dist/esm/components/LayerAttribute';
+import type { HeatmapLayerStyleAttributeValue } from '@antv/li-editor-p2';
+import { HeatmapLayerStyleAttribute } from '@antv/li-editor-p2';
 import 'antd/dist/antd.css';
 import React, { useEffect, useState } from 'react';
 
