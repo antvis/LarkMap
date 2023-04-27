@@ -1,7 +1,7 @@
 import type { BubbleLayerProps } from '@antv/larkmap';
 import { BubbleLayer, CustomControl, LarkMap } from '@antv/larkmap';
-import type { BubbleLayerStyleAttributeValue } from '@antv/li-core-assets/dist/esm/components/LayerAttribute';
-import { BubbleLayerStyleAttribute } from '@antv/li-core-assets/dist/esm/components/LayerAttribute';
+import type { BubbleLayerStyleAttributeValue } from '@antv/li-editor-p2';
+import { BubbleLayerStyleAttribute } from '@antv/li-editor-p2';
 import 'antd/dist/antd.css';
 import React, { useEffect, useState } from 'react';
 

@@ -49,7 +49,7 @@
   "devDependencies": {
     "@antv/dumi-theme-antv": "^0.2.2",
     "@antv/l7": "^2.11.0",
-    "@antv/li-core-assets": "0.x",
+    "@antv/li-editor-p2": "^0.x",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
     "@types/color": "^3.0.3",
@@ -57,7 +57,7 @@
     "@types/jest": "^27.0.0",
     "@types/lodash-es": "^4.17.6",
     "@umijs/fabric": "^3.0.0",
-    "antd": "^4.22.3",
+    "antd": "^5.4.6",
     "dumi": "^1.1.40",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.26.0",

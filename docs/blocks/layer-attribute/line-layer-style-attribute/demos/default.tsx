@@ -1,7 +1,7 @@
 import type { LineLayerProps } from '@antv/larkmap';
 import { CustomControl, LarkMap, LineLayer } from '@antv/larkmap';
-import type { LineLayerStyleAttributeValue } from '@antv/li-core-assets/dist/esm/components/LayerAttribute';
-import { LineLayerStyleAttribute } from '@antv/li-core-assets/dist/esm/components/LayerAttribute';
+import type { LineLayerStyleAttributeValue } from '@antv/li-editor-p2';
+import { LineLayerStyleAttribute } from '@antv/li-editor-p2';
 import 'antd/dist/antd.css';
 import React, { useEffect, useState } from 'react';
 
