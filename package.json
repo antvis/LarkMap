@@ -35,7 +35,6 @@
     "version": "node scripts/sync-version"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.8.0",
     "@antv/event-emitter": "^0.1.3",
     "@antv/l7-composite-layers": "0.x",
     "@antv/l7-draw": "^3.0.6",
