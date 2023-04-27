@@ -1,7 +1,7 @@
 import type { ChoroplethLayerProps } from '@antv/larkmap';
 import { ChoroplethLayer, CustomControl, LarkMap } from '@antv/larkmap';
-import type { ChoroplethLayerStyleAttributeValue } from '@antv/li-core-assets/dist/esm/components/LayerAttribute';
-import { ChoroplethLayerStyleAttribute } from '@antv/li-core-assets/dist/esm/components/LayerAttribute';
+import type { ChoroplethLayerStyleAttributeValue } from '@antv/li-editor-p2';
+import { ChoroplethLayerStyleAttribute } from '@antv/li-editor-p2';
 import 'antd/dist/antd.css';
 import React, { useEffect, useState } from 'react';
 
