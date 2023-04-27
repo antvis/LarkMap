@@ -1,11 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import qs from 'query-string';
-import { SearchOutlined } from '@ant-design/icons';
 import { useDebounceFn } from 'ahooks';
-import Select from './Select';
-import type { LocationSearchProps, LocationSearchOption } from './types';
+import qs from 'query-string';
+import React, { useCallback, useEffect, useState } from 'react';
 import { CLS_PREFIX, GAO_DE_API_URL } from './constant';
 import './index.less';
+import Select from './Select';
+import type { LocationSearchOption, LocationSearchProps } from './types';
 
 const { Option } = Select;
 
@@ -92,7 +91,6 @@ LocationSearch.defaultProps = {
   placeholder: '请输入要搜索地名',
   showSearch: true,
   allowClear: true,
-  suffixIcon: <SearchOutlined />,
   filterOption: false,
   defaultActiveFirstOption: false,
   showAddress: true,
