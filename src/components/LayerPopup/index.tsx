@@ -1,9 +1,8 @@
 import type { ILayer, IPopupOption, LayerField, LayerPopupConfigItem } from '@antv/l7';
 import { LayerPopup as L7LayerPopup } from '@antv/l7';
 import type { ICompositeLayer } from '@antv/l7-composite-layers';
-import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import type { Layer } from '../../types';
 import { getStyleText } from '../../utils';
 import { useL7ComponentEvent, useL7ComponentUpdate } from '../Control/hooks';
@@ -140,18 +139,16 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
     ],
   );
 
-  useMount(() => {
+  useEffect(() => {
     const newPopup = new L7LayerPopup(omitBy(layerPopupOptions, (value) => value === undefined));
     setPopup(newPopup);
     scene.addPopup(newPopup);
-  });
-
-  useUnmount(() => {
-    if (popup) {
-      scene.removePopup(popup);
+    return () => {
+      scene.removePopup(newPopup);
       setPopup(undefined);
-    }
-  });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useL7ComponentUpdate(popup, layerPopupOptions);
 

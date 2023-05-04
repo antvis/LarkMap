@@ -1,8 +1,7 @@
 import type { IExportImageControlOption } from '@antv/l7';
 import { ExportImage as L7ExportImage } from '@antv/l7';
-import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
 import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../hooks';
@@ -42,18 +41,16 @@ export const ExportImageControl: React.FC<ExportImageControlProps> = ({
     };
   }, [btnText, title, vertical, position, className, styleText, imageType, onExport, btnIconDOM]);
 
-  useMount(() => {
+  useEffect(() => {
     const exportImage = new L7ExportImage(omitBy(controlOptions, (value) => value === undefined));
     setControl(exportImage);
     scene.addControl(exportImage);
-  });
-
-  useUnmount(() => {
-    if (control) {
-      scene.removeControl(control);
+    return () => {
+      scene.removeControl(exportImage);
       setControl(undefined);
-    }
-  });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useL7ComponentUpdate(control, controlOptions);
 

@@ -1,8 +1,7 @@
 import type { ISelectControlOption } from '@antv/l7';
 import { MapTheme as L7MapTheme } from '@antv/l7';
-import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
 import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../hooks';
@@ -61,18 +60,16 @@ export const MapThemeControl: React.FC<MapThemeControlProps> = ({
     btnIconDOM,
   ]);
 
-  useMount(() => {
+  useEffect(() => {
     const mapTheme = new L7MapTheme(omitBy(controlOptions, (value) => value === undefined));
     setControl(mapTheme);
     scene.addControl(mapTheme);
-  });
-
-  useUnmount(() => {
-    if (control) {
-      scene.removeControl(control);
+    return () => {
+      scene.removeControl(mapTheme);
       setControl(undefined);
-    }
-  });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useL7ComponentUpdate(control, controlOptions);
 

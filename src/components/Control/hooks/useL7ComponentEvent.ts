@@ -9,7 +9,10 @@ type CallbackFunction = (...args: any[]) => any;
  * @param control
  * @param props
  */
-export const useL7ComponentEvent = <C extends EventEmitter>(control: C, props: Record<string, CallbackFunction>) => {
+export const useL7ComponentEvent = <C extends EventEmitter<any>>(
+  control: C,
+  props: Record<string, CallbackFunction>,
+) => {
   const eventNameList = useMemo(() => Object.keys(props), [props]);
 
   useEffect(() => {
