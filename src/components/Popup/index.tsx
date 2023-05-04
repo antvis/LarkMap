@@ -1,8 +1,7 @@
 import type { IPopupOption } from '@antv/l7';
 import { Popup as L7Popup } from '@antv/l7';
-import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { getStyleText } from '../../utils';
 import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../Control/hooks';
 import { useScene } from '../LarkMap/hooks';
@@ -78,18 +77,16 @@ export const Popup: React.FC<PopupProps> = ({
     ],
   );
 
-  useMount(() => {
+  useEffect(() => {
     const newPopup = new L7Popup(omitBy(popupOptions, (value) => value === undefined));
     setPopup(newPopup);
     scene.addPopup(newPopup);
-  });
-
-  useUnmount(() => {
-    if (popup) {
-      scene.removePopup(popup);
+    return () => {
+      scene.removePopup(newPopup);
       setPopup(undefined);
-    }
-  });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useL7ComponentUpdate(popup, popupOptions);
 

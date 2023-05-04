@@ -1,8 +1,7 @@
 import type { IZoomControlOption } from '@antv/l7';
 import { Zoom as L7Zoom } from '@antv/l7';
-import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
 import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../hooks';
@@ -41,18 +40,16 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
     };
   }, [position, name, className, styleText, zoomInTitle, zoomOutTitle, zoomInTextDOM, zoomOutTextDOM]);
 
-  useMount(() => {
+  useEffect(() => {
     const zoom = new L7Zoom(omitBy(controlOptions, (value) => value === undefined));
     setControl(zoom);
     scene.addControl(zoom);
-  });
-
-  useUnmount(() => {
-    if (control) {
-      scene.removeControl(control);
+    return () => {
+      scene.removeControl(zoom);
       setControl(undefined);
-    }
-  });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useL7ComponentUpdate(control, controlOptions);
 

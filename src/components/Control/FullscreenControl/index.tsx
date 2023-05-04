@@ -1,8 +1,7 @@
 import type { IFullscreenControlOption } from '@antv/l7';
 import { Fullscreen as L7Fullscreen } from '@antv/l7';
-import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
 import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../hooks';
@@ -46,18 +45,16 @@ export const FullscreenControl: React.FC<FullscreenControlProps> = ({
     };
   }, [btnText, title, vertical, exitBtnText, exitTitle, position, className, styleText, btnIconDOM, exitBtnIconDOM]);
 
-  useMount(() => {
+  useEffect(() => {
     const fullscreen = new L7Fullscreen(omitBy(controlOptions, (value) => value === undefined));
     setControl(fullscreen);
     scene.addControl(fullscreen);
-  });
-
-  useUnmount(() => {
-    if (control) {
-      scene.removeControl(control);
+    return () => {
+      scene.removeControl(fullscreen);
       setControl(undefined);
-    }
-  });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useL7ComponentUpdate(control, controlOptions);
 

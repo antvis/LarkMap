@@ -1,8 +1,7 @@
 import type { IGeoLocateOption } from '@antv/l7';
 import { GeoLocate as L7GeoLocate } from '@antv/l7';
-import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
 import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../hooks';
@@ -40,18 +39,16 @@ export const GeoLocateControl: React.FC<GeoLocateControlProps> = ({
     };
   }, [btnText, title, vertical, position, className, styleText, transform, btnIconDOM]);
 
-  useMount(() => {
+  useEffect(() => {
     const geoLocate = new L7GeoLocate(omitBy(controlOptions, (value) => value === undefined));
     setControl(geoLocate);
     scene.addControl(geoLocate);
-  });
-
-  useUnmount(() => {
-    if (control) {
-      scene.removeControl(control);
+    return () => {
+      scene.removeControl(geoLocate);
       setControl(undefined);
-    }
-  });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useL7ComponentUpdate(control, controlOptions);
 
