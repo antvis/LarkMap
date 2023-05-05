@@ -60,11 +60,7 @@ export { DrawModal } from './components/Draw/DrawModal';
 export type { DrawModalProps } from './components/Draw/DrawModal/types';
 
 /**
- * 属性组件
- */
-export * from './components/LayerAttribute';
-
-/**
  * 版本号
  */
 export { default as version } from './version';
+export { syncScene } from './utils/sync-scene';

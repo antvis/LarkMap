@@ -1,9 +1,8 @@
 import type { IScaleControlOption } from '@antv/l7';
 import { Scale as L7Scale } from '@antv/l7';
-import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
 import type React from 'react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { getStyleText } from '../../../utils';
 import { useScene } from '../../LarkMap/hooks';
 import { useL7ComponentEvent, useL7ComponentUpdate } from '../hooks';
@@ -40,18 +39,16 @@ export const ScaleControl: React.FC<ScaleControlProps> = ({
     };
   }, [position, className, styleText, lockWidth, maxWidth, metric, imperial, updateWhenIdle]);
 
-  useMount(() => {
+  useEffect(() => {
     const scale = new L7Scale(omitBy(controlOptions, (value) => value === undefined));
     setControl(scale);
     scene.addControl(scale);
-  });
-
-  useUnmount(() => {
-    if (control) {
-      scene.removeControl(control);
+    return () => {
+      scene.removeControl(scale);
       setControl(undefined);
-    }
-  });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useL7ComponentUpdate(control, controlOptions);
 

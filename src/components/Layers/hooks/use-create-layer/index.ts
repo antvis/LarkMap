@@ -32,10 +32,9 @@ export const useCreateLayer = <L extends Layer, C extends LayerCommonProps<L> & 
   if (!layerRef.current) {
     layerRef.current = new Ctor(config);
 
-    // 复合图层初始化完成事件
-    // layerRef.current.once('inited', () => {})
+    // 图层初始化完成事件
     if (onCreated) {
-      setTimeout(() => onCreated(layerRef.current), 0);
+      layerRef.current.once('inited', () => onCreated(layerRef.current));
     }
 
     layerManager.addLayer(layerRef.current);

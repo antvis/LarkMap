@@ -56,3 +56,11 @@ export type Position =
   | 'leftcenter' // ← 左边中间，纵向排列
   | 'rightcenter'; // → 右边中间，纵向排列
 ```
+
+### FAQ
+
+#### 1.如何解决全屏后，`Antd` 下拉框、弹出框组件失效的问题？
+
+如果同时在其他 `Control` 中使用了 Antd 的 `Dropdown`、`Tooltip`、`Popover`、`message` 组件或方法，在全屏的状态下弹出框会无法正常展示，需要用户手动修正弹出框的挂载 `DOM` 节点为地图容器内。
+
+<code src="./demos/antd.tsx" compact></code>

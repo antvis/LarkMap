@@ -45,6 +45,39 @@ export default () => {
 };
 ```
 
+<br>
+
+<details> 
+<summary>CDN 使用方式</summary>
+
+```html
+<script src="https://gw.alipayobjects.com/os/lib/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://gw.alipayobjects.com/os/lib/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@antv/l7@^2/dist/l7.js"></script>
+<script src="https://unpkg.com/@antv/l7-draw@^3/dist/l7-draw.min.js"></script>
+<script src="https://unpkg.com/@antv/larkmap@^1/dist/larkmap.min.js"></script>
+<script>
+  const { LarkMap } = window.LarkMap;
+  const config = {
+    mapType: 'Gaode',
+    mapOptions: {
+      style: 'light',
+      center: [120.210792, 30.246026],
+      zoom: 9,
+      // token: 'xxxx - token',
+    },
+  };
+  const APP = React.createElement(LarkMap, {
+    ...config,
+    style: { height: '300px' },
+  });
+
+  ReactDOM.render(APP, document.getElementById('root'));
+</script>
+```
+
+</details>
+
 ## 体验
 
 ```jsx | compact

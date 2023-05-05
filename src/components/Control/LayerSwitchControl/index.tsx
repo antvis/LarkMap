@@ -1,8 +1,7 @@
 import type { IGeoLocateOption } from '@antv/l7';
 import { LayerSwitch as L7LayerSwitch } from '@antv/l7';
-import { useMount, useUnmount } from 'ahooks';
 import { omitBy } from 'lodash-es';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { getStyleText } from '../../../utils';
 import { useLayerList, useScene } from '../../LarkMap/hooks';
 import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../hooks';
@@ -76,18 +75,16 @@ export const LayerSwitchControl: React.FC<LayerSwitchControlProps> = ({
     btnIconDOM,
   ]);
 
-  useMount(() => {
+  useEffect(() => {
     const layerSwitch = new L7LayerSwitch(omitBy(controlOptions, (value) => value === undefined));
     setControl(layerSwitch);
     scene.addControl(layerSwitch);
-  });
-
-  useUnmount(() => {
-    if (control) {
-      scene.removeControl(control);
+    return () => {
+      scene.removeControl(layerSwitch);
       setControl(undefined);
-    }
-  });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useL7ComponentUpdate(control, controlOptions);
 

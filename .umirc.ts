@@ -12,10 +12,10 @@ export default defineConfig({
   outputPath: 'docs-dist',
   resolve: {
     // 排除公共 API 文档目录
-    excludes: ['docs/common'],
+    excludes: ['docs/common', 'docs/blocks/layer-attribute'],
   },
   metas: [
-    { name: 'keywords', content: 'L7, AntV, AntV LarkMap' },
+    { name: 'keywords', content: 'L7, Map, React, L7React, ReactMap, AntV, LarkMap' },
     {
       name: 'description',
       content: '🌍 A React toolkit for geospatial visualization based on L7',
