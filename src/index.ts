@@ -1,3 +1,12 @@
+/*
+ * @Author       : 青艺 wangxueyi.wxy@mybank.cn
+ * @Date         : 2023-05-09 10:34:00
+ * @LastEditors  : 青艺 wangxueyi.wxy@mybank.cn
+ * @LastEditTime : 2023-05-09 10:50:53
+ * @FilePath     : /OpenSource/LarkMap/src/index.ts
+ * @name         :
+ * @Description  :
+ */
 // organize-imports-ignore
 /**
  * 容器组件
@@ -60,4 +69,4 @@ export { useDrawGroup } from './components/Draw/use-draw-group';
  * 版本号
  */
 export { default as version } from './version';
-export { syncScene } from './utils/sync-scene';
+export { syncScene, SyncScene } from './components/Blocks/SyncScene';
