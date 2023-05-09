@@ -1,6 +1,9 @@
 ---
 toc: false
 order: 2
+group:
+  title: 同步地图
+  order: 2
 nav:
   title: 区块
   path: /blocks

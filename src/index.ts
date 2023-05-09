@@ -69,4 +69,4 @@ export { useDrawGroup } from './components/Draw/use-draw-group';
  * 版本号
  */
 export { default as version } from './version';
-export { syncScene, SyncScene } from './components/Blocks/SyncScene';
+export { syncScene, SyncScene } from './components/SyncScene';
