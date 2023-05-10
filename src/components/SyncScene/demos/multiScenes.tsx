@@ -1,12 +1,3 @@
-/*
- * @Author       : 青艺 wangxueyi.wxy@mybank.cn
- * @Date         : 2023-05-09 10:46:49
- * @LastEditors  : 青艺 wangxueyi.wxy@mybank.cn
- * @LastEditTime : 2023-05-09 10:53:02
- * @FilePath     : /OpenSource/LarkMap/src/components/Tool/SyncScene/demos/multiScenes.tsx
- * @name         :
- * @Description  :
- */
 /**
  * compact: true
  */

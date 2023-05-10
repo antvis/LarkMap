@@ -1,12 +1,3 @@
-/*
- * @Author       : 青艺 wangxueyi.wxy@mybank.cn
- * @Date         : 2023-05-09 10:46:17
- * @LastEditors  : 青艺 wangxueyi.wxy@mybank.cn
- * @LastEditTime : 2023-05-09 10:53:31
- * @FilePath     : /OpenSource/LarkMap/src/components/Tool/SyncScene/demos/zoomGap.tsx
- * @name         :
- * @Description  :
- */
 /**
  * compact: true
  */

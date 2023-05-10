@@ -1,12 +1,3 @@
-/*
- * @Author       : 青艺 wangxueyi.wxy@mybank.cn
- * @Date         : 2023-05-09 10:34:00
- * @LastEditors  : 青艺 wangxueyi.wxy@mybank.cn
- * @LastEditTime : 2023-05-09 10:50:53
- * @FilePath     : /OpenSource/LarkMap/src/index.ts
- * @name         :
- * @Description  :
- */
 // organize-imports-ignore
 /**
  * 容器组件
