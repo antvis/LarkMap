@@ -1,0 +1,25 @@
+@cls-prefix: larkmap-draw-modal;
+
+.@{cls-prefix} {
+  &__btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .ant-btn {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 8px;
+      .anticon {
+        width: 18px;
+        height: 18px;
+        transform: scale(1.3);
+      }
+      &:hover .anticon {
+        fill: #1990ff;
+      }
+      &.ant-btn-primary .anticon {
+        fill: #fff;
+      }
+    }
+  }
+}

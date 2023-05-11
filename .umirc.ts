@@ -45,6 +45,10 @@ export default defineConfig({
           title: 'LocationInsight',
           path: 'https://locationinsight.antv.antgroup.com',
         },
+        {
+          title: 'L7Editor',
+          path: 'https://l7editor.antv.antgroup.com',
+        },
       ],
     },
     {
