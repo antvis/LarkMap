@@ -1,9 +1,9 @@
-import { DrawModal } from './DrawModal';
 import { Button, Input } from 'antd';
 import type { Feature, Polygon } from 'geojson';
 import { cloneDeep } from 'lodash-es';
 import React, { useMemo, useState } from 'react';
 import { DEFAULT_POLYGON_FEATURE } from './constants';
+import { DrawModal } from './DrawModal';
 
 const Default: React.FC = () => {
   const [editPolygon, setEditPolygon] = useState<Feature<Polygon> | null>(() => {

@@ -1,5 +1,5 @@
-import { DrawType } from '@antv/l7-draw/es/control/types';
-import type {DrawGroupData} from '@antv/larkmap'
+import type { DrawType } from '@antv/l7-draw/es/control/types';
+import type { DrawGroupData } from '@antv/larkmap';
 import type { Feature, Polygon } from 'geojson';
 
 export const CLS_PREFIX = 'larkmap-draw-modal';
@@ -27,7 +27,6 @@ export const DEFAULT_DRAW_DATA: DrawGroupData = {
   polygon: [],
   rect: [],
 };
-
 
 export const DEFAULT_POLYGON_FEATURE: Feature<Polygon> = {
   type: 'Feature',

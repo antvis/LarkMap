@@ -1,16 +1,12 @@
 ---
 toc: false
 order: 1
-group:
-  title: 数据录入
-  order: 1
 nav:
   title: 区块
   path: /blocks
   order: 3
 hide: true
 ---
-
 
 ## 绘制弹框
 
@@ -24,11 +20,11 @@ hide: true
 
 #### 默认演示
 
-<code src="./demos/default.tsx"></code>
+<code src="./draw-modal/default.tsx"></code>
 
 #### 编辑面
 
-<code src="./demos/edit.tsx"></code>
+<code src="./draw-modal/edit.tsx"></code>
 
 ### API
 

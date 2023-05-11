@@ -1,7 +1,7 @@
-import { DrawModal } from './DrawModal';
 import { Button, Input } from 'antd';
 import type { Feature } from 'geojson';
 import React, { useMemo, useState } from 'react';
+import { DrawModal } from './DrawModal';
 
 const Default: React.FC = () => {
   const [featureList, setFeatureList] = useState<Feature[]>([]);
