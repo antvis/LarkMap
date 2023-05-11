@@ -1,4 +1,4 @@
-import { DrawModal } from '@antv/larkmap';
+import { DrawModal } from './DrawModal';
 import { Button, Input } from 'antd';
 import type { Feature, Polygon } from 'geojson';
 import { cloneDeep } from 'lodash-es';

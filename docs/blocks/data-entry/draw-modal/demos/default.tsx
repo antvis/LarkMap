@@ -1,4 +1,4 @@
-import { DrawModal } from '@antv/larkmap';
+import { DrawModal } from './DrawModal';
 import { Button, Input } from 'antd';
 import type { Feature } from 'geojson';
 import React, { useMemo, useState } from 'react';

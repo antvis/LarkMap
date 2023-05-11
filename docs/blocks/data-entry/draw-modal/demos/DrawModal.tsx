@@ -1,14 +1,9 @@
+import type { DrawGroupData, DrawType } from '@antv/larkmap';
+import { CustomControl, LarkMap, LocationSearch, useDrawGroup, useScene } from '@antv/larkmap';
 import { Button, Modal } from 'antd';
 import classnames from 'classnames';
 import { cloneDeep } from 'lodash-es';
 import React, { useEffect, useState } from 'react';
-import { CustomControl } from '../../../../src/components/Control';
-import { LarkMap } from '../../../../src/components/LarkMap';
-import { useScene } from '../../../../src/components/LarkMap/hooks';
-import { LocationSearch } from '../../../../src/components/LocationSearch';
-import type { DrawType } from '../../../../src/components/Draw/types';
-import { useDrawGroup } from '../../../../src/components/Draw/use-draw-group';
-import type { DrawGroupData } from '../../../../src/components/Draw/use-draw-group/types';
 import { CLS_PREFIX, DEFAULT_DRAW_DATA, DRAW_ICON_TYPE_MAP, DRAW_TEXT_TYPE_MAP } from './constants';
 import './index.less';
 import type { DrawModalProps } from './types';
