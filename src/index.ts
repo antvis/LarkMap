@@ -56,8 +56,8 @@ export { useDrawGroup } from './components/Draw/use-draw-group';
 // export { DrawControl } from './components/Draw/DrawControl';
 // export type { DrawControlProps } from './components/Draw/DrawControl/types';
 
-export { DrawModal } from './components/Draw/DrawModal';
-export type { DrawModalProps } from './components/Draw/DrawModal/types';
+export { DrawModal } from '../docs/blocks/data-entry/draw-modal';
+export type { DrawModalProps } from '../docs/blocks/data-entry/draw-modal/types';
 
 /**
  * 版本号

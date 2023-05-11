@@ -1,5 +1,5 @@
-import type { DrawType } from '../types';
-import { DrawGroupData } from '../use-draw-group/types';
+import type { DrawType } from '../../../../src/components/Draw/types';
+import { DrawGroupData } from '../../../../src/components/Draw/use-draw-group/types';
 
 export const CLS_PREFIX = 'larkmap-draw-modal';
 

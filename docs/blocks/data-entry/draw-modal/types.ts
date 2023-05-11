@@ -1,7 +1,7 @@
 import type { ModalProps } from 'antd';
-import type { LarkMapProps } from '../../LarkMap/types';
-import type { LocationSearchProps } from '../../LocationSearch/types';
-import type { DrawGroupData, UseDrawGroupConfig } from '../use-draw-group/types';
+import type { LarkMapProps } from '../../../../src/components/LarkMap/types';
+import type { LocationSearchProps } from '../../../../src/components/LocationSearch/types';
+import type { DrawGroupData, UseDrawGroupConfig } from '../../../../src/components/Draw/use-draw-group/types';
 
 export interface DrawModalProps extends Omit<ModalProps, 'onOk'> {
   /**
