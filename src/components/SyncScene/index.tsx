@@ -10,4 +10,4 @@ export const SyncScene: React.FC<SyncSceneProps> = ({ scenes, options }) => {
   return <></>;
 };
 
-export { syncScene, SyncSceneProps };
+export { syncScene };
