@@ -6,6 +6,7 @@
 
 import type { Scene } from '@antv/l7';
 import { isNumber } from 'lodash-es';
+import type { ISyncSceneOptions } from './types';
 interface GaodeMap {
   setCenter: (center: [number, number], immediately?: boolean) => void;
   setZoom: (zoom: number, immediately?: boolean) => void;
@@ -54,13 +55,7 @@ const updateSceneStatus = (
  * @param options.mainIndex number  主场景的数组索引，用于搭配 zoomGap
  * @returns Function  清除同步状态的监听函数。
  */
-export function syncScene(
-  scenes: Scene[],
-  options?: {
-    zoomGap?: number;
-    mainIndex?: number;
-  },
-) {
+export function syncScene(scenes: Scene[], options?: ISyncSceneOptions) {
   const { zoomGap = 0, mainIndex = 0 } = options ?? {};
   const listeners: (() => void)[] = [];
   let handlers: (() => void)[] = [];
