@@ -1,6 +1,20 @@
-import type { SyncSceneProps } from '../../SyncScene/types';
+import type { Scene } from '@antv/l7';
+import type { CommonProps } from '../../../types/common';
 
 /**
  * 组件类型定义
  */
-export type EagleEyeControlProps = SyncSceneProps
+export interface EagleEyeControlProps extends CommonProps {
+  mainScene: Scene;
+  options: EagleEyeOptions;
+}
+export interface EagleEyeOptions {
+  padding: Padding;
+}
+
+export interface Padding {
+  top?: number;
+  left?: number;
+  right?: number;
+  bottom?: number;
+}

@@ -29,3 +29,6 @@ export type { ZoomControlProps } from './ZoomControl/types';
 
 export { LogoControl } from './LogoControl';
 export type { LogoControlProps } from './LogoControl/types';
+
+export { EagleEyeControl } from './EagleEyeControl';
+export type { EagleEyeControlProps } from './EagleEyeControl/types';

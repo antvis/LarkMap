@@ -10,7 +10,7 @@ nav:
 hide: true
 ---
 
-## 样例组件 - Template
+## 鹰眼控件 - EagleEyeControl
 
 ### 介绍
 
