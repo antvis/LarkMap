@@ -1,6 +1,5 @@
 import type { Scene } from '@antv/l7';
-import { EagleEyeControl } from '@antv/larkmap';
-import { LarkMap } from 'components/LarkMap';
+import { EagleEyeControl, LarkMap } from '@antv/larkmap';
 import React from 'react';
 import './default.less';
 export default () => {

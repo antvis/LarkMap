@@ -2,7 +2,7 @@
  * @Author       : 青艺 wangxueyi.wxy@mybank.cn
  * @Date         : 2023-05-16 09:51:02
  * @LastEditors  : 青艺 wangxueyi.wxy@mybank.cn
- * @LastEditTime : 2023-05-16 11:08:24
+ * @LastEditTime : 2023-05-16 19:59:30
  * @FilePath     : /LarkMap/src/components/Control/EagleEyeControl/hooks.ts
  * @name         :
  * @Description  :
@@ -10,7 +10,9 @@
 
 import type { Bounds, Scene } from '@antv/l7';
 import { DOM } from '@antv/l7-utils';
+import type { SyncOptions } from 'components/SyncScene/types';
 import React from 'react';
+import { syncScene } from '../../SyncScene/helper';
 import { getCanvasBound } from './helper';
 import type { EagleEyeOptions } from './types';
 
@@ -36,32 +38,19 @@ export function useEagleBox(eagleScene: Scene, element: HTMLDivElement, bounds: 
  */
 export function useSyncScenes(mainScene, eagleScene, element, options: EagleEyeOptions) {
   const [bounds, setBounds] = React.useState<Bounds>();
+  const handler = React.useCallback(
+    (scene: Scene, syncOptions: SyncOptions) => {
+      const { bounds: movedBounds } = syncOptions;
+      setBounds(movedBounds);
+    },
+    [mainScene, eagleScene],
+  );
+
+  // 主地图 和 鹰眼地图的同步
   React.useEffect(() => {
-    const handler = () => {
-      const box = mainScene.getBounds();
-      setBounds(box);
-    };
-    mainScene.on('mapmove', handler);
-    mainScene.on('zoomchange', handler);
-    return () => {
-      mainScene.off('mapmove', handler);
-      mainScene.off('zoomchange', handler);
-    };
-  }, [mainScene]);
-
-  React.useEffect(() => {
-    const handler = () => {
-      const box = eagleScene.getBounds();
-      setBounds(box);
-    };
-    eagleScene.on('mapmove', handler);
-    eagleScene.on('zoomchange', handler);
-
-    return () => {
-      eagleScene.off('mapmove', handler);
-      eagleScene.off('zoomchange', handler);
-    };
-  }, [eagleScene]);
-
+    if (!mainScene || !eagleScene) return;
+    const destroy = syncScene([mainScene, eagleScene], { mainIndex: 0, zoomGap: 0 });
+    return destroy;
+  }, [mainScene, eagleScene]);
   return bounds;
 }

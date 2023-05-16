@@ -6,7 +6,7 @@
 
 import type { Scene } from '@antv/l7';
 import { isNumber } from 'lodash-es';
-import type { ISyncSceneOptions } from './types';
+import type { ISyncSceneOptions, SyncOptions } from './types';
 interface GaodeMap {
   setCenter: (center: [number, number], immediately?: boolean) => void;
   setZoom: (zoom: number, immediately?: boolean) => void;
@@ -55,7 +55,11 @@ const updateSceneStatus = (
  * @param options.mainIndex number  主场景的数组索引，用于搭配 zoomGap
  * @returns Function  清除同步状态的监听函数。
  */
-export function syncScene(scenes: Scene[], options?: ISyncSceneOptions) {
+export function syncScene(
+  scenes: Scene[],
+  options?: ISyncSceneOptions,
+  syncCallback?: (scene: Scene, params: SyncOptions) => void,
+) {
   const { zoomGap = 0, mainIndex = 0 } = options ?? {};
   const listeners: (() => void)[] = [];
   let handlers: (() => void)[] = [];
@@ -100,12 +104,16 @@ export function syncScene(scenes: Scene[], options?: ISyncSceneOptions) {
       if (num !== index) {
         // 当前需要同步的状态是不是主地图
         const sceneZoom = isMovedMainScene ? zoom + zoomGap : num === mainIndex ? zoom - zoomGap : zoom;
-        updateSceneStatus(scene, {
+        const syncOptions = {
           zoom: sceneZoom,
-          center: [center.lng, center.lat],
+          center: [center.lng, center.lat] as [number, number],
           rotation,
           pitch,
-        });
+          bounds: movedScene.getBounds(),
+          scene: movedScene,
+        };
+        if (syncCallback) syncCallback(scene, syncOptions);
+        else updateSceneStatus(scene, syncOptions);
       }
     });
   };
