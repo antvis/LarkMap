@@ -18,3 +18,14 @@ export interface Padding {
   right?: number;
   bottom?: number;
 }
+
+export interface CanvasBoxRect {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+export interface Position {
+  x: number;
+  y: number;
+}

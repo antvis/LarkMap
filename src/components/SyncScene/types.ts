@@ -7,6 +7,13 @@ export interface ISyncSceneOptions {
 export interface SyncSceneProps {
   scenes: Scene[];
   options?: ISyncSceneOptions;
+  /**
+   *  自定义同步函数，可以通过此完成 bounds 同步
+   * @param scene
+   * @param params
+   * @returns
+   */
+  syncCallback?: (scene: Scene, params: SyncOptions) => void;
 }
 
 export interface SyncOptions {

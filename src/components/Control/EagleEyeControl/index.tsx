@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import { useScene } from '../../../components/LarkMap/hooks';
-import { useSyncScenes } from './hooks';
+import { useDraggable, useEagleBox, useSyncScenes } from './hooks';
 import './index.less';
 import type { EagleEyeControlProps } from './types';
 /**
@@ -18,7 +18,22 @@ export const EagleEyeControl: React.FC<EagleEyeControlProps> = (props: EagleEyeC
   const scene = useScene();
   const controlRef = React.useRef<HTMLDivElement>();
   const { mainScene, className, style, options } = props;
-  const bounds = useSyncScenes(mainScene, scene, controlRef.current, options);
-  // useEagleBox(scene, controlRef.current, bounds, props.options);
-  return <div className={classNames(className, 'l7-control-eagle_box')} style={style} ref={controlRef} />;
+  const position = useDraggable(controlRef);
+  const bounds = useSyncScenes(mainScene, scene, position, options);
+  const boxRect = useEagleBox(scene, controlRef.current, bounds, options);
+
+  return (
+    <div
+      className={classNames(className, 'l7-control-eagle_box')}
+      style={{
+        ...style,
+        left: boxRect.x + 'px',
+        top: boxRect.y + 'px',
+        width: boxRect.width + 'px',
+        height: boxRect.height + 'px',
+      }}
+      ref={controlRef}
+      draggable={true}
+    />
+  );
 };
