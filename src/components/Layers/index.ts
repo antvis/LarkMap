@@ -20,3 +20,5 @@ export { IconFontLayer } from './CompositeLayers/IconFontLayer';
 export type { IconFontLayerProps } from './CompositeLayers/IconFontLayer/types';
 export { IconImageLayer } from './CompositeLayers/IconImageLayer';
 export type { IconImageLayerProps } from './CompositeLayers/IconImageLayer/types';
+export { TrafficFlowLayer } from './CompositeLayers/TrafficFlowLayer';
+export { TrafficFlowLayerProps } from './CompositeLayers/TrafficFlowLayer/types';
