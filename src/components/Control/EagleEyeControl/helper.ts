@@ -56,8 +56,10 @@ export function boundsPanByPixel(scene: Scene, bounds: Bounds, position: Positio
   ];
 }
 
-/**
- * 由于 canvas 大小不一致，需要同步两者的边界盒，避免最后显示范围不一致
- * TODO:
- */
-export function syncSceneLimitBounds() {}
+export function getRectCornerCoord(rect: CanvasBoxRect): Bounds {
+  const { x, y, width, height } = rect;
+  return [
+    [x, y + height],
+    [x + width, y],
+  ];
+}

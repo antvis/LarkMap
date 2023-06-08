@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import { useScene } from '../../../components/LarkMap/hooks';
+import { DefaultEagleEyeOptions } from './constant';
 import { useDraggable, useEagleBox, useSyncScenes } from './hooks';
 import './index.less';
 import type { EagleEyeControlProps } from './types';
@@ -17,10 +18,15 @@ import type { EagleEyeControlProps } from './types';
 export const EagleEyeControl: React.FC<EagleEyeControlProps> = (props: EagleEyeControlProps) => {
   const scene = useScene();
   const controlRef = React.useRef<HTMLDivElement>();
-  const { mainScene, className, style, options } = props;
-  const position = useDraggable(controlRef);
-  const bounds = useSyncScenes(mainScene, scene, position, options);
-  const boxRect = useEagleBox(scene, controlRef.current, bounds, options);
+  const { mainScene, className, style, options = DefaultEagleEyeOptions } = props;
+
+  // 盒子的位置，固定
+  const boxRect = useEagleBox(scene, mainScene, options);
+
+  // 监听鹰眼盒子，获取拖拽移动的偏移量
+  useDraggable(scene, controlRef);
+  // 同步主地图和副地图，获取主地图边界
+  useSyncScenes(mainScene, scene, boxRect);
 
   return (
     <div

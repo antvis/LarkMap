@@ -9,14 +9,11 @@ export interface EagleEyeControlProps extends CommonProps {
   options: EagleEyeOptions;
 }
 export interface EagleEyeOptions {
-  padding: Padding;
-}
-
-export interface Padding {
-  top?: number;
-  left?: number;
-  right?: number;
-  bottom?: number;
+  control: 'vertical' | 'horizontal';
+  /**
+   * @name 间隔 单位 px
+   */
+  interval: number;
 }
 
 export interface CanvasBoxRect {

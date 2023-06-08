@@ -10,16 +10,17 @@ const MapOptions = {
 export default () => {
   const [mainScene, setMainScene] = React.useState<Scene>();
   return (
-    <LarkMap
-      mapOptions={MapOptions}
-      mapType="Mapbox"
-      className="default-demo"
-      id="defaultMain"
-      onSceneLoaded={setMainScene}
-    >
+    <div className="container">
+      <LarkMap
+        mapOptions={MapOptions}
+        mapType="Mapbox"
+        className="default-demo"
+        id="defaultMain"
+        onSceneLoaded={setMainScene}
+      />
       <LarkMap mapOptions={MapOptions} mapType="Mapbox" className="default-demo-eagle-container" id="defaultEagle">
-        <EagleEyeControl mainScene={mainScene} options={{ padding: { top: 30, right: 30, left: 30, bottom: 30 } }} />
+        <EagleEyeControl mainScene={mainScene} />
       </LarkMap>
-    </LarkMap>
+    </div>
   );
 };

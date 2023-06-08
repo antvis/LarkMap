@@ -2,75 +2,112 @@
  * @Author       : 青艺 wangxueyi.wxy@mybank.cn
  * @Date         : 2023-05-16 09:51:02
  * @LastEditors  : 青艺 wangxueyi.wxy@mybank.cn
- * @LastEditTime : 2023-05-17 15:36:19
+ * @LastEditTime : 2023-06-08 16:32:10
  * @FilePath     : /LarkMap/src/components/Control/EagleEyeControl/hooks.ts
  * @name         :
  * @Description  :
  */
 
-import type { Bounds, Scene } from '@antv/l7';
-import { DOM } from '@antv/l7-utils';
+import type { Scene } from '@antv/l7';
 import { useMutationObserver } from 'ahooks';
 import type { SyncOptions } from 'components/SyncScene/types';
 import React from 'react';
 import { syncScene } from '../../SyncScene/helper';
-import { boundsPanByPixel, getCanvasBound, getCanvasRect, validRect } from './helper';
+import { getCanvasRect, getRectCornerCoord } from './helper';
 import type { CanvasBoxRect, EagleEyeOptions, Position } from './types';
-const draggingStyleStr = DOM.css2Style({
-  border: '1px solid #ff000060',
-});
 
 /**
  * 创建容器，根据 canvas box 定位，与显示大小
  */
-export function useEagleBox(eagleScene: Scene, element: HTMLDivElement, bounds: Bounds, options: EagleEyeOptions) {
-  const canvasMapRectRef = React.useRef<CanvasBoxRect>(getCanvasRect(eagleScene));
-  const eagleBoxRectRef = React.useRef<CanvasBoxRect>(getCanvasRect(eagleScene));
+export function useEagleBox(eagleScene: Scene, mainScene: Scene, options: EagleEyeOptions): CanvasBoxRect {
+  const [eagleMapRect, setEagleMapRect] = React.useState<CanvasBoxRect>(getCanvasRect(eagleScene));
+  const [mainMapRect, setMainMapRect] = React.useState<CanvasBoxRect>(getCanvasRect(mainScene));
+  const [eagleBoxRect, setEagleBoxRect] = React.useState<CanvasBoxRect>(eagleMapRect);
 
   useMutationObserver(
     () => {
       const rect = getCanvasRect(eagleScene);
-      canvasMapRectRef.current = rect;
+      setEagleMapRect(rect);
     },
     eagleScene.getContainer(),
-    { attributes: true },
+    { attributes: true, attributeFilter: ['style'] },
+  );
+
+  useMutationObserver(
+    () => {
+      const rect = getCanvasRect(mainScene);
+      setMainMapRect(rect);
+    },
+    mainScene.getContainer(),
+    { attributes: true, attributeFilter: ['style'] },
   );
 
   React.useEffect(() => {
-    if (!element) return;
-    const boxRect = getCanvasBound(eagleScene, bounds);
-    const boxFinalRect = validRect(boxRect, canvasMapRectRef.current);
-    eagleBoxRectRef.current = boxFinalRect;
-  }, [options, eagleScene, element, bounds]);
+    const { control, interval } = options;
+    // 主地图宽高比例
+    const scale = mainMapRect.width / mainMapRect.height;
+    let width,
+      height,
+      x = 0,
+      y = 0;
+    if (control === 'vertical') {
+      height = eagleMapRect.height - interval * 2;
+      width = height * scale;
+      x = (eagleMapRect.width - width) / 2;
+      y = interval;
+    } else {
+      width = eagleMapRect.width - interval * 2;
+      height = width / scale;
+      y = (eagleMapRect.height - height) / 2;
+      x = interval;
+    }
+    setEagleBoxRect({
+      x,
+      y,
+      width,
+      height,
+    });
+  }, [eagleMapRect, mainMapRect, options]);
 
-  return eagleBoxRectRef.current;
+  return eagleBoxRect;
 }
 /**
  * 同步主地图、鹰眼地图与拖拽 box
  */
-export function useSyncScenes(mainScene, eagleScene, position: Position, options: EagleEyeOptions) {
-  const [bounds, setBounds] = React.useState<Bounds>();
-  const { padding } = options;
+export function useSyncScenes(mainScene: Scene, eagleScene: Scene, boxRect: CanvasBoxRect) {
+  const padding = React.useMemo(() => {
+    const { x, y } = boxRect ?? {};
+    return {
+      top: y,
+      left: x,
+      right: x,
+      bottom: y,
+    };
+  }, [boxRect]);
 
   // FIXME: 只支持 mapbox ，高德地图存在问题
-  const handler = React.useCallback((scene: Scene, syncOptions: SyncOptions) => {
-    const { bounds: movedBounds } = syncOptions;
-    if (scene === mainScene) {
-      // scene.fitBounds(movedBounds, {
-      //   animate: false,
-      //   // FIXME: 不支持负的计算
-      //   padding: {
-      //     // top: -padding.top,
-      //     // right: -padding.right,
-      //     // left: -padding.left,
-      //     // bottom: -padding.bottom,
-      //   },
-      // });
-    } else {
-      scene.fitBounds(movedBounds, { animate: false, padding: padding });
-    }
-    setBounds(movedBounds);
-  }, []);
+  const handler = React.useCallback(
+    (scene: Scene, syncOptions: SyncOptions) => {
+      const { bounds: movedBounds } = syncOptions;
+      if (scene === mainScene) {
+        // 计算 padding 后的 bounds，主地图同步该 bounds
+        const [wsCorner, enCorner] = getRectCornerCoord(boxRect);
+        const wsCoord = eagleScene.containerToLngLat(wsCorner);
+        const enCoord = eagleScene.containerToLngLat(enCorner);
+        mainScene.fitBounds(
+          [
+            [wsCoord.lng, wsCoord.lat],
+            [enCoord.lng, enCoord.lat],
+          ],
+          { animate: false },
+        );
+      } else {
+        // FIXME:  如果主地图移动到了最大 bounds，eagle box 需要变为整个 地图
+        scene.fitBounds(movedBounds, { animate: false, padding });
+      }
+    },
+    [padding],
+  );
 
   // 主地图 和 鹰眼地图的同步
   React.useEffect(() => {
@@ -78,22 +115,14 @@ export function useSyncScenes(mainScene, eagleScene, position: Position, options
     const destroy = syncScene([mainScene, eagleScene], { mainIndex: 0, zoomGap: 0 }, handler);
     return destroy;
   }, [mainScene, eagleScene, handler]);
-
-  React.useEffect(() => {
-    if (eagleScene && position) {
-      const newBounds = boundsPanByPixel(eagleScene, bounds, position);
-      eagleScene.fitBounds(newBounds, { animate: false, padding: padding });
-      setBounds(newBounds);
-    }
-  }, [position]);
-
-  return bounds;
 }
 
-export const useDraggable = (elementRef: React.MutableRefObject<HTMLElement | null>): Position => {
+export const useDraggable = (eagleScene: Scene, elementRef: React.MutableRefObject<HTMLElement | null>) => {
+  // 开始拖拽的位置
   const startPositionRef = React.useRef<Position>({ x: 0, y: 0 });
-  const [position, setPosition] = React.useState<Position>({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = React.useState<boolean>(false);
+  const positionRef = React.useRef<Position>({ x: 0, y: 0 });
+  // 是否拖拽过
+  const [paned, setPaned] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     const element = elementRef.current;
@@ -102,34 +131,40 @@ export const useDraggable = (elementRef: React.MutableRefObject<HTMLElement | nu
       return;
     }
 
-    const handleMouseDown = (event: MouseEvent) => {
-      setIsDragging(true);
-      setPosition({ x: 0, y: 0 });
+    const handleDragStart = (event: MouseEvent) => {
+      positionRef.current = { x: 0, y: 0 };
       startPositionRef.current = {
         x: event.clientX,
         y: event.clientY,
       };
     };
-    const handleMouseUp = (event: MouseEvent) => {
-      setIsDragging(false);
-      setPosition({
+    const handleDragEnd = (event: MouseEvent) => {
+      setPaned(false);
+      positionRef.current = {
         x: event.clientX - startPositionRef.current.x,
         y: event.clientY - startPositionRef.current.y,
-      });
+      };
+      console.log(positionRef.current);
       startPositionRef.current = {
         x: 0,
         y: 0,
       };
+      //  重新计算 boxRect
     };
 
-    element.addEventListener('dragstart', handleMouseDown);
-    document.body.addEventListener('dragend', handleMouseUp);
+    element.addEventListener('dragstart', handleDragStart);
+    document.body.addEventListener('dragend', handleDragEnd);
 
     return () => {
-      element.removeEventListener('dragstart', handleMouseDown);
-      document.body.removeEventListener('dragend', handleMouseUp);
+      element.removeEventListener('dragstart', handleDragStart);
+      document.body.removeEventListener('dragend', handleDragEnd);
     };
-  }, [elementRef, isDragging]);
+  }, [elementRef]);
 
-  return position;
+  React.useEffect(() => {
+    if (eagleScene && positionRef.current && !paned) {
+      eagleScene.panBy(positionRef.current.x, positionRef.current.y);
+      setPaned(true);
+    }
+  }, [paned]);
 };
