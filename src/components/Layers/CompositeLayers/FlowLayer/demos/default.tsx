@@ -47,7 +47,7 @@ const parser = {
   weight: 'weight',
 };
 
-const TrafficFlowLayers = ({ sourceData }: { sourceData: Record<string, any> }) => {
+const FlowLayers = ({ sourceData }: { sourceData: Record<string, any> }) => {
   const scene = useScene();
 
   useEffect(() => {
@@ -73,7 +73,7 @@ export default () => {
 
   return (
     <LarkMap mapType="Gaode" style={{ height: '50vh' }}>
-      {sourceData.length !== 0 && <TrafficFlowLayers sourceData={sourceData} />}
+      {sourceData.length !== 0 && <FlowLayers sourceData={sourceData} />}
     </LarkMap>
   );
 };
