@@ -1,8 +1,8 @@
-import type { TrafficFlowLayerProps } from '@antv/larkmap';
-import { LarkMap, TrafficFlowLayer, useScene } from '@antv/larkmap';
+import type { FlowLayerProps } from '@antv/larkmap';
+import { FlowLayer, LarkMap, useScene } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
 
-const trafficFlowLayerOptions: Omit<TrafficFlowLayerProps, 'source'> = {
+const trafficFlowLayerOptions: Omit<FlowLayerProps, 'source'> = {
   // 客流点聚合类型
   clusterType: 'HCA',
   // zoom 计算步长
@@ -57,7 +57,7 @@ const TrafficFlowLayers = ({ sourceData }: { sourceData: Record<string, any> }) 
     }
   }, [scene, sourceData]);
 
-  return <TrafficFlowLayer {...trafficFlowLayerOptions} source={{ data: sourceData, parser }} />;
+  return <FlowLayer {...trafficFlowLayerOptions} source={{ data: sourceData, parser }} />;
 };
 
 export default () => {
