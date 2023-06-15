@@ -35,7 +35,13 @@ export default () => {
   }, []);
 
   return (
-    <LarkMap mapType="Gaode" style={{ height: '50vh' }}>
+    <LarkMap
+      mapType="Gaode"
+      mapOptions={{
+        style: 'dark',
+      }}
+      style={{ height: '50vh' }}
+    >
       {sourceData.length !== 0 && <FlowLayers sourceData={sourceData} />}
     </LarkMap>
   );
