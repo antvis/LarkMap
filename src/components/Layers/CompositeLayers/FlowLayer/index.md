@@ -305,3 +305,6 @@ nav:
 
 客流线透明度渐变权重
 
+### Event
+
+<embed src="../../../../../docs/common/layer/base-common/event.md"></embed>
