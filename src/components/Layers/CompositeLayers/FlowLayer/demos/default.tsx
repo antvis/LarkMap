@@ -31,7 +31,13 @@ export default () => {
       }}
       style={{ height: '50vh' }}
     >
-      {source.data.length !== 0 && <FlowLayer source={source} />}
+      {source.data.length !== 0 && (
+        <FlowLayer
+          source={source}
+          onCircleLayerClick={(e) => console.log('circle layer click', e)}
+          onLineLayerClick={(e) => console.log('line layer click', e)}
+        />
+      )}
     </LarkMap>
   );
 };
