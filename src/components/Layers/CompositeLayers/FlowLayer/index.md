@@ -13,7 +13,7 @@ nav:
 
 ### 介绍
 
-基于 [FlowLayer](https://l7plot.antv.antgroup.com/zh/docs/api/composite-layers/bubble-layer) 封装，用于客流数据以点和线形式展示，渐变色、多选等功能。
+基于 [FlowLayer](https://l7plot.antv.antgroup.com/api/composite-layers/flow-layer) 封装，用于客流数据以点和线形式展示，渐变色、多选等功能。
 
 ### 代码演示
 
@@ -25,9 +25,9 @@ nav:
 
 <API hideTitle></API>
 
-#### `source`
+### `source`
 
-数据配置，详见 source [文档](https://l7plot.antv.antgroup.com/zh/api/composite-layers/flow-layer)
+数据配置，详见 source [文档](https://l7plot.antv.antgroup.com/api/composite-layers/flow-layer#optionssource)
 
 ```js
 {
@@ -54,7 +54,7 @@ nav:
 }
 ```
 
-#### `circleRadius`
+### `circleRadius`
 
 客流点半径大小
 
