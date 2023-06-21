@@ -42,7 +42,7 @@ export type LayerMouseEventProps = Partial<{
   onUndblclick: LayerEventCallback;
   /** 右键点击图层事件 */
   onContextMenu: LayerEventCallback;
-  /**  */
+  /** 图层外点击右键事件 */
   onUnContextMenu: LayerEventCallback;
 
   // 鼠标事件
