@@ -5,10 +5,7 @@ import type { ICompositeLayer, ICoreLayer } from '@antv/l7-composite-layers';
  */
 export type LayerEventCallback = (e?: any) => void;
 
-/**
- * 图层事件
- */
-export type LayerEventProps = Partial<{
+export type LayerBaseEventProps = Partial<{
   // 生命周期事件
   /** 初始化完成事件 */
   // onInited: LayerEventCallback;
@@ -28,7 +25,12 @@ export type LayerEventProps = Partial<{
   onLegendColor: LayerEventCallback;
   /** 数据映射更新，大小属性图例更新事件  */
   onLegendSize: LayerEventCallback;
+}>;
 
+/**
+ * 图层通用鼠标事件
+ */
+export type LayerMouseEventProps = Partial<{
   // 点击事件
   /** 点击图层事件 */
   onClick: LayerEventCallback;
@@ -40,7 +42,7 @@ export type LayerEventProps = Partial<{
   onUndblclick: LayerEventCallback;
   /** 右键点击图层事件 */
   onContextMenu: LayerEventCallback;
-  /**图层外点击右键事件 */
+  /** 图层外点击右键事件 */
   onUnContextMenu: LayerEventCallback;
 
   // 鼠标事件
@@ -63,6 +65,11 @@ export type LayerEventProps = Partial<{
   /** 图层外的操作的所有事件 */
   onUnPick: LayerEventCallback;
 }>;
+
+/**
+ * 图层事件
+ */
+export interface LayerEventProps extends LayerBaseEventProps, LayerMouseEventProps {}
 
 /** 图层公用属性   */
 export interface LayerCommonProps<T> extends LayerEventProps {
