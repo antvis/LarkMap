@@ -1,9 +1,13 @@
-import { useMemo } from 'react';
 import { useTrackedEffect, useUnmount } from 'ahooks';
+import { useMemo } from 'react';
 import type { Layer, LayerEventCallback, LayerEventProps } from '../../../../types';
 import { LayerEventMap } from './constant';
 
-export const useLayerEvent = (layer: Layer, props: LayerEventProps, layerEventMap = LayerEventMap) => {
+export const useLayerEvent = (
+  layer: Layer,
+  props: LayerEventProps,
+  layerEventMap: Record<string, string> = LayerEventMap,
+) => {
   // LarkMap 事件名列表
   const layerEventList = useMemo(() => Object.keys(layerEventMap), [layerEventMap]);
 
