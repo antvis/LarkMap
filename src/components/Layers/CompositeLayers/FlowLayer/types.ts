@@ -1,5 +1,5 @@
 import type { FlowLayer, FlowLayerOptions } from '@antv/l7-composite-layers';
-import type { LayerBaseEventProps, LayerEventCallback } from '../../../../types';
+import type { LayerBaseEventProps, LayerEventCallback, LayerEventProps } from '../../../../types';
 
 export type FlowLayerMouseEventProps = Partial<{
   /** 客流点图层点击事件 */
@@ -68,7 +68,13 @@ export type FlowLayerMouseEventProps = Partial<{
  * 组件类型定义
  */
 
-export interface FlowLayerProps extends FlowLayerOptions, LayerBaseEventProps, FlowLayerMouseEventProps {
+export interface FlowLayerProps
+  extends FlowLayerOptions,
+    LayerBaseEventProps,
+    FlowLayerMouseEventProps,
+    LayerEventProps {
   /** 图层初始化完成后回调，用于获取 layer 对象   */
   onCreated?: (layer: FlowLayer) => void;
 }
+
+export type IMapEvent = Record<keyof LayerBaseEventProps | keyof FlowLayerMouseEventProps, string>;

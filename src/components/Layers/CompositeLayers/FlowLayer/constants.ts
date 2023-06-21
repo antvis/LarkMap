@@ -1,8 +1,7 @@
-import type { LayerBaseEventProps } from '../../../../types';
 import { LayerEventMap } from '../../hooks/use-layer-event/constant';
-import type { FlowLayerMouseEventProps } from './types';
+import type { IMapEvent } from './types';
 
-export const FlowLayerEventMap: Record<keyof LayerBaseEventProps | keyof FlowLayerMouseEventProps, string> = {
+export const FlowLayerEventMap: IMapEvent = {
   // 通用事件
   onRemove: LayerEventMap.onRemove,
   onShow: LayerEventMap.onShow,

@@ -25,7 +25,7 @@ nav:
 
 <API hideTitle></API>
 
-### `source`
+#### source
 
 数据配置，详见 source [文档](https://l7plot.antv.antgroup.com/api/composite-layers/flow-layer#optionssource)
 
@@ -54,7 +54,7 @@ nav:
 }
 ```
 
-### `circleRadius`
+#### circleRadius
 
 客流点半径大小
 
@@ -64,7 +64,7 @@ nav:
 }
 ```
 
-#### `circleRadius`.field
+##### `circleRadius`.field
 
 `string` optional
 
@@ -79,7 +79,7 @@ nav:
 }
 ```
 
-#### `circleRadius`.value
+##### `circleRadius`.value
 
 `number|number[]|Function` optional
 
@@ -96,7 +96,7 @@ nav:
 }
 ```
 
-#### `circleColor`.scale
+##### `circleColor`.scale
 
 <embed src="../../../../../docs/common/layer/attribute/scale.md"></embed>
 
@@ -110,7 +110,7 @@ nav:
 }
 ```
 
-#### `circleOpacity`
+#### circleOpacity
 
 `number|[string, (data: any) => number]` optional
 
@@ -122,7 +122,7 @@ nav:
 }
 ```
 
-#### `circleStrokeColor`
+#### circleStrokeColor
 
 `string` optional default: `#000`
 
@@ -134,7 +134,7 @@ nav:
 }
 ```
 
-#### `circleStrokeWidth`
+#### circleStrokeWidth
 
 `number` optional default: `1`
 
@@ -146,7 +146,7 @@ nav:
 }
 ```
 
-#### `lineWidth`
+#### lineWidth
 
 `number|SizeStyleAttribute|Function` optional
 
@@ -158,7 +158,7 @@ nav:
 }
 ```
 
-#### `lineWidth`.field
+##### `lineWidth`.field
 
 `string` optional
 
@@ -193,7 +193,7 @@ nav:
 }
 ```
 
-#### `lineWidth`.value
+##### `lineWidth`.value
 
 `number|number[]|Function` optional
 
@@ -210,7 +210,7 @@ nav:
 }
 ```
 
-#### `lineWidth`.scale
+##### `lineWidth`.scale
 
 <embed src="../../../../../docs/common/layer/attribute/scale.md"></embed>
 
@@ -224,7 +224,7 @@ nav:
 }
 ```
 
-#### `lineColor`
+#### lineColor
 
 `string|LineColorStyleAttribute|Function` optional default: `'#5FD3A6'`
 
@@ -236,7 +236,7 @@ nav:
 }
 ```
 
-#### `lineColor`.field
+##### `lineColor`.field
 
 `string` optional
 
@@ -250,7 +250,7 @@ nav:
 }
 ```
 
-#### `lineColor`.value
+##### `lineColor`.value
 
 `string|string[]|Function` optional
 
@@ -267,7 +267,7 @@ nav:
 }
 ```
 
-#### `lineColor`.scale
+##### `lineColor`.scale
 
 <embed src="../../../../../docs/common/layer/attribute/scale.md"></embed>
 
@@ -281,7 +281,7 @@ nav:
 }
 ```
 
-#### `lineOpacity`
+#### lineOpacity
 
 `number` optional
 
@@ -293,13 +293,13 @@ nav:
 }
 ```
 
-#### `fadeOpacityEnabled`
+#### fadeOpacityEnabled
 
 `boolean` optional default: `true`
 
 客流线是否根据权重开启透明度渐变
 
-#### `fadeOpacityAmount`
+#### fadeOpacityAmount
 
 `number` optional default: `0`
 

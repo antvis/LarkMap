@@ -7,8 +7,7 @@ import type { FlowLayerProps } from './types';
 export const FlowLayer = memo(
   forwardRef<L7FlowLayer, FlowLayerProps>(function TrafficFlowLayer(props, ref) {
     const layerRef = useCreateLayer<L7FlowLayer, FlowLayerProps>(L7FlowLayer, props);
-    //@ts-ignore
-    useLayerEvent(layerRef.current, props, FlowLayerEventMap);
+    useLayerEvent(layerRef.current, props, Object.assign(FlowLayerEventMap));
     useImperativeHandle(ref, () => layerRef.current);
 
     return null;
