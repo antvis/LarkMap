@@ -1,8 +1,9 @@
 import { FlowLayer, LarkMap } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
+import type { FlowLayerProps } from '../types';
 
 export default () => {
-  const [source, setSource] = useState({
+  const [source, setSource] = useState<FlowLayerProps['source']>({
     data: [],
     parser: {
       type: 'json',
@@ -27,7 +28,8 @@ export default () => {
       mapType="Gaode"
       mapOptions={{
         style: 'dark',
-        center: [121.29, 31.14],
+        center: [121.473471, 31.21707],
+        zoom: 10,
       }}
       style={{ height: '50vh' }}
     >
