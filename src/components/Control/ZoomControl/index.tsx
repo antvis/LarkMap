@@ -20,6 +20,7 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
   zoomOutText,
   zoomInTitle,
   zoomOutTitle,
+  showZoom,
 }) => {
   const scene = useScene();
   const [control, setControl] = useState<L7Zoom | undefined>();
@@ -34,11 +35,12 @@ export const ZoomControl: React.FC<ZoomControlProps> = ({
       className,
       zoomInTitle,
       zoomOutTitle,
+      showZoom,
       style: styleText,
       zoomInText: zoomInTextDOM,
       zoomOutText: zoomOutTextDOM,
     };
-  }, [position, name, className, styleText, zoomInTitle, zoomOutTitle, zoomInTextDOM, zoomOutTextDOM]);
+  }, [position, name, className, styleText, zoomInTitle, zoomOutTitle, zoomInTextDOM, zoomOutTextDOM, showZoom]);
 
   useEffect(() => {
     const zoom = new L7Zoom(omitBy(controlOptions, (value) => value === undefined));
