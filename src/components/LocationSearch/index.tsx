@@ -1,10 +1,10 @@
 import { useDebounceFn } from 'ahooks';
 import React, { useCallback, useEffect, useState } from 'react';
+import { urlStringify } from '../../utils';
 import { CLS_PREFIX, GAO_DE_API_URL } from './constant';
 import './index.less';
 import Select from './Select';
 import type { LocationSearchOption, LocationSearchProps } from './types';
-import { urlStringify } from './utils';
 
 const { Option } = Select;
 
