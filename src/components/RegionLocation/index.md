@@ -9,7 +9,7 @@ nav:
   path: /components
 ---
 
-## 行政区域定位 - AdministrativeLocation
+## 行政区域定位 - RegionLocation
 
 ### 介绍
 
@@ -23,13 +23,13 @@ nav:
 
 | 属性值 | 描述 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| searchParams | 调用高德查询接口时传递的参数，必传 | [GaodeAdministrativeLocationParams](#gaodeadministrativelocationparams) | - |
+| searchParams | 调用高德查询接口时传递的参数，必传 | [GaodeRegionLocationParams](#gaodeRegionLocationparams) | - |
 | transformBounds | 对地图搜索区域对应左上和右下点进行自定义，默认不传则展示整个地图展示区域 | `(bounds: Bounds) => Bounds` | - |
 | className | 控件容器自定义样式 | `string` | - |
 | style | 控件容器自定义 style | `CSSProperties` | - |
 | onChange | 当展示的行政区域发生变更时的回调函数 | `(result: string, bounds: Bounds) => void` | - |
 
-#### GaodeAdministrativeLocationParams
+#### GaodeRegionLocationParams
 
 | 属性值 | 描述                              | 类型     | 默认值 |
 | ------ | --------------------------------- | -------- | ------ |

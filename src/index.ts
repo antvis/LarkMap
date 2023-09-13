@@ -35,8 +35,8 @@ export type {
   LocationSearchOption,
   GaodeLocationSearchParams,
 } from './components/LocationSearch/types';
-export { AdministrativeLocation } from './components/AdministrativeLocation';
-export type { AdministrativeLocationProps } from './components/AdministrativeLocation/types';
+export { RegionLocation } from './components/RegionLocation';
+export type { RegionLocationProps } from './components/RegionLocation/types';
 
 /**
  * 图例组件

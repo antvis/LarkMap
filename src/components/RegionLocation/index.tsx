@@ -5,9 +5,9 @@ import { urlStringify } from '../../utils';
 import { useScene } from '../LarkMap/hooks';
 import { CLS_PREFIX, GAO_DE_API_URL } from './constant';
 import './index.less';
-import type { AdministrativeLocationProps } from './types';
+import type { RegionLocationProps } from './types';
 
-export const AdministrativeLocation: React.FC<AdministrativeLocationProps> = ({
+export const RegionLocation: React.FC<RegionLocationProps> = ({
   className,
   style,
   searchParams,

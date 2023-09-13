@@ -1,6 +1,6 @@
 import type { Bounds } from '@antv/l7';
 
-export type GaodeAdministrativeLocationParams = {
+export type GaodeRegionLocationParams = {
   /**
    * 高德 Web API 服务的 key 值 (必传)
    */
@@ -9,11 +9,11 @@ export type GaodeAdministrativeLocationParams = {
   [key: string]: any;
 };
 
-export type AdministrativeLocationProps = {
+export type RegionLocationProps = {
   /**
    * 调用高德查询接口时传递的参数
    */
-  searchParams: GaodeAdministrativeLocationParams;
+  searchParams: GaodeRegionLocationParams;
   /**
    * class 名称
    */
