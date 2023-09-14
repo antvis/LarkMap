@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import type { SelectProps as RcSelectProps, BaseSelectRef } from 'rc-select';
+import { omit } from 'lodash-es';
+import type { BaseSelectRef, SelectProps as RcSelectProps } from 'rc-select';
 import RcSelect, { OptGroup, Option } from 'rc-select';
 import type { OptionProps } from 'rc-select/lib/Option';
 import type { BaseOptionType, DefaultOptionType } from 'rc-select/lib/Select';
-import { omit } from 'lodash-es';
 import * as React from 'react';
 import './index.less';
 
@@ -51,7 +51,6 @@ const InternalSelect = <OptionType extends BaseOptionType | DefaultOptionType = 
     listItemHeight = 24,
     disabled,
     notFoundContent,
-    showArrow,
     ...props
   }: SelectProps<OptionType>,
   ref: React.Ref<BaseSelectRef>,
@@ -92,7 +91,6 @@ const InternalSelect = <OptionType extends BaseOptionType | DefaultOptionType = 
       className={mergedClassName}
       getPopupContainer={getPopupContainer}
       dropdownClassName={popupClassName}
-      showArrow={showArrow}
       disabled={disabled}
     />
   );
