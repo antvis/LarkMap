@@ -1,7 +1,7 @@
 import type { LineLayerProps } from '@antv/larkmap';
 import type { CascaderProps } from 'antd';
 
-export interface AdministrativeSelectProps extends Omit<CascaderProps, 'value' | 'options' | 'onChange'> {
+export interface AdministrativeSelectProps extends Omit<CascaderProps, 'value' | 'options' | 'onChange' | 'multiple'> {
   value: string[];
   onChange?: (value: string[], selectedOptions: any) => void;
   /**
@@ -16,4 +16,5 @@ export interface AdministrativeSelectProps extends Omit<CascaderProps, 'value' |
    * layer属性
    */
   boundaryLayer?: Omit<LineLayerProps, 'source'>;
+  multiple?: boolean;
 }

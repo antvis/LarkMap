@@ -1,6 +1,6 @@
 import type { LineLayerProps } from '@antv/larkmap';
 import { CustomControl, LineLayer, useScene } from '@antv/larkmap';
-import type { Feature, MultiLineString} from '@turf/turf';
+import type { Feature, MultiLineString } from '@turf/turf';
 import { featureCollection, multiLineString } from '@turf/turf';
 import { Cascader, message } from 'antd';
 import React, { useEffect, useState } from 'react';
@@ -25,6 +25,7 @@ export const AdministrativeSelect: React.FC<AdministrativeSelectProps> = ({
   autoFit,
   boundaryLayer,
   value,
+  multiple,
   onChange,
   ...props
 }) => {
@@ -104,8 +105,8 @@ export const AdministrativeSelect: React.FC<AdministrativeSelectProps> = ({
           allowClear={allowClear}
           placeholder={placeholder}
           changeOnSelect={changeOnSelect}
-          style={style}
           expandTrigger={expandTrigger}
+          multiple={multiple}
           {...props}
         />
       </CustomControl>
@@ -126,8 +127,8 @@ AdministrativeSelect.defaultProps = {
   expandTrigger: 'hover',
   allowClear: true,
   changeOnSelect: true,
-  style: { width: 250 },
   enableBoundary: true,
   autoFit: true,
   boundaryLayer: defaultLayerOptions,
+  multiple: false,
 };

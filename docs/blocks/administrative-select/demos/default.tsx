@@ -21,6 +21,7 @@ export default () => {
           setValue(e);
         }}
         value={value}
+        style={{ width: 250 }}
       />
     </LarkMap>
   );
