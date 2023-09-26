@@ -35,6 +35,8 @@ export type {
   LocationSearchOption,
   GaodeLocationSearchParams,
 } from './components/LocationSearch/types';
+export { RegionLocation } from './components/RegionLocation';
+export type { RegionLocationProps } from './components/RegionLocation/types';
 
 /**
  * 图例组件
@@ -55,7 +57,6 @@ export { useDraw } from './components/Draw/use-draw';
 export { useDrawGroup } from './components/Draw/use-draw-group';
 // export { DrawControl } from './components/Draw/DrawControl';
 // export type { DrawControlProps } from './components/Draw/DrawControl/types';
-
 
 /**
  * 版本号

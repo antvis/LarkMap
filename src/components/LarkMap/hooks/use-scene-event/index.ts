@@ -5,7 +5,11 @@ import { SceneEventList, SceneEventMap } from './constant';
 
 export const useSceneEvent = (scene: Scene, props: SceneEventProps) => {
   useTrackedEffect(
-    (changeIndexList: number[], previousDeps: SceneEventCallback[] = [], currentDeps: SceneEventCallback[] = []) => {
+    (
+      changeIndexList: number[],
+      previousDeps: [Scene, ...SceneEventCallback[]],
+      currentDeps: [Scene, ...SceneEventCallback[]],
+    ) => {
       if (!scene) {
         return;
       }
@@ -19,8 +23,8 @@ export const useSceneEvent = (scene: Scene, props: SceneEventProps) => {
 
       eventIndexList.forEach((index) => {
         const eventName = SceneEventMap[SceneEventList[index]] as string;
-        const previousCallback = previousDeps[index + 1];
-        const currentCallback = currentDeps[index + 1];
+        const previousCallback = previousDeps[index + 1] as SceneEventCallback;
+        const currentCallback = currentDeps[index + 1] as SceneEventCallback;
         // 分别注销旧的事件回调并绑定新的事件
         if (previousCallback) {
           scene.off(eventName, previousCallback);
@@ -46,3 +50,5 @@ export const useSceneEvent = (scene: Scene, props: SceneEventProps) => {
     });
   });
 };
+
+type a = [number, ...string[]];
