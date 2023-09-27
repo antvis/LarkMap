@@ -1,6 +1,6 @@
-import { useTrackedEffect, useUnmount } from 'ahooks';
-import { useMemo } from 'react';
-import type { Layer, LayerEventCallback, LayerEventProps } from '../../../../types';
+import { useUnmount } from 'ahooks';
+import { useEffect, useMemo, useRef } from 'react';
+import type { Layer, LayerEventProps } from '../../../../types';
 import { LayerEventMap } from './constant';
 
 export const useLayerEvent = (
@@ -11,31 +11,45 @@ export const useLayerEvent = (
   // LarkMap 事件名列表
   const layerEventList = useMemo(() => Object.keys(layerEventMap), [layerEventMap]);
 
-  useTrackedEffect(
-    (changeIndexList: number[], previousDeps: LayerEventCallback[] = [], currentDeps: LayerEventCallback[] = []) => {
-      changeIndexList.forEach((index) => {
-        const eventName = layerEventMap[layerEventList[index]] as string;
-        const previousCallback = previousDeps[index];
-        const currentCallback = currentDeps[index];
-        // 分别注销旧的事件回调并绑定新的事件
-        if (previousCallback) {
-          layer.off(eventName, previousCallback);
-        }
-        if (currentCallback) {
-          layer.on(eventName, currentCallback);
-        }
-      });
+  // 绑定或解绑所有事件的回调函数
+  const handleLayerEvents = (type: 'on' | 'off') => {
+    layerEventList.forEach((callbackName) => {
+      const eventName = layerEventMap[callbackName];
+      const callback = props[callbackName];
+
+      if (callbackName && callback) {
+        layer[type](eventName, callback);
+      }
+    });
+  };
+
+  const bindLayerEvents = () => handleLayerEvents('on');
+
+  const unbindLayerEvents = () => handleLayerEvents('off');
+
+  const isFirstRef = useRef(true);
+
+  // 保证图层初始化后同步执行事件绑定，而不是在 useEffect 中异步绑定事件
+  if (isFirstRef.current) {
+    bindLayerEvents();
+  }
+
+  useEffect(
+    () => {
+      if (isFirstRef.current) {
+        isFirstRef.current = false;
+      } else {
+        bindLayerEvents();
+      }
+      return () => {
+        unbindLayerEvents();
+      };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     },
     layerEventList.map((eventName) => props[eventName]),
   );
 
   useUnmount(() => {
-    layerEventList.forEach((key) => {
-      const eventName = layerEventMap[key];
-      const callback = props[key];
-      if (eventName && callback) {
-        layer.off(eventName, callback);
-      }
-    });
+    unbindLayerEvents();
   });
 };
