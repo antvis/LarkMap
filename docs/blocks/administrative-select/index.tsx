@@ -102,10 +102,6 @@ export const AdministrativeSelect: React.FC<AdministrativeSelectProps> = ({
               setDistrictFeature(null);
             }
           }}
-          allowClear={allowClear}
-          placeholder={placeholder}
-          changeOnSelect={changeOnSelect}
-          expandTrigger={expandTrigger}
           multiple={multiple}
           {...props}
         />
@@ -123,10 +119,6 @@ export const AdministrativeSelect: React.FC<AdministrativeSelectProps> = ({
 };
 
 AdministrativeSelect.defaultProps = {
-  placeholder: '可选择省/市/县',
-  expandTrigger: 'hover',
-  allowClear: true,
-  changeOnSelect: true,
   enableBoundary: true,
   autoFit: true,
   boundaryLayer: defaultLayerOptions,

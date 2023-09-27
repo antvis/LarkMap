@@ -22,6 +22,10 @@ export default () => {
         }}
         value={value}
         style={{ width: 250 }}
+        placeholder={'可选择省/市/县'}
+        expandTrigger={'hover'}
+        allowClear={true}
+        changeOnSelect={true}
       />
     </LarkMap>
   );
