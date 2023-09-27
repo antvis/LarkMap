@@ -11,24 +11,25 @@ export const useLayerEvent = (
   // LarkMap 事件名列表
   const layerEventList = useMemo(() => Object.keys(layerEventMap), [layerEventMap]);
 
-  const operateLayerEvents = (on: boolean) => {
+  // 绑定或解绑所有事件的回调函数
+  const handleLayerEvents = (type: 'on' | 'off') => {
     layerEventList.forEach((callbackName) => {
       const eventName = layerEventMap[callbackName];
       const callback = props[callbackName];
 
       if (callbackName && callback) {
-        console.log(on ? 'on' : 'off', eventName, callback);
-        layer[on ? 'on' : 'off'](eventName, callback);
+        layer[type](eventName, callback);
       }
     });
   };
 
-  const bindLayerEvents = () => operateLayerEvents(true);
+  const bindLayerEvents = () => handleLayerEvents('on');
 
-  const unbindLayerEvents = () => operateLayerEvents(false);
+  const unbindLayerEvents = () => handleLayerEvents('off');
 
   const isFirstRef = useRef(true);
 
+  // 保证图层初始化后同步执行事件绑定，而不是在 useEffect 中异步绑定事件
   if (isFirstRef.current) {
     bindLayerEvents();
   }
