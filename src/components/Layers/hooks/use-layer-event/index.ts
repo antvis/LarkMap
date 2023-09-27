@@ -44,7 +44,7 @@ export const useLayerEvent = (
       unbindLayerEvents();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [layerEventList.map((eventName) => props[eventName])]);
+  }, layerEventList.map((eventName) => props[eventName]));
 
   useUnmount(() => {
     unbindLayerEvents();
