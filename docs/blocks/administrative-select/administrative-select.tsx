@@ -24,7 +24,7 @@ export interface AdministrativeSelectProps
 }
 
 /**
- * 将获取的行政区域雷彪转换为 Cascader 的 options
+ * 将获取的行政区域数据转换为 Cascader 的 options
  * @param list
  * @returns
  */
