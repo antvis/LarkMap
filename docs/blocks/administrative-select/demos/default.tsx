@@ -1,7 +1,7 @@
 import type { LarkMapProps } from '@antv/larkmap';
-import { LarkMap } from '@antv/larkmap';
-import React, { useState } from 'react';
-import { AdministrativeSelect } from '..';
+import { CustomControl, LarkMap } from '@antv/larkmap';
+import React from 'react';
+import { AdministrativeSelect } from '../administrative-select';
 
 const config: LarkMapProps = {
   mapType: 'Gaode',
@@ -13,16 +13,11 @@ const config: LarkMapProps = {
 };
 
 export default () => {
-  const [value, setValue] = useState<string[]>([]);
   return (
     <LarkMap {...config} style={{ height: '300px' }}>
-      <AdministrativeSelect
-        onChange={(e: string[]) => {
-          setValue(e);
-        }}
-        value={value}
-        style={{ width: 250 }}
-      />
+      <CustomControl>
+        <AdministrativeSelect style={{ width: 250 }} />
+      </CustomControl>
     </LarkMap>
   );
 };
