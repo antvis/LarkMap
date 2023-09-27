@@ -1,0 +1,109 @@
+@cls-prefix: larkmap-administrative-area-select;
+
+.@{cls-prefix} {
+  min-width: 36px;
+  background: #fff;
+  cursor: pointer;
+  :hover {
+    color: #0091ff;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    padding: 10px 8px;
+    font-size: 14px;
+
+    &-name {
+      margin-right: 10px;
+    }
+  }
+  &__popover {
+    .ant-popover-content {
+      max-width: 450px;
+    }
+  }
+  &__province {
+    width: auto;
+    height: 140px;
+    overflow: auto;
+    scroll-behavior: smooth;
+  }
+  &__city {
+    width: auto;
+    height: 140px;
+    overflow: auto;
+    scroll-behavior: smooth;
+  }
+  &__content {
+    &-header {
+      display: flex;
+      flex-wrap: wrap;
+      &-item {
+        margin-right: 10px;
+        color: #42a5f5;
+        cursor: pointer;
+      }
+    }
+  }
+  &__province-content {
+    &-label {
+      float: left;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    &-name {
+      display: flex;
+      margin-bottom: 8px;
+      div {
+        cursor: pointer;
+      }
+    }
+    &-value {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+      &-item {
+        margin-right: 9px;
+        padding-right: 4px;
+        color: #999;
+        cursor: pointer;
+      }
+      :hover {
+        color: #42a5f5;
+      }
+    }
+  }
+  &__city-content {
+    &-label {
+      float: left;
+      margin-right: 10px;
+    }
+    &-value {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+      &-item {
+        margin-right: 9px;
+        padding-right: 4px;
+        color: #999;
+        cursor: pointer;
+      }
+      :hover {
+        color: #42a5f5;
+      }
+    }
+  }
+  &__location {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+    &-item {
+      width: 20px;
+      padding: 4px;
+      color: #999;
+      line-height: 18px;
+      cursor: pointer;
+    }
+  }
+}
