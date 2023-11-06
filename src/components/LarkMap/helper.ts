@@ -15,6 +15,17 @@ export const createMap = async (mapType: LarkMapProps['mapType'], mapOptions: Pa
     return new GaodeMapV2(mapOptions);
   }
 
+  if (mapType === 'Tencent') {
+    return Promise.resolve(import('@antv/l7')).then(({ TencentMap }) => {
+      return new TencentMap(mapOptions);
+    });
+  }
+  if (mapType === 'Baidu') {
+    return Promise.resolve(import('@antv/l7')).then(({ BaiduMap }) => {
+      return new BaiduMap(mapOptions);
+    });
+  }
+
   return Promise.resolve(import('@antv/l7')).then(({ Mapbox }) => {
     return new Mapbox(mapOptions);
   });
