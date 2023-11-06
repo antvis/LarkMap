@@ -85,6 +85,10 @@ export default defineConfig({
     '.__dumi-default-layout { padding-left: 350px !important; }',
   ],
   scripts: [
+    ` window._AMapSecurityConfig = {
+      securityJsCode: "290ddc4b0d33be7bc9b354bc6a4ca614"
+    }`,
+    'https://webapi.amap.com/maps?v=2.0&key=6f025e700cbacbb0bb866712d20bb35c',
     'https://gw.alipayobjects.com/os/lib/react/17.0.2/umd/react.development.js',
     'https://gw.alipayobjects.com/os/lib/react-dom/17.0.2/umd/react-dom.development.js',
     'https://gw.alipayobjects.com/os/lib/antd/4.23.6/dist/antd.js',
