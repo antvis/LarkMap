@@ -14,7 +14,7 @@ nav:
 
 ### 介绍
 
-LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组件内部才能使用，容器组件可通过属性配置不同的地图，支持 [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/)、[Gaode](https://lbs.amap.com/api/jsapi-v2/documentation#map) 及 [L7Map](https://l7.antv.antgroup.com/api/map) 作为底图。
+LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组件内部才能使用，容器组件可通过属性配置不同的地图，支持 [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/)、[Gaode](https://lbs.amap.com/api/jsapi-v2/documentation#map)、[Baidu](https://mapopen-pub-jsapi.bj.bcebos.com/jsapi/reference/jsapi_webgl_1_0.html#a0b0)、[Tencent](https://lbs.qq.com/webApi/javascriptGL/glDoc/docIndexMap) 及 [L7Map](https://l7.antv.antgroup.com/api/map) 作为底图，其中 [Baidu](https://mapopen-pub-jsapi.bj.bcebos.com/jsapi/reference/jsapi_webgl_1_0.html#a0b0) 和 [Tencent](https://lbs.qq.com/webApi/javascriptGL/glDoc/docIndexMap) 仍为实验特性。
 
 ### 代码演示
 
@@ -34,7 +34,7 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 | style | 容器行内样式 | `CSSProperties` | -- |
 | className | 容器类名 | `string` | -- |
 | map | 地图实例，可选，也可以通过配置项自动生成实例，详见 [L7 map](https://l7.antv.antgroup.com/api/map/map) | `MapInstance ｜ (() => Promise<IMapWrapper>)` | -- |
-| mapType | 地图底图类型 | `'Gaode'｜`<br />`'GaodeV2'｜`<br />`'Mapbox'｜`<br />`'Map'` | `'Gaode'` |
+| mapType | 地图底图类型 | `'Gaode'｜`<br />`'GaodeV2'｜`<br />`'Mapbox'｜`<br />`'Map'｜`<br />`'Tencent'｜`<br />`'Baidu'` | `'Gaode'` |
 | mapOptions | 地图配置项，配合地图类型配置地图，详情可见 [MapOptions](#mapoptions) | `MapOptions` | -- |
 | logoPosition | logo 展示位置，配置项详见 [L7 logoPosition](https://l7.antv.antgroup.com/api/scene#logoposition) | `PositionName` | `'bottomleft'` |
 | logoVisible | 是否显示 logo | `boolean` | `true` |

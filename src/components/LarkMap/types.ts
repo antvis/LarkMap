@@ -62,7 +62,7 @@ export interface LarkMapProps extends CommonProps, Omit<ISceneConfig, 'id' | 'ca
    * 地图类型
    * @default 'Gaode'
    */
-  mapType?: 'Gaode' | 'GaodeV1' | 'GaodeV2' | 'Mapbox' | 'Map';
+  mapType?: 'Gaode' | 'GaodeV1' | 'GaodeV2' | 'Mapbox' | 'Map' | 'Tencent' | 'Baidu';
   /**
    * 地图配置项
    * 配合地图类型配置地图，
