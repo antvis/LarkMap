@@ -17,7 +17,9 @@ nav:
 
 ### 代码演示
 
-<code src="./demos/default.tsx" defaultShowCode compact></code> <code src="./demos/layerSwitchItem.tsx" defaultShowCode compact></code>
+<code src="./demos/default.tsx" defaultShowCode compact></code>
+
+<code src="./demos/layerSwitchItem.tsx" defaultShowCode compact></code>
 
 ### API
 
