@@ -5,7 +5,7 @@ const GOOGLE_TILE_MAP_URL = 'https://gac-geo.googlecnapps.cn/maps/vt?lyrs=s&gl=C
 
 const GOOGLE_TILE_MAP_ROUTER_URL = 'https://gac-geo.googlecnapps.cn/maps/vt?lyrs=h&gl=CN&x={x}&y={y}&z={z}';
 
-const MyComponent = () => {
+const CustomComponent = () => {
   const googleTileMap = useLayer('googleTileMap');
   const googleTileMapRouter = useLayer('googleTileMapRouter');
 
@@ -48,7 +48,7 @@ export default () => {
           parser: { type: 'rasterTile', tileSize: 256, zoomOffset: 0 },
         }}
       />
-      <MyComponent />
+      <CustomComponent />
     </LarkMap>
   );
 };
