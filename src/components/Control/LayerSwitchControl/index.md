@@ -19,11 +19,13 @@ nav:
 
 <code src="./demos/default.tsx" defaultShowCode compact></code>
 
+<code src="./demos/layerSwitchItem.tsx" defaultShowCode compact></code>
+
 ### API
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| layers | 需要被控制的 `layer` 数组，支持传入图层实例或者图层 id，不传则默认读取当前 L7 中所有的图层 | `Array<ILayer &#124; string>` | [] |
+| layers | 需要被控制的 `layer` 数组，支持传入图层示例，不传则默认读取当前 L7 中所有的图层 | `Array<ILayer \| LayerSwitchItem>` | [] |
 | popperPlacement | 气泡相对于按钮的位置 | [PopperPlacement](#popperplacement) | `'left-start'` |
 | popperTrigger | 气泡弹出的触发方式 | `click｜hover` | `'click'` |
 | popperClassName | 气泡容器自定义样式名 | `string` | - |
@@ -41,6 +43,14 @@ nav:
 | onPopperShow | 气泡显示时的回调 | `(this) => void` | - |
 | onPopperHide | 气泡隐藏时的回调 | `(this) => void` | - |
 | onSelectChange | 图层显隐发生改变时的回调 | `(value: string[]) => void` | - |
+
+#### LayerSwitchItem
+
+| 名称  | 说明                      | 类型                  |
+| ----- | ------------------------- | --------------------- |
+| layer | 需要被控制的 `layer` 实例 | `ILayer`              |
+| name  | 展示的图层名称            | `string \| undefined` |
+| img   | 展示的图层图片 `URL`      | `string \| undefined` |
 
 #### PopperPlacement
 
