@@ -40,7 +40,7 @@ export interface MarkerProps {
   /** 偏移量 [0, 0] 分别表示 X, Y 的偏移量，单位为像素。
    * @default [0, 0]
    */
-  offset?: [number, number];
+  offsets?: [number, number];
   /** 用户自定义属性，支持任意数据类型，存储 marker 属性信息。*/
   extData?: Record<string, any>;
   /** 点击事件 */
