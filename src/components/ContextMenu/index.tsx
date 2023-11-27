@@ -1,14 +1,14 @@
-import React, { useState, useMemo, useEffect } from 'react';
 import classNames from 'classnames';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useScene } from '../LarkMap/hooks/use-scene';
 import { Marker } from '../Marker';
 import { CLS_PREFIX } from './constant';
-import type { ContextMenuProps } from './types';
 import { ContextMenuItem } from './ContextMenuItem';
 import './index.less';
+import type { ContextMenuProps } from './types';
 
 export interface ContextMenuPropsType extends React.FC<ContextMenuProps> {
-  Item?: typeof ContextMenuItem;
+  Item: typeof ContextMenuItem;
 }
 
 const ContextMenu: ContextMenuPropsType = (props) => {
