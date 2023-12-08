@@ -20,7 +20,7 @@ export default () => {
   return (
     <div>
       设置zoomGap： <input onChange={changeHandler} />
-      <div style={{ display: 'flex', flexDirection: 'row', height: '300px' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', height: '600px' }}>
         <SyncScene scenes={sceneArray} options={{ zoomGap: zoomGap }} />
         <LarkMap
           id="gapScene"
