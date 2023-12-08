@@ -50,7 +50,7 @@ export default () => {
 
   return (
     <div>
-      <div style={{ display: 'flex', flexDirection: 'row', height: '100vh' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', height: '600px' }}>
         <LarkMap
           id="baseScene"
           mapType="Gaode"
