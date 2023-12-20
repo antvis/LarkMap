@@ -1,6 +1,6 @@
 {
   "name": "@antv/larkmap",
-  "version": "1.4.10",
+  "version": "1.4.11",
   "description": "A React toolkit for geospatial visualization based on L7",
   "license": "MIT",
   "main": "lib/index.js",
@@ -42,6 +42,7 @@
     "classnames": "^2.3.1",
     "color": "^4.2.3",
     "lodash-es": "^4.17.21",
+    "md5": "^2.3.0",
     "rc-select": "^14.1.13"
   },
   "devDependencies": {
@@ -53,6 +54,7 @@
     "@types/geojson": "^7946.0.8",
     "@types/jest": "^27.0.0",
     "@types/lodash-es": "^4.17.6",
+    "@types/md5": "^2.3.5",
     "@umijs/fabric": "^3.0.0",
     "antd": "^4.22.3",
     "dumi": "^1.1.40",
