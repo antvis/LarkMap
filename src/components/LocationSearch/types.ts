@@ -39,6 +39,7 @@ export type GaodeLocationSearchParams = {
   citylimit?: boolean;
   sig?: string;
   datatype?: string;
+  privateKey?: string;
   [key: string]: any;
 };
 

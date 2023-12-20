@@ -1,6 +1,7 @@
 import { useDebounceFn } from 'ahooks';
+import md5 from 'md5';
 import React, { useCallback, useEffect, useState } from 'react';
-import { urlStringify } from '../../utils';
+import { getQueryString } from '../../utils';
 import { CLS_PREFIX, GAO_DE_API_URL } from './constant';
 import './index.less';
 import Select from './Select';
@@ -28,10 +29,15 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
         setOptions([]);
         return;
       }
-      const url = urlStringify(GAO_DE_API_URL, {
-        ...searchParams,
-        keywords: [...(searchParams.keywords ?? '').split('|'), searchText].filter((item) => !!item).join('|'),
-      });
+      const { keywords, privateKey, ...otherParams } = searchParams;
+      const params = {
+        ...otherParams,
+        keywords: [...(keywords ?? '').split('|'), searchText].filter((item) => !!item).join('|'),
+      };
+      if (privateKey) {
+        params.sig = md5(getQueryString(params, false) + privateKey);
+      }
+      const url = `${GAO_DE_API_URL}?${getQueryString(params, true)}`;
       const res = await (await fetch(url)).json();
       setOptions(
         (res?.tips ?? [])

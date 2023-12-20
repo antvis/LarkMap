@@ -38,9 +38,10 @@ nav:
 
 #### GaodeLocationSearchParams
 
-| 属性值 | 描述                              | 类型     | 默认值 |
-| ------ | --------------------------------- | -------- | ------ |
-| key    | 高德 Web API 服务的 key 值 (必传) | `string` | -      |
+| 属性值     | 描述                              | 类型                      | 默认值      |
+| ---------- | --------------------------------- | ------------------------- | ----------- |
+| key        | 高德 Web API 服务的 key 值 (必传) | `string`                  | -           |
+| privateKey | 高德 Web API 服务数字签名私钥     | `string &#124; undefined` | `undefined` |
 
 该其他配置可以查看高德的 [输入提示](https://lbs.amap.com/api/webservice/guide/api/inputtips)
 

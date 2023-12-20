@@ -24,7 +24,44 @@ LarkMap 是地图容器组件，相关地图组件与 Hooks 需放到容器组�
 
 #### 通过实例生成地图
 
-<code src="./demos/map-instance.tsx" compact defaultShowCode></code>
+```tsx | pure
+import AMapLoader from '@amap/amap-jsapi-loader';
+import { GaodeMap } from '@antv/l7';
+import { LarkMap } from '@antv/larkmap';
+import React from 'react';
+
+/**
+ * 实例化
+ */
+// const mapInstance = new GaodeMap({
+//   style: 'dark',
+//   center: [120.210792, 30.246026],
+//   zoom: 10,
+//   // token: '你申请的 Key',
+// });
+
+/**
+ * 或者通过 AMapLoader
+ */
+const getMapInstance = () => {
+  return AMapLoader.load({
+    key: '你申请的 Key', // 申请好的 Web 端开发者 Key，首次调用 load 时必填
+    version: '2.0', // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
+    plugins: [], // 需要使用的的插件列表，如比例尺'AMap.Scale'等
+  }).then((AMap) => {
+    return new GaodeMap({
+      mapInstance: new AMap.Map('container', {
+        zoom: 16, //初始化地图层级
+        center: [116.397428, 39.90923], //初始化地图中心点
+      }),
+    });
+  });
+};
+
+export default () => {
+  return <LarkMap id="container" map={getMapInstance} style={{ height: '300px' }} />;
+};
+```
 
 ### API
 
