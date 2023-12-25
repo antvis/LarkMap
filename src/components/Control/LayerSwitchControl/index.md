@@ -33,6 +33,7 @@ nav:
 | btnText | 按钮内容文本 | `string` | - |
 | title | 按钮的 title 属性 | `string` | `'图层控制'` |
 | vertical | 在 btnIcon 有值的情况下，按钮内的图标和文案是否纵向排列 | `boolean` | `false` |
+| multiple | 控件内的图层选项是否多选，单选模式下默认展示第一个选项对应的图层 | `boolean` | `true` |
 | position | 控件被添加到地图中的位置以及排列方式，详情可见 [控件插槽](https://l7.antv.antgroup.com/api/component/control/control#插槽) | [Position](#position) | `'topright'` |
 | className | 自定义样式名 | `string` | - |
 | style | 自定义样式 | `CSSProperties` | - |
