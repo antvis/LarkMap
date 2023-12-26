@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@antv/dumi-theme-antv": "^0.2.2",
-    "@antv/l7": "^2.20.10",
+    "@antv/l7": "^2.20.11",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
     "@types/color": "^3.0.3",

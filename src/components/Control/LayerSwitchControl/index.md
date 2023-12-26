@@ -17,9 +17,17 @@ nav:
 
 ### 代码演示
 
+##### 文案选项、多选模式
+
 <code src="./demos/default.tsx" defaultShowCode compact></code>
 
+##### 图片选项、多选模式
+
 <code src="./demos/layerSwitchItem.tsx" defaultShowCode compact></code>
+
+#### 图片选项、单选模式
+
+<code src="./demos/singleSelection.tsx" defaultShowCode compact></code>
 
 ### API
 

@@ -44,7 +44,7 @@ export default () => {
     <LarkMap mapType="Gaode" style={{ height: '400px' }}>
       <PolygonLayer id="fillLayer" name="填充图层" {...polygonLayerOptions} source={source} />
       <PolygonLayer id="strokeLayer" name="描边图层" {...lineLayerOptions} source={source} />
-      <LayerSwitchControl layers={['fillLayer', 'strokeLayer']} multiple={false} />
+      <LayerSwitchControl layers={['fillLayer', 'strokeLayer']} />
     </LarkMap>
   );
 };
