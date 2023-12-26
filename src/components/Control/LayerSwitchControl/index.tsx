@@ -19,6 +19,7 @@ export const LayerSwitchControl: React.FC<LayerSwitchControlProps> = ({
   position,
   className,
   style,
+  multiple,
   onAdd,
   onRemove,
   onShow,
@@ -58,6 +59,7 @@ export const LayerSwitchControl: React.FC<LayerSwitchControlProps> = ({
       vertical,
       position,
       className,
+      multiple,
       style: styleText,
       btnIcon: btnIconDOM,
     };
@@ -71,6 +73,7 @@ export const LayerSwitchControl: React.FC<LayerSwitchControlProps> = ({
     vertical,
     position,
     className,
+    multiple,
     styleText,
     btnIconDOM,
   ]);
