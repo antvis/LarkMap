@@ -5,7 +5,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { getStyleText } from '../../../utils';
 import { useLayerList, useScene } from '../../LarkMap/hooks';
 import { useL7ComponentEvent, useL7ComponentPortal, useL7ComponentUpdate } from '../hooks';
-import type { LayerSwitchControlProps } from './types';
+import type { LayerSwitchControlProps, LayerSwitchItem } from './types';
 
 export const LayerSwitchControl: React.FC<LayerSwitchControlProps> = ({
   layers: layerItems,
@@ -40,9 +40,17 @@ export const LayerSwitchControl: React.FC<LayerSwitchControlProps> = ({
           .map((layerItem) => {
             if (typeof layerItem === 'string') {
               return fullLayerList.find((layer) => layer.id === layerItem);
-            } else {
+            }
+            // 当 layerItem 为 LayerSwitchItem 类型
+            if (!Object.prototype.hasOwnProperty.call(layerItem, 'isComposite')) {
+              const { layer } = layerItem as LayerSwitchItem;
+              if (typeof layer === 'string') {
+                const targetLayer = fullLayerList.find((item) => item.id === layer);
+                return targetLayer ? { ...layerItem, layer: targetLayer } : undefined;
+              }
               return layerItem;
             }
+            return layerItem;
           })
           .filter((layer) => !!layer)
       : fullLayerList;
