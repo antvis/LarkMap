@@ -1,6 +1,6 @@
 {
   "name": "@antv/larkmap",
-  "version": "1.4.13",
+  "version": "1.4.14",
   "description": "A React toolkit for geospatial visualization based on L7",
   "license": "MIT",
   "main": "lib/index.js",
@@ -86,7 +86,7 @@
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   },
-  "lint-staged": {
+"lint-staged": {
     "*.less": "stylelint --fix",
     "*.{ts,tsx}": "eslint --fix",
     "*.{ts,tsx,md,json}": [

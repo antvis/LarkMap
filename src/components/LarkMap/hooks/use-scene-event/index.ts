@@ -50,5 +50,3 @@ export const useSceneEvent = (scene: Scene, props: SceneEventProps) => {
     });
   });
 };
-
-type a = [number, ...string[]];

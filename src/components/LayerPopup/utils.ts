@@ -1,5 +1,16 @@
 import type { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
+
+const ReactRender = (reactNode: ReactNode, dom: HTMLElement) => {
+  if (+ReactDOM.version.split('.')?.[0] >= 18) {
+    ReactDOMClient.createRoot(dom).render(reactNode);
+  } else {
+    const portal = ReactDOM.createPortal(reactNode, dom);
+    /* eslint-disable react/no-deprecated */
+    ReactDOM.render(portal, dom);
+  }
+};
 
 /**
  * 将 render 中的 JSX 格式转换成 DOM 和 Portal 的形式
@@ -15,14 +26,12 @@ export const getElementTypePortal = (
     const dom = document.createElement(tag);
     return (...args: any[]) => {
       const reactNode = render(...args);
-      const portal = ReactDOM.createPortal(reactNode, dom);
-      ReactDOM.render(portal, dom);
+      ReactRender(reactNode, dom);
       return dom;
     };
   } else {
     const dom = document.createElement(tag);
-    const portal = ReactDOM.createPortal(render, dom);
-    ReactDOM.render(portal, dom);
+    ReactRender(render, dom);
     return dom;
   }
 };

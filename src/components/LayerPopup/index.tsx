@@ -2,7 +2,7 @@ import type { ILayer, IPopupOption, LayerField, LayerPopupConfigItem } from '@an
 import { LayerPopup as L7LayerPopup } from '@antv/l7';
 import type { ICompositeLayer } from '@antv/l7-composite-layers';
 import { omitBy } from 'lodash-es';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import type { Layer } from '../../types';
 import { getStyleText } from '../../utils';
 import { useL7ComponentEvent, useL7ComponentUpdate } from '../Control/hooks';
@@ -35,8 +35,9 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
   const [popup, setPopup] = useState<L7LayerPopup | undefined>();
   const styleText = useMemo(() => getStyleText(style), [style]);
   const fullLayerList = useLayerList();
+  const [layerPopupItems, setLayerPopupItems] = useState<LayerPopupConfigItem[]>([]);
 
-  const layerPopupItems = useMemo(() => {
+  useLayoutEffect(() => {
     const result: LayerPopupConfigItem[] = [];
 
     items.forEach((item) => {
@@ -95,7 +96,7 @@ export const LayerPopup: React.FC<LayerPopupProps> = ({
       });
     });
 
-    return result;
+    setLayerPopupItems(result);
   }, [fullLayerList, items]);
 
   const layerPopupOptions: Partial<IPopupOption> = useMemo(
