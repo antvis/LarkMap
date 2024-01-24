@@ -31,4 +31,4 @@ LarkMap 里面图层分为基础图层与复合图层组件，基础图层组件
 
 可以扫描下方二维码加入 L7 的钉钉答疑群进行提问
 
-<img src="https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*HYbhQrDJHqYAAAAAAAAAAAAADmJ7AQ/original" width="400"/>
+<img src="https://mdn.alipayobjects.com/huamei_baaa7a/afts/img/A*GZGoTLCplgYAAAAAAAAAAAAADqSCAQ/original" width="400"/>
