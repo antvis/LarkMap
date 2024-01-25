@@ -1,37 +1,48 @@
 import type { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
-import * as ReactDOMClient from 'react-dom/client';
 
-const ReactRender = (reactNode: ReactNode, dom: HTMLElement) => {
-  if (+ReactDOM.version.split('.')?.[0] >= 18) {
-    ReactDOMClient.createRoot(dom).render(reactNode);
+const isReact18 = +ReactDOM.version.split('.')?.[0] >= 18;
+
+const createReactRender = (dom: HTMLElement) => {
+  if (isReact18) {
+    // @ts-ignore
+    const root = ReactDOM.createRoot(dom);
+    return {
+      render: (reactNode: ReactNode) => {
+        root.render(reactNode);
+        return dom;
+      },
+    };
   } else {
-    const portal = ReactDOM.createPortal(reactNode, dom);
-    /* eslint-disable react/no-deprecated */
-    ReactDOM.render(portal, dom);
+    return {
+      render: (reactNode: ReactNode) => {
+        const portal = ReactDOM.createPortal(reactNode, dom);
+        /* eslint-disable react/no-deprecated */
+        ReactDOM.render(portal, dom);
+        return dom;
+      },
+    };
   }
 };
 
 /**
  * 将 render 中的 JSX 格式转换成 DOM 和 Portal 的形式
- * @param render
+ * @param reactNode
  * @param tag
  */
 export const getElementTypePortal = (
-  render: ReactNode | ((...args: any[]) => ReactNode),
+  reactNode: ReactNode | ((...args: any[]) => ReactNode),
   tag: keyof HTMLElementTagNameMap,
 ) => {
+  const dom = document.createElement(tag);
   // 若 render 为函数格式，则在其每次调用时重新生成 dom 和 portal
-  if (render instanceof Function) {
-    const dom = document.createElement(tag);
+  if (reactNode instanceof Function) {
+    const { render } = createReactRender(dom);
     return (...args: any[]) => {
-      const reactNode = render(...args);
-      ReactRender(reactNode, dom);
-      return dom;
+      return render(reactNode(...args));
     };
   } else {
-    const dom = document.createElement(tag);
-    ReactRender(render, dom);
-    return dom;
+    const { render } = createReactRender(dom);
+    return render(reactNode);
   }
 };
