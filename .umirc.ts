@@ -99,6 +99,9 @@ export default defineConfig({
     /** mapbox */
     'https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.2/mapbox-gl.js',
   ],
+    analytics: {
+    baidu: 'cf82ae99d09bff40c32ae3dd5c532ae2',
+  },
   // chunks: ['vendors', 'umi'],
   // chainWebpack: function (config) {
   //   config.merge({
