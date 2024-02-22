@@ -30,7 +30,6 @@ export const SwipeControl: React.FC<SwipeControlProps> = ({
       ? defaultLayers
           .map((layerItem) => {
             if (typeof layerItem === 'string') {
-              console.log(layerItem);
               return fullLayerList.find((layer) => layer.id === layerItem);
             }
             if (!Object.prototype.hasOwnProperty.call(layerItem, 'isComposite')) {
