@@ -1,9 +1,8 @@
-import type { LineLayerProps, PolygonLayerProps } from '@antv/larkmap';
+import type { LayerPopupProps, LineLayerProps, PolygonLayerProps } from '@antv/larkmap';
 import { LarkMap, LayerPopup, LineLayer, PolygonLayer } from '@antv/larkmap';
 import type { FeatureCollection } from '@turf/turf';
 import { coordAll, featureCollection, lineString } from '@turf/turf';
 import React, { useEffect, useState } from 'react';
-import type { LayerPopupProps } from '../types';
 
 const polygonLayerOptions: Omit<PolygonLayerProps, 'source'> = {
   autoFit: true,

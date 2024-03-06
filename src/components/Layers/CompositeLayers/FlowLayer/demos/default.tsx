@@ -1,6 +1,6 @@
+import type { FlowLayerProps } from '@antv/larkmap';
 import { FlowLayer, LarkMap } from '@antv/larkmap';
 import React, { useEffect, useState } from 'react';
-import type { FlowLayerProps } from '../types';
 
 export default () => {
   const [source, setSource] = useState<FlowLayerProps['source']>({
