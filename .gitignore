@@ -25,6 +25,7 @@ coverage
 # Packages lock
 package-lock.json
 yarn.lock
+pnpm-lock.yaml
 
 # umi
 .umi
