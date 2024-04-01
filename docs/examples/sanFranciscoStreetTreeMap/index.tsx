@@ -1,7 +1,7 @@
 import type { Scene } from '@antv/l7';
 import { CustomControl, HeatmapLayer, LarkMap } from '@antv/larkmap';
 import { Popover, Select, Slider, Typography } from 'antd';
-import { cloneDeep, get, set } from 'lodash';
+import { cloneDeep, get, set } from 'lodash-es';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { SketchPicker } from 'react-color';
 import { heatmapCfg, mapCfg, scaleType, shapeOpt } from './config';

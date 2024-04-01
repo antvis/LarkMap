@@ -50,6 +50,7 @@
     "@antv/l7": "^2.11.0",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
+    "@turf/turf": "^6.5.0",
     "@types/color": "^3.0.3",
     "@types/geojson": "^7946.0.8",
     "@types/jest": "^27.0.0",
