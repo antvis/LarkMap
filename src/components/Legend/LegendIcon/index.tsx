@@ -1,14 +1,14 @@
 import classnames from 'classnames';
 import React from 'react';
 import './index.less';
-import type { LegendIconProps, LegendIcons } from './types';
+import type { IconType, LegendIconProps } from './types';
 
 export const CLS_PREFIX = 'larkmap-legend-icon';
 
 export const LegendIcon = (props: LegendIconProps) => {
   const { labels, icons, className: cls, style } = props;
 
-  const renderIcon = (icon: LegendIcons) => {
+  const renderIcon = (icon: IconType) => {
     if (React.isValidElement(icon)) {
       return icon;
     } else if (typeof icon === 'string') {

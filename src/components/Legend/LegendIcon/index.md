@@ -31,8 +31,8 @@ nav:
 
 <API></API>
 
-#### LegendIcons
+#### IconType
 
 ```ts
-type LegendIcons = string | React.ReactElement;
+type IconType = string | React.ReactElement;
 ```
