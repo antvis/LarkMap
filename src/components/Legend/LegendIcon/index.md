@@ -21,8 +21,18 @@ nav:
 
 <code src="./demos/default.tsx" defaultShowCode></code>
 
+#### 自定义 icons
+
+<code src="./demos/custom.tsx" defaultShowCode></code>
+
 #### 在地图中展示
 
 <code src="./demos/map-default.tsx" compact defaultShowCode></code>
 
 <API></API>
+
+#### IconType
+
+```ts
+type IconType = string | React.ReactElement;
+```
