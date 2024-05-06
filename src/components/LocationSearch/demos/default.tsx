@@ -3,7 +3,6 @@ import type { LocationSearchOption } from '@antv/larkmap';
 import { CustomControl, LarkMap, LocationSearch } from '@antv/larkmap';
 import { message } from 'antd';
 import React, { useCallback, useEffect, useState } from 'react';
-import { AMAP_KEY_LIST } from '../constant';
 
 export default () => {
   const [location, setLocation] = useState('');
@@ -45,7 +44,7 @@ export default () => {
         <CustomControl position="topleft">
           <LocationSearch
             searchParams={{
-              key: AMAP_KEY_LIST[Math.floor(Math.random() * AMAP_KEY_LIST.length)],
+              key: 'b93400c020206bd6865a075036e7f423',
               location,
             }}
             autoFocus
