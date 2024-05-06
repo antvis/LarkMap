@@ -44,7 +44,7 @@ export default () => {
         <CustomControl position="topleft">
           <LocationSearch
             searchParams={{
-              key: '4892acc9f825e343bcf1e25a56199826',
+              key: 'b93400c020206bd6865a075036e7f423',
               location,
             }}
             autoFocus
