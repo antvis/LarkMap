@@ -17,7 +17,7 @@ export function LegendCategories(props: LegendCategoriesProps) {
     return (
       <div className={classnames(CLS_PREFIX, cls_name)} style={style}>
         {labels.map((item, index) => (
-          <div className={`${CLS_PREFIX}__content`} key={item}>
+          <div className={`${CLS_PREFIX}__content`} key={`${item}__${color[index]}__${index}`}>
             <div
               className={classnames(`${CLS_PREFIX}__content__shape`, {
                 [`${CLS_PREFIX}__content__${geometryType}`]: geometryType,
