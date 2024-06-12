@@ -7,7 +7,7 @@ import type { LegendCategoriesProps } from './types';
 export const CLS_PREFIX = 'larkmap-legend-category';
 
 export function LegendCategories(props: LegendCategoriesProps) {
-  const { labels, colors, geometryType = 'circle', isStrokeColor, style, className: cls_name } = props;
+  const { labels, colors, geometryType = 'circle', isStrokeColor = false, style, className: cls_name } = props;
 
   function getColor(item: string) {
     return isStrokeColor ? { border: `2px solid ${item}` } : { background: item };
@@ -39,8 +39,3 @@ export function LegendCategories(props: LegendCategoriesProps) {
   }
   return <Renders />;
 }
-
-LegendCategories.defaultProps = {
-  geometryType: 'circle',
-  isStrokeColor: false,
-};

@@ -47,10 +47,25 @@ const getCascadeData = (list: any[]) => {
   }
 };
 
+const defaultCascaderProps = {
+  placeholder: '可选择省/市/县',
+  expandTrigger: 'hover',
+  allowClear: true,
+  changeOnSelect: true,
+  showSearch: true,
+};
+
 export const AdministrativeSelect: React.FC<AdministrativeSelectProps> = ({
-  enableBoundary,
-  autoFit,
-  boundaryLayer,
+  enableBoundary = true,
+  autoFit = true,
+  boundaryLayer = {
+    shape: 'line',
+    color: '#ff0000',
+    size: 2,
+    style: {
+      opacity: 0.8,
+    },
+  },
   value: originValue,
   onChange,
   ...props
@@ -123,6 +138,7 @@ export const AdministrativeSelect: React.FC<AdministrativeSelectProps> = ({
           }
         }}
         multiple={false}
+        {...defaultCascaderProps}
         {...props}
       />
       {enableBoundary && (
@@ -135,22 +151,4 @@ export const AdministrativeSelect: React.FC<AdministrativeSelectProps> = ({
       )}
     </>
   );
-};
-
-AdministrativeSelect.defaultProps = {
-  placeholder: '可选择省/市/县',
-  expandTrigger: 'hover',
-  allowClear: true,
-  changeOnSelect: true,
-  enableBoundary: true,
-  autoFit: true,
-  showSearch: true,
-  boundaryLayer: {
-    shape: 'line',
-    color: '#ff0000',
-    size: 2,
-    style: {
-      opacity: 0.8,
-    },
-  },
 };

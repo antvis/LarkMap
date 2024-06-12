@@ -9,10 +9,19 @@ import type { LocationSearchOption, LocationSearchProps } from './types';
 
 const { Option } = Select;
 
+const defaultSelectProps = {
+  placeholder: '请输入要搜索地名',
+  showSearch: true,
+  allowClear: true,
+  filterOption: false,
+  defaultActiveFirstOption: false,
+};
+
+
 export const LocationSearch: React.FC<LocationSearchProps> = ({
   searchParams,
-  showDistrict,
-  showAddress,
+  showDistrict = true,
+  showAddress = true,
   onSearchFinish,
   onChange,
   ...selectProps
@@ -69,6 +78,7 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
       onSearch={onSearch}
       onChange={onLocationChange}
       clearIcon={() => null}
+      {...defaultSelectProps}
       {...selectProps}
     >
       {options.map((option) => {
@@ -88,14 +98,4 @@ export const LocationSearch: React.FC<LocationSearchProps> = ({
       })}
     </Select>
   );
-};
-
-LocationSearch.defaultProps = {
-  placeholder: '请输入要搜索地名',
-  showSearch: true,
-  allowClear: true,
-  filterOption: false,
-  defaultActiveFirstOption: false,
-  showAddress: true,
-  showDistrict: true,
 };
