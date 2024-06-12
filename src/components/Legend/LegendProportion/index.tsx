@@ -82,7 +82,3 @@ export const LegendProportion = (props: LegendProportionProp) => {
     </div>
   );
 };
-
-LegendProportion.defaultProps = {
-  fillColor: '#f9f9f9',
-};

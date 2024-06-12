@@ -63,11 +63,23 @@ const DrawModalContent: React.FC<
   );
 });
 
+const defaultModalProps = {
+  width: 700,
+  title: '绘制弹框',
+  cancelText: '取消',
+  okText: '提交',
+  destroyOnClose: true,
+}
+
 export const DrawModal: React.FC<DrawModalProps> = ({
   className,
   larkmapProps,
-  drawConfig,
-  locationSearchProps,
+  drawConfig = {
+    point: true,
+    line: true,
+    polygon: true,
+  },
+  locationSearchProps = false,
   onOk,
   ...modalProps
 }) => {
@@ -90,6 +102,7 @@ export const DrawModal: React.FC<DrawModalProps> = ({
       onOk={() => {
         onOk?.(drawData);
       }}
+      {...defaultModalProps}
       {...modalProps}
     >
       <LarkMap style={{ height: 400 }} {...larkmapProps}>
@@ -97,18 +110,4 @@ export const DrawModal: React.FC<DrawModalProps> = ({
       </LarkMap>
     </Modal>
   );
-};
-
-DrawModal.defaultProps = {
-  drawConfig: {
-    point: true,
-    line: true,
-    polygon: true,
-  },
-  width: 700,
-  title: '绘制弹框',
-  cancelText: '取消',
-  okText: '提交',
-  locationSearchProps: false,
-  destroyOnClose: true,
 };

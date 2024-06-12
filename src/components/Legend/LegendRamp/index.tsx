@@ -104,7 +104,7 @@ function DisContinuous({
 }
 
 export function LegendRamp(props: LegendRampProps) {
-  const { isContinuous, labels, colors, labelUnit, className: cls, style } = props;
+  const { isContinuous = false, labels, colors, labelUnit = '', className: cls, style } = props;
 
   // const [min, max] = getMinMax(labels);
   // const isError = Number.isNaN(min) || Number.isNaN(max);
@@ -120,8 +120,3 @@ export function LegendRamp(props: LegendRampProps) {
     </div>
   );
 }
-
-LegendRamp.defaultProps = {
-  isContinuous: false,
-  labelUnit: '',
-};

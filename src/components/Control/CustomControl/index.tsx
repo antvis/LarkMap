@@ -7,7 +7,7 @@ import { getStyleText } from '../../../utils';
 import type { CustomControlProps } from './types';
 
 export const CustomControl: React.FC<CustomControlProps> = (props): React.ReactPortal => {
-  const { className, style, children, position, name } = props;
+  const { className, style, children, position = 'topleft', name } = props;
   const containerRef = useRef(document.createElement('div'));
   const styleText = getStyleText(style);
 
@@ -30,4 +30,4 @@ export const CustomControl: React.FC<CustomControlProps> = (props): React.ReactP
   return createPortal(children, containerRef.current);
 };
 
-CustomControl.defaultProps = { position: 'topleft' };
+
