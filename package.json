@@ -7,6 +7,9 @@
   "module": "es/index.js",
   "types": "es/index.d.ts",
   "unpkg": "dist/larkmap.min.js",
+  "sideEffects": [
+    "**/*.less"
+  ],
   "files": [
     "lib",
     "es",
