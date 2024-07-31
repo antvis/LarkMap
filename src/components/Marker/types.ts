@@ -1,6 +1,15 @@
 import type { ILngLat } from '@antv/l7';
 
 /**
+ * 锚点事件类型
+ */
+export type MarkerEventType = {
+  data?: MarkerProps['extData'];
+  lngLat: ILngLat;
+  target: MouseEvent | TouchEvent;
+};
+
+/**
  * 锚点相对位置
  */
 export type AnchorType =
@@ -44,7 +53,7 @@ export interface MarkerProps {
   /** 用户自定义属性，支持任意数据类型，存储 marker 属性信息。*/
   extData?: Record<string, any>;
   /** 点击事件 */
-  onClick?: (e: MouseEvent) => void;
+  onClick?: (e: MarkerEventType) => void;
   /** 子组件 */
   children?: React.ReactNode;
 }
