@@ -19,6 +19,10 @@ export default defineConfig({
   cjs: {
     output: 'lib',
     ...less2CssConfig,
+    alias: {
+      // lodash-es 不支持 cjs 产物，将打包产物修改为从 lodash 引入
+      'lodash-es': 'lodash',
+    },
   },
   plugins: [
     // less 编译为 css
