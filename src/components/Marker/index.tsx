@@ -3,7 +3,7 @@ import { useDeepCompareEffect } from 'ahooks';
 import React, { memo, useEffect, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useScene } from '../LarkMap/hooks';
-import type { MarkerProps } from './types';
+import type { MarkerEventType, MarkerProps } from './types';
 
 export const Marker = memo<MarkerProps>(function Marker(props): React.ReactPortal {
   const scene = useScene();
@@ -24,7 +24,7 @@ export const Marker = memo<MarkerProps>(function Marker(props): React.ReactPorta
     // @ts-ignore
     const l7marker = new L7Marker(options);
 
-    l7marker.on('click', (e: MouseEvent) => {
+    l7marker.on('click', (e: MarkerEventType) => {
       thisRef.current.props.onClick?.(e);
     });
 

@@ -1,5 +1,5 @@
 import type { IMapConfig } from '@antv/l7';
-import { GaodeMap, GaodeMapV1, GaodeMapV2, Map } from '@antv/l7';
+import { BaiduMap, GaodeMap, GaodeMapV1, GaodeMapV2, Map, TencentMap } from '@antv/l7';
 import type { LarkMapProps } from './types';
 
 export const createMap = async (mapType: LarkMapProps['mapType'], mapOptions: Partial<IMapConfig>) => {
@@ -16,14 +16,11 @@ export const createMap = async (mapType: LarkMapProps['mapType'], mapOptions: Pa
   }
 
   if (mapType === 'Tencent') {
-    return Promise.resolve(import('@antv/l7')).then(({ TencentMap }) => {
-      return new TencentMap(mapOptions);
-    });
+    return new TencentMap(mapOptions);
   }
+
   if (mapType === 'Baidu') {
-    return Promise.resolve(import('@antv/l7')).then(({ BaiduMap }) => {
-      return new BaiduMap(mapOptions);
-    });
+    return new BaiduMap(mapOptions);
   }
 
   return Promise.resolve(import('@antv/l7')).then(({ Mapbox }) => {
