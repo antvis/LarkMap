@@ -81,7 +81,7 @@ export const AdministrativeSelect: React.FC<AdministrativeSelectProps> = ({
 
   useEffect(() => {
     fetch(
-      'https://restapi.amap.com/v3/config/district?key=98d10f05a2da96697313a2ce35ebf1a2&keywords=中华人民共和国&subdistrict=3&extensions=base',
+      'https://restapi.amap.com/v3/config/district?key=[你的高德API key]&keywords=中华人民共和国&subdistrict=3&extensions=base',
     )
       .then((res) => res.json())
       .then((res) => {
@@ -94,7 +94,7 @@ export const AdministrativeSelect: React.FC<AdministrativeSelectProps> = ({
     if (value) {
       const name = value[value.length - 1];
       fetch(
-        `https://restapi.amap.com/v3/config/district?keywords=${name}&subdistrict=0&key=98d10f05a2da96697313a2ce35ebf1a2&extensions=all`,
+        `https://restapi.amap.com/v3/config/district?keywords=${name}&subdistrict=0&key=[你的高德API key]&extensions=all`,
       )
         .then((res) => res.json())
         .then((res) => {
